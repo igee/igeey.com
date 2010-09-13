@@ -1,0 +1,9 @@
+igee.org - planing,recording and sharing your good action.
+
+powerd by Ruby on Rails 3
+
+Notice:
+You need edit your database configuration file: 
+  cd igee
+  cp config/database.yml.sample config/database.yml
+  vi database.yml
