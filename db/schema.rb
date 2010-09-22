@@ -12,6 +12,27 @@
 
 ActiveRecord::Schema.define do
 
+  create_table "actions", :force => true do |t|
+    t.integer "user_id"
+  end
+
+  create_table "geos", :force => true do |t|
+    t.integer "parent_id"
+    t.string  "name",      :null => false,:limit => 40
+    t.integer "zipcode"
+    t.string  "slug",      :limit => 40
+    t.string  "latitude",   :limit => 40
+    t.string  "longitude",  :limit => 40
+  end
+    
+  create_table "venues", :force => true do |t|
+    t.integer "geo_id"
+  end
+  
+  create_table "profiles", :force => true do |t|
+    t.integer "user_id"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "login",                     :limit => 40
     t.string   "name",                      :limit => 100, :default => ""
@@ -26,17 +47,4 @@ ActiveRecord::Schema.define do
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
   
-  create_table "profiles", :force => true do |t|
-    t.integer "user_id"
-  end
-  
-  create_table "geos", :force => true do |t|
-    t.integer "parent_id"
-    t.string  "name",      :null => false,:limit => 40
-    t.integer "zipcode"
-    t.string  "slug",      :limit => 40
-    t.string  "latitude",   :limit => 40
-    t.string  "longitude",  :limit => 40
-  end
-
 end
