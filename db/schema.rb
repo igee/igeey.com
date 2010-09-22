@@ -25,5 +25,15 @@ ActiveRecord::Schema.define do
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
+  
+  
+  create_table "geos", :force => true do |t|
+    t.integer "parent_id"
+    t.string  "name",      :null => false,:limit => 40
+    t.integer "zipcode",   :limit => 10
+    t.string  "slug",      :limit => 40
+    t.string  "latitude",   :limit => 40
+    t.string  "longitude",  :limit => 40
+  end
 
 end
