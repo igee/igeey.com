@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100922013916) do
+ActiveRecord::Schema.define do
 
   create_table "users", :force => true do |t|
     t.string   "login",                     :limit => 40
