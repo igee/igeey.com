@@ -20,6 +20,7 @@ ActiveRecord::Schema.define do
     t.string  "name",       :limit => 40
     t.integer "parent_id"
     t.integer "zipcode"
+    t.integer "zoom_level"
     t.string  "slug",       :limit => 40
     t.string  "latitude",   :limit => 40
     t.string  "longitude",  :limit => 40

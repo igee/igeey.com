@@ -21,7 +21,7 @@ class GeoTest < ActiveSupport::TestCase
   
   protected
   def create_geo(options = {})
-    record = Geo.new({:name => 'TestCity',:latitude => 0.0 ,:longitude => 0.0}.merge(options))
+    record = Geo.new({:name => 'TestCity',:latitude => 0.0 ,:longitude => 0.0,:zoom_level => 9}.merge(options))
     record.save
     record
   end

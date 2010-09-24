@@ -4,7 +4,7 @@
     function initialize() {
       var latlng = new google.maps.LatLng(<%= "#{@geo.latitude},#{@geo.longitude}"%>);
       var myOptions = {
-        zoom: 9,
+        zoom: <%= @geo.zoom_level || 9%>,
         center: latlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };

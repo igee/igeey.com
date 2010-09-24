@@ -7,6 +7,6 @@
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
 geos = Geo.create([
-                    { :name => '北京',:latitude => '39.9046670',:longitude => '116.4081980' },
-                    { :name => '天津',:latitude => '39.1208760',:longitude => '117.2150300' }
+                    { :name => '北京',:latitude => '39.9046670',:longitude => '116.4081980',:zoom_level => 9 },
+                    { :name => '天津',:latitude => '39.1208760',:longitude => '117.2150300',:zoom_level => 9 }
                     ])
