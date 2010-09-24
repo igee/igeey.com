@@ -1,0 +1,6 @@
+<h2>所有地区</h2>
+<p>
+<% @geos.each do |geo|%>
+  <%= link_to geo.name,geo %>
+<% end %>
+</p>

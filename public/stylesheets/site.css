@@ -1,14 +1,19 @@
 body,div,h1,h2,h3,h4,h5,h6{margin:0}
+a{
+    text-decoration:none;
+    color:#888;
+    }
 
 .container{
     width:920px;
     padding:10px;
     margin:0 auto;
     }
+
+#login_state{float:right}
     
 #nav{
     height:80px;
     background-color:#e0e0e0;
     }
     
-#login_state{float:right}

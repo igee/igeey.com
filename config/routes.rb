@@ -1,20 +1,21 @@
 Igee::Application.routes.draw do
   root :to => 'site#index'
+  
+  match 'signup' => 'users#new', :as => :signup
+  match 'register' => 'users#create', :as => :register
+  match 'login' => 'sessions#new', :as => :login
+  match 'logout' => 'sessions#destroy', :as => :logout
  
   resources :users
-
+  
   resource :session, :only => [:new, :create, :destroy]
 
-  match 'signup' => 'users#new', :as => :signup
+  resources :venues
 
-  match 'register' => 'users#create', :as => :register
-
-  match 'login' => 'sessions#new', :as => :login
-
-  match 'logout' => 'sessions#destroy', :as => :logout
-
-  match '/activate/:activation_code' => 'users#activate', :as => :activate, :activation_code => nil
-
+  resources :actions
+  
+  resources :geos
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

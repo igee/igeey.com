@@ -4,9 +4,11 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>Igee</title>
   <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag :defaults%>
   <%= csrf_meta_tag %>
+  <%= yield :head%>
 </head>
+
 <body>
   <div id="nav">
     <div class="container">
@@ -17,7 +19,7 @@
           <%= link_to "logout",logout_path %>
         <% else %>
           <%= link_to "login",login_path %>
-          <%= link_to "register",register_path %>
+          <%= link_to "register",new_user_path %>
         <% end %>
       </div>
     </div>

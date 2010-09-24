@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'authenticated_test_helper'
 
 class UserTest < ActiveSupport::TestCase
   # Be sure to include AuthenticatedTestHelper in test/test_helper.rb instead.
@@ -16,28 +17,28 @@ class UserTest < ActiveSupport::TestCase
   def test_should_require_login
     assert_no_difference 'User.count' do
       u = create_user(:login => nil)
-      assert u.errors.on(:login)
+      assert u.errors[:login]
     end
   end
 
   def test_should_require_password
     assert_no_difference 'User.count' do
       u = create_user(:password => nil)
-      assert u.errors.on(:password)
+      assert u.errors[:password]
     end
   end
 
   def test_should_require_password_confirmation
     assert_no_difference 'User.count' do
       u = create_user(:password_confirmation => nil)
-      assert u.errors.on(:password_confirmation)
+      assert u.errors[:password_confirmation]
     end
   end
 
   def test_should_require_email
     assert_no_difference 'User.count' do
       u = create_user(:email => nil)
-      assert u.errors.on(:email)
+      assert u.errors[:email]
     end
   end
 
@@ -94,7 +95,7 @@ class UserTest < ActiveSupport::TestCase
     assert users(:quentin).remember_token_expires_at.between?(before, after)
   end
 
-protected
+  protected
   def create_user(options = {})
     record = User.new({ :login => 'quire', :email => 'quire@example.com', :password => 'quire69', :password_confirmation => 'quire69' }.merge(options))
     record.save
