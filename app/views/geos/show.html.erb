@@ -1,8 +1,20 @@
-
-
+<% content_for :head do -%>
+  <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false"></script>
+  <script type="text/javascript">
+    function initialize() {
+      var latlng = new google.maps.LatLng(<%= "#{@geo.latitude},#{@geo.longitude}"%>);
+      var myOptions = {
+        zoom: 9,
+        center: latlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+    }
+    $(document).ready(function(){initialize();});
+  </script>
+<% end %>
 
 <h2>这里是<%= @geo.name%></h2>
-
-
+<div id="map_canvas" style="width:640px;height:480px"></div>  
   
 <%= link_to "建立服务点",new_venue_path %>
