@@ -1,6 +1,21 @@
-<% content_for :head do -%>
+<% content_for :head do %>
   <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false"></script>
-  <script type="text/javascript">
+<% end %>
+
+<h2>这里是<%= @geo.name%></h2>
+<div id="map_canvas" style="width:100%;height:420px"></div>  
+
+<% content_for :sidebar do %>  
+  <%= link_to "建立服务点",new_venue_path,:id => "create_venue",:class => 'buttton' %>
+  <div id="mark_guide" style="display:none">
+    <p>拖动红色标记，找到服务点的所在地。</p>
+    <%= link_to "确定完毕，下一步","#{new_venue_path}",:id => "next_step",:class => 'buttton' %>
+    <%= link_to "取消",'#',:id => "cancel_mark",:class => 'buttton' %>
+  </div>
+<% end %>
+
+<% content_for :extension do %>  
+ <script type="text/javascript">
     function initialize() {
       var latlng = new google.maps.LatLng(<%= "#{@geo.latitude},#{@geo.longitude}"%>);
       var myOptions = {
@@ -8,13 +23,37 @@
         center: latlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
-      var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-    }
+      map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+      
+      marker = new google.maps.Marker({
+        position: map.getCenter(), 
+        title:"标记所在位置",
+        draggable:true
+      });
+      
+      google.maps.event.addListener(marker, "dragend", function() {
+        $('#next_step').attr('href',
+                             '<%= "#{new_venue_path}" %>?latitude=' + marker.getPosition().lng() + '&longitude=' + marker.getPosition().lat()
+                             );
+      });
+    };
+    
+    function mark_latlng(){
+      marker.setMap(map);
+      $('#create_venue').toggle();
+      $('#mark_guide').toggle(); 
+      return false;
+    };
+    
+    function cancel_mark(){
+      marker.setMap();
+      $('#create_venue').toggle();
+      $('#mark_guide').toggle(); 
+      return false;
+    };
+    
+    $('#create_venue').click(mark_latlng);
+    $('#cancel_mark').click(cancel_mark);
     $(document).ready(function(){initialize();});
   </script>
-<% end %>
-
-<h2>这里是<%= @geo.name%></h2>
-<div id="map_canvas" style="width:640px;height:480px"></div>  
-  
-<%= link_to "建立服务点",new_venue_path %>
+<% end %>  

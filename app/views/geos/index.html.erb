@@ -4,3 +4,8 @@
   <%= link_to geo.name,geo %>
 <% end %>
 </p>
+
+
+<% content_for :sidebar do -%>  
+  <%= link_to "建立服务点",new_venue_path %>
+<% end %>

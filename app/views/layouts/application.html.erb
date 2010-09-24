@@ -11,9 +11,9 @@
 </head>
 
 <body>
-  <div id="nav">
-    <div class="container">
-      <h1>igee.org</h1>
+  <div id="header">
+    <div class="container" id="nav">
+      <h1 id="logo">igee.org</h1>
       <div id="login_state">
         <% if logged_in? %>
           <%= current_user.login %>
@@ -28,7 +28,12 @@
   
   <div id="">
     <div class="container">
-      <%= yield %>
+      <div id="main">
+        <%= yield %>
+      </div>
+      <div id="sidebar">
+        <%= yield :sidebar %>
+      </div>
     </div>
   </div>
 
@@ -36,5 +41,6 @@
     <div class="container">
     </div>
   </div>
+  <%= yield :extension %>
 </body>
 </html>

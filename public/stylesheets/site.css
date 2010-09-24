@@ -1,19 +1,52 @@
 body,div,h1,h2,h3,h4,h5,h6{margin:0}
+
 a{
     text-decoration:none;
-    color:#888;
+    color:#999;
     }
 
 .container{
     width:920px;
-    padding:10px;
+    padding:0 10px;
     margin:0 auto;
+    }
+    
+.buttton{
+    text-align:center;
+    width:160px;
+    margin:5px;
+    color:white;
+    font-weight:bold;
+    background-color:#333;
+    padding:4px 12px;
+    border-radius: 4px;
+}
+
+.buttton:hover{background:#cc3333}
+
+#logo{
+    padding:10px;
+    color:white;
     }
 
 #login_state{float:right}
     
-#nav{
+#header{
     height:80px;
-    background-color:#e0e0e0;
+    background-color:#333;
     }
     
+#main{
+    float:left;
+    width:618px;
+    padding:10px;
+    border-left:1px dashed #aaa;
+    border-right:1px dashed #aaa;
+}
+
+#sidebar{
+    float:right;
+    width:260px;
+    padding:10px;    
+    background-color:#ddd;
+}
