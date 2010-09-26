@@ -1,0 +1,30 @@
+
+<div style="width=100%;padding:20px">
+  <div id="topic_photo" style="width:160px;height:20px;padding:50px 0;background-color:#999;color:#fff;float:left;text-align:center;" >主题图</div>
+  <div style="width:400px;margin-left:180px">
+    <%= form.text_field :name,:size => 28, :class => "underline title", :placeholder => "请输入服务点名称"%>
+    <%= form.text_area :intro, :cols => 46, :rows => 5,:class => "underline",:placeholder => "为服务点写篇140字以内的简介吧"%>
+    <%= form.hidden_field :latitude %>
+    <%= form.hidden_field :longitude %>
+    <%= form.hidden_field :category %>
+    <ul>
+      <%= raw Venue::CATEGORIES_HASH.map{|c| "<a class='radio_button' value='#{c[0]}'>#{c[1]}</a>"}%>
+    </ul>
+    <%= form.submit '填写好了，提交',:class => "button"%>
+  </div>
+</div>
+
+<% content_for :extension do %>
+<script type="text/javascript">
+  function select_category(){
+    var selected =$(this)
+    $('.radio_button').attr('class','radio_button');
+    selected.attr('class','radio_button selected');
+    $("#venue_category").attr('value',selected.attr('value'))
+  }
+
+  $('.underline').focus(function(){});
+  $('.underline').blur(function(){});
+  $('.radio_button').click(select_category);
+</script>
+<% end %>  

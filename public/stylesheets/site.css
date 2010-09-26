@@ -1,8 +1,30 @@
-body,div,h1,h2,h3,h4,h5,h6{margin:0}
+body,div,h1,h2,h3,h4,h5,h6{
+    margin:0;
+    color:#333
+    }
+    
+ul,dl,p{
+    margin:6px 0;
+    padding:0;
+    }
+
 
 a{
     text-decoration:none;
     color:#999;
+    }
+
+.underline{
+    text-decoration:none;
+    border:none;
+    border-bottom:1px dashed #666;
+    background-color:#f6f6f6;}
+
+.underline:focus,.underline:hover{background-color:#ffffc0;outline:none;}
+
+.title{
+    font-size:18px;
+    padding:4px 0;
     }
 
 .container{
@@ -11,18 +33,36 @@ a{
     margin:0 auto;
     }
     
-.buttton{
+button,.button{
     text-align:center;
-    width:160px;
     margin:5px;
     color:white;
+    font-size:15px;
     font-weight:bold;
     background-color:#333;
-    padding:4px 12px;
-    border-radius: 4px;
+    padding:4px 16px;
+    border-radius: 5px;
+    border:none;
+    cursor:pointer;
 }
 
-.buttton:hover{background:#cc3333}
+button:hover,.button:hover{background:#cc3333}
+
+.radio_button{
+    color:white;
+    font-size:13px;
+    list-style:none;
+    display:inline;
+    padding:2px 8px;
+    margin:0 5px;
+    border-radius: 3px;
+    background-color:#999;
+    cursor:pointer;
+}
+
+.radio_button:hover{background-color:#c60}
+
+.selected {background-color:#c60}
 
 #logo{
     padding:10px;

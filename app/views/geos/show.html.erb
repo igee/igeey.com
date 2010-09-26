@@ -3,15 +3,19 @@
 <% end %>
 
 <h2>这里是<%= @geo.name%></h2>
-<div id="map_canvas" style="width:100%;height:420px"></div>  
-
-<% content_for :sidebar do %>  
-  <%= link_to "建立服务点",new_venue_path,:id => "create_venue",:class => 'buttton' %>
+<div id="map_canvas" style="width:100%;height:420px;clear:both"></div>  
+<div>
+  <p>
+    <%= link_to "添加服务点",new_venue_path,:id => "create_venue",:class => 'button' %>
+  </p>
   <div id="mark_guide" style="display:none">
     <p>拖动红色标记，找到服务点的所在地。</p>
-    <%= link_to "确定完毕，下一步","#{new_venue_path}",:id => "next_step",:class => 'buttton' %>
-    <%= link_to "取消",'#',:id => "cancel_mark",:class => 'buttton' %>
+    <%= link_to "标记完毕，下一步","#{new_venue_path}?latitude=#{@geo.latitude}&longitude=#{@geo.longitude}",:id => "next_step",:class => 'button' %>
+    <%= link_to "取消",'#',:id => "cancel_mark",:class => 'button' %>
   </div>
+</div>
+
+<% content_for :sidebar do %>  
 <% end %>
 
 <% content_for :extension do %>  
@@ -19,7 +23,7 @@
     function initialize() {
       var latlng = new google.maps.LatLng(<%= "#{@geo.latitude},#{@geo.longitude}"%>);
       var myOptions = {
-        zoom: <%= @geo.zoom_level || 9%>,
+        zoom: <%= @geo.zoom_level || 10%>,
         center: latlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
@@ -27,8 +31,8 @@
       
       marker = new google.maps.Marker({
         position: map.getCenter(), 
-        title:"标记所在位置",
-        draggable:true
+        title: "标记所在位置",
+        draggable: true,
       });
       
       google.maps.event.addListener(marker, "dragend", function() {

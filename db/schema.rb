@@ -27,6 +27,9 @@ ActiveRecord::Schema.define do
   end
     
   create_table "venues", :force => true do |t|
+    t.string  "name",       :limit => 40
+    t.text    "intro",      :limit => 255
+    t.string  "category",   :limit => 40
     t.integer "geo_id"
     t.integer "creator_id"
     t.string  "latitude",   :limit => 40
