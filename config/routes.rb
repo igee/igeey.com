@@ -10,11 +10,17 @@ Igee::Application.routes.draw do
   
   resource :session, :only => [:new, :create, :destroy]
 
-  resources :venues
+  resources :venues do
+    member do
+      get :have_done
+    end
+  end
 
   resources :actions
   
   resources :geos
+  
+  resources :records
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

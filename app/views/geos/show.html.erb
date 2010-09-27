@@ -9,7 +9,7 @@
     <%= link_to "添加服务点",new_venue_path,:id => "create_venue",:class => 'button' %>
   </p>
   <div id="mark_guide" style="display:none">
-    <p>拖动红色标记，找到服务点的所在地。</p>
+    <p>服务点在哪里?<br/>拖动地图上红色坐标，把它标记出来。</p>
     <%= link_to "标记完毕，下一步","#{new_venue_path}?latitude=#{@geo.latitude}&longitude=#{@geo.longitude}",:id => "next_step",:class => 'button' %>
     <%= link_to "取消",'#',:id => "cancel_mark",:class => 'button' %>
   </div>
@@ -18,46 +18,9 @@
 <% content_for :sidebar do %>  
 <% end %>
 
-<% content_for :extension do %>  
- <script type="text/javascript">
-    function initialize() {
-      var latlng = new google.maps.LatLng(<%= "#{@geo.latitude},#{@geo.longitude}"%>);
-      var myOptions = {
-        zoom: <%= @geo.zoom_level || 10%>,
-        center: latlng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      };
-      map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-      
-      marker = new google.maps.Marker({
-        position: map.getCenter(), 
-        title: "标记所在位置",
-        draggable: true,
-      });
-      
-      google.maps.event.addListener(marker, "dragend", function() {
-        $('#next_step').attr('href',
-                             '<%= "#{new_venue_path}" %>?latitude=' + marker.getPosition().lng() + '&longitude=' + marker.getPosition().lat()
-                             );
-      });
-    };
-    
-    function mark_latlng(){
-      marker.setMap(map);
-      $('#create_venue').toggle();
-      $('#mark_guide').toggle(); 
-      return false;
-    };
-    
-    function cancel_mark(){
-      marker.setMap();
-      $('#create_venue').toggle();
-      $('#mark_guide').toggle(); 
-      return false;
-    };
-    
-    $('#create_venue').click(mark_latlng);
-    $('#cancel_mark').click(cancel_mark);
+<% content_for :extension do %>
+  <%= render :partial => "/public/mark_venue_js" %>
+  <script type="text/javascript">
     $(document).ready(function(){initialize();});
   </script>
 <% end %>  

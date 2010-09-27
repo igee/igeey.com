@@ -1,7 +1,11 @@
 <div style="width=100%;padding:20px">
   <div id="topic_photo" style="width:160px;height:20px;padding:50px 0;background-color:#999;color:#fff;float:left;text-align:center;" >主题图</div>
-  <div style="width:400px;margin-left:180px">
+  <div style="width:400px;height:120px;margin-left:180px">
     <h4 class="title"><%= @venue.name%></h4>
     <p><%= @venue.intro%></p>      
   </div>
+</div>
+<div style="clear:both;padding:4px 20px">
+  <%= link_to '我要做...',"#",:class => "big_button",:id => 'plan_to' %>
+  <%= link_to '我做过...',have_done_venue_path(@venue),:class => "big_button",:id => 'have_done' %>
 </div>

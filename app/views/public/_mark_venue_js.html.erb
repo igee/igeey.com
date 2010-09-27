@@ -1,0 +1,37 @@
+<script type="text/javascript">
+    function initialize() {
+      var latlng = new google.maps.LatLng(<%= "#{@geo.latitude},#{@geo.longitude}"%>)
+      var myOptions = {
+        zoom: <%= @geo.zoom_level || 10%>,
+        center: latlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+      
+      marker = new google.maps.Marker({
+        position: map.getCenter(), 
+        title: "服务点坐标",
+        draggable: true,
+      });
+      
+      google.maps.event.addListener(marker, "dragend", function() {
+        $('#next_step').attr('href',
+                             '<%= "#{new_venue_path}" %>?latitude=' + marker.getPosition().lng() + '&longitude=' + marker.getPosition().lat()
+                             );
+      });
+    };
+    
+    function mark_latlng(){
+      marker.setMap(map);
+      $('#create_venue').toggle();
+      $('#mark_guide').toggle(); 
+      return false;
+    };
+    
+    function cancel_mark(){
+      marker.setMap();
+      $('#create_venue').toggle();
+      $('#mark_guide').toggle(); 
+      return false;
+    };
+</script>

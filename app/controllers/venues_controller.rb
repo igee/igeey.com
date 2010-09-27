@@ -4,7 +4,12 @@ class VenuesController < ApplicationController
   respond_to :html
   
   def new
-    @venue = Venue.new(:latitude => params[:latitude],:longitude => params[:longitude])
+    if params[:latitude].nil? || params[:longitude].nil?
+      @geo = Geo.new(:latitude => Geo::DEFAULT_CENTER[0],:longitude => Geo::DEFAULT_CENTER[1],:zoom_level => Geo::DEFAULT_CENTER[2])
+      render 'mark_latlng'
+    else
+      @venue = Venue.new(:latitude => params[:latitude],:longitude => params[:longitude])
+    end
   end
   
   def create
@@ -16,6 +21,10 @@ class VenuesController < ApplicationController
   
   def show
     
+  end
+  
+  def have_done
+    @actions = Action.all
   end
   
   private

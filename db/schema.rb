@@ -13,7 +13,11 @@
 ActiveRecord::Schema.define do
 
   create_table "actions", :force => true do |t|
-    
+    t.string  "name",       :limit => 40
+    t.text    "intro"
+    t.boolean "for_amount",   :default => false
+    t.boolean "for_goods",    :default => false
+    t.boolean "for_time",     :default => false
   end
 
   create_table "geos", :force => true do |t|
@@ -43,6 +47,10 @@ ActiveRecord::Schema.define do
   create_table "records", :force => true do |t|
     t.integer "user_id"
     t.integer "venue_id"
+    t.integer "action_id"
+    t.integer "amount"
+    t.integer "goods"
+    t.integer "time"
   end
 
   create_table "users", :force => true do |t|

@@ -1,0 +1,15 @@
+<% content_for :head do %>
+  <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false"></script>
+<% end %>
+<h2>标记服务点位置</h2>
+<div id="map_canvas" style="width:100%;height:420px;clear:both"></div>
+
+<p>服务点在哪里?<br/>拖动地图上红色坐标，把它标记出来。</p>
+<%= link_to "标记完毕，下一步","#{new_venue_path}?latitude=#{@geo.latitude}&longitude=#{@geo.longitude}",:id => "next_step",:class => 'button' %>
+
+<% content_for :extension do %>  
+ <%= render :partial => "/public/mark_venue_js" %>
+  <script type="text/javascript">
+  $(document).ready(function(){initialize();mark_latlng();});
+  </script>
+<% end %>  
