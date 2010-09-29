@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   # include AuthenticatedSystem
-  
+  before_filter :find_user, :except => [:new,:create]
 
   # render new.rhtml
   def new
@@ -24,5 +24,14 @@ class UsersController < ApplicationController
       render :action => 'new'
     end
   end
-
+  
+  def show
+  end
+  
+  
+  private
+  def find_user
+    @user = User.find(params[:id])
+  end
+  
 end

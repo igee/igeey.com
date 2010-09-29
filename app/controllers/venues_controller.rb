@@ -1,7 +1,7 @@
 class VenuesController < ApplicationController
+  respond_to :html
   before_filter :login_required, :except => [:index, :show]
   before_filter :find_venue, :except => [:index,:new,:create]
-  respond_to :html
   
   def new
     if params[:latitude].nil? || params[:longitude].nil?

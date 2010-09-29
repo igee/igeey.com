@@ -4,7 +4,10 @@ class User < ActiveRecord::Base
   include Authentication
   include Authentication::ByPassword
   include Authentication::ByCookieToken
-
+  
+  has_one :profile
+  has_many :records
+  has_many :venues,:foreign_key => :creator_id
   # set_table_name 'users'
 
   validates :login, :presence   => true,
