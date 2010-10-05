@@ -1,0 +1,26 @@
+OauthSide
+=========
+
+对oauth库进一步进行封装，简化rails开发中与oauth相关的功能
+1. 在 config 目录下添加一个 oauth 目录，用于存放各个网站的 oauth 配置信息
+2. 添加一个 controller ，load所有oauth配置，并根据这些配置提供基于oauth的授权
+3. 添加一个 OauthToken ，用于存放用户的临时凭证（request token）和令牌凭证（access token）
+
+
+Example
+=======
+
+安装插件
+$ cd rails3app
+$ rails plugin install git@github.com:fsword/oauth_side.git
+
+设置oauth配置信息（以豆瓣为例）
+1. edit: Rails.root/config/oauth/douban.yml
+2. 修改视图文件，添加一个链接 <%=link_to :controller => 'oauth', :action => 'request', :id => 'douban' %>
+[注：用户点击这个链接后，oauth controller将根据id给出的配置建立 oauth consumer ，然后发起 request_token，
+用户将被302到douban网站进行oauth授权，结束后会callback回本站点，由oauth_controller的accept接受和处理]
+
+任何时候，程序员可以通过 user.douban? 来判断这个用户是否批准了douban的oauth授权。
+对于经过授权的用户，程序员可以通过 user.douban 获取一个 OAuth::AccessToken 对象访问douban的api
+
+Copyright (c) 2010 [name of plugin creator], released under the MIT license
