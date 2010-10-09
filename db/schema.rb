@@ -41,8 +41,11 @@ ActiveRecord::Schema.define() do
     t.integer :venue_id
     t.integer :action_id
     t.integer :amount
+    t.string  :donate_for,  :limit => 40
     t.integer :goods
+    t.string  :goods_is,   :limit => 40
     t.integer :time
+    t.string  :do_what,    :limit => 40
     t.timestamps
   end
 
@@ -52,10 +55,12 @@ ActiveRecord::Schema.define() do
     t.string   :email,                     :limit => 100
     t.string   :crypted_password,          :limit => 40
     t.string   :salt,                      :limit => 40
+    t.datetime :created_at
+    t.datetime :updated_at
     t.string   :remember_token,            :limit => 40
     t.datetime :remember_token_expires_at
-    t.timestamps
   end
+
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
 

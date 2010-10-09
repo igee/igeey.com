@@ -1,28 +1,28 @@
-<h1><%="为#{@venue.name}#{@action.name}"%></h1>
-<div style="width=100%;padding:20px;background-color:#e6e6e6">
-    <%= form.hidden_field :action_id %>
-    <%= form.hidden_field :venue_id %>
-    <ul id="">
-      <li>
-        <%= form.label :amount,'',:class => "title" %>
-        <br/>
-        <%= form.text_field :amount, :size => 6, :class => "underline title" %> 元
-      </li>
-      <li>
-        <%= form.label :goods,'',:class => "title" %>
-        <br/>
-        <%= form.text_field :goods, :size => 6, :class => "underline title" %> 件
-      </li>
-      <li>
-        <%= form.label :time,'',:class => "title" %>
-        <br/>
-        <%= form.text_field :time, :size => 6, :class => "underline title" %> 小时
-      </li>
-      <%= form.submit '确定',:class => "button"%>
-    </ul>
-    
-  
+<%= form_for @record, :remote => true do |form| %>
+    <h1><%="我为#{@venue.name}#{@action.name}"%></h1>
+    <div style="width=100%;padding:20px;background-color:#e6e6e6">
+        <%= form.hidden_field :action_id %>
+        <%= form.hidden_field :venue_id %>
+        <ul id="">
+          <li class="action_count">
+            <%= form.label :amount,'捐款',:class => "title" %>
+            
+            <%= form.text_field :amount, :size => 6, :class => "underline title" %> 元
+          </li>
+          <li class="action_count">
+            <%= form.label :goods,'捐赠',:class => "title" %>
+            
+            <%= form.text_field :goods, :size => 6, :class => "underline title" %> 件
+          </li>
+          <li class="action_count">
+            <%= form.label :time,'做了',:class => "title" %>
+            
+            <%= form.text_field :time, :size => 6, :class => "underline title" %> 小时
+          </li>
+          <%= form.submit '确定',:class => "button"%>
+        </ul>
 </div>
+<% end %>
 
 <% content_for :extension do %>
 

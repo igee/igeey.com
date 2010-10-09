@@ -26,14 +26,17 @@
       });
       
       google.maps.event.addListener(marker, "dragend", function() {
-        $('#next_step').attr('href',
-                             '<%= "#{new_venue_path}" %>?latitude=' + marker.getPosition().lat() + '&longitude=' + marker.getPosition().lng()
-                             );
+        $('#next_step').attr(
+           'href',
+           '<%= "#{new_venue_path}" %>?latitude=' + marker.getPosition().lat() + '&longitude=' + marker.getPosition().lng() + "&geo_id=<%=@geo.id%>"
+        );
       });
     };
     
     function mark_latlng(){
+      marker.setPosition(map.getCenter())
       marker.setMap(map);
+      
       $('#create_venue').toggle();
       $('#mark_guide').toggle(); 
       return false;

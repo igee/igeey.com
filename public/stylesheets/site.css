@@ -59,13 +59,12 @@ button,.button{
     font-weight:bold;
     background-color:#333;
     padding:16px 12px;
-    border-radius: 5px;
+    border-radius: 8px;
     border:none;
     cursor:pointer;
 }
 
 button:hover,.button:hover,.big_button:hover{background:#cc3333}
-
 
 .radio_button{
     color:#888;
@@ -88,6 +87,15 @@ button:hover,.button:hover,.big_button:hover{background:#cc3333}
     color:white
     }
 
+.action_count{
+    background-color:#999;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    padding:10px 20px;
+    list-style:none;
+    margin:10px;   
+}
+
 #logo{
     padding:10px;
     color:white;
@@ -102,10 +110,8 @@ button:hover,.button:hover,.big_button:hover{background:#cc3333}
     
 #main{
     float:left;
-    width:618px;
+    width:620px;
     padding:10px;
-    border-left:1px dashed #aaa;
-    border-right:1px dashed #aaa;
 }
 
 #sidebar{

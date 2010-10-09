@@ -4,6 +4,7 @@ class GeosController < ApplicationController
     
   def index
     @geos = Geo.all
+    @venues = Venue.all
   end
   
   def show

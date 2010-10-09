@@ -16,11 +16,11 @@
       <h1 id="logo">igee.org</h1>
       <div id="login_state">
         <% if logged_in? %>
-          <%= current_user.login %>
+          <%= link_to current_user.login,user_path(current_user)%>
           <%= link_to "logout",logout_path %>
         <% else %>
           <%= link_to "login",login_path %>
-          <%= link_to "register",new_user_path %>
+          <%= link_to "signup",signup_path %>
         <% end %>
       </div>
     </div>
