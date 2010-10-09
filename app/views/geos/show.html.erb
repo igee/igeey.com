@@ -10,17 +10,26 @@
   </p>
   <div id="mark_guide" style="display:none">
     <p>服务点在哪里?<br/>拖动地图上红色坐标，把它标记出来。</p>
-    <%= link_to "标记完毕，下一步","#{new_venue_path}?latitude=#{@geo.latitude}&longitude=#{@geo.longitude}",:id => "next_step",:class => 'button' %>
+    <%= link_to "标记完毕，下一步","#{new_venue_path}?latitude=#{@geo.latitude}&longitude=#{@geo.longitude}&geo_id=#{@geo.id}",:id => "next_step",:class => 'button' %>
     <%= link_to "取消",'#',:id => "cancel_mark",:class => 'button' %>
   </div>
 </div>
 
-<% content_for :sidebar do %>  
+<% content_for :sidebar do %>
+  <h6>服务点列表</h6>
+  <% @venues.each do |venue| %>
+    <%= link_to venue.name, venue_path(venue) %>
+  <% end %>
+  <%= "还没有服务点" if @venues.blank? %>
 <% end %>
 
 <% content_for :extension do %>
   <%= render :partial => "/public/mark_venue_js" %>
   <script type="text/javascript">
-    $(document).ready(function(){initialize();});
+    $(document).ready(function(){
+      initialize();
+      $('#create_venue').click(mark_latlng);
+      $('#cancel_mark').click(cancel_mark);
+    });
   </script>
 <% end %>  

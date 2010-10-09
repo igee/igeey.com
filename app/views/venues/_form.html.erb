@@ -1,30 +1,32 @@
-
-<div style="width=100%;padding:20px;background-color:#e6e6e6">
-  <div id="topic_photo" style="width:160px;height:20px;padding:50px 0;background-color:#999;color:#fff;float:left;text-align:center;" >主题图</div>
-  <div style="width:400px;margin-left:180px">
-    <ul>
-      <%= raw Venue::CATEGORIES_HASH.map{|c| link_to c[1],'#',:class => 'radio_button',:value => c[0]}%>
-    </ul>
-    <%= form.label :name,'服务点名称：'%> <%= form.text_field :name, :size => 24, :class => "underline title", :placeholder => "例如：XX社区，XX村"%>
-    <br/>
-    <%= form.label :intor,'简介：'%>
-    <br/>
-    <%= form.text_area :intro, :cols => 40, :rows => 5,:class => "underline",:placeholder => "为服务点写篇140字以内的简介吧"%>
-    <%= form.hidden_field :latitude %>
-    <%= form.hidden_field :longitude %>
-    <%= form.hidden_field :category %>
-    <%= form.submit '填写好了，提交',:class => "button"%>
+<%= form_for @venue, :remote => true do |form| %>
+  <div style="width=100%;padding:20px;background-color:#e6e6e6">
+    <div id="topic_photo" style="width:160px;height:20px;padding:50px 0;background-color:#999;color:#fff;float:left;text-align:center;" >主题图</div>
+    <div style="width:400px;margin-left:180px">
+      <ul>
+        <%= raw Venue::CATEGORIES_HASH.map{|c| link_to c[1],'#',:class => 'radio_button',:value => c[0]}%>
+      </ul>
+      <%= form.label :name,'服务点名称：'%> <%= form.text_field :name, :size => 24, :class => "underline title", :placeholder => "例如：XX社区，XX村"%>
+      <br/>
+      <%= form.label :intor,'简介：'%>
+      <br/>
+      <%= form.text_area :intro, :cols => 40, :rows => 5,:class => "underline",:placeholder => "为服务点写篇140字以内的简介吧"%>
+      <%= form.hidden_field :geo_id %>
+      <%= form.hidden_field :latitude %>
+      <%= form.hidden_field :longitude %>
+      <%= form.hidden_field :category %>
+      <%= form.submit '填写好了，提交',:class => "button"%>
+    </div>
   </div>
-</div>
+<% end %>
 
 <% content_for :extension do %>
-<script type="text/javascript">
-  function select_category(){
-    var selected =$(this)
-    $('.radio_button').attr('class','radio_button');
-    selected.attr('class','radio_button selected');
-    $("#venue_category").attr('value',selected.attr('value'))
-  }
-  $('.radio_button').click(select_category);
-</script>
-<% end %>  
+  <script type="text/javascript">
+    function select_category(){
+      var selected =$(this)
+      $('.radio_button').attr('class','radio_button');
+      selected.attr('class','radio_button selected');
+      $("#venue_category").attr('value',selected.attr('value'))
+    }
+    $('.radio_button').click(select_category);
+  </script>
+<% end %>

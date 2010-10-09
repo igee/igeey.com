@@ -10,14 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define do
+ActiveRecord::Schema.define(:version => 0) do
 
   create_table "actions", :force => true do |t|
     t.string  "name",       :limit => 40
     t.text    "intro"
-    t.boolean "for_amount",   :default => false
-    t.boolean "for_goods",    :default => false
-    t.boolean "for_time",     :default => false
+    t.boolean "for_amount",               :default => false
+    t.boolean "for_goods",                :default => false
+    t.boolean "for_time",                 :default => false
   end
 
   create_table "geos", :force => true do |t|
@@ -29,17 +29,7 @@ ActiveRecord::Schema.define do
     t.string  "latitude",   :limit => 40
     t.string  "longitude",  :limit => 40
   end
-    
-  create_table "venues", :force => true do |t|
-    t.string  "name",       :limit => 40
-    t.text    "intro",      :limit => 255
-    t.string  "category",   :limit => 40
-    t.integer "geo_id"
-    t.integer "creator_id"
-    t.string  "latitude",   :limit => 40
-    t.string  "longitude",  :limit => 40
-  end
-  
+
   create_table "profiles", :force => true do |t|
     t.integer "user_id"
   end
@@ -66,5 +56,15 @@ ActiveRecord::Schema.define do
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
-  
+
+  create_table "venues", :force => true do |t|
+    t.string  "name",       :limit => 40
+    t.text    "intro"
+    t.string  "category",   :limit => 40
+    t.integer "geo_id"
+    t.integer "creator_id"
+    t.string  "latitude",   :limit => 40
+    t.string  "longitude",  :limit => 40
+  end
+
 end

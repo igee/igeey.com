@@ -1,14 +1,19 @@
 class VenuesController < ApplicationController
-  respond_to :html
+  respond_to :html,:json
   before_filter :login_required, :except => [:index, :show]
   before_filter :find_venue, :except => [:index,:new,:create]
   
+  def index
+    @venues = Venue.all
+    respond_with(@venues)
+  end
+  
   def new
-    if params[:latitude].nil? || params[:longitude].nil?
+    if params[:latitude].nil? || params[:longitude].nil? || params[:geo_id].nil?
       @geo = Geo.new(:latitude => Geo::DEFAULT_CENTER[0],:longitude => Geo::DEFAULT_CENTER[1],:zoom_level => Geo::DEFAULT_CENTER[2])
       render 'mark_latlng'
     else
-      @venue = Venue.new(:latitude => params[:latitude],:longitude => params[:longitude])
+      @venue = Venue.new(:latitude => params[:latitude],:longitude => params[:longitude],:geo_id => params[:geo_id])
     end
   end
   
