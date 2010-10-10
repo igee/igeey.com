@@ -1,5 +1,5 @@
 Igee::Application.routes.draw do
-  root :to => 'site#index'
+  root :to => 'geos#index'
   
   match 'signup' => 'users#new', :as => :signup
   match 'register' => 'users#create', :as => :register

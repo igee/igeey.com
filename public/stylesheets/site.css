@@ -1,6 +1,6 @@
 body{font-size:14px;}
 
-body,div,h1,h2,h3,h4,h5,h6{
+body,h1,h2,h3,h4,h5,h6{
     margin:0;
     color:#333;
     }
@@ -15,16 +15,18 @@ a{
     color:#999;
     }
 
-.underline{
+input{
     text-decoration:none;
     border:1px solid #bbb;
     margin:4px 0;
-    padding:4px 8px;
+    padding:2px 4px;
     background-color:white;
-    border-radius: 4px;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    font-size:16px;
     }
 
-.underline:focus,.underline:hover{background-color:#ffffc0;outline:none;}
+input:focus,input:hover{background-color:#ffffc0;outline:none;}
 
 .title{
     font-size:16px;
@@ -43,9 +45,11 @@ button,.button{
     color:white;
     font-size:15px;
     font-weight:bold;
+    font-family:sans-serif;
     background-color:#333;
     padding:4px 16px;
     border-radius: 5px;
+    -moz-border-radius: 5px;
     border:none;
     cursor:pointer;
 }
@@ -56,10 +60,12 @@ button,.button{
     margin:5px 0;
     color:white;
     font-size:18px;
+    font-family:sans-serif;
     font-weight:bold;
     background-color:#333;
     padding:16px 12px;
     border-radius: 8px;
+    -moz-border-radius: 8px;
     border:none;
     cursor:pointer;
 }
@@ -74,6 +80,7 @@ button:hover,.button:hover,.big_button:hover{background:#cc3333}
     padding:2px 8px;
     margin:0 5px;
     border-radius: 3px;
+    -moz-border-radius: 3px;
     background-color:#ccc;
     cursor:pointer;
 }
@@ -87,13 +94,16 @@ button:hover,.button:hover,.big_button:hover{background:#cc3333}
     color:white
     }
 
-.action_count{
-    background-color:#999;
+#action_counter{
+    background-color:#fff;
+    color:#666;
     -moz-border-radius: 10px;
     border-radius: 10px;
-    padding:10px 20px;
+    padding:10px 10px;
     list-style:none;
-    margin:10px;   
+    
+    font-size:16px;
+    font-weight:bold;
 }
 
 #logo{
@@ -110,13 +120,14 @@ button:hover,.button:hover,.big_button:hover{background:#cc3333}
     
 #main{
     float:left;
-    width:620px;
-    padding:10px;
+    width:600px;
+    padding:20px;
+    background-color:#ddd;
 }
 
 #sidebar{
     float:right;
     width:260px;
     padding:10px;    
-    background-color:#ddd;
+    background-color:#999;
 }

@@ -1,27 +1,32 @@
 <%= form_for @record, :remote => true do |form| %>
-    <h1><%="我为#{@venue.name}#{@action.name}"%></h1>
-    <div style="width=100%;padding:20px;background-color:#e6e6e6">
+    <div>
         <%= form.hidden_field :action_id %>
         <%= form.hidden_field :venue_id %>
-        <ul id="">
-          <li class="action_count">
-            <%= form.label :amount,'捐款',:class => "title" %>
-            
-            <%= form.text_field :amount, :size => 6, :class => "underline title" %> 元
-          </li>
-          <li class="action_count">
-            <%= form.label :goods,'捐赠',:class => "title" %>
-            
-            <%= form.text_field :goods, :size => 6, :class => "underline title" %> 件
-          </li>
-          <li class="action_count">
-            <%= form.label :time,'做了',:class => "title" %>
-            
-            <%= form.text_field :time, :size => 6, :class => "underline title" %> 小时
-          </li>
-          <%= form.submit '确定',:class => "button"%>
-        </ul>
-</div>
+        <div id="action_counter">
+            <div style="font-size:30px;text-align:left;font-family:'times new roman';margin-bottom:-5px;color:#999">“</div>
+            <div style="padding:0 20px;">
+                <%="我为#{@venue.name}"%><%= @action.name %>
+                <% if @action.for_amount %>
+                  
+                  <%= form.text_field :amount, :size => 6 %> 元。
+                  
+                <% end %>
+                
+                <% if @action.for_goods %>
+                  
+                  <%= form.text_field :goods, :size => 6 %> 件
+                  <%= form.text_field :donate_for, :size => 6,:placeholder => "衣物、电脑..."%>。
+                <% end %>
+                
+                <% if @action.for_time %>
+                  <%= form.text_field :time, :size => 6 %> 小时
+                <% end %>
+            </div>
+            <div style="font-size:30px;text-align:right;font-family:'times new roman';margin-top:-5px;color:#999">”</div>
+        </div>
+    <%= form.submit '确定',:class => "button"%>
+    <%= button_to_function '取消',"javascript:window.location='#{venue_path(@venue)}'",:class => "button"%>
+    </div>
 <% end %>
 
 <% content_for :extension do %>
