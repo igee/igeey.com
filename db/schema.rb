@@ -55,6 +55,7 @@ ActiveRecord::Schema.define() do
     t.string   :email,                     :limit => 100
     t.string   :crypted_password,          :limit => 40
     t.string   :salt,                      :limit => 40
+    t.string   :avatar_file_name
     t.datetime :created_at
     t.datetime :updated_at
     t.string   :remember_token,            :limit => 40
