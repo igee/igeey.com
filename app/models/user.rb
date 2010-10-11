@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   include Authentication::ByCookieToken
   
   # set avatar by papercilp
-  has_attached_file :avatar, :styles => { :medium => "72x72>", :thumb => "48x48>" }
+  has_attached_file :avatar
   
   has_one :profile
   has_many :records

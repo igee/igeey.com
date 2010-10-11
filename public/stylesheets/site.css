@@ -93,8 +93,24 @@ button:hover,.button:hover,.big_button:hover{background:#cc3333}
     background-color:#c60;
     color:white
     }
+    
+.user{
+    float:left;
+    width:72px;
+    height:72px;
+    text-align:center;
+    }
+
+.user_avatar{
+    width:48px;
+    height:48px;
+    overflow:hidden;
+    background-color:#555;
+    }    
 
 #action_counter{
+    float:right;
+    width:480px;
     background-color:#fff;
     color:#666;
     -moz-border-radius: 10px;
