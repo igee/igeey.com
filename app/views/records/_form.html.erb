@@ -5,21 +5,24 @@
     <%= render :partial => '/public/user' ,:object => current_user %>
     <div class="saying">
         <div style="font-size:26px;text-align:left;font-family:'times new roman';margin-bottom:-10px;color:#999">“</div>
-        <div style="padding:0 20px;">
-            <%="我为#{@venue.name}"%><%= @action.name %>
+        <p style="padding:0 20px;">
+            我在<%= form.text_field :do_at, :size => 8,:class => 'with_calendar',:placeholder => "yyyy-mm-dd"%><%="为#{@venue.name}"%><%= @action.name %>:<br/>
+            
             <% if @action.for_amount %>
-              <%= form.text_field :amount, :size => 6 %> 元。
+              共 <%= form.text_field :amount, :size => 6 %> 元，用于<%= form.text_field :donate_for, :size => 9,:placeholder => "做什么用途?"%>。
             <% end %>
             
             <% if @action.for_goods %>
-              <%= form.text_field :goods, :size => 6 %> 件
-              <%= form.text_field :donate_for, :size => 6,:placeholder => "衣物、电脑..."%>。
+              共 <%= form.text_field :goods, :size => 4 ,:placeholder => "多少"%> 件
+              <%= form.text_field :goods_is, :size => 8,:placeholder => "物资名称"%>。
             <% end %>
             
             <% if @action.for_time %>
-              <%= form.text_field :time, :size => 6 %> 小时
+               <%= form.text_field :do_what, :size => 6 ,:placeholder => "服务内容"%> 共 <%= form.text_field :time, :size => 6,:placeholder => "多少" %> 小时。
             <% end %>
-        </div>
+            <br/>
+            
+        </p>
         <div style="font-size:26px;text-align:right;font-family:'times new roman';margin-top:-10px;color:#999">”</div>
     </div>
     <div style="clear:both;text-align:right">
@@ -32,5 +35,8 @@
 </div>
 
 <% content_for :extension do %>
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(DateTimeShortcuts.init);
+</script>
 
 <% end %>  

@@ -4,9 +4,15 @@ class RecordsController < ApplicationController
   before_filter :find_record, :except => [:index,:new,:create]
   
   def new
-    @record = Record.new(:action_id => params[:action_id],:venue_id => params[:venue_id])
-    @venue = @record.venue
-    @action = @record.action
+    if params[:venue_id].nil?
+      @venues = Venue.all
+      render "select_venue"
+    else
+      @record = Record.new(:action_id => params[:action_id],:venue_id => params[:venue_id])
+      @venue = @record.venue
+      @action = @record.action
+    end
+    
   end
   
   def create

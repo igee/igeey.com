@@ -9,7 +9,7 @@ h2,h3,h4,h5,h6{
     
 ul,dl,p{
     margin:6px 0;
-    line-height:1.5em;
+    line-height:1.7em;
     padding:0;
     }
 
@@ -29,7 +29,7 @@ input{
     text-decoration:none;
     border:1px solid #bbb;
     margin:0px 4px;
-    padding:2px 4px;
+    padding:1px 4px;
     background-color:white;
     border-radius: 3px;
     -moz-border-radius: 3px;
@@ -98,7 +98,7 @@ button,.button{
     cursor:pointer;
 }
 
-button:hover,.button:hover,.big_button:hover{background:#cc3333}
+button:hover,.button:hover,.big_button:hover{background:#c00}
 
 .explain{color:#999;font-style:italic;margin:5px 0;}
 
@@ -165,7 +165,7 @@ button:hover,.button:hover,.big_button:hover{background:#cc3333}
   float:right;
   background:url('/images/saying_tail.png');
   width:8px;
-  height:60px;
+  height:72px;
 }
 
 .message {height:64px}
@@ -185,6 +185,7 @@ button:hover,.button:hover,.big_button:hover{background:#cc3333}
 }
 
 .requirement{padding:4px;margin:10px 0;border-bottom:1px dashed #aaa;}
+.record{padding:4px;margin:10px 0;border-bottom:1px dashed #aaa;}
 
 .todo{
     background-color:#eee;
@@ -213,7 +214,7 @@ a#logo{
 #login_state{float:right;padding:18px}
     
 #header{
-    height:54px;
+    height:56px;
     background-image:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#222), to(#444));
     }
 #footer{

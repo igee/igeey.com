@@ -3,18 +3,17 @@
   <div class="message">
     <p>
       <span style="font-size:20px;font-family:'times new roman';color:#999">“</span>
-      <%="#{record.user.login} 为#{record.venue.name}"%><%= record.action.name %>了
+      <%="#{record.user.login} 在 #{record.do_at.to_date} 为#{record.venue.name}"%><%= record.action.name %>:
       <% if record.action.for_amount %>
-        <%= record.amount %> 元。
+        <%= "#{record.amount}元，用于#{record.donate_for}。"%>
       <% end %>
       
       <% if record.action.for_goods %>
-        <%= record.donate_for %>
-        <%= record.goods %> 件。
+        <%= "#{record.goods}件#{record.goods_is}。" %>
       <% end %>
       
       <% if record.action.for_time %>
-        <%= record.time %> 小时。
+        <%= "#{record.do_what}共#{record.time}小时。"%>
       <% end %>
       <span style="font-size:20px;font-family:'times new roman';color:#999">”</span>
     </p>

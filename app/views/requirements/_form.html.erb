@@ -23,7 +23,7 @@
           
           <% if @action.for_goods %>
             <%= form.text_field :donate_for, :size => 8,:placeholder => "物资名称"%>
-            总计<%= form.text_field :total_goods, :size => 6 %>件。
+            总计<%= form.text_field :total_goods, :size => 6 ,::placeholder => "多少"%>件。
           <% end %>
           
           <% if @action.for_time %>

@@ -12,7 +12,9 @@
   </div>
   
   <h5>最新的服务点:</h5>
+  <p>
   <% @venues.each do |venue| %>
     <%= link_to(venue.name,venue)%>
   <% end %>
+  </p>
 <% end %>
