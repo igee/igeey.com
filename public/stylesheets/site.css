@@ -132,7 +132,7 @@ button:hover,.button:hover,.big_button:hover{background:#cc3333}
     }
 
 .user_avatar{
-    margin-top:10px;
+    margin-top:6px;
     width:48px;
     height:48px;
     overflow:hidden;
@@ -141,7 +141,7 @@ button:hover,.button:hover,.big_button:hover{background:#cc3333}
 
 .saying{
     float:right;
-    width:460px;
+    width:490px;
     background-color:#fff;
     color:#666;
     -moz-border-radius: 10px;
@@ -153,6 +153,13 @@ button:hover,.button:hover,.big_button:hover{background:#cc3333}
 }
 
 .saying  input{text-align:right}
+
+.saying_tail{
+  float:right;
+  background:url('/images/saying_tail.png');
+  width:8px;
+  height:60px;
+}
 
 .message {height:64px}
 .message p{

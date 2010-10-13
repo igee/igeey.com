@@ -4,7 +4,7 @@
     <%= form.hidden_field :venue_id %>
     <%= render :partial => '/public/user' ,:object => current_user %>
     <div class="saying">
-        <div style="font-size:30px;text-align:left;font-family:'times new roman';margin-bottom:-10px;color:#999">“</div>
+        <div style="font-size:26px;text-align:left;font-family:'times new roman';margin-bottom:-10px;color:#999">“</div>
         <div style="padding:0 20px;">
             <%="我为#{@venue.name}"%><%= @action.name %>
             <% if @action.for_amount %>
@@ -20,7 +20,7 @@
               <%= form.text_field :time, :size => 6 %> 小时
             <% end %>
         </div>
-        <div style="font-size:30px;text-align:right;font-family:'times new roman';margin-top:-10px;color:#999">”</div>
+        <div style="font-size:26px;text-align:right;font-family:'times new roman';margin-top:-10px;color:#999">”</div>
     </div>
     <div style="clear:both;text-align:right">
       <%= form.check_box :sync_to_sina ,:disabled => true%> 同步到新浪微博  
