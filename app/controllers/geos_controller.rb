@@ -5,6 +5,7 @@ class GeosController < ApplicationController
   def index
     @geos = Geo.all
     @venues = Venue.all
+    @geo = Geo.new
   end
   
   def show

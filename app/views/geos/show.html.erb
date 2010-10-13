@@ -16,11 +16,16 @@
 </div>
 
 <% content_for :sidebar do %>
+  
   <h6>服务点列表</h6>
-  <% @venues.each do |venue| %>
-    <%= link_to venue.name, venue_path(venue) %>
-  <% end %>
-  <%= "还没有服务点" if @venues.blank? %>
+  <p>
+    <% @venues.each do |venue| %>
+      <%= link_to venue.name, venue_path(venue) %>
+    <% end %>
+    <%= "还没有服务点" if @venues.blank? %>
+  </p>
+  <br/>
+    <%= link_to '回到全国',geos_path %>
 <% end %>
 
 <% content_for :extension do %>

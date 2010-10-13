@@ -3,10 +3,9 @@
 
 <script type="text/javascript">
     function initialize() {
-    
-      var latlng = new google.maps.LatLng(<%= "#{@geo.latitude},#{@geo.longitude}"%>)
+      var latlng = new google.maps.LatLng(<%= "#{@geo.latitude || 33.724339},#{@geo.longitude || 105.1171875}"%>)
       var myOptions = {
-        zoom: <%= @geo.zoom_level || 10%>,
+        zoom: <%= @geo.zoom_level || 4%>,
         center: latlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };

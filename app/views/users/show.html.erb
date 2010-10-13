@@ -1,9 +1,7 @@
-<h2>你好，<%= @user.login%></h2>
+<h2><%= @user.login%></h2>
 <%= @user.venues.count%>
 <%= image_tag current_user.avatar.url %>
+
 <% content_for :sidebar do %>
-  <div style="clear:both;padding:4px 20px">
-    <%= link_to '我要做...',"#",:class => "big_button",:id => 'plan_to' %>
-    <%= link_to '我服务过...','#',:class => "big_button",:id => 'have_done' %>
-  </div>
+
 <% end %>
