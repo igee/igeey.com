@@ -9,7 +9,7 @@ class VenuesController < ApplicationController
   end
   
   def new
-    if params[:latitude].nil? || params[:longitude].nil? || params[:geo_id].nil?
+    if params[:latitude].nil? || params[:longitude].nil?
       @geo = Geo.new(:latitude => Geo::DEFAULT_CENTER[0],:longitude => Geo::DEFAULT_CENTER[1],:zoom_level => Geo::DEFAULT_CENTER[2])
       render 'mark_latlng'
     else
@@ -25,10 +25,15 @@ class VenuesController < ApplicationController
   end
   
   def show
-    
+    @requirements = @venue.requirements
+    @records = @venue.records
   end
   
   def have_done
+    @actions = Action.all
+  end
+  
+  def publish_requirement
     @actions = Action.all
   end
   

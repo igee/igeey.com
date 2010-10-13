@@ -1,5 +1,5 @@
 <%= form_for @venue, :remote => true do |form| %>
-  <div style="width=100%;padding:20px;background-color:#e6e6e6">
+  <div style="width=100%;padding:20px;background-color:#eee">
     <div id="topic_photo" style="width:160px;height:20px;padding:50px 0;background-color:#999;color:#fff;float:left;text-align:center;" >主题图</div>
     <div style="width:400px;margin-left:180px">
       <ul>
@@ -7,16 +7,29 @@
       </ul>
       <%= form.label :name,'服务点名称：'%> <%= form.text_field :name, :size => 24, :class => "underline title", :placeholder => "例如：XX社区，XX村"%>
       <br/>
+      所在城市：<%= form.select :geo_id ,geo_list%>
+      <br/>
+      <br/>
       <%= form.label :intor,'简介：'%>
       <br/>
       <%= form.text_area :intro, :cols => 36, :rows => 5,:class => "underline",:placeholder => "为服务点写篇140字以内的简介吧"%>
-      <%= form.hidden_field :geo_id %>
       <%= form.hidden_field :latitude %>
       <%= form.hidden_field :longitude %>
       <%= form.hidden_field :category %>
       <%= form.submit '填写好了，提交',:class => "button"%>
     </div>
   </div>
+  
+  <% if @venue.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@venue.errors.count, "error") %> prohibited this requirement from being saved:</h2>
+      <ul>
+      <% @venue.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 <% end %>
 
 <% content_for :extension do %>

@@ -1,0 +1,46 @@
+<%= form_for @requirement do |form| %>
+  <%= form.hidden_field :action_id %>
+  <%= form.hidden_field :venue_id %>
+
+  <% if @requirement.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@requirement.errors.count, "error") %> prohibited this requirement from being saved:</h2>
+      <ul>
+      <% @requirement.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= render :partial => '/public/user' ,:object => current_user %>
+  <div class="saying">
+    <div style="font-size:30px;text-align:left;font-family:'times new roman';margin-bottom:-10px;color:#999">“</div>
+    <div style="padding:0 20px;">
+          <%="#{@venue.name}"%>需要<%= @action.name %>
+          <% if @action.for_amount %>
+            总计 <%= form.text_field :total_amount, :size => 6 %> 元。            
+          <% end %>
+          
+          <% if @action.for_goods %>
+            <%= form.text_field :donate_for, :size => 8,:placeholder => "物资名称"%>
+            总计 <%= form.text_field :total_goods, :size => 6 %> 件。
+          <% end %>
+          
+          <% if @action.for_time %>
+            总计 <%= form.text_field :total_people, :size => 4 %> 人的 <%= form.text_field :do_what, :size => 8,:placeholder => "行动名称"%>。
+          <% end %>
+          <br/>
+    </div>
+    <div style="font-size:30px;text-align:right;font-family:'times new roman';margin-top:-10px;color:#999">”</div>
+  </div>
+  
+  <div style="clear:both;text-align:right;">
+    <a href="#" onclick="javascript:$('#detail').toggle();return false">详细原因</a><br/>
+    <div id="detail" style="display:none;float:right"><%= form.text_area :detail, :cols => 64, :rows => 5,:class => "underline",:placeholder => "简述需求的具体情况"%></div>
+  </div>
+  
+  <div style="clear:both;padding:0 20px;text-align:right">
+    <%= form.submit '确定',:class => 'button'%>
+    <%= button_to_function '取消',"javascript:window.location='#{venue_path(@venue)}'",:class => "button"%>
+  </div>
+<% end %>
