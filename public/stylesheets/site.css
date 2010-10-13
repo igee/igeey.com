@@ -177,17 +177,23 @@ button:hover,.button:hover,.big_button:hover{background:#cc3333}
     border:4px solid #f63;
     }
 
-#logo{
+a#logo{
     padding:10px;
     color:#fff;
+    float:left;
+    display:inline;
+    font-size:24px;
+    font-weight:bold;
     }
 
-#login_state{float:right}
+#login_state{float:right;padding:15px}
     
 #header,#footer{
-    height:80px;
-    background-color:#666;
+    height:50px;
+    background-image:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#222), to(#444));
     }
+    
+#header a,#footer a{color:#eee}
     
 #main{
     float:left;
@@ -198,11 +204,19 @@ button:hover,.button:hover,.big_button:hover{background:#cc3333}
 
 #content .container{
     background:url('/images/background.png') repeat-y;);
-    
 }
 
 #sidebar{
     float:right;
     width:250px;
     padding:15px;    
+}
+
+#nav_links{float:left;padding:10px}
+
+#nav_links li{
+  text-decoration:none;
+  float:left;
+  color:white;
+  margin:0 10px;
 }

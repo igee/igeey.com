@@ -4,7 +4,7 @@
     <%= link_to '我要行动',"#{new_plan_path}?requirement_id=#{requirement.id}",:class => 'todo' %>
     <p>
       <span style="font-size:20px;font-family:'times new roman';color:#999">“</span>
-      <%="#{requirement.venue.name}"%>需要<%= requirement.action.name %>
+      <%="#{requirement.venue.name}"%>需要
       <% if requirement.action.for_amount %>
         总计 <%= requirement.total_amount %> 元。
       <% end %>
