@@ -20,11 +20,11 @@
       </ul>
       <div id="login_state">
         <% if logged_in? %>
-          <%= link_to current_user.login,user_path(current_user)%>
-          <%= link_to "logout",logout_path %>
+          <%= link_to current_user.login,user_path(current_user)%> |
+          <%= link_to "退出",logout_path %>
         <% else %>
-          <%= link_to "login",login_path %>
-          <%= link_to "signup",signup_path %>
+          <%= link_to "登录",login_path %> |
+          <%= link_to "注册",signup_path %>
         <% end %>
       </div>
     </div>
@@ -33,6 +33,9 @@
   <div id="content">
     <div class="container">
       <div id="main">
+      <% if flash[:error] -%>
+        <div class="error"><%= flash[:error] %></div>
+      <% end -%>
         <%= yield %>
       </div>
       <div id="sidebar">

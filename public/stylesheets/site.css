@@ -102,6 +102,13 @@ button:hover,.button:hover,.big_button:hover{background:#cc3333}
 
 .explain{color:#999;font-style:italic;margin:5px 0;}
 
+.error{
+  display:block;
+  background-color:#cc0000;
+  color:#ffffff;
+  padding:4px 10px;
+}
+
 .radio_button{
     color:#888;
     font-size:13px;
