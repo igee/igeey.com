@@ -18,7 +18,6 @@ ActiveRecord::Schema.define() do
     t.boolean :for_amount,               :default => false
     t.boolean :for_goods,                :default => false
     t.boolean :for_time,                 :default => false
-    t.timestamps
   end
 
   create_table "geos", :force => true do |t|
@@ -40,9 +39,10 @@ ActiveRecord::Schema.define() do
     t.integer :amount
     t.string  :donate_for,  :limit => 40
     t.integer :goods
-    t.string  :goods_is,   :limit => 40
+    t.string  :goods_is,    :limit => 40
     t.integer :time
-    t.string  :do_what,    :limit => 40
+    t.string  :do_what,     :limit => 40
+    t.timestamps
   end
 
   create_table "profiles", :force => true do |t|
@@ -50,16 +50,17 @@ ActiveRecord::Schema.define() do
   end
 
   create_table "records", :force => true do |t|
-    t.integer :user_id
-    t.integer :venue_id
-    t.integer :action_id
-    t.integer :requirement_id
-    t.integer :amount
-    t.string  :donate_for,  :limit => 40
-    t.integer :goods
-    t.string  :goods_is,   :limit => 40
-    t.integer :time
-    t.string  :do_what,    :limit => 40
+    t.integer  :user_id
+    t.integer  :venue_id
+    t.integer  :action_id
+    t.integer  :requirement_id
+    t.integer  :amount
+    t.string   :donate_for,  :limit => 40
+    t.integer  :goods
+    t.string   :goods_is,    :limit => 40
+    t.integer  :time
+    t.string   :do_what,     :limit => 40
+    t.datetime :do_at
     t.timestamps
   end
 
@@ -83,10 +84,11 @@ ActiveRecord::Schema.define() do
     t.integer :total_amount
     t.string  :donate_for,  :limit => 40
     t.integer :total_goods
-    t.string  :goods_is,   :limit => 40
+    t.string  :goods_is,    :limit => 40
     t.integer :total_people
-    t.string  :do_what,    :limit => 40
+    t.string  :do_what,     :limit => 40
     t.text    :detail
+    t.timestamps
   end  
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
