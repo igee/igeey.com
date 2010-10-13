@@ -17,6 +17,8 @@ class RecordsController < ApplicationController
   end
   
   def show
+    @venue = @record.venue
+    @action = @record.action
   end
   
   private

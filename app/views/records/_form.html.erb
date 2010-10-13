@@ -1,35 +1,35 @@
-<%= form_for @record, :remote => true do |form| %>
-  <div style="clear:both">
+<div class="box">
+  <%= form_for @record, :remote => true do |form| %>
     <%= form.hidden_field :action_id %>
     <%= form.hidden_field :venue_id %>
     <%= render :partial => '/public/user' ,:object => current_user %>
-      <div class="saying">
-          <div style="font-size:30px;text-align:left;font-family:'times new roman';margin-bottom:-10px;color:#999">“</div>
-          <div style="padding:0 20px;">
-              <%="我为#{@venue.name}"%><%= @action.name %>
-              <% if @action.for_amount %>
-                <%= form.text_field :amount, :size => 6 %> 元。
-              <% end %>
-              
-              <% if @action.for_goods %>
-                <%= form.text_field :goods, :size => 6 %> 件
-                <%= form.text_field :donate_for, :size => 6,:placeholder => "衣物、电脑..."%>。
-              <% end %>
-              
-              <% if @action.for_time %>
-                <%= form.text_field :time, :size => 6 %> 小时
-              <% end %>
-          </div>
-          <div style="font-size:30px;text-align:right;font-family:'times new roman';margin-top:-10px;color:#999">”</div>
-      </div>
+    <div class="saying">
+        <div style="font-size:30px;text-align:left;font-family:'times new roman';margin-bottom:-10px;color:#999">“</div>
+        <div style="padding:0 20px;">
+            <%="我为#{@venue.name}"%><%= @action.name %>
+            <% if @action.for_amount %>
+              <%= form.text_field :amount, :size => 6 %> 元。
+            <% end %>
+            
+            <% if @action.for_goods %>
+              <%= form.text_field :goods, :size => 6 %> 件
+              <%= form.text_field :donate_for, :size => 6,:placeholder => "衣物、电脑..."%>。
+            <% end %>
+            
+            <% if @action.for_time %>
+              <%= form.text_field :time, :size => 6 %> 小时
+            <% end %>
+        </div>
+        <div style="font-size:30px;text-align:right;font-family:'times new roman';margin-top:-10px;color:#999">”</div>
     </div>
     <div style="clear:both;text-align:right">
-    <%= form.check_box :sync_to_sina ,:disabled => true%> 同步到新浪微博  
-    <%= form.check_box :sync_to_douban ,:disabled => true%> 同步到豆瓣<br />
-    <%= form.submit '确定',:class => "button"%>
-    <%= button_to_function '取消',"javascript:window.location='#{venue_path(@venue)}'",:class => "button"%>
-  </div>
-<% end %>
+      <%= form.check_box :sync_to_sina ,:disabled => true%> 同步到新浪微博  
+      <%= form.check_box :sync_to_douban ,:disabled => true%> 同步到豆瓣<br />
+      <%= form.submit '确定',:class => "button"%>
+      <%= button_to_function '取消',"javascript:window.location='#{venue_path(@venue)}'",:class => "button"%>
+    </div>
+  <% end %>
+</div>
 
 <% content_for :extension do %>
 

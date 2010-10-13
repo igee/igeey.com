@@ -4,19 +4,19 @@
     <%= link_to '我要行动',"#{new_plan_path}?requirement_id=#{requirement.id}",:class => 'todo' %>
     <p>
       <span style="font-size:20px;font-family:'times new roman';color:#999">“</span>
-      <%="#{requirement.venue.name}"%>需要
-      <% if requirement.action.for_amount %>
-        总计 <%= requirement.total_amount %> 元。
-      <% end %>
-      
-      <% if requirement.action.for_goods %>
-        <%= requirement.donate_for %>
-        总计 <%= requirement.total_goods %> 件。
-      <% end %>
-      
-      <% if requirement.action.for_time %>
-        总计 <%= requirement.total_people %> 小时。
-      <% end %>
+          <%="#{requirement.venue.name}"%>需要
+          <% if requirement.action.for_amount %>
+            <%= requirement.total_amount %>元用于<%= requirement.donate_for%>。
+          <% end %>
+          
+          <% if requirement.action.for_goods %>
+            <%= requirement.donate_for %>
+            <%= requirement.requirement.total_goods %>件。
+          <% end %>
+          
+          <% if requirement.action.for_time %>
+            <%= requirement.total_people %>人做<%= requirement.do_what%>。
+          <% end %>
       <span style="font-size:20px;font-family:'times new roman';color:#999">”</span>
     </p>
     <div class="addition">

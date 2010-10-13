@@ -9,6 +9,7 @@ h2,h3,h4,h5,h6{
     
 ul,dl,p{
     margin:6px 0;
+    line-height:1.5em;
     padding:0;
     }
 
@@ -22,7 +23,7 @@ a:hover{color:#f60}
 input{
     text-decoration:none;
     border:1px solid #bbb;
-    margin:4px 0;
+    margin:0px 4px;
     padding:2px 4px;
     background-color:white;
     border-radius: 3px;
@@ -142,7 +143,7 @@ button:hover,.button:hover,.big_button:hover{background:#cc3333}
     padding:10px 20px;
     list-style:none;    
     font-weight:bold;
-    font-size:16px;
+    font-size:15px;
 }
 
 .saying  input{text-align:right}
@@ -186,11 +187,15 @@ a#logo{
     font-weight:bold;
     }
 
-#login_state{float:right;padding:15px}
+#login_state{float:right;padding:18px}
     
-#header,#footer{
-    height:50px;
+#header{
+    height:54px;
     background-image:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#222), to(#444));
+    }
+#footer{
+    height:84px;
+    background-image:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#333), to(#111));
     }
     
 #header a,#footer a{color:#eee}
@@ -200,6 +205,10 @@ a#logo{
     width:620px;
     padding:20px;
     min-height:600px
+}
+
+#map_canvas{
+  background:#d0d0d0;
 }
 
 #content .container{

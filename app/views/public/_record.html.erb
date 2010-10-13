@@ -3,7 +3,7 @@
   <div class="message">
     <p>
       <span style="font-size:20px;font-family:'times new roman';color:#999">“</span>
-      <%="#{record.user.login} 为#{record.venue.name}"%><%= record.action.name %>
+      <%="#{record.user.login} 为#{record.venue.name}"%><%= record.action.name %>了
       <% if record.action.for_amount %>
         <%= record.amount %> 元。
       <% end %>
@@ -14,7 +14,7 @@
       <% end %>
       
       <% if record.action.for_time %>
-        <%= record.people %> 小时。
+        <%= record.time %> 小时。
       <% end %>
       <span style="font-size:20px;font-family:'times new roman';color:#999">”</span>
     </p>
