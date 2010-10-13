@@ -5,12 +5,12 @@ class RecordsController < ApplicationController
   
   def new
     @record = Record.new(:action_id => params[:action_id],:venue_id => params[:venue_id])
-    @venue = Venue.find(params[:venue_id])
-    @action = Action.find(params[:action_id])
+    @venue = @record.venue
+    @action = @record.action
   end
   
   def create
-    @record = Record.new(params[:venue])
+    @record = Record.new(params[:record])
     @record.user = current_user
     flash[:notice] = 'Record was successfully created.' if @record.save
     respond_with(@record)

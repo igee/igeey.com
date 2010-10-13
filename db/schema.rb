@@ -32,6 +32,19 @@ ActiveRecord::Schema.define() do
     
   end
 
+  create_table "plans", :force => true do |t|
+    t.integer :user_id
+    t.integer :venue_id
+    t.integer :action_id
+    t.integer :requirement_id
+    t.integer :amount
+    t.string  :donate_for,  :limit => 40
+    t.integer :goods
+    t.string  :goods_is,   :limit => 40
+    t.integer :time
+    t.string  :do_what,    :limit => 40
+  end
+
   create_table "profiles", :force => true do |t|
     t.integer :user_id
   end
@@ -40,6 +53,7 @@ ActiveRecord::Schema.define() do
     t.integer :user_id
     t.integer :venue_id
     t.integer :action_id
+    t.integer :requirement_id
     t.integer :amount
     t.string  :donate_for,  :limit => 40
     t.integer :goods
@@ -61,7 +75,19 @@ ActiveRecord::Schema.define() do
     t.string   :remember_token,            :limit => 40
     t.datetime :remember_token_expires_at
   end
-
+  
+  create_table "requirements", :force => true do |t|
+    t.integer :venue_id
+    t.integer :action_id
+    t.integer :publisher_id
+    t.integer :total_amount
+    t.string  :donate_for,  :limit => 40
+    t.integer :total_goods
+    t.string  :goods_is,   :limit => 40
+    t.integer :total_people
+    t.string  :do_what,    :limit => 40
+    t.text    :detail
+  end  
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
 

@@ -1,0 +1,18 @@
+<div style="background-color:#e66;width:100%;height:50px;padding:80px 0;text-align:center;font-size:30px;color:white;">
+  参与、记录和分享你的公益行动。
+</div>
+<br/>
+<h4>这些地方需要:</h4>
+<%= render :partial => 'public/requirement', :collection => @requirements %>
+
+<% content_for :sidebar do %>
+  <div style="clear:both;padding:4px 20px;height:220px">
+    <%= link_to "添加新的服务点",new_venue_path,:id => "create_venue",:class => 'big_button' %>
+    <%= link_to "记录我的行动",new_record_path,:id => "create_venue",:class => 'big_button' %>
+  </div>
+  
+  <h5>最新的服务点:</h5>
+  <% @venues.each do |venue| %>
+    <%= link_to(venue.name,venue)%>
+  <% end %>
+<% end %>

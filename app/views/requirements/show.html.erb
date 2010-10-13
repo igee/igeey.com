@@ -1,0 +1,36 @@
+<div class="box">
+  <%= render :partial => '/public/user' ,:object => current_user %>
+  <div class="saying">
+    <div style="font-size:30px;text-align:left;font-family:'times new roman';margin-bottom:-10px;color:#999">“</div>
+    <div style="padding:0 20px;">
+          <%="#{@venue.name}"%>需要<%= @action.name %>
+          <% if @action.for_amount %>
+            总计 <%= @requirement.total_amount %> 元。
+          <% end %>
+          
+          <% if @action.for_goods %>
+            <%= @requirement.donate_for %>
+            总计 <%= @requirement.total_goods %> 件。
+          <% end %>
+          
+          <% if @action.for_time %>
+            总计 <%= @requirement.total_people %> 人的 <%= @requirement.do_what%>。
+          <% end %>
+          <br/>
+          <p style="color:#999;font-size:13px;font-weight:normal;"><%= @requirement.detail %><p>
+    </div>
+    <div style="font-size:30px;text-align:right;font-family:'times new roman';margin-top:-10px;color:#999">”</div>
+  </div>
+  <div class="clear"></div>
+</div>
+
+<div class="box">
+  <h4>这些用户要参与:</h4>
+  <%= render :partial => '/public/user',:collection => @plans.map(&:user)%>
+</div>
+
+<% content_for :sidebar do %>
+  <div style="clear:both;padding:4px 20px">
+    <%= link_to "我要#{@requirement.action.name}","#{new_plan_path}?requirement_id=#{@requirement.id}",:class => "big_button",:id => 'plan_to' %>
+  </div>
+<% end %>

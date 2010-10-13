@@ -13,7 +13,10 @@
 <body>
   <div id="header">
     <div class="container" id="nav">
-      <h1 id="logo">igee.org</h1>
+      <h1><%= link_to 'igee.org', root_path,:id => 'logo' %></h1>
+      <br/>
+      <%= link_to '首页',root_path%>
+      <%= link_to '地图',geos_path%>
       <div id="login_state">
         <% if logged_in? %>
           <%= link_to current_user.login,user_path(current_user)%>
@@ -34,6 +37,7 @@
       <div id="sidebar">
         <%= yield :sidebar %>
       </div>
+      <div style="clear:both">
     </div>
   </div>
 

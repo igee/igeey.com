@@ -1,7 +1,9 @@
 body{font-size:14px;}
 
-body,h1,h2,h3,h4,h5,h6{
-    margin:0;
+body,h1{margin:0}
+
+h2,h3,h4,h5,h6{
+    margin:0.4em 0;
     color:#333;
     }
     
@@ -12,8 +14,10 @@ ul,dl,p{
 
 a{
     text-decoration:none;
-    color:#c33;
+    color:#36f;
     }
+
+a:hover{color:#f60}
 
 input{
     text-decoration:none;
@@ -25,6 +29,18 @@ input{
     -moz-border-radius: 3px;
     font-size:16px;
     }
+    
+textarea{
+    display:block;
+    text-decoration:none;
+    border:1px solid #bbb;
+    margin:4px 0;
+    padding:2px 4px;
+    background-color:white;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    font-size:12px;
+    }
 
 input:focus,input:hover{background-color:#ffffc0;outline:none;}
 
@@ -33,12 +49,18 @@ input:focus,input:hover{background-color:#ffffc0;outline:none;}
     }
 
 .container{
-    width:920px;
-    padding:0 10px;
+    width:940px;
     margin:0 auto;
     clear:both;
     }
-    
+
+.clear{clear:both}
+
+.box{
+    clear:both;
+    margin:20px 0;
+}
+
 button,.button{
     text-align:center;
     margin:5px;
@@ -71,6 +93,8 @@ button,.button{
 }
 
 button:hover,.button:hover,.big_button:hover{background:#cc3333}
+
+.explain{color:#999;font-style:italic;margin:5px 0;}
 
 .radio_button{
     color:#888;
@@ -108,42 +132,77 @@ button:hover,.button:hover,.big_button:hover{background:#cc3333}
     background-color:#555;
     }    
 
-#action_counter{
+.saying{
     float:right;
-    width:480px;
+    width:460px;
     background-color:#fff;
     color:#666;
     -moz-border-radius: 10px;
     border-radius: 10px;
-    padding:10px 10px;
-    list-style:none;
-    
+    padding:10px 20px;
+    list-style:none;    
+    font-weight:bold;
+    font-size:16px;
+}
+
+.saying  input{text-align:right}
+
+.message {height:64px}
+.message p{
     font-size:16px;
     font-weight:bold;
+    margin-bottom:10px;
+    }
+
+.addition{
+    font-size:12px;
+    line-height:16px;
 }
+
+.requirement{padding:4px;margin:10px 0;border-bottom:1px dashed #aaa;}
+
+.todo{
+    background-color:#f0f0f0;
+    border:4px solid #ccc;
+    padding:3px 6px;
+    float:right;
+    -moz-border-radius: 10px;
+    border-radius:10px;
+    color:#777
+}
+
+.todo:hover{
+    color:white;
+    background:#c30;
+    border:4px solid #f63;
+    }
 
 #logo{
     padding:10px;
-    color:white;
+    color:#fff;
     }
 
 #login_state{float:right}
     
-#header{
+#header,#footer{
     height:80px;
-    background-color:#333;
+    background-color:#666;
     }
     
 #main{
     float:left;
-    width:600px;
+    width:620px;
     padding:20px;
-    background-color:#ddd;
+    min-height:600px
+}
+
+#content .container{
+    background:url('/images/background.png') repeat-y;);
+    
 }
 
 #sidebar{
     float:right;
-    width:260px;
-    padding:10px;    
-    background-color:#999;
+    width:250px;
+    padding:15px;    
 }

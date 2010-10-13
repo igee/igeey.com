@@ -5,7 +5,15 @@
     <p><%= @venue.intro%></p>      
   </div>
 </div>
-<div style="clear:both;padding:4px 20px">
-  <%= link_to '我要做...',"#",:class => "big_button",:id => 'plan_to' %>
-  <%= link_to '我做过...',have_done_venue_path(@venue),:class => "big_button",:id => 'have_done' %>
-</div>
+
+<h4><%= @venue.name %>需要:</h4>
+<%= render :partial => 'public/requirement', :collection => @requirements %>
+<h4>行动记录:</h4>
+<%= render :partial => 'public/record', :collection => @records %>
+
+<% content_for :sidebar do %>
+  <div style="clear:both;padding:4px 20px">
+    <%= link_to '这里需要..',publish_requirement_venue_path(@venue),:class => "big_button",:id => 'plan_to' %>
+    <%= link_to '我为这里做过..',have_done_venue_path(@venue),:class => "big_button",:id => 'have_done' %>
+  </div>
+<% end %>
