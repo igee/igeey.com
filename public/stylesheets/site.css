@@ -245,10 +245,12 @@ a#logo{
     
 #header{
     height:56px;
+    background-color:#333;
     background-image:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#222), to(#444));
     }
 #footer{
     height:84px;
+    background-color:#333;
     background-image:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#333), to(#111));
     }
     
