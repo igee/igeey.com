@@ -1,5 +1,5 @@
 <div class="box">
-  <%= render :partial => '/public/user' ,:object => @requirement.publisher %>
+  <%= render :partial => '/public/user' ,:object => @requirement.publisher ,:locals => {:with_name => true}%>
   <div class="saying">
     <div style="font-size:26px;text-align:left;font-family:'times new roman';margin-bottom:-10px;color:#999">“</div>
     <div style="padding:0 20px;">
@@ -20,8 +20,10 @@
           <p style="color:#999;font-size:13px;font-weight:normal;"><%= @requirement.detail %><p>
     </div>
     <div style="font-size:26px;text-align:right;font-family:'times new roman';margin-top:-10px;color:#999">”</div>
+    <span><%= raw who_at_where(@requirement.publisher,@requirement.venue)%></span>
   </div>
   <div class="clear"></div>
+  
 </div>
 
 <div class="box">
