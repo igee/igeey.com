@@ -28,6 +28,7 @@ class VenuesController < ApplicationController
   def show
     @requirements = @venue.requirements
     @records = @venue.records
+    @plan = Plan.new     #can create new plan on this page
   end
   
   def have_done

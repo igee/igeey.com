@@ -4,10 +4,14 @@
     <div class="message_sidebar">
     <% if requirement.plans.map(&:user).include?(current_user) %>
       <span class="todo">你已参与</span>
-    <% else %>  
-      <%= link_to '我要行动',"#{new_plan_path}?requirement_id=#{requirement.id}",:class => 'todo' %>
+      <br/>
+      <br/>
+    <% else %>
+        <%=  link_to '我要行动',"#{plans_path}?requirement_id=#{requirement.id}",:method => :post,:confirm => '你确认要满足这个需求吗？',:class => "todo",:style =>"font-size:12px;cursor:pointer;"%>
+      <br/>
+      <br/>
     <% end %>
-    <br/><br/>
+    
     <span><%= requirement.users_count.zero? ? '还没有人参与' : "有#{requirement.users_count}人参与" %></span>
     </div>
     <p>

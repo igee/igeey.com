@@ -219,7 +219,7 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
     color:#666
 }
 
-a.todo:hover{
+input.todo:hover{
     color:white;
     background:#c30;
     border:4px solid #f63;

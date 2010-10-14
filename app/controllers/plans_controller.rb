@@ -3,17 +3,14 @@ class PlansController < ApplicationController
   before_filter :login_required, :except => [:index, :show]
   before_filter :find_plan, :except => [:index,:new,:create]
   
-  def new
-    @plan = Plan.new(:requirement_id => params[:requirement_id])
-  end
-  
   def create
     @plan = Plan.new(params[:plan])
-    @plan.user = current_user
+    @plan.requirement = Requirement.find(params[:requirement_id])
     @plan.venue = @plan.requirement.venue
     @plan.action = @plan.requirement.action
+    @plan.user = current_user
     @plan.save
-    respond_with @plan
+    redirect_to @plan.requirement
   end
   
   def edit
