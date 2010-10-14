@@ -17,4 +17,9 @@
   <script type="text/javascript">
   $(document).ready(function(){initialize();mark_latlng();});
   </script>
-<% end %>  
+<% end %>
+
+
+<% content_for :sidebar do %>
+  <%= render '/venues/what_is_venue'%>
+<% end %>

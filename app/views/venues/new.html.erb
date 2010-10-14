@@ -1,2 +1,6 @@
 <h2>添加新的聚点</h2>
 <%= render "form" %>
+
+<% content_for :sidebar do %>
+  <%= render '/venues/what_is_venue'%>
+<% end %>

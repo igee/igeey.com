@@ -103,6 +103,8 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
 
 .explain{color:#999;font-style:italic;margin:5px 0;}
 
+.explanation{color:#666}
+
 .error{
   display:block;
   background-color:#cc0000;
