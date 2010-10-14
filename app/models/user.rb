@@ -56,6 +56,19 @@ class User < ActiveRecord::Base
     write_attribute :email, (value ? value.downcase : nil)
   end
 
+  def time_counter
+    self.records.map(&:time).compact.sum
+  end
+  
+  def amount_counter
+    self.records.map(&:amount).compact.sum
+  end
+
+  def goods_counter
+    self.records.map(&:goods).compact.sum
+  end
+
+
   protected
   
   

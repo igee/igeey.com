@@ -36,6 +36,7 @@ class UsersController < ApplicationController
   
   
   def show
+    @records = @user.records
   end
   
   

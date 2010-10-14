@@ -100,6 +100,7 @@ button,.button{
 
 button:hover,.button:hover,.big_button:hover{background:#c00}
 
+
 .explain{color:#999;font-style:italic;margin:5px 0;}
 
 .error{
@@ -145,6 +146,23 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
     overflow:hidden;
     background-color:#555;
     }    
+
+.user_counter{
+  background-color:#666;
+  color:white;
+  float:left;
+  width:72px;
+  height:72px;
+  margin:0 10px;
+  text-align:center;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+.user_counter h1{
+  margin-top:10px;
+  font-weight:normal;
+  } 
+
 
 .saying{
     float:right;
@@ -258,3 +276,5 @@ a#logo{
   color:white;
   margin:0 10px;
 }
+
+#user_counters{float:right;width:540px;}
