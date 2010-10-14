@@ -5,6 +5,8 @@ class Requirement < ActiveRecord::Base
   has_many   :records
   has_many   :plans
   
+  default_scope :order => 'created_at DESC'
+    
   def users_count
     self.plans.map(&:user).uniq.size
   end

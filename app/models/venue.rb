@@ -8,6 +8,8 @@ class Venue < ActiveRecord::Base
   has_many :plans
   has_many :records
   
+  default_scope :order => 'created_at DESC'
+  
   validates :name,:latitude,:longitude, :presence   => true
   validates :intro,:length     => { :within => 0..140 }
   validates :category,:inclusion => { :in => CATEGORIES_HASH.keys }
