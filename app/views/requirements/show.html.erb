@@ -54,7 +54,7 @@
     </div>
   <% else %>
     <div style="clear:both;padding:4px 20px">
-      <%= link_to "我要#{@requirement.action.name}","#{new_plan_path}?requirement_id=#{@requirement.id}",:class => "big_button",:id => 'plan_to' %>
+      <%= link_to "我要#{@requirement.action.name}","#{plans_path}?requirement_id=#{requirement.id}",:method => :post,:class => "big_button",:id => 'plan_to' %>
     </div>
   <% end %>
 <% end %>
