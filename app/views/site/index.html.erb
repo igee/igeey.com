@@ -8,10 +8,10 @@
 <% content_for :sidebar do %>
   <div style="clear:both;padding:4px 20px;height:220px">
     <%= link_to "记录我的行动",new_record_path,:id => "create_venue",:class => 'big_button' %>
-    <%= link_to "添加新的服务点",new_venue_path,:id => "create_venue",:class => 'big_button' %>
+    <%= link_to "添加新的聚点",new_venue_path,:id => "create_venue",:class => 'big_button' %>
   </div>
   
-  <h5>最新的服务点:</h5>
+  <h5>最新的聚点:</h5>
   <p>
   <% @venues.each do |venue| %>
     <%= link_to(venue.name,venue)%>

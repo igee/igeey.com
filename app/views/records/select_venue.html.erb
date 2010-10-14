@@ -1,7 +1,7 @@
   
-  <h2>选择你行动所在的服务点:</h2>
+  <h2>选择你行动所在的聚点:</h2>
   <ul><% @venues.each do |venue| %>
     <li><%= link_to(venue.name,have_done_venue_path(venue))%></li>
   <% end %>
   </ul>
-  <span>没有找到你想要的？<%= link_to '添加新的服务点吧',new_venue_path%></span>
+  <span>没有找到你想要的？<%= link_to '添加新的聚点吧',new_venue_path%></span>
