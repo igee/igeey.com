@@ -1,5 +1,5 @@
   <div class="box">
-    <%= render :partial => '/public/user' ,:object => current_user ,:locals => {:with_name => true}%>
+    <%= render :partial => '/public/user' ,:object => @record.user ,:locals => {:with_name => true}%>
       <div class="saying">
           <div style="font-size:26px;text-align:left;font-family:'times new roman';margin-bottom:-10px;color:#999">“</div>
           <p style="padding:0 20px;">
