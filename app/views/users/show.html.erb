@@ -17,5 +17,6 @@
 </div>
 
 <% content_for :sidebar do %>
-
+<h4><%= personal_name(@user) %>要做..</h4>
+  <%= render :partial => '/public/plan',:collection => @plans%>
 <% end %>

@@ -1,0 +1,13 @@
+<div class="plan">  
+  <%= render :partial => '/public/user',:object => plan.user %>
+  <div class="">
+    <p>
+      <%= "#{personal_name(plan.user)}要为#{plan.requirement.venue.name}#{plan.requirement.action.name}。"%>
+    </p>
+    <div style="float:right">
+      <span>
+          <%= link_to '查看需求',plan%>
+      </span>
+    </div>
+  </div>
+</div>

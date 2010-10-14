@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   
   has_one :profile
   has_many :records
+  has_many :plans
   has_many :venues,:foreign_key => :creator_id
   # set_table_name 'users'
 
