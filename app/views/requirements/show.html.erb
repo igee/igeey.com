@@ -26,11 +26,33 @@
 
 <div class="box">
   <h4>这些用户要参与:</h4>
-  <%= render :partial => '/public/user',:collection => @plans.map(&:user)%>
+  <%= render :partial => '/public/user',:collection => @plans.map(&:user),:locals => {:with_name => true}%>
 </div>
 
 <% content_for :sidebar do %>
-  <div style="clear:both;padding:4px 20px">
-    <%= link_to "我要#{@requirement.action.name}","#{new_plan_path}?requirement_id=#{@requirement.id}",:class => "big_button",:id => 'plan_to' %>
-  </div>
+  <% if @record %>
+    <%= render :partial => '/public/user',:object => @plan.user,:locals => {:with_name => true}%>
+    <div class="saying">
+      <div style="font-size:20px;text-align:left;font-family:'times new roman';margin-bottom:-10px;color:#999">“</div>
+      <div style="padding:2px 4px "><%= "我为#{@requirement.venue.name}#{@requirement.action.name}了" %></div>
+      <div style="font-size:20px;text-align:right;font-family:'times new roman';margin-top:-5px;color:#999">”</div>
+      <div style="text-align:center">
+      </div>
+    </div>
+
+  <% elsif @plan %>
+    <%= render :partial => '/public/user',:object => @plan.user,:locals => {:with_name => true}%>
+    <div class="saying">
+      <div style="font-size:20px;text-align:left;font-family:'times new roman';margin-bottom:-10px;color:#999">“</div>
+      <div style="padding:2px 4px "><%= "我要为#{@requirement.venue.name}#{@requirement.action.name}.." %></div>
+      <div style="font-size:20px;text-align:right;font-family:'times new roman';margin-top:-5px;color:#999">”</div>
+      <div style="text-align:center">
+        <%= link_to "已经完成?","#{new_record_path}?requirement_id=#{@requirement.id}",:class => "button" %>
+      </div>
+    </div>
+  <% else %>
+    <div style="clear:both;padding:4px 20px">
+      <%= link_to "我要#{@requirement.action.name}","#{new_plan_path}?requirement_id=#{@requirement.id}",:class => "big_button",:id => 'plan_to' %>
+    </div>
+  <% end %>
 <% end %>

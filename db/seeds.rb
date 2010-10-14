@@ -23,7 +23,7 @@ Geo.new(:name => '成都',:latitude => '30.6586020',:longitude => '104.0648570',
 Geo.new(:name => '重庆',:latitude => '29.5626860',:longitude => '106.5512340',:zoom_level => 9).save
 
 Venue.new(:name => '太阳村',:geo_id => 1,:category => '1',:creator_id => 1,:latitude => "40.21106465394306",:longitude => "116.53745901684572",:intro => "张淑琴女士于1996年创办的以无偿抚养服刑人员未成年子女为目标的非营利性慈善机构。").save
-Venue.new(:name => '八里庄流浪狗收容站',:geo_id => 1,:category => '3',:creator_id => 1,:latitude => "39.91612252026889",:longitude => "116.49694693188478",:intro => "社区里的流浪狗收容站，有20多只流浪狗在这里生活。").save
+Venue.new(:name => '某流浪狗收容站',:geo_id => 1,:category => '3',:creator_id => 1,:latitude => "39.91612252026889",:longitude => "116.49694693188478",:intro => "社区里的流浪狗收容站，有20多只流浪狗在这里生活。").save
 
 Action.new(:name => '志愿服务',:for_time => true).save
 Action.new(:name => '捐款',:for_amount => true).save

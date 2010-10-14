@@ -23,7 +23,7 @@
           
           <% if @action.for_goods %>
             <%= form.text_field :donate_for, :size => 8,:placeholder => "物资名称"%>
-            总计<%= form.text_field :total_goods, :size => 6 ,::placeholder => "多少"%>件。
+            总计<%= form.text_field :total_goods, :size => 6 ,:placeholder => "多少"%>件。
           <% end %>
           
           <% if @action.for_time %>
@@ -32,11 +32,15 @@
           <br/>
     </div>
     <div style="font-size:26px;text-align:right;font-family:'times new roman';margin-top:-10px;color:#999">”</div>
+    <p>
+      <h6>详细信息：</h6>
+      <%= form.text_area :detail, :cols => 58, :rows => 4,:class => "underline",:placeholder => "简述需求的背景，还有大家参时有必要了解的信息。"%>
+    </p>
   </div>
   
   <div style="clear:both;text-align:right;">
-    <a href="#" onclick="javascript:$('#detail').toggle();return false">详细原因</a><br/>
-    <div id="detail" style="display:none;float:right"><%= form.text_area :detail, :cols => 64, :rows => 5,:class => "underline",:placeholder => "简述需求的具体情况"%></div>
+    
+    
   </div>
   
   <div style="clear:both;padding:0 20px;text-align:right">

@@ -2,6 +2,7 @@
   <%= form_for @record, :remote => true do |form| %>
     <%= form.hidden_field :action_id %>
     <%= form.hidden_field :venue_id %>
+    <%= form.hidden_field :requirement_id %>
     <%= render :partial => '/public/user' ,:object => current_user %>
     <div class="saying">
         <div style="font-size:26px;text-align:left;font-family:'times new roman';margin-bottom:-10px;color:#999">“</div>
@@ -9,16 +10,16 @@
             我在<%= form.text_field :do_at, :size => 8,:class => 'with_calendar',:placeholder => "yyyy-mm-dd"%><%="为#{@venue.name}"%><%= @action.name %>:<br/>
             
             <% if @action.for_amount %>
-              共 <%= form.text_field :amount, :size => 6 %> 元，用于<%= form.text_field :donate_for, :size => 9,:placeholder => "做什么用途?"%>。
+              共 <%= form.text_field :amount, :size => 6 %> 元，用于<%= form.text_field :donate_for, :size => 9,:placeholder => "做什么用途?",:value => (@requirement.donate_for if @requirement)%>。
             <% end %>
             
             <% if @action.for_goods %>
               共 <%= form.text_field :goods, :size => 4 ,:placeholder => "多少"%> 件
-              <%= form.text_field :goods_is, :size => 8,:placeholder => "物资名称"%>。
+              <%= form.text_field :goods_is, :size => 8,:placeholder => "物资名称",:value => (@requirement.goods_is if @requirement)%>。
             <% end %>
             
             <% if @action.for_time %>
-               <%= form.text_field :do_what, :size => 6 ,:placeholder => "服务内容"%> 共 <%= form.text_field :time, :size => 6,:placeholder => "多少" %> 小时。
+               <%= form.text_field :do_what, :size => 6 ,:placeholder => "服务内容",:value => (@requirement.do_what if @requirement)%> 共 <%= form.text_field :time, :size => 6,:placeholder => "多少" %> 小时。
             <% end %>
             <br/>
             
@@ -38,5 +39,4 @@
 <script type="text/javascript" charset="utf-8">
   $(document).ready(DateTimeShortcuts.init);
 </script>
-
 <% end %>  

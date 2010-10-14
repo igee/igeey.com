@@ -4,13 +4,14 @@ class RecordsController < ApplicationController
   before_filter :find_record, :except => [:index,:new,:create]
   
   def new
-    if params[:venue_id].nil?
+    @record = Record.new(:action_id => params[:action_id],:venue_id => params[:venue_id],:requirement_id => params[:requirement_id])
+    @requirement = @record.requirement
+    @venue = @requirement.nil? ? @record.venue : @requirement.venue
+    @action = @requirement.nil? ? @record.action : @requirement.action
+    @record = Record.new(:action => @action,:venue => @venue,:requirement => @requirement)
+    if @venue.nil? 
       @venues = Venue.all
       render "select_venue"
-    else
-      @record = Record.new(:action_id => params[:action_id],:venue_id => params[:venue_id])
-      @venue = @record.venue
-      @action = @record.action
     end
     
   end
@@ -25,6 +26,7 @@ class RecordsController < ApplicationController
   def show
     @venue = @record.venue
     @action = @record.action
+    @requirement = @record.requirement
   end
   
   private
