@@ -12,8 +12,8 @@ class RequirementsController < ApplicationController
     @action = @requirement.action
     @plans = @requirement.plans
     @records = @requirement.records
-    @plan = @plans.where(:user_id => current_user.id).first || nil
-    @record = @records.where(:user_id => current_user.id).first || nil
+    @plan = @plans.where(:user_id => (current_user.id if current_user)).first || nil
+    @record = @records.where(:user_id => (current_user.id if current_user)).first || nil
   end
 
   def new
