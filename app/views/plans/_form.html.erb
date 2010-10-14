@@ -9,18 +9,17 @@
       <div class="saying">
           <div style="font-size:30px;text-align:left;font-family:'times new roman';margin-bottom:-10px;color:#999">“</div>
           <div style="padding:0 20px;">
-              <%= "我要为#{@venue.name}"%><%= @action.name %>
+              <%= "我要为#{@venue.name}"%><%= @action.name %>:
               <% if @action.for_amount %>
-                <%= form.text_field :amount, :size => 6 %> 元。
+                <%= "用于#{@requirement.donate_for}" %>。
               <% end %>
               
               <% if @action.for_goods %>
-                <%= form.text_field :goods, :size => 6 %> 件
-                <%= @requirement.donate_for %>。
+                <%= @requirement.goods_is %>。
               <% end %>
               
               <% if @action.for_time %>
-                <%= form.text_field :time, :size => 6 %> 小时
+                <%= @requirement.do_what %>。
               <% end %>
           </div>
           <div style="font-size:30px;text-align:right;font-family:'times new roman';margin-top:-10px;color:#999">”</div>

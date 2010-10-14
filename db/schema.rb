@@ -36,12 +36,6 @@ ActiveRecord::Schema.define() do
     t.integer :venue_id
     t.integer :action_id
     t.integer :requirement_id
-    t.integer :amount
-    t.string  :donate_for,  :limit => 40
-    t.integer :goods
-    t.string  :goods_is,    :limit => 40
-    t.integer :time
-    t.string  :do_what,     :limit => 40
     t.timestamps
   end
 
