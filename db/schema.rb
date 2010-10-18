@@ -97,5 +97,14 @@ ActiveRecord::Schema.define() do
     t.string  :longitude,  :limit => 40
     t.timestamps
   end
-
+  
+  create_table "oauth_tokens" do |t|
+    t.integer :user_id
+    t.string  :request_key
+    t.string  :request_secret
+    t.string  :access_key
+    t.string  :access_secret
+    t.string  :site
+    t.timestamps
+  end
 end
