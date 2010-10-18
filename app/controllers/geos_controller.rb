@@ -1,12 +1,15 @@
 class GeosController < ApplicationController
+  respond_to :html,:json
   before_filter :find_geo, :except => [:index,:new]
-  
-  
+    
   def index
     @geos = Geo.all
+    @venues = Venue.all
+    @geo = Geo.new
   end
   
-  def show  
+  def show
+    @venues = @geo.venues
   end
 
   private

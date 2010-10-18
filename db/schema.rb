@@ -10,61 +10,92 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define do
+ActiveRecord::Schema.define() do
 
   create_table "actions", :force => true do |t|
-    t.string  "name",       :limit => 40
-    t.text    "intro"
-    t.boolean "for_amount",   :default => false
-    t.boolean "for_goods",    :default => false
-    t.boolean "for_time",     :default => false
+    t.string  :name,       :limit => 40
+    t.text    :intro
+    t.boolean :for_amount,               :default => false
+    t.boolean :for_goods,                :default => false
+    t.boolean :for_time,                 :default => false
   end
 
   create_table "geos", :force => true do |t|
-    t.string  "name",       :limit => 40
-    t.integer "parent_id"
-    t.integer "zipcode"
-    t.integer "zoom_level"
-    t.string  "slug",       :limit => 40
-    t.string  "latitude",   :limit => 40
-    t.string  "longitude",  :limit => 40
-  end
+    t.string  :name,       :limit => 40
+    t.integer :parent_id
+    t.integer :zipcode
+    t.integer :zoom_level
+    t.string  :slug,       :limit => 40
+    t.string  :latitude,   :limit => 40
+    t.string  :longitude,  :limit => 40
     
-  create_table "venues", :force => true do |t|
-    t.string  "name",       :limit => 40
-    t.text    "intro",      :limit => 255
-    t.string  "category",   :limit => 40
-    t.integer "geo_id"
-    t.integer "creator_id"
-    t.string  "latitude",   :limit => 40
-    t.string  "longitude",  :limit => 40
   end
-  
+
+  create_table "plans", :force => true do |t|
+    t.integer :user_id
+    t.integer :venue_id
+    t.integer :action_id
+    t.integer :requirement_id
+    t.timestamps
+  end
+
   create_table "profiles", :force => true do |t|
-    t.integer "user_id"
+    t.integer :user_id
   end
 
   create_table "records", :force => true do |t|
-    t.integer "user_id"
-    t.integer "venue_id"
-    t.integer "action_id"
-    t.integer "amount"
-    t.integer "goods"
-    t.integer "time"
+    t.integer  :user_id
+    t.integer  :venue_id
+    t.integer  :action_id
+    t.integer  :requirement_id
+    t.integer  :amount
+    t.string   :donate_for,  :limit => 40
+    t.integer  :goods
+    t.string   :goods_is,    :limit => 40
+    t.integer  :time
+    t.string   :do_what,     :limit => 40
+    t.datetime :do_at
+    t.timestamps
   end
 
   create_table "users", :force => true do |t|
-    t.string   "login",                     :limit => 40
-    t.string   "name",                      :limit => 100, :default => ""
-    t.string   "email",                     :limit => 100
-    t.string   "crypted_password",          :limit => 40
-    t.string   "salt",                      :limit => 40
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "remember_token",            :limit => 40
-    t.datetime "remember_token_expires_at"
+    t.string   :login,                     :limit => 40
+    t.string   :name,                      :limit => 100, :default => ""
+    t.string   :email,                     :limit => 100
+    t.string   :crypted_password,          :limit => 40
+    t.string   :salt,                      :limit => 40
+    t.string   :avatar_file_name
+    t.datetime :created_at
+    t.datetime :updated_at
+    t.string   :remember_token,            :limit => 40
+    t.datetime :remember_token_expires_at
   end
+  
+  create_table "requirements", :force => true do |t|
+    t.integer :venue_id
+    t.integer :action_id
+    t.integer :publisher_id
+    t.integer :total_amount
+    t.string  :donate_for,  :limit => 40
+    t.integer :total_goods
+    t.string  :goods_is,    :limit => 40
+    t.integer :total_people
+    t.string  :do_what,     :limit => 40
+    t.text    :detail
+    t.timestamps
+  end  
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
-  
+
+  create_table "venues", :force => true do |t|
+    t.string  :name,       :limit => 40
+    t.text    :intro
+    t.string  :category,   :limit => 40
+    t.integer :geo_id
+    t.integer :creator_id
+    t.string  :latitude,   :limit => 40
+    t.string  :longitude,  :limit => 40
+    t.timestamps
+  end
+
 end

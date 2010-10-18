@@ -1,8 +1,11 @@
+
+
+
 <script type="text/javascript">
     function initialize() {
-      var latlng = new google.maps.LatLng(<%= "#{@geo.latitude},#{@geo.longitude}"%>)
+      var latlng = new google.maps.LatLng(<%= "#{@geo.latitude || 33.724339},#{@geo.longitude || 105.1171875}"%>)
       var myOptions = {
-        zoom: <%= @geo.zoom_level || 10%>,
+        zoom: <%= @geo.zoom_level || 4%>,
         center: latlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
@@ -10,19 +13,35 @@
       
       marker = new google.maps.Marker({
         position: map.getCenter(), 
-        title: "服务点坐标",
+        title: "聚点坐标",
         draggable: true,
       });
       
+      var icon_list = new Array("","school.png","hostel.png","daycare.png","flowers.png","embassy.png")
+      
+      $.getJSON("<%= venues_path(:format => :json)%>", function(data){
+        $.each(data, function(i,item){
+            new google.maps.Marker({
+              icon: "http://google-maps-icons.googlecode.com/files/" + icon_list[item.venue.category],
+              position: new google.maps.LatLng(parseFloat(item.venue.latitude), parseFloat(item.venue.longitude)),
+              title: item.venue.name,
+              map: map,
+            });
+          });
+      });
+      
       google.maps.event.addListener(marker, "dragend", function() {
-        $('#next_step').attr('href',
-                             '<%= "#{new_venue_path}" %>?latitude=' + marker.getPosition().lng() + '&longitude=' + marker.getPosition().lat()
-                             );
+        $('#next_step').attr(
+           'href',
+           '<%= "#{new_venue_path}" %>?latitude=' + marker.getPosition().lat() + '&longitude=' + marker.getPosition().lng() + "&geo_id=<%=@geo.id%>"
+        );
       });
     };
     
     function mark_latlng(){
+      marker.setPosition(map.getCenter())
       marker.setMap(map);
+      
       $('#create_venue').toggle();
       $('#mark_guide').toggle(); 
       return false;

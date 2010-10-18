@@ -2,10 +2,12 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>Igee</title>
+  <title>Igee-网站开发中</title>
   <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag 'application' %>
   <%= javascript_include_tag 'jquery-1.4.2.min' %>
+  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'rails' %>
+  <%= javascript_include_tag 'calendar' %>
   <%= csrf_meta_tag %>
   <%= yield :head %>
 </head>
@@ -13,14 +15,21 @@
 <body>
   <div id="header">
     <div class="container" id="nav">
-      <h1 id="logo">igee.org</h1>
+      <%= link_to 'igee.org', root_path,:id => 'logo' %>
+      <ul id="nav_links">
+        <li><%= link_to '首页',root_path%></li>
+        <li><%= link_to '地图',geos_path%></li>
+        <% if logged_in? %>
+          <li><%= link_to '我的主页',user_path(current_user)%></li>
+        <% end %>
+      </ul>
       <div id="login_state">
         <% if logged_in? %>
-          <%= current_user.login %>
-          <%= link_to "logout",logout_path %>
+          <%= link_to current_user.login,user_path(current_user)%> |
+          <%= link_to "退出",logout_path %>
         <% else %>
-          <%= link_to "login",login_path %>
-          <%= link_to "register",new_user_path %>
+          <%= link_to "登录",login_path %> |
+          <%= link_to "注册",signup_path %>
         <% end %>
       </div>
     </div>
@@ -29,11 +38,15 @@
   <div id="content">
     <div class="container">
       <div id="main">
+      <% if flash[:error] -%>
+        <div class="error"><%= flash[:error] %></div>
+      <% end -%>
         <%= yield %>
       </div>
       <div id="sidebar">
         <%= yield :sidebar %>
       </div>
+      <div style="clear:both">
     </div>
   </div>
 

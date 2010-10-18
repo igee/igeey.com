@@ -4,6 +4,12 @@ class Venue < ActiveRecord::Base
   
   belongs_to :creator, :class_name => "User", :foreign_key => "creator_id"
   
+  has_many :requirements
+  has_many :plans
+  has_many :records
+  
+  default_scope :order => 'created_at DESC'
+  
   validates :name,:latitude,:longitude, :presence   => true
   validates :intro,:length     => { :within => 0..140 }
   validates :category,:inclusion => { :in => CATEGORIES_HASH.keys }
@@ -11,6 +17,5 @@ class Venue < ActiveRecord::Base
   def category_name
     CATEGORIES_HASH[self.category]
   end
-  
   
 end

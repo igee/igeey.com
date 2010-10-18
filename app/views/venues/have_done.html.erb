@@ -1,4 +1,4 @@
-<h2>你为<%= @venue.name %>做什么？</h2>
+<h2>你为<%= @venue.name %>做了什么？</h2>
 <p>
 <% @actions.each do |a| %>
   <%= link_to(a.name,"#{new_record_path()}?venue_id=#{@venue.id}&action_id=#{a.id}",:class => "big_button") %>

@@ -1,19 +1,29 @@
-<h1>Sign up as a new user</h1>
+<h1>欢迎新用户注册，填写你的注册信息</h1>
 <% @user.password = @user.password_confirmation = nil %>
 
 <%= error_messages_for :user %>
 <%= form_for :user, :url => users_path do |f| -%>
-<p><%= label_tag 'login' %><br/>
-<%= f.text_field :login %></p>
+<p>
+  <%= label_tag 'login','用户名:' %>
+  <%= f.text_field :login,:size => 10%>
+</p>
 
-<p><%= label_tag 'email' %><br/>
-<%= f.text_field :email %></p>
+<p>
+  <%= label_tag 'email','邮箱:　' %>
+  <%= f.text_field :email, :size => 10%>
+  </p>
 
-<p><%= label_tag 'password' %><br/>
-<%= f.password_field :password %></p>
+<p>
+  <%= label_tag 'password','密码:　' %>
+  <%= f.password_field :password,:size => 10%>
+</p>
+<p>
+  <%= label_tag 'password_confirmation', '再输入一遍密码：' %><br/>
+  防止写错 => <%= f.password_field :password_confirmation, :size => 10%>
+</p>
 
-<p><%= label_tag 'password_confirmation', 'Confirm Password' %><br/>
-<%= f.password_field :password_confirmation %></p>
-
-<p><%= submit_tag 'Sign up' %></p>
+<p>
+  <%= submit_tag 'Ok',:class => 'button' %>
+  <%= link_to '注册过了？',login_path%>
+</p>
 <% end -%>

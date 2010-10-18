@@ -1,9 +1,20 @@
 igee.org - planing,recording and sharing your good action.
 
-powerd by Ruby on Rails 3
+powered by Ruby on Rails 3
 
-Notice:
-You need edit your database configuration file: 
+Step 1: clone repository
+  git clone git://github.com/igee/igee.git
+
+Step 2: You need edit your database configuration file
   cd igee
   cp config/database.yml.sample config/database.yml
   vi database.yml
+
+Step 3: db migration & create seed data
+  cd igee
+  rake db:create
+  rake db:auto:migrate
+  rake db:seed
+  
+Step 4: Go!launch igee!
+  rails s  

@@ -1,0 +1,38 @@
+<div class='requirement'>
+  <%= render :partial => '/public/user', :object => requirement.publisher %>
+  <div class="message">
+    <div class="message_sidebar">
+    <% if requirement.plans.map(&:user).include?(current_user) %>
+      <span class="todo">你已参与</span>
+      <br/>
+      <br/>
+    <% else %>
+        <%=  link_to '我要参与',"#{plans_path}?requirement_id=#{requirement.id}",:method => :post,:confirm => '你确认要参与来满足这个需求吗？',:class => "todo",:style =>"font-size:12px;cursor:pointer;"%>
+      <br/>
+      <br/>
+    <% end %>
+    
+    <span><%= requirement.users_count.zero? ? '还没有人参与' : "有#{requirement.users_count}人参与" %></span>
+    </div>
+    <p>
+      <span style="font-size:20px;font-family:'times new roman';color:#999">“</span>
+          <%="#{requirement.venue.name}"%>
+          <% if requirement.action.for_amount %>
+            <%= "需要#{requirement.total_amount}元用于#{requirement.donate_for}。" %>
+          <% end %>
+          
+          <% if requirement.action.for_goods %>
+            <%= "需要#{requirement.total_goods}件#{requirement.donate_for}。"%>
+          <% end %>
+          
+          <% if requirement.action.for_time %>
+            <%= "需要#{requirement.total_people}人#{requirement.do_what}。" %>
+          <% end %>
+      <span style="font-size:20px;font-family:'times new roman';color:#999">”</span>
+      <span><%= link_to '了解更多..',requirement%></span>
+    </p>
+    <div class="addition">
+      <span><%= link_to requirement.publisher.login,requirement.publisher %>@<%= link_to requirement.venue.name,requirement.venue %></span>
+    </div>
+  </div>
+</div>

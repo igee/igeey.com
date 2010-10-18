@@ -1,0 +1,60 @@
+<div class="box">
+  <%= render :partial => '/public/user' ,:object => @requirement.publisher ,:locals => {:with_name => true}%>
+  <div class="saying">
+    <div style="font-size:26px;text-align:left;font-family:'times new roman';margin-bottom:-10px;color:#999">“</div>
+    <div style="padding:0 20px;">
+          <%="#{@venue.name}"%>需要
+          <% if @action.for_amount %>
+            <%= @requirement.total_amount %>元用于<%= @requirement.donate_for%>。
+          <% end %>
+          
+          <% if @action.for_goods %>
+            <%= @requirement.donate_for %>
+            <%= @requirement.total_goods %>件。
+          <% end %>
+          
+          <% if @action.for_time %>
+            <%= @requirement.total_people %>人做 <%= @requirement.do_what%>。
+          <% end %>
+          <br/>
+          <p style="color:#999;font-size:13px;font-weight:normal;"><%= @requirement.detail %><p>
+    </div>
+    <div style="font-size:26px;text-align:right;font-family:'times new roman';margin-top:-10px;color:#999">”</div>
+    <span><%= raw who_at_where(@requirement.publisher,@requirement.venue)%></span>
+  </div>
+  <div class="clear"></div>
+  
+</div>
+
+<div class="box">
+  <h4>这些用户要参与:</h4>
+  <%= render :partial => '/public/user',:collection => @plans.map(&:user),:locals => {:with_name => true}%>
+</div>
+
+<% content_for :sidebar do %>
+  <% if @record %>
+    <%= render :partial => '/public/user',:object => @plan.user,:locals => {:with_name => true}%>
+    <div class="saying">
+      <div style="font-size:20px;text-align:left;font-family:'times new roman';margin-bottom:-10px;color:#999">“</div>
+      <div style="padding:2px 4px "><%= "我为#{@requirement.venue.name}#{@requirement.action.name}了" %></div>
+      <div style="font-size:20px;text-align:right;font-family:'times new roman';margin-top:-5px;color:#999">”</div>
+      <div style="text-align:center">
+      </div>
+    </div>
+
+  <% elsif @plan %>
+    <%= render :partial => '/public/user',:object => @plan.user,:locals => {:with_name => true}%>
+    <div class="saying">
+      <div style="font-size:20px;text-align:left;font-family:'times new roman';margin-bottom:-10px;color:#999">“</div>
+      <div style="padding:2px 4px "><%= "我要为#{@requirement.venue.name}#{@requirement.action.name}.." %></div>
+      <div style="font-size:20px;text-align:right;font-family:'times new roman';margin-top:-5px;color:#999">”</div>
+      <div style="text-align:center">
+        <%= link_to "已经完成?","#{new_record_path}?requirement_id=#{@requirement.id}",:class => "button" %>
+      </div>
+    </div>
+  <% else %>
+    <div style="clear:both;padding:4px 20px">
+      <%= link_to "我要#{@requirement.action.name}","#{plans_path}?requirement_id=#{@requirement.id}",:method => :post,:class => "big_button",:id => 'plan_to' %>
+    </div>
+  <% end %>
+<% end %>

@@ -1,4 +1,6 @@
-<%= form_for @venue, :remote => true do |form| %>
-  <h2>添加新的服务点</h2>
-  <%= render :partial => "form", :object => form %>
+<h2>添加新的聚点</h2>
+<%= render "form" %>
+
+<% content_for :sidebar do %>
+  <%= render '/venues/what_is_venue'%>
 <% end %>

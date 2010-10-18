@@ -5,8 +5,12 @@ class User < ActiveRecord::Base
   include Authentication::ByPassword
   include Authentication::ByCookieToken
   
+  # set avatar by papercilp
+  has_attached_file :avatar
+  
   has_one :profile
   has_many :records
+  has_many :plans
   has_many :venues,:foreign_key => :creator_id
   # set_table_name 'users'
 
@@ -53,8 +57,20 @@ class User < ActiveRecord::Base
     write_attribute :email, (value ? value.downcase : nil)
   end
 
+  def time_counter
+    self.records.map(&:time).compact.sum
+  end
+  
+  def amount_counter
+    self.records.map(&:amount).compact.sum
+  end
+
+  def goods_counter
+    self.records.map(&:goods).compact.sum
+  end
+
+
   protected
-    
-
-
+  
+  
 end

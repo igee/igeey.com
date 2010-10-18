@@ -13,11 +13,15 @@ Igee::Application.routes.draw do
   resources :venues do
     member do
       get :have_done
+      get :publish_requirement
     end
   end
 
   resources :actions
+  resources :requirements
   
+  resources :plans
+    
   resources :geos
   
   resources :records

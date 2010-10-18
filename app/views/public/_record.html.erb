@@ -1,0 +1,24 @@
+<div class='record'>
+  <%= render :partial => '/public/user', :object => record.user %>
+  <div class="message">
+    <p>
+      <span style="font-size:20px;font-family:'times new roman';color:#999">“</span>
+      <%="#{record.user.login} 在 #{record.do_at.to_date} 为#{record.venue.name}"%><%= record.action.name %>:
+      <% if record.action.for_amount %>
+        <%= "#{record.amount}元，用于#{record.donate_for}。"%>
+      <% end %>
+      
+      <% if record.action.for_goods %>
+        <%= "#{record.goods}件#{record.goods_is}。" %>
+      <% end %>
+      
+      <% if record.action.for_time %>
+        <%= "#{record.do_what}共#{record.time}小时。"%>
+      <% end %>
+      <span style="font-size:20px;font-family:'times new roman';color:#999">”</span>
+    </p>
+    <div class="addition">
+      <%= link_to '查看详情 >>',record %>
+    </div>
+  </div>
+</div>
