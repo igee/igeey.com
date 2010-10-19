@@ -62,8 +62,8 @@ class User < ActiveRecord::Base
     self.records.map(&:time).compact.sum
   end
   
-  def amount_counter
-    self.records.map(&:amount).compact.sum
+  def money_counter
+    self.records.map(&:money).compact.sum
   end
 
   def goods_counter

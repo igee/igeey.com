@@ -26,6 +26,6 @@ Venue.new(:name => '太阳村',:geo_id => 1,:category => '1',:creator_id => 1,:l
 Venue.new(:name => '某流浪狗收容站',:geo_id => 1,:category => '3',:creator_id => 1,:latitude => "39.91612252026889",:longitude => "116.49694693188478",:intro => "社区里的流浪狗收容站，有20多只流浪狗在这里生活。").save
 Venue.new(:name => '大屯里小区',:geo_id => 1,:category => '3',:creator_id => 2,:latitude => "40.00904440587653",:longitude => "116.41574621200562",:intro => "爱聚办公室所在，这里卫生环境不太好。").save
 
-Action.new(:name => '志愿服务',:for_time => true).save
-Action.new(:name => '捐款',:for_amount => true).save
-Action.new(:name => '捐物',:for_goods => true).save
+Action.new(:name => '志愿服务',:for_what => 'time').save
+Action.new(:name => '捐款',:for_what => 'money').save
+Action.new(:name => '捐物',:for_what => 'goods').save
