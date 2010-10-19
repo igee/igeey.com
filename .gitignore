@@ -1,8 +1,10 @@
 .bundle
 config/database.yml
+config/oauth/*.yml
 db/*.sqlite3
 log/*.log
 tmp/*
+
 
 public/system/
 

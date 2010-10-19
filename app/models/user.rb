@@ -5,8 +5,9 @@ class User < ActiveRecord::Base
   include Authentication::ByPassword
   include Authentication::ByCookieToken
   
-  # set avatar by papercilp
-  has_attached_file :avatar
+  add_oauth  # add dynamic method for confirmation of oauth status
+  
+  has_attached_file :avatar  # set avatar by papercilp
   
   has_one :profile
   has_many :records

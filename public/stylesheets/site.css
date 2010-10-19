@@ -153,12 +153,12 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
   background-color:#666;
   color:white;
   float:left;
-  width:72px;
-  height:72px;
+  width:86px;
+  height:86px;
   margin:0 10px;
   text-align:center;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
 }
 
 .user_counter h1{

@@ -4,3 +4,9 @@
   <%= form.file_field :avatar %>
 <p><%= submit_tag 'Ok' %></p>
 <% end -%>
+
+<ul>
+  <li><%= @user.douban? ? '已经和豆瓣连接了' : link_to('连接豆瓣',:controller => 'oauth', :action => 'douban')%></li>
+  <li><%= @user.sina? ? '已经和新浪微博连接了' : link_to('连接新浪微博',:controller => 'oauth', :action => 'sina')%></li>
+</ul>
+    

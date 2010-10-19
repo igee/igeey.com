@@ -9,7 +9,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'mysql', '2.8.1'
 gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
 gem 'rmagick'
-
+gem 'oauth'
 # Use unicorn as the web server
 # gem 'unicorn'
 
