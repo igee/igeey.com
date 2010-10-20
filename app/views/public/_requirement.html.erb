@@ -1,7 +1,7 @@
-<div class='requirement'>
+<div class="event_box">
   <%= render :partial => '/public/user', :object => requirement.publisher %>
-  <div class="message">
-    <div class="message_sidebar">
+  <div class="event">
+    <div class="event_sidebar">
     <% if requirement.plans.map(&:user).include?(current_user) %>
       <span class="todo">你已参与</span>
       <br/>
@@ -20,7 +20,7 @@
       <span style="font-size:20px;font-family:'times new roman';color:#999">”</span>
     </p>
     <div class="addition">
-      <span><%= link_to requirement.publisher.login,requirement.publisher %>@<%= link_to requirement.venue.name,requirement.venue %></span>
+      <span><%= raw who_at_where(requirement.publisher,requirement.venue)%></span>
     </div>
   </div>
 </div>

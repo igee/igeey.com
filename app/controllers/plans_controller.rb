@@ -23,6 +23,11 @@ class PlansController < ApplicationController
     redirect_to @plan.requirement
   end
   
+  def destroy
+    @plan.destroy
+    redirect_to @plan.requirement
+  end
+    
   private
   def find_plan
     @plan = Plan.find(params[:id])

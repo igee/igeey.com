@@ -14,7 +14,7 @@ ul,dl,p{
     }
 
 span{
-  color:#999;
+  color:#888;
   font-size:12px;
 }
 
@@ -194,13 +194,13 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
   font-size:14px;
   padding:10px 15px;}
 
-.message {height:64px}
-.message p{
+.event {height:64px}
+.event p{
     font-size:16px;
     font-weight:bold;
     }
 
-.message_sidebar{
+.event_sidebar{
   float:right;
   text-align:right;
 }
@@ -210,7 +210,7 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
     line-height:16px;
 }
 
-.requirement,.record{padding:4px;margin:10px 0;border-bottom:1px dashed #aaa;}
+.event_box{padding:4px;margin:10px 0;border-bottom:1px dashed #aaa;}
 
 
 .todo{
@@ -227,10 +227,6 @@ input.todo:hover{
     background:#c30;
     border:4px solid #f63;
     }
-
-.plan{
-  clear:both;
-}
 
 a#logo{
     padding:10px;

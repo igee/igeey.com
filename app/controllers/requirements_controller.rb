@@ -14,6 +14,7 @@ class RequirementsController < ApplicationController
     @records = @requirement.records
     @plan = @plans.where(:user_id => (current_user.id if current_user)).first || nil
     @record = @records.where(:user_id => (current_user.id if current_user)).first || nil
+    @records = (@requirement.records - [@record])
   end
 
   def new

@@ -3,7 +3,7 @@
   <div class="saying">
     <div style="font-size:26px;text-align:left;font-family:'times new roman';margin-bottom:-10px;color:#999">“</div>
     <div style="padding:0 20px;">
-          <%="#{@venue.name}"%>需要<%= "#{requirement_description(@requirement)} "%>
+          <%="#{@venue.name}"%><%= "#{requirement_description(@requirement)} "%>
           <br/>
           <p style="color:#999;font-size:13px;font-weight:normal;"><%= @requirement.detail %><p>
     </div>
@@ -15,34 +15,57 @@
 </div>
 
 <div class="box">
-  <h4>这些用户要参与:</h4>
-  <%= render :partial => '/public/user',:collection => @plans.map(&:user),:locals => {:with_name => true}%>
-</div>
-
-<% content_for :sidebar do %>
   <% if @record %>
-    <%= render :partial => '/public/user',:object => @plan.user,:locals => {:with_name => true}%>
-    <div class="saying">
-      <div style="font-size:20px;text-align:left;font-family:'times new roman';margin-bottom:-10px;color:#999">“</div>
-      <div style="padding:2px 4px "><%= "我为#{@requirement.venue.name}#{@requirement.action.name}了" %></div>
-      <div style="font-size:20px;text-align:right;font-family:'times new roman';margin-top:-5px;color:#999">”</div>
-      <div style="text-align:center">
-      </div>
+    <h4>你的行动：</h4>
+    <div class="event_box">
+      <%= render :partial => '/public/user',:object => @plan.user%>
+      <div class="event">
+        <p>
+          <%= link_to "你完成了为#{@requirement.venue.name}的#{@requirement.action.name}：#{record_description(@record)}",@record %>
+        </p>
+        <div style="text-align:right">
+          <%= link_to "更正数量？",edit_record_path(@record),:class => "button" %>
+        </div>
+       </div>
     </div>
-
   <% elsif @plan %>
-    <%= render :partial => '/public/user',:object => @plan.user,:locals => {:with_name => true}%>
-    <div class="saying">
-      <div style="font-size:20px;text-align:left;font-family:'times new roman';margin-bottom:-10px;color:#999">“</div>
-      <div style="padding:2px 4px "><%= "我要为#{@requirement.venue.name}#{@requirement.action.name}.." %></div>
-      <div style="font-size:20px;text-align:right;font-family:'times new roman';margin-top:-5px;color:#999">”</div>
-      <div style="text-align:center">
-        <%= link_to "已经完成?","#{new_record_path}?requirement_id=#{@requirement.id}",:class => "button" %>
-      </div>
+    <h4>你的计划：</h4>
+    <div class="event_box">
+      <%= render :partial => '/public/user',:object => @plan.user%>
+      <div class="event">
+        <p>
+          <%= link_to "你计划为#{@requirement.venue.name}#{@requirement.action.name}。",@plan %>
+        </p>
+        <div style="text-align:right">
+          <%= link_to "已经完成?","#{new_record_path}?requirement_id=#{@requirement.id}",:class => "button" %>
+          <%= link_to "取消",plan_path(@plan),:method => :delete,:class => "button" %>
+        </div>
+       </div>
     </div>
   <% else %>
-    <div style="clear:both;padding:4px 20px">
-      <%= link_to "我要#{@requirement.action.name}","#{plans_path}?requirement_id=#{@requirement.id}",:method => :post,:class => "big_button",:id => 'plan_to' %>
+    <div style="clear:both;padding:4px 200px">
+      <%= link_to "我要参与","#{plans_path}?requirement_id=#{@requirement.id}",:method => :post,:class => "big_button",:id => 'plan_to' %>
     </div>
   <% end %>
+</div>
+
+<div class="box">
+  <h4>所有参与的用户：</h4>
+  <%= render :partial => '/public/user',:collection => @plans.map(&:user),:locals => {:with_name => true}%>
+  <div class="clear"></div>
+</div>
+
+<div class="box">
+  <h4>行动记录:</h4>
+  <%= render :partial => 'public/record', :collection => @records %>
+  <div class="clear"></div>
+</div>
+
+
+<% content_for :sidebar do %>
+  <h3 style="color:#666">需求完成度：</h3>
+  <div style="text-align:center">
+    <span style="font-size:48px"><%= @requirement.percentage %></span>
+    <span style="font-size:24px">%<span>
+  </div>
 <% end %>
