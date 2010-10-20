@@ -34,17 +34,17 @@
       <%= render :partial => '/public/user',:object => @plan.user%>
       <div class="event">
         <p>
-          <%= link_to "你计划为#{@requirement.venue.name}#{@requirement.action.name}。",@plan %>
+          <%= link_to "你计划为#{@requirement.venue.name}#{@requirement.action.name}。",requirement_plan_path(@requirement,@plan) %>
         </p>
         <div style="text-align:right">
           <%= link_to "已经完成?","#{new_record_path}?requirement_id=#{@requirement.id}",:class => "button" %>
-          <%= link_to "取消",plan_path(@plan),:method => :delete,:class => "button" %>
+          <%= link_to "取消",requirement_plan_path(@requirement,@plan),:method => :delete,:class => "button" %>
         </div>
        </div>
     </div>
   <% else %>
     <div style="clear:both;padding:4px 200px">
-      <%= link_to "我要参与","#{plans_path}?requirement_id=#{@requirement.id}",:method => :post,:class => "big_button",:id => 'plan_to' %>
+      <%= link_to "我要参与","#{requirement_plans_path(@requirement)}",:method => :post,:class => "big_button",:id => 'plan_to' %>
     </div>
   <% end %>
 </div>

@@ -19,9 +19,9 @@ Igee::Application.routes.draw do
   end
 
   resources :actions
-  resources :requirements
-  
-  resources :plans
+  resources :requirements do
+    resources :plans
+  end
     
   resources :geos
   
