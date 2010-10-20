@@ -5,6 +5,7 @@ Igee::Application.routes.draw do
   match 'register' => 'users#create', :as => :register
   match 'login' => 'sessions#new', :as => :login
   match 'logout' => 'sessions#destroy', :as => :logout
+  match 'login_and_signup' => 'sessions#login_and_signup'
   match 'oauth(/:action)' => 'oauth#(/:action)'
  
   resources :users

@@ -5,11 +5,12 @@
   <title>Igee-网站开发中</title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag 'jquery-1.4.2.min' %>
-  <%= javascript_include_tag 'application' %>
   <%= javascript_include_tag 'rails' %>
+  <%= javascript_include_tag 'dialog' %>
   <%= javascript_include_tag 'calendar' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tag %>
-  <%= yield :head %>
+  <%= yield :head %>  
 </head>
 
 <body>
@@ -28,8 +29,8 @@
           <%= link_to current_user.login,user_path(current_user)%> |
           <%= link_to "退出",logout_path %>
         <% else %>
-          <%= link_to "登录",login_path %> |
-          <%= link_to "注册",signup_path %>
+          <%= link_to "登录",login_path,:class => "open_dialog" ,:title => '登录'%> |
+          <%= link_to "注册",signup_path ,:class => "open_dialog",:title => '注册' %>
         <% end %>
       </div>
     </div>
@@ -55,5 +56,9 @@
     </div>
   </div>
   <%= yield :extension %>
+  
+  <script type="text/javascript">
+    $(function(){$(".open_dialog").click(function(){dialog($(this).attr('title'),("url:"+$(this).attr('href')),"480px","auto","text");  return false;});})
+  </script>
 </body>
 </html>
