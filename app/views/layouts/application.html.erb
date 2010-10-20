@@ -29,8 +29,8 @@
           <%= link_to current_user.login,user_path(current_user)%> |
           <%= link_to "退出",logout_path %>
         <% else %>
-          <%= link_to "登录",login_path,:class => "open_dialog" ,:title => '登录'%> |
-          <%= link_to "注册",signup_path ,:class => "open_dialog",:title => '注册' %>
+          <%= link_to "登录",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%> |
+          <%= link_to "注册",signup_path ,:class => "open_dialog",:title => '注册',:id => "signup" %>
         <% end %>
       </div>
     </div>

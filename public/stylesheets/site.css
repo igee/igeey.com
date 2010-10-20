@@ -100,6 +100,18 @@ button,.button{
 
 button:hover,.button:hover,.big_button:hover{background:#c00}
 
+.dialog_rightbar{
+  float:right;
+  width:160px;
+  padding:20px;
+}
+.dialog_leftbar{
+  float:left;
+  width:180px;
+  border-right:1px dashed #999;
+  padding:0 30px 0 10px;
+  margin:10px 0;
+}
 
 .explain{color:#999;font-style:italic;margin:5px 0;}
 
