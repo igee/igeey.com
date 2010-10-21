@@ -19,7 +19,12 @@ class RecordsController < ApplicationController
   def create
     @record = Record.new(params[:record])
     @record.user = current_user
-    flash[:notice] = 'Record was successfully created.' if @record.save
+    if @record.save
+      @oauth_message = "(这是oauth同步测试）我#{@record.description}  #{record_url(@record)}"
+      if @record.sync_to_douban && current_user.douban?
+        current_user.send_to_douban(@oauth_message)
+      end
+    end  
     respond_with(@record)
   end
   

@@ -32,9 +32,7 @@
       <h6>详细信息：</h6>
       <%= form.text_area :detail, :cols => 58, :rows => 4,:class => "underline",:placeholder => "简述需求的背景，还有大家参时有必要了解的信息。"%>
     </p>
-    <%= form.check_box :sync_to_sina ,:disabled => (current_user.sina? ? false : true)%> 同步到新浪微博  
-    <%= form.check_box :sync_to_douban ,:disabled => (current_user.douban? ? false : true)%> 同步到豆瓣
-    
+    <%= raw sync_form_tag(form)%>
   </div>
       
   

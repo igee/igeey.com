@@ -3,7 +3,7 @@
   <div class="event">
     <p>
       <span style="font-size:20px;font-family:'times new roman';color:#999">“</span>
-      <%= link_to "#{record.user.login}在#{format_date(record.do_at)}为#{record.venue.name}#{record.action.name}:#{record_description(record) }",record%>
+      <%= link_to "#{record.user.login}#{record.description}",record%>
       <span style="font-size:20px;font-family:'times new roman';color:#999">”</span>
     </p>
     <div class="addition">

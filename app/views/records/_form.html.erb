@@ -23,8 +23,8 @@
         <div style="font-size:26px;text-align:right;font-family:'times new roman';margin-top:-10px;color:#999">”</div>
     </div>
     <div style="clear:both;text-align:right">
-      <%= form.check_box :sync_to_sina ,:disabled => true%> 同步到新浪微博  
-      <%= form.check_box :sync_to_douban ,:disabled => true%> 同步到豆瓣<br />
+      <%= raw sync_form_tag(form)%>
+      <br />
       <%= form.submit '确定',:class => "button"%>
       <%= button_to_function '取消',"javascript:window.location='#{venue_path(@venue)}'",:class => "button"%>
     </div>

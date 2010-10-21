@@ -21,10 +21,10 @@
       <%= render :partial => '/public/user',:object => @plan.user%>
       <div class="event">
         <p>
-          <%= link_to "你完成了为#{@requirement.venue.name}的#{@requirement.action.name}：#{record_description(@record)}",@record %>
+          <%= link_to "你#{@record.description}",@record %>
         </p>
         <div style="text-align:right">
-          <%= link_to "更正数量？",edit_record_path(@record),:class => "button" %>
+          <%= link_to "更正信息？",edit_record_path(@record),:class => "button" %>
         </div>
        </div>
     </div>

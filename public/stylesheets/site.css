@@ -183,13 +183,13 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
     float:right;
     width:490px;
     background-color:#fff;
-    color:#666;
+    color:#505050;
     -moz-border-radius: 10px;
     border-radius: 10px;
     padding:10px 20px;
     list-style:none;    
     font-weight:bold;
-    font-size:15px;
+    font-size:16px;
 }
 
 .saying  input{text-align:right}
@@ -208,7 +208,7 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
 
 .event {height:64px}
 .event p{
-    font-size:16px;
+    font-size:15px;
     font-weight:bold;
     }
 
