@@ -70,7 +70,11 @@ class User < ActiveRecord::Base
     self.records.map(&:goods).compact.sum
   end
 
-
+  def send_to_douban(message)
+    content = "<?xml version='1.0' encoding='UTF-8'?><entry xmlns:ns0='http://www.w3.org/2005/Atom' xmlns:db='http://www.douban.com/xmlns/'><content>#{message}</content></entry>"
+    self.douban.post('http://api.douban.com/miniblog/saying',content, {"Content-Type" =>  "application/atom+xml"}  )
+  end
+  
   protected
   
   

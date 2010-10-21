@@ -6,6 +6,8 @@ class Requirement < ActiveRecord::Base
   has_many   :plans
   
   default_scope :order => 'created_at DESC'
+  
+  attr_accessor :sync_to_sina,:sync_to_douban,:sync_to_renren
     
   def users_count
     self.plans.map(&:user).uniq.size
@@ -18,6 +20,16 @@ class Requirement < ActiveRecord::Base
       (self.plans.map(&:user).uniq.size*100 / self.total_people)
     elsif self.action.for_what == 'goods'
       (self.records.map(&:goods).sum*100 / self.total_goods)
+    end
+  end
+  
+  def description
+    if self.action.for_what == 'money'
+      "#{self.venue.name}需要#{self.total_money}元用于#{self.donate_for}。"
+    elsif self.action.for_what == 'goods'
+      "#{self.venue.name}需要#{self.total_goods}件#{self.goods_is}。"
+    elsif self.action.for_what == 'time'
+      "#{self.venue.name}需要#{self.total_people}人#{self.do_what}。"
     end
   end
 end
