@@ -1,13 +1,12 @@
 <div class="event_box">  
   <%= render :partial => '/public/user',:object => plan.user %>
-  <div class="">
+  <div class="event">
     <p>
-      <%= "#{personal_name(plan.user)}要为#{plan.requirement.venue.name}#{plan.requirement.action.name}。"%>
+      <span style="font-size:20px;font-family:'times new roman';color:#999">“</span>
+      <%= link_to "#{personal_name(plan.user)}#{plan.description}",requirement_plan_path(plan.requirement,plan) %>
+      <span style="font-size:20px;font-family:'times new roman';color:#999">”</span>
     </p>
-    <div style="float:right">
-      <span>
-          <%= link_to '查看需求',requirement_plan_path(plan.requirement,plan)%>
-      </span>
+    <div style="text-align:rights">
     </div>
   </div>
 </div>

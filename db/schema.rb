@@ -34,6 +34,7 @@ ActiveRecord::Schema.define() do
     t.integer :venue_id
     t.integer :action_id
     t.integer :requirement_id
+    t.integer :record_id
     t.timestamps
   end
 
@@ -45,6 +46,7 @@ ActiveRecord::Schema.define() do
     t.integer  :user_id
     t.integer  :venue_id
     t.integer  :action_id
+    t.integer  :plan_id
     t.integer  :requirement_id
     t.integer  :money
     t.string   :donate_for,  :limit => 40
@@ -96,7 +98,7 @@ ActiveRecord::Schema.define() do
     t.timestamps
   end
   
-  create_table "oauth_tokens" do |t|
+  create_table "oauth_tokens",:force => true do |t|
     t.integer :user_id
     t.string  :request_key
     t.string  :request_secret

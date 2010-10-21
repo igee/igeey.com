@@ -34,11 +34,10 @@ class UsersController < ApplicationController
     @user.update_attributes(params[:user])
     respond_with(@user)
   end
-  
-  
+    
   def show
     @records = @user.records
-    @plans = @user.plans
+    @plans = @user.plans.map{|p| p if p.record.nil?}.compact
   end
   
   

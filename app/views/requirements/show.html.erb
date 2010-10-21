@@ -24,7 +24,7 @@
           <%= link_to "你#{@record.description}",@record %>
         </p>
         <div style="text-align:right">
-          <%= link_to "更正信息？",edit_record_path(@record),:class => "button" %>
+          <%= link_to "更正信息？",edit_record_path(@record) %>
         </div>
        </div>
     </div>
@@ -37,7 +37,7 @@
           <%= link_to "你计划为#{@requirement.venue.name}#{@requirement.action.name}。",requirement_plan_path(@requirement,@plan) %>
         </p>
         <div style="text-align:right">
-          <%= link_to "已经完成?","#{new_record_path}?requirement_id=#{@requirement.id}",:class => "button" %>
+          <%= link_to "已经完成?","#{new_record_path}?plan_id=#{@plan.id}",:class => "button" %>
           <%= link_to "取消",requirement_plan_path(@requirement,@plan),:method => :delete,:class => "button" %>
         </div>
        </div>

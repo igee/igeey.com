@@ -4,11 +4,13 @@ class RecordsController < ApplicationController
   before_filter :find_record, :except => [:index,:new,:create]
   
   def new
-    @record = Record.new(:action_id => params[:action_id],:venue_id => params[:venue_id],:requirement_id => params[:requirement_id])
-    @requirement = @record.requirement
+    
+    @record = Record.new(:action_id => params[:action_id],:venue_id => params[:venue_id],:plan_id => params[:plan_id])
+    @plan = @record.plan
+    @requirement = @plan.nil? ? @record.requirement : @plan.requirement
     @venue = @requirement.nil? ? @record.venue : @requirement.venue
     @action = @requirement.nil? ? @record.action : @requirement.action
-    @record = Record.new(:action => @action,:venue => @venue,:requirement => @requirement)
+    @record = Record.new(:action => @action,:venue => @venue,:requirement => @requirement,:plan => @plan)
     if @venue.nil? 
       @venues = Venue.all
       render "select_venue"
@@ -22,7 +24,7 @@ class RecordsController < ApplicationController
     if @record.save
       @oauth_message = "(这是oauth同步测试）我#{@record.description}  #{record_url(@record)}"
       if @record.sync_to_douban && current_user.douban?
-        current_user.send_to_douban(@oauth_message)
+        current_user.send_to_douban_miniblog(@oauth_message)
       end
     end  
     respond_with(@record)

@@ -34,7 +34,7 @@ class RequirementsController < ApplicationController
     if @requirement.save
       @oauth_message = "(这是oauth同步测试）我在爱聚网站发布了新的公益需求： #{@requirement.description}  #{requirement_url(@requirement)}"
       if @requirement.sync_to_douban && current_user.douban?
-        current_user.send_to_douban(@oauth_message)
+        current_user.send_to_douban_miniblog(@oauth_message)
       end
     end  
     respond_with @requirement

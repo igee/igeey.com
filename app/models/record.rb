@@ -3,6 +3,7 @@ class Record < ActiveRecord::Base
   belongs_to :venue
   belongs_to :action
   belongs_to :requirement
+  belongs_to :plan
   
   default_scope :order => 'created_at DESC'
   
