@@ -7,9 +7,11 @@ class User < ActiveRecord::Base
   
   add_oauth  # add dynamic method for confirmation of oauth status
   
-  has_attached_file :avatar  # set avatar by papercilp
-  
-  has_one :profile
+  has_attached_file :avatar,:styles => {:_48x48 => ["48x48#",:png],:_72x72 => ["72x72#",:png]},
+                            :default_url=>"/defaults/:attachment/:style.png",
+                            :default_style=> :_48x48,
+                            :url=>"/media/:attachment/:id/:style.:extension"
+                            
   has_many :records
   has_many :plans
   has_many :venues,:foreign_key => :creator_id
@@ -34,7 +36,7 @@ class User < ActiveRecord::Base
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
-  attr_accessible :login, :email, :name, :password, :password_confirmation
+  attr_accessible :login, :email, :name, :password, :password_confirmation,:avatar
 
 
 

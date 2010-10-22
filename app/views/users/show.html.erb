@@ -1,5 +1,5 @@
 <div class="box">
-  <%= render :partial => '/public/user',:object => @user ,:locals => {:with_name => true}%>
+  <%= image_tag @user.avatar.url(:_72x72),:class => "avatar" %>
   <div id="user_counters">
     <h6><%= @user.login%>的贡献:</h6>
     <% [[@user.time_counter,'小时'],[@user.money_counter,'元捐款'],[@user.goods_counter,'件物品']].each do |counter_list|%>

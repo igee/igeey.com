@@ -6,7 +6,6 @@
           <%="#{@record.user.login}#{@record.description}"%>
         </p>
         <div style="font-size:26px;text-align:right;font-family:'times new roman';margin-top:-10px;color:#999">”</div>
-        <span><%= raw who_at_where(@record.user,@record.venue)%></span>
         <div style="text-align:right"><span><%= link_to "更正信息？",edit_record_path(@record) %></span></div>
       </div>
       <div class="saying_tail"></div>
@@ -25,4 +24,4 @@
     <h4>大家的留言：</h4>
     <%= render :partial => '/public/comment' ,:collection => @comments %>
   </div>
-  <%= render :partial => '/comments/form' ,:locals => {:commentable => @requirement}%>
+  <%= render :partial => '/comments/form' ,:locals => {:commentable => @record}%>
