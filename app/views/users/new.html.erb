@@ -1,42 +1,45 @@
-<h2>欢迎新用户注册，填写你的注册信息</h2>
-<% @user.password = @user.password_confirmation = nil %>
-
-<%= error_messages_for :user %>
-<div class="dialog_leftbar">
-  <%= form_for :user, :url => users_path do |f| -%>
-  <p>
-    <%= label_tag 'login','用户名:' %>
-    <%= f.text_field :login,:size => 10%>
-  </p>
+<div style="width:450;">
+  <h2>欢迎新用户注册，填写你的注册信息</h2>
+  <% @user.password = @user.password_confirmation = nil %>
   
-  <p>
-    <%= label_tag 'email','邮箱:　' %>
-    <%= f.text_field :email, :size => 10%>
+  <%= error_messages_for :user %>
+  <div class="dialog_leftbar">
+    <%= form_for :user, :url => users_path do |f| -%>
+    <p>
+      <%= label_tag 'login','用户名:' %>
+      <%= f.text_field :login,:size => 10%>
     </p>
+    
+    <p>
+      <%= label_tag 'email','邮箱:　' %>
+      <%= f.text_field :email, :size => 10%>
+      </p>
+    
+    <p>
+      <%= label_tag 'password','密码:　' %>
+      <%= f.password_field :password,:size => 10%>
+    </p>
+    <p>
+      再输入一遍密码：<br/>
+      <div id="confirmation"></div>
+    </p>
+    
+    <p>
+      <%= submit_tag 'Ok',:class => 'button' %>
+    </p>
+    
+    <script type="text/javascript">
+      $('#confirmation').html('<%= raw "#{label_tag 'password_confirmation','第二遍:'} #{f.password_field :password_confirmation, :size => 10}" %>')
+    </script>
+    <% end -%>
+  </div>
+  <div class="dialog_rightbar">
+    <p>
+      已经加入过爱聚了？<br/>
+      <%= link_to '直接登录吧',login_path,:onclick => (params[:layout] == 'false' ? "javascript:$('#login').click();return false" : '') %>
+    </p>
+  </div>
   
-  <p>
-    <%= label_tag 'password','密码:　' %>
-    <%= f.password_field :password,:size => 10%>
-  </p>
-  <p>
-    再输入一遍密码：<br/>
-    <div id="confirmation"></div>
-  </p>
-  
-  <p>
-    <%= submit_tag 'Ok',:class => 'button' %>
-  </p>
-  
-  <script type="text/javascript">
-    $('#confirmation').html('<%= raw "#{label_tag 'password_confirmation','第二遍:'} #{f.password_field :password_confirmation, :size => 10}" %>')
-  </script>
-  <% end -%>
+  <div class="clear"></div>
 </div>
-<div class="dialog_rightbar">
-  <p>
-    已经加入过爱聚了？<br/>
-    <%= link_to '直接登录吧',login_path,:onclick => (params[:layout] == 'false' ? "javascript:$('#login').click();return false" : '') %>
-  </p>
-</div>
-
-<div class="clear"></div>
+  

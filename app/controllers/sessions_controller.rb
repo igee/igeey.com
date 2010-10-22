@@ -5,7 +5,10 @@ class SessionsController < ApplicationController
 
   # render new.rhtml
   def new
-    render :layout => false if params[:layout] == 'false'
+    if params[:layout] == 'false'
+      session[:return_to] = :back
+      render :layout => false
+    end  
   end
   
   def create
