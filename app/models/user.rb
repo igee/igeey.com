@@ -14,7 +14,8 @@ class User < ActiveRecord::Base
                             
   has_many :records
   has_many :plans
-  has_many :venues,:foreign_key => :creator_id
+  has_many :requirements,   :foreign_key => :publisher_id
+  has_many :venues,         :foreign_key => :creator_id
   # set_table_name 'users'
 
   validates :login, :presence   => true,
@@ -70,6 +71,10 @@ class User < ActiveRecord::Base
 
   def goods_counter
     self.records.map(&:goods).compact.sum
+  end
+
+  def has_unread_comment?
+    [self.records.where(:has_new_comment => true).size,self.plans.where(:has_new_comment => true).size,self.requirements.where(:has_new_comment => true).size].sum > 0
   end
 
   # Use OAuth::AccessToken to access oauth api. powered by oauth_side 

@@ -11,7 +11,11 @@
     <%= link_to "添加新的聚点",new_venue_path,:id => "create_venue",:class => 'big_button' %>
   </div>
   
-  <h5>最新的聚点:</h5>
+  <h4><%= "你有新消息" if logged_in? && current_user.has_unread_comment? %></h4>
+  
+  
+  
+  <h4>最新的聚点:</h4>
   <p>
   <% @venues.each do |venue| %>
     <%= link_to(venue.name,venue)%>

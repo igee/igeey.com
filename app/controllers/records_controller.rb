@@ -42,4 +42,7 @@ class RecordsController < ApplicationController
     @record = Record.find(params[:id])
   end
   
+  def seen_comment
+    @record.update_attribute(:has_new_comment,false) if @record.user = current_user
+  end
 end

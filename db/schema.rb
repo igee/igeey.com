@@ -47,6 +47,7 @@ ActiveRecord::Schema.define() do
     t.integer  :money
     t.integer  :goods
     t.datetime :plan_at
+    t.boolean  :has_new_comment,  :default => false
     t.timestamps
   end
 
@@ -68,6 +69,7 @@ ActiveRecord::Schema.define() do
     t.integer  :time
     t.string   :do_what,     :limit => 40
     t.datetime :do_at
+    t.boolean  :has_new_comment,  :default => false
     t.timestamps
   end
 
@@ -95,6 +97,7 @@ ActiveRecord::Schema.define() do
     t.integer :total_people
     t.string  :do_what,     :limit => 40
     t.text    :detail
+    t.boolean :has_new_comment
     t.timestamps
   end  
 
