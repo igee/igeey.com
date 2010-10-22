@@ -18,6 +18,15 @@ ActiveRecord::Schema.define() do
     t.string  :for_what,    :limit => 40
   end
 
+
+  create_table "comments", :force => true do |t|
+    t.integer  :user_id,    :null => false
+    t.text     :content
+    t.integer  :commentable_id
+    t.string   :commentable_type, :limit => 40
+    t.timestamps
+  end
+
   create_table "geos", :force => true do |t|
     t.string  :name,       :limit => 40
     t.integer :parent_id
@@ -25,8 +34,7 @@ ActiveRecord::Schema.define() do
     t.integer :zoom_level
     t.string  :slug,       :limit => 40
     t.string  :latitude,   :limit => 40
-    t.string  :longitude,  :limit => 40
-    
+    t.string  :longitude,  :limit => 40    
   end
 
   create_table "plans", :force => true do |t|

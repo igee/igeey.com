@@ -20,6 +20,8 @@ class PlansController < ApplicationController
   end
   
   def show
+    @comment = Comment.new
+    @comments = @requirement.comments
     redirect_to @plan.requirement
   end
   

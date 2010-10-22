@@ -20,7 +20,7 @@ span{
 
 a{
     text-decoration:none;
-    color:#666;
+    color:#558;
     }
 
 a:hover{color:#f60}
@@ -196,10 +196,28 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
 
 .saying_tail{
   float:right;
-  background:url('/images/saying_tail.png');
+  background:url('/images/saying_tail.png') no-repeat;
   width:8px;
   height:72px;
 }
+
+.comment{
+    float:right;
+    
+    
+}
+
+.comment p{
+    width:490px;
+    background-color:#fff;
+    color:#505050;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    min-height:30px;
+    font-size:13px;
+    padding:10px 20px;
+}
+
 
 #sidebar .saying{
   width:140px;

@@ -8,7 +8,7 @@ Igee::Application.routes.draw do
   match 'login_and_signup' => 'sessions#login_and_signup'
   match 'oauth(/:action)' => 'oauth#(/:action)'
  
-  resources :users
+  
   
   resource :session, :only => [:new, :create, :destroy]
 
@@ -20,13 +20,15 @@ Igee::Application.routes.draw do
   end
 
   resources :actions
+  
   resources :requirements do
     resources :plans
   end
     
   resources :geos
-  
+  resources :users
   resources :records
+  resources :comments
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

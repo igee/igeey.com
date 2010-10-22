@@ -3,8 +3,7 @@ class RecordsController < ApplicationController
   before_filter :login_required, :except => [:index, :show]
   before_filter :find_record, :except => [:index,:new,:create]
   
-  def new
-    
+  def new    
     @record = Record.new(:action_id => params[:action_id],:venue_id => params[:venue_id],:plan_id => params[:plan_id])
     @plan = @record.plan
     @requirement = @plan.nil? ? @record.requirement : @plan.requirement
@@ -34,6 +33,8 @@ class RecordsController < ApplicationController
     @venue = @record.venue
     @action = @record.action
     @requirement = @record.requirement
+    @comment = Comment.new
+    @comments = @requirement.comments
   end
   
   private

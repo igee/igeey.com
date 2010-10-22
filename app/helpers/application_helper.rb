@@ -3,6 +3,10 @@ module ApplicationHelper
     "#{link_to user.login,user}@#{link_to venue.name,venue}"
   end
   
+  def who_and_when(user,date)
+    "#{link_to user.login,user} #{format_date(date)}"
+  end
+  
   def personal_name(user)
     (current_user == user) ? "我" : user.login
   end

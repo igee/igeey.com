@@ -1,0 +1,14 @@
+<div class="event_box">  
+    <%= render :partial => '/public/user',:object => comment.user %>
+    <div class="comment">
+      <p>
+        <span style="font-size:20px;font-family:'times new roman';color:#999">“</span>
+        <%= comment.content %>
+        <span style="font-size:20px;font-family:'times new roman';color:#999">”</span>
+      </p>
+      <span>#<%= comment_counter +1%> <%= link_to comment.user.login,comment.user%> <%= format_date(comment.created_at) %></span>
+    </div>
+    <div class="saying_tail"></div>
+    
+    <div class="clear"></div>
+</div>

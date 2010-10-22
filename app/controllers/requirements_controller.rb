@@ -1,6 +1,7 @@
 class RequirementsController < ApplicationController
   respond_to :html
   before_filter :login_required, :except => [:index, :show]
+  before_filter :find_requirement, :except => [:index, :new, :create]
    
   def index
     @requirements = Requirement.all
@@ -14,7 +15,8 @@ class RequirementsController < ApplicationController
     @records = @requirement.records
     @plan = @plans.where(:user_id => (current_user.id if current_user)).first || nil
     @record = @records.where(:user_id => (current_user.id if current_user)).first || nil
-    @records = (@requirement.records - [@record])
+    @comment = Comment.new
+    @comments = @requirement.comments
   end
 
   def new
@@ -41,13 +43,18 @@ class RequirementsController < ApplicationController
   end
 
   def update
-    @requirement = Requirement.find(params[:id])
+    @requirement.update_attributes(params[:requirement])
     respond_with @requirement
   end
 
   def destroy
-    @requirement = Requirement.find(params[:id])
     @requirement.destroy
     respond_with @requirement
   end
+  
+  private
+  def find_requirement
+    @requirement = Requirement.find(params[:id])
+  end
+  
 end

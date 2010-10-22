@@ -20,3 +20,9 @@
     <%= render :partial => "/public/requirement",:object => @requirement %>
   </div>
   <% end %>
+  
+  <div class="box">
+    <h4>大家的留言：</h4>
+    <%= render :partial => '/public/comment' ,:collection => @comments %>
+  </div>
+  <%= render :partial => '/comments/form' ,:locals => {:commentable => @requirement}%>

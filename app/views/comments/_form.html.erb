@@ -1,0 +1,20 @@
+<div class="box">
+  <h4>发表留言：</h4>
+  
+  <% if logged_in?%>
+    <div style="padding:4px">
+      <%= render :partial => '/public/user',:object => current_user %>
+      <div style="float:right">
+        <%= form_for @comment,:url => comments_path(commentable) do |form| %>
+          <%= form.hidden_field :commentable_type,:value => commentable.class %>
+          <%= form.hidden_field :commentable_id,:value => commentable.id %>
+          <%= form.text_area :content, :style => "width:540px;height:60px",:class => "underline",:placeholder => "有什么想说的？"%>
+          <%= submit_tag '写好了！',:class => 'button' %>
+        <% end %>
+      </div>
+      <div class="clear"></div>
+    </div>
+  <% else %>
+    <p><%= link_to "立即登录",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%></p>
+  <% end %>
+</div>
