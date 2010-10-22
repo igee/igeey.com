@@ -19,7 +19,7 @@ class PlansController < ApplicationController
     @plan.user = current_user
     @plan.save
     if @plan.save
-      @oauth_message = "(这是oauth同步测试）： 我要#{@plan.description}  #{plan_url(@plan)}"
+      @oauth_message = "(这是oauth同步测试）： 我要#{@plan.description}  #{requirement_plan_url(@plan.requirement,@plan)}"
       if @requirement.sync_to_douban && current_user.douban?
         current_user.send_to_douban_miniblog(@oauth_message)
       end
