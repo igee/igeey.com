@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   # include AuthenticatedSystem
   respond_to :html
-  before_filter :find_user, :except => [:new,:create]
+  before_filter :login_required, :except => [:show,:new]
+  before_filter :find_user, :except => [:new,:create,:edit]
 
   # render new.rhtml
   def new
@@ -27,7 +28,8 @@ class UsersController < ApplicationController
     end
   end
   
-  def edit  
+  def edit
+    @user = current_user
   end
   
   def update

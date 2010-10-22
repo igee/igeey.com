@@ -4,6 +4,7 @@ class Record < ActiveRecord::Base
   belongs_to :action
   belongs_to :requirement
   belongs_to :plan
+  belongs_to :parent,:class_name => "Record",:foreign_key => "parent_id"
   has_many   :comments, :as => 'commentable', :dependent => :destroy
   
   default_scope :order => 'created_at DESC'

@@ -38,11 +38,15 @@ ActiveRecord::Schema.define() do
   end
 
   create_table "plans", :force => true do |t|
-    t.integer :user_id
-    t.integer :venue_id
-    t.integer :action_id
-    t.integer :requirement_id
-    t.integer :record_id
+    t.integer  :user_id
+    t.integer  :venue_id
+    t.integer  :action_id
+    t.integer  :requirement_id
+    t.integer  :record_id
+    t.integer  :parent_id
+    t.integer  :money
+    t.integer  :goods
+    t.datetime :plan_at
     t.timestamps
   end
 
@@ -56,6 +60,7 @@ ActiveRecord::Schema.define() do
     t.integer  :action_id
     t.integer  :plan_id
     t.integer  :requirement_id
+    t.integer  :parent_id
     t.integer  :money
     t.string   :donate_for,  :limit => 40
     t.integer  :goods

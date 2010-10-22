@@ -3,6 +3,14 @@ class PlansController < ApplicationController
   before_filter :login_required, :except => [:index, :show]
   before_filter :find_plan, :except => [:index,:new,:create]
   
+  def new
+    @requirement = Requirement.find(params[:requirement_id])
+    @plan = @requirement.plans.build()
+    if params[:layout] == 'false'
+      render :layout => false
+    end  
+  end
+  
   def create
     @plan = Plan.new(params[:plan])
     @plan.requirement = Requirement.find(params[:requirement_id])
@@ -10,6 +18,12 @@ class PlansController < ApplicationController
     @plan.action = @plan.requirement.action
     @plan.user = current_user
     @plan.save
+    if @requirement.save
+      @oauth_message = "(这是oauth同步测试）： 我要#{@plan.description}  #{plan_url(@plan)}"
+      if @requirement.sync_to_douban && current_user.douban?
+        current_user.send_to_douban_miniblog(@oauth_message)
+      end
+    end
     redirect_to @plan.requirement
   end
   
@@ -20,9 +34,9 @@ class PlansController < ApplicationController
   end
   
   def show
+    @requirement = @plan.requirement
     @comment = Comment.new
-    @comments = @requirement.comments
-    redirect_to @plan.requirement
+    @comments = @plan.comments
   end
   
   def destroy

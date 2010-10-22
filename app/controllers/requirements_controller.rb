@@ -11,9 +11,9 @@ class RequirementsController < ApplicationController
     @requirement = Requirement.find(params[:id])
     @venue = @requirement.venue
     @action = @requirement.action
-    @plans = @requirement.plans
+    @plans = @requirement.plans.map{|p| p if p.record.nil?}.compact
     @records = @requirement.records
-    @plan = @plans.where(:user_id => (current_user.id if current_user)).first || nil
+    @plan = Plan.where(:user_id => (current_user.id if current_user)).first || nil
     @record = @records.where(:user_id => (current_user.id if current_user)).first || nil
     @comment = Comment.new
     @comments = @requirement.comments

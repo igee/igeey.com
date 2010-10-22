@@ -1,4 +1,4 @@
-<%= form_for @plan do |form| %>
+<%= form_for @plan,:url => requirement_plans_path do |form| %>
 
   <% @requirement = @plan.requirement %>
   <% @venue = @requirement.venue %>
@@ -6,29 +6,27 @@
   <div style="clear:both">
     <%= form.hidden_field :requirement_id %>
     <%= render :partial => '/public/user' ,:object => current_user %>
-      <div class="saying">
+      <div class="saying" style="width:330px">
           <div style="font-size:30px;text-align:left;font-family:'times new roman';margin-bottom:-10px;color:#999">“</div>
-          <div style="padding:0 20px;">
+          <p style="padding:0 20px;">
               <%= "我要为#{@venue.name}"%><%= @action.name %>:
               <% if @action.for_what == 'money' %>
-                <%= "用于#{@requirement.donate_for}" %>。
+                <%= form.text_field :money, :size => 4 %>元<%= "用于#{@requirement.donate_for}" %>。
               <% elsif @action.for_what == 'goods'%>
-                <%= @requirement.goods_is %>。
+                <%= form.text_field :goods, :size => 4 %>件<%= @requirement.goods_is %>。
               <% elsif @action.for_what == 'time'%>
-                <%= @requirement.do_what %>。
+                <%= @requirement.do_what %>，日期计划是<%= form.text_field :plan_at, :size => 8,:class => 'with_calendar',:placeholder => "yyyy-mm-dd"%>。
               <% end %>
-          </div>
+          </p>
           <div style="font-size:30px;text-align:right;font-family:'times new roman';margin-top:-10px;color:#999">”</div>
       </div>
     </div>
     <div style="clear:both;text-align:right">
     <%= raw sync_form_tag(form)%>
-    <br />
     <%= form.submit '确定',:class => "button"%>
-    <%= button_to_function '取消',"javascript:window.location='#{venue_path(@venue)}'",:class => "button"%>
   </div>
+  <script type="text/javascript" charset="utf-8">
+    DateTimeShortcuts.init()
+  </script>
 <% end %>
 
-<% content_for :extension do %>
-
-<% end %>  

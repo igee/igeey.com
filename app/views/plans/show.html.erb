@@ -1,0 +1,34 @@
+  <div class="box">
+    <%= render :partial => '/public/user' ,:object => @plan.user ,:locals => {:with_name => true}%>
+      <div class="saying">
+        <div style="font-size:26px;text-align:left;font-family:'times new roman';margin-bottom:-10px;color:#999">“</div>
+        <p style="padding:0 20px;">
+          <%="#{@plan.user.login}要#{@plan.description}"%>
+        </p>
+        <div style="font-size:26px;text-align:right;font-family:'times new roman';margin-top:-10px;color:#999">”</div>
+        <span><%= raw who_at_where(@plan.user,@plan.venue)%></span>
+        <div style="text-align:right"><span><%= link_to "更正信息？",edit_requirement_plan_path(@plan.requirement,@plan) if @plan.can_edit_by?(current_user)%></span></div>
+      </div>
+      <div class="saying_tail"></div>
+      <div class="clear"></div>
+  </div>
+      
+  <% unless @plan.can_edit_by?(current_user) %>
+    <div style="clear:both;padding:4px 200px">
+      <%= link_to "我也要做",(logged_in? ? new_requirement_plan_path(@requirement) : signup_path ),:class => "big_button open_dialog",:id => 'plan_to' ,:title =>(logged_in? ? '我要参与' : '注册' )%>
+    </div>
+  <% end %>    
+      
+      
+  <% if @requirement%>
+  <div class="box">
+    <h4>原始需求信息:</h4>
+    <%= render :partial => "/public/requirement",:object => @requirement %>
+  </div>
+  <% end %>
+  
+  <div class="box">
+    <h4>大家的留言：</h4>
+    <%= render :partial => '/public/comment' ,:collection => @comments %>
+  </div>
+  <%= render :partial => '/comments/form' ,:locals => {:commentable => @plan}%>

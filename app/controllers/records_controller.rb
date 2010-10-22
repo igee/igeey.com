@@ -34,7 +34,7 @@ class RecordsController < ApplicationController
     @action = @record.action
     @requirement = @record.requirement
     @comment = Comment.new
-    @comments = @requirement.comments
+    @comments = @record.comments
   end
   
   private
