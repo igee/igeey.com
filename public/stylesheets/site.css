@@ -161,11 +161,11 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
     }    
 
 .user_counter{
-  background-color:#666;
+  background-color:#555;
   color:white;
   float:left;
-  width:86px;
-  height:86px;
+  width:72px;
+  height:72px;
   margin:0 10px;
   text-align:center;
   border-radius: 8px;
@@ -284,7 +284,7 @@ a#logo{
 #main{
     float:left;
     width:620px;
-    padding:20px;
+    padding:10px 20px;
     min-height:600px
 }
 
@@ -312,3 +312,5 @@ a#logo{
 }
 
 #user_counters{float:right;width:540px;}
+
+#dialog_flash{display:none}

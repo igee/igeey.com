@@ -39,6 +39,9 @@
   <div id="content">
     <div class="container">
       <div id="main">
+      <% if flash[:dialog] -%>
+        <div id="dialog_flash"><%= raw flash[:dialog] %></div>
+      <% end -%>
       <% if flash[:error] -%>
         <div class="error"><%= flash[:error] %></div>
       <% end -%>
@@ -59,6 +62,7 @@
   
   <script type="text/javascript">
     $(function(){$(".open_dialog").click(function(){dialog($(this).attr('title'),("url:"+$(this).attr('href')),"480px","auto","text");  return false;});})
+    $(document).ready(function(){$('#dialog_flash a').click()});
   </script>
 </body>
 </html>

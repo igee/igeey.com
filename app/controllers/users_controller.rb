@@ -2,8 +2,8 @@ class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   # include AuthenticatedSystem
   respond_to :html
-  before_filter :login_required, :except => [:show,:new]
-  before_filter :find_user, :except => [:new,:create,:edit]
+  before_filter :login_required, :only=> [:edit]
+  before_filter :find_user, :except => [:new,:create,:edit,:welcome,:index]
 
   # render new.rhtml
   def new
@@ -21,7 +21,8 @@ class UsersController < ApplicationController
       # button. Uncomment if you understand the tradeoffs.
       # reset session
       self.current_user = @user # !! now logged in
-      redirect_back_or_default('/', :notice => "Thanks for signing up!  We're sending you an email with your activation code.")
+      flash[:dialog] = "<a href=#{welcome_users_path} class='open_dialog' title='欢迎'>欢迎</a>"
+      redirect_back_or_default('/')
     else
       flash.now[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
       render :action => 'new' 
@@ -36,16 +37,24 @@ class UsersController < ApplicationController
     @user.update_attributes(params[:user])
     respond_with(@user)
   end
-    
+  
+  def index
+    redirect_back_or_default('/')
+  end
+  
   def show
     @records = @user.records
     @plans = @user.plans.map{|p| p if p.record.nil?}.compact
   end
   
+  def welcome
+    if params[:layout] == 'false'
+      render :layout => false
+    end  
+  end
   
   private
   def find_user
     @user = User.find(params[:id])
   end
-  
 end
