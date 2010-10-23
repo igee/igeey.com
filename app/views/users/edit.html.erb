@@ -1,12 +1,30 @@
-<h1>update your avatar</h1>
-<%= error_messages_for @user %>
-<%= form_for @user, :html => { :multipart => true } do |form| -%>
-  <%= form.file_field :avatar %>
-<p><%= submit_tag 'Ok' %></p>
-<% end -%>
 
-<ul>
-  <li><%= @user.douban? ? '已经和豆瓣连接了' : link_to('连接豆瓣',:controller => 'oauth', :action => 'douban')%></li>
-  <li><%= @user.sina? ? '已经和新浪微博连接了' : link_to('连接新浪微博',:controller => 'oauth', :action => 'sina')%></li>
-</ul>
+<%= error_messages_for @user %>
+<div class="box">
+  <h4>设置头像：</h4>
+  <%= form_for @user, :html => { :multipart => true } do |form| -%>
+  <div style="float:right;width:540px">
+    <p>
+    <%= form.file_field :avatar,:style => "background:none;border:none;font-size:13px" %>
+    </p>
+    <p><%= submit_tag 'Ok', :class => 'button' %></p>
+  </div>
+  <%= image_tag @user.avatar.url(:_72x72),:class => "avatar" %>
+  <% end -%>
+</div>
+
+<div class="box">
+  <h4>设置消息同步：</h4>  
+  <ul>
+    <li><%= @user.douban? ? '已经和豆瓣连接了' : link_to('连接豆瓣',:controller => 'oauth', :action => 'douban')%></li>
+    <li><%= @user.sina? ? '已经和新浪微博连接了' : link_to('连接新浪微博',:controller => 'oauth', :action => 'sina')%></li>
+  </ul>
+</div>
+
+<div class="box">
+  <h4>居住城市：</h4>
+  <%= form_for @user do |form| -%>
     
+    <p><%= submit_tag 'Ok', :class => 'button' %></p>
+  <% end -%>
+</div>

@@ -5,8 +5,7 @@ db/*.sqlite3
 log/*.log
 tmp/*
 
-
-public/system/
+public/media/*
 
 *.kpf
 *.project
