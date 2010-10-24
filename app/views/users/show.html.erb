@@ -1,9 +1,9 @@
 <div class="box">
   <h2><%= @user.login %></h2>
   <%= image_tag @user.avatar.url(:_72x72),:class => "avatar" %>
-  <div id="user_counters">
+  <div id="record_counters">
     <% [[@user.time_counter,'小时'],[@user.money_counter,'元捐款'],[@user.goods_counter,'件物品']].each do |counter_list|%>
-    <div class="user_counter">
+    <div class="record_counter">
       <h1><%= counter_list[0] %></h1>
       <span><%= counter_list[1]%></span>
     </div>

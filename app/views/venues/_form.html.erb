@@ -1,5 +1,5 @@
 <%= form_for @venue,:html => { :multipart => true } do |form| %>
-  <div style="width=100%;padding:20px;background-color:#eee">
+  <div style="width=100%;padding:20px;">
     <div style="float:left">
       <%= link_to image_tag(@venue.cover.url,:class => "venue_cover"),'#',:onclick => "javascript:$('#venue_cover').click();return false"%>
       <p style="text-align:center">

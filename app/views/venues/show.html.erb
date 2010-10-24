@@ -25,5 +25,13 @@
 </div>
 
 <% content_for :sidebar do %>
-  
+  <h4>获得服务统计：</h4>
+  <div id="record_counters">
+    <% [[@venue.time_counter,'小时'],[@venue.money_counter,'元捐款'],[@venue.goods_counter,'件物品']].each do |counter_list|%>
+    <div class="record_counter">
+      <h1><%= counter_list[0] %></h1>
+      <span><%= counter_list[1]%></span>
+    </div>
+    <%end%>
+  </div>  
 <% end %>
