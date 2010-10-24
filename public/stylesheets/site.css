@@ -148,7 +148,7 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
     
 .user{
     float:left;
-    width:72px;
+    width:62px;
     height:72px;
     text-align:center;
     }
@@ -331,7 +331,7 @@ a#logo{
   margin:0 10px;
 }
 
-#record_counters{float:right;}
+#record_counters{float:left;}
 
 #upload_photo{
   background-color:#f0f0f0;

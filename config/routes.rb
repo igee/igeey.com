@@ -31,6 +31,7 @@ Igee::Application.routes.draw do
     end
   end
   resources :records
+  resources :follows
   resources :comments
   resources :photos
   # The priority is based upon order of creation:

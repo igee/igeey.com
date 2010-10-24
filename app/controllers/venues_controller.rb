@@ -38,6 +38,7 @@ class VenuesController < ApplicationController
     @records = @venue.records
     @photo = Photo.new
     @photos = @venue.photos
+    @followers = @venue.followers
   end
   
   def have_done

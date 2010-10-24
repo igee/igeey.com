@@ -8,8 +8,7 @@ class Photo < ActiveRecord::Base
                             :default_style=> :_90x64,
                             :default_url=>"/defaults/:attachment/:style.png"
   
-  validates :photo_file_name, :presence   => true
-  
+  validates :photo_file_name, :presence   => true,:format => { :with => /([\w-]+\.(gif|png|jpg))|/ }
   
   def can_edit_by?(current_user)
     true if self.user = current_user

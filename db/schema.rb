@@ -27,6 +27,13 @@ ActiveRecord::Schema.define() do
     t.timestamps
   end
 
+  create_table "follows", :force => true do |t|
+    t.integer  :user_id,    :null => false
+    t.integer  :followable_id
+    t.string   :followable_type, :limit => 40
+    t.timestamps
+  end
+
   create_table "geos", :force => true do |t|
     t.string  :name,       :limit => 40
     t.integer :parent_id
@@ -91,6 +98,7 @@ ActiveRecord::Schema.define() do
     t.string   :avatar_file_name
     t.datetime :created_at
     t.datetime :updated_at
+    t.integer  :geo_id
     t.string   :remember_token,            :limit => 40
     t.datetime :remember_token_expires_at
   end

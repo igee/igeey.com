@@ -1,6 +1,17 @@
 <div class="box">
-  <h2><%= @user.login %></h2>
-  <%= image_tag @user.avatar.url(:_72x72),:class => "avatar" %>
+  <h2><%= @user.login %></h2> 
+  <div style="float:left;text-align:center;">
+    <%= image_tag @user.avatar.url(:_72x72),:class => "avatar" %>
+    <br/>
+    <%= @user == current_user ? link_to('用户设置',setting_path) : raw(follow_to(@user)) %>
+  </div>
+  <div style="float:left;width:100px;text-align:left;padding:0 10px">
+    <%= @user.geo.nil? ? "住在哪呢.." : link_to(@user.geo.name,@user.geo)%>
+  </div>
+  <div style="float:left;width:160px;text-align:right">
+    <br/>
+    <h3>公益统计：</h3>
+  </div>
   <div id="record_counters">
     <% [[@user.time_counter,'小时'],[@user.money_counter,'元捐款'],[@user.goods_counter,'件物品']].each do |counter_list|%>
     <div class="record_counter">
@@ -23,5 +34,5 @@
 </div>
 
 <% content_for :sidebar do %>
-
+  <%=render :partial => "/public/followers" %>
 <% end %>

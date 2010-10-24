@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   
   def update
     @user.update_attributes(params[:user])
-    respond_with(@user)
+    redirect_to :back
   end
   
   def index
@@ -45,6 +45,7 @@ class UsersController < ApplicationController
   def show
     @records = @user.records
     @plans = @user.plans.map{|p| p if p.record.nil?}.compact
+    @followers = @user.followers
   end
   
   def welcome

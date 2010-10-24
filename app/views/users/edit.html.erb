@@ -14,17 +14,21 @@
 </div>
 
 <div class="box">
-  <h4>设置消息同步：</h4>  
+  <h4>你的居住城市：</h4>
+  <%= form_for @user do |form| -%>
+    <span>设置你的城市后，我们能更容易的筛选出与你相关的信息。</span>
+    <br/>
+    <%= form.select :geo_id,geo_list %>
+    <%= submit_tag '设置', :class => 'button' %>
+  <% end -%>
+</div>
+
+<div class="box">
+  <h4>与你的社区帐号设置消息同步：</h4>
+    <span>通过信息同步，可以很方便的把你的公益行动告诉你的朋友。</span>
+    <br/>
   <ul>
     <li><%= @user.douban? ? '已经和豆瓣连接了' : link_to('连接豆瓣',:controller => 'oauth', :action => 'douban')%></li>
     <li><%= @user.sina? ? '已经和新浪微博连接了' : link_to('连接新浪微博',:controller => 'oauth', :action => 'sina')%></li>
   </ul>
-</div>
-
-<div class="box">
-  <h4>居住城市：</h4>
-  <%= form_for @user do |form| -%>
-    
-    <p><%= submit_tag 'Ok', :class => 'button' %></p>
-  <% end -%>
 </div>

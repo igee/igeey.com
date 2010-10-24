@@ -1,5 +1,10 @@
 <div style="width=100%;padding:20px">
-  <%= image_tag(@venue.cover.url,:class => "venue_cover") %>
+  <div style="float:left;text-align:center;">
+    <%= image_tag(@venue.cover.url,:class => "venue_cover") %>
+    <p>
+      <%= raw(follow_to(@venue)) %>
+    </p>
+  </div>
   <div style="width:400px;height:120px;margin-left:180px">
     <h4 class="title" style="display:inline"><%= @venue.name%></h4> <span><%= @venue.geo.name %></span>
     <p><%= @venue.intro%></p>      
@@ -12,12 +17,12 @@
   <%= link_to '更新信息',edit_venue_path(@venue),:class => "button",:id => 'update_info' %>
 </div>
 
-<%= render :partial => '/photos/gallery' ,:locals => {:imageable => @venue}%>
-
 <div class="box">  
-  <h4>这里需要:</h4>
+  <h4>这里正需要:</h4>
   <%= render :partial => 'public/requirement', :collection => @requirements %>
 </div>
+
+<%= render :partial => '/photos/gallery' ,:locals => {:imageable => @venue}%>
 
 <div class="box">  
   <h4>行动记录:</h4>
@@ -33,5 +38,7 @@
       <span><%= counter_list[1]%></span>
     </div>
     <%end%>
-  </div>  
+  </div>
+  <div class="clear"></div>
+  <%=render :partial => "/public/followers" %>
 <% end %>

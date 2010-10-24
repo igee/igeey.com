@@ -1,11 +1,11 @@
 class Requirement < ActiveRecord::Base
-  belongs_to :publisher, :class_name => "User", :foreign_key => "publisher_id"
+  belongs_to :publisher, :class_name => "User", :foreign_key => :publisher_id
   belongs_to :venue
   belongs_to :action
   has_many   :records
   has_many   :plans
-  has_many   :comments, :as => 'commentable', :dependent => :destroy
-  has_many   :photos, :as => 'imageable', :dependent => :destroy
+  has_many   :comments, :as => :commentable, :dependent => :destroy
+  has_many   :photos,   :as => :imageable,   :dependent => :destroy
   
   default_scope :order => 'created_at DESC'
   

@@ -1,0 +1,4 @@
+<div class="box">
+  <h4>关注者：</h4>
+  <%= render :partial => "/public/user",:collection => @followers ,:locals => {:with_name => true}%>
+</div>

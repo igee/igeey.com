@@ -5,7 +5,7 @@ class Plan < ActiveRecord::Base
   belongs_to :user
   belongs_to :parent,:class_name => "Plan",:foreign_key => "parent_id"
   has_one    :record
-  has_many   :comments, :as => 'commentable', :dependent => :destroy
+  has_many   :comments, :as => :commentable, :dependent => :destroy
   has_many   :plans
   
   attr_accessor :sync_to_sina,:sync_to_douban,:sync_to_renren
