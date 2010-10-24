@@ -1,4 +1,7 @@
-body{font-size:14px;}
+body{
+  font-size:14px;
+  background:#60d2f8 url('/images/sky.png') repeat-x;
+  }
 
 body,h1{margin:0}
 
@@ -278,7 +281,7 @@ input.todo:hover{
 }
 
 a#logo{
-    padding:10px;
+  padding:0px 5px 10px;
     color:#fff;
     float:left;
     display:inline;
@@ -286,20 +289,17 @@ a#logo{
     font-weight:bold;
     }
 
-#login_state{float:right;padding:18px}
+#login_state{float:right;padding:4px}
     
 #header{
-    height:56px;
-    background-color:#333;
-    background-image:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#222), to(#444));
+    height:74px;
+    
     }
 #footer{
-    height:84px;
-    background-color:#333;
-    background-image:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#333), to(#111));
+    height:108px;
     }
     
-#header a,#footer a{color:#eee}
+#header a,#footer a{color:#eee;}
     
 #main{
     float:left;
@@ -312,9 +312,15 @@ a#logo{
   background:#d0d0d0;
 }
 
-#content .container{
-    background:url('/images/background.png') repeat-y;);
-}
+#header .container{
+  background:url('/images/cap.png');
+  height:74px;
+  }
+
+#content .container{background:url('/images/background.png') repeat-y;}
+
+#footer .container{background:url('/images/shoes.png') no-repeat;height:108px}
+
 
 #sidebar{
     float:right;
@@ -322,13 +328,17 @@ a#logo{
     padding:15px;    
 }
 
-#nav_links{float:left;padding:10px}
+#nav_links{
+  float:left;
+  margin:32px 40px 0;
+  }
 
 #nav_links li{
   text-decoration:none;
   float:left;
   color:white;
   margin:0 10px;
+  font-weight:bold;
 }
 
 #record_counters{float:left;}
