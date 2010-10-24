@@ -3,6 +3,7 @@ require 'test_helper'
 class RequirementsControllerTest < ActionController::TestCase
   setup do
     @requirement = requirements(:one)
+    current_user = users(:quentin)
   end
 
   test "should get index" do
