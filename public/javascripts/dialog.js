@@ -18,6 +18,8 @@ $("#floatBox .dialog_title span").click(function(){
   $("#floatBoxBg").animate({opacity:"0"},"normal",function(){$(this).hide();});
   $("#floatBox").animate({top:($(document).scrollTop()-(height=="auto"?300:parseInt(height)))+"px"},"normal",function(){$(this).hide();}); 
 });
+$("#floatBoxBg").click(function(){$("#floatBox .dialog_title span").click()})
+
 
 $("#floatBox .dialog_title h4").html(title);
 contentType=content.substring(0,content.indexOf(":"));
@@ -52,5 +54,5 @@ $("#floatBoxBg").show();
 $("#floatBoxBg").animate({opacity:"0.5"},"normal");
 $("#floatBox").attr("class","floatBox "+cssName);
 $("#floatBox").css({display:"block",left:(($(document).width())/2-(parseInt(width)/2))+"px",top:($(document).scrollTop()-(height=="auto"?300:parseInt(height)))+"px",width:width,height:height});
-$("#floatBox").animate({top:($(document).scrollTop()+100)+"px"},"fast"); 
+$("#floatBox").animate({top:($(document).scrollTop()+80)+"px"},"fast"); 
 }

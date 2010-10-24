@@ -51,6 +51,15 @@ ActiveRecord::Schema.define() do
     t.timestamps
   end
 
+  create_table "photos", :force => true do |t|
+    t.integer  :user_id
+    t.integer  :imageable_id
+    t.string   :imageable_type
+    t.string   :title,       :limit => 40
+    t.string   :photo_file_name
+    t.timestamps
+  end
+
   create_table "profiles", :force => true do |t|
     t.integer :user_id
   end

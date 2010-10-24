@@ -14,7 +14,6 @@
   <div class="saying_tail">
   </div>
   <div class="clear"></div>
-  
 </div>
 
 <div class="box">
@@ -41,6 +40,8 @@
   <% end %>
 </div>
 
+<%= render :partial => '/photos/gallery' ,:locals => {:imageable => @requirement}%>
+  
 <div class="box">
   <h4>行动记录:</h4>
   <%= render :partial => '/public/record', :collection => @records %>

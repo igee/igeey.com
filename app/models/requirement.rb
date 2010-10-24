@@ -5,6 +5,7 @@ class Requirement < ActiveRecord::Base
   has_many   :records
   has_many   :plans
   has_many   :comments, :as => 'commentable', :dependent => :destroy
+  has_many   :photos, :as => 'imageable', :dependent => :destroy
   
   default_scope :order => 'created_at DESC'
   
@@ -33,4 +34,10 @@ class Requirement < ActiveRecord::Base
       "#{self.venue.name}需要#{self.total_people}人#{self.do_what}。"
     end
   end
+  
+   
+  def can_edit_by?(current_user)
+    true if self.publisher = current_user
+  end
+  
 end

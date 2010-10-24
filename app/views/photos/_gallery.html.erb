@@ -1,0 +1,13 @@
+<div class="box">
+  <div style="float:right">
+    <% if logged_in? %>
+      <%= link_to "上传照片","#",:onclick => "javascript:$('#upload_photo').slideDown();return false;"%>
+    <% else %>
+      <%= link_to "上传照片",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%>
+    <% end %>
+  </div>
+  <h4>相册：</h4>
+  <%= render :partial => "/photos/form",:locals => {:imageable => imageable}%>
+  <%= render :partial => "/public/photo",:collection => @photos %>
+  <div class="clear"></div>  
+</div>

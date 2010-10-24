@@ -5,8 +5,8 @@
   <% @action = @requirement.action %>
   <div style="clear:both">
     <%= form.hidden_field :requirement_id %>
-    <%= render :partial => '/public/user' ,:object => current_user %>
-      <div class="saying" style="width:330px">
+    <%= render :partial => '/public/user' ,:object => current_user ,:locals => {:with_name => true}%>
+      <div class="saying" style="width:400px">
           <div style="font-size:30px;text-align:left;font-family:'times new roman';margin-bottom:-10px;color:#999">“</div>
           <p style="padding:0 20px;">
               <%= "我要为#{@venue.name}"%><%= @action.name %>:
@@ -15,7 +15,9 @@
               <% elsif @action.for_what == 'goods'%>
                 <%= form.text_field :goods, :size => 4 %>件<%= @requirement.goods_is %>。
               <% elsif @action.for_what == 'time'%>
-                <%= @requirement.do_what %>，日期计划是<%= form.text_field :plan_at, :size => 8,:class => 'with_calendar',:placeholder => "yyyy-mm-dd"%>。
+                <%= @requirement.do_what %>
+                <br/>
+                日期计划是<%= form.text_field :plan_at, :size => 8,:class => 'with_calendar',:placeholder => "yyyy-mm-dd"%>。
               <% end %>
           </p>
           <div style="font-size:30px;text-align:right;font-family:'times new roman';margin-top:-10px;color:#999">”</div>

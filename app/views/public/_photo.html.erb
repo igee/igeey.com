@@ -1,0 +1,14 @@
+<div class="photo_box">
+  <%= link_to (image_tag photo.photo.url,:class => "photo"),photo,:class => "open_dialog",:title => photo.title %>
+  <div class="clear"></div>
+  <span><%= photo.title %></span>
+  <% if photo.can_edit_by?(current_user)%>
+      <%= form_for photo do |form|%>
+        <%=  form.text_field :title,:size => 7,:style => "display:none;font-size:12px",:id => "photo_set_title_#{photo.id}"%>
+      <% end %>
+      <span>
+      <%= raw "#{link_to "添加标题",'#',:onclick => "javascript:$('#photo_set_title_#{photo.id}').show();$(this).hide();return false"} |" if photo.title.blank?%>
+      <%= link_to "x",photo,:method => :delete ,:confirm => "确定要删除？"%>
+      </span>
+  <% end %>
+</div>

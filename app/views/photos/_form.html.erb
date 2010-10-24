@@ -1,0 +1,17 @@
+<div id="upload_photo">
+  <% if logged_in?%>
+    <div style="padding:4px">
+      <div style="float:right">
+        <%= form_for @photo,:url => photos_path,:html => { :multipart => true } do |form| %>
+          <%= form.hidden_field :imageable_type,:value => imageable.class %>
+          <%= form.hidden_field :imageable_id,:value => imageable.id %>
+          <%= form.label :title,'标题：'%> <%= form.text_field :title ,:size=> 10%>
+          <%= form.file_field :photo,:style => "background:none;border:none;font-size:13px" %>
+          <%= submit_tag '上传',:class => 'button' %>
+          <%= button_to_function '取消',"javascript:$('#upload_photo').slideUp()",:class => "button"%>
+        <% end %>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <% end %>
+</div>

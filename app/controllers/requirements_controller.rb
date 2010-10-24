@@ -17,6 +17,8 @@ class RequirementsController < ApplicationController
     @record = @records.where(:user_id => (current_user.id if current_user)).first || nil
     @comment = Comment.new
     @comments = @requirement.comments
+    @photo = Photo.new
+    @photos = @requirement.photos.limit(3)
   end
 
   def new

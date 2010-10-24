@@ -9,14 +9,15 @@
 <div class="box" style="text-align:center">
   <%= link_to '发布新需求',publish_requirement_venue_path(@venue),:class => "button",:id => 'plan_to' %> <%= link_to '我为这里做过...',have_done_venue_path(@venue),:class => "button",:id => 'have_done' %>
 </div>
-<div class="box">
-  
+
+<%= render :partial => '/photos/gallery' ,:locals => {:imageable => @venue}%>
+
+<div class="box">  
   <h4>这里需要:</h4>
   <%= render :partial => 'public/requirement', :collection => @requirements %>
 </div>
 
-<div class="box">
-  
+<div class="box">  
   <h4>行动记录:</h4>
   <%= render :partial => 'public/record', :collection => @records %>
 </div>

@@ -239,8 +239,22 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
     line-height:16px;
 }
 
-.event_box{padding:4px;margin:10px 0;border-bottom:1px dashed #aaa;}
+.event_box{
+  padding:4px;
+  margin:10px 0;
+  border-bottom:1px dashed #aaa;}
 
+.photo_box{
+  float:left;
+  width:120px;
+  height:100px;
+  padding:5px 2px;
+  text-align:center;
+  }
+  
+.photo{margin-bottom:4px;}
+
+.photo_box form{display:inline}
 
 .todo{
     background-color:#eee;
@@ -312,5 +326,14 @@ a#logo{
 }
 
 #user_counters{float:right;width:540px;}
+
+#upload_photo{
+  background-color:#f0f0f0;
+  padding:8px 8px 0;
+  margin:6px 0;
+  display:none;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
 
 #dialog_flash{display:none}

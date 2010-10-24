@@ -7,7 +7,7 @@ Igee::Application.routes.draw do
   match 'logout' => 'sessions#destroy', :as => :logout
   match 'login_and_signup' => 'sessions#login_and_signup'
   match 'oauth(/:action)' => 'oauth#(/:action)'
-  match 'setting' => 'users#edit'  
+  match 'setting' => 'users#edit'
   
   resource :session, :only => [:new, :create, :destroy]
 
@@ -32,7 +32,7 @@ Igee::Application.routes.draw do
   end
   resources :records
   resources :comments
-  
+  resources :photos
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

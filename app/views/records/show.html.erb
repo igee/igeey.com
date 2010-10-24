@@ -20,6 +20,8 @@
   </div>
   <% end %>
   
+  <%= render :partial => '/photos/gallery' ,:locals => {:imageable => @record}%>
+  
   <div class="box">
     <h4>大家的留言：</h4>
     <%= render :partial => '/public/comment' ,:collection => @comments %>

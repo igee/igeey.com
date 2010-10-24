@@ -13,8 +13,7 @@ class RecordsController < ApplicationController
     if @venue.nil? 
       @venues = Venue.all
       render "select_venue"
-    end
-    
+    end    
   end
   
   def create
@@ -35,6 +34,8 @@ class RecordsController < ApplicationController
     @requirement = @record.requirement
     @comment = Comment.new
     @comments = @record.comments
+    @photo = Photo.new
+    @photos = @record.photos
   end
   
   private
