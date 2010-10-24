@@ -2,6 +2,7 @@ class RecordsController < ApplicationController
   respond_to :html
   before_filter :login_required, :except => [:index, :show]
   before_filter :find_record, :except => [:index,:new,:create]
+  after_filter :clean_unread, :only => [:show]
   
   def new    
     @record = Record.new(:action_id => params[:action_id],:venue_id => params[:venue_id],:plan_id => params[:plan_id])
@@ -43,7 +44,7 @@ class RecordsController < ApplicationController
     @record = Record.find(params[:id])
   end
   
-  def seen_comment
+  def clean_unread
     @record.update_attribute(:has_new_comment,false) if @record.user = current_user
   end
 end

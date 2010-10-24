@@ -18,6 +18,14 @@ class VenuesController < ApplicationController
     end
   end
   
+  def edit
+  end
+  
+  def update
+    @venue.update_attributes(params[:venue])
+    respond_with(@venue)
+  end
+  
   def create
     @venue = Venue.new(params[:venue])
     @venue.creator = current_user

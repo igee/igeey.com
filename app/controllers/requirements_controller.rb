@@ -2,6 +2,7 @@ class RequirementsController < ApplicationController
   respond_to :html
   before_filter :login_required, :except => [:index, :show]
   before_filter :find_requirement, :except => [:index, :new, :create]
+  after_filter :clean_unread, :only => [:show]
    
   def index
     @requirements = Requirement.all
@@ -57,6 +58,10 @@ class RequirementsController < ApplicationController
   private
   def find_requirement
     @requirement = Requirement.find(params[:id])
+  end
+  
+  def clean_unread
+    @requirement.update_attribute(:has_new_comment,false) if @requirement.publisher == current_user
   end
   
 end

@@ -3,8 +3,7 @@
   
   <% if logged_in?%>
     <div style="padding:4px">
-      <%= render :partial => '/public/user',:object => current_user %>
-      <div style="float:right">
+      <div>
         <%= form_for @comment,:url => comments_path(commentable) do |form| %>
           <%= form.hidden_field :commentable_type,:value => commentable.class %>
           <%= form.hidden_field :commentable_id,:value => commentable.id %>

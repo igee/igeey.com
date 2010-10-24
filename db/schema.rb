@@ -120,6 +120,7 @@ ActiveRecord::Schema.define() do
     t.integer :creator_id
     t.string  :latitude,   :limit => 40
     t.string  :longitude,  :limit => 40
+    t.string  :cover_file_name
     t.timestamps
   end
   

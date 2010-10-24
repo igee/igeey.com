@@ -2,6 +2,7 @@ class PlansController < ApplicationController
   respond_to :html
   before_filter :login_required, :except => [:index, :show]
   before_filter :find_plan, :except => [:index,:new,:create]
+  after_filter :clean_unread, :only => [:show]
   
   def new
     @requirement = Requirement.find(params[:requirement_id])
@@ -49,4 +50,7 @@ class PlansController < ApplicationController
     @plan = Plan.find(params[:id])
   end
   
+  def clean_unread
+    @record.update_attribute(:has_new_comment,false) if @record.user = current_user
+  end
 end

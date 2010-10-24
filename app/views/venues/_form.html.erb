@@ -1,12 +1,17 @@
-<%= form_for @venue do |form| %>
+<%= form_for @venue,:html => { :multipart => true } do |form| %>
   <div style="width=100%;padding:20px;background-color:#eee">
-    <div id="topic_photo" style="width:160px;height:20px;padding:50px 0;background-color:#999;color:#fff;float:left;text-align:center;" >主题图</div>
+    <div style="float:left">
+      <%= link_to image_tag(@venue.cover.url,:class => "venue_cover"),'#',:onclick => "javascript:$('#venue_cover').click();return false"%>
+      <p style="text-align:center">
+        <%= link_to '上传主题图','#',:onclick => "javascript:$('#venue_cover').click();return false"%>
+      </p>
+    </div>
     <div style="width:400px;margin-left:180px">
-      <ul>
-        <%= raw Venue::CATEGORIES_HASH.map{|c| link_to c[1],'#',:class => 'radio_button',:value => c[0]}%>
-      </ul>
       <%= form.label :name,'聚点名称：'%> <%= form.text_field :name, :size => 24, :class => "underline title", :placeholder => "例如：XX社区，XX村"%>
       <br/>
+      
+      类型：<%= form.select :category ,Venue::CATEGORIES_HASH.invert.to_a.sort_by{|value| value[1]}%>
+      
       所在城市：<%= form.select :geo_id ,geo_list%>
       <br/>
       <br/>
@@ -15,8 +20,8 @@
       <%= form.text_area :intro, :cols => 36, :rows => 5,:class => "underline",:placeholder => "为聚点写篇140字以内的简介吧"%>
       <%= form.hidden_field :latitude %>
       <%= form.hidden_field :longitude %>
-      <%= form.hidden_field :category %>
       <%= form.submit '填写好了，提交',:class => "button"%>
+      <%= form.file_field :cover,:style => "visibility:hidden" %>
     </div>
   </div>
   
@@ -33,13 +38,4 @@
 <% end %>
 
 <% content_for :extension do %>
-  <script type="text/javascript">
-    function select_category(){
-      var selected =$(this)
-      $('.radio_button').attr('class','radio_button');
-      selected.attr('class','radio_button selected');
-      $("#venue_category").attr('value',selected.attr('value'))
-    }
-    $('.radio_button').click(select_category);
-  </script>
 <% end %>

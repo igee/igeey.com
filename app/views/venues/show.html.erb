@@ -1,13 +1,15 @@
 <div style="width=100%;padding:20px">
-  <div id="topic_photo" style="width:160px;height:20px;padding:50px 0;background-color:#999;color:#fff;float:left;text-align:center;" >主题图</div>
+  <%= image_tag(@venue.cover.url,:class => "venue_cover") %>
   <div style="width:400px;height:120px;margin-left:180px">
-    <h4 class="title"><%= @venue.name%></h4>
+    <h4 class="title" style="display:inline"><%= @venue.name%></h4> <span><%= @venue.geo.name %></span>
     <p><%= @venue.intro%></p>      
   </div>
 </div>
 
 <div class="box" style="text-align:center">
-  <%= link_to '发布新需求',publish_requirement_venue_path(@venue),:class => "button",:id => 'plan_to' %> <%= link_to '我为这里做过...',have_done_venue_path(@venue),:class => "button",:id => 'have_done' %>
+  <%= link_to '发布新需求',publish_requirement_venue_path(@venue),:class => "button",:id => 'plan_to' %>
+  <%= link_to '我为这里做过...',have_done_venue_path(@venue),:class => "button",:id => 'have_done' %>
+  <%= link_to '更新信息',edit_venue_path(@venue),:class => "button",:id => 'update_info' %>
 </div>
 
 <%= render :partial => '/photos/gallery' ,:locals => {:imageable => @venue}%>

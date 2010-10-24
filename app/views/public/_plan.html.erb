@@ -3,7 +3,7 @@
   <div class="event">
     <p>
       <span style="font-size:20px;font-family:'times new roman';color:#999">“</span>
-      <%= link_to "#{personal_name(plan.user)}要#{plan.description}",requirement_plan_path(plan.requirement,plan) %>
+      <%= link_to "#{plan.user.login}要#{plan.description}",requirement_plan_path(plan.requirement,plan) %>
       <span style="font-size:20px;font-family:'times new roman';color:#999">”</span>
     </p>
     <div style="text-align:rights">
