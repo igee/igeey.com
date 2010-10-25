@@ -24,7 +24,7 @@ class Venue < ActiveRecord::Base
   validates :name,:latitude,:longitude, :presence   => true
   validates :intro,:length     => { :within => 0..140 }
   validates :category,:inclusion => { :in => CATEGORIES_HASH.keys }
-  validates :cover_file_name, :presence   => true,:format => { :with => /([\w-]+\.(gif|png|jpg))|/ }
+  validates :cover_file_name,:format => { :with => /([\w-]+\.(gif|png|jpg))|/ }
   
   def category_name
     CATEGORIES_HASH[self.category]
