@@ -12,7 +12,7 @@
 </div>
 
 <div class="box" style="text-align:center">
-  <%= link_to '发布新需求',publish_requirement_venue_path(@venue),:class => "button",:id => 'plan_to' %>
+  <%= link_to '发布新需求',publish_requirement_venue_path(@venue),:class => "button open_dialog",:id => 'plan_to',:title => '发布需求'%>
   <%= link_to '我为这里做过...',have_done_venue_path(@venue),:class => "button",:id => 'have_done' %>
   <%= link_to '更新信息',edit_venue_path(@venue),:class => "button",:id => 'update_info' %>
 </div>

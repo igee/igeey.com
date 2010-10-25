@@ -1,6 +1,6 @@
 class VenuesController < ApplicationController
   respond_to :html,:json
-  before_filter :login_required, :except => [:index, :show]
+  before_filter :login_required, :except => [:index, :show,:new,:publish_requirement,:mark_venue,:have_done]
   before_filter :find_venue, :except => [:index,:new,:create]
   
   def index
@@ -43,10 +43,12 @@ class VenuesController < ApplicationController
   
   def have_done
     @actions = Action.all
+    render :layout => false if params[:layout] == 'false'
   end
   
   def publish_requirement
     @actions = Action.all
+    render :layout => false if params[:layout] == 'false'
   end
   
   private

@@ -1,6 +1,6 @@
 class RecordsController < ApplicationController
   respond_to :html
-  before_filter :login_required, :except => [:index, :show]
+  before_filter :login_required, :except => [:index, :show,:new]
   before_filter :find_record, :except => [:index,:new,:create]
   after_filter :clean_unread, :only => [:show]
   
