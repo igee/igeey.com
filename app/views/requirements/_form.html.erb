@@ -20,8 +20,7 @@
           <% if @action.for_what == 'money' %>
             总计<%= form.text_field :total_money, :size => 4,:placeholder => "多少"%>元用于<%= form.text_field :donate_for ,:size => 10 ,:placeholder => "用来做什么？"%>。            
           <% elsif @action.for_what == 'goods'%>
-            <%= form.text_field :donate_for, :size => 8,:placeholder => "物资名称"%>
-            总计<%= form.text_field :total_goods, :size => 6 ,:placeholder => "多少"%>件。
+            总计<%= form.text_field :total_goods, :size => 6 ,:placeholder => "多少"%>件<%= form.text_field :goods_is, :size => 8,:placeholder => "物资名称"%>。
           <% elsif @action.for_what == 'time'%>
             总计 <%= form.text_field :total_people, :size => 4, :placeholder => "多少" %> 人 <%= form.text_field :do_what, :size => 8,:placeholder => "做什么？"%>。
           <% end %>
