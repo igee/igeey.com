@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   # render new.rhtml
   def new
+    redirect_to :root if logged_in?
     @user = User.new
     render :layout => false if params[:layout] == 'false'
   end

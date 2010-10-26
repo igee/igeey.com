@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
 
   # render new.rhtml
   def new
+    redirect_to :root if logged_in?
     if params[:layout] == 'false'
       session[:return_to] = :back
       render :layout => false

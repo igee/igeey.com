@@ -51,7 +51,7 @@ textarea{
     font-size:13px;
     }
 
-input:focus,input:hover{background-color:#ffffc0;outline:none;}
+input:focus{background-color:#ffffc0;outline:none;border:1px solid #e95}
 
 .title{
     font-size:16px;
@@ -105,12 +105,12 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
 
 .dialog_rightbar{
   float:right;
-  width:160px;
-  padding:20px;
+  width:180px;
+  padding:10px 0 0 30px;
 }
 .dialog_leftbar{
   float:left;
-  width:180px;
+  width:230px;
   border-right:1px dashed #999;
   padding:0 30px 0 10px;
   margin:10px 0;

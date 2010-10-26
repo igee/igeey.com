@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
-  attr_accessible :login, :email, :name, :password, :password_confirmation,:avatar,:avatar_file_name
+  attr_accessible :login, :email, :name, :password, :password_confirmation,:avatar,:avatar_file_name,:geo_id
 
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
   #
   def self.authenticate(login, password)
     return nil if login.blank? || password.blank?
-    u = find_by_login(login.downcase) # need to get the salt
+    u = find_by_login(login.downcase) || find_by_email(login.downcase) # need to get the salt
     u && u.authenticated?(password) ? u : nil
   end
 

@@ -1,4 +1,4 @@
-
+<h2>用户设置</h2>
 <%= error_messages_for @user %>
 <div class="box">
   <h4>设置头像：</h4>
@@ -7,7 +7,7 @@
     <p>
     <%= form.file_field :avatar,:style => "background:none;border:none;font-size:13px" %>
     </p>
-    <p><%= submit_tag 'Ok', :class => 'button' %></p>
+    <p><%= submit_tag '更换', :class => 'button' %></p>
   </div>
   <%= image_tag @user.avatar.url(:_72x72),:class => "avatar" %>
   <% end -%>
@@ -19,7 +19,7 @@
     <span>设置你的城市后，我们能更容易的筛选出与你相关的信息。</span>
     <br/>
     <%= form.select :geo_id,geo_list %>
-    <%= submit_tag '设置', :class => 'button' %>
+    <%= form.submit '设置', :class => 'button' %>
   <% end -%>
 </div>
 
