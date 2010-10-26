@@ -330,14 +330,14 @@ a#logo{
 
 #nav_links{
   float:left;
-  margin:32px 40px 0;
+  margin:40px 36px 0;
   }
 
 #nav_links li{
   text-decoration:none;
   float:left;
   color:white;
-  margin:0 10px;
+  margin:0 15px;
   font-weight:bold;
 }
 
