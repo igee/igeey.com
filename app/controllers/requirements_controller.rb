@@ -14,8 +14,8 @@ class RequirementsController < ApplicationController
     @action = @requirement.action
     @plans = @requirement.plans.map{|p| p if p.record.nil?}.compact
     @records = @requirement.records
-    @plan = Plan.where(:user_id => (current_user.id if current_user)).first || nil
-    @record = @records.where(:user_id => (current_user.id if current_user)).first || nil
+    @plan = @plans.where(:user_id => (current_user.id if current_user)).first || nil # user`s plan on this requirement
+    @record = @records.where(:user_id => (current_user.id if current_user)).first || nil # user`s record on this requirement
     @comment = Comment.new
     @comments = @requirement.comments
     @photo = Photo.new
