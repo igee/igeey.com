@@ -56,10 +56,12 @@
 <%= render :partial => '/comments/form' ,:locals => {:commentable => @requirement}%>
 
 <% content_for :sidebar do %>
-  <h3 style="color:#666">需求完成度：</h3>
-  <div style="text-align:center;margin:20px 0 40px">
-    <span style="font-size:54px;"><%= @requirement.percentage %></span>
-    <span style="font-size:24px">%<span>
+  <div class="box">
+    <h4>需求完成度：</h4>
+    <div style="text-align:center;margin:10px 0">
+      <span style="font-size:54px;"><%= @requirement.percentage %></span>
+      <span style="font-size:24px">%<span>
+    </div>
   </div>
   
   <div class="box">

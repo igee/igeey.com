@@ -5,10 +5,12 @@ body{
 
 body,h1{margin:0}
 
-h2,h3,h4,h5,h6{
+h3,h4,h5,h6{
     margin:0.4em 0;
-    color:#333;
+    color:#444;
     }
+    
+#sidebar h3,#sidebar h4,#sidebar h5{color:#b0e6ff}    
     
 ul,dl,p{
     margin:6px 0;
@@ -21,12 +23,16 @@ span{
   font-size:12px;
 }
 
+#sidebar span{color:#a5c7ff}
+
 a{
     text-decoration:none;
-    color:#558;
+    color:#37a;
     }
+    
 
-a:hover{color:#f60}
+
+a:hover,#sidebar a:hover{color:#f63}
 
 input{
     text-decoration:none;
@@ -142,7 +148,8 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
 
 .radio_button:hover{
     background-color:#d80;
-    color:white}
+    color:white
+    }
 
 .selected {
     background-color:#c60;
@@ -289,17 +296,19 @@ a#logo{
     font-weight:bold;
     }
 
-#login_state{float:right;padding:4px}
+#login_state{float:right;padding:8px}
+
+#login_state a{color:#269}
     
 #header{
     height:74px;
     
     }
 #footer{
-    height:108px;
+    height:48px;
     }
     
-#header a,#footer a{color:#eee;}
+#footer a{color:#eee;}
     
 #main{
     float:left;
@@ -319,7 +328,7 @@ a#logo{
 
 #content .container{background:url('/images/background.png') repeat-y;}
 
-#footer .container{background:url('/images/shoes.png') no-repeat;height:108px}
+#footer .container{background:url('/images/shoes.png') no-repeat;height:48px}
 
 
 #sidebar{
@@ -340,6 +349,22 @@ a#logo{
   margin:0 15px;
   font-weight:bold;
 }
+
+#nav_links a{color:#fff}
+
+#footer_links{
+  float:left;
+  margin-left:210px;
+  }
+
+#footer_links li{
+  text-decoration:none;
+  float:left;
+  color:white;
+  margin:4px 15px;
+  font-weight:bold;
+}
+
 
 #record_counters{float:left;}
 
