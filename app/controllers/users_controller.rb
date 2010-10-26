@@ -45,7 +45,7 @@ class UsersController < ApplicationController
   
   def show
     @records = @user.records
-    @plans = @user.plans.map{|p| p if p.record.nil?}.compact
+    @plans = @user.plans.select{|p| p.record.nil?}
     @followers = @user.followers
   end
   
