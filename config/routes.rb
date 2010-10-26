@@ -31,6 +31,9 @@ Igee::Application.routes.draw do
     end
   end
   resources :records
+  resources :feedbacks do 
+      get :thanks, :on => :collection
+  end
   resources :follows
   resources :comments
   resources :photos

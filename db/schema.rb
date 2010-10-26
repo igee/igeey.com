@@ -34,6 +34,12 @@ ActiveRecord::Schema.define() do
     t.timestamps
   end
 
+  create_table "feedbacks", :force => true do |t|
+    t.string   :text
+    t.string   :email
+    t.timestamps
+  end
+  
   create_table "geos", :force => true do |t|
     t.string  :name,       :limit => 40
     t.integer :parent_id
