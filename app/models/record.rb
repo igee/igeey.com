@@ -11,7 +11,7 @@ class Record < ActiveRecord::Base
   default_scope :order => 'created_at DESC'
   
   attr_accessor :sync_to_sina,:sync_to_douban,:sync_to_renren
-  
+    
   def formatted_do_at
     date = self.do_at
     "#{date.year == Date.today.year ? '' : "#{date.year}年"}#{date.month}月#{date.day}日"

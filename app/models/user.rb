@@ -81,10 +81,18 @@ class User < ActiveRecord::Base
     !self.followings.where(:followable_id => followable.id,:followable_type => followable.class).limit(1).blank?
   end
 
-  def has_unread_comment?
-    [self.records.where(:has_new_comment => true).size,self.plans.where(:has_new_comment => true).size,self.requirements.where(:has_new_comment => true).size].sum > 0
+  def has_unread_record_comment?
+    !self.records.where(:has_new_comment => true).blank?
   end
 
+  def has_unread_plan_comment?
+    !self.plans.where(:has_new_comment => true).blank?
+  end
+  
+  def has_unread_requirement_comment?
+    !self.requirements.where(:has_new_comment => true).blank?
+  end
+  
   # Use OAuth::AccessToken to access oauth api. powered by oauth_side 
   def send_to_douban_miniblog(message)
     content = "<?xml version='1.0' encoding='UTF-8'?><entry xmlns:ns0='http://www.w3.org/2005/Atom' xmlns:db='http://www.douban.com/xmlns/'><content>#{message}</content></entry>"

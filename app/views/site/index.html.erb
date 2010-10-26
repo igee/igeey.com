@@ -5,23 +5,43 @@
 <br/>
 <% end %>
 
-<h4>最新需求:</h4>
-<%= render :partial => 'public/requirement', :collection => @requirements %>
+<h4>最新信息</h4>
+<%= render :partial => 'public/event', :collection => @list %>
 
 <% content_for :sidebar do %>
-  <div style="clear:both;padding:4px 20px;height:220px">
-    <%= link_to "记录我的行动",new_record_path,:id => "create_venue",:class => 'big_button' %>
-    <%= link_to "添加新的聚点",new_venue_path,:id => "create_venue",:class => 'big_button' %>
+  
+  <% unless @myplans.blank? %>
+    <div class="box">
+      <h4>你还有这些事情要做：</h4>
+    </div>
+  <% end %>
+  
+  <div class="box">
+    <p>
+      <%= "你的需求有了新留言" if logged_in? && current_user.has_unread_record_comment? %>
+      <%= "你的行动有了新留言" if logged_in? && current_user.has_unread_plan_comment? %>
+      <%= "你的计划有了新留言" if logged_in? && current_user.has_unread_requirement_comment? %>
+    </p>
   </div>
   
-  <h4><%= "你有新消息" if logged_in? && current_user.has_unread_comment? %></h4>
-  
-  
-  
-  <h4>最新的聚点:</h4>
-  <p>
-  <% @venues.each do |venue| %>
-    <%= link_to(venue.name,venue)%>
-  <% end %>
-  </p>
+  <div class="box">
+    <div class="guide">
+      <div>
+        <%= link_to "记录做过的公益行动",new_record_path%>
+      </div>
+      <p>留下一点一滴的公益回忆，汇集成自己的公益档案。</p>
+    </div>
+    <div class="guide">
+      <div>
+        <%= link_to "发掘更多的公益需求",requirements_path%>
+      </div>
+      <p>有能力做得更多？去找到更多需要帮助的人吧。</p>
+    </div>
+    <div class="guide">
+      <div>
+        <%= link_to "探索爱聚的世界",geos_path%>
+      </div>
+      <p>发现和提交新的聚点，更新聚点的的需求，以及更多..</p>
+    </div>
+  </div>
 <% end %>

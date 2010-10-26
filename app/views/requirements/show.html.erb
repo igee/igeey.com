@@ -1,5 +1,4 @@
-<div class="box">
-  
+<div class="box">  
   <%= render :partial => '/public/user' ,:object => @requirement.publisher ,:locals => {:with_name => true}%>
   <div class="saying">
     <div style="font-size:26px;text-align:left;font-family:'times new roman';margin-bottom:-10px;color:#999">“</div>
@@ -17,9 +16,9 @@
 </div>
 
 <div class="box">
-  <% if @record %>
+  <% if @record.present? %>
     我已参加，<%= link_to '查看我的行动',@record %>。
-  <% elsif @plan %>
+  <% elsif @plan.present?  %>
     <h4>你的计划：</h4>
     <div class="event_box">
       <%= render :partial => '/public/user',:object => @plan.user%>

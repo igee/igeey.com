@@ -7,7 +7,7 @@ body,h1{margin:0}
 
 h3,h4,h5,h6{
     margin:0.4em 0;
-    color:#444;
+    color:#666;
     }
     
 #sidebar h3,#sidebar h4,#sidebar h5{color:#b0e6ff}    
@@ -32,7 +32,7 @@ a{
     
 
 
-a:hover,#sidebar a:hover{color:#f63}
+a:hover{color:#f63}
 
 input{
     text-decoration:none;
@@ -73,7 +73,7 @@ input:focus{background-color:#ffffc0;outline:none;border:1px solid #e95}
 
 .box{
     clear:both;
-    margin:20px 0;
+    margin-bottom:20px;
 }
 
 button,.button{
@@ -132,6 +132,40 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
   color:#ffffff;
   padding:4px 10px;
 }
+
+.guide{
+  margin:5px;
+  padding:15px 30px 5px;
+  background-color:#3b91c7;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  text-align:center;
+  }
+
+.guide p{
+  color:#a5c7ff;
+  font-size:12px
+  }
+
+.guide a{
+  background-color:#c0e0ff;
+  padding:4px 8px;
+  font-size: 15px;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  text-align:center;
+  display:block;
+  }
+
+.guide a:hover{
+  background-color:#ff6633;
+  color:#fff;
+  }
+
+.guide img{
+  overflow:hidden;
+  }
+
 
 .radio_button{
     color:#888;

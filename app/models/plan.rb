@@ -12,6 +12,8 @@ class Plan < ActiveRecord::Base
   
   validates :user_id,:action_id,:requirement_id,:venue_id,:presence   => true
   
+  default_scope :order => 'created_at DESC'
+  
   def formatted_plan_at
     date = self.plan_at
     "#{date.year == Date.today.year ? '' : "#{date.year}年"}#{date.month}月#{date.day}日"
