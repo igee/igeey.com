@@ -82,15 +82,19 @@ class User < ActiveRecord::Base
   end
 
   def has_unread_record_comment?
-    !self.records.where(:has_new_comment => true).blank?
+    self.records.where(:has_new_comment => true).present?
   end
 
   def has_unread_plan_comment?
-    !self.plans.where(:has_new_comment => true).blank?
+    self.plans.where(:has_new_comment => true).present?
   end
   
   def has_unread_requirement_comment?
-    !self.requirements.where(:has_new_comment => true).blank?
+    self.requirements.where(:has_new_comment => true).present?
+  end
+  
+  def has_unread_comment?
+    has_unread_requirement_comment? || has_unread_plan_comment? || has_unread_plan_comment?
   end
   
   # Use OAuth::AccessToken to access oauth api. powered by oauth_side 

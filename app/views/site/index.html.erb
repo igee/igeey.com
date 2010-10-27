@@ -9,20 +9,24 @@
 <%= render :partial => 'public/event', :collection => @list %>
 
 <% content_for :sidebar do %>
-  
   <% unless @myplans.blank? %>
     <div class="box">
-      <h4>你还有这些事情要做：</h4>
+      <div class="sidebar_panel">
+        <h4>你的计划：</h4>
+      <% @myplans.each do |plan|%>
+          <p><%= link_to "要#{plan.description}",requirement_plan_path(plan.requirement,plan)%></p>
+      <% end %>
+      </div>
     </div>
   <% end %>
   
+  <% if logged_in? && current_user.has_unread_comment? %>
   <div class="box">
-    <p>
-      <%= "你的需求有了新留言" if logged_in? && current_user.has_unread_record_comment? %>
-      <%= "你的行动有了新留言" if logged_in? && current_user.has_unread_plan_comment? %>
-      <%= "你的计划有了新留言" if logged_in? && current_user.has_unread_requirement_comment? %>
-    </p>
+    <div class="sidebar_panel">
+      <%= link_to "有人在你的消息下留言了，去看看?",unread_comments_path%>
+    </div>
   </div>
+  <% end %>
   
   <div class="box">
     <div class="guide">
@@ -35,7 +39,7 @@
       <div>
         <%= link_to "发掘更多的公益需求",requirements_path%>
       </div>
-      <p>有能力做得更多？去找到更多需要帮助的人吧。</p>
+      <p>有能力做得更多？去寻找更多需要帮助的人吧。</p>
     </div>
     <div class="guide">
       <div>

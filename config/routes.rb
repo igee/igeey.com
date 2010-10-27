@@ -1,11 +1,14 @@
 Igee::Application.routes.draw do
   root :to => 'site#index'
   
+  
   match 'signup' => 'users#new', :as => :signup
   match 'register' => 'users#create', :as => :register
   match 'login' => 'sessions#new', :as => :login
   match 'logout' => 'sessions#destroy', :as => :logout
+  
   match 'about' => 'site#about'
+  match 'unread_comments' => 'site#unread_comments'
   match 'oauth(/:action)' => 'oauth#(/:action)'
   match 'setting' => 'users#edit'
   
@@ -28,6 +31,9 @@ Igee::Application.routes.draw do
   resources :users do
     collection do
       get   :welcome
+    end
+    member do
+      
     end
   end
   resources :records

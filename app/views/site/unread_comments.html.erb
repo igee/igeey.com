@@ -1,0 +1,20 @@
+<% if @requirements.present? %>  
+  <div class="box">
+    <h4>以下需求有新留言：<h4>
+    <%= render :partial => "/public/requirement" ,:collection => @requirements %>
+  </div>
+<% end %>
+
+<% if @plans.present? %>  
+  <div class="box">
+    <h4>以下计划有了新留言：<h4>
+    <%= render :partial => "/public/plan" ,:collection => @plans %>
+  </div>
+<% end %>
+
+<% if @records.present? %>  
+  <div class="box">
+    <h4>有新留言给你的需求:<h4>
+    <%= render :partial => "/public/record" ,:collection => @records %>
+  </div>
+<% end %>

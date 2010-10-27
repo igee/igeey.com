@@ -54,7 +54,7 @@ class UsersController < ApplicationController
       render :layout => false
     end  
   end
-  
+
   private
   def find_user
     @user = User.find(params[:id])

@@ -1,6 +1,7 @@
 body{
   font-size:14px;
-  background-color:#c3e0ff
+  background-color:#c3e0ff;
+  color:#44484a
   }
 
 body,h1{margin:0}
@@ -23,7 +24,7 @@ span{
   font-size:12px;
 }
 
-#sidebar span{color:#a5c7ff}
+#sidebar span{color:#fff}
 
 a{
     text-decoration:none;
@@ -143,7 +144,7 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
   }
 
 .guide p{
-  color:#a5c7ff;
+  color:#bdf;
   font-size:12px
   }
 
@@ -235,6 +236,21 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
     font-size:16px;
 }
 
+.sidebar_panel{
+  padding:6px 10px;
+  background-color:#bdf;
+  margin:5px;
+  font-size:12px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  }
+
+
+.sidebar_panel p{
+  padding-bottom:6px;
+  border-bottom:1px dashed #9bd;
+  }
+
 .saying  input{text-align:right}
 
 .saying_tail{
@@ -260,11 +276,6 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
 }
 
 
-#sidebar .saying{
-  width:140px;
-  font-size:14px;
-  padding:10px 15px;}
-
 .event {height:64px}
 .event p{
     font-size:15px;
@@ -284,7 +295,7 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
 .event_box{
   padding:4px;
   margin:10px 0;
-  border-bottom:1px dashed #aaa;}
+  border-bottom:1px dashed #ccc;}
 
 .photo_box{
   float:left;
@@ -340,8 +351,6 @@ a#logo{
     height:48px;
     }
     
-#footer a{color:#eee;}
-    
 #main{
     float:left;
     width:620px;
@@ -389,10 +398,12 @@ a#logo{
   margin-left:210px;
   }
 
+#footer_links a{color:#79c;}
+
 #footer_links li{
   text-decoration:none;
   float:left;
-  color:white;
+  color:#79c;
   margin:4px 15px;
   font-weight:bold;
 }
