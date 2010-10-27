@@ -29,7 +29,8 @@
     <div style="font-size:26px;text-align:right;font-family:'times new roman';margin-top:-10px;color:#999">”</div>
     <p>
       <h6>详细信息：</h6>
-      <%= form.text_area :detail, :cols => 58, :rows => 4,:class => "underline",:placeholder => "简述需求的背景，还有大家参时有必要了解的信息。"%>
+      <p style="font-size:12px;font-weight:normal;color:#666">请说明你是如何了解这个需求的，以及参与者所需的必要信息：<br/>例如，募捐的收款人(与联系方式)，志愿行动的集合时间(与地点)。</p>
+      <%= form.text_area :detail, :cols => 50, :rows => 6,:class => "underline with_tip",:title => "不要少于50字"%>
     </p>
   </div>
   <div class="saying_tail"></div>
@@ -37,8 +38,22 @@
   </div>
   
   <div style="clear:both;padding:0 20px;text-align:right">
-    <%= raw sync_form_tag(form)%>
+    <p>
+      <%= raw sync_form_tag(form)%>
+    </p>
     <%= form.submit '确定',:class => 'button'%>
     <%= button_to_function '取消',"javascript:window.location='#{venue_path(@venue)}'",:class => "button"%>
   </div>
+
+  <script type="text/javascript">
+      $('.with_explain').poshytip({
+	className: 'tip-yellowsimple',
+	showTimeout: 1,
+	alignTo: 'target',
+	alignX: 'center',
+	offsetY: 5,
+	allowTipHover: false
+      });
+  </script>
+
 <% end %>

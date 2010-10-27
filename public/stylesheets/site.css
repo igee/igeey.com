@@ -27,11 +27,9 @@ span{
 #sidebar span{color:#fff}
 
 a{
-    text-decoration:none;
-    color:#48c;
-    }
-    
-
+  text-decoration:none;
+  color:#48b;
+  }  
 
 a:hover{color:#f63}
 
@@ -224,16 +222,17 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
 
 
 .saying{
-    float:right;
-    width:490px;
-    background-color:#ececf3;
-    color:#505050;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    padding:10px 20px;
-    list-style:none;    
-    font-weight:bold;
-    font-size:16px;
+  float:right;
+  width:490px;
+  background-color:#ececf3;
+  color:#505050;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  padding:10px 20px;
+  list-style:none;    
+  font-weight:bold;
+  font-size:16px;
+  margin-bottom:8px;
 }
 
 .sidebar_panel{

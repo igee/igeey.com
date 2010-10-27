@@ -30,7 +30,8 @@
       </ul>
       <div id="login_state">
         <% if logged_in? %>
-          <%= link_to current_user.login,user_path(current_user)%> |
+          <span>欢迎,<%= current_user.login %></span>
+          <%= link_to '设置',setting_path%> |
           <%= link_to "退出",logout_path %>
         <% else %>
           <%= link_to "登录",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%> |
@@ -79,15 +80,22 @@
     $(document).ready(function(){
       $('#dialog_flash a').click();
       $('.with_tip').poshytip({
-				className: 'tip-yellowsimple',
-				showOn: 'focus',
-				alignTo: 'target',
-				alignX: 'right',
-				alignY: 'center',
-				offsetX: 5
-			});
+        className: 'tip-yellowsimple',
+        showOn: 'focus',
+        alignTo: 'target',
+        alignX: 'right',
+        alignY: 'center',
+        offsetX: 5
       });
-    
+      $('.with_explain').poshytip({
+	className: 'tip-yellowsimple',
+	showTimeout: 1,
+	alignTo: 'target',
+	alignX: 'center',
+	offsetY: 5,
+	allowTipHover: false
+      });
+    })  
   </script>
 </body>
 </html>

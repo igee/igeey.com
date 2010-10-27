@@ -25,6 +25,7 @@
     <div class="saying_tail"></div>
     <div style="clear:both;text-align:right">
       <%= raw sync_form_tag(form)%>
+      <br/>
       <%= form.submit '确定',:class => "button"%>
       <%= button_to_function '取消',"javascript:window.location='#{venue_path(@venue)}'",:class => "button"%>
     </div>
