@@ -8,7 +8,7 @@ body,h1{margin:0}
 
 h3,h4,h5,h6{
     margin:0.4em 0;
-    color:#8088a3;
+    color:#57a;
     }
     
 #sidebar h3,#sidebar h4,#sidebar h5{color:#469}    
@@ -226,7 +226,7 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
 .saying{
     float:right;
     width:490px;
-    background-color:#e3e3ff;
+    background-color:#ececf3;
     color:#505050;
     -moz-border-radius: 10px;
     border-radius: 10px;
@@ -266,7 +266,7 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
 
 .comment p{
     width:490px;
-    background-color:#e3e3ff;
+    background-color:#ececf3;
     color:#505050;
     -moz-border-radius: 6px;
     border-radius: 6px;
@@ -395,16 +395,16 @@ a#logo{
 
 #footer_links{
   float:left;
-  margin-left:210px;
+  margin-left:560px;
   }
 
-#footer_links a{color:#79c;}
+#footer_links a{color:#80a0c0;}
 
 #footer_links li{
   text-decoration:none;
   float:left;
-  color:#79c;
-  margin:4px 15px;
+  color:#9bc;
+  margin:4px 10px;
   font-weight:bold;
 }
 

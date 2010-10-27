@@ -13,11 +13,10 @@ class PlansController < ApplicationController
   end
   
   def create
-    @plan = Plan.new(params[:plan])
+    @plan = current_user.plans.build(params[:plan])
     @plan.requirement = Requirement.find(params[:requirement_id])
     @plan.venue = @plan.requirement.venue
     @plan.action = @plan.requirement.action
-    @plan.user = current_user
     @plan.save
     if @plan.save
       @oauth_message = "(这是oauth同步测试）： 我要#{@plan.description}  #{requirement_plan_url(@plan.requirement,@plan)}"

@@ -4,7 +4,7 @@
     <%= form.hidden_field :venue_id %>
     <%= form.hidden_field :requirement_id %>
     <%= form.hidden_field :plan_id %>
-    <%= render :partial => '/public/user' ,:object => current_user %>
+    <%= render :partial => '/public/user' ,:object => current_user ,:locals => {:with_name => true}%>
     <div class="saying">
         <div style="font-size:26px;text-align:left;font-family:'times new roman';margin-bottom:-10px;color:#999">“</div>
         <p style="padding:0 20px;">
@@ -22,9 +22,9 @@
         </p>
         <div style="font-size:26px;text-align:right;font-family:'times new roman';margin-top:-10px;color:#999">”</div>
     </div>
+    <div class="saying_tail"></div>
     <div style="clear:both;text-align:right">
       <%= raw sync_form_tag(form)%>
-      <br />
       <%= form.submit '确定',:class => "button"%>
       <%= button_to_function '取消',"javascript:window.location='#{venue_path(@venue)}'",:class => "button"%>
     </div>

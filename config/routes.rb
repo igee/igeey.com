@@ -8,6 +8,9 @@ Igee::Application.routes.draw do
   match 'logout' => 'sessions#destroy', :as => :logout
   
   match 'about' => 'site#about'
+  match 'report' => 'site#report'
+  match 'faq' => 'site#faq'
+  
   match 'unread_comments' => 'site#unread_comments'
   match 'oauth(/:action)' => 'oauth#(/:action)'
   match 'setting' => 'users#edit'

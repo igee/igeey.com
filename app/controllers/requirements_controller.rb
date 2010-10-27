@@ -23,7 +23,7 @@ class RequirementsController < ApplicationController
   end
 
   def new
-    @requirement = Requirement.new(:venue_id => params[:venue_id],:action_id => params[:action_id])
+    @requirement = current_user.requirements.build(:venue_id => params[:venue_id],:action_id => params[:action_id])
     @venue = @requirement.venue
     @action = @requirement.action
     respond_with @requirement
@@ -34,8 +34,7 @@ class RequirementsController < ApplicationController
   end
 
   def create
-    @requirement = Requirement.new(params[:requirement])
-    @requirement.publisher = current_user
+    @requirement = current_user.requirements.build(params[:requirement])
     if @requirement.save
       @oauth_message = "(这是oauth同步测试）我在爱聚网站发布了新的公益需求： #{@requirement.description}  #{requirement_url(@requirement)}"
       if @requirement.sync_to_douban && current_user.douban?

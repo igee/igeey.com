@@ -1,11 +1,11 @@
 class RecordsController < ApplicationController
   respond_to :html
-  before_filter :login_required, :except => [:index, :show,:new]
+  before_filter :login_required, :except => [:index,:show]
   before_filter :find_record, :except => [:index,:new,:create]
   after_filter :clean_unread, :only => [:show]
   
   def new    
-    @record = Record.new(:action_id => params[:action_id],:venue_id => params[:venue_id],:plan_id => params[:plan_id])
+    @record = current_user.records.build(:action_id => params[:action_id],:venue_id => params[:venue_id],:plan_id => params[:plan_id])
     @plan = @record.plan
     @requirement = @plan.nil? ? @record.requirement : @plan.requirement
     @venue = @requirement.nil? ? @record.venue : @requirement.venue
@@ -18,8 +18,7 @@ class RecordsController < ApplicationController
   end
   
   def create
-    @record = Record.new(params[:record])
-    @record.user = current_user
+    @record = current_user.records.build(params[:record])
     if @record.save
       @oauth_message = "(这是oauth同步测试）我#{@record.description}  #{record_url(@record)}"
       if @record.sync_to_douban && current_user.douban?
