@@ -1,15 +1,19 @@
+<% @requirement = @record.requirement %>
+<% @venue = @record.venue %>
+<% @action = @record.action %>
+<% @plan = @record.plan %>
 <div class="box">
   <%= form_for @record do |form| %>
+    <%= raw error_explanation_for(@record) if @record.errors.present?%>
     <%= form.hidden_field :action_id %>
     <%= form.hidden_field :venue_id %>
     <%= form.hidden_field :requirement_id %>
     <%= form.hidden_field :plan_id %>
     <%= render :partial => '/public/user' ,:object => current_user ,:locals => {:with_name => true}%>
     <div class="saying">
-        <div style="font-size:26px;text-align:left;font-family:'times new roman';margin-bottom:-10px;color:#999">“</div>
-        <p style="padding:0 20px;">
-            我在<%= form.text_field :do_at, :size => 8,:class => 'with_calendar',:placeholder => "yyyy-mm-dd"%><%="为#{@venue.name}"%><%= @action.name %>:<br/>
-            
+        <div class="saying_colon" style="text-align:left;margin-bottom:-10px;margin-left:-20px">“</div>
+        <p>
+            <%= form.label :done_at,'我在'%><%= form.text_field :done_at, :size => 8,:class => 'with_calendar',:placeholder => "yyyy-mm-dd"%><%="为#{@venue.name}"%><%= @action.name %>:<br/>          
             <% if @action.for_what == 'money' %>
               共 <%= form.text_field :money, :size => 6 %> 元，用于<%= form.text_field :donate_for, :size => 9,:placeholder => "做什么用途?",:value => (@requirement.donate_for if @requirement)%>。
             <% elsif @action.for_what == 'goods' %>
@@ -20,7 +24,7 @@
             <% end %>
             <br/>
         </p>
-        <div style="font-size:26px;text-align:right;font-family:'times new roman';margin-top:-10px;color:#999">”</div>
+        <div class="saying_colon" style="text-align:right;margin-top:-10px;margin-right:-20px">”</div>
     </div>
     <div class="saying_tail"></div>
     <div style="clear:both;text-align:right">

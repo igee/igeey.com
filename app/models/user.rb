@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   add_oauth  # add dynamic method for confirmation of oauth status
   
   belongs_to  :geo
-  
+  belongs_to  :publisher,   :class_name => :user,:foreign_key => :publisher_id
   has_attached_file :avatar,:styles => {:_48x48 => ["48x48#",:png],:_72x72 => ["72x72#",:png]},
                             :default_url=>"/defaults/:attachment/:style.png",
                             :default_style=> :_48x48,
@@ -24,19 +24,17 @@ class User < ActiveRecord::Base
   has_many :followers,      :through => :follows, :source => :user
   # set_table_name 'users'
 
-  validates :login, :presence   => true,
-                    :uniqueness => true,
-                    :length     => { :within => 1..40 },
-                    :format     => { :with => Authentication.login_regex, :message => Authentication.bad_login_message }
+  validates :login, :uniqueness => true,
+                    :length     => { :within => 1..40,:message => '用户名字数在1至40之间'},
+                    :format     => { :with => Authentication.login_regex, :message => '用户名请使用中文和常见的字符' }
 
   validates :name,  :format     => { :with => Authentication.name_regex, :message => Authentication.bad_name_message },
-                    :length     => { :maximum => 100 },
+                    :length     => { :maximum => 100},
                     :allow_nil  => true
 
-  validates :email, :presence   => true,
-                    :uniqueness => true,
-                    :format     => { :with => Authentication.email_regex, :message => Authentication.bad_email_message },
-                    :length     => { :within => 6..100 }
+  validates :email, :uniqueness => true,
+                    :format     => { :with => Authentication.email_regex, :message => '邮箱格式有误'},
+                    :length     => { :within => 6..100 ,:message => '邮箱不足6位'}
                     
   validates :avatar_file_name,:format => { :with => /([\w-]+\.(gif|png|jpg))|/ }
   

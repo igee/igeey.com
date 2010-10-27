@@ -25,7 +25,6 @@ class UsersController < ApplicationController
       flash[:dialog] = "<a href=#{welcome_users_path} class='open_dialog' title='欢迎'>欢迎</a>"
       redirect_back_or_default('/')
     else
-      flash.now[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
       render :action => 'new' 
     end
   end

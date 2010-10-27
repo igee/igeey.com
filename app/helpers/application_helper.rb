@@ -1,4 +1,13 @@
 module ApplicationHelper
+  
+  def error_explanation_for(object)
+    html = '<ul id="error_explanation">'
+    object.errors.each do |msg|
+      html << "<li>#{msg[1]}</li>"
+    end
+    html << '</ul>'
+  end
+  
   def who_at_where(user,venue)
     "#{link_to user.login,user}@#{link_to venue.name,venue}"
   end

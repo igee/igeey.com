@@ -10,6 +10,17 @@ class Requirement < ActiveRecord::Base
   default_scope :order => 'created_at DESC'
   
   attr_accessor :sync_to_sina,:sync_to_douban,:sync_to_renren
+  
+  validates :detail,:length => { :within => 50..1000 ,:message => '详细信息要不能少于50字'}
+  validates :publisher_id,:action_id,:venue_id,:presence   => true
+
+  def validate
+    if (total_money && donate_for) || (total_goods && goods_is) || (total_people && do_what)
+      errors[:number] << '数量必须为大于0的整数' unless (total_money.to_i > 0)||(total_goods.to_i > 0)||(total_people.to_i > 0)
+    else
+      errors[:info] << '请将需求信息填写完整' 
+    end
+  end
     
   def users_count
     self.plans.map(&:user).uniq.size
@@ -34,7 +45,6 @@ class Requirement < ActiveRecord::Base
       "#{self.venue.name}需要#{self.total_people}人#{self.do_what}。"
     end
   end
-  
    
   def can_edit_by?(current_user)
     true if self.publisher = current_user

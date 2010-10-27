@@ -115,21 +115,42 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
 }
 .dialog_leftbar{
   float:left;
-  width:230px;
+  width:235px;
   border-right:1px dashed #999;
   padding:0 30px 0 10px;
   margin:10px 0;
 }
 
-.explain{color:#999;font-style:italic;margin:5px 0;}
-
-.explanation{color:#666}
+.explanation{
+  color:#666;
+  font-size:12px;
+  font-weight:normal;
+  }
 
 .error{
   display:block;
-  background-color:#cc0000;
+  background-color:#c40;
   color:#ffffff;
   padding:4px 10px;
+}
+
+.field_with_errors{
+  display:inline;
+  }
+
+#error_explanation{
+  text-align:center;
+  padding:2px 10px;
+  margin:10px 80px;
+  background-color:#d64;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  
+  }
+
+#error_explanation li{
+  list-style:none;
+  color:#fff
 }
 
 .guide{
@@ -223,12 +244,12 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
 
 .saying{
   float:right;
-  width:490px;
+  width:450px;
   background-color:#ececf3;
   color:#505050;
   -moz-border-radius: 10px;
   border-radius: 10px;
-  padding:10px 20px;
+  padding:10px 40px;
   list-style:none;    
   font-weight:bold;
   font-size:16px;
@@ -259,6 +280,12 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
   height:72px;
 }
 
+.saying_colon{
+  font-size:26px;
+  font-family:'times new roman';
+  color:#999;
+  }
+  
 .comment{
     float:right;
 }

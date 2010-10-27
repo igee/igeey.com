@@ -1,36 +1,27 @@
 <%= form_for @requirement do |form| %>
+  <%= raw error_explanation_for(@requirement) if @requirement.errors.present?%>
   <%= form.hidden_field :action_id %>
   <%= form.hidden_field :venue_id %>
-
-  <% if @requirement.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@requirement.errors.count, "error") %> prohibited this requirement from being saved:</h2>
-      <ul>
-      <% @requirement.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
   <%= render :partial => '/public/user' ,:object => current_user ,:locals => {:with_name => true}%>
   <div class="saying">
-    <div style="font-size:26px;text-align:left;font-family:'times new roman';margin-bottom:-10px;color:#999">“</div>
-    <div style="padding:0 20px;">
-          <%="#{@venue.name}"%>需要
-          <% if @action.for_what == 'money' %>
-            总计<%= form.text_field :total_money, :size => 4,:placeholder => "多少"%>元用于<%= form.text_field :donate_for ,:size => 10 ,:placeholder => "用来做什么？"%>。            
-          <% elsif @action.for_what == 'goods'%>
-            总计<%= form.text_field :total_goods, :size => 6 ,:placeholder => "多少"%>件<%= form.text_field :goods_is, :size => 8,:placeholder => "物资名称"%>。
-          <% elsif @action.for_what == 'time'%>
-            总计 <%= form.text_field :total_people, :size => 4, :placeholder => "多少" %> 人 <%= form.text_field :do_what, :size => 8,:placeholder => "做什么？"%>。
-          <% end %>
-          <br/>
-    </div>
-    <div style="font-size:26px;text-align:right;font-family:'times new roman';margin-top:-10px;color:#999">”</div>
+    <div class="saying_colon" style="text-align:left;margin-bottom:-10px;margin-left:-20px">“</div>
     <p>
-      <h6>详细信息：</h6>
-      <p style="font-size:12px;font-weight:normal;color:#666">请说明你是如何了解这个需求的，以及参与者所需的必要信息：<br/>例如，募捐的收款人(与联系方式)，志愿行动的集合时间(与地点)。</p>
-      <%= form.text_area :detail, :cols => 50, :rows => 6,:class => "underline with_tip",:title => "不要少于50字"%>
+      <%="#{@requirement.venue.name}"%>需要
+      <% if @requirement.action.for_what == 'money' %>
+        总计<%= form.text_field :total_money, :size => 4,:placeholder => "多少"%>元用于<%= form.text_field :donate_for ,:size => 10 ,:placeholder => "用来做什么？"%>。            
+      <% elsif @requirement.action.for_what == 'goods'%>
+        总计<%= form.text_field :total_goods, :size => 6 ,:placeholder => "多少"%>件<%= form.text_field :goods_is, :size => 8,:placeholder => "物资名称"%>。
+      <% elsif @requirement.action.for_what == 'time'%>
+        总计 <%= form.text_field :total_people, :size => 4, :placeholder => "多少" %> 人 <%= form.text_field :do_what, :size => 8,:placeholder => "做什么？"%>。
+      <% end %>
+      <br/>
+    </p>
+    <div class="saying_colon" style="text-align:right;margin-top:-10px;margin-right:-20px">”</div>
+    <p>
+      <h6>详细信息：(不要少于50字)</h6>
+      <p class="explanation">请说明你是如何了解这个需求的，以及其他人参与所必要信息：<br/>例如，募捐的收款人(与联系方式)，志愿行动的集合时间(与地点)。</p>
+      <%= form.text_area :detail, :cols => 56, :rows => 8,:class => "underline"%>
+      <p class="explanation">目前字数：<span id="character_counter"></span></p>
     </p>
   </div>
   <div class="saying_tail"></div>
@@ -42,18 +33,14 @@
       <%= raw sync_form_tag(form)%>
     </p>
     <%= form.submit '确定',:class => 'button'%>
-    <%= button_to_function '取消',"javascript:window.location='#{venue_path(@venue)}'",:class => "button"%>
+    <%= button_to_function '取消',"javascript:window.location='#{venue_path(@requirement.venue)}'",:class => "button"%>
   </div>
 
   <script type="text/javascript">
-      $('.with_explain').poshytip({
-	className: 'tip-yellowsimple',
-	showTimeout: 1,
-	alignTo: 'target',
-	alignX: 'center',
-	offsetY: 5,
-	allowTipHover: false
-      });
+      function updateCount() {
+      document.getElementById("character_counter").innerHTML = document.getElementById("requirement_detail").value.length;
+      setTimeout(updateCount, 400);
+       }
+      updateCount();
   </script>
-
 <% end %>

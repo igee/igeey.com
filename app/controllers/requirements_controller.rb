@@ -24,8 +24,6 @@ class RequirementsController < ApplicationController
 
   def new
     @requirement = current_user.requirements.build(:venue_id => params[:venue_id],:action_id => params[:action_id])
-    @venue = @requirement.venue
-    @action = @requirement.action
     respond_with @requirement
   end
 

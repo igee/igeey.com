@@ -90,7 +90,7 @@ ActiveRecord::Schema.define() do
     t.string   :goods_is,    :limit => 40
     t.integer  :time
     t.string   :do_what,     :limit => 40
-    t.datetime :do_at
+    t.datetime :done_at
     t.boolean  :has_new_comment,  :default => false
     t.timestamps
   end

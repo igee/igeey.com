@@ -1,0 +1,13 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+zh:
+  hello: "Hello world"
+  errors:
+    messages:
+      not_a_date: "日期格式不对，格式为:2000-01-01"
+      after: "日期必须在%{value}之后"
+      after_or_equal_to: "日期不能在%{value}之前"
+      before: "日期必须在%{value}之前"
+      before_or_equal_to: "日期不能在%{value}之后"
+
