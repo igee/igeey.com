@@ -1,16 +1,16 @@
 body{
   font-size:14px;
-  background-color:#c0d0ff
+  background-color:#c3e0ff
   }
 
 body,h1{margin:0}
 
 h3,h4,h5,h6{
     margin:0.4em 0;
-    color:#666;
+    color:#8088a3;
     }
     
-#sidebar h3,#sidebar h4,#sidebar h5{color:#b0e6ff}    
+#sidebar h3,#sidebar h4,#sidebar h5{color:#469}    
     
 ul,dl,p{
     margin:6px 0;
@@ -27,7 +27,7 @@ span{
 
 a{
     text-decoration:none;
-    color:#37a;
+    color:#48c;
     }
     
 
@@ -225,7 +225,7 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
 .saying{
     float:right;
     width:490px;
-    background-color:#fff;
+    background-color:#e3e3ff;
     color:#505050;
     -moz-border-radius: 10px;
     border-radius: 10px;
@@ -246,13 +246,11 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
 
 .comment{
     float:right;
-    
-    
 }
 
 .comment p{
     width:490px;
-    background-color:#fff;
+    background-color:#e3e3ff;
     color:#505050;
     -moz-border-radius: 6px;
     border-radius: 6px;
