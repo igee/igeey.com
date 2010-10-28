@@ -50,6 +50,6 @@ class PlansController < ApplicationController
   end
   
   def clean_unread
-    @plan.update_attribute(:has_new_comment,false) if @plan.user = current_user
+    @plan.update_attribute(:has_new_comment,false) if @plan.user == current_user
   end
 end

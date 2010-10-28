@@ -1,12 +1,11 @@
   <div class="box">
     <%= render :partial => '/public/user' ,:object => @plan.user ,:locals => {:with_name => true}%>
       <div class="saying">
-        <div style="font-size:26px;text-align:left;font-family:'times new roman';margin-bottom:-10px;color:#999">“</div>
+        <div class="saying_colon" style="text-align:left;margin-bottom:-10px;margin-left:-20px">“</div>
         <p style="padding:0 20px;">
           <%="#{@plan.user.login}要#{@plan.description}"%>
         </p>
-        <div style="font-size:26px;text-align:right;font-family:'times new roman';margin-top:-10px;color:#999">”</div>
-        <span><%= raw who_at_where(@plan.user,@plan.venue)%></span>
+        <div class="saying_colon" style="text-align:right;margin-top:-10px;margin-right:-20px">”</div>
         <div style="text-align:right"><span><%= link_to "更正信息？",edit_requirement_plan_path(@plan.requirement,@plan) if @plan.can_edit_by?(current_user)%></span></div>
       </div>
       <div class="saying_tail"></div>

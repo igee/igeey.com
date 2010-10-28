@@ -1,5 +1,7 @@
   
   <div style="margin:0 auto;">
   <%= link_to (image_tag @photo.photo.url(:max500x400)),@photo,:class => "open_dialog",:title => @photo.title %>
-    <span><%= link_to @photo.user.login ,@photo.user%> 上传于 <%=  format_date(@photo.created_at) %></span>
+    <p>
+      <span><%= link_to @photo.user.login ,@photo.user%> 上传于 <%=  format_date(@photo.created_at) %></span>
+    </p>
   </div>

@@ -2,11 +2,12 @@
   <%= render :partial => '/public/user', :object => requirement.publisher %>
   <div class="event">
     <div class="event_sidebar">
-    <% if requirement.plans.map(&:user).include?(current_user) %>
-      <span class="todo">你已参与</span>
+    <% if requirement.plans.map(&:user_id).include?(current_user.id) %>
+      <span><%= link_to '你已参与',requirement,:class => 'todo'%></span>
       <br/>
       <br/>
     <% else %>
+      <span><%= link_to '了解更多',requirement,:class => 'todo'%></span>
       <br/>
       <br/>
     <% end %>
@@ -19,7 +20,7 @@
       <span style="font-size:20px;font-family:'times new roman';color:#999">”</span>
     </p>
     <div class="addition">
-      <span><%= raw who_at_where(requirement.publisher,requirement.venue)%></span>
+      <span>在<%= link_to requirement.venue.name,requirement.venue %></span>
     </div>
   </div>
 </div>

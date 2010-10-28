@@ -44,6 +44,6 @@ class RecordsController < ApplicationController
   end
   
   def clean_unread
-    @record.update_attribute(:has_new_comment,false) if @record.user = current_user
+    @record.update_attribute(:has_new_comment,false) if @record.user == current_user
   end
 end

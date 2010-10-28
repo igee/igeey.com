@@ -8,7 +8,7 @@
       <% end %>
       <span>
       <%= raw "#{link_to "添加标题",'#',:onclick => "javascript:$('#photo_set_title_#{photo.id}').show();$(this).hide();return false"} |" if photo.title.blank?%>
-      <%= link_to "x",photo,:method => :delete ,:confirm => "确定要删除？"%>
+      <%= link_to "x",photo,:method => :delete ,:confirm => "确定要删除这张照片么？"%>
       </span>
   <% end %>
 </div>

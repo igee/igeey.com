@@ -9,11 +9,11 @@
 <%= render :partial => 'public/event', :collection => @list %>
 
 <% content_for :sidebar do %>
-  <% unless @myplans.blank? %>
+  <% unless @my_plans.blank? %>
     <div class="box">
       <div class="sidebar_panel">
         <h4>你的计划：</h4>
-      <% @myplans.each do |plan|%>
+      <% @my_plans.each do |plan|%>
           <p><%= link_to "要#{plan.description}",requirement_plan_path(plan.requirement,plan)%></p>
       <% end %>
       </div>

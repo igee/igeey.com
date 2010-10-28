@@ -14,8 +14,8 @@ class RequirementsController < ApplicationController
     @action = @requirement.action
     @plans = @requirement.plans.select{|p| p.record.nil?}
     @records = @requirement.records
-    @plan = @plans.select{|p| p.user == current_user}.first  # user`s plan on this requirement
-    @record = @records.select{|r| r.user == current_user}.first # user`s record on this requirement
+    @my_plan = @plans.select{|p| p.user_id == current_user.id}.first if logged_in? # user`s plan on this requirement
+    @my_record = @records.select{|r| r.user_id == current_user.id}.first if logged_in? # user`s record on this requirement
     @comment = Comment.new
     @comments = @requirement.comments
     @photo = Photo.new
