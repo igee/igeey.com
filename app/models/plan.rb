@@ -12,8 +12,8 @@ class Plan < ActiveRecord::Base
   
   delegate :for_what, :to => :action
   
-  validates :user_id,:action_id,:requirement_id,:venue_id,:presence   => true
-  validates :plan_at,:date => {:after_or_equal_to => Date.today.to_date}
+  validates :user_id,:action_id,:requirement_id,:venue_id,:presence => true
+  validates :plan_at,:date => {:after_or_equal_to => Date.today.to_date,:allow_nil => true}
   
   def validate
     errors[:number] = '数量必须为大于0的整数' unless ((money.to_i > 0) && for_what=='money')||((goods.to_i > 0) && for_what='goods') 
@@ -37,7 +37,7 @@ class Plan < ActiveRecord::Base
   end
   
   def can_edit_by?(current_user)
-    true if self.user = current_user
+    self.user == current_user
   end
   
 end

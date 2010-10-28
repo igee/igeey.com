@@ -47,7 +47,7 @@ class Requirement < ActiveRecord::Base
   end
    
   def can_edit_by?(current_user)
-    true if self.publisher = current_user
+    self.publisher == current_user
   end
   
 end

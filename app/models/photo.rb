@@ -11,7 +11,7 @@ class Photo < ActiveRecord::Base
   validates :photo_file_name, :presence   => true,:format => { :with => /([\w-]+\.(gif|png|jpg))|/ }
   
   def can_edit_by?(current_user)
-    true if self.user = current_user
+    self.user == current_user
   end
   
 end
