@@ -2,7 +2,7 @@
   <%= render :partial => '/public/user', :object => requirement.publisher %>
   <div class="event">
     <div class="event_sidebar">
-    <% if requirement.plans.map(&:user_id).include?(current_user.id) %>
+    <% if logged_in? && requirement.plans.map(&:user_id).include?(current_user.id) %>
       <span><%= link_to '你已参与',requirement,:class => 'todo'%></span>
       <br/>
       <br/>
