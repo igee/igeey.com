@@ -1,9 +1,8 @@
 class GeosController < ApplicationController
   respond_to :html,:json
-  before_filter :find_geo, :except => [:index,:new]
+  before_filter :find_geo, :except => [:index,:new,:list]
     
   def index
-    @geos = Geo.all
     @venues = Venue.all
     @geo = Geo.new(:name => '全国')
     render :show
@@ -12,7 +11,12 @@ class GeosController < ApplicationController
   def show
     @venues = @geo.venues
   end
-
+  
+  def list
+    @geos = Geo.all
+    render :layout => false if params[:layout] == 'false'
+  end
+  
   private
   def find_geo
     @geo = Geo.find(params[:id])

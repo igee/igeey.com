@@ -2,8 +2,15 @@
   <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false"></script>
 <% end %>
 
-<h2><%= @geo.name%></h2>
-<div id="map_canvas" style="width:100%;height:420px;clear:both"></div>  
+<div style="float:right">
+  <%= form_tag geos_path,:id =>'locate' do %>
+    <%= text_field_tag 'address', @address,:size => 10%>
+    <%= submit_tag '定位',:class => 'button'%>
+  <% end %>
+</div>
+<h2 style="display:inline"><%= @geo.name%></h2> <%= link_to '切换地区',list_geos_path,:class => 'open_dialog'%>
+
+<div id="map_canvas" style="width:100%;height:420px;clear:both;margin:10px 0"></div>  
 <div>
   <p>
     <%= link_to "添加聚点",new_venue_path,:id => "create_venue",:class => 'button' %>
@@ -26,6 +33,7 @@
   </p>
   <br/>
     <%= link_to '回到全国',geos_path %>
+    
 <% end %>
 
 <% content_for :extension do %>
@@ -35,6 +43,7 @@
       initialize();
       $('#create_venue').click(mark_latlng);
       $('#cancel_mark').click(cancel_mark);
+      $('#locate').submit(function(){geocoding($('#address').attr('value'));return false;})
     });
   </script>
 <% end %>  

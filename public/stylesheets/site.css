@@ -357,6 +357,7 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
     color:#666;
     display:none;
 }
+
 .todo:hover{background-color:#e82;border-color:#d71;color:white;}
 
 .event_box:hover .todo{display:inline}

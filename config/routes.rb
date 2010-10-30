@@ -30,7 +30,9 @@ Igee::Application.routes.draw do
     resources :plans
   end
     
-  resources :geos
+  resources :geos do
+    get   :list ,:on => :collection
+  end
   resources :users do
     collection do
       get   :welcome
