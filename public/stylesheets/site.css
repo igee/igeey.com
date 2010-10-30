@@ -58,6 +58,8 @@ textarea{
 
 input:focus{background-color:#ffffc0;outline:none;border:1px solid #e95}
 
+img{border:none;}
+
 .title{
     font-size:16px;
     }
@@ -378,6 +380,7 @@ a#logo{
     display:inline;
     font-size:24px;
     font-weight:bold;
+    border:none;
     }
 
 #login_state{float:right;padding:8px}

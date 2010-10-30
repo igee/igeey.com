@@ -5,7 +5,8 @@ class GeosController < ApplicationController
   def index
     @geos = Geo.all
     @venues = Venue.all
-    @geo = Geo.new
+    @geo = Geo.new(:name => '全国')
+    render :show
   end
   
   def show
