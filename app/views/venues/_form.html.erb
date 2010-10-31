@@ -12,7 +12,7 @@
       
       类型：<%= form.select :category ,Venue::CATEGORIES_HASH.invert.to_a.sort_by{|value| value[1]}%>
       
-      所在城市： <%= form.select :geo_id, nested_set_options(Geo, @venue) {|i| "#{'-' * i.level} #{i.name}" } %>
+      所在城市： <%= form.select :geo_id, nested_set_options(Geo) {|i| "#{'-' * i.level} #{i.name}" } %>
 
       <br/>
       <br/>

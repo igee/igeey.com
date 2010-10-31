@@ -13,11 +13,14 @@ h3,h4,h5,h6{
     
 #sidebar h3,#sidebar h4,#sidebar h5{color:#469}    
     
-ul,dl,p{
+ul,dl{
     margin:6px 0;
     line-height:1.7em;
     padding:0;
     }
+p{
+  line-height:1.9em;
+  margin:6px 0;}
 
 span{
   color:#808080;
@@ -43,6 +46,8 @@ input{
     -moz-border-radius: 3px;
     font-size:16px;
     }
+    
+input[type="checkbox"]{position:relative;top:2px;}
     
 textarea{
     display:block;
@@ -188,6 +193,10 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
   overflow:hidden;
   }
 
+.icon{
+  position:relative;
+  top:2px;
+  }
 
 .radio_button{
     color:#888;

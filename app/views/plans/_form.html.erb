@@ -25,8 +25,9 @@
       <div class="saying_tail"></div>
     </div>
     <div style="clear:both;text-align:right">
-    <%= raw sync_form_tag(form)%>
-    <br/>
+    <p>
+      <%= raw sync_form_tag(form)%>
+    </p>
     <%= form.submit '确定',:class => "button"%>
     <%= button_to_function '取消',"javascript:$('.dialog_title span').click();window.location='#{requirement_path(@plan.requirement) unless params[:layout] == 'false'}'",:class => "button"%>
   </div>
