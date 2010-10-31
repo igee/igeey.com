@@ -12,7 +12,7 @@ class RequirementsController < ApplicationController
     @requirement = Requirement.find(params[:id])
     @venue = @requirement.venue
     @action = @requirement.action
-    @plans = @requirement.plans.select{|p| p.record.nil?}
+    @plans = @requirement.plans.undone
     @records = @requirement.records
     @my_plan = @plans.select{|p| p.user_id == current_user.id}.first if logged_in? # user`s plan on this requirement
     @my_record = @records.select{|r| r.user_id == current_user.id}.first if logged_in? # user`s record on this requirement

@@ -44,7 +44,7 @@ class UsersController < ApplicationController
   
   def show
     @records = @user.records
-    @plans = @user.plans.select{|p| p.record.nil?}
+    @plans = @user.plans.undone
     @followers = @user.followers
   end
   

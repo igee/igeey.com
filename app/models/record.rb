@@ -23,6 +23,9 @@ class Record < ActiveRecord::Base
     else
       errors[:info] << '请将需求信息填写完整' 
     end
+    if plan.present? && plan.is_done
+      errors[:info] <<  '你已经完成了这个计划' 
+    end
   end
   
   def number

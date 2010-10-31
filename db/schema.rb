@@ -63,6 +63,7 @@ ActiveRecord::Schema.define() do
     t.integer  :goods
     t.datetime :plan_at
     t.boolean  :has_new_comment,  :default => false
+    t.boolean  :is_done,  :default => false
     t.timestamps
   end
 
