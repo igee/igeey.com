@@ -95,6 +95,7 @@ ActiveRecord::Schema.define() do
     t.string   :do_what,     :limit => 40
     t.datetime :done_at
     t.boolean  :has_new_comment,  :default => false
+    t.boolean  :has_photo,  :default => false
     t.timestamps
   end
 
@@ -123,7 +124,8 @@ ActiveRecord::Schema.define() do
     t.integer :total_people
     t.string  :do_what,     :limit => 40
     t.text    :detail
-    t.boolean :has_new_comment
+    t.boolean :has_new_comment,  :default => false
+    t.boolean :has_photo,  :default => false
     t.timestamps
   end  
 
@@ -138,6 +140,7 @@ ActiveRecord::Schema.define() do
     t.string  :latitude,   :limit => 40
     t.string  :longitude,  :limit => 40
     t.string  :cover_file_name
+    t.boolean :has_photo,  :default => false
     t.timestamps
   end
   
