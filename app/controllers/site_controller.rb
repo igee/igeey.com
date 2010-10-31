@@ -12,11 +12,13 @@ class SiteController < ApplicationController
   def my_timeline
     if logged_in?
       @my_timeline = []
-      current_user.followings.map(&:followable).each do |object|
-        @my_timeline += object.records.limit(10) 
-        @my_timeline += object.requirements.limit(10)
-        @my_timeline += object.plans.limit(10)
+      @my_followings = current_user.followings
+      @my_followings.map(&:followable).each do |object|
+        @my_timeline += object.records.limit(5) 
+        @my_timeline += object.requirements.limit(5)
+        @my_timeline += object.plans.limit(5)
       end
+      @my_timeline = @my_timeline.sort{|x,y| y.created_at <=> x.created_at }[0..10]
     end
     render :layout => false
   end
