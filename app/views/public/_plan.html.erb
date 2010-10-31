@@ -1,13 +1,16 @@
 <div class="event_box">  
   <%= render :partial => '/public/user',:object => plan.user %>
   <div class="event">
+    <div class="event_panel">
+      <%= link_to '了解更多' ,requirement_plan_path(plan.requirement,plan) %> &raquo; 
+    </div>
     <p>
       <span style="font-size:20px;font-family:'times new roman';color:#999">“</span>
-      <%= link_to "#{plan.user.login}要#{plan.description}",requirement_plan_path(plan.requirement,plan) %>
+      <%= "#{plan.user.login}要#{plan.description}" %>
       <span style="font-size:20px;font-family:'times new roman';color:#999">”</span>
     </p>
     <div class="addition">
-      <span>在<%= link_to plan.venue.name,plan.venue %></span>
+      
     </div>
   </div>
 </div>

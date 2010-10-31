@@ -3,11 +3,22 @@ class SiteController < ApplicationController
   
   def index
     # group requirements,plans and records to list
-    @list = Requirement.limit(10)
-    @list += Record.limit(10)
-    @list += Plan.limit(10)
-    @list = @list[0..10].sort{|x,y| y.created_at <=> x.created_at }    
-    @my_plans = current_user.plans.undone if logged_in?
+    @public_timeline = Requirement.limit(10)
+    @public_timeline += Record.limit(10)
+    @public_timeline += Plan.limit(10)
+    @public_timeline = @public_timeline.sort{|x,y| y.created_at <=> x.created_at }[0..10]
+  end
+  
+  def my_timeline
+    if logged_in?
+      @my_timeline = []
+      current_user.followings.map(&:followable).each do |object|
+        @my_timeline += object.records.limit(10) 
+        @my_timeline += object.requirements.limit(10)
+        @my_timeline += object.plans.limit(10)
+      end
+    end
+    render :layout => false
   end
   
   def unread_comments

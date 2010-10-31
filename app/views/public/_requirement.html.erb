@@ -1,26 +1,19 @@
 <div class="event_box">
   <%= render :partial => '/public/user', :object => requirement.publisher %>
   <div class="event">
-    <div class="event_sidebar">
-    <% if logged_in? && requirement.plans.map(&:user_id).include?(current_user.id) %>
-      <span><%= link_to '你已参与',requirement,:class => 'todo'%></span>
-      <br/>
-      <br/>
-    <% else %>
-      <span><%= link_to '了解更多',requirement,:class => 'todo'%></span>
-      <br/>
-      <br/>
-    <% end %>
-    
-    <span><%= requirement.users_count.zero? ? '还没有人参与' : "已有#{requirement.users_count}人参与" %></span>
+    <div class="event_panel">
+      <%= link_to '了解更多' ,requirement%> &raquo; 
     </div>
     <p>
       <span style="font-size:20px;font-family:'times new roman';color:#999">“</span>
-          <%= link_to requirement.description,requirement%>
+          <%= requirement.description%>
       <span style="font-size:20px;font-family:'times new roman';color:#999">”</span>
     </p>
     <div class="addition">
-      <span>在<%= link_to requirement.venue.name,requirement.venue %></span>
+      <span>
+        <%= requirement.users_count.zero? ? '还没有人参与' : "已有#{requirement.users_count}人参与" %>
+        <%= '(你已参与)' if logged_in? && requirement.plans.map(&:user_id).include?(current_user.id) %>
+      </span>
     </div>
   </div>
 </div>

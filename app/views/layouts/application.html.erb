@@ -74,28 +74,5 @@
     </div>
   </div>
   <%= yield :extension %>
-  
-  <script type="text/javascript">
-    $(function(){$(".open_dialog").click(function(){dialog($(this).attr('title'),("url:"+$(this).attr('href')),"540px","auto","text");  return false;});})
-    $(document).ready(function(){
-      $('#dialog_flash a').click();
-      $('.with_tip').poshytip({
-        className: 'tip-yellowsimple',
-        showOn: 'focus',
-        alignTo: 'target',
-        alignX: 'right',
-        alignY: 'center',
-        offsetX: 5
-      });
-      $('.with_explain').poshytip({
-	className: 'tip-yellowsimple',
-	showTimeout: 1,
-	alignTo: 'target',
-	alignX: 'center',
-	offsetY: 5,
-	allowTipHover: false
-      });
-    })  
-  </script>
 </body>
 </html>

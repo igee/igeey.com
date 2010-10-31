@@ -1,7 +1,7 @@
 body{
   font-size:14px;
   background-color:#c3e0ff;
-  color:#44484a
+  color:#606060
   }
 
 body,h1{margin:0}
@@ -20,7 +20,7 @@ ul,dl,p{
     }
 
 span{
-  color:#888;
+  color:#808080;
   font-size:12px;
 }
 
@@ -227,7 +227,7 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
     }    
 
 .record_counter{
-  background-color:#555;
+  background-color:#bbb;
   color:white;
   float:left;
   width:72px;
@@ -319,11 +319,14 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
     font-weight:bold;
     }
 
-.event_sidebar{
-  padding:10px;
+.event_panel{
+  margin:40px 10px 0;
   float:right;
   text-align:right;
+  display:none;
 }
+
+.event_box.hover .event_panel{display:block}
 
 .addition{
   margin-top:10px;
@@ -334,7 +337,7 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
   border-bottom:1px dashed #ccc;
   }
 
-.event_box:hover{background-color:#f6f6f6}
+.event_box.hover{background-color:#f6f6f6}
 
 .photo_box{
   float:left;
@@ -347,20 +350,6 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
 .photo{margin-bottom:4px;}
 
 .photo_box form{display:inline}
-
-.todo{
-    background-color:#eee;
-    border:3px solid #ccc;
-    padding:3px 6px;
-    -moz-border-radius: 6px;
-    border-radius:6px;
-    color:#666;
-    display:none;
-}
-
-.todo:hover{background-color:#e82;border-color:#d71;color:white;}
-
-.event_box:hover .todo{display:inline}
 
 input.todo:hover{
     color:white;
@@ -475,3 +464,41 @@ a#logo{
   }
   
 #feedback:hover{left:0;}
+
+#tabContaier ul{
+  border-bottom:1px solid #ddd;
+  height:28px;
+  margin:0;
+}
+#tabContaier li{
+  float:left;
+  list-style:none;
+  margin:0 3px;
+}
+#tabContaier li a{
+  border:1px solid #ddd;
+  border-bottom:none;
+  background:#eee;
+  color:#999;
+  font-size:13px;
+  display:block;
+  height:26px;
+  line-height:27px;
+  padding:0 20px;
+  position:relative;
+  top:1px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  -moz-border-left-radius: 4px;
+  -moz-border-right-radius: 4px;
+}
+#tabContaier li a:hover{
+  background:#fff;
+}
+#tabContaier li a.active{
+  height:27px;
+  background:#fff;
+  border:1px solid #ddd;
+  border-bottom:none;
+  color:#666;
+}

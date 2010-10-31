@@ -1,0 +1,11 @@
+<%= render :partial => 'public/event', :collection => @my_timeline %>
+  <script type="text/javascript">
+    $(".event_box").hover(
+      function () {
+        $(this).addClass("hover");
+      },
+      function () {
+        $(this).removeClass("hover");
+      }
+    );
+  </script>

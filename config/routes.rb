@@ -1,7 +1,6 @@
 Igee::Application.routes.draw do
   root :to => 'site#index'
-  
-  
+    
   match 'signup' => 'users#new', :as => :signup
   match 'register' => 'users#create', :as => :register
   match 'login' => 'sessions#new', :as => :login
@@ -12,6 +11,7 @@ Igee::Application.routes.draw do
   match 'faq' => 'site#faq'
   
   match 'unread_comments' => 'site#unread_comments'
+  match 'my_timeline' => 'site#my_timeline'
   match 'oauth(/:action)' => 'oauth#(/:action)'
   match 'setting' => 'users#edit'
   

@@ -5,8 +5,20 @@
 <br/>
 <% end %>
 
-<h4>最新信息</h4>
-<%= render :partial => 'public/event', :collection => @list %>
+<div id="tabContaier">
+  <ul>
+    <li><%= link_to '最新信息','#public_timeline'%></a></li>
+    <li><%= link_to '我的关注','#my_timeline',:id => 'my_timeline_tab' if logged_in?%></li>
+  </ul>
+  
+  <div id="public_timeline" class="tabContents">
+    <%= render :partial => 'public/event', :collection => @public_timeline %>
+  </div>
+  
+  <div id="my_timeline" class="tabContents">
+    <p>读取中...</p>
+  </div>
+</div>
 
 <% content_for :sidebar do %>
   <% unless @my_plans.blank? %>
@@ -48,4 +60,15 @@
       <p>发现和提交新的聚点，更新聚点的的需求，以及更多..</p>
     </div>
   </div>
+<% end %>
+
+<% content_for :extension do %>
+  <script type="text/javascript">
+    $('#my_timeline_tab').click(function(){
+      $.get('<%= my_timeline_path%>',function(data){
+        $('#my_timeline').html(data)
+      })
+    })
+    
+  </script>
 <% end %>
