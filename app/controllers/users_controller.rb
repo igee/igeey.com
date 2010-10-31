@@ -46,6 +46,7 @@ class UsersController < ApplicationController
     @records = @user.records
     @plans = @user.plans.undone
     @followers = @user.followers
+    @followers = @user.photos
   end
   
   def welcome

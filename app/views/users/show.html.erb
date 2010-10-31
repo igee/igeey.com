@@ -24,7 +24,12 @@
 </div>
 
 <div class="box">
-  <h4><%= personal_name(@user) %>要做...</h4>
+  <h4>上传的照片:</h4>
+  <%= render :partial => '/public/photo',:collection => @photos %>
+</div>
+
+<div class="box">
+  <h4>行动计划：</h4>
   <%= render :partial => '/public/plan',:collection => @plans%>
 </div>
 
