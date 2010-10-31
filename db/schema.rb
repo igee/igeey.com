@@ -106,12 +106,15 @@ ActiveRecord::Schema.define() do
     t.string   :crypted_password,          :limit => 40
     t.string   :salt,                      :limit => 40
     t.string   :avatar_file_name
+    t.integer  :geo_id
     t.datetime :created_at
     t.datetime :updated_at
-    t.integer  :geo_id
+    t.integer  :follows_count,           :default => 0
     t.string   :remember_token,            :limit => 40
     t.datetime :remember_token_expires_at
   end
+  
+  add_index "users", ["login"], :name => "index_users_on_login", :unique => true
   
   create_table "requirements", :force => true do |t|
     t.integer :venue_id
@@ -129,18 +132,17 @@ ActiveRecord::Schema.define() do
     t.timestamps
   end  
 
-  add_index "users", ["login"], :name => "index_users_on_login", :unique => true
-
   create_table "venues", :force => true do |t|
-    t.string  :name,       :limit => 40
+    t.string  :name,         :limit => 40
     t.text    :intro
-    t.string  :category,   :limit => 40
+    t.string  :category,     :limit => 40
     t.integer :geo_id
     t.integer :creator_id
-    t.string  :latitude,   :limit => 40
-    t.string  :longitude,  :limit => 40
+    t.string  :latitude,     :limit => 40
+    t.string  :longitude,    :limit => 40
     t.string  :cover_file_name
-    t.boolean :has_photo,  :default => false
+    t.boolean :has_photo,    :default => false
+    t.integer :follows_count,:default => 0
     t.timestamps
   end
   

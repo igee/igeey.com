@@ -3,13 +3,13 @@ class GeosController < ApplicationController
   before_filter :find_geo, :except => [:index,:new,:list]
     
   def index
-    @venues = Venue.all
+    @venues = Venue.hot
     @geo = Geo.new(:name => '全国')
     render :show
   end
   
   def show
-    @venues = @geo.venues
+    @venues = @geo.venues.hot
   end
   
   def list
