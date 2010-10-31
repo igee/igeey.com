@@ -1,0 +1,4599 @@
+--- 
+geos_567: 
+  name: Pitcairn
+  latitude: "-24.7036150"
+  id: "567"
+  parent_id: "394"
+  longitude: "-127.4393080"
+geos_519: 
+  name: Liechtenstein
+  latitude: "47.1660000"
+  id: "519"
+  parent_id: "394"
+  longitude: "9.5553730"
+geos_377: 
+  name: !binary |
+    5ZKM55Sw
+
+  latitude: "37.1141570"
+  id: "377"
+  parent_id: "372"
+  longitude: "79.9222110"
+geos_187: 
+  name: !binary |
+    5Y2B5aCw
+
+  latitude: "32.6503810"
+  id: "187"
+  parent_id: "183"
+  longitude: "110.7889150"
+geos_568: 
+  name: Poland
+  latitude: "51.9194380"
+  id: "568"
+  parent_id: "394"
+  longitude: "19.1451360"
+geos_378: 
+  name: !binary |
+    6Zi/5YWL6IuP
+
+  latitude: "41.1687790"
+  id: "378"
+  parent_id: "372"
+  longitude: "80.2606050"
+geos_188: 
+  name: !binary |
+    6I2G5bee
+
+  latitude: "30.3351650"
+  id: "188"
+  parent_id: "183"
+  longitude: "112.2397410"
+geos_569: 
+  name: Portugal
+  latitude: "39.3998720"
+  id: "569"
+  parent_id: "394"
+  longitude: "-8.2244540"
+geos_001: 
+  name: !binary |
+    5YyX5Lqs
+
+  latitude: "39.9046670"
+  id: "1"
+  parent_id: 
+  longitude: "116.4081980"
+geos_379: 
+  name: !binary |
+    5ZaA5LuA
+
+  latitude: "39.4704000"
+  id: "379"
+  parent_id: "372"
+  longitude: "75.9897550"
+geos_189: 
+  name: !binary |
+    5a6c5piM
+
+  latitude: "30.6919670"
+  id: "189"
+  parent_id: "183"
+  longitude: "111.2864710"
+geos_002: 
+  name: !binary |
+    5aSp5rSl
+
+  latitude: "39.1208760"
+  id: "2"
+  parent_id: 
+  longitude: "117.2150300"
+geos_620: 
+  name: Ukraine
+  latitude: "48.3794330"
+  id: "620"
+  parent_id: "394"
+  longitude: "31.1655800"
+geos_430: 
+  name: Brunei Darussalam
+  latitude: "4.5352770"
+  id: "430"
+  parent_id: "394"
+  longitude: "114.7276690"
+geos_240: 
+  name: !binary |
+    5p+z5bee
+
+  latitude: "24.3255100"
+  id: "240"
+  parent_id: "238"
+  longitude: "109.4155770"
+geos_050: 
+  name: !binary |
+    6L696Ziz
+
+  latitude: "41.2696250"
+  id: "50"
+  parent_id: "40"
+  longitude: "123.1729090"
+geos_003: 
+  name: !binary |
+    5rKz5YyX
+
+  latitude: "38.0372520"
+  id: "3"
+  parent_id: 
+  longitude: "114.4692590"
+geos_621: 
+  name: United Arab Emirates
+  latitude: "23.4240760"
+  id: "621"
+  parent_id: "394"
+  longitude: "53.8478180"
+geos_431: 
+  name: Bulgaria
+  latitude: "42.7338830"
+  id: "431"
+  parent_id: "394"
+  longitude: "25.4858300"
+geos_241: 
+  name: !binary |
+    5qGC5p6X
+
+  latitude: "25.2735670"
+  id: "241"
+  parent_id: "238"
+  longitude: "110.2901950"
+geos_051: 
+  name: !binary |
+    55uY6ZSm
+
+  latitude: "41.1199980"
+  id: "51"
+  parent_id: "40"
+  longitude: "122.0707150"
+geos_004: 
+  name: !binary |
+    55+z5a625bqE
+
+  latitude: "38.0423200"
+  id: "4"
+  parent_id: "3"
+  longitude: "114.5148640"
+geos_622: 
+  name: United Kingdom
+  latitude: "55.3780510"
+  id: "622"
+  parent_id: "394"
+  longitude: "-3.4359730"
+geos_432: 
+  name: Burkina Faso
+  latitude: "12.2383330"
+  id: "432"
+  parent_id: "394"
+  longitude: "-1.5615930"
+geos_242: 
+  name: !binary |
+    5qKn5bee
+
+  latitude: "23.4769100"
+  id: "242"
+  parent_id: "238"
+  longitude: "111.2791700"
+geos_052: 
+  name: !binary |
+    6ZOB5bKt
+
+  latitude: "42.2862870"
+  id: "52"
+  parent_id: "40"
+  longitude: "123.8423520"
+geos_005: 
+  name: !binary |
+    5ZSQ5bGx
+
+  latitude: "39.6304760"
+  id: "5"
+  parent_id: "3"
+  longitude: "118.1804070"
+geos_623: 
+  name: United States Minor Outlying Islands
+  latitude: "28.2166667"
+  id: "623"
+  parent_id: "394"
+  longitude: "-177.3666667"
+geos_480: 
+  name: Greece
+  latitude: "39.0742080"
+  id: "480"
+  parent_id: "394"
+  longitude: "21.8243120"
+geos_433: 
+  name: Burundi
+  latitude: "-3.3730560"
+  id: "433"
+  parent_id: "394"
+  longitude: "29.9188860"
+geos_243: 
+  name: !binary |
+    5YyX5rW3
+
+  latitude: "21.4811980"
+  id: "243"
+  parent_id: "238"
+  longitude: "109.1199510"
+geos_053: 
+  name: !binary |
+    5pyd6Ziz
+
+  latitude: "41.5737340"
+  id: "53"
+  parent_id: "40"
+  longitude: "120.4503720"
+geos_006: 
+  name: !binary |
+    56em55qH5bKb
+
+  latitude: "39.9353770"
+  id: "6"
+  parent_id: "3"
+  longitude: "119.6004920"
+geos_290: 
+  name: !binary |
+    6ZuF5a6J
+
+  latitude: "29.9805140"
+  id: "290"
+  parent_id: "274"
+  longitude: "103.0131630"
+geos_624: 
+  name: Uruguay
+  latitude: "-32.5227790"
+  id: "624"
+  parent_id: "394"
+  longitude: "-55.7658350"
+geos_481: 
+  name: Greenland
+  latitude: "71.7069360"
+  id: "481"
+  parent_id: "394"
+  longitude: "-42.6043030"
+geos_434: 
+  name: Cambodia
+  latitude: "12.5656790"
+  id: "434"
+  parent_id: "394"
+  longitude: "104.9909630"
+geos_244: 
+  name: !binary |
+    6Ziy5Z+O5riv
+
+  latitude: "21.6660040"
+  id: "244"
+  parent_id: "238"
+  longitude: "108.3423610"
+geos_054: 
+  name: !binary |
+    6JGr6Iqm5bKb
+
+  latitude: "40.7109530"
+  id: "54"
+  parent_id: "40"
+  longitude: "120.8368270"
+geos_007: 
+  name: !binary |
+    6YKv6YO4
+
+  latitude: "36.6122670"
+  id: "7"
+  parent_id: "3"
+  longitude: "114.4929680"
+geos_291: 
+  name: !binary |
+    5be05Lit
+
+  latitude: "31.8650560"
+  id: "291"
+  parent_id: "274"
+  longitude: "106.7449010"
+geos_625: 
+  name: Uzbekistan
+  latitude: "41.3774910"
+  id: "625"
+  parent_id: "394"
+  longitude: "64.5852620"
+geos_482: 
+  name: Grenada
+  latitude: "12.2627760"
+  id: "482"
+  parent_id: "394"
+  longitude: "-61.6041710"
+geos_435: 
+  name: Cameroon
+  latitude: "7.3697220"
+  id: "435"
+  parent_id: "394"
+  longitude: "12.3547220"
+geos_245: 
+  name: !binary |
+    6ZKm5bee
+
+  latitude: "21.9809680"
+  id: "245"
+  parent_id: "238"
+  longitude: "108.6545430"
+geos_055: 
+  name: !binary |
+    5ZCJ5p6X
+
+  latitude: "43.8378830"
+  id: "55"
+  parent_id: 
+  longitude: "126.5495720"
+geos_008: 
+  name: !binary |
+    6YKi5Y+w
+
+  latitude: "37.0705890"
+  id: "8"
+  parent_id: "3"
+  longitude: "114.5048740"
+geos_292: 
+  name: !binary |
+    6LWE6Ziz
+
+  latitude: "30.1294630"
+  id: "292"
+  parent_id: "274"
+  longitude: "104.6288890"
+geos_626: 
+  name: Vanuatu
+  latitude: "-15.3767060"
+  id: "626"
+  parent_id: "394"
+  longitude: "166.9591580"
+geos_483: 
+  name: Guadeloupe
+  latitude: "16.9959710"
+  id: "483"
+  parent_id: "394"
+  longitude: "-62.0676410"
+geos_436: 
+  name: Canada
+  latitude: "56.1303660"
+  id: "436"
+  parent_id: "394"
+  longitude: "-106.3467710"
+geos_246: 
+  name: !binary |
+    6LS15riv
+
+  latitude: "23.1115310"
+  id: "246"
+  parent_id: "238"
+  longitude: "109.5989270"
+geos_056: 
+  name: !binary |
+    6ZW/5pil
+
+  latitude: "43.8868410"
+  id: "56"
+  parent_id: "55"
+  longitude: "125.3245000"
+geos_009: 
+  name: !binary |
+    5L+d5a6a
+
+  latitude: "38.8739720"
+  id: "9"
+  parent_id: "3"
+  longitude: "115.4646300"
+geos_293: 
+  name: !binary |
+    6Zi/5Z2d
+
+  latitude: "31.8994130"
+  id: "293"
+  parent_id: "274"
+  longitude: "102.2246530"
+geos_627: 
+  name: Venezuela
+  latitude: "6.4237500"
+  id: "627"
+  parent_id: "394"
+  longitude: "-66.5897300"
+geos_484: 
+  name: Guam
+  latitude: "13.4443040"
+  id: "484"
+  parent_id: "394"
+  longitude: "144.7937310"
+geos_437: 
+  name: Cape Verde
+  latitude: "16.0020820"
+  id: "437"
+  parent_id: "394"
+  longitude: "-24.0131970"
+geos_247: 
+  name: !binary |
+    546J5p6X
+
+  latitude: "22.6363790"
+  id: "247"
+  parent_id: "238"
+  longitude: "110.1647560"
+geos_057: 
+  name: !binary |
+    5ZCJ5p6X
+
+  latitude: "43.8378830"
+  id: "57"
+  parent_id: "55"
+  longitude: "126.5495720"
+geos_294: 
+  name: !binary |
+    55SY5a2c
+
+  latitude: "30.0495200"
+  id: "294"
+  parent_id: "274"
+  longitude: "101.9623110"
+geos_628: 
+  name: Viet Nam
+  latitude: "14.0583240"
+  id: "628"
+  parent_id: "394"
+  longitude: "108.2771990"
+geos_485: 
+  name: Guatemala
+  latitude: "15.7834710"
+  id: "485"
+  parent_id: "394"
+  longitude: "-90.2307590"
+geos_438: 
+  name: Cayman Islands
+  latitude: "19.5134690"
+  id: "438"
+  parent_id: "394"
+  longitude: "-80.5669560"
+geos_248: 
+  name: !binary |
+    55m+6Imy
+
+  latitude: "23.9023710"
+  id: "248"
+  parent_id: "238"
+  longitude: "106.6182750"
+geos_058: 
+  name: !binary |
+    5Zub5bmz
+
+  latitude: "43.1669370"
+  id: "58"
+  parent_id: "55"
+  longitude: "124.3503520"
+geos_295: 
+  name: !binary |
+    5YeJ5bGx
+
+  latitude: "27.8814290"
+  id: "295"
+  parent_id: "274"
+  longitude: "102.2677260"
+geos_486: 
+  name: Guernsey
+  latitude: "49.4656910"
+  id: "486"
+  parent_id: "394"
+  longitude: "-2.5852780"
+geos_439: 
+  name: Central African Republic
+  latitude: "6.6111110"
+  id: "439"
+  parent_id: "394"
+  longitude: "20.9394440"
+geos_249: 
+  name: !binary |
+    6LS65bee
+
+  latitude: "24.4035700"
+  id: "249"
+  parent_id: "238"
+  longitude: "111.5667530"
+geos_059: 
+  name: !binary |
+    6L695rqQ
+
+  latitude: "42.8879180"
+  id: "59"
+  parent_id: "55"
+  longitude: "125.1435320"
+geos_296: 
+  name: !binary |
+    6LS15bee
+
+  latitude: "26.5984350"
+  id: "296"
+  parent_id: 
+  longitude: "106.7069270"
+geos_629: 
+  name: Virgin Islands, British
+  latitude: "31.224353"
+  id: "629"
+  parent_id: "394"
+  longitude: "121.475916"
+geos_487: 
+  name: Guinea
+  latitude: "9.9455870"
+  id: "487"
+  parent_id: "394"
+  longitude: "-9.6966450"
+geos_297: 
+  name: !binary |
+    6LS16Ziz
+
+  latitude: "26.5783430"
+  id: "297"
+  parent_id: "296"
+  longitude: "106.7134780"
+geos_488: 
+  name: Guinea-Bissau
+  latitude: "11.8037490"
+  id: "488"
+  parent_id: "394"
+  longitude: "-15.1804130"
+geos_300: 
+  name: !binary |
+    5a6J6aG6
+
+  latitude: "26.2530720"
+  id: "300"
+  parent_id: "296"
+  longitude: "105.9475940"
+geos_110: 
+  name: !binary |
+    5reu5Y2X
+
+  latitude: "32.6253970"
+  id: "110"
+  parent_id: "106"
+  longitude: "116.9999580"
+geos_298: 
+  name: !binary |
+    5YWt55uY5rC0
+
+  latitude: "26.5926630"
+  id: "298"
+  parent_id: "296"
+  longitude: "104.8303610"
+geos_489: 
+  name: Guyana
+  latitude: "4.8604160"
+  id: "489"
+  parent_id: "394"
+  longitude: "-58.9301800"
+geos_301: 
+  name: !binary |
+    6ZOc5LuB
+
+  latitude: "27.7315150"
+  id: "301"
+  parent_id: "296"
+  longitude: "109.1895980"
+geos_111: 
+  name: !binary |
+    6ams6Z6N5bGx
+
+  latitude: "31.6967880"
+  id: "111"
+  parent_id: "106"
+  longitude: "118.5046570"
+geos_299: 
+  name: !binary |
+    6YG15LmJ
+
+  latitude: "27.7256540"
+  id: "299"
+  parent_id: "296"
+  longitude: "106.9273890"
+geos_302: 
+  name: !binary |
+    5q+V6IqC
+
+  latitude: "27.3025890"
+  id: "302"
+  parent_id: "296"
+  longitude: "105.2839920"
+geos_112: 
+  name: !binary |
+    5reu5YyX
+
+  latitude: "33.9554790"
+  id: "112"
+  parent_id: "106"
+  longitude: "116.7982180"
+geos_540: 
+  name: Montserrat
+  latitude: "16.7424980"
+  id: "540"
+  parent_id: "394"
+  longitude: "-62.1873660"
+geos_350: 
+  name: !binary |
+    5bmz5YeJ
+
+  latitude: "35.5426860"
+  id: "350"
+  parent_id: "342"
+  longitude: "106.6651060"
+geos_160: 
+  name: !binary |
+    5b635bee
+
+  latitude: "37.4509200"
+  id: "160"
+  parent_id: "146"
+  longitude: "116.3025870"
+geos_303: 
+  name: !binary |
+    6buU6KW/5Y2X
+
+  latitude: "25.0878250"
+  id: "303"
+  parent_id: "296"
+  longitude: "104.9063970"
+geos_113: 
+  name: !binary |
+    6ZOc6Zm1
+
+  latitude: "30.9445300"
+  id: "113"
+  parent_id: "106"
+  longitude: "117.8108410"
+geos_541: 
+  name: Morocco
+  latitude: "31.7917020"
+  id: "541"
+  parent_id: "394"
+  longitude: "-7.0926200"
+geos_351: 
+  name: !binary |
+    6YWS5rOJ
+
+  latitude: "39.7324880"
+  id: "351"
+  parent_id: "342"
+  longitude: "98.4944110"
+geos_161: 
+  name: !binary |
+    6IGK5Z+O
+
+  latitude: "36.4566960"
+  id: "161"
+  parent_id: "146"
+  longitude: "115.9853710"
+geos_304: 
+  name: !binary |
+    6buU5Lic5Y2X
+
+  latitude: "26.5835500"
+  id: "304"
+  parent_id: "296"
+  longitude: "107.9828280"
+geos_114: 
+  name: !binary |
+    5a6J5bqG
+
+  latitude: "30.5249610"
+  id: "114"
+  parent_id: "106"
+  longitude: "117.0567300"
+geos_542: 
+  name: Mozambique
+  latitude: "-18.6656950"
+  id: "542"
+  parent_id: "394"
+  longitude: "35.5295620"
+geos_352: 
+  name: !binary |
+    5bqG6Ziz
+
+  latitude: "35.7386700"
+  id: "352"
+  parent_id: "342"
+  longitude: "107.6324650"
+geos_162: 
+  name: !binary |
+    5ruo5bee
+
+  latitude: "37.3814030"
+  id: "162"
+  parent_id: "146"
+  longitude: "117.9714300"
+geos_305: 
+  name: !binary |
+    6buU5Y2X
+
+  latitude: "26.2540920"
+  id: "305"
+  parent_id: "296"
+  longitude: "107.5221400"
+geos_115: 
+  name: !binary |
+    6buE5bGx
+
+  latitude: "29.7146970"
+  id: "115"
+  parent_id: "106"
+  longitude: "118.3374760"
+geos_590: 
+  name: Singapore
+  latitude: "1.3520830"
+  id: "590"
+  parent_id: "394"
+  longitude: "103.8198360"
+geos_543: 
+  name: Myanmar
+  latitude: "21.9139650"
+  id: "543"
+  parent_id: "394"
+  longitude: "95.9562230"
+geos_353: 
+  name: !binary |
+    5a6a6KW/
+
+  latitude: "35.5806230"
+  id: "353"
+  parent_id: "342"
+  longitude: "104.6262780"
+geos_163: 
+  name: !binary |
+    6I+P5rO9
+
+  latitude: "35.2337500"
+  id: "163"
+  parent_id: "146"
+  longitude: "115.4806560"
+geos_306: 
+  name: !binary |
+    5LqR5Y2X
+
+  latitude: "25.0452540"
+  id: "306"
+  parent_id: 
+  longitude: "102.7098090"
+geos_116: 
+  name: !binary |
+    5ruB5bee
+
+  latitude: "32.3015560"
+  id: "116"
+  parent_id: "106"
+  longitude: "118.3171070"
+geos_591: 
+  name: Slovakia
+  latitude: "48.6690260"
+  id: "591"
+  parent_id: "394"
+  longitude: "19.6990240"
+geos_544: 
+  name: Namibia
+  latitude: "-22.9576400"
+  id: "544"
+  parent_id: "394"
+  longitude: "18.4904100"
+geos_354: 
+  name: !binary |
+    6ZmH5Y2X
+
+  latitude: "33.4007660"
+  id: "354"
+  parent_id: "342"
+  longitude: "104.9220710"
+geos_164: 
+  name: !binary |
+    5rKz5Y2X
+
+  latitude: "34.7678840"
+  id: "164"
+  parent_id: 
+  longitude: "113.6878160"
+geos_307: 
+  name: !binary |
+    5piG5piO
+
+  latitude: "25.0372830"
+  id: "307"
+  parent_id: "306"
+  longitude: "102.7221250"
+geos_117: 
+  name: !binary |
+    6Zic6Ziz
+
+  latitude: "32.8901240"
+  id: "117"
+  parent_id: "106"
+  longitude: "115.8141440"
+geos_592: 
+  name: Slovenia
+  latitude: "46.1512410"
+  id: "592"
+  parent_id: "394"
+  longitude: "14.9954630"
+geos_545: 
+  name: Nauru
+  latitude: "-0.5227780"
+  id: "545"
+  parent_id: "394"
+  longitude: "166.9315030"
+geos_355: 
+  name: !binary |
+    5Li05aSP
+
+  latitude: "35.6011820"
+  id: "355"
+  parent_id: "342"
+  longitude: "103.2105390"
+geos_165: 
+  name: !binary |
+    6YOR5bee
+
+  latitude: "34.7472850"
+  id: "165"
+  parent_id: "164"
+  longitude: "113.6248630"
+geos_308: 
+  name: !binary |
+    5puy6Z2W
+
+  latitude: "25.4899900"
+  id: "308"
+  parent_id: "306"
+  longitude: "103.7962930"
+geos_118: 
+  name: !binary |
+    5a6/5bee
+
+  latitude: "33.6393940"
+  id: "118"
+  parent_id: "106"
+  longitude: "116.9853010"
+geos_593: 
+  name: Solomon Islands
+  latitude: "-9.6457100"
+  id: "593"
+  parent_id: "394"
+  longitude: "160.1561940"
+geos_546: 
+  name: Nepal
+  latitude: "28.3948570"
+  id: "546"
+  parent_id: "394"
+  longitude: "84.1240080"
+geos_356: 
+  name: !binary |
+    55SY5Y2X
+
+  latitude: "34.9832960"
+  id: "356"
+  parent_id: "342"
+  longitude: "102.9112620"
+geos_166: 
+  name: !binary |
+    5byA5bCB
+
+  latitude: "34.7977700"
+  id: "166"
+  parent_id: "164"
+  longitude: "114.3077640"
+geos_309: 
+  name: !binary |
+    546J5rqq
+
+  latitude: "24.3520360"
+  id: "309"
+  parent_id: "306"
+  longitude: "102.5465430"
+geos_119: 
+  name: !binary |
+    5bei5rmW
+
+  latitude: "31.5979580"
+  id: "119"
+  parent_id: "106"
+  longitude: "117.8644440"
+geos_594: 
+  name: Somalia
+  latitude: "5.1521490"
+  id: "594"
+  parent_id: "394"
+  longitude: "46.1996160"
+geos_547: 
+  name: Netherlands
+  latitude: "52.1326330"
+  id: "547"
+  parent_id: "394"
+  longitude: "5.2912660"
+geos_357: 
+  name: !binary |
+    6Z2S5rW3
+
+  latitude: "36.6209880"
+  id: "357"
+  parent_id: 
+  longitude: "101.7803340"
+geos_167: 
+  name: !binary |
+    5rSb6Ziz
+
+  latitude: "34.6181540"
+  id: "167"
+  parent_id: "164"
+  longitude: "112.4543630"
+geos_595: 
+  name: South Africa
+  latitude: "-30.5594820"
+  id: "595"
+  parent_id: "394"
+  longitude: "22.9375060"
+geos_548: 
+  name: Netherlands Antilles
+  latitude: "12.2260790"
+  id: "548"
+  parent_id: "394"
+  longitude: "-69.0600870"
+geos_358: 
+  name: !binary |
+    6KW/5a6B
+
+  latitude: "36.6170850"
+  id: "358"
+  parent_id: "357"
+  longitude: "101.7782080"
+geos_168: 
+  name: !binary |
+    5bmz6aG25bGx
+
+  latitude: "33.7452440"
+  id: "168"
+  parent_id: "164"
+  longitude: "113.3070060"
+geos_596: 
+  name: South Georgia and the South Sandwich Islands
+  latitude: "-54.4295790"
+  id: "596"
+  parent_id: "394"
+  longitude: "-36.5879090"
+geos_549: 
+  name: New Caledonia
+  latitude: "-20.9043050"
+  id: "549"
+  parent_id: "394"
+  longitude: "165.6180420"
+geos_359: 
+  name: !binary |
+    5rW35Lic
+
+  latitude: "36.5022160"
+  id: "359"
+  parent_id: "357"
+  longitude: "102.1043460"
+geos_169: 
+  name: !binary |
+    54Sm5L2c
+
+  latitude: "35.2153710"
+  id: "169"
+  parent_id: "164"
+  longitude: "113.2420580"
+geos_597: 
+  name: Spain
+  latitude: "40.4636670"
+  id: "597"
+  parent_id: "394"
+  longitude: "-3.7492200"
+geos_600: 
+  name: Suriname
+  latitude: "3.9193050"
+  id: "600"
+  parent_id: "394"
+  longitude: "-56.0277830"
+geos_598: 
+  name: Sri Lanka
+  latitude: "7.8730540"
+  id: "598"
+  parent_id: "394"
+  longitude: "80.7717970"
+geos_410: 
+  name: Aruba
+  latitude: "12.5211100"
+  id: "410"
+  parent_id: "394"
+  longitude: "-69.9683380"
+geos_220: 
+  name: !binary |
+    5rGV5aS0
+
+  latitude: "23.3533620"
+  id: "220"
+  parent_id: "216"
+  longitude: "116.6819430"
+geos_030: 
+  name: !binary |
+    5LmM5rW3
+
+  latitude: "39.6904620"
+  id: "30"
+  parent_id: "27"
+  longitude: "106.8228090"
+geos_601: 
+  name: Svalbard and Jan Mayen
+  latitude: "50.3270999"
+  id: "601"
+  parent_id: "394"
+  longitude: "7.2246910"
+geos_599: 
+  name: Sudan
+  latitude: "12.8628070"
+  id: "599"
+  parent_id: "394"
+  longitude: "30.2176360"
+geos_411: 
+  name: Australia
+  latitude: "-25.2743980"
+  id: "411"
+  parent_id: "394"
+  longitude: "133.7751360"
+geos_221: 
+  name: !binary |
+    6Z+25YWz
+
+  latitude: "24.8110980"
+  id: "221"
+  parent_id: "216"
+  longitude: "113.5972990"
+geos_031: 
+  name: !binary |
+    6LWk5bOw
+
+  latitude: "42.2578170"
+  id: "31"
+  parent_id: "27"
+  longitude: "118.8868560"
+geos_602: 
+  name: Swaziland
+  latitude: "-26.5225030"
+  id: "602"
+  parent_id: "394"
+  longitude: "31.4658660"
+geos_412: 
+  name: Austria
+  latitude: "47.5162310"
+  id: "412"
+  parent_id: "394"
+  longitude: "14.5500720"
+geos_222: 
+  name: !binary |
+    5L2b5bGx
+
+  latitude: "23.0217210"
+  id: "222"
+  parent_id: "216"
+  longitude: "113.1213160"
+geos_032: 
+  name: !binary |
+    6YCa6L69
+
+  latitude: "43.6194400"
+  id: "32"
+  parent_id: "27"
+  longitude: "122.2657370"
+geos_603: 
+  name: Sweden
+  latitude: "60.1281610"
+  id: "603"
+  parent_id: "394"
+  longitude: "18.6435010"
+geos_460: 
+  name: Egypt
+  latitude: "26.8205530"
+  id: "460"
+  parent_id: "394"
+  longitude: "30.8024980"
+geos_413: 
+  name: Azerbaijan
+  latitude: "40.1431050"
+  id: "413"
+  parent_id: "394"
+  longitude: "47.5769270"
+geos_270: 
+  name: !binary |
+    5L+d5Lqt6buO5peP6IuX5peP6Ieq5rK7
+
+  latitude: "18.6391300"
+  id: "270"
+  parent_id: "253"
+  longitude: "109.7025900"
+geos_080: 
+  name: !binary |
+    5rGf6IuP
+
+  latitude: "32.0612410"
+  id: "80"
+  parent_id: 
+  longitude: "118.7623130"
+geos_223: 
+  name: !binary |
+    5rGf6Zeo
+
+  latitude: "22.5787700"
+  id: "223"
+  parent_id: "216"
+  longitude: "113.0818700"
+geos_033: 
+  name: !binary |
+    5ZG85Lym6LSd5bCU
+
+  latitude: "49.2115720"
+  id: "33"
+  parent_id: "27"
+  longitude: "119.7657390"
+geos_604: 
+  name: Switzerland
+  latitude: "46.8181880"
+  id: "604"
+  parent_id: "394"
+  longitude: "8.2275120"
+geos_461: 
+  name: El Salvador
+  latitude: "13.7941850"
+  id: "461"
+  parent_id: "394"
+  longitude: "-88.8965300"
+geos_414: 
+  name: Bahamas
+  latitude: "25.0342800"
+  id: "414"
+  parent_id: "394"
+  longitude: "-77.3962800"
+geos_271: 
+  name: !binary |
+    5LmQ5Lic6buO5peP6Ieq5rK7
+
+  latitude: "31.224353"
+  id: "271"
+  parent_id: "253"
+  longitude: "121.475916"
+geos_081: 
+  name: !binary |
+    5Y2X5Lqs
+
+  latitude: "32.0583650"
+  id: "81"
+  parent_id: "80"
+  longitude: "118.7964680"
+geos_224: 
+  name: !binary |
+    5rmb5rGf
+
+  latitude: "21.2707640"
+  id: "224"
+  parent_id: "216"
+  longitude: "110.3592550"
+geos_034: 
+  name: !binary |
+    5be05b2m5reW5bCU
+
+  latitude: "40.7661880"
+  id: "34"
+  parent_id: "27"
+  longitude: "107.3866690"
+geos_605: 
+  name: Syrian Arab Republic
+  latitude: "34.8020750"
+  id: "605"
+  parent_id: "394"
+  longitude: "38.9968150"
+geos_462: 
+  name: Equatorial Guinea
+  latitude: "1.6508010"
+  id: "462"
+  parent_id: "394"
+  longitude: "10.2678950"
+geos_415: 
+  name: Bahrain
+  latitude: "25.9304140"
+  id: "415"
+  parent_id: "394"
+  longitude: "50.6377720"
+geos_272: 
+  name: !binary |
+    6KW/5Y2X5Lit5rKZ576k5bKb5Yqe5LqL5aSE
+
+  latitude: "19.5615720"
+  id: "272"
+  parent_id: "253"
+  longitude: "110.8174610"
+geos_082: 
+  name: !binary |
+    5peg6ZSh
+
+  latitude: "31.5661480"
+  id: "82"
+  parent_id: "80"
+  longitude: "120.3030270"
+geos_225: 
+  name: !binary |
+    6IyC5ZCN
+
+  latitude: "21.6629560"
+  id: "225"
+  parent_id: "216"
+  longitude: "110.9254670"
+geos_035: 
+  name: !binary |
+    5LmM5YWw5a+f5biD
+
+  latitude: "40.9947860"
+  id: "35"
+  parent_id: "27"
+  longitude: "113.1325850"
+geos_606: 
+  name: Tajikistan
+  latitude: "38.8610340"
+  id: "606"
+  parent_id: "394"
+  longitude: "71.2760930"
+geos_463: 
+  name: Eritrea
+  latitude: "15.1793840"
+  id: "463"
+  parent_id: "394"
+  longitude: "39.7823340"
+geos_416: 
+  name: Bangladesh
+  latitude: "23.6849940"
+  id: "416"
+  parent_id: "394"
+  longitude: "90.3563310"
+geos_273: 
+  name: !binary |
+    6YeN5bqG
+
+  latitude: "29.5626860"
+  id: "273"
+  parent_id: 
+  longitude: "106.5512340"
+geos_083: 
+  name: !binary |
+    5b6Q5bee
+
+  latitude: "34.2598270"
+  id: "83"
+  parent_id: "80"
+  longitude: "117.1910800"
+geos_226: 
+  name: !binary |
+    6IKH5bqG
+
+  latitude: "23.0475960"
+  id: "226"
+  parent_id: "216"
+  longitude: "112.4651660"
+geos_036: 
+  name: !binary |
+    5YW05a6J
+
+  latitude: "46.0775610"
+  id: "36"
+  parent_id: "27"
+  longitude: "122.0670420"
+geos_464: 
+  name: Estonia
+  latitude: "58.5952720"
+  id: "464"
+  parent_id: "394"
+  longitude: "25.0136070"
+geos_417: 
+  name: Barbados
+  latitude: "13.1938870"
+  id: "417"
+  parent_id: "394"
+  longitude: "-59.5431980"
+geos_274: 
+  name: !binary |
+    5Zub5bed
+
+  latitude: "30.6508920"
+  id: "274"
+  parent_id: 
+  longitude: "104.0764180"
+geos_084: 
+  name: !binary |
+    5bi45bee
+
+  latitude: "31.8100770"
+  id: "84"
+  parent_id: "80"
+  longitude: "119.9744540"
+geos_227: 
+  name: !binary |
+    5oOg5bee
+
+  latitude: "23.0794040"
+  id: "227"
+  parent_id: "216"
+  longitude: "114.4125990"
+geos_037: 
+  name: !binary |
+    6ZSh5p6X6YOt
+
+  latitude: "42.6285780"
+  id: "37"
+  parent_id: "27"
+  longitude: "112.9717890"
+geos_607: 
+  name: Tanzania, United Republic of
+  latitude: "31.224353"
+  id: "607"
+  parent_id: "394"
+  longitude: "121.475916"
+geos_465: 
+  name: Ethiopia
+  latitude: "9.1450000"
+  id: "465"
+  parent_id: "394"
+  longitude: "40.4896730"
+geos_418: 
+  name: Belarus
+  latitude: "53.7098070"
+  id: "418"
+  parent_id: "394"
+  longitude: "27.9533890"
+geos_275: 
+  name: !binary |
+    5oiQ6YO9
+
+  latitude: "30.6586020"
+  id: "275"
+  parent_id: "274"
+  longitude: "104.0648570"
+geos_085: 
+  name: !binary |
+    6IuP5bee
+
+  latitude: "31.2977790"
+  id: "85"
+  parent_id: "80"
+  longitude: "120.5855860"
+geos_228: 
+  name: !binary |
+    5qKF5bee
+
+  latitude: "24.2885310"
+  id: "228"
+  parent_id: "216"
+  longitude: "116.1224500"
+geos_038: 
+  name: !binary |
+    6Zi/5ouJ5ZaE
+
+  latitude: "38.8518920"
+  id: "38"
+  parent_id: "27"
+  longitude: "105.7289690"
+geos_608: 
+  name: Thailand
+  latitude: "15.8700320"
+  id: "608"
+  parent_id: "394"
+  longitude: "100.9925410"
+geos_466: 
+  name: Falkland Islands (Malvinas)
+  latitude: "-51.5848086"
+  id: "466"
+  parent_id: "394"
+  longitude: "-59.7761186"
+geos_419: 
+  name: Belgium
+  latitude: "50.5038870"
+  id: "419"
+  parent_id: "394"
+  longitude: "4.4699360"
+geos_276: 
+  name: !binary |
+    6Ieq6LSh
+
+  latitude: "29.3389780"
+  id: "276"
+  parent_id: "274"
+  longitude: "104.7785640"
+geos_086: 
+  name: !binary |
+    5Y2X6YCa
+
+  latitude: "31.9799970"
+  id: "86"
+  parent_id: "80"
+  longitude: "120.8943240"
+geos_229: 
+  name: !binary |
+    5rGV5bC+
+
+  latitude: "22.7856250"
+  id: "229"
+  parent_id: "216"
+  longitude: "115.3750610"
+geos_039: 
+  name: !binary |
+    6YSC5bCU5aSa5pav
+
+  latitude: "39.6081820"
+  id: "39"
+  parent_id: "27"
+  longitude: "109.7812020"
+geos_609: 
+  name: Timor-Leste
+  latitude: "-8.8742170"
+  id: "609"
+  parent_id: "394"
+  longitude: "125.7275390"
+geos_467: 
+  name: Faroe Islands
+  latitude: "61.8926350"
+  id: "467"
+  parent_id: "394"
+  longitude: "-6.9118060"
+geos_277: 
+  name: !binary |
+    5pSA5p6d6Iqx
+
+  latitude: "26.5823470"
+  id: "277"
+  parent_id: "274"
+  longitude: "101.7186370"
+geos_087: 
+  name: !binary |
+    6L+e5LqR5riv
+
+  latitude: "34.6000180"
+  id: "87"
+  parent_id: "80"
+  longitude: "119.1788210"
+geos_468: 
+  name: Fiji
+  latitude: "-16.5781930"
+  id: "468"
+  parent_id: "394"
+  longitude: "179.4144130"
+geos_278: 
+  name: !binary |
+    5rO45bee
+
+  latitude: "28.8717600"
+  id: "278"
+  parent_id: "274"
+  longitude: "105.4421410"
+geos_088: 
+  name: !binary |
+    5reu5a6J
+
+  latitude: "33.6110840"
+  id: "88"
+  parent_id: "80"
+  longitude: "119.0157550"
+geos_469: 
+  name: Finland
+  latitude: "61.9241100"
+  id: "469"
+  parent_id: "394"
+  longitude: "25.7481510"
+geos_279: 
+  name: !binary |
+    5b636Ziz
+
+  latitude: "31.1275370"
+  id: "279"
+  parent_id: "274"
+  longitude: "104.3978080"
+geos_089: 
+  name: !binary |
+    55uQ5Z+O
+
+  latitude: "33.3474160"
+  id: "89"
+  parent_id: "80"
+  longitude: "120.1635440"
+geos_520: 
+  name: Lithuania
+  latitude: "55.1694380"
+  id: "520"
+  parent_id: "394"
+  longitude: "23.8812750"
+geos_330: 
+  name: !binary |
+    5p6X6Iqd
+
+  latitude: "29.6491280"
+  id: "330"
+  parent_id: "323"
+  longitude: "94.3614900"
+geos_140: 
+  name: !binary |
+    6bmw5r2t
+
+  latitude: "28.2601890"
+  id: "140"
+  parent_id: "134"
+  longitude: "117.0692020"
+geos_521: 
+  name: Luxembourg
+  latitude: "49.8152730"
+  id: "521"
+  parent_id: "394"
+  longitude: "6.1295830"
+geos_331: 
+  name: !binary |
+    6ZmV6KW/
+
+  latitude: "34.2651730"
+  id: "331"
+  parent_id: 
+  longitude: "108.9541320"
+geos_141: 
+  name: !binary |
+    6LWj5bee
+
+  latitude: "25.8292090"
+  id: "141"
+  parent_id: "134"
+  longitude: "114.9335530"
+geos_522: 
+  name: Macedonia, The Former Yugoslav Republic Of
+  latitude: "42.0000000"
+  id: "522"
+  parent_id: "394"
+  longitude: "21.4333333"
+geos_332: 
+  name: !binary |
+    6KW/5a6J
+
+  latitude: "34.2648800"
+  id: "332"
+  parent_id: "331"
+  longitude: "108.9442650"
+geos_142: 
+  name: !binary |
+    5ZCJ5a6J
+
+  latitude: "27.1131650"
+  id: "142"
+  parent_id: "134"
+  longitude: "114.9930970"
+geos_570: 
+  name: Puerto Rico
+  latitude: "18.2208330"
+  id: "570"
+  parent_id: "394"
+  longitude: "-66.5901490"
+geos_523: 
+  name: Madagascar
+  latitude: "-18.7669470"
+  id: "523"
+  parent_id: "394"
+  longitude: "46.8691070"
+geos_380: 
+  name: !binary |
+    5YWL5a2c5YuS6IuP
+
+  latitude: "39.7145560"
+  id: "380"
+  parent_id: "372"
+  longitude: "76.1676440"
+geos_190: 
+  name: !binary |
+    6I2G6Zeo
+
+  latitude: "31.0354230"
+  id: "190"
+  parent_id: "183"
+  longitude: "112.1992650"
+geos_333: 
+  name: !binary |
+    6ZOc5bed
+
+  latitude: "34.8967470"
+  id: "333"
+  parent_id: "331"
+  longitude: "108.9451420"
+geos_143: 
+  name: !binary |
+    5a6c5pil
+
+  latitude: "27.7965610"
+  id: "143"
+  parent_id: "134"
+  longitude: "114.3951080"
+geos_571: 
+  name: Qatar
+  latitude: "25.3548260"
+  id: "571"
+  parent_id: "394"
+  longitude: "51.1838840"
+geos_524: 
+  name: Malawi
+  latitude: "-13.2543080"
+  id: "524"
+  parent_id: "394"
+  longitude: "34.3015250"
+geos_381: 
+  name: !binary |
+    5be06Z+z6YOt5qWe
+
+  latitude: "41.7641310"
+  id: "381"
+  parent_id: "372"
+  longitude: "86.1452670"
+geos_191: 
+  name: !binary |
+    6YSC5bee
+
+  latitude: "30.3919400"
+  id: "191"
+  parent_id: "183"
+  longitude: "114.8948430"
+geos_334: 
+  name: !binary |
+    5a6d6bih
+
+  latitude: "34.3725290"
+  id: "334"
+  parent_id: "331"
+  longitude: "107.1337850"
+geos_144: 
+  name: !binary |
+    5oqa5bee
+
+  latitude: "27.9922960"
+  id: "144"
+  parent_id: "134"
+  longitude: "116.3583780"
+geos_572: 
+  name: Reunion
+  latitude: "-21.1151410"
+  id: "572"
+  parent_id: "394"
+  longitude: "55.5363840"
+geos_525: 
+  name: Malaysia
+  latitude: "4.2104840"
+  id: "525"
+  parent_id: "394"
+  longitude: "101.9757660"
+geos_382: 
+  name: !binary |
+    5piM5ZCJ
+
+  latitude: "44.0111830"
+  id: "382"
+  parent_id: "372"
+  longitude: "87.3082250"
+geos_192: 
+  name: !binary |
+    5a2d5oSf
+
+  latitude: "30.9245720"
+  id: "192"
+  parent_id: "183"
+  longitude: "113.9169000"
+geos_335: 
+  name: !binary |
+    5ZK46Ziz
+
+  latitude: "34.3294340"
+  id: "335"
+  parent_id: "331"
+  longitude: "108.7091930"
+geos_145: 
+  name: !binary |
+    5LiK6aW2
+
+  latitude: "28.4433180"
+  id: "145"
+  parent_id: "134"
+  longitude: "117.9763710"
+geos_573: 
+  name: Romania
+  latitude: "45.9431610"
+  id: "573"
+  parent_id: "394"
+  longitude: "24.9667600"
+geos_526: 
+  name: Maldives
+  latitude: "3.2027780"
+  id: "526"
+  parent_id: "394"
+  longitude: "73.2206800"
+geos_383: 
+  name: !binary |
+    5Y2a5bCU5aGU5ouJ
+
+  latitude: "44.9055880"
+  id: "383"
+  parent_id: "372"
+  longitude: "82.0661590"
+geos_193: 
+  name: !binary |
+    6buE5YaI
+
+  latitude: "30.4538770"
+  id: "193"
+  parent_id: "183"
+  longitude: "114.8722530"
+geos_336: 
+  name: !binary |
+    5rit5Y2X
+
+  latitude: "34.4999950"
+  id: "336"
+  parent_id: "331"
+  longitude: "109.5097860"
+geos_146: 
+  name: !binary |
+    5bGx5Lic
+
+  latitude: "36.6692270"
+  id: "146"
+  parent_id: 
+  longitude: "117.0198960"
+geos_574: 
+  name: Russian Federation
+  latitude: "61.5240100"
+  id: "574"
+  parent_id: "394"
+  longitude: "105.3187560"
+geos_527: 
+  name: Mali
+  latitude: "17.5706920"
+  id: "527"
+  parent_id: "394"
+  longitude: "-3.9961660"
+geos_384: 
+  name: !binary |
+    5LyK54qB
+
+  latitude: "43.9168620"
+  id: "384"
+  parent_id: "372"
+  longitude: "81.3240960"
+geos_194: 
+  name: !binary |
+    5ZK45a6B
+
+  latitude: "29.8414470"
+  id: "194"
+  parent_id: "183"
+  longitude: "114.3225010"
+geos_337: 
+  name: !binary |
+    5bu25a6J
+
+  latitude: "36.5854230"
+  id: "337"
+  parent_id: "331"
+  longitude: "109.4896340"
+geos_147: 
+  name: !binary |
+    5rWO5Y2X
+
+  latitude: "36.6652820"
+  id: "147"
+  parent_id: "146"
+  longitude: "116.9949150"
+geos_575: 
+  name: Rwanda
+  latitude: "-1.9402780"
+  id: "575"
+  parent_id: "394"
+  longitude: "29.8738880"
+geos_528: 
+  name: Malta
+  latitude: "35.9374960"
+  id: "528"
+  parent_id: "394"
+  longitude: "14.3754160"
+geos_385: 
+  name: !binary |
+    5aGU5Z+O
+
+  latitude: "46.7453640"
+  id: "385"
+  parent_id: "372"
+  longitude: "82.9803170"
+geos_195: 
+  name: !binary |
+    6ZqP5bee
+
+  latitude: "31.6899580"
+  id: "195"
+  parent_id: "183"
+  longitude: "113.3828420"
+geos_338: 
+  name: !binary |
+    5rGJ5Lit
+
+  latitude: "33.0679150"
+  id: "338"
+  parent_id: "331"
+  longitude: "107.0233290"
+geos_148: 
+  name: !binary |
+    6Z2S5bKb
+
+  latitude: "36.0663480"
+  id: "148"
+  parent_id: "146"
+  longitude: "120.3827710"
+geos_576: 
+  name: Saint Barthelemy
+  latitude: "17.9005134"
+  id: "576"
+  parent_id: "394"
+  longitude: "-62.8205871"
+geos_529: 
+  name: Marshall Islands
+  latitude: "7.1314740"
+  id: "529"
+  parent_id: "394"
+  longitude: "171.1844780"
+geos_386: 
+  name: !binary |
+    6Zi/5YuS5rOw
+
+  latitude: "47.8449240"
+  id: "386"
+  parent_id: "372"
+  longitude: "88.1412530"
+geos_196: 
+  name: !binary |
+    5oGp5pa9
+
+  latitude: "30.2722040"
+  id: "196"
+  parent_id: "183"
+  longitude: "109.4881620"
+geos_339: 
+  name: !binary |
+    5qaG5p6X
+
+  latitude: "38.2855260"
+  id: "339"
+  parent_id: "331"
+  longitude: "109.7352090"
+geos_149: 
+  name: !binary |
+    5reE5Y2a
+
+  latitude: "36.8134970"
+  id: "149"
+  parent_id: "146"
+  longitude: "118.0550070"
+geos_577: 
+  name: Saint Helena
+  latitude: "-24.1434740"
+  id: "577"
+  parent_id: "394"
+  longitude: "-10.0306960"
+geos_387: 
+  name: !binary |
+    55+z5rKz5a2Q
+
+  latitude: "44.3061190"
+  id: "387"
+  parent_id: "372"
+  longitude: "86.0804970"
+geos_197: 
+  name: !binary |
+    5LuZ5qGD
+
+  latitude: "30.3626410"
+  id: "197"
+  parent_id: "183"
+  longitude: "113.4545930"
+geos_578: 
+  name: Saint Kitts and Nevis
+  latitude: "17.3578220"
+  id: "578"
+  parent_id: "394"
+  longitude: "-62.7829980"
+geos_200: 
+  name: !binary |
+    56We5Yac5p62
+
+  latitude: "31.3352460"
+  id: "200"
+  parent_id: "183"
+  longitude: "110.5722970"
+geos_010: 
+  name: !binary |
+    5byg5a625Y+j
+
+  latitude: "40.7675760"
+  id: "10"
+  parent_id: "3"
+  longitude: "114.8859510"
+geos_388: 
+  name: !binary |
+    6Zi/5ouJ5bCU
+
+  latitude: "40.5462860"
+  id: "388"
+  parent_id: "372"
+  longitude: "81.2803850"
+geos_198: 
+  name: !binary |
+    5r2c5rGf
+
+  latitude: "30.4021100"
+  id: "198"
+  parent_id: "183"
+  longitude: "112.9000780"
+geos_579: 
+  name: Saint Lucia
+  latitude: "13.9094440"
+  id: "579"
+  parent_id: "394"
+  longitude: "-60.9788930"
+geos_011: 
+  name: !binary |
+    5om/5b63
+
+  latitude: "40.9787440"
+  id: "11"
+  parent_id: "3"
+  longitude: "117.9436210"
+geos_389: 
+  name: !binary |
+    5Zu+5pyo6IiS5YWL
+
+  latitude: "39.8649003"
+  id: "389"
+  parent_id: "372"
+  longitude: "79.0687712"
+geos_199: 
+  name: !binary |
+    5aSp6Zeo
+
+  latitude: "30.6633720"
+  id: "199"
+  parent_id: "183"
+  longitude: "113.1665300"
+geos_201: 
+  name: !binary |
+    5rmW5Y2X
+
+  latitude: "28.1130530"
+  id: "201"
+  parent_id: 
+  longitude: "112.9835210"
+geos_012: 
+  name: !binary |
+    5rKn5bee
+
+  latitude: "38.3044490"
+  id: "12"
+  parent_id: "3"
+  longitude: "116.8388400"
+geos_202: 
+  name: !binary |
+    6ZW/5rKZ
+
+  latitude: "28.2285280"
+  id: "202"
+  parent_id: "201"
+  longitude: "112.9388270"
+geos_630: 
+  name: Virgin Islands, U.S.
+  latitude: "18.3448229"
+  id: "630"
+  parent_id: "394"
+  longitude: "-64.7458767"
+geos_440: 
+  name: Chad
+  latitude: "15.4541660"
+  id: "440"
+  parent_id: "394"
+  longitude: "18.7322070"
+geos_250: 
+  name: !binary |
+    5rKz5rGg
+
+  latitude: "24.6929310"
+  id: "250"
+  parent_id: "238"
+  longitude: "108.0852610"
+geos_060: 
+  name: !binary |
+    6YCa5YyW
+
+  latitude: "41.7284010"
+  id: "60"
+  parent_id: "55"
+  longitude: "125.9396970"
+geos_203: 
+  name: !binary |
+    5qCq5rSy
+
+  latitude: "27.8278920"
+  id: "203"
+  parent_id: "201"
+  longitude: "113.1338910"
+geos_013: 
+  name: !binary |
+    5buK5Z2K
+
+  latitude: "39.5210170"
+  id: "13"
+  parent_id: "3"
+  longitude: "116.7066510"
+geos_631: 
+  name: Wallis and Futuna
+  latitude: "-13.7687520"
+  id: "631"
+  parent_id: "394"
+  longitude: "-177.1560970"
+geos_441: 
+  name: Chile
+  latitude: "-35.6751470"
+  id: "441"
+  parent_id: "394"
+  longitude: "-71.5429690"
+geos_251: 
+  name: !binary |
+    5p2l5a6+
+
+  latitude: "23.7503120"
+  id: "251"
+  parent_id: "238"
+  longitude: "109.2214600"
+geos_061: 
+  name: !binary |
+    55m95bGx
+
+  latitude: "35.7213300"
+  id: "61"
+  parent_id: "55"
+  longitude: "139.7520780"
+geos_204: 
+  name: !binary |
+    5rmY5r2t
+
+  latitude: "27.8563250"
+  id: "204"
+  parent_id: "201"
+  longitude: "112.9073390"
+geos_014: 
+  name: !binary |
+    6KGh5rC0
+
+  latitude: "37.7353020"
+  id: "14"
+  parent_id: "3"
+  longitude: "115.6986800"
+geos_632: 
+  name: Western Sahara
+  latitude: "24.2155270"
+  id: "632"
+  parent_id: "394"
+  longitude: "-12.8858340"
+geos_442: 
+  name: Christmas Island
+  latitude: "-10.4475250"
+  id: "442"
+  parent_id: "394"
+  longitude: "105.6904490"
+geos_252: 
+  name: !binary |
+    5bSH5bem
+
+  latitude: "22.3772810"
+  id: "252"
+  parent_id: "238"
+  longitude: "107.3649620"
+geos_062: 
+  name: !binary |
+    5p2+5Y6f
+
+  latitude: "35.6600480"
+  id: "62"
+  parent_id: "55"
+  longitude: "139.6420000"
+geos_205: 
+  name: !binary |
+    6KGh6Ziz
+
+  latitude: "26.8938390"
+  id: "205"
+  parent_id: "201"
+  longitude: "112.5719000"
+geos_015: 
+  name: !binary |
+    5bGx6KW/
+
+  latitude: "37.8734640"
+  id: "15"
+  parent_id: 
+  longitude: "112.5625370"
+geos_633: 
+  name: Yemen
+  latitude: "15.5527270"
+  id: "633"
+  parent_id: "394"
+  longitude: "48.5163880"
+geos_490: 
+  name: Haiti
+  latitude: "18.9711870"
+  id: "490"
+  parent_id: "394"
+  longitude: "-72.2852150"
+geos_443: 
+  name: Cocos (Keeling) Islands
+  latitude: "-12.1641650"
+  id: "443"
+  parent_id: "394"
+  longitude: "96.8709560"
+geos_253: 
+  name: !binary |
+    5rW35Y2X
+
+  latitude: "20.0293410"
+  id: "253"
+  parent_id: 
+  longitude: "110.3568080"
+geos_063: 
+  name: !binary |
+    55m95Z+O
+
+  latitude: "45.6196410"
+  id: "63"
+  parent_id: "55"
+  longitude: "122.8390240"
+geos_206: 
+  name: !binary |
+    6YK16Ziz
+
+  latitude: "27.2399730"
+  id: "206"
+  parent_id: "201"
+  longitude: "111.4682360"
+geos_016: 
+  name: !binary |
+    5aSq5Y6f
+
+  latitude: "37.8705540"
+  id: "16"
+  parent_id: "15"
+  longitude: "112.5507370"
+geos_634: 
+  name: Zambia
+  latitude: "-13.1338970"
+  id: "634"
+  parent_id: "394"
+  longitude: "27.8493320"
+geos_491: 
+  name: Heard and McDonald Islands
+  latitude: "-53.1000000"
+  id: "491"
+  parent_id: "394"
+  longitude: "73.5000000"
+geos_444: 
+  name: Colombia
+  latitude: "4.5708680"
+  id: "444"
+  parent_id: "394"
+  longitude: "-74.2973330"
+geos_254: 
+  name: !binary |
+    5rW35Y+j
+
+  latitude: "20.0307650"
+  id: "254"
+  parent_id: "253"
+  longitude: "110.3288730"
+geos_064: 
+  name: !binary |
+    5bu26L65
+
+  latitude: "42.8910630"
+  id: "64"
+  parent_id: "55"
+  longitude: "129.5084590"
+geos_207: 
+  name: !binary |
+    5bKz6Ziz
+
+  latitude: "29.3569830"
+  id: "207"
+  parent_id: "201"
+  longitude: "113.1288770"
+geos_017: 
+  name: !binary |
+    5aSn5ZCM
+
+  latitude: "40.0768160"
+  id: "17"
+  parent_id: "15"
+  longitude: "113.3001260"
+geos_635: 
+  name: Zimbabwe
+  latitude: "-19.0154380"
+  id: "635"
+  parent_id: "394"
+  longitude: "29.1548570"
+geos_492: 
+  name: Holy See (Vatican City State)
+  latitude: "31.224353"
+  id: "492"
+  parent_id: "394"
+  longitude: "121.475916"
+geos_445: 
+  name: Comoros
+  latitude: "-11.8750010"
+  id: "445"
+  parent_id: "394"
+  longitude: "43.8722190"
+geos_255: 
+  name: !binary |
+    5LiJ5Lqa
+
+  latitude: "18.2528470"
+  id: "255"
+  parent_id: "253"
+  longitude: "109.5119090"
+geos_065: 
+  name: !binary |
+    6buR6b6Z5rGf
+
+  latitude: "45.7423520"
+  id: "65"
+  parent_id: 
+  longitude: "126.6626800"
+geos_208: 
+  name: !binary |
+    5bi45b63
+
+  latitude: "29.0314390"
+  id: "208"
+  parent_id: "201"
+  longitude: "111.6988260"
+geos_018: 
+  name: !binary |
+    6Ziz5rOJ
+
+  latitude: "37.8566580"
+  id: "18"
+  parent_id: "15"
+  longitude: "113.5804150"
+geos_493: 
+  name: Honduras
+  latitude: "15.1999990"
+  id: "493"
+  parent_id: "394"
+  longitude: "-86.2419050"
+geos_446: 
+  name: Congo
+  latitude: "-0.2280210"
+  id: "446"
+  parent_id: "394"
+  longitude: "15.8276590"
+geos_256: 
+  name: !binary |
+    5paH5piM
+
+  latitude: "19.5433900"
+  id: "256"
+  parent_id: "253"
+  longitude: "110.7976480"
+geos_066: 
+  name: !binary |
+    5ZOI5bCU5ruo
+
+  latitude: "45.7569670"
+  id: "66"
+  parent_id: "65"
+  longitude: "126.6424640"
+geos_209: 
+  name: !binary |
+    5byg5a6255WM
+
+  latitude: "29.1163370"
+  id: "209"
+  parent_id: "201"
+  longitude: "110.4791110"
+geos_019: 
+  name: !binary |
+    6ZW/5rK7
+
+  latitude: "36.1953860"
+  id: "19"
+  parent_id: "15"
+  longitude: "113.1162550"
+geos_494: 
+  name: Hungary
+  latitude: "47.1624940"
+  id: "494"
+  parent_id: "394"
+  longitude: "19.5033040"
+geos_447: 
+  name: Congo, the Democratic Republic of the
+  latitude: "-4.7136802"
+  id: "447"
+  parent_id: "394"
+  longitude: "14.8907070"
+geos_257: 
+  name: !binary |
+    55C85rW3
+
+  latitude: "19.2584040"
+  id: "257"
+  parent_id: "253"
+  longitude: "110.4746500"
+geos_067: 
+  name: !binary |
+    6b2Q6b2Q5ZOI5bCU
+
+  latitude: "47.3544530"
+  id: "67"
+  parent_id: "65"
+  longitude: "123.9180420"
+geos_495: 
+  name: Iceland
+  latitude: "64.9630510"
+  id: "495"
+  parent_id: "394"
+  longitude: "-19.0208350"
+geos_448: 
+  name: Cook Islands
+  latitude: "-21.2367360"
+  id: "448"
+  parent_id: "394"
+  longitude: "-159.7776710"
+geos_258: 
+  name: !binary |
+    5LiH5a6B
+
+  latitude: "18.7951430"
+  id: "258"
+  parent_id: "253"
+  longitude: "110.3910730"
+geos_068: 
+  name: !binary |
+    6bih6KW/
+
+  latitude: "45.2950750"
+  id: "68"
+  parent_id: "65"
+  longitude: "130.9693330"
+geos_496: 
+  name: India
+  latitude: "20.5936840"
+  id: "496"
+  parent_id: "394"
+  longitude: "78.9628800"
+geos_449: 
+  name: Costa Rica
+  latitude: "9.7489170"
+  id: "449"
+  parent_id: "394"
+  longitude: "-83.7534280"
+geos_259: 
+  name: !binary |
+    5LqU5oyH5bGx
+
+  latitude: "18.7751470"
+  id: "259"
+  parent_id: "253"
+  longitude: "109.5169250"
+geos_069: 
+  name: !binary |
+    6bmk5bKX
+
+  latitude: "47.3517040"
+  id: "69"
+  parent_id: "65"
+  longitude: "130.2952790"
+geos_497: 
+  name: Indonesia
+  latitude: "-0.7892750"
+  id: "497"
+  parent_id: "394"
+  longitude: "113.9213270"
+geos_500: 
+  name: Ireland
+  latitude: "53.4129100"
+  id: "500"
+  parent_id: "394"
+  longitude: "-8.2438900"
+geos_498: 
+  name: Iran, Islamic Republic of
+  latitude: "43.2382291"
+  id: "498"
+  parent_id: "394"
+  longitude: "76.9612350"
+geos_310: 
+  name: !binary |
+    5L+d5bGx
+
+  latitude: "25.1120650"
+  id: "310"
+  parent_id: "306"
+  longitude: "99.1614710"
+geos_120: 
+  name: !binary |
+    5q+r5bee
+
+  latitude: "25.7956800"
+  id: "120"
+  parent_id: "106"
+  longitude: "108.8823140"
+geos_501: 
+  name: Isle of Man
+  latitude: "54.2361070"
+  id: "501"
+  parent_id: "394"
+  longitude: "-4.5480560"
+geos_499: 
+  name: Iraq
+  latitude: "33.2231910"
+  id: "499"
+  parent_id: "394"
+  longitude: "43.6792910"
+geos_311: 
+  name: !binary |
+    5pit6YCa
+
+  latitude: "27.3382570"
+  id: "311"
+  parent_id: "306"
+  longitude: "103.7174650"
+geos_121: 
+  name: !binary |
+    5rGg5bee
+
+  latitude: "30.6742190"
+  id: "121"
+  parent_id: "106"
+  longitude: "117.4957070"
+geos_502: 
+  name: Israel
+  latitude: "31.0460510"
+  id: "502"
+  parent_id: "394"
+  longitude: "34.8516120"
+geos_312: 
+  name: !binary |
+    5Li95rGf
+
+  latitude: "26.8767740"
+  id: "312"
+  parent_id: "306"
+  longitude: "100.2303760"
+geos_122: 
+  name: !binary |
+    5a6j5Z+O
+
+  latitude: "30.9407180"
+  id: "122"
+  parent_id: "106"
+  longitude: "118.7588160"
+geos_550: 
+  name: New Zealand
+  latitude: "-40.9005570"
+  id: "550"
+  parent_id: "394"
+  longitude: "174.8859710"
+geos_503: 
+  name: Italy
+  latitude: "41.8719400"
+  id: "503"
+  parent_id: "394"
+  longitude: "12.5673800"
+geos_360: 
+  name: !binary |
+    5rW35YyX
+
+  latitude: "36.9542730"
+  id: "360"
+  parent_id: "357"
+  longitude: "100.9009310"
+geos_170: 
+  name: !binary |
+    6bmk5aOB
+
+  latitude: "35.7472250"
+  id: "170"
+  parent_id: "164"
+  longitude: "114.2972730"
+geos_313: 
+  name: !binary |
+    5pmu5rSx
+
+  latitude: "22.7777650"
+  id: "313"
+  parent_id: "306"
+  longitude: "100.9701520"
+geos_123: 
+  name: !binary |
+    5YWt5a6J
+
+  latitude: "31.7450100"
+  id: "123"
+  parent_id: "106"
+  longitude: "116.5056860"
+geos_551: 
+  name: Nicaragua
+  latitude: "12.8654160"
+  id: "551"
+  parent_id: "394"
+  longitude: "-85.2072290"
+geos_504: 
+  name: Jamaica
+  latitude: "18.1095810"
+  id: "504"
+  parent_id: "394"
+  longitude: "-77.2975080"
+geos_361: 
+  name: !binary |
+    6buE5Y2X
+
+  latitude: "35.5195490"
+  id: "361"
+  parent_id: "357"
+  longitude: "102.0152480"
+geos_171: 
+  name: !binary |
+    5paw5Lmh
+
+  latitude: "34.5252180"
+  id: "171"
+  parent_id: "164"
+  longitude: "135.7948260"
+geos_314: 
+  name: !binary |
+    5p6X5rKn
+
+  latitude: "31.224353"
+  id: "314"
+  parent_id: "306"
+  longitude: "121.475916"
+geos_124: 
+  name: !binary |
+    56aP5bu6
+
+  latitude: "26.1010620"
+  id: "124"
+  parent_id: 
+  longitude: "119.2958630"
+geos_552: 
+  name: Niger
+  latitude: "17.6077890"
+  id: "552"
+  parent_id: "394"
+  longitude: "8.0816660"
+geos_505: 
+  name: Jersey
+  latitude: "49.2144390"
+  id: "505"
+  parent_id: "394"
+  longitude: "-2.1312500"
+geos_362: 
+  name: !binary |
+    5rW35Y2X
+
+  latitude: "36.3023990"
+  id: "362"
+  parent_id: "357"
+  longitude: "100.6265260"
+geos_172: 
+  name: !binary |
+    5a6J6Ziz
+
+  latitude: "36.0975930"
+  id: "172"
+  parent_id: "164"
+  longitude: "114.3927560"
+geos_315: 
+  name: !binary |
+    5paH5bGx
+
+  latitude: "23.3688170"
+  id: "315"
+  parent_id: "306"
+  longitude: "104.2510450"
+geos_125: 
+  name: !binary |
+    56aP5bee
+
+  latitude: "26.0742860"
+  id: "125"
+  parent_id: "124"
+  longitude: "119.2965790"
+geos_553: 
+  name: Nigeria
+  latitude: "9.0819990"
+  id: "553"
+  parent_id: "394"
+  longitude: "8.6752770"
+geos_506: 
+  name: Jordan
+  latitude: "30.5851640"
+  id: "506"
+  parent_id: "394"
+  longitude: "36.2384140"
+geos_363: 
+  name: !binary |
+    5p6c5rSb
+
+  latitude: "34.4716750"
+  id: "363"
+  parent_id: "357"
+  longitude: "100.2450270"
+geos_173: 
+  name: !binary |
+    5r+u6Ziz
+
+  latitude: "35.7621410"
+  id: "173"
+  parent_id: "164"
+  longitude: "115.0293310"
+geos_316: 
+  name: !binary |
+    57qi5rKz
+
+  latitude: "21.0485775"
+  id: "316"
+  parent_id: "306"
+  longitude: "105.8598553"
+geos_126: 
+  name: !binary |
+    5Y6m6Zeo
+
+  latitude: "24.4796150"
+  id: "126"
+  parent_id: "124"
+  longitude: "118.0893900"
+geos_554: 
+  name: Niue
+  latitude: "-19.0544450"
+  id: "554"
+  parent_id: "394"
+  longitude: "-169.8672330"
+geos_507: 
+  name: Kazakhstan
+  latitude: "48.0195730"
+  id: "507"
+  parent_id: "394"
+  longitude: "66.9236840"
+geos_364: 
+  name: !binary |
+    546J5qCR
+
+  latitude: "33.0058220"
+  id: "364"
+  parent_id: "357"
+  longitude: "97.0066360"
+geos_174: 
+  name: !binary |
+    5LiJ6Zeo5bOh
+
+  latitude: "34.7724240"
+  id: "174"
+  parent_id: "164"
+  longitude: "111.2002300"
+geos_317: 
+  name: !binary |
+    6KW/5Y+M54mI57qz
+
+  latitude: "22.0081780"
+  id: "317"
+  parent_id: "306"
+  longitude: "100.7972830"
+geos_127: 
+  name: !binary |
+    6I6G55Sw
+
+  latitude: "25.4310110"
+  id: "127"
+  parent_id: "124"
+  longitude: "119.0075580"
+geos_555: 
+  name: Norfolk Island
+  latitude: "-29.0408350"
+  id: "555"
+  parent_id: "394"
+  longitude: "167.9547120"
+geos_365: 
+  name: !binary |
+    5rW36KW/
+
+  latitude: "37.3771390"
+  id: "365"
+  parent_id: "357"
+  longitude: "97.3697520"
+geos_175: 
+  name: !binary |
+    5Y2X6Ziz
+
+  latitude: "32.9906150"
+  id: "175"
+  parent_id: "164"
+  longitude: "112.5283450"
+geos_318: 
+  name: !binary |
+    5qWa6ZuE
+
+  latitude: "25.0455320"
+  id: "318"
+  parent_id: "306"
+  longitude: "101.5280690"
+geos_128: 
+  name: !binary |
+    5LiJ5piO
+
+  latitude: "26.2639380"
+  id: "128"
+  parent_id: "124"
+  longitude: "117.6388570"
+geos_556: 
+  name: Northern Mariana Islands
+  latitude: "17.3308300"
+  id: "556"
+  parent_id: "394"
+  longitude: "145.3846900"
+geos_508: 
+  name: Kenya
+  latitude: "-0.0235590"
+  id: "508"
+  parent_id: "394"
+  longitude: "37.9061930"
+geos_366: 
+  name: !binary |
+    5a6B5aSP
+
+  latitude: "38.4711700"
+  id: "366"
+  parent_id: 
+  longitude: "106.2586800"
+geos_176: 
+  name: !binary |
+    5ZWG5LiY
+
+  latitude: "34.4141830"
+  id: "176"
+  parent_id: "164"
+  longitude: "115.6563940"
+geos_319: 
+  name: !binary |
+    5aSn55CG
+
+  latitude: "25.6064860"
+  id: "319"
+  parent_id: "306"
+  longitude: "100.2676380"
+geos_129: 
+  name: !binary |
+    5rOJ5bee
+
+  latitude: "24.9073980"
+  id: "129"
+  parent_id: "124"
+  longitude: "118.5871140"
+geos_557: 
+  name: Norway
+  latitude: "60.4720240"
+  id: "557"
+  parent_id: "394"
+  longitude: "8.4689460"
+geos_509: 
+  name: Kiribati
+  latitude: "-3.3704170"
+  id: "509"
+  parent_id: "394"
+  longitude: "-168.7340390"
+geos_367: 
+  name: !binary |
+    6ZO25bed
+
+  latitude: "38.4871940"
+  id: "367"
+  parent_id: "366"
+  longitude: "106.2309090"
+geos_177: 
+  name: !binary |
+    5L+h6Ziz
+
+  latitude: "32.1232330"
+  id: "177"
+  parent_id: "164"
+  longitude: "114.0688710"
+geos_558: 
+  name: Oman
+  latitude: "21.5125830"
+  id: "558"
+  parent_id: "394"
+  longitude: "55.9232550"
+geos_368: 
+  name: !binary |
+    55+z5Zi05bGx
+
+  latitude: "39.0190570"
+  id: "368"
+  parent_id: "366"
+  longitude: "106.3680620"
+geos_178: 
+  name: !binary |
+    5ZGo5Y+j
+
+  latitude: "33.6186860"
+  id: "178"
+  parent_id: "164"
+  longitude: "114.6576160"
+geos_559: 
+  name: Pakistan
+  latitude: "30.3753210"
+  id: "559"
+  parent_id: "394"
+  longitude: "69.3451160"
+geos_369: 
+  name: !binary |
+    5ZC05b+g
+
+  latitude: "37.9974760"
+  id: "369"
+  parent_id: "366"
+  longitude: "106.1982250"
+geos_179: 
+  name: !binary |
+    6am76ams5bqX
+
+  latitude: "32.9759780"
+  id: "179"
+  parent_id: "164"
+  longitude: "114.0267930"
+geos_610: 
+  name: Togo
+  latitude: "8.6195430"
+  id: "610"
+  parent_id: "394"
+  longitude: "0.8247820"
+geos_420: 
+  name: Belize
+  latitude: "17.1898770"
+  id: "420"
+  parent_id: "394"
+  longitude: "-88.4976500"
+geos_230: 
+  name: !binary |
+    5rKz5rqQ
+
+  latitude: "23.7435380"
+  id: "230"
+  parent_id: "216"
+  longitude: "114.7004460"
+geos_040: 
+  name: !binary |
+    6L695a6B
+
+  latitude: "41.8365210"
+  id: "40"
+  parent_id: 
+  longitude: "123.4371620"
+geos_611: 
+  name: Tokelau
+  latitude: "-8.9673630"
+  id: "611"
+  parent_id: "394"
+  longitude: "-171.8558810"
+geos_421: 
+  name: Benin
+  latitude: "9.3076900"
+  id: "421"
+  parent_id: "394"
+  longitude: "2.3158340"
+geos_231: 
+  name: !binary |
+    6Ziz5rGf
+
+  latitude: "21.8576620"
+  id: "231"
+  parent_id: "216"
+  longitude: "111.9825360"
+geos_041: 
+  name: !binary |
+    5rKI6Ziz
+
+  latitude: "41.8073210"
+  id: "41"
+  parent_id: "40"
+  longitude: "123.4304500"
+geos_612: 
+  name: Tonga
+  latitude: "-21.1789860"
+  id: "612"
+  parent_id: "394"
+  longitude: "-175.1982420"
+geos_422: 
+  name: Bermuda
+  latitude: "32.3213840"
+  id: "422"
+  parent_id: "394"
+  longitude: "-64.7573700"
+geos_232: 
+  name: !binary |
+    5riF6L+c
+
+  latitude: "23.6818010"
+  id: "232"
+  parent_id: "216"
+  longitude: "113.0560420"
+geos_042: 
+  name: !binary |
+    5aSn6L+e
+
+  latitude: "38.9137790"
+  id: "42"
+  parent_id: "40"
+  longitude: "121.6147710"
+geos_613: 
+  name: Trinidad and Tobago
+  latitude: "10.6918030"
+  id: "613"
+  parent_id: "394"
+  longitude: "-61.2225030"
+geos_470: 
+  name: France
+  latitude: "46.2276380"
+  id: "470"
+  parent_id: "394"
+  longitude: "2.2137490"
+geos_423: 
+  name: Bhutan
+  latitude: "27.5141620"
+  id: "423"
+  parent_id: "394"
+  longitude: "90.4336010"
+geos_280: 
+  name: !binary |
+    57u16Ziz
+
+  latitude: "31.4633770"
+  id: "280"
+  parent_id: "274"
+  longitude: "104.7412740"
+geos_090: 
+  name: !binary |
+    5oms5bee
+
+  latitude: "32.3942370"
+  id: "90"
+  parent_id: "80"
+  longitude: "119.4128540"
+geos_233: 
+  name: !binary |
+    5Lic6I6e
+
+  latitude: "23.0205360"
+  id: "233"
+  parent_id: "216"
+  longitude: "113.7517660"
+geos_043: 
+  name: !binary |
+    6Z6N5bGx
+
+  latitude: "41.1085460"
+  id: "43"
+  parent_id: "40"
+  longitude: "122.9946460"
+geos_614: 
+  name: Tunisia
+  latitude: "33.8869170"
+  id: "614"
+  parent_id: "394"
+  longitude: "9.5374990"
+geos_471: 
+  name: French Guiana
+  latitude: "3.9338890"
+  id: "471"
+  parent_id: "394"
+  longitude: "-53.1257820"
+geos_424: 
+  name: Bolivia
+  latitude: "-16.2901540"
+  id: "424"
+  parent_id: "394"
+  longitude: "-63.5886530"
+geos_281: 
+  name: !binary |
+    5bm/5YWD
+
+  latitude: "32.4354420"
+  id: "281"
+  parent_id: "274"
+  longitude: "105.8433300"
+geos_091: 
+  name: !binary |
+    6ZWH5rGf
+
+  latitude: "31.224353"
+  id: "91"
+  parent_id: "80"
+  longitude: "121.475916"
+geos_234: 
+  name: !binary |
+    5Lit5bGx
+
+  latitude: "22.5164810"
+  id: "234"
+  parent_id: "216"
+  longitude: "113.3927560"
+geos_044: 
+  name: !binary |
+    5oqa6aG6
+
+  latitude: "41.8807010"
+  id: "44"
+  parent_id: "40"
+  longitude: "123.9152370"
+geos_615: 
+  name: Turkey
+  latitude: "38.9637450"
+  id: "615"
+  parent_id: "394"
+  longitude: "35.2433220"
+geos_472: 
+  name: French Polynesia
+  latitude: "-17.6797420"
+  id: "472"
+  parent_id: "394"
+  longitude: "-149.4068430"
+geos_425: 
+  name: Bosnia and Herzegowina
+  latitude: "43.9158860"
+  id: "425"
+  parent_id: "394"
+  longitude: "17.6790760"
+geos_282: 
+  name: !binary |
+    6YGC5a6B
+
+  latitude: "30.5254800"
+  id: "282"
+  parent_id: "274"
+  longitude: "105.5681870"
+geos_092: 
+  name: !binary |
+    5rOw5bee
+
+  latitude: "32.4565840"
+  id: "92"
+  parent_id: "80"
+  longitude: "119.9230460"
+geos_235: 
+  name: !binary |
+    5r2u5bee
+
+  latitude: "23.6567220"
+  id: "235"
+  parent_id: "216"
+  longitude: "116.6234170"
+geos_045: 
+  name: !binary |
+    5pys5rqq
+
+  latitude: "41.2941760"
+  id: "45"
+  parent_id: "40"
+  longitude: "123.7664850"
+geos_616: 
+  name: Turkmenistan
+  latitude: "38.9697190"
+  id: "616"
+  parent_id: "394"
+  longitude: "59.5562780"
+geos_473: 
+  name: French Southern Territories
+  latitude: "-49.4499605"
+  id: "473"
+  parent_id: "394"
+  longitude: "70.0249820"
+geos_426: 
+  name: Botswana
+  latitude: "-22.3284740"
+  id: "426"
+  parent_id: "394"
+  longitude: "24.6848660"
+geos_283: 
+  name: !binary |
+    5YaF5rGf
+
+  latitude: "29.5802370"
+  id: "283"
+  parent_id: "274"
+  longitude: "105.0583000"
+geos_093: 
+  name: !binary |
+    5a6/6L+B
+
+  latitude: "33.9620830"
+  id: "93"
+  parent_id: "80"
+  longitude: "118.2752890"
+geos_236: 
+  name: !binary |
+    5o+t6Ziz
+
+  latitude: "23.5499940"
+  id: "236"
+  parent_id: "216"
+  longitude: "116.3728300"
+geos_046: 
+  name: !binary |
+    5Li55Lic
+
+  latitude: "40.1273440"
+  id: "46"
+  parent_id: "40"
+  longitude: "124.3849130"
+geos_617: 
+  name: Turks and Caicos Islands
+  latitude: "21.6940250"
+  id: "617"
+  parent_id: "394"
+  longitude: "-71.7979280"
+geos_474: 
+  name: Gabon
+  latitude: "-0.8036890"
+  id: "474"
+  parent_id: "394"
+  longitude: "11.6094440"
+geos_427: 
+  name: Bouvet Island
+  latitude: "-54.4231990"
+  id: "427"
+  parent_id: "394"
+  longitude: "3.4131940"
+geos_284: 
+  name: !binary |
+    5LmQ5bGx
+
+  latitude: "29.5520640"
+  id: "284"
+  parent_id: "274"
+  longitude: "103.7656230"
+geos_094: 
+  name: !binary |
+    5rWZ5rGf
+
+  latitude: "30.2662140"
+  id: "94"
+  parent_id: 
+  longitude: "120.1538300"
+geos_237: 
+  name: !binary |
+    5LqR5rWu
+
+  latitude: "22.9149890"
+  id: "237"
+  parent_id: "216"
+  longitude: "112.0443350"
+geos_047: 
+  name: !binary |
+    6ZSm5bee
+
+  latitude: "41.0951230"
+  id: "47"
+  parent_id: "40"
+  longitude: "121.1270100"
+geos_475: 
+  name: Gambia
+  latitude: "13.4431820"
+  id: "475"
+  parent_id: "394"
+  longitude: "-15.3101390"
+geos_428: 
+  name: Brazil
+  latitude: "-14.2350040"
+  id: "428"
+  parent_id: "394"
+  longitude: "-51.9252800"
+geos_285: 
+  name: !binary |
+    5Y2X5YWF
+
+  latitude: "30.8378880"
+  id: "285"
+  parent_id: "274"
+  longitude: "106.1105950"
+geos_095: 
+  name: !binary |
+    5p2t5bee
+
+  latitude: "30.2734970"
+  id: "95"
+  parent_id: "94"
+  longitude: "120.1552490"
+geos_238: 
+  name: !binary |
+    5bm/6KW/
+
+  latitude: "22.8155470"
+  id: "238"
+  parent_id: 
+  longitude: "108.3276970"
+geos_048: 
+  name: !binary |
+    6JCl5Y+j
+
+  latitude: "40.6669890"
+  id: "48"
+  parent_id: "40"
+  longitude: "122.2352860"
+geos_618: 
+  name: Tuvalu
+  latitude: "-7.1095350"
+  id: "618"
+  parent_id: "394"
+  longitude: "177.6493300"
+geos_476: 
+  name: Georgia
+  latitude: "32.1574351"
+  id: "476"
+  parent_id: "394"
+  longitude: "-82.9071230"
+geos_429: 
+  name: British Indian Ocean Territory
+  latitude: "-6.3431940"
+  id: "429"
+  parent_id: "394"
+  longitude: "71.8765190"
+geos_286: 
+  name: !binary |
+    5a6c5a6+
+
+  latitude: "28.7518530"
+  id: "286"
+  parent_id: "274"
+  longitude: "104.6434180"
+geos_096: 
+  name: !binary |
+    5a6B5rOi
+
+  latitude: "29.8683360"
+  id: "96"
+  parent_id: "94"
+  longitude: "121.5439900"
+geos_239: 
+  name: !binary |
+    5Y2X5a6B
+
+  latitude: "22.8180120"
+  id: "239"
+  parent_id: "238"
+  longitude: "108.3655460"
+geos_049: 
+  name: !binary |
+    6Zic5paw
+
+  latitude: "42.0216200"
+  id: "49"
+  parent_id: "40"
+  longitude: "121.6703260"
+geos_619: 
+  name: Uganda
+  latitude: "1.3733330"
+  id: "619"
+  parent_id: "394"
+  longitude: "32.2902750"
+geos_477: 
+  name: Germany
+  latitude: "51.1656910"
+  id: "477"
+  parent_id: "394"
+  longitude: "10.4515260"
+geos_287: 
+  name: !binary |
+    5bm/5a6J
+
+  latitude: "30.4559300"
+  id: "287"
+  parent_id: "274"
+  longitude: "106.6332040"
+geos_097: 
+  name: !binary |
+    5rip5bee
+
+  latitude: "27.9942430"
+  id: "97"
+  parent_id: "94"
+  longitude: "120.6993550"
+geos_478: 
+  name: Ghana
+  latitude: "7.9465270"
+  id: "478"
+  parent_id: "394"
+  longitude: "-1.0231940"
+geos_100: 
+  name: !binary |
+    57uN5YW0
+
+  latitude: "29.9957620"
+  id: "100"
+  parent_id: "94"
+  longitude: "120.5861090"
+geos_288: 
+  name: !binary |
+    6L6+5bee
+
+  latitude: "31.2095720"
+  id: "288"
+  parent_id: "274"
+  longitude: "107.4680230"
+geos_098: 
+  name: !binary |
+    5ZiJ5YW0
+
+  latitude: "30.7539240"
+  id: "98"
+  parent_id: "94"
+  longitude: "120.7585430"
+geos_479: 
+  name: Gibraltar
+  latitude: "36.1377410"
+  id: "479"
+  parent_id: "394"
+  longitude: "-5.3453740"
+geos_101: 
+  name: !binary |
+    6YeR5Y2O
+
+  latitude: "29.0791640"
+  id: "101"
+  parent_id: "94"
+  longitude: "119.6474220"
+geos_289: 
+  name: !binary |
+    55yJ5bGx
+
+  latitude: "35.4774818"
+  id: "289"
+  parent_id: "274"
+  longitude: "136.7691477"
+geos_099: 
+  name: !binary |
+    5rmW5bee
+
+  latitude: "30.8943600"
+  id: "99"
+  parent_id: "94"
+  longitude: "120.0868180"
+geos_102: 
+  name: !binary |
+    6KGi5bee
+
+  latitude: "28.9358830"
+  id: "102"
+  parent_id: "94"
+  longitude: "118.8740180"
+geos_530: 
+  name: Martinique
+  latitude: "14.6415280"
+  id: "530"
+  parent_id: "394"
+  longitude: "-61.0241740"
+geos_103: 
+  name: !binary |
+    6Iif5bGx
+
+  latitude: "29.9854440"
+  id: "103"
+  parent_id: "94"
+  longitude: "122.2065960"
+geos_340: 
+  name: !binary |
+    5a6J5bq3
+
+  latitude: "32.6847810"
+  id: "340"
+  parent_id: "331"
+  longitude: "109.0293030"
+geos_150: 
+  name: !binary |
+    5p6j5bqE
+
+  latitude: "34.8105000"
+  id: "150"
+  parent_id: "146"
+  longitude: "117.3237250"
+geos_531: 
+  name: Mauritania
+  latitude: "21.0078900"
+  id: "531"
+  parent_id: "394"
+  longitude: "-10.9408350"
+geos_104: 
+  name: !binary |
+    5Y+w5bee
+
+  latitude: "28.8285010"
+  id: "104"
+  parent_id: "94"
+  longitude: "121.1758340"
+geos_341: 
+  name: !binary |
+    5ZWG5rSb
+
+  latitude: "33.8704280"
+  id: "341"
+  parent_id: "331"
+  longitude: "109.9404760"
+geos_151: 
+  name: !binary |
+    5Lic6JCl
+
+  latitude: "37.4353820"
+  id: "151"
+  parent_id: "146"
+  longitude: "118.6754870"
+geos_532: 
+  name: Mauritius
+  latitude: "-20.3484040"
+  id: "532"
+  parent_id: "394"
+  longitude: "57.5521520"
+geos_105: 
+  name: !binary |
+    5Li95rC0
+
+  latitude: "28.4516950"
+  id: "105"
+  parent_id: "94"
+  longitude: "119.9168750"
+geos_342: 
+  name: !binary |
+    55SY6IKD
+
+  latitude: "36.0593000"
+  id: "342"
+  parent_id: 
+  longitude: "103.8263630"
+geos_152: 
+  name: !binary |
+    54Of5Y+w
+
+  latitude: "37.5392970"
+  id: "152"
+  parent_id: "146"
+  longitude: "121.3913820"
+geos_580: 
+  name: Saint Pierre and Miquelon
+  latitude: "46.9419360"
+  id: "580"
+  parent_id: "394"
+  longitude: "-56.2711100"
+geos_533: 
+  name: Mayotte
+  latitude: "-12.8275000"
+  id: "533"
+  parent_id: "394"
+  longitude: "45.1662440"
+geos_106: 
+  name: !binary |
+    5a6J5b69
+
+  latitude: "31.8606110"
+  id: "106"
+  parent_id: 
+  longitude: "117.2847000"
+geos_390: 
+  name: !binary |
+    5LqU5a625rig
+
+  latitude: "44.1678276"
+  id: "390"
+  parent_id: "372"
+  longitude: "87.5462181"
+geos_343: 
+  name: !binary |
+    5YWw5bee
+
+  latitude: "36.0612550"
+  id: "343"
+  parent_id: "342"
+  longitude: "103.8343770"
+geos_153: 
+  name: !binary |
+    5r2N5Z2K
+
+  latitude: "36.7068240"
+  id: "153"
+  parent_id: "146"
+  longitude: "119.1619290"
+geos_581: 
+  name: Saint Vincent and the Grenadines
+  latitude: "12.9843050"
+  id: "581"
+  parent_id: "394"
+  longitude: "-61.2872280"
+geos_534: 
+  name: Mexico
+  latitude: "23.6345010"
+  id: "534"
+  parent_id: "394"
+  longitude: "-102.5527840"
+geos_107: 
+  name: !binary |
+    5ZCI6IKl
+
+  latitude: "31.8657790"
+  id: "107"
+  parent_id: "106"
+  longitude: "117.2869830"
+geos_391: 
+  name: !binary |
+    6aaZ5riv
+
+  latitude: "22.4060834"
+  id: "391"
+  parent_id: 
+  longitude: "114.1201536"
+geos_344: 
+  name: !binary |
+    5ZiJ5bOq5YWz
+
+  latitude: "39.7731300"
+  id: "344"
+  parent_id: "342"
+  longitude: "98.2891520"
+geos_154: 
+  name: !binary |
+    5aiB5rW3
+
+  latitude: "37.5130680"
+  id: "154"
+  parent_id: "146"
+  longitude: "122.1204200"
+geos_582: 
+  name: Samoa
+  latitude: "-13.7590290"
+  id: "582"
+  parent_id: "394"
+  longitude: "-172.1046290"
+geos_535: 
+  name: Micronesia, Federated States of
+  latitude: "31.224353"
+  id: "535"
+  parent_id: "394"
+  longitude: "121.475916"
+geos_108: 
+  name: !binary |
+    6Iqc5rmW
+
+  latitude: "31.3387900"
+  id: "108"
+  parent_id: "106"
+  longitude: "118.3851560"
+geos_392: 
+  name: !binary |
+    5r6z6Zeo
+
+  latitude: "22.1987450"
+  id: "392"
+  parent_id: 
+  longitude: "113.5438730"
+geos_345: 
+  name: !binary |
+    6YeR5piM
+
+  latitude: "38.5200890"
+  id: "345"
+  parent_id: "342"
+  longitude: "102.1880430"
+geos_155: 
+  name: !binary |
+    5rWO5a6B
+
+  latitude: "35.4148650"
+  id: "155"
+  parent_id: "146"
+  longitude: "116.5870750"
+geos_583: 
+  name: San Marino
+  latitude: "43.9423600"
+  id: "583"
+  parent_id: "394"
+  longitude: "12.4577770"
+geos_536: 
+  name: Moldova, Republic of
+  latitude: "46.8333333"
+  id: "536"
+  parent_id: "394"
+  longitude: "29.6166667"
+geos_109: 
+  name: !binary |
+    6JqM5Z+g
+
+  latitude: "32.9162820"
+  id: "109"
+  parent_id: "106"
+  longitude: "117.3897100"
+geos_393: 
+  name: !binary |
+    5Y+w5rm+
+
+  latitude: "23.6978100"
+  id: "393"
+  parent_id: 
+  longitude: "120.9605150"
+geos_346: 
+  name: !binary |
+    55m96ZO2
+
+  latitude: "36.5448270"
+  id: "346"
+  parent_id: "342"
+  longitude: "104.1376190"
+geos_156: 
+  name: !binary |
+    5rOw5a6J
+
+  latitude: "36.2000200"
+  id: "156"
+  parent_id: "146"
+  longitude: "117.0881150"
+geos_584: 
+  name: Sao Tome and Principe
+  latitude: "0.1863600"
+  id: "584"
+  parent_id: "394"
+  longitude: "6.6130810"
+geos_537: 
+  name: Monaco
+  latitude: "43.7502980"
+  id: "537"
+  parent_id: "394"
+  longitude: "7.4128410"
+geos_394: 
+  name: !binary |
+    5rW35aSW
+
+  latitude: 
+  id: "394"
+  parent_id: 
+  longitude: 
+geos_347: 
+  name: !binary |
+    5aSp5rC0
+
+  latitude: "34.5808620"
+  id: "347"
+  parent_id: "342"
+  longitude: "105.7249470"
+geos_157: 
+  name: !binary |
+    5pel54Wn
+
+  latitude: "35.4163770"
+  id: "157"
+  parent_id: "146"
+  longitude: "119.5268880"
+geos_585: 
+  name: Saudi Arabia
+  latitude: "23.8859420"
+  id: "585"
+  parent_id: "394"
+  longitude: "45.0791620"
+geos_538: 
+  name: Mongolia
+  latitude: "46.8624960"
+  id: "538"
+  parent_id: "394"
+  longitude: "103.8466560"
+geos_395: 
+  name: United States
+  latitude: "37.0902400"
+  id: "395"
+  parent_id: "394"
+  longitude: "-95.7128910"
+geos_348: 
+  name: !binary |
+    5q2m5aiB
+
+  latitude: "37.9283360"
+  id: "348"
+  parent_id: "342"
+  longitude: "102.6380090"
+geos_158: 
+  name: !binary |
+    6I6x6Iqc
+
+  latitude: "36.2136910"
+  id: "158"
+  parent_id: "146"
+  longitude: "117.6767310"
+geos_586: 
+  name: Senegal
+  latitude: "14.4974010"
+  id: "586"
+  parent_id: "394"
+  longitude: "-14.4523620"
+geos_539: 
+  name: Montenegro
+  latitude: "42.7086780"
+  id: "539"
+  parent_id: "394"
+  longitude: "19.3743900"
+geos_396: 
+  name: Japan
+  latitude: "36.2048240"
+  id: "396"
+  parent_id: "394"
+  longitude: "138.2529240"
+geos_349: 
+  name: !binary |
+    5byg5o6W
+
+  latitude: "38.9256460"
+  id: "349"
+  parent_id: "342"
+  longitude: "100.4498220"
+geos_159: 
+  name: !binary |
+    5Li05rKC
+
+  latitude: "35.0517120"
+  id: "159"
+  parent_id: "146"
+  longitude: "118.3477080"
+geos_587: 
+  name: Serbia
+  latitude: "44.0165210"
+  id: "587"
+  parent_id: "394"
+  longitude: "21.0058590"
+geos_397: 
+  name: Korea, Republic of
+  latitude: "10.7740154"
+  id: "397"
+  parent_id: "394"
+  longitude: "106.6956943"
+geos_588: 
+  name: Seychelles
+  latitude: "-4.6795740"
+  id: "588"
+  parent_id: "394"
+  longitude: "55.4919770"
+geos_400: 
+  name: Albania
+  latitude: "41.1533320"
+  id: "400"
+  parent_id: "394"
+  longitude: "20.1683310"
+geos_210: 
+  name: !binary |
+    55uK6Ziz
+
+  latitude: "28.5804830"
+  id: "210"
+  parent_id: "201"
+  longitude: "112.3553380"
+geos_020: 
+  name: !binary |
+    5pmL5Z+O
+
+  latitude: "35.4908700"
+  id: "20"
+  parent_id: "15"
+  longitude: "112.8517680"
+geos_398: 
+  name: Afghanistan
+  latitude: "33.9391100"
+  id: "398"
+  parent_id: "394"
+  longitude: "67.7099530"
+geos_589: 
+  name: Sierra Leone
+  latitude: "8.4605550"
+  id: "589"
+  parent_id: "394"
+  longitude: "-11.7798890"
+geos_401: 
+  name: Algeria
+  latitude: "28.0338860"
+  id: "401"
+  parent_id: "394"
+  longitude: "1.6596260"
+geos_211: 
+  name: !binary |
+    6YO05bee
+
+  latitude: "25.7705100"
+  id: "211"
+  parent_id: "201"
+  longitude: "113.0147180"
+geos_021: 
+  name: !binary |
+    5pyU5bee
+
+  latitude: "39.3311490"
+  id: "21"
+  parent_id: "15"
+  longitude: "112.4327140"
+geos_399: 
+  name: Aland Islands
+  latitude: "60.1770020"
+  id: "399"
+  parent_id: "394"
+  longitude: "19.9150020"
+geos_402: 
+  name: American Samoa
+  latitude: "-14.2709720"
+  id: "402"
+  parent_id: "394"
+  longitude: "-170.1322170"
+geos_212: 
+  name: !binary |
+    5rC45bee
+
+  latitude: "26.4203940"
+  id: "212"
+  parent_id: "201"
+  longitude: "111.6134450"
+geos_022: 
+  name: !binary |
+    5pmL5Lit
+
+  latitude: "37.6872040"
+  id: "22"
+  parent_id: "15"
+  longitude: "112.7526360"
+geos_450: 
+  name: Cote d'Ivoire
+  latitude: "7.5399890"
+  id: "450"
+  parent_id: "394"
+  longitude: "-5.5470800"
+geos_403: 
+  name: Andorra
+  latitude: "42.5462450"
+  id: "403"
+  parent_id: "394"
+  longitude: "1.6015540"
+geos_213: 
+  name: !binary |
+    5oCA5YyW
+
+  latitude: "27.5549780"
+  id: "213"
+  parent_id: "201"
+  longitude: "109.9984880"
+geos_023: 
+  name: !binary |
+    6L+Q5Z+O
+
+  latitude: "35.0263720"
+  id: "23"
+  parent_id: "15"
+  longitude: "111.0073240"
+geos_260: 
+  name: !binary |
+    5Lic5pa5
+
+  latitude: "1.6171435"
+  id: "260"
+  parent_id: "253"
+  longitude: "26.8059540"
+geos_070: 
+  name: !binary |
+    5Y+M6bit5bGx
+
+  latitude: "46.6469230"
+  id: "70"
+  parent_id: "65"
+  longitude: "131.1595530"
+geos_451: 
+  name: Croatia
+  latitude: "45.1000000"
+  id: "451"
+  parent_id: "394"
+  longitude: "15.2000000"
+geos_404: 
+  name: Angola
+  latitude: "-11.2026920"
+  id: "404"
+  parent_id: "394"
+  longitude: "17.8738870"
+geos_214: 
+  name: !binary |
+    5aiE5bqV
+
+  latitude: "27.7016930"
+  id: "214"
+  parent_id: "201"
+  longitude: "111.9960010"
+geos_024: 
+  name: !binary |
+    5b+75bee
+
+  latitude: "38.4163640"
+  id: "24"
+  parent_id: "15"
+  longitude: "112.7342690"
+geos_261: 
+  name: !binary |
+    5YSL5bee
+
+  latitude: "19.5211340"
+  id: "261"
+  parent_id: "253"
+  longitude: "109.5808110"
+geos_071: 
+  name: !binary |
+    5aSn5bqG
+
+  latitude: "46.5901900"
+  id: "71"
+  parent_id: "65"
+  longitude: "125.1046370"
+geos_452: 
+  name: Cuba
+  latitude: "21.5217570"
+  id: "452"
+  parent_id: "394"
+  longitude: "-77.7811670"
+geos_405: 
+  name: Anguilla
+  latitude: "18.2205540"
+  id: "405"
+  parent_id: "394"
+  longitude: "-63.0686150"
+geos_215: 
+  name: !binary |
+    5rmY6KW/
+
+  latitude: "28.3118340"
+  id: "215"
+  parent_id: "201"
+  longitude: "109.7388420"
+geos_025: 
+  name: !binary |
+    5Li05rG+
+
+  latitude: "36.0877430"
+  id: "25"
+  parent_id: "15"
+  longitude: "111.5188500"
+geos_262: 
+  name: !binary |
+    5p6X6auY
+
+  latitude: "21.5013530"
+  id: "262"
+  parent_id: "253"
+  longitude: "110.6062070"
+geos_072: 
+  name: !binary |
+    5LyK5pil
+
+  latitude: "47.7275420"
+  id: "72"
+  parent_id: "65"
+  longitude: "128.8406610"
+geos_453: 
+  name: Cyprus
+  latitude: "35.1264130"
+  id: "453"
+  parent_id: "394"
+  longitude: "33.4298590"
+geos_406: 
+  name: Antarctica
+  latitude: "-75.2509730"
+  id: "406"
+  parent_id: "394"
+  longitude: "-0.0713890"
+geos_216: 
+  name: !binary |
+    5bm/5Lic
+
+  latitude: "23.1316140"
+  id: "216"
+  parent_id: 
+  longitude: "113.2665580"
+geos_026: 
+  name: !binary |
+    5ZCV5qKB
+
+  latitude: "37.5189720"
+  id: "26"
+  parent_id: "15"
+  longitude: "111.1441380"
+geos_263: 
+  name: !binary |
+    5r6E6L+I
+
+  latitude: "19.7385210"
+  id: "263"
+  parent_id: "253"
+  longitude: "110.0067550"
+geos_073: 
+  name: !binary |
+    5L2z5pyo5pav
+
+  latitude: "46.7999230"
+  id: "73"
+  parent_id: "65"
+  longitude: "130.3189170"
+geos_454: 
+  name: Czech Republic
+  latitude: "49.8174920"
+  id: "454"
+  parent_id: "394"
+  longitude: "15.4729620"
+geos_407: 
+  name: Antigua And Barbuda
+  latitude: "17.0608160"
+  id: "407"
+  parent_id: "394"
+  longitude: "-61.7964280"
+geos_217: 
+  name: !binary |
+    5bm/5bee
+
+  latitude: "23.1290750"
+  id: "217"
+  parent_id: "216"
+  longitude: "113.2644230"
+geos_027: 
+  name: !binary |
+    5YaF6JKZ5Y+k
+
+  latitude: "40.8235420"
+  id: "27"
+  parent_id: 
+  longitude: "111.6741210"
+geos_264: 
+  name: !binary |
+    5a6a5a6J
+
+  latitude: "19.6973710"
+  id: "264"
+  parent_id: "253"
+  longitude: "110.3284860"
+geos_074: 
+  name: !binary |
+    5LiD5Y+w5rKz
+
+  latitude: "45.7719750"
+  id: "74"
+  parent_id: "65"
+  longitude: "131.0049150"
+geos_455: 
+  name: Denmark
+  latitude: "56.2639200"
+  id: "455"
+  parent_id: "394"
+  longitude: "9.5017850"
+geos_408: 
+  name: Argentina
+  latitude: "-38.4160970"
+  id: "408"
+  parent_id: "394"
+  longitude: "-63.6166720"
+geos_218: 
+  name: !binary |
+    5rex5Zyz
+
+  latitude: "22.5434470"
+  id: "218"
+  parent_id: "216"
+  longitude: "114.0578180"
+geos_028: 
+  name: !binary |
+    5ZG85ZKM5rWp54m5
+
+  latitude: "40.8423100"
+  id: "28"
+  parent_id: "27"
+  longitude: "111.7488470"
+geos_265: 
+  name: !binary |
+    5bGv5piM
+
+  latitude: "19.3517660"
+  id: "265"
+  parent_id: "253"
+  longitude: "110.1034150"
+geos_075: 
+  name: !binary |
+    54mh5Li55rGf
+
+  latitude: "44.5876330"
+  id: "75"
+  parent_id: "65"
+  longitude: "129.6146650"
+geos_456: 
+  name: Djibouti
+  latitude: "11.8251380"
+  id: "456"
+  parent_id: "394"
+  longitude: "42.5902750"
+geos_219: 
+  name: !binary |
+    54+g5rW3
+
+  latitude: "22.2709400"
+  id: "219"
+  parent_id: "216"
+  longitude: "113.5772610"
+geos_029: 
+  name: !binary |
+    5YyF5aS0
+
+  latitude: "40.6574470"
+  id: "29"
+  parent_id: "27"
+  longitude: "109.8403850"
+geos_266: 
+  name: !binary |
+    5piM5rGf6buO5peP6Ieq5rK7
+
+  latitude: "19.2602880"
+  id: "266"
+  parent_id: "253"
+  longitude: "109.0541260"
+geos_076: 
+  name: !binary |
+    6buR5rKz
+
+  latitude: "50.2453570"
+  id: "76"
+  parent_id: "65"
+  longitude: "127.5280970"
+geos_457: 
+  name: Dominica
+  latitude: "15.4149990"
+  id: "457"
+  parent_id: "394"
+  longitude: "-61.3709760"
+geos_409: 
+  name: Armenia
+  latitude: "40.0690990"
+  id: "409"
+  parent_id: "394"
+  longitude: "45.0381890"
+geos_267: 
+  name: !binary |
+    55m95rKZ6buO5peP6Ieq5rK7
+
+  latitude: "19.2233030"
+  id: "267"
+  parent_id: "253"
+  longitude: "109.4512520"
+geos_077: 
+  name: !binary |
+    57ul5YyW
+
+  latitude: "46.6366310"
+  id: "77"
+  parent_id: "65"
+  longitude: "126.9800060"
+geos_458: 
+  name: Dominican Republic
+  latitude: "18.7356930"
+  id: "458"
+  parent_id: "394"
+  longitude: "-70.1626510"
+geos_268: 
+  name: !binary |
+    55C85Lit6buO5peP6IuX5peP6Ieq5rK7
+
+  latitude: "31.224353"
+  id: "268"
+  parent_id: "253"
+  longitude: "121.475916"
+geos_078: 
+  name: !binary |
+    5aSn5YW05a6J5bKt
+
+  latitude: "52.3204480"
+  id: "78"
+  parent_id: "65"
+  longitude: "124.6947210"
+geos_459: 
+  name: Ecuador
+  latitude: "-1.8312390"
+  id: "459"
+  parent_id: "394"
+  longitude: "-78.1834060"
+geos_269: 
+  name: !binary |
+    6Zm15rC06buO5peP6Ieq5rK7
+
+  latitude: "18.4304180"
+  id: "269"
+  parent_id: "253"
+  longitude: "109.8573640"
+geos_079: 
+  name: !binary |
+    5LiK5rW3
+
+  latitude: "31.2307080"
+  id: "79"
+  parent_id: 
+  longitude: "121.4729160"
+geos_510: 
+  name: Korea, Democratic People's Republic of
+  latitude: "1.2800431"
+  id: "510"
+  parent_id: "394"
+  longitude: "103.8488744"
+geos_320: 
+  name: !binary |
+    5b635a6P
+
+  latitude: "24.4333530"
+  id: "320"
+  parent_id: "306"
+  longitude: "98.5848950"
+geos_130: 
+  name: !binary |
+    5ryz5bee
+
+  latitude: "24.5133210"
+  id: "130"
+  parent_id: "124"
+  longitude: "117.6473630"
+geos_511: 
+  name: Kuwait
+  latitude: "29.3116600"
+  id: "511"
+  parent_id: "394"
+  longitude: "47.4817660"
+geos_321: 
+  name: !binary |
+    5oCS5rGf
+
+  latitude: "25.8525480"
+  id: "321"
+  parent_id: "306"
+  longitude: "98.8530970"
+geos_131: 
+  name: !binary |
+    5Y2X5bmz
+
+  latitude: "26.6416710"
+  id: "131"
+  parent_id: "124"
+  longitude: "118.1773900"
+geos_512: 
+  name: Kyrgyzstan
+  latitude: "41.2043800"
+  id: "512"
+  parent_id: "394"
+  longitude: "74.7660980"
+geos_322: 
+  name: !binary |
+    6L+q5bqG
+
+  latitude: "27.8188820"
+  id: "322"
+  parent_id: "306"
+  longitude: "99.7022340"
+geos_132: 
+  name: !binary |
+    6b6Z5bKp
+
+  latitude: "25.1006010"
+  id: "132"
+  parent_id: "124"
+  longitude: "117.0341920"
+geos_560: 
+  name: Palau
+  latitude: "7.5149800"
+  id: "560"
+  parent_id: "394"
+  longitude: "134.5825200"
+geos_513: 
+  name: Lao People's Democratic Republic
+  latitude: "19.8562700"
+  id: "513"
+  parent_id: "394"
+  longitude: "102.4954960"
+geos_323: 
+  name: !binary |
+    6KW/6JeP
+
+  latitude: "29.6479510"
+  id: "323"
+  parent_id: 
+  longitude: "91.1170060"
+geos_133: 
+  name: !binary |
+    5a6B5b63
+
+  latitude: "26.6662910"
+  id: "133"
+  parent_id: "124"
+  longitude: "119.5262870"
+geos_370: 
+  name: !binary |
+    5Zu65Y6f
+
+  latitude: "36.0158550"
+  id: "370"
+  parent_id: "366"
+  longitude: "106.2426100"
+geos_180: 
+  name: !binary |
+    5rWO5rqQ
+
+  latitude: "35.0670030"
+  id: "180"
+  parent_id: "164"
+  longitude: "112.6024700"
+geos_561: 
+  name: Palestinian Territory, Occupied
+  latitude: "31.224353"
+  id: "561"
+  parent_id: "394"
+  longitude: "121.475916"
+geos_514: 
+  name: Latvia
+  latitude: "56.8796350"
+  id: "514"
+  parent_id: "394"
+  longitude: "24.6031890"
+geos_324: 
+  name: !binary |
+    5ouJ6JCo
+
+  latitude: "29.6455540"
+  id: "324"
+  parent_id: "323"
+  longitude: "91.1408560"
+geos_134: 
+  name: !binary |
+    5rGf6KW/
+
+  latitude: "28.6746280"
+  id: "134"
+  parent_id: 
+  longitude: "115.9089300"
+geos_371: 
+  name: !binary |
+    5Lit5Y2r
+
+  latitude: "37.5168920"
+  id: "371"
+  parent_id: "366"
+  longitude: "105.1738370"
+geos_181: 
+  name: !binary |
+    6K645piM
+
+  latitude: "34.0356080"
+  id: "181"
+  parent_id: "164"
+  longitude: "113.8539400"
+geos_562: 
+  name: Panama
+  latitude: "8.5379810"
+  id: "562"
+  parent_id: "394"
+  longitude: "-80.7821270"
+geos_515: 
+  name: Lebanon
+  latitude: "33.8547210"
+  id: "515"
+  parent_id: "394"
+  longitude: "35.8622850"
+geos_325: 
+  name: !binary |
+    5piM6YO9
+
+  latitude: "31.1409690"
+  id: "325"
+  parent_id: "323"
+  longitude: "97.1720200"
+geos_135: 
+  name: !binary |
+    5Y2X5piM
+
+  latitude: "28.6764930"
+  id: "135"
+  parent_id: "134"
+  longitude: "115.8921510"
+geos_372: 
+  name: !binary |
+    5paw55aG
+
+  latitude: "43.7931470"
+  id: "372"
+  parent_id: 
+  longitude: "87.6275460"
+geos_182: 
+  name: !binary |
+    6aqh5rKz
+
+  latitude: "31.224353"
+  id: "182"
+  parent_id: "164"
+  longitude: "121.475916"
+geos_563: 
+  name: Papua New Guinea
+  latitude: "-6.3149930"
+  id: "563"
+  parent_id: "394"
+  longitude: "143.9555500"
+geos_516: 
+  name: Lesotho
+  latitude: "-29.6099880"
+  id: "516"
+  parent_id: "394"
+  longitude: "28.2336080"
+geos_326: 
+  name: !binary |
+    5bGx5Y2X
+
+  latitude: "29.2315520"
+  id: "326"
+  parent_id: "323"
+  longitude: "91.7615380"
+geos_136: 
+  name: !binary |
+    5pmv5b636ZWH
+
+  latitude: "25.6145200"
+  id: "136"
+  parent_id: "134"
+  longitude: "111.2627670"
+geos_373: 
+  name: !binary |
+    5LmM6bKB5pyo6b2Q
+
+  latitude: "43.8256660"
+  id: "373"
+  parent_id: "372"
+  longitude: "87.6172980"
+geos_183: 
+  name: !binary |
+    5rmW5YyX
+
+  latitude: "30.5456500"
+  id: "183"
+  parent_id: 
+  longitude: "114.3417190"
+geos_564: 
+  name: Paraguay
+  latitude: "-23.4425030"
+  id: "564"
+  parent_id: "394"
+  longitude: "-58.4438320"
+geos_517: 
+  name: Liberia
+  latitude: "6.4280550"
+  id: "517"
+  parent_id: "394"
+  longitude: "-9.4294990"
+geos_327: 
+  name: !binary |
+    5pel5ZaA5YiZ
+
+  latitude: "29.2668700"
+  id: "327"
+  parent_id: "323"
+  longitude: "88.8805830"
+geos_137: 
+  name: !binary |
+    6JCN5Lmh
+
+  latitude: "26.2655160"
+  id: "137"
+  parent_id: "134"
+  longitude: "111.5957770"
+geos_374: 
+  name: !binary |
+    5YWL5ouJ546b5L6d
+
+  latitude: "45.5798890"
+  id: "374"
+  parent_id: "372"
+  longitude: "84.8892070"
+geos_184: 
+  name: !binary |
+    5q2m5rGJ
+
+  latitude: "30.5930880"
+  id: "184"
+  parent_id: "183"
+  longitude: "114.3051720"
+geos_565: 
+  name: Peru
+  latitude: "-9.1899670"
+  id: "565"
+  parent_id: "394"
+  longitude: "-75.0151520"
+geos_518: 
+  name: Libyan Arab Jamahiriya
+  latitude: "26.3351000"
+  id: "518"
+  parent_id: "394"
+  longitude: "17.2283310"
+geos_328: 
+  name: !binary |
+    6YKj5puy
+
+  latitude: "31.4764960"
+  id: "328"
+  parent_id: "323"
+  longitude: "92.0589040"
+geos_138: 
+  name: !binary |
+    5Lmd5rGf
+
+  latitude: "29.7050960"
+  id: "138"
+  parent_id: "134"
+  longitude: "116.0019820"
+geos_375: 
+  name: !binary |
+    5ZCQ6bKB55Wq
+
+  latitude: "42.9513840"
+  id: "375"
+  parent_id: "372"
+  longitude: "89.1896550"
+geos_185: 
+  name: !binary |
+    6buE55+z
+
+  latitude: "30.1996520"
+  id: "185"
+  parent_id: "183"
+  longitude: "115.0385200"
+geos_566: 
+  name: Philippines
+  latitude: "12.8797210"
+  id: "566"
+  parent_id: "394"
+  longitude: "121.7740170"
+geos_329: 
+  name: !binary |
+    6Zi/6YeM
+
+  latitude: "32.5010340"
+  id: "329"
+  parent_id: "323"
+  longitude: "80.1056520"
+geos_139: 
+  name: !binary |
+    5paw5L2Z
+
+  latitude: "27.8178230"
+  id: "139"
+  parent_id: "134"
+  longitude: "114.9174100"
+geos_376: 
+  name: !binary |
+    5ZOI5a+G
+
+  latitude: "42.8194330"
+  id: "376"
+  parent_id: "372"
+  longitude: "93.5150520"
+geos_186: 
+  name: !binary |
+    6KWE5qiK
+
+  latitude: "32.0234430"
+  id: "186"
+  parent_id: "183"
+  longitude: "112.1553940"
