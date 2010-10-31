@@ -11,7 +11,6 @@ class VenuesController < ApplicationController
   def new
     if params[:latitude].nil? || params[:longitude].nil?
       @geo = Geo.new(:latitude => Geo::DEFAULT_CENTER[0],:longitude => Geo::DEFAULT_CENTER[1],:zoom_level => Geo::DEFAULT_CENTER[2])
-      @geos = Geo.all
       render 'mark_latlng'
     else
       @venue = Venue.new(:latitude => params[:latitude],:longitude => params[:longitude],:geo_id => params[:geo_id])

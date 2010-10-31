@@ -3,10 +3,6 @@
 <% end %>
 <h2>标记聚点位置</h2>
 
-<% @geos.each do |geo|%>
-  <%= link_to geo.name,'#',:onclick => "javascript:map.setCenter(new google.maps.LatLng(parseFloat(#{geo.latitude}), parseFloat(#{geo.longitude})));map.setZoom(9);marker.setPosition(map.getCenter())"%>
-<% end %>
-
 <div id="map_canvas" style="width:100%;height:420px;clear:both"></div>
 
 <p>聚点在哪里?<br/>拖动地图上红色坐标，把它标记出来。</p>
