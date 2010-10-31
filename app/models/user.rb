@@ -102,6 +102,10 @@ class User < ActiveRecord::Base
     self.douban.post('http://api.douban.com/miniblog/saying',content, {"Content-Type" =>  "application/atom+xml"}  )
   end
   
+  def send_to_sina_miniblog(message)
+    self.sina.post('http://api.t.sina.com.cn/statuses/update.xml',{:status => message[0..139]}, {"Content-Type" =>  "application/atom+xml"}  )
+  end
+
   protected
   
 end
