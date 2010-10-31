@@ -321,10 +321,17 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
 
 .event_panel{
   margin:40px 10px 0;
-  float:right;
+  width:510px;
   text-align:right;
   display:none;
+  position:absolute;
+  z-index:1
 }
+
+.event_panel div{
+  
+}
+
 
 .event_box.hover .event_panel{display:block}
 
