@@ -43,6 +43,8 @@ ActiveRecord::Schema.define() do
   create_table "geos", :force => true do |t|
     t.string  :name,       :limit => 40
     t.integer :parent_id
+    t.integer :lft
+    t.integer :rgt
     t.integer :zipcode
     t.integer :zoom_level
     t.string  :slug,       :limit => 40

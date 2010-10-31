@@ -8,7 +8,7 @@
     <%= submit_tag '定位',:class => 'button'%>
   <% end %>
 </div>
-<h2 style="display:inline"><%= @geo.name%></h2> <%= link_to '切换地区',list_geos_path,:class => 'open_dialog'%>
+<h2 style="display:inline"><%= @geo.name%></h2> <%= link_to '切换地区',list_geos_path,:class => 'open_dialog',:title => '切换地区'%>
 
 <div id="map_canvas" style="width:100%;height:420px;clear:both;margin:10px 0"></div>  
 <div>

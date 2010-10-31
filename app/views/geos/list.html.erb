@@ -1,4 +1,72 @@
-<h4>选择地区</h4>
-<% @geos.each do |geo|%>
-  <%= link_to geo.name,geo%>
-<% end %>
+  <div style="width:510px;">
+    <div class="dialog_leftbar">
+      <div class="box">
+        <h5>华北地区</h5>
+        <%= link_to "北京","/geos/1" %>
+        <%= link_to "天津","/geos/2" %>
+        <%= link_to "河北","/geos/3" %>
+        <%= link_to "山西","/geos/15" %>
+        <%= link_to "内蒙古","/geos/27" %>
+      </div>
+        
+      <div class="box">
+        <h5>东北地区</h5>  
+        <%= link_to "辽宁","/geos/40" %>
+        <%= link_to "吉林","/geos/55" %>
+        <%= link_to "黑龙江","/geos/65" %>
+      </div>
+      
+      <div class="box">
+        <h5>华东地区</h5>
+        <%= link_to "上海","/geos/79" %>
+        <%= link_to "江苏","/geos/80" %>
+        <%= link_to "浙江","/geos/94" %>
+        <%= link_to "安徽","/geos/106" %>
+        <%= link_to "福建","/geos/124" %>
+        <%= link_to "江西","/geos/134" %>
+        <%= link_to "山东","/geos/146" %>
+      </div>
+  
+      <div class="box">
+        <h5>华中地区</h5>
+        <%= link_to "河南","/geos/164" %>
+        <%= link_to "湖北","/geos/183" %>
+        <%= link_to "湖南","/geos/201" %>
+      </div>
+    </div>
+    
+    <div class="dialog_rightbar">
+      <div class="box">
+        <h5>华南地区</h5>
+        <%= link_to "广东","/geos/216" %>
+        <%= link_to "广西","/geos/238" %>
+        <%= link_to "海南","/geos/253" %>
+      </div>
+      
+      <div class="box">
+        <h5>西南地区</h5>
+        <%= link_to "重庆","/geos/273" %>
+        <%= link_to "四川","/geos/274" %>
+        <%= link_to "贵州","/geos/296" %>
+        <%= link_to "云南","/geos/306" %>
+        <%= link_to "西藏","/geos/323" %>
+      </div>
+      
+      <div class="box">
+        <h5>西北地区</h5>
+        <%= link_to "陕西","/geos/331" %>
+        <%= link_to "甘肃","/geos/342" %>
+        <%= link_to "青海","/geos/357" %>
+        <%= link_to "宁夏","/geos/366" %>
+        <%= link_to "新疆","/geos/372" %>
+      </div>
+      
+      <div class="box">
+        <h5>港澳台地区</h5>
+        <%= link_to "香港","/geos/391" %>
+        <%= link_to "澳门","/geos/392" %>
+        <%= link_to "台湾","/geos/393" %>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>

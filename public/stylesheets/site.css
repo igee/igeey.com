@@ -113,7 +113,7 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
 .dialog_rightbar{
   float:right;
   width:180px;
-  padding:10px 0 0 30px;
+  padding:10px;
 }
 .dialog_leftbar{
   float:left;

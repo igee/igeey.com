@@ -2,4598 +2,7138 @@
 geos_567: 
   name: Pitcairn
   latitude: "-24.7036150"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1132"
   id: "567"
   parent_id: "394"
   longitude: "-127.4393080"
+  rgt: "1133"
 geos_519: 
   name: Liechtenstein
   latitude: "47.1660000"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1036"
   id: "519"
   parent_id: "394"
   longitude: "9.5553730"
+  rgt: "1037"
 geos_377: 
   name: !binary |
     5ZKM55Sw
 
   latitude: "37.1141570"
+  zipcode: 
+  zoom_level: "9"
+  lft: "752"
   id: "377"
   parent_id: "372"
   longitude: "79.9222110"
+  rgt: "753"
 geos_187: 
   name: !binary |
     5Y2B5aCw
 
   latitude: "32.6503810"
+  zipcode: 
+  zoom_level: "9"
+  lft: "372"
   id: "187"
   parent_id: "183"
   longitude: "110.7889150"
+  rgt: "373"
 geos_568: 
   name: Poland
   latitude: "51.9194380"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1134"
   id: "568"
   parent_id: "394"
   longitude: "19.1451360"
+  rgt: "1135"
 geos_378: 
   name: !binary |
     6Zi/5YWL6IuP
 
   latitude: "41.1687790"
+  zipcode: 
+  zoom_level: "9"
+  lft: "754"
   id: "378"
   parent_id: "372"
   longitude: "80.2606050"
+  rgt: "755"
 geos_188: 
   name: !binary |
     6I2G5bee
 
   latitude: "30.3351650"
+  zipcode: 
+  zoom_level: "9"
+  lft: "374"
   id: "188"
   parent_id: "183"
   longitude: "112.2397410"
+  rgt: "375"
 geos_569: 
   name: Portugal
   latitude: "39.3998720"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1136"
   id: "569"
   parent_id: "394"
   longitude: "-8.2244540"
+  rgt: "1137"
 geos_001: 
   name: !binary |
     5YyX5Lqs
 
   latitude: "39.9046670"
+  zipcode: 
+  zoom_level: "9"
+  lft: "1"
   id: "1"
   parent_id: 
   longitude: "116.4081980"
+  rgt: "2"
 geos_379: 
   name: !binary |
     5ZaA5LuA
 
   latitude: "39.4704000"
+  zipcode: 
+  zoom_level: "9"
+  lft: "756"
   id: "379"
   parent_id: "372"
   longitude: "75.9897550"
+  rgt: "757"
 geos_189: 
   name: !binary |
     5a6c5piM
 
   latitude: "30.6919670"
+  zipcode: 
+  zoom_level: "9"
+  lft: "376"
   id: "189"
   parent_id: "183"
   longitude: "111.2864710"
+  rgt: "377"
 geos_002: 
   name: !binary |
     5aSp5rSl
 
   latitude: "39.1208760"
+  zipcode: 
+  zoom_level: "9"
+  lft: "3"
   id: "2"
   parent_id: 
   longitude: "117.2150300"
+  rgt: "4"
 geos_620: 
   name: Ukraine
   latitude: "48.3794330"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1238"
   id: "620"
   parent_id: "394"
   longitude: "31.1655800"
+  rgt: "1239"
 geos_430: 
   name: Brunei Darussalam
   latitude: "4.5352770"
+  zipcode: 
+  zoom_level: "5"
+  lft: "858"
   id: "430"
   parent_id: "394"
   longitude: "114.7276690"
+  rgt: "859"
 geos_240: 
   name: !binary |
     5p+z5bee
 
   latitude: "24.3255100"
+  zipcode: 
+  zoom_level: "9"
+  lft: "478"
   id: "240"
   parent_id: "238"
   longitude: "109.4155770"
+  rgt: "479"
 geos_050: 
   name: !binary |
     6L696Ziz
 
   latitude: "41.2696250"
+  zipcode: 
+  zoom_level: "9"
+  lft: "98"
   id: "50"
   parent_id: "40"
   longitude: "123.1729090"
+  rgt: "99"
 geos_003: 
   name: !binary |
     5rKz5YyX
 
   latitude: "38.0372520"
+  zipcode: 
+  zoom_level: "7"
+  lft: "5"
   id: "3"
   parent_id: 
   longitude: "114.4692590"
+  rgt: "28"
 geos_621: 
   name: United Arab Emirates
   latitude: "23.4240760"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1240"
   id: "621"
   parent_id: "394"
   longitude: "53.8478180"
+  rgt: "1241"
 geos_431: 
   name: Bulgaria
   latitude: "42.7338830"
+  zipcode: 
+  zoom_level: "5"
+  lft: "860"
   id: "431"
   parent_id: "394"
   longitude: "25.4858300"
+  rgt: "861"
 geos_241: 
   name: !binary |
     5qGC5p6X
 
   latitude: "25.2735670"
+  zipcode: 
+  zoom_level: "9"
+  lft: "480"
   id: "241"
   parent_id: "238"
   longitude: "110.2901950"
+  rgt: "481"
 geos_051: 
   name: !binary |
     55uY6ZSm
 
   latitude: "41.1199980"
+  zipcode: 
+  zoom_level: "9"
+  lft: "100"
   id: "51"
   parent_id: "40"
   longitude: "122.0707150"
+  rgt: "101"
 geos_004: 
   name: !binary |
     55+z5a625bqE
 
   latitude: "38.0423200"
+  zipcode: 
+  zoom_level: "9"
+  lft: "6"
   id: "4"
   parent_id: "3"
   longitude: "114.5148640"
+  rgt: "7"
 geos_622: 
   name: United Kingdom
   latitude: "55.3780510"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1242"
   id: "622"
   parent_id: "394"
   longitude: "-3.4359730"
+  rgt: "1243"
 geos_432: 
   name: Burkina Faso
   latitude: "12.2383330"
+  zipcode: 
+  zoom_level: "5"
+  lft: "862"
   id: "432"
   parent_id: "394"
   longitude: "-1.5615930"
+  rgt: "863"
 geos_242: 
   name: !binary |
     5qKn5bee
 
   latitude: "23.4769100"
+  zipcode: 
+  zoom_level: "9"
+  lft: "482"
   id: "242"
   parent_id: "238"
   longitude: "111.2791700"
+  rgt: "483"
 geos_052: 
   name: !binary |
     6ZOB5bKt
 
   latitude: "42.2862870"
+  zipcode: 
+  zoom_level: "9"
+  lft: "102"
   id: "52"
   parent_id: "40"
   longitude: "123.8423520"
+  rgt: "103"
 geos_005: 
   name: !binary |
     5ZSQ5bGx
 
   latitude: "39.6304760"
+  zipcode: 
+  zoom_level: "9"
+  lft: "8"
   id: "5"
   parent_id: "3"
   longitude: "118.1804070"
+  rgt: "9"
 geos_623: 
   name: United States Minor Outlying Islands
   latitude: "28.2166667"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1244"
   id: "623"
   parent_id: "394"
   longitude: "-177.3666667"
+  rgt: "1245"
 geos_480: 
   name: Greece
   latitude: "39.0742080"
+  zipcode: 
+  zoom_level: "5"
+  lft: "958"
   id: "480"
   parent_id: "394"
   longitude: "21.8243120"
+  rgt: "959"
 geos_433: 
   name: Burundi
   latitude: "-3.3730560"
+  zipcode: 
+  zoom_level: "5"
+  lft: "864"
   id: "433"
   parent_id: "394"
   longitude: "29.9188860"
+  rgt: "865"
 geos_243: 
   name: !binary |
     5YyX5rW3
 
   latitude: "21.4811980"
+  zipcode: 
+  zoom_level: "9"
+  lft: "484"
   id: "243"
   parent_id: "238"
   longitude: "109.1199510"
+  rgt: "485"
 geos_053: 
   name: !binary |
     5pyd6Ziz
 
   latitude: "41.5737340"
+  zipcode: 
+  zoom_level: "9"
+  lft: "104"
   id: "53"
   parent_id: "40"
   longitude: "120.4503720"
+  rgt: "105"
 geos_006: 
   name: !binary |
     56em55qH5bKb
 
   latitude: "39.9353770"
+  zipcode: 
+  zoom_level: "9"
+  lft: "10"
   id: "6"
   parent_id: "3"
   longitude: "119.6004920"
+  rgt: "11"
 geos_290: 
   name: !binary |
     6ZuF5a6J
 
   latitude: "29.9805140"
+  zipcode: 
+  zoom_level: "9"
+  lft: "578"
   id: "290"
   parent_id: "274"
   longitude: "103.0131630"
+  rgt: "579"
 geos_624: 
   name: Uruguay
   latitude: "-32.5227790"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1246"
   id: "624"
   parent_id: "394"
   longitude: "-55.7658350"
+  rgt: "1247"
 geos_481: 
   name: Greenland
   latitude: "71.7069360"
+  zipcode: 
+  zoom_level: "5"
+  lft: "960"
   id: "481"
   parent_id: "394"
   longitude: "-42.6043030"
+  rgt: "961"
 geos_434: 
   name: Cambodia
   latitude: "12.5656790"
+  zipcode: 
+  zoom_level: "5"
+  lft: "866"
   id: "434"
   parent_id: "394"
   longitude: "104.9909630"
+  rgt: "867"
 geos_244: 
   name: !binary |
     6Ziy5Z+O5riv
 
   latitude: "21.6660040"
+  zipcode: 
+  zoom_level: "9"
+  lft: "486"
   id: "244"
   parent_id: "238"
   longitude: "108.3423610"
+  rgt: "487"
 geos_054: 
   name: !binary |
     6JGr6Iqm5bKb
 
   latitude: "40.7109530"
+  zipcode: 
+  zoom_level: "9"
+  lft: "106"
   id: "54"
   parent_id: "40"
   longitude: "120.8368270"
+  rgt: "107"
 geos_007: 
   name: !binary |
     6YKv6YO4
 
   latitude: "36.6122670"
+  zipcode: 
+  zoom_level: "9"
+  lft: "12"
   id: "7"
   parent_id: "3"
   longitude: "114.4929680"
+  rgt: "13"
 geos_291: 
   name: !binary |
     5be05Lit
 
   latitude: "31.8650560"
+  zipcode: 
+  zoom_level: "9"
+  lft: "580"
   id: "291"
   parent_id: "274"
   longitude: "106.7449010"
+  rgt: "581"
 geos_625: 
   name: Uzbekistan
   latitude: "41.3774910"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1248"
   id: "625"
   parent_id: "394"
   longitude: "64.5852620"
+  rgt: "1249"
 geos_482: 
   name: Grenada
   latitude: "12.2627760"
+  zipcode: 
+  zoom_level: "5"
+  lft: "962"
   id: "482"
   parent_id: "394"
   longitude: "-61.6041710"
+  rgt: "963"
 geos_435: 
   name: Cameroon
   latitude: "7.3697220"
+  zipcode: 
+  zoom_level: "5"
+  lft: "868"
   id: "435"
   parent_id: "394"
   longitude: "12.3547220"
+  rgt: "869"
 geos_245: 
   name: !binary |
     6ZKm5bee
 
   latitude: "21.9809680"
+  zipcode: 
+  zoom_level: "9"
+  lft: "488"
   id: "245"
   parent_id: "238"
   longitude: "108.6545430"
+  rgt: "489"
 geos_055: 
   name: !binary |
     5ZCJ5p6X
 
   latitude: "43.8378830"
+  zipcode: 
+  zoom_level: "7"
+  lft: "109"
   id: "55"
   parent_id: 
   longitude: "126.5495720"
+  rgt: "128"
 geos_008: 
   name: !binary |
     6YKi5Y+w
 
   latitude: "37.0705890"
+  zipcode: 
+  zoom_level: "9"
+  lft: "14"
   id: "8"
   parent_id: "3"
   longitude: "114.5048740"
+  rgt: "15"
 geos_292: 
   name: !binary |
     6LWE6Ziz
 
   latitude: "30.1294630"
+  zipcode: 
+  zoom_level: "9"
+  lft: "582"
   id: "292"
   parent_id: "274"
   longitude: "104.6288890"
+  rgt: "583"
 geos_626: 
   name: Vanuatu
   latitude: "-15.3767060"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1250"
   id: "626"
   parent_id: "394"
   longitude: "166.9591580"
+  rgt: "1251"
 geos_483: 
   name: Guadeloupe
   latitude: "16.9959710"
+  zipcode: 
+  zoom_level: "5"
+  lft: "964"
   id: "483"
   parent_id: "394"
   longitude: "-62.0676410"
+  rgt: "965"
 geos_436: 
   name: Canada
   latitude: "56.1303660"
+  zipcode: 
+  zoom_level: "5"
+  lft: "870"
   id: "436"
   parent_id: "394"
   longitude: "-106.3467710"
+  rgt: "871"
 geos_246: 
   name: !binary |
     6LS15riv
 
   latitude: "23.1115310"
+  zipcode: 
+  zoom_level: "9"
+  lft: "490"
   id: "246"
   parent_id: "238"
   longitude: "109.5989270"
+  rgt: "491"
 geos_056: 
   name: !binary |
     6ZW/5pil
 
   latitude: "43.8868410"
+  zipcode: 
+  zoom_level: "9"
+  lft: "110"
   id: "56"
   parent_id: "55"
   longitude: "125.3245000"
+  rgt: "111"
 geos_009: 
   name: !binary |
     5L+d5a6a
 
   latitude: "38.8739720"
+  zipcode: 
+  zoom_level: "9"
+  lft: "16"
   id: "9"
   parent_id: "3"
   longitude: "115.4646300"
+  rgt: "17"
 geos_293: 
   name: !binary |
     6Zi/5Z2d
 
   latitude: "31.8994130"
+  zipcode: 
+  zoom_level: "9"
+  lft: "584"
   id: "293"
   parent_id: "274"
   longitude: "102.2246530"
+  rgt: "585"
 geos_627: 
   name: Venezuela
   latitude: "6.4237500"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1252"
   id: "627"
   parent_id: "394"
   longitude: "-66.5897300"
+  rgt: "1253"
 geos_484: 
   name: Guam
   latitude: "13.4443040"
+  zipcode: 
+  zoom_level: "5"
+  lft: "966"
   id: "484"
   parent_id: "394"
   longitude: "144.7937310"
+  rgt: "967"
 geos_437: 
   name: Cape Verde
   latitude: "16.0020820"
+  zipcode: 
+  zoom_level: "5"
+  lft: "872"
   id: "437"
   parent_id: "394"
   longitude: "-24.0131970"
+  rgt: "873"
 geos_247: 
   name: !binary |
     546J5p6X
 
   latitude: "22.6363790"
+  zipcode: 
+  zoom_level: "9"
+  lft: "492"
   id: "247"
   parent_id: "238"
   longitude: "110.1647560"
+  rgt: "493"
 geos_057: 
   name: !binary |
     5ZCJ5p6X
 
   latitude: "43.8378830"
+  zipcode: 
+  zoom_level: "9"
+  lft: "112"
   id: "57"
   parent_id: "55"
   longitude: "126.5495720"
+  rgt: "113"
 geos_294: 
   name: !binary |
     55SY5a2c
 
   latitude: "30.0495200"
+  zipcode: 
+  zoom_level: "9"
+  lft: "586"
   id: "294"
   parent_id: "274"
   longitude: "101.9623110"
+  rgt: "587"
 geos_628: 
   name: Viet Nam
   latitude: "14.0583240"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1254"
   id: "628"
   parent_id: "394"
   longitude: "108.2771990"
+  rgt: "1255"
 geos_485: 
   name: Guatemala
   latitude: "15.7834710"
+  zipcode: 
+  zoom_level: "5"
+  lft: "968"
   id: "485"
   parent_id: "394"
   longitude: "-90.2307590"
+  rgt: "969"
 geos_438: 
   name: Cayman Islands
   latitude: "19.5134690"
+  zipcode: 
+  zoom_level: "5"
+  lft: "874"
   id: "438"
   parent_id: "394"
   longitude: "-80.5669560"
+  rgt: "875"
 geos_248: 
   name: !binary |
     55m+6Imy
 
   latitude: "23.9023710"
+  zipcode: 
+  zoom_level: "9"
+  lft: "494"
   id: "248"
   parent_id: "238"
   longitude: "106.6182750"
+  rgt: "495"
 geos_058: 
   name: !binary |
     5Zub5bmz
 
   latitude: "43.1669370"
+  zipcode: 
+  zoom_level: "9"
+  lft: "114"
   id: "58"
   parent_id: "55"
   longitude: "124.3503520"
+  rgt: "115"
 geos_295: 
   name: !binary |
     5YeJ5bGx
 
   latitude: "27.8814290"
+  zipcode: 
+  zoom_level: "9"
+  lft: "588"
   id: "295"
   parent_id: "274"
   longitude: "102.2677260"
+  rgt: "589"
 geos_486: 
   name: Guernsey
   latitude: "49.4656910"
+  zipcode: 
+  zoom_level: "5"
+  lft: "970"
   id: "486"
   parent_id: "394"
   longitude: "-2.5852780"
+  rgt: "971"
 geos_439: 
   name: Central African Republic
   latitude: "6.6111110"
+  zipcode: 
+  zoom_level: "5"
+  lft: "876"
   id: "439"
   parent_id: "394"
   longitude: "20.9394440"
+  rgt: "877"
 geos_249: 
   name: !binary |
     6LS65bee
 
   latitude: "24.4035700"
+  zipcode: 
+  zoom_level: "9"
+  lft: "496"
   id: "249"
   parent_id: "238"
   longitude: "111.5667530"
+  rgt: "497"
 geos_059: 
   name: !binary |
     6L695rqQ
 
   latitude: "42.8879180"
+  zipcode: 
+  zoom_level: "9"
+  lft: "116"
   id: "59"
   parent_id: "55"
   longitude: "125.1435320"
+  rgt: "117"
 geos_296: 
   name: !binary |
     6LS15bee
 
   latitude: "26.5984350"
+  zipcode: 
+  zoom_level: "7"
+  lft: "591"
   id: "296"
   parent_id: 
   longitude: "106.7069270"
+  rgt: "610"
 geos_629: 
   name: Virgin Islands, British
   latitude: "31.224353"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1256"
   id: "629"
   parent_id: "394"
   longitude: "121.475916"
+  rgt: "1257"
 geos_487: 
   name: Guinea
   latitude: "9.9455870"
+  zipcode: 
+  zoom_level: "5"
+  lft: "972"
   id: "487"
   parent_id: "394"
   longitude: "-9.6966450"
+  rgt: "973"
 geos_297: 
   name: !binary |
     6LS16Ziz
 
   latitude: "26.5783430"
+  zipcode: 
+  zoom_level: "9"
+  lft: "592"
   id: "297"
   parent_id: "296"
   longitude: "106.7134780"
+  rgt: "593"
 geos_488: 
   name: Guinea-Bissau
   latitude: "11.8037490"
+  zipcode: 
+  zoom_level: "5"
+  lft: "974"
   id: "488"
   parent_id: "394"
   longitude: "-15.1804130"
+  rgt: "975"
 geos_300: 
   name: !binary |
     5a6J6aG6
 
   latitude: "26.2530720"
+  zipcode: 
+  zoom_level: "9"
+  lft: "598"
   id: "300"
   parent_id: "296"
   longitude: "105.9475940"
+  rgt: "599"
 geos_110: 
   name: !binary |
     5reu5Y2X
 
   latitude: "32.6253970"
+  zipcode: 
+  zoom_level: "9"
+  lft: "218"
   id: "110"
   parent_id: "106"
   longitude: "116.9999580"
+  rgt: "219"
 geos_298: 
   name: !binary |
     5YWt55uY5rC0
 
   latitude: "26.5926630"
+  zipcode: 
+  zoom_level: "9"
+  lft: "594"
   id: "298"
   parent_id: "296"
   longitude: "104.8303610"
+  rgt: "595"
 geos_489: 
   name: Guyana
   latitude: "4.8604160"
+  zipcode: 
+  zoom_level: "5"
+  lft: "976"
   id: "489"
   parent_id: "394"
   longitude: "-58.9301800"
+  rgt: "977"
 geos_301: 
   name: !binary |
     6ZOc5LuB
 
   latitude: "27.7315150"
+  zipcode: 
+  zoom_level: "9"
+  lft: "600"
   id: "301"
   parent_id: "296"
   longitude: "109.1895980"
+  rgt: "601"
 geos_111: 
   name: !binary |
     6ams6Z6N5bGx
 
   latitude: "31.6967880"
+  zipcode: 
+  zoom_level: "9"
+  lft: "220"
   id: "111"
   parent_id: "106"
   longitude: "118.5046570"
+  rgt: "221"
 geos_299: 
   name: !binary |
     6YG15LmJ
 
   latitude: "27.7256540"
+  zipcode: 
+  zoom_level: "9"
+  lft: "596"
   id: "299"
   parent_id: "296"
   longitude: "106.9273890"
+  rgt: "597"
 geos_302: 
   name: !binary |
     5q+V6IqC
 
   latitude: "27.3025890"
+  zipcode: 
+  zoom_level: "9"
+  lft: "602"
   id: "302"
   parent_id: "296"
   longitude: "105.2839920"
+  rgt: "603"
 geos_112: 
   name: !binary |
     5reu5YyX
 
   latitude: "33.9554790"
+  zipcode: 
+  zoom_level: "9"
+  lft: "222"
   id: "112"
   parent_id: "106"
   longitude: "116.7982180"
+  rgt: "223"
 geos_540: 
   name: Montserrat
   latitude: "16.7424980"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1078"
   id: "540"
   parent_id: "394"
   longitude: "-62.1873660"
+  rgt: "1079"
 geos_350: 
   name: !binary |
     5bmz5YeJ
 
   latitude: "35.5426860"
+  zipcode: 
+  zoom_level: "9"
+  lft: "698"
   id: "350"
   parent_id: "342"
   longitude: "106.6651060"
+  rgt: "699"
 geos_160: 
   name: !binary |
     5b635bee
 
   latitude: "37.4509200"
+  zipcode: 
+  zoom_level: "9"
+  lft: "318"
   id: "160"
   parent_id: "146"
   longitude: "116.3025870"
+  rgt: "319"
 geos_303: 
   name: !binary |
     6buU6KW/5Y2X
 
   latitude: "25.0878250"
+  zipcode: 
+  zoom_level: "9"
+  lft: "604"
   id: "303"
   parent_id: "296"
   longitude: "104.9063970"
+  rgt: "605"
 geos_113: 
   name: !binary |
     6ZOc6Zm1
 
   latitude: "30.9445300"
+  zipcode: 
+  zoom_level: "9"
+  lft: "224"
   id: "113"
   parent_id: "106"
   longitude: "117.8108410"
+  rgt: "225"
 geos_541: 
   name: Morocco
   latitude: "31.7917020"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1080"
   id: "541"
   parent_id: "394"
   longitude: "-7.0926200"
+  rgt: "1081"
 geos_351: 
   name: !binary |
     6YWS5rOJ
 
   latitude: "39.7324880"
+  zipcode: 
+  zoom_level: "9"
+  lft: "700"
   id: "351"
   parent_id: "342"
   longitude: "98.4944110"
+  rgt: "701"
 geos_161: 
   name: !binary |
     6IGK5Z+O
 
   latitude: "36.4566960"
+  zipcode: 
+  zoom_level: "9"
+  lft: "320"
   id: "161"
   parent_id: "146"
   longitude: "115.9853710"
+  rgt: "321"
 geos_304: 
   name: !binary |
     6buU5Lic5Y2X
 
   latitude: "26.5835500"
+  zipcode: 
+  zoom_level: "9"
+  lft: "606"
   id: "304"
   parent_id: "296"
   longitude: "107.9828280"
+  rgt: "607"
 geos_114: 
   name: !binary |
     5a6J5bqG
 
   latitude: "30.5249610"
+  zipcode: 
+  zoom_level: "9"
+  lft: "226"
   id: "114"
   parent_id: "106"
   longitude: "117.0567300"
+  rgt: "227"
 geos_542: 
   name: Mozambique
   latitude: "-18.6656950"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1082"
   id: "542"
   parent_id: "394"
   longitude: "35.5295620"
+  rgt: "1083"
 geos_352: 
   name: !binary |
     5bqG6Ziz
 
   latitude: "35.7386700"
+  zipcode: 
+  zoom_level: "9"
+  lft: "702"
   id: "352"
   parent_id: "342"
   longitude: "107.6324650"
+  rgt: "703"
 geos_162: 
   name: !binary |
     5ruo5bee
 
   latitude: "37.3814030"
+  zipcode: 
+  zoom_level: "9"
+  lft: "322"
   id: "162"
   parent_id: "146"
   longitude: "117.9714300"
+  rgt: "323"
 geos_305: 
   name: !binary |
     6buU5Y2X
 
   latitude: "26.2540920"
+  zipcode: 
+  zoom_level: "9"
+  lft: "608"
   id: "305"
   parent_id: "296"
   longitude: "107.5221400"
+  rgt: "609"
 geos_115: 
   name: !binary |
     6buE5bGx
 
   latitude: "29.7146970"
+  zipcode: 
+  zoom_level: "9"
+  lft: "228"
   id: "115"
   parent_id: "106"
   longitude: "118.3374760"
+  rgt: "229"
 geos_590: 
   name: Singapore
   latitude: "1.3520830"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1178"
   id: "590"
   parent_id: "394"
   longitude: "103.8198360"
+  rgt: "1179"
 geos_543: 
   name: Myanmar
   latitude: "21.9139650"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1084"
   id: "543"
   parent_id: "394"
   longitude: "95.9562230"
+  rgt: "1085"
 geos_353: 
   name: !binary |
     5a6a6KW/
 
   latitude: "35.5806230"
+  zipcode: 
+  zoom_level: "9"
+  lft: "704"
   id: "353"
   parent_id: "342"
   longitude: "104.6262780"
+  rgt: "705"
 geos_163: 
   name: !binary |
     6I+P5rO9
 
   latitude: "35.2337500"
+  zipcode: 
+  zoom_level: "9"
+  lft: "324"
   id: "163"
   parent_id: "146"
   longitude: "115.4806560"
+  rgt: "325"
 geos_306: 
   name: !binary |
     5LqR5Y2X
 
   latitude: "25.0452540"
+  zipcode: 
+  zoom_level: "7"
+  lft: "611"
   id: "306"
   parent_id: 
   longitude: "102.7098090"
+  rgt: "644"
 geos_116: 
   name: !binary |
     5ruB5bee
 
   latitude: "32.3015560"
+  zipcode: 
+  zoom_level: "9"
+  lft: "230"
   id: "116"
   parent_id: "106"
   longitude: "118.3171070"
+  rgt: "231"
 geos_591: 
   name: Slovakia
   latitude: "48.6690260"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1180"
   id: "591"
   parent_id: "394"
   longitude: "19.6990240"
+  rgt: "1181"
 geos_544: 
   name: Namibia
   latitude: "-22.9576400"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1086"
   id: "544"
   parent_id: "394"
   longitude: "18.4904100"
+  rgt: "1087"
 geos_354: 
   name: !binary |
     6ZmH5Y2X
 
   latitude: "33.4007660"
+  zipcode: 
+  zoom_level: "9"
+  lft: "706"
   id: "354"
   parent_id: "342"
   longitude: "104.9220710"
+  rgt: "707"
 geos_164: 
   name: !binary |
     5rKz5Y2X
 
   latitude: "34.7678840"
+  zipcode: 
+  zoom_level: "7"
+  lft: "327"
   id: "164"
   parent_id: 
   longitude: "113.6878160"
+  rgt: "364"
 geos_307: 
   name: !binary |
     5piG5piO
 
   latitude: "25.0372830"
+  zipcode: 
+  zoom_level: "9"
+  lft: "612"
   id: "307"
   parent_id: "306"
   longitude: "102.7221250"
+  rgt: "613"
 geos_117: 
   name: !binary |
     6Zic6Ziz
 
   latitude: "32.8901240"
+  zipcode: 
+  zoom_level: "9"
+  lft: "232"
   id: "117"
   parent_id: "106"
   longitude: "115.8141440"
+  rgt: "233"
 geos_592: 
   name: Slovenia
   latitude: "46.1512410"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1182"
   id: "592"
   parent_id: "394"
   longitude: "14.9954630"
+  rgt: "1183"
 geos_545: 
   name: Nauru
   latitude: "-0.5227780"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1088"
   id: "545"
   parent_id: "394"
   longitude: "166.9315030"
+  rgt: "1089"
 geos_355: 
   name: !binary |
     5Li05aSP
 
   latitude: "35.6011820"
+  zipcode: 
+  zoom_level: "9"
+  lft: "708"
   id: "355"
   parent_id: "342"
   longitude: "103.2105390"
+  rgt: "709"
 geos_165: 
   name: !binary |
     6YOR5bee
 
   latitude: "34.7472850"
+  zipcode: 
+  zoom_level: "9"
+  lft: "328"
   id: "165"
   parent_id: "164"
   longitude: "113.6248630"
+  rgt: "329"
 geos_308: 
   name: !binary |
     5puy6Z2W
 
   latitude: "25.4899900"
+  zipcode: 
+  zoom_level: "9"
+  lft: "614"
   id: "308"
   parent_id: "306"
   longitude: "103.7962930"
+  rgt: "615"
 geos_118: 
   name: !binary |
     5a6/5bee
 
   latitude: "33.6393940"
+  zipcode: 
+  zoom_level: "9"
+  lft: "234"
   id: "118"
   parent_id: "106"
   longitude: "116.9853010"
+  rgt: "235"
 geos_593: 
   name: Solomon Islands
   latitude: "-9.6457100"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1184"
   id: "593"
   parent_id: "394"
   longitude: "160.1561940"
+  rgt: "1185"
 geos_546: 
   name: Nepal
   latitude: "28.3948570"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1090"
   id: "546"
   parent_id: "394"
   longitude: "84.1240080"
+  rgt: "1091"
 geos_356: 
   name: !binary |
     55SY5Y2X
 
   latitude: "34.9832960"
+  zipcode: 
+  zoom_level: "9"
+  lft: "710"
   id: "356"
   parent_id: "342"
   longitude: "102.9112620"
+  rgt: "711"
 geos_166: 
   name: !binary |
     5byA5bCB
 
   latitude: "34.7977700"
+  zipcode: 
+  zoom_level: "9"
+  lft: "330"
   id: "166"
   parent_id: "164"
   longitude: "114.3077640"
+  rgt: "331"
 geos_309: 
   name: !binary |
     546J5rqq
 
   latitude: "24.3520360"
+  zipcode: 
+  zoom_level: "9"
+  lft: "616"
   id: "309"
   parent_id: "306"
   longitude: "102.5465430"
+  rgt: "617"
 geos_119: 
   name: !binary |
     5bei5rmW
 
   latitude: "31.5979580"
+  zipcode: 
+  zoom_level: "9"
+  lft: "236"
   id: "119"
   parent_id: "106"
   longitude: "117.8644440"
+  rgt: "237"
 geos_594: 
   name: Somalia
   latitude: "5.1521490"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1186"
   id: "594"
   parent_id: "394"
   longitude: "46.1996160"
+  rgt: "1187"
 geos_547: 
   name: Netherlands
   latitude: "52.1326330"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1092"
   id: "547"
   parent_id: "394"
   longitude: "5.2912660"
+  rgt: "1093"
 geos_357: 
   name: !binary |
     6Z2S5rW3
 
   latitude: "36.6209880"
+  zipcode: 
+  zoom_level: "6"
+  lft: "713"
   id: "357"
   parent_id: 
   longitude: "101.7803340"
+  rgt: "730"
 geos_167: 
   name: !binary |
     5rSb6Ziz
 
   latitude: "34.6181540"
+  zipcode: 
+  zoom_level: "9"
+  lft: "332"
   id: "167"
   parent_id: "164"
   longitude: "112.4543630"
+  rgt: "333"
 geos_595: 
   name: South Africa
   latitude: "-30.5594820"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1188"
   id: "595"
   parent_id: "394"
   longitude: "22.9375060"
+  rgt: "1189"
 geos_548: 
   name: Netherlands Antilles
   latitude: "12.2260790"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1094"
   id: "548"
   parent_id: "394"
   longitude: "-69.0600870"
+  rgt: "1095"
 geos_358: 
   name: !binary |
     6KW/5a6B
 
   latitude: "36.6170850"
+  zipcode: 
+  zoom_level: "9"
+  lft: "714"
   id: "358"
   parent_id: "357"
   longitude: "101.7782080"
+  rgt: "715"
 geos_168: 
   name: !binary |
     5bmz6aG25bGx
 
   latitude: "33.7452440"
+  zipcode: 
+  zoom_level: "9"
+  lft: "334"
   id: "168"
   parent_id: "164"
   longitude: "113.3070060"
+  rgt: "335"
 geos_596: 
-  name: South Georgia and the South Sandwich Islands
+  name: South Georgia and the South Sandwich Isl
   latitude: "-54.4295790"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1190"
   id: "596"
   parent_id: "394"
   longitude: "-36.5879090"
+  rgt: "1191"
 geos_549: 
   name: New Caledonia
   latitude: "-20.9043050"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1096"
   id: "549"
   parent_id: "394"
   longitude: "165.6180420"
+  rgt: "1097"
 geos_359: 
   name: !binary |
     5rW35Lic
 
   latitude: "36.5022160"
+  zipcode: 
+  zoom_level: "9"
+  lft: "716"
   id: "359"
   parent_id: "357"
   longitude: "102.1043460"
+  rgt: "717"
 geos_169: 
   name: !binary |
     54Sm5L2c
 
   latitude: "35.2153710"
+  zipcode: 
+  zoom_level: "9"
+  lft: "336"
   id: "169"
   parent_id: "164"
   longitude: "113.2420580"
+  rgt: "337"
 geos_597: 
   name: Spain
   latitude: "40.4636670"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1192"
   id: "597"
   parent_id: "394"
   longitude: "-3.7492200"
+  rgt: "1193"
 geos_600: 
   name: Suriname
   latitude: "3.9193050"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1198"
   id: "600"
   parent_id: "394"
   longitude: "-56.0277830"
+  rgt: "1199"
 geos_598: 
   name: Sri Lanka
   latitude: "7.8730540"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1194"
   id: "598"
   parent_id: "394"
   longitude: "80.7717970"
+  rgt: "1195"
 geos_410: 
   name: Aruba
   latitude: "12.5211100"
+  zipcode: 
+  zoom_level: "5"
+  lft: "818"
   id: "410"
   parent_id: "394"
   longitude: "-69.9683380"
+  rgt: "819"
 geos_220: 
   name: !binary |
     5rGV5aS0
 
   latitude: "23.3533620"
+  zipcode: 
+  zoom_level: "9"
+  lft: "438"
   id: "220"
   parent_id: "216"
   longitude: "116.6819430"
+  rgt: "439"
 geos_030: 
   name: !binary |
     5LmM5rW3
 
   latitude: "39.6904620"
+  zipcode: 
+  zoom_level: "9"
+  lft: "58"
   id: "30"
   parent_id: "27"
   longitude: "106.8228090"
+  rgt: "59"
 geos_601: 
   name: Svalbard and Jan Mayen
   latitude: "50.3270999"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1200"
   id: "601"
   parent_id: "394"
   longitude: "7.2246910"
+  rgt: "1201"
 geos_599: 
   name: Sudan
   latitude: "12.8628070"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1196"
   id: "599"
   parent_id: "394"
   longitude: "30.2176360"
+  rgt: "1197"
 geos_411: 
   name: Australia
   latitude: "-25.2743980"
+  zipcode: 
+  zoom_level: "5"
+  lft: "820"
   id: "411"
   parent_id: "394"
   longitude: "133.7751360"
+  rgt: "821"
 geos_221: 
   name: !binary |
     6Z+25YWz
 
   latitude: "24.8110980"
+  zipcode: 
+  zoom_level: "9"
+  lft: "440"
   id: "221"
   parent_id: "216"
   longitude: "113.5972990"
+  rgt: "441"
 geos_031: 
   name: !binary |
     6LWk5bOw
 
   latitude: "42.2578170"
+  zipcode: 
+  zoom_level: "9"
+  lft: "60"
   id: "31"
   parent_id: "27"
   longitude: "118.8868560"
+  rgt: "61"
 geos_602: 
   name: Swaziland
   latitude: "-26.5225030"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1202"
   id: "602"
   parent_id: "394"
   longitude: "31.4658660"
+  rgt: "1203"
 geos_412: 
   name: Austria
   latitude: "47.5162310"
+  zipcode: 
+  zoom_level: "5"
+  lft: "822"
   id: "412"
   parent_id: "394"
   longitude: "14.5500720"
+  rgt: "823"
 geos_222: 
   name: !binary |
     5L2b5bGx
 
   latitude: "23.0217210"
+  zipcode: 
+  zoom_level: "9"
+  lft: "442"
   id: "222"
   parent_id: "216"
   longitude: "113.1213160"
+  rgt: "443"
 geos_032: 
   name: !binary |
     6YCa6L69
 
   latitude: "43.6194400"
+  zipcode: 
+  zoom_level: "9"
+  lft: "62"
   id: "32"
   parent_id: "27"
   longitude: "122.2657370"
+  rgt: "63"
 geos_603: 
   name: Sweden
   latitude: "60.1281610"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1204"
   id: "603"
   parent_id: "394"
   longitude: "18.6435010"
+  rgt: "1205"
 geos_460: 
   name: Egypt
   latitude: "26.8205530"
+  zipcode: 
+  zoom_level: "5"
+  lft: "918"
   id: "460"
   parent_id: "394"
   longitude: "30.8024980"
+  rgt: "919"
 geos_413: 
   name: Azerbaijan
   latitude: "40.1431050"
+  zipcode: 
+  zoom_level: "5"
+  lft: "824"
   id: "413"
   parent_id: "394"
   longitude: "47.5769270"
+  rgt: "825"
 geos_270: 
   name: !binary |
     5L+d5Lqt6buO5peP6IuX5peP6Ieq5rK7
 
   latitude: "18.6391300"
+  zipcode: 
+  zoom_level: "9"
+  lft: "538"
   id: "270"
   parent_id: "253"
   longitude: "109.7025900"
+  rgt: "539"
 geos_080: 
   name: !binary |
     5rGf6IuP
 
   latitude: "32.0612410"
+  zipcode: 
+  zoom_level: "7"
+  lft: "159"
   id: "80"
   parent_id: 
   longitude: "118.7623130"
+  rgt: "186"
 geos_223: 
   name: !binary |
     5rGf6Zeo
 
   latitude: "22.5787700"
+  zipcode: 
+  zoom_level: "9"
+  lft: "444"
   id: "223"
   parent_id: "216"
   longitude: "113.0818700"
+  rgt: "445"
 geos_033: 
   name: !binary |
     5ZG85Lym6LSd5bCU
 
   latitude: "49.2115720"
+  zipcode: 
+  zoom_level: "9"
+  lft: "64"
   id: "33"
   parent_id: "27"
   longitude: "119.7657390"
+  rgt: "65"
 geos_604: 
   name: Switzerland
   latitude: "46.8181880"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1206"
   id: "604"
   parent_id: "394"
   longitude: "8.2275120"
+  rgt: "1207"
 geos_461: 
   name: El Salvador
   latitude: "13.7941850"
+  zipcode: 
+  zoom_level: "5"
+  lft: "920"
   id: "461"
   parent_id: "394"
   longitude: "-88.8965300"
+  rgt: "921"
 geos_414: 
   name: Bahamas
   latitude: "25.0342800"
+  zipcode: 
+  zoom_level: "5"
+  lft: "826"
   id: "414"
   parent_id: "394"
   longitude: "-77.3962800"
+  rgt: "827"
 geos_271: 
   name: !binary |
     5LmQ5Lic6buO5peP6Ieq5rK7
 
   latitude: "31.224353"
+  zipcode: 
+  zoom_level: "9"
+  lft: "540"
   id: "271"
   parent_id: "253"
   longitude: "121.475916"
+  rgt: "541"
 geos_081: 
   name: !binary |
     5Y2X5Lqs
 
   latitude: "32.0583650"
+  zipcode: 
+  zoom_level: "9"
+  lft: "160"
   id: "81"
   parent_id: "80"
   longitude: "118.7964680"
+  rgt: "161"
 geos_224: 
   name: !binary |
     5rmb5rGf
 
   latitude: "21.2707640"
+  zipcode: 
+  zoom_level: "9"
+  lft: "446"
   id: "224"
   parent_id: "216"
   longitude: "110.3592550"
+  rgt: "447"
 geos_034: 
   name: !binary |
     5be05b2m5reW5bCU
 
   latitude: "40.7661880"
+  zipcode: 
+  zoom_level: "9"
+  lft: "66"
   id: "34"
   parent_id: "27"
   longitude: "107.3866690"
+  rgt: "67"
 geos_605: 
   name: Syrian Arab Republic
   latitude: "34.8020750"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1208"
   id: "605"
   parent_id: "394"
   longitude: "38.9968150"
+  rgt: "1209"
 geos_462: 
   name: Equatorial Guinea
   latitude: "1.6508010"
+  zipcode: 
+  zoom_level: "5"
+  lft: "922"
   id: "462"
   parent_id: "394"
   longitude: "10.2678950"
+  rgt: "923"
 geos_415: 
   name: Bahrain
   latitude: "25.9304140"
+  zipcode: 
+  zoom_level: "5"
+  lft: "828"
   id: "415"
   parent_id: "394"
   longitude: "50.6377720"
+  rgt: "829"
 geos_272: 
   name: !binary |
     6KW/5Y2X5Lit5rKZ576k5bKb5Yqe5LqL5aSE
 
   latitude: "19.5615720"
+  zipcode: 
+  zoom_level: "9"
+  lft: "542"
   id: "272"
   parent_id: "253"
   longitude: "110.8174610"
+  rgt: "543"
 geos_082: 
   name: !binary |
     5peg6ZSh
 
   latitude: "31.5661480"
+  zipcode: 
+  zoom_level: "9"
+  lft: "162"
   id: "82"
   parent_id: "80"
   longitude: "120.3030270"
+  rgt: "163"
 geos_225: 
   name: !binary |
     6IyC5ZCN
 
   latitude: "21.6629560"
+  zipcode: 
+  zoom_level: "9"
+  lft: "448"
   id: "225"
   parent_id: "216"
   longitude: "110.9254670"
+  rgt: "449"
 geos_035: 
   name: !binary |
     5LmM5YWw5a+f5biD
 
   latitude: "40.9947860"
+  zipcode: 
+  zoom_level: "9"
+  lft: "68"
   id: "35"
   parent_id: "27"
   longitude: "113.1325850"
+  rgt: "69"
 geos_606: 
   name: Tajikistan
   latitude: "38.8610340"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1210"
   id: "606"
   parent_id: "394"
   longitude: "71.2760930"
+  rgt: "1211"
 geos_463: 
   name: Eritrea
   latitude: "15.1793840"
+  zipcode: 
+  zoom_level: "5"
+  lft: "924"
   id: "463"
   parent_id: "394"
   longitude: "39.7823340"
+  rgt: "925"
 geos_416: 
   name: Bangladesh
   latitude: "23.6849940"
+  zipcode: 
+  zoom_level: "5"
+  lft: "830"
   id: "416"
   parent_id: "394"
   longitude: "90.3563310"
+  rgt: "831"
 geos_273: 
   name: !binary |
     6YeN5bqG
 
   latitude: "29.5626860"
+  zipcode: 
+  zoom_level: "8"
+  lft: "545"
   id: "273"
   parent_id: 
   longitude: "106.5512340"
+  rgt: "546"
 geos_083: 
   name: !binary |
     5b6Q5bee
 
   latitude: "34.2598270"
+  zipcode: 
+  zoom_level: "9"
+  lft: "164"
   id: "83"
   parent_id: "80"
   longitude: "117.1910800"
+  rgt: "165"
 geos_226: 
   name: !binary |
     6IKH5bqG
 
   latitude: "23.0475960"
+  zipcode: 
+  zoom_level: "9"
+  lft: "450"
   id: "226"
   parent_id: "216"
   longitude: "112.4651660"
+  rgt: "451"
 geos_036: 
   name: !binary |
     5YW05a6J
 
   latitude: "46.0775610"
+  zipcode: 
+  zoom_level: "9"
+  lft: "70"
   id: "36"
   parent_id: "27"
   longitude: "122.0670420"
+  rgt: "71"
 geos_464: 
   name: Estonia
   latitude: "58.5952720"
+  zipcode: 
+  zoom_level: "5"
+  lft: "926"
   id: "464"
   parent_id: "394"
   longitude: "25.0136070"
+  rgt: "927"
 geos_417: 
   name: Barbados
   latitude: "13.1938870"
+  zipcode: 
+  zoom_level: "5"
+  lft: "832"
   id: "417"
   parent_id: "394"
   longitude: "-59.5431980"
+  rgt: "833"
 geos_274: 
   name: !binary |
     5Zub5bed
 
   latitude: "30.6508920"
+  zipcode: 
+  zoom_level: "6"
+  lft: "547"
   id: "274"
   parent_id: 
   longitude: "104.0764180"
+  rgt: "590"
 geos_084: 
   name: !binary |
     5bi45bee
 
   latitude: "31.8100770"
+  zipcode: 
+  zoom_level: "9"
+  lft: "166"
   id: "84"
   parent_id: "80"
   longitude: "119.9744540"
+  rgt: "167"
 geos_227: 
   name: !binary |
     5oOg5bee
 
   latitude: "23.0794040"
+  zipcode: 
+  zoom_level: "9"
+  lft: "452"
   id: "227"
   parent_id: "216"
   longitude: "114.4125990"
+  rgt: "453"
 geos_037: 
   name: !binary |
     6ZSh5p6X6YOt
 
   latitude: "42.6285780"
+  zipcode: 
+  zoom_level: "9"
+  lft: "72"
   id: "37"
   parent_id: "27"
   longitude: "112.9717890"
+  rgt: "73"
 geos_607: 
   name: Tanzania, United Republic of
   latitude: "31.224353"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1212"
   id: "607"
   parent_id: "394"
   longitude: "121.475916"
+  rgt: "1213"
 geos_465: 
   name: Ethiopia
   latitude: "9.1450000"
+  zipcode: 
+  zoom_level: "5"
+  lft: "928"
   id: "465"
   parent_id: "394"
   longitude: "40.4896730"
+  rgt: "929"
 geos_418: 
   name: Belarus
   latitude: "53.7098070"
+  zipcode: 
+  zoom_level: "5"
+  lft: "834"
   id: "418"
   parent_id: "394"
   longitude: "27.9533890"
+  rgt: "835"
 geos_275: 
   name: !binary |
     5oiQ6YO9
 
   latitude: "30.6586020"
+  zipcode: 
+  zoom_level: "9"
+  lft: "548"
   id: "275"
   parent_id: "274"
   longitude: "104.0648570"
+  rgt: "549"
 geos_085: 
   name: !binary |
     6IuP5bee
 
   latitude: "31.2977790"
+  zipcode: 
+  zoom_level: "9"
+  lft: "168"
   id: "85"
   parent_id: "80"
   longitude: "120.5855860"
+  rgt: "169"
 geos_228: 
   name: !binary |
     5qKF5bee
 
   latitude: "24.2885310"
+  zipcode: 
+  zoom_level: "9"
+  lft: "454"
   id: "228"
   parent_id: "216"
   longitude: "116.1224500"
+  rgt: "455"
 geos_038: 
   name: !binary |
     6Zi/5ouJ5ZaE
 
   latitude: "38.8518920"
+  zipcode: 
+  zoom_level: "9"
+  lft: "74"
   id: "38"
   parent_id: "27"
   longitude: "105.7289690"
+  rgt: "75"
 geos_608: 
   name: Thailand
   latitude: "15.8700320"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1214"
   id: "608"
   parent_id: "394"
   longitude: "100.9925410"
+  rgt: "1215"
 geos_466: 
   name: Falkland Islands (Malvinas)
   latitude: "-51.5848086"
+  zipcode: 
+  zoom_level: "5"
+  lft: "930"
   id: "466"
   parent_id: "394"
   longitude: "-59.7761186"
+  rgt: "931"
 geos_419: 
   name: Belgium
   latitude: "50.5038870"
+  zipcode: 
+  zoom_level: "5"
+  lft: "836"
   id: "419"
   parent_id: "394"
   longitude: "4.4699360"
+  rgt: "837"
 geos_276: 
   name: !binary |
     6Ieq6LSh
 
   latitude: "29.3389780"
+  zipcode: 
+  zoom_level: "9"
+  lft: "550"
   id: "276"
   parent_id: "274"
   longitude: "104.7785640"
+  rgt: "551"
 geos_086: 
   name: !binary |
     5Y2X6YCa
 
   latitude: "31.9799970"
+  zipcode: 
+  zoom_level: "9"
+  lft: "170"
   id: "86"
   parent_id: "80"
   longitude: "120.8943240"
+  rgt: "171"
 geos_229: 
   name: !binary |
     5rGV5bC+
 
   latitude: "22.7856250"
+  zipcode: 
+  zoom_level: "9"
+  lft: "456"
   id: "229"
   parent_id: "216"
   longitude: "115.3750610"
+  rgt: "457"
 geos_039: 
   name: !binary |
     6YSC5bCU5aSa5pav
 
   latitude: "39.6081820"
+  zipcode: 
+  zoom_level: "9"
+  lft: "76"
   id: "39"
   parent_id: "27"
   longitude: "109.7812020"
+  rgt: "77"
 geos_609: 
   name: Timor-Leste
   latitude: "-8.8742170"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1216"
   id: "609"
   parent_id: "394"
   longitude: "125.7275390"
+  rgt: "1217"
 geos_467: 
   name: Faroe Islands
   latitude: "61.8926350"
+  zipcode: 
+  zoom_level: "5"
+  lft: "932"
   id: "467"
   parent_id: "394"
   longitude: "-6.9118060"
+  rgt: "933"
 geos_277: 
   name: !binary |
     5pSA5p6d6Iqx
 
   latitude: "26.5823470"
+  zipcode: 
+  zoom_level: "9"
+  lft: "552"
   id: "277"
   parent_id: "274"
   longitude: "101.7186370"
+  rgt: "553"
 geos_087: 
   name: !binary |
     6L+e5LqR5riv
 
   latitude: "34.6000180"
+  zipcode: 
+  zoom_level: "9"
+  lft: "172"
   id: "87"
   parent_id: "80"
   longitude: "119.1788210"
+  rgt: "173"
 geos_468: 
   name: Fiji
   latitude: "-16.5781930"
+  zipcode: 
+  zoom_level: "5"
+  lft: "934"
   id: "468"
   parent_id: "394"
   longitude: "179.4144130"
+  rgt: "935"
 geos_278: 
   name: !binary |
     5rO45bee
 
   latitude: "28.8717600"
+  zipcode: 
+  zoom_level: "9"
+  lft: "554"
   id: "278"
   parent_id: "274"
   longitude: "105.4421410"
+  rgt: "555"
 geos_088: 
   name: !binary |
     5reu5a6J
 
   latitude: "33.6110840"
+  zipcode: 
+  zoom_level: "9"
+  lft: "174"
   id: "88"
   parent_id: "80"
   longitude: "119.0157550"
+  rgt: "175"
 geos_469: 
   name: Finland
   latitude: "61.9241100"
+  zipcode: 
+  zoom_level: "5"
+  lft: "936"
   id: "469"
   parent_id: "394"
   longitude: "25.7481510"
+  rgt: "937"
 geos_279: 
   name: !binary |
     5b636Ziz
 
   latitude: "31.1275370"
+  zipcode: 
+  zoom_level: "9"
+  lft: "556"
   id: "279"
   parent_id: "274"
   longitude: "104.3978080"
+  rgt: "557"
 geos_089: 
   name: !binary |
     55uQ5Z+O
 
   latitude: "33.3474160"
+  zipcode: 
+  zoom_level: "9"
+  lft: "176"
   id: "89"
   parent_id: "80"
   longitude: "120.1635440"
+  rgt: "177"
 geos_520: 
   name: Lithuania
   latitude: "55.1694380"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1038"
   id: "520"
   parent_id: "394"
   longitude: "23.8812750"
+  rgt: "1039"
 geos_330: 
   name: !binary |
     5p6X6Iqd
 
   latitude: "29.6491280"
+  zipcode: 
+  zoom_level: "9"
+  lft: "658"
   id: "330"
   parent_id: "323"
   longitude: "94.3614900"
+  rgt: "659"
 geos_140: 
   name: !binary |
     6bmw5r2t
 
   latitude: "28.2601890"
+  zipcode: 
+  zoom_level: "9"
+  lft: "278"
   id: "140"
   parent_id: "134"
   longitude: "117.0692020"
+  rgt: "279"
 geos_521: 
   name: Luxembourg
   latitude: "49.8152730"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1040"
   id: "521"
   parent_id: "394"
   longitude: "6.1295830"
+  rgt: "1041"
 geos_331: 
   name: !binary |
     6ZmV6KW/
 
   latitude: "34.2651730"
+  zipcode: 
+  zoom_level: "7"
+  lft: "661"
   id: "331"
   parent_id: 
   longitude: "108.9541320"
+  rgt: "682"
 geos_141: 
   name: !binary |
     6LWj5bee
 
   latitude: "25.8292090"
+  zipcode: 
+  zoom_level: "9"
+  lft: "280"
   id: "141"
   parent_id: "134"
   longitude: "114.9335530"
+  rgt: "281"
 geos_522: 
-  name: Macedonia, The Former Yugoslav Republic Of
+  name: "Macedonia, The Former Yugoslav Republic "
   latitude: "42.0000000"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1042"
   id: "522"
   parent_id: "394"
   longitude: "21.4333333"
+  rgt: "1043"
 geos_332: 
   name: !binary |
     6KW/5a6J
 
   latitude: "34.2648800"
+  zipcode: 
+  zoom_level: "9"
+  lft: "662"
   id: "332"
   parent_id: "331"
   longitude: "108.9442650"
+  rgt: "663"
 geos_142: 
   name: !binary |
     5ZCJ5a6J
 
   latitude: "27.1131650"
+  zipcode: 
+  zoom_level: "9"
+  lft: "282"
   id: "142"
   parent_id: "134"
   longitude: "114.9930970"
+  rgt: "283"
 geos_570: 
   name: Puerto Rico
   latitude: "18.2208330"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1138"
   id: "570"
   parent_id: "394"
   longitude: "-66.5901490"
+  rgt: "1139"
 geos_523: 
   name: Madagascar
   latitude: "-18.7669470"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1044"
   id: "523"
   parent_id: "394"
   longitude: "46.8691070"
+  rgt: "1045"
 geos_380: 
   name: !binary |
     5YWL5a2c5YuS6IuP
 
   latitude: "39.7145560"
+  zipcode: 
+  zoom_level: "9"
+  lft: "758"
   id: "380"
   parent_id: "372"
   longitude: "76.1676440"
+  rgt: "759"
 geos_190: 
   name: !binary |
     6I2G6Zeo
 
   latitude: "31.0354230"
+  zipcode: 
+  zoom_level: "9"
+  lft: "378"
   id: "190"
   parent_id: "183"
   longitude: "112.1992650"
+  rgt: "379"
 geos_333: 
   name: !binary |
     6ZOc5bed
 
   latitude: "34.8967470"
+  zipcode: 
+  zoom_level: "9"
+  lft: "664"
   id: "333"
   parent_id: "331"
   longitude: "108.9451420"
+  rgt: "665"
 geos_143: 
   name: !binary |
     5a6c5pil
 
   latitude: "27.7965610"
+  zipcode: 
+  zoom_level: "9"
+  lft: "284"
   id: "143"
   parent_id: "134"
   longitude: "114.3951080"
+  rgt: "285"
 geos_571: 
   name: Qatar
   latitude: "25.3548260"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1140"
   id: "571"
   parent_id: "394"
   longitude: "51.1838840"
+  rgt: "1141"
 geos_524: 
   name: Malawi
   latitude: "-13.2543080"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1046"
   id: "524"
   parent_id: "394"
   longitude: "34.3015250"
+  rgt: "1047"
 geos_381: 
   name: !binary |
     5be06Z+z6YOt5qWe
 
   latitude: "41.7641310"
+  zipcode: 
+  zoom_level: "9"
+  lft: "760"
   id: "381"
   parent_id: "372"
   longitude: "86.1452670"
+  rgt: "761"
 geos_191: 
   name: !binary |
     6YSC5bee
 
   latitude: "30.3919400"
+  zipcode: 
+  zoom_level: "9"
+  lft: "380"
   id: "191"
   parent_id: "183"
   longitude: "114.8948430"
+  rgt: "381"
 geos_334: 
   name: !binary |
     5a6d6bih
 
   latitude: "34.3725290"
+  zipcode: 
+  zoom_level: "9"
+  lft: "666"
   id: "334"
   parent_id: "331"
   longitude: "107.1337850"
+  rgt: "667"
 geos_144: 
   name: !binary |
     5oqa5bee
 
   latitude: "27.9922960"
+  zipcode: 
+  zoom_level: "9"
+  lft: "286"
   id: "144"
   parent_id: "134"
   longitude: "116.3583780"
+  rgt: "287"
 geos_572: 
   name: Reunion
   latitude: "-21.1151410"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1142"
   id: "572"
   parent_id: "394"
   longitude: "55.5363840"
+  rgt: "1143"
 geos_525: 
   name: Malaysia
   latitude: "4.2104840"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1048"
   id: "525"
   parent_id: "394"
   longitude: "101.9757660"
+  rgt: "1049"
 geos_382: 
   name: !binary |
     5piM5ZCJ
 
   latitude: "44.0111830"
+  zipcode: 
+  zoom_level: "9"
+  lft: "762"
   id: "382"
   parent_id: "372"
   longitude: "87.3082250"
+  rgt: "763"
 geos_192: 
   name: !binary |
     5a2d5oSf
 
   latitude: "30.9245720"
+  zipcode: 
+  zoom_level: "9"
+  lft: "382"
   id: "192"
   parent_id: "183"
   longitude: "113.9169000"
+  rgt: "383"
 geos_335: 
   name: !binary |
     5ZK46Ziz
 
   latitude: "34.3294340"
+  zipcode: 
+  zoom_level: "9"
+  lft: "668"
   id: "335"
   parent_id: "331"
   longitude: "108.7091930"
+  rgt: "669"
 geos_145: 
   name: !binary |
     5LiK6aW2
 
   latitude: "28.4433180"
+  zipcode: 
+  zoom_level: "9"
+  lft: "288"
   id: "145"
   parent_id: "134"
   longitude: "117.9763710"
+  rgt: "289"
 geos_573: 
   name: Romania
   latitude: "45.9431610"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1144"
   id: "573"
   parent_id: "394"
   longitude: "24.9667600"
+  rgt: "1145"
 geos_526: 
   name: Maldives
   latitude: "3.2027780"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1050"
   id: "526"
   parent_id: "394"
   longitude: "73.2206800"
+  rgt: "1051"
 geos_383: 
   name: !binary |
     5Y2a5bCU5aGU5ouJ
 
   latitude: "44.9055880"
+  zipcode: 
+  zoom_level: "9"
+  lft: "764"
   id: "383"
   parent_id: "372"
   longitude: "82.0661590"
+  rgt: "765"
 geos_193: 
   name: !binary |
     6buE5YaI
 
   latitude: "30.4538770"
+  zipcode: 
+  zoom_level: "9"
+  lft: "384"
   id: "193"
   parent_id: "183"
   longitude: "114.8722530"
+  rgt: "385"
 geos_336: 
   name: !binary |
     5rit5Y2X
 
   latitude: "34.4999950"
+  zipcode: 
+  zoom_level: "9"
+  lft: "670"
   id: "336"
   parent_id: "331"
   longitude: "109.5097860"
+  rgt: "671"
 geos_146: 
   name: !binary |
     5bGx5Lic
 
   latitude: "36.6692270"
+  zipcode: 
+  zoom_level: "7"
+  lft: "291"
   id: "146"
   parent_id: 
   longitude: "117.0198960"
+  rgt: "326"
 geos_574: 
   name: Russian Federation
   latitude: "61.5240100"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1146"
   id: "574"
   parent_id: "394"
   longitude: "105.3187560"
+  rgt: "1147"
 geos_527: 
   name: Mali
   latitude: "17.5706920"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1052"
   id: "527"
   parent_id: "394"
   longitude: "-3.9961660"
+  rgt: "1053"
 geos_384: 
   name: !binary |
     5LyK54qB
 
   latitude: "43.9168620"
+  zipcode: 
+  zoom_level: "9"
+  lft: "766"
   id: "384"
   parent_id: "372"
   longitude: "81.3240960"
+  rgt: "767"
 geos_194: 
   name: !binary |
     5ZK45a6B
 
   latitude: "29.8414470"
+  zipcode: 
+  zoom_level: "9"
+  lft: "386"
   id: "194"
   parent_id: "183"
   longitude: "114.3225010"
+  rgt: "387"
 geos_337: 
   name: !binary |
     5bu25a6J
 
   latitude: "36.5854230"
+  zipcode: 
+  zoom_level: "9"
+  lft: "672"
   id: "337"
   parent_id: "331"
   longitude: "109.4896340"
+  rgt: "673"
 geos_147: 
   name: !binary |
     5rWO5Y2X
 
   latitude: "36.6652820"
+  zipcode: 
+  zoom_level: "9"
+  lft: "292"
   id: "147"
   parent_id: "146"
   longitude: "116.9949150"
+  rgt: "293"
 geos_575: 
   name: Rwanda
   latitude: "-1.9402780"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1148"
   id: "575"
   parent_id: "394"
   longitude: "29.8738880"
+  rgt: "1149"
 geos_528: 
   name: Malta
   latitude: "35.9374960"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1054"
   id: "528"
   parent_id: "394"
   longitude: "14.3754160"
+  rgt: "1055"
 geos_385: 
   name: !binary |
     5aGU5Z+O
 
   latitude: "46.7453640"
+  zipcode: 
+  zoom_level: "9"
+  lft: "768"
   id: "385"
   parent_id: "372"
   longitude: "82.9803170"
+  rgt: "769"
 geos_195: 
   name: !binary |
     6ZqP5bee
 
   latitude: "31.6899580"
+  zipcode: 
+  zoom_level: "9"
+  lft: "388"
   id: "195"
   parent_id: "183"
   longitude: "113.3828420"
+  rgt: "389"
 geos_338: 
   name: !binary |
     5rGJ5Lit
 
   latitude: "33.0679150"
+  zipcode: 
+  zoom_level: "9"
+  lft: "674"
   id: "338"
   parent_id: "331"
   longitude: "107.0233290"
+  rgt: "675"
 geos_148: 
   name: !binary |
     6Z2S5bKb
 
   latitude: "36.0663480"
+  zipcode: 
+  zoom_level: "9"
+  lft: "294"
   id: "148"
   parent_id: "146"
   longitude: "120.3827710"
+  rgt: "295"
 geos_576: 
   name: Saint Barthelemy
   latitude: "17.9005134"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1150"
   id: "576"
   parent_id: "394"
   longitude: "-62.8205871"
+  rgt: "1151"
 geos_529: 
   name: Marshall Islands
   latitude: "7.1314740"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1056"
   id: "529"
   parent_id: "394"
   longitude: "171.1844780"
+  rgt: "1057"
 geos_386: 
   name: !binary |
     6Zi/5YuS5rOw
 
   latitude: "47.8449240"
+  zipcode: 
+  zoom_level: "9"
+  lft: "770"
   id: "386"
   parent_id: "372"
   longitude: "88.1412530"
+  rgt: "771"
 geos_196: 
   name: !binary |
     5oGp5pa9
 
   latitude: "30.2722040"
+  zipcode: 
+  zoom_level: "9"
+  lft: "390"
   id: "196"
   parent_id: "183"
   longitude: "109.4881620"
+  rgt: "391"
 geos_339: 
   name: !binary |
     5qaG5p6X
 
   latitude: "38.2855260"
+  zipcode: 
+  zoom_level: "9"
+  lft: "676"
   id: "339"
   parent_id: "331"
   longitude: "109.7352090"
+  rgt: "677"
 geos_149: 
   name: !binary |
     5reE5Y2a
 
   latitude: "36.8134970"
+  zipcode: 
+  zoom_level: "9"
+  lft: "296"
   id: "149"
   parent_id: "146"
   longitude: "118.0550070"
+  rgt: "297"
 geos_577: 
   name: Saint Helena
   latitude: "-24.1434740"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1152"
   id: "577"
   parent_id: "394"
   longitude: "-10.0306960"
+  rgt: "1153"
 geos_387: 
   name: !binary |
     55+z5rKz5a2Q
 
   latitude: "44.3061190"
+  zipcode: 
+  zoom_level: "9"
+  lft: "772"
   id: "387"
   parent_id: "372"
   longitude: "86.0804970"
+  rgt: "773"
 geos_197: 
   name: !binary |
     5LuZ5qGD
 
   latitude: "30.3626410"
+  zipcode: 
+  zoom_level: "9"
+  lft: "392"
   id: "197"
   parent_id: "183"
   longitude: "113.4545930"
+  rgt: "393"
 geos_578: 
   name: Saint Kitts and Nevis
   latitude: "17.3578220"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1154"
   id: "578"
   parent_id: "394"
   longitude: "-62.7829980"
+  rgt: "1155"
 geos_200: 
   name: !binary |
     56We5Yac5p62
 
   latitude: "31.3352460"
+  zipcode: 
+  zoom_level: "9"
+  lft: "398"
   id: "200"
   parent_id: "183"
   longitude: "110.5722970"
+  rgt: "399"
 geos_010: 
   name: !binary |
     5byg5a625Y+j
 
   latitude: "40.7675760"
+  zipcode: 
+  zoom_level: "9"
+  lft: "18"
   id: "10"
   parent_id: "3"
   longitude: "114.8859510"
+  rgt: "19"
 geos_388: 
   name: !binary |
     6Zi/5ouJ5bCU
 
   latitude: "40.5462860"
+  zipcode: 
+  zoom_level: "9"
+  lft: "774"
   id: "388"
   parent_id: "372"
   longitude: "81.2803850"
+  rgt: "775"
 geos_198: 
   name: !binary |
     5r2c5rGf
 
   latitude: "30.4021100"
+  zipcode: 
+  zoom_level: "9"
+  lft: "394"
   id: "198"
   parent_id: "183"
   longitude: "112.9000780"
+  rgt: "395"
 geos_579: 
   name: Saint Lucia
   latitude: "13.9094440"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1156"
   id: "579"
   parent_id: "394"
   longitude: "-60.9788930"
+  rgt: "1157"
 geos_011: 
   name: !binary |
     5om/5b63
 
   latitude: "40.9787440"
+  zipcode: 
+  zoom_level: "9"
+  lft: "20"
   id: "11"
   parent_id: "3"
   longitude: "117.9436210"
+  rgt: "21"
 geos_389: 
   name: !binary |
     5Zu+5pyo6IiS5YWL
 
   latitude: "39.8649003"
+  zipcode: 
+  zoom_level: "9"
+  lft: "776"
   id: "389"
   parent_id: "372"
   longitude: "79.0687712"
+  rgt: "777"
 geos_199: 
   name: !binary |
     5aSp6Zeo
 
   latitude: "30.6633720"
+  zipcode: 
+  zoom_level: "9"
+  lft: "396"
   id: "199"
   parent_id: "183"
   longitude: "113.1665300"
+  rgt: "397"
 geos_201: 
   name: !binary |
     5rmW5Y2X
 
   latitude: "28.1130530"
+  zipcode: 
+  zoom_level: "7"
+  lft: "401"
   id: "201"
   parent_id: 
   longitude: "112.9835210"
+  rgt: "430"
 geos_012: 
   name: !binary |
     5rKn5bee
 
   latitude: "38.3044490"
+  zipcode: 
+  zoom_level: "9"
+  lft: "22"
   id: "12"
   parent_id: "3"
   longitude: "116.8388400"
+  rgt: "23"
 geos_202: 
   name: !binary |
     6ZW/5rKZ
 
   latitude: "28.2285280"
+  zipcode: 
+  zoom_level: "9"
+  lft: "402"
   id: "202"
   parent_id: "201"
   longitude: "112.9388270"
+  rgt: "403"
 geos_630: 
   name: Virgin Islands, U.S.
   latitude: "18.3448229"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1258"
   id: "630"
   parent_id: "394"
   longitude: "-64.7458767"
+  rgt: "1259"
 geos_440: 
   name: Chad
   latitude: "15.4541660"
+  zipcode: 
+  zoom_level: "5"
+  lft: "878"
   id: "440"
   parent_id: "394"
   longitude: "18.7322070"
+  rgt: "879"
 geos_250: 
   name: !binary |
     5rKz5rGg
 
   latitude: "24.6929310"
+  zipcode: 
+  zoom_level: "9"
+  lft: "498"
   id: "250"
   parent_id: "238"
   longitude: "108.0852610"
+  rgt: "499"
 geos_060: 
   name: !binary |
     6YCa5YyW
 
   latitude: "41.7284010"
+  zipcode: 
+  zoom_level: "9"
+  lft: "118"
   id: "60"
   parent_id: "55"
   longitude: "125.9396970"
+  rgt: "119"
 geos_203: 
   name: !binary |
     5qCq5rSy
 
   latitude: "27.8278920"
+  zipcode: 
+  zoom_level: "9"
+  lft: "404"
   id: "203"
   parent_id: "201"
   longitude: "113.1338910"
+  rgt: "405"
 geos_013: 
   name: !binary |
     5buK5Z2K
 
   latitude: "39.5210170"
+  zipcode: 
+  zoom_level: "9"
+  lft: "24"
   id: "13"
   parent_id: "3"
   longitude: "116.7066510"
+  rgt: "25"
 geos_631: 
   name: Wallis and Futuna
   latitude: "-13.7687520"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1260"
   id: "631"
   parent_id: "394"
   longitude: "-177.1560970"
+  rgt: "1261"
 geos_441: 
   name: Chile
   latitude: "-35.6751470"
+  zipcode: 
+  zoom_level: "5"
+  lft: "880"
   id: "441"
   parent_id: "394"
   longitude: "-71.5429690"
+  rgt: "881"
 geos_251: 
   name: !binary |
     5p2l5a6+
 
   latitude: "23.7503120"
+  zipcode: 
+  zoom_level: "9"
+  lft: "500"
   id: "251"
   parent_id: "238"
   longitude: "109.2214600"
+  rgt: "501"
 geos_061: 
   name: !binary |
     55m95bGx
 
   latitude: "35.7213300"
+  zipcode: 
+  zoom_level: "9"
+  lft: "120"
   id: "61"
   parent_id: "55"
   longitude: "139.7520780"
+  rgt: "121"
 geos_204: 
   name: !binary |
     5rmY5r2t
 
   latitude: "27.8563250"
+  zipcode: 
+  zoom_level: "9"
+  lft: "406"
   id: "204"
   parent_id: "201"
   longitude: "112.9073390"
+  rgt: "407"
 geos_014: 
   name: !binary |
     6KGh5rC0
 
   latitude: "37.7353020"
+  zipcode: 
+  zoom_level: "9"
+  lft: "26"
   id: "14"
   parent_id: "3"
   longitude: "115.6986800"
+  rgt: "27"
 geos_632: 
   name: Western Sahara
   latitude: "24.2155270"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1262"
   id: "632"
   parent_id: "394"
   longitude: "-12.8858340"
+  rgt: "1263"
 geos_442: 
   name: Christmas Island
   latitude: "-10.4475250"
+  zipcode: 
+  zoom_level: "5"
+  lft: "882"
   id: "442"
   parent_id: "394"
   longitude: "105.6904490"
+  rgt: "883"
 geos_252: 
   name: !binary |
     5bSH5bem
 
   latitude: "22.3772810"
+  zipcode: 
+  zoom_level: "9"
+  lft: "502"
   id: "252"
   parent_id: "238"
   longitude: "107.3649620"
+  rgt: "503"
 geos_062: 
   name: !binary |
     5p2+5Y6f
 
   latitude: "35.6600480"
+  zipcode: 
+  zoom_level: "9"
+  lft: "122"
   id: "62"
   parent_id: "55"
   longitude: "139.6420000"
+  rgt: "123"
 geos_205: 
   name: !binary |
     6KGh6Ziz
 
   latitude: "26.8938390"
+  zipcode: 
+  zoom_level: "9"
+  lft: "408"
   id: "205"
   parent_id: "201"
   longitude: "112.5719000"
+  rgt: "409"
 geos_015: 
   name: !binary |
     5bGx6KW/
 
   latitude: "37.8734640"
+  zipcode: 
+  zoom_level: "7"
+  lft: "29"
   id: "15"
   parent_id: 
   longitude: "112.5625370"
+  rgt: "52"
 geos_633: 
   name: Yemen
   latitude: "15.5527270"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1264"
   id: "633"
   parent_id: "394"
   longitude: "48.5163880"
+  rgt: "1265"
 geos_490: 
   name: Haiti
   latitude: "18.9711870"
+  zipcode: 
+  zoom_level: "5"
+  lft: "978"
   id: "490"
   parent_id: "394"
   longitude: "-72.2852150"
+  rgt: "979"
 geos_443: 
   name: Cocos (Keeling) Islands
   latitude: "-12.1641650"
+  zipcode: 
+  zoom_level: "5"
+  lft: "884"
   id: "443"
   parent_id: "394"
   longitude: "96.8709560"
+  rgt: "885"
 geos_253: 
   name: !binary |
     5rW35Y2X
 
   latitude: "20.0293410"
+  zipcode: 
+  zoom_level: "7"
+  lft: "505"
   id: "253"
   parent_id: 
   longitude: "110.3568080"
+  rgt: "544"
 geos_063: 
   name: !binary |
     55m95Z+O
 
   latitude: "45.6196410"
+  zipcode: 
+  zoom_level: "9"
+  lft: "124"
   id: "63"
   parent_id: "55"
   longitude: "122.8390240"
+  rgt: "125"
 geos_206: 
   name: !binary |
     6YK16Ziz
 
   latitude: "27.2399730"
+  zipcode: 
+  zoom_level: "9"
+  lft: "410"
   id: "206"
   parent_id: "201"
   longitude: "111.4682360"
+  rgt: "411"
 geos_016: 
   name: !binary |
     5aSq5Y6f
 
   latitude: "37.8705540"
+  zipcode: 
+  zoom_level: "9"
+  lft: "30"
   id: "16"
   parent_id: "15"
   longitude: "112.5507370"
+  rgt: "31"
 geos_634: 
   name: Zambia
   latitude: "-13.1338970"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1266"
   id: "634"
   parent_id: "394"
   longitude: "27.8493320"
+  rgt: "1267"
 geos_491: 
   name: Heard and McDonald Islands
   latitude: "-53.1000000"
+  zipcode: 
+  zoom_level: "5"
+  lft: "980"
   id: "491"
   parent_id: "394"
   longitude: "73.5000000"
+  rgt: "981"
 geos_444: 
   name: Colombia
   latitude: "4.5708680"
+  zipcode: 
+  zoom_level: "5"
+  lft: "886"
   id: "444"
   parent_id: "394"
   longitude: "-74.2973330"
+  rgt: "887"
 geos_254: 
   name: !binary |
     5rW35Y+j
 
   latitude: "20.0307650"
+  zipcode: 
+  zoom_level: "9"
+  lft: "506"
   id: "254"
   parent_id: "253"
   longitude: "110.3288730"
+  rgt: "507"
 geos_064: 
   name: !binary |
     5bu26L65
 
   latitude: "42.8910630"
+  zipcode: 
+  zoom_level: "9"
+  lft: "126"
   id: "64"
   parent_id: "55"
   longitude: "129.5084590"
+  rgt: "127"
 geos_207: 
   name: !binary |
     5bKz6Ziz
 
   latitude: "29.3569830"
+  zipcode: 
+  zoom_level: "9"
+  lft: "412"
   id: "207"
   parent_id: "201"
   longitude: "113.1288770"
+  rgt: "413"
 geos_017: 
   name: !binary |
     5aSn5ZCM
 
   latitude: "40.0768160"
+  zipcode: 
+  zoom_level: "9"
+  lft: "32"
   id: "17"
   parent_id: "15"
   longitude: "113.3001260"
+  rgt: "33"
 geos_635: 
   name: Zimbabwe
   latitude: "-19.0154380"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1268"
   id: "635"
   parent_id: "394"
   longitude: "29.1548570"
+  rgt: "1269"
 geos_492: 
   name: Holy See (Vatican City State)
   latitude: "31.224353"
+  zipcode: 
+  zoom_level: "5"
+  lft: "982"
   id: "492"
   parent_id: "394"
   longitude: "121.475916"
+  rgt: "983"
 geos_445: 
   name: Comoros
   latitude: "-11.8750010"
+  zipcode: 
+  zoom_level: "5"
+  lft: "888"
   id: "445"
   parent_id: "394"
   longitude: "43.8722190"
+  rgt: "889"
 geos_255: 
   name: !binary |
     5LiJ5Lqa
 
   latitude: "18.2528470"
+  zipcode: 
+  zoom_level: "9"
+  lft: "508"
   id: "255"
   parent_id: "253"
   longitude: "109.5119090"
+  rgt: "509"
 geos_065: 
   name: !binary |
     6buR6b6Z5rGf
 
   latitude: "45.7423520"
+  zipcode: 
+  zoom_level: "6"
+  lft: "129"
   id: "65"
   parent_id: 
   longitude: "126.6626800"
+  rgt: "156"
 geos_208: 
   name: !binary |
     5bi45b63
 
   latitude: "29.0314390"
+  zipcode: 
+  zoom_level: "9"
+  lft: "414"
   id: "208"
   parent_id: "201"
   longitude: "111.6988260"
+  rgt: "415"
 geos_018: 
   name: !binary |
     6Ziz5rOJ
 
   latitude: "37.8566580"
+  zipcode: 
+  zoom_level: "9"
+  lft: "34"
   id: "18"
   parent_id: "15"
   longitude: "113.5804150"
+  rgt: "35"
 geos_493: 
   name: Honduras
   latitude: "15.1999990"
+  zipcode: 
+  zoom_level: "5"
+  lft: "984"
   id: "493"
   parent_id: "394"
   longitude: "-86.2419050"
+  rgt: "985"
 geos_446: 
   name: Congo
   latitude: "-0.2280210"
+  zipcode: 
+  zoom_level: "5"
+  lft: "890"
   id: "446"
   parent_id: "394"
   longitude: "15.8276590"
+  rgt: "891"
 geos_256: 
   name: !binary |
     5paH5piM
 
   latitude: "19.5433900"
+  zipcode: 
+  zoom_level: "9"
+  lft: "510"
   id: "256"
   parent_id: "253"
   longitude: "110.7976480"
+  rgt: "511"
 geos_066: 
   name: !binary |
     5ZOI5bCU5ruo
 
   latitude: "45.7569670"
+  zipcode: 
+  zoom_level: "9"
+  lft: "130"
   id: "66"
   parent_id: "65"
   longitude: "126.6424640"
+  rgt: "131"
 geos_209: 
   name: !binary |
     5byg5a6255WM
 
   latitude: "29.1163370"
+  zipcode: 
+  zoom_level: "9"
+  lft: "416"
   id: "209"
   parent_id: "201"
   longitude: "110.4791110"
+  rgt: "417"
 geos_019: 
   name: !binary |
     6ZW/5rK7
 
   latitude: "36.1953860"
+  zipcode: 
+  zoom_level: "9"
+  lft: "36"
   id: "19"
   parent_id: "15"
   longitude: "113.1162550"
+  rgt: "37"
 geos_494: 
   name: Hungary
   latitude: "47.1624940"
+  zipcode: 
+  zoom_level: "5"
+  lft: "986"
   id: "494"
   parent_id: "394"
   longitude: "19.5033040"
+  rgt: "987"
 geos_447: 
   name: Congo, the Democratic Republic of the
   latitude: "-4.7136802"
+  zipcode: 
+  zoom_level: "5"
+  lft: "892"
   id: "447"
   parent_id: "394"
   longitude: "14.8907070"
+  rgt: "893"
 geos_257: 
   name: !binary |
     55C85rW3
 
   latitude: "19.2584040"
+  zipcode: 
+  zoom_level: "9"
+  lft: "512"
   id: "257"
   parent_id: "253"
   longitude: "110.4746500"
+  rgt: "513"
 geos_067: 
   name: !binary |
     6b2Q6b2Q5ZOI5bCU
 
   latitude: "47.3544530"
+  zipcode: 
+  zoom_level: "9"
+  lft: "132"
   id: "67"
   parent_id: "65"
   longitude: "123.9180420"
+  rgt: "133"
 geos_495: 
   name: Iceland
   latitude: "64.9630510"
+  zipcode: 
+  zoom_level: "5"
+  lft: "988"
   id: "495"
   parent_id: "394"
   longitude: "-19.0208350"
+  rgt: "989"
 geos_448: 
   name: Cook Islands
   latitude: "-21.2367360"
+  zipcode: 
+  zoom_level: "5"
+  lft: "894"
   id: "448"
   parent_id: "394"
   longitude: "-159.7776710"
+  rgt: "895"
 geos_258: 
   name: !binary |
     5LiH5a6B
 
   latitude: "18.7951430"
+  zipcode: 
+  zoom_level: "9"
+  lft: "514"
   id: "258"
   parent_id: "253"
   longitude: "110.3910730"
+  rgt: "515"
 geos_068: 
   name: !binary |
     6bih6KW/
 
   latitude: "45.2950750"
+  zipcode: 
+  zoom_level: "9"
+  lft: "134"
   id: "68"
   parent_id: "65"
   longitude: "130.9693330"
+  rgt: "135"
 geos_496: 
   name: India
   latitude: "20.5936840"
+  zipcode: 
+  zoom_level: "5"
+  lft: "990"
   id: "496"
   parent_id: "394"
   longitude: "78.9628800"
+  rgt: "991"
 geos_449: 
   name: Costa Rica
   latitude: "9.7489170"
+  zipcode: 
+  zoom_level: "5"
+  lft: "896"
   id: "449"
   parent_id: "394"
   longitude: "-83.7534280"
+  rgt: "897"
 geos_259: 
   name: !binary |
     5LqU5oyH5bGx
 
   latitude: "18.7751470"
+  zipcode: 
+  zoom_level: "9"
+  lft: "516"
   id: "259"
   parent_id: "253"
   longitude: "109.5169250"
+  rgt: "517"
 geos_069: 
   name: !binary |
     6bmk5bKX
 
   latitude: "47.3517040"
+  zipcode: 
+  zoom_level: "9"
+  lft: "136"
   id: "69"
   parent_id: "65"
   longitude: "130.2952790"
+  rgt: "137"
 geos_497: 
   name: Indonesia
   latitude: "-0.7892750"
+  zipcode: 
+  zoom_level: "5"
+  lft: "992"
   id: "497"
   parent_id: "394"
   longitude: "113.9213270"
+  rgt: "993"
 geos_500: 
   name: Ireland
   latitude: "53.4129100"
+  zipcode: 
+  zoom_level: "5"
+  lft: "998"
   id: "500"
   parent_id: "394"
   longitude: "-8.2438900"
+  rgt: "999"
 geos_498: 
   name: Iran, Islamic Republic of
   latitude: "43.2382291"
+  zipcode: 
+  zoom_level: "5"
+  lft: "994"
   id: "498"
   parent_id: "394"
   longitude: "76.9612350"
+  rgt: "995"
 geos_310: 
   name: !binary |
     5L+d5bGx
 
   latitude: "25.1120650"
+  zipcode: 
+  zoom_level: "9"
+  lft: "618"
   id: "310"
   parent_id: "306"
   longitude: "99.1614710"
+  rgt: "619"
 geos_120: 
   name: !binary |
     5q+r5bee
 
   latitude: "25.7956800"
+  zipcode: 
+  zoom_level: "9"
+  lft: "238"
   id: "120"
   parent_id: "106"
   longitude: "108.8823140"
+  rgt: "239"
 geos_501: 
   name: Isle of Man
   latitude: "54.2361070"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1000"
   id: "501"
   parent_id: "394"
   longitude: "-4.5480560"
+  rgt: "1001"
 geos_499: 
   name: Iraq
   latitude: "33.2231910"
+  zipcode: 
+  zoom_level: "5"
+  lft: "996"
   id: "499"
   parent_id: "394"
   longitude: "43.6792910"
+  rgt: "997"
 geos_311: 
   name: !binary |
     5pit6YCa
 
   latitude: "27.3382570"
+  zipcode: 
+  zoom_level: "9"
+  lft: "620"
   id: "311"
   parent_id: "306"
   longitude: "103.7174650"
+  rgt: "621"
 geos_121: 
   name: !binary |
     5rGg5bee
 
   latitude: "30.6742190"
+  zipcode: 
+  zoom_level: "9"
+  lft: "240"
   id: "121"
   parent_id: "106"
   longitude: "117.4957070"
+  rgt: "241"
 geos_502: 
   name: Israel
   latitude: "31.0460510"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1002"
   id: "502"
   parent_id: "394"
   longitude: "34.8516120"
+  rgt: "1003"
 geos_312: 
   name: !binary |
     5Li95rGf
 
   latitude: "26.8767740"
+  zipcode: 
+  zoom_level: "9"
+  lft: "622"
   id: "312"
   parent_id: "306"
   longitude: "100.2303760"
+  rgt: "623"
 geos_122: 
   name: !binary |
     5a6j5Z+O
 
   latitude: "30.9407180"
+  zipcode: 
+  zoom_level: "9"
+  lft: "242"
   id: "122"
   parent_id: "106"
   longitude: "118.7588160"
+  rgt: "243"
 geos_550: 
   name: New Zealand
   latitude: "-40.9005570"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1098"
   id: "550"
   parent_id: "394"
   longitude: "174.8859710"
+  rgt: "1099"
 geos_503: 
   name: Italy
   latitude: "41.8719400"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1004"
   id: "503"
   parent_id: "394"
   longitude: "12.5673800"
+  rgt: "1005"
 geos_360: 
   name: !binary |
     5rW35YyX
 
   latitude: "36.9542730"
+  zipcode: 
+  zoom_level: "9"
+  lft: "718"
   id: "360"
   parent_id: "357"
   longitude: "100.9009310"
+  rgt: "719"
 geos_170: 
   name: !binary |
     6bmk5aOB
 
   latitude: "35.7472250"
+  zipcode: 
+  zoom_level: "9"
+  lft: "338"
   id: "170"
   parent_id: "164"
   longitude: "114.2972730"
+  rgt: "339"
 geos_313: 
   name: !binary |
     5pmu5rSx
 
   latitude: "22.7777650"
+  zipcode: 
+  zoom_level: "9"
+  lft: "624"
   id: "313"
   parent_id: "306"
   longitude: "100.9701520"
+  rgt: "625"
 geos_123: 
   name: !binary |
     5YWt5a6J
 
   latitude: "31.7450100"
+  zipcode: 
+  zoom_level: "9"
+  lft: "244"
   id: "123"
   parent_id: "106"
   longitude: "116.5056860"
+  rgt: "245"
 geos_551: 
   name: Nicaragua
   latitude: "12.8654160"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1100"
   id: "551"
   parent_id: "394"
   longitude: "-85.2072290"
+  rgt: "1101"
 geos_504: 
   name: Jamaica
   latitude: "18.1095810"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1006"
   id: "504"
   parent_id: "394"
   longitude: "-77.2975080"
+  rgt: "1007"
 geos_361: 
   name: !binary |
     6buE5Y2X
 
   latitude: "35.5195490"
+  zipcode: 
+  zoom_level: "9"
+  lft: "720"
   id: "361"
   parent_id: "357"
   longitude: "102.0152480"
+  rgt: "721"
 geos_171: 
   name: !binary |
     5paw5Lmh
 
   latitude: "34.5252180"
+  zipcode: 
+  zoom_level: "9"
+  lft: "340"
   id: "171"
   parent_id: "164"
   longitude: "135.7948260"
+  rgt: "341"
 geos_314: 
   name: !binary |
     5p6X5rKn
 
   latitude: "31.224353"
+  zipcode: 
+  zoom_level: "9"
+  lft: "626"
   id: "314"
   parent_id: "306"
   longitude: "121.475916"
+  rgt: "627"
 geos_124: 
   name: !binary |
     56aP5bu6
 
   latitude: "26.1010620"
+  zipcode: 
+  zoom_level: "7"
+  lft: "247"
   id: "124"
   parent_id: 
   longitude: "119.2958630"
+  rgt: "266"
 geos_552: 
   name: Niger
   latitude: "17.6077890"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1102"
   id: "552"
   parent_id: "394"
   longitude: "8.0816660"
+  rgt: "1103"
 geos_505: 
   name: Jersey
   latitude: "49.2144390"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1008"
   id: "505"
   parent_id: "394"
   longitude: "-2.1312500"
+  rgt: "1009"
 geos_362: 
   name: !binary |
     5rW35Y2X
 
   latitude: "36.3023990"
+  zipcode: 
+  zoom_level: "9"
+  lft: "722"
   id: "362"
   parent_id: "357"
   longitude: "100.6265260"
+  rgt: "723"
 geos_172: 
   name: !binary |
     5a6J6Ziz
 
   latitude: "36.0975930"
+  zipcode: 
+  zoom_level: "9"
+  lft: "342"
   id: "172"
   parent_id: "164"
   longitude: "114.3927560"
+  rgt: "343"
 geos_315: 
   name: !binary |
     5paH5bGx
 
   latitude: "23.3688170"
+  zipcode: 
+  zoom_level: "9"
+  lft: "628"
   id: "315"
   parent_id: "306"
   longitude: "104.2510450"
+  rgt: "629"
 geos_125: 
   name: !binary |
     56aP5bee
 
   latitude: "26.0742860"
+  zipcode: 
+  zoom_level: "9"
+  lft: "248"
   id: "125"
   parent_id: "124"
   longitude: "119.2965790"
+  rgt: "249"
 geos_553: 
   name: Nigeria
   latitude: "9.0819990"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1104"
   id: "553"
   parent_id: "394"
   longitude: "8.6752770"
+  rgt: "1105"
 geos_506: 
   name: Jordan
   latitude: "30.5851640"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1010"
   id: "506"
   parent_id: "394"
   longitude: "36.2384140"
+  rgt: "1011"
 geos_363: 
   name: !binary |
     5p6c5rSb
 
   latitude: "34.4716750"
+  zipcode: 
+  zoom_level: "9"
+  lft: "724"
   id: "363"
   parent_id: "357"
   longitude: "100.2450270"
+  rgt: "725"
 geos_173: 
   name: !binary |
     5r+u6Ziz
 
   latitude: "35.7621410"
+  zipcode: 
+  zoom_level: "9"
+  lft: "344"
   id: "173"
   parent_id: "164"
   longitude: "115.0293310"
+  rgt: "345"
 geos_316: 
   name: !binary |
     57qi5rKz
 
   latitude: "21.0485775"
+  zipcode: 
+  zoom_level: "9"
+  lft: "630"
   id: "316"
   parent_id: "306"
   longitude: "105.8598553"
+  rgt: "631"
 geos_126: 
   name: !binary |
     5Y6m6Zeo
 
   latitude: "24.4796150"
+  zipcode: 
+  zoom_level: "9"
+  lft: "250"
   id: "126"
   parent_id: "124"
   longitude: "118.0893900"
+  rgt: "251"
 geos_554: 
   name: Niue
   latitude: "-19.0544450"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1106"
   id: "554"
   parent_id: "394"
   longitude: "-169.8672330"
+  rgt: "1107"
 geos_507: 
   name: Kazakhstan
   latitude: "48.0195730"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1012"
   id: "507"
   parent_id: "394"
   longitude: "66.9236840"
+  rgt: "1013"
 geos_364: 
   name: !binary |
     546J5qCR
 
   latitude: "33.0058220"
+  zipcode: 
+  zoom_level: "9"
+  lft: "726"
   id: "364"
   parent_id: "357"
   longitude: "97.0066360"
+  rgt: "727"
 geos_174: 
   name: !binary |
     5LiJ6Zeo5bOh
 
   latitude: "34.7724240"
+  zipcode: 
+  zoom_level: "9"
+  lft: "346"
   id: "174"
   parent_id: "164"
   longitude: "111.2002300"
+  rgt: "347"
 geos_317: 
   name: !binary |
     6KW/5Y+M54mI57qz
 
   latitude: "22.0081780"
+  zipcode: 
+  zoom_level: "9"
+  lft: "632"
   id: "317"
   parent_id: "306"
   longitude: "100.7972830"
+  rgt: "633"
 geos_127: 
   name: !binary |
     6I6G55Sw
 
   latitude: "25.4310110"
+  zipcode: 
+  zoom_level: "9"
+  lft: "252"
   id: "127"
   parent_id: "124"
   longitude: "119.0075580"
+  rgt: "253"
 geos_555: 
   name: Norfolk Island
   latitude: "-29.0408350"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1108"
   id: "555"
   parent_id: "394"
   longitude: "167.9547120"
+  rgt: "1109"
 geos_365: 
   name: !binary |
     5rW36KW/
 
   latitude: "37.3771390"
+  zipcode: 
+  zoom_level: "9"
+  lft: "728"
   id: "365"
   parent_id: "357"
   longitude: "97.3697520"
+  rgt: "729"
 geos_175: 
   name: !binary |
     5Y2X6Ziz
 
   latitude: "32.9906150"
+  zipcode: 
+  zoom_level: "9"
+  lft: "348"
   id: "175"
   parent_id: "164"
   longitude: "112.5283450"
+  rgt: "349"
 geos_318: 
   name: !binary |
     5qWa6ZuE
 
   latitude: "25.0455320"
+  zipcode: 
+  zoom_level: "9"
+  lft: "634"
   id: "318"
   parent_id: "306"
   longitude: "101.5280690"
+  rgt: "635"
 geos_128: 
   name: !binary |
     5LiJ5piO
 
   latitude: "26.2639380"
+  zipcode: 
+  zoom_level: "9"
+  lft: "254"
   id: "128"
   parent_id: "124"
   longitude: "117.6388570"
+  rgt: "255"
 geos_556: 
   name: Northern Mariana Islands
   latitude: "17.3308300"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1110"
   id: "556"
   parent_id: "394"
   longitude: "145.3846900"
+  rgt: "1111"
 geos_508: 
   name: Kenya
   latitude: "-0.0235590"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1014"
   id: "508"
   parent_id: "394"
   longitude: "37.9061930"
+  rgt: "1015"
 geos_366: 
   name: !binary |
     5a6B5aSP
 
   latitude: "38.4711700"
+  zipcode: 
+  zoom_level: "7"
+  lft: "731"
   id: "366"
   parent_id: 
   longitude: "106.2586800"
+  rgt: "742"
 geos_176: 
   name: !binary |
     5ZWG5LiY
 
   latitude: "34.4141830"
+  zipcode: 
+  zoom_level: "9"
+  lft: "350"
   id: "176"
   parent_id: "164"
   longitude: "115.6563940"
+  rgt: "351"
 geos_319: 
   name: !binary |
     5aSn55CG
 
   latitude: "25.6064860"
+  zipcode: 
+  zoom_level: "9"
+  lft: "636"
   id: "319"
   parent_id: "306"
   longitude: "100.2676380"
+  rgt: "637"
 geos_129: 
   name: !binary |
     5rOJ5bee
 
   latitude: "24.9073980"
+  zipcode: 
+  zoom_level: "9"
+  lft: "256"
   id: "129"
   parent_id: "124"
   longitude: "118.5871140"
+  rgt: "257"
 geos_557: 
   name: Norway
   latitude: "60.4720240"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1112"
   id: "557"
   parent_id: "394"
   longitude: "8.4689460"
+  rgt: "1113"
 geos_509: 
   name: Kiribati
   latitude: "-3.3704170"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1016"
   id: "509"
   parent_id: "394"
   longitude: "-168.7340390"
+  rgt: "1017"
 geos_367: 
   name: !binary |
     6ZO25bed
 
   latitude: "38.4871940"
+  zipcode: 
+  zoom_level: "9"
+  lft: "732"
   id: "367"
   parent_id: "366"
   longitude: "106.2309090"
+  rgt: "733"
 geos_177: 
   name: !binary |
     5L+h6Ziz
 
   latitude: "32.1232330"
+  zipcode: 
+  zoom_level: "9"
+  lft: "352"
   id: "177"
   parent_id: "164"
   longitude: "114.0688710"
+  rgt: "353"
 geos_558: 
   name: Oman
   latitude: "21.5125830"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1114"
   id: "558"
   parent_id: "394"
   longitude: "55.9232550"
+  rgt: "1115"
 geos_368: 
   name: !binary |
     55+z5Zi05bGx
 
   latitude: "39.0190570"
+  zipcode: 
+  zoom_level: "9"
+  lft: "734"
   id: "368"
   parent_id: "366"
   longitude: "106.3680620"
+  rgt: "735"
 geos_178: 
   name: !binary |
     5ZGo5Y+j
 
   latitude: "33.6186860"
+  zipcode: 
+  zoom_level: "9"
+  lft: "354"
   id: "178"
   parent_id: "164"
   longitude: "114.6576160"
+  rgt: "355"
 geos_559: 
   name: Pakistan
   latitude: "30.3753210"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1116"
   id: "559"
   parent_id: "394"
   longitude: "69.3451160"
+  rgt: "1117"
 geos_369: 
   name: !binary |
     5ZC05b+g
 
   latitude: "37.9974760"
+  zipcode: 
+  zoom_level: "9"
+  lft: "736"
   id: "369"
   parent_id: "366"
   longitude: "106.1982250"
+  rgt: "737"
 geos_179: 
   name: !binary |
     6am76ams5bqX
 
   latitude: "32.9759780"
+  zipcode: 
+  zoom_level: "9"
+  lft: "356"
   id: "179"
   parent_id: "164"
   longitude: "114.0267930"
+  rgt: "357"
 geos_610: 
   name: Togo
   latitude: "8.6195430"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1218"
   id: "610"
   parent_id: "394"
   longitude: "0.8247820"
+  rgt: "1219"
 geos_420: 
   name: Belize
   latitude: "17.1898770"
+  zipcode: 
+  zoom_level: "5"
+  lft: "838"
   id: "420"
   parent_id: "394"
   longitude: "-88.4976500"
+  rgt: "839"
 geos_230: 
   name: !binary |
     5rKz5rqQ
 
   latitude: "23.7435380"
+  zipcode: 
+  zoom_level: "9"
+  lft: "458"
   id: "230"
   parent_id: "216"
   longitude: "114.7004460"
+  rgt: "459"
 geos_040: 
   name: !binary |
     6L695a6B
 
   latitude: "41.8365210"
+  zipcode: 
+  zoom_level: "7"
+  lft: "79"
   id: "40"
   parent_id: 
   longitude: "123.4371620"
+  rgt: "108"
 geos_611: 
   name: Tokelau
   latitude: "-8.9673630"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1220"
   id: "611"
   parent_id: "394"
   longitude: "-171.8558810"
+  rgt: "1221"
 geos_421: 
   name: Benin
   latitude: "9.3076900"
+  zipcode: 
+  zoom_level: "5"
+  lft: "840"
   id: "421"
   parent_id: "394"
   longitude: "2.3158340"
+  rgt: "841"
 geos_231: 
   name: !binary |
     6Ziz5rGf
 
   latitude: "21.8576620"
+  zipcode: 
+  zoom_level: "9"
+  lft: "460"
   id: "231"
   parent_id: "216"
   longitude: "111.9825360"
+  rgt: "461"
 geos_041: 
   name: !binary |
     5rKI6Ziz
 
   latitude: "41.8073210"
+  zipcode: 
+  zoom_level: "9"
+  lft: "80"
   id: "41"
   parent_id: "40"
   longitude: "123.4304500"
+  rgt: "81"
 geos_612: 
   name: Tonga
   latitude: "-21.1789860"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1222"
   id: "612"
   parent_id: "394"
   longitude: "-175.1982420"
+  rgt: "1223"
 geos_422: 
   name: Bermuda
   latitude: "32.3213840"
+  zipcode: 
+  zoom_level: "5"
+  lft: "842"
   id: "422"
   parent_id: "394"
   longitude: "-64.7573700"
+  rgt: "843"
 geos_232: 
   name: !binary |
     5riF6L+c
 
   latitude: "23.6818010"
+  zipcode: 
+  zoom_level: "9"
+  lft: "462"
   id: "232"
   parent_id: "216"
   longitude: "113.0560420"
+  rgt: "463"
 geos_042: 
   name: !binary |
     5aSn6L+e
 
   latitude: "38.9137790"
+  zipcode: 
+  zoom_level: "9"
+  lft: "82"
   id: "42"
   parent_id: "40"
   longitude: "121.6147710"
+  rgt: "83"
 geos_613: 
   name: Trinidad and Tobago
   latitude: "10.6918030"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1224"
   id: "613"
   parent_id: "394"
   longitude: "-61.2225030"
+  rgt: "1225"
 geos_470: 
   name: France
   latitude: "46.2276380"
+  zipcode: 
+  zoom_level: "5"
+  lft: "938"
   id: "470"
   parent_id: "394"
   longitude: "2.2137490"
+  rgt: "939"
 geos_423: 
   name: Bhutan
   latitude: "27.5141620"
+  zipcode: 
+  zoom_level: "5"
+  lft: "844"
   id: "423"
   parent_id: "394"
   longitude: "90.4336010"
+  rgt: "845"
 geos_280: 
   name: !binary |
     57u16Ziz
 
   latitude: "31.4633770"
+  zipcode: 
+  zoom_level: "9"
+  lft: "558"
   id: "280"
   parent_id: "274"
   longitude: "104.7412740"
+  rgt: "559"
 geos_090: 
   name: !binary |
     5oms5bee
 
   latitude: "32.3942370"
+  zipcode: 
+  zoom_level: "9"
+  lft: "178"
   id: "90"
   parent_id: "80"
   longitude: "119.4128540"
+  rgt: "179"
 geos_233: 
   name: !binary |
     5Lic6I6e
 
   latitude: "23.0205360"
+  zipcode: 
+  zoom_level: "9"
+  lft: "464"
   id: "233"
   parent_id: "216"
   longitude: "113.7517660"
+  rgt: "465"
 geos_043: 
   name: !binary |
     6Z6N5bGx
 
   latitude: "41.1085460"
+  zipcode: 
+  zoom_level: "9"
+  lft: "84"
   id: "43"
   parent_id: "40"
   longitude: "122.9946460"
+  rgt: "85"
 geos_614: 
   name: Tunisia
   latitude: "33.8869170"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1226"
   id: "614"
   parent_id: "394"
   longitude: "9.5374990"
+  rgt: "1227"
 geos_471: 
   name: French Guiana
   latitude: "3.9338890"
+  zipcode: 
+  zoom_level: "5"
+  lft: "940"
   id: "471"
   parent_id: "394"
   longitude: "-53.1257820"
+  rgt: "941"
 geos_424: 
   name: Bolivia
   latitude: "-16.2901540"
+  zipcode: 
+  zoom_level: "5"
+  lft: "846"
   id: "424"
   parent_id: "394"
   longitude: "-63.5886530"
+  rgt: "847"
 geos_281: 
   name: !binary |
     5bm/5YWD
 
   latitude: "32.4354420"
+  zipcode: 
+  zoom_level: "9"
+  lft: "560"
   id: "281"
   parent_id: "274"
   longitude: "105.8433300"
+  rgt: "561"
 geos_091: 
   name: !binary |
     6ZWH5rGf
 
   latitude: "31.224353"
+  zipcode: 
+  zoom_level: "9"
+  lft: "180"
   id: "91"
   parent_id: "80"
   longitude: "121.475916"
+  rgt: "181"
 geos_234: 
   name: !binary |
     5Lit5bGx
 
   latitude: "22.5164810"
+  zipcode: 
+  zoom_level: "9"
+  lft: "466"
   id: "234"
   parent_id: "216"
   longitude: "113.3927560"
+  rgt: "467"
 geos_044: 
   name: !binary |
     5oqa6aG6
 
   latitude: "41.8807010"
+  zipcode: 
+  zoom_level: "9"
+  lft: "86"
   id: "44"
   parent_id: "40"
   longitude: "123.9152370"
+  rgt: "87"
 geos_615: 
   name: Turkey
   latitude: "38.9637450"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1228"
   id: "615"
   parent_id: "394"
   longitude: "35.2433220"
+  rgt: "1229"
 geos_472: 
   name: French Polynesia
   latitude: "-17.6797420"
+  zipcode: 
+  zoom_level: "5"
+  lft: "942"
   id: "472"
   parent_id: "394"
   longitude: "-149.4068430"
+  rgt: "943"
 geos_425: 
   name: Bosnia and Herzegowina
   latitude: "43.9158860"
+  zipcode: 
+  zoom_level: "5"
+  lft: "848"
   id: "425"
   parent_id: "394"
   longitude: "17.6790760"
+  rgt: "849"
 geos_282: 
   name: !binary |
     6YGC5a6B
 
   latitude: "30.5254800"
+  zipcode: 
+  zoom_level: "9"
+  lft: "562"
   id: "282"
   parent_id: "274"
   longitude: "105.5681870"
+  rgt: "563"
 geos_092: 
   name: !binary |
     5rOw5bee
 
   latitude: "32.4565840"
+  zipcode: 
+  zoom_level: "9"
+  lft: "182"
   id: "92"
   parent_id: "80"
   longitude: "119.9230460"
+  rgt: "183"
 geos_235: 
   name: !binary |
     5r2u5bee
 
   latitude: "23.6567220"
+  zipcode: 
+  zoom_level: "9"
+  lft: "468"
   id: "235"
   parent_id: "216"
   longitude: "116.6234170"
+  rgt: "469"
 geos_045: 
   name: !binary |
     5pys5rqq
 
   latitude: "41.2941760"
+  zipcode: 
+  zoom_level: "9"
+  lft: "88"
   id: "45"
   parent_id: "40"
   longitude: "123.7664850"
+  rgt: "89"
 geos_616: 
   name: Turkmenistan
   latitude: "38.9697190"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1230"
   id: "616"
   parent_id: "394"
   longitude: "59.5562780"
+  rgt: "1231"
 geos_473: 
   name: French Southern Territories
   latitude: "-49.4499605"
+  zipcode: 
+  zoom_level: "5"
+  lft: "944"
   id: "473"
   parent_id: "394"
   longitude: "70.0249820"
+  rgt: "945"
 geos_426: 
   name: Botswana
   latitude: "-22.3284740"
+  zipcode: 
+  zoom_level: "5"
+  lft: "850"
   id: "426"
   parent_id: "394"
   longitude: "24.6848660"
+  rgt: "851"
 geos_283: 
   name: !binary |
     5YaF5rGf
 
   latitude: "29.5802370"
+  zipcode: 
+  zoom_level: "9"
+  lft: "564"
   id: "283"
   parent_id: "274"
   longitude: "105.0583000"
+  rgt: "565"
 geos_093: 
   name: !binary |
     5a6/6L+B
 
   latitude: "33.9620830"
+  zipcode: 
+  zoom_level: "9"
+  lft: "184"
   id: "93"
   parent_id: "80"
   longitude: "118.2752890"
+  rgt: "185"
 geos_236: 
   name: !binary |
     5o+t6Ziz
 
   latitude: "23.5499940"
+  zipcode: 
+  zoom_level: "9"
+  lft: "470"
   id: "236"
   parent_id: "216"
   longitude: "116.3728300"
+  rgt: "471"
 geos_046: 
   name: !binary |
     5Li55Lic
 
   latitude: "40.1273440"
+  zipcode: 
+  zoom_level: "9"
+  lft: "90"
   id: "46"
   parent_id: "40"
   longitude: "124.3849130"
+  rgt: "91"
 geos_617: 
   name: Turks and Caicos Islands
   latitude: "21.6940250"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1232"
   id: "617"
   parent_id: "394"
   longitude: "-71.7979280"
+  rgt: "1233"
 geos_474: 
   name: Gabon
   latitude: "-0.8036890"
+  zipcode: 
+  zoom_level: "5"
+  lft: "946"
   id: "474"
   parent_id: "394"
   longitude: "11.6094440"
+  rgt: "947"
 geos_427: 
   name: Bouvet Island
   latitude: "-54.4231990"
+  zipcode: 
+  zoom_level: "5"
+  lft: "852"
   id: "427"
   parent_id: "394"
   longitude: "3.4131940"
+  rgt: "853"
 geos_284: 
   name: !binary |
     5LmQ5bGx
 
   latitude: "29.5520640"
+  zipcode: 
+  zoom_level: "9"
+  lft: "566"
   id: "284"
   parent_id: "274"
   longitude: "103.7656230"
+  rgt: "567"
 geos_094: 
   name: !binary |
     5rWZ5rGf
 
   latitude: "30.2662140"
+  zipcode: 
+  zoom_level: "7"
+  lft: "187"
   id: "94"
   parent_id: 
   longitude: "120.1538300"
+  rgt: "210"
 geos_237: 
   name: !binary |
     5LqR5rWu
 
   latitude: "22.9149890"
+  zipcode: 
+  zoom_level: "9"
+  lft: "472"
   id: "237"
   parent_id: "216"
   longitude: "112.0443350"
+  rgt: "473"
 geos_047: 
   name: !binary |
     6ZSm5bee
 
   latitude: "41.0951230"
+  zipcode: 
+  zoom_level: "9"
+  lft: "92"
   id: "47"
   parent_id: "40"
   longitude: "121.1270100"
+  rgt: "93"
 geos_475: 
   name: Gambia
   latitude: "13.4431820"
+  zipcode: 
+  zoom_level: "5"
+  lft: "948"
   id: "475"
   parent_id: "394"
   longitude: "-15.3101390"
+  rgt: "949"
 geos_428: 
   name: Brazil
   latitude: "-14.2350040"
+  zipcode: 
+  zoom_level: "5"
+  lft: "854"
   id: "428"
   parent_id: "394"
   longitude: "-51.9252800"
+  rgt: "855"
 geos_285: 
   name: !binary |
     5Y2X5YWF
 
   latitude: "30.8378880"
+  zipcode: 
+  zoom_level: "9"
+  lft: "568"
   id: "285"
   parent_id: "274"
   longitude: "106.1105950"
+  rgt: "569"
 geos_095: 
   name: !binary |
     5p2t5bee
 
   latitude: "30.2734970"
+  zipcode: 
+  zoom_level: "9"
+  lft: "188"
   id: "95"
   parent_id: "94"
   longitude: "120.1552490"
+  rgt: "189"
 geos_238: 
   name: !binary |
     5bm/6KW/
 
   latitude: "22.8155470"
+  zipcode: 
+  zoom_level: "7"
+  lft: "475"
   id: "238"
   parent_id: 
   longitude: "108.3276970"
+  rgt: "504"
 geos_048: 
   name: !binary |
     6JCl5Y+j
 
   latitude: "40.6669890"
+  zipcode: 
+  zoom_level: "9"
+  lft: "94"
   id: "48"
   parent_id: "40"
   longitude: "122.2352860"
+  rgt: "95"
 geos_618: 
   name: Tuvalu
   latitude: "-7.1095350"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1234"
   id: "618"
   parent_id: "394"
   longitude: "177.6493300"
+  rgt: "1235"
 geos_476: 
   name: Georgia
   latitude: "32.1574351"
+  zipcode: 
+  zoom_level: "5"
+  lft: "950"
   id: "476"
   parent_id: "394"
   longitude: "-82.9071230"
+  rgt: "951"
 geos_429: 
   name: British Indian Ocean Territory
   latitude: "-6.3431940"
+  zipcode: 
+  zoom_level: "5"
+  lft: "856"
   id: "429"
   parent_id: "394"
   longitude: "71.8765190"
+  rgt: "857"
 geos_286: 
   name: !binary |
     5a6c5a6+
 
   latitude: "28.7518530"
+  zipcode: 
+  zoom_level: "9"
+  lft: "570"
   id: "286"
   parent_id: "274"
   longitude: "104.6434180"
+  rgt: "571"
 geos_096: 
   name: !binary |
     5a6B5rOi
 
   latitude: "29.8683360"
+  zipcode: 
+  zoom_level: "9"
+  lft: "190"
   id: "96"
   parent_id: "94"
   longitude: "121.5439900"
+  rgt: "191"
 geos_239: 
   name: !binary |
     5Y2X5a6B
 
   latitude: "22.8180120"
+  zipcode: 
+  zoom_level: "9"
+  lft: "476"
   id: "239"
   parent_id: "238"
   longitude: "108.3655460"
+  rgt: "477"
 geos_049: 
   name: !binary |
     6Zic5paw
 
   latitude: "42.0216200"
+  zipcode: 
+  zoom_level: "9"
+  lft: "96"
   id: "49"
   parent_id: "40"
   longitude: "121.6703260"
+  rgt: "97"
 geos_619: 
   name: Uganda
   latitude: "1.3733330"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1236"
   id: "619"
   parent_id: "394"
   longitude: "32.2902750"
+  rgt: "1237"
 geos_477: 
   name: Germany
   latitude: "51.1656910"
+  zipcode: 
+  zoom_level: "5"
+  lft: "952"
   id: "477"
   parent_id: "394"
   longitude: "10.4515260"
+  rgt: "953"
 geos_287: 
   name: !binary |
     5bm/5a6J
 
   latitude: "30.4559300"
+  zipcode: 
+  zoom_level: "9"
+  lft: "572"
   id: "287"
   parent_id: "274"
   longitude: "106.6332040"
+  rgt: "573"
 geos_097: 
   name: !binary |
     5rip5bee
 
   latitude: "27.9942430"
+  zipcode: 
+  zoom_level: "9"
+  lft: "192"
   id: "97"
   parent_id: "94"
   longitude: "120.6993550"
+  rgt: "193"
 geos_478: 
   name: Ghana
   latitude: "7.9465270"
+  zipcode: 
+  zoom_level: "5"
+  lft: "954"
   id: "478"
   parent_id: "394"
   longitude: "-1.0231940"
+  rgt: "955"
 geos_100: 
   name: !binary |
     57uN5YW0
 
   latitude: "29.9957620"
+  zipcode: 
+  zoom_level: "9"
+  lft: "198"
   id: "100"
   parent_id: "94"
   longitude: "120.5861090"
+  rgt: "199"
 geos_288: 
   name: !binary |
     6L6+5bee
 
   latitude: "31.2095720"
+  zipcode: 
+  zoom_level: "9"
+  lft: "574"
   id: "288"
   parent_id: "274"
   longitude: "107.4680230"
+  rgt: "575"
 geos_098: 
   name: !binary |
     5ZiJ5YW0
 
   latitude: "30.7539240"
+  zipcode: 
+  zoom_level: "9"
+  lft: "194"
   id: "98"
   parent_id: "94"
   longitude: "120.7585430"
+  rgt: "195"
 geos_479: 
   name: Gibraltar
   latitude: "36.1377410"
+  zipcode: 
+  zoom_level: "5"
+  lft: "956"
   id: "479"
   parent_id: "394"
   longitude: "-5.3453740"
+  rgt: "957"
 geos_101: 
   name: !binary |
     6YeR5Y2O
 
   latitude: "29.0791640"
+  zipcode: 
+  zoom_level: "9"
+  lft: "200"
   id: "101"
   parent_id: "94"
   longitude: "119.6474220"
+  rgt: "201"
 geos_289: 
   name: !binary |
     55yJ5bGx
 
   latitude: "35.4774818"
+  zipcode: 
+  zoom_level: "9"
+  lft: "576"
   id: "289"
   parent_id: "274"
   longitude: "136.7691477"
+  rgt: "577"
 geos_099: 
   name: !binary |
     5rmW5bee
 
   latitude: "30.8943600"
+  zipcode: 
+  zoom_level: "9"
+  lft: "196"
   id: "99"
   parent_id: "94"
   longitude: "120.0868180"
+  rgt: "197"
 geos_102: 
   name: !binary |
     6KGi5bee
 
   latitude: "28.9358830"
+  zipcode: 
+  zoom_level: "9"
+  lft: "202"
   id: "102"
   parent_id: "94"
   longitude: "118.8740180"
+  rgt: "203"
 geos_530: 
   name: Martinique
   latitude: "14.6415280"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1058"
   id: "530"
   parent_id: "394"
   longitude: "-61.0241740"
+  rgt: "1059"
 geos_103: 
   name: !binary |
     6Iif5bGx
 
   latitude: "29.9854440"
+  zipcode: 
+  zoom_level: "9"
+  lft: "204"
   id: "103"
   parent_id: "94"
   longitude: "122.2065960"
+  rgt: "205"
 geos_340: 
   name: !binary |
     5a6J5bq3
 
   latitude: "32.6847810"
+  zipcode: 
+  zoom_level: "9"
+  lft: "678"
   id: "340"
   parent_id: "331"
   longitude: "109.0293030"
+  rgt: "679"
 geos_150: 
   name: !binary |
     5p6j5bqE
 
   latitude: "34.8105000"
+  zipcode: 
+  zoom_level: "9"
+  lft: "298"
   id: "150"
   parent_id: "146"
   longitude: "117.3237250"
+  rgt: "299"
 geos_531: 
   name: Mauritania
   latitude: "21.0078900"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1060"
   id: "531"
   parent_id: "394"
   longitude: "-10.9408350"
+  rgt: "1061"
 geos_104: 
   name: !binary |
     5Y+w5bee
 
   latitude: "28.8285010"
+  zipcode: 
+  zoom_level: "9"
+  lft: "206"
   id: "104"
   parent_id: "94"
   longitude: "121.1758340"
+  rgt: "207"
 geos_341: 
   name: !binary |
     5ZWG5rSb
 
   latitude: "33.8704280"
+  zipcode: 
+  zoom_level: "9"
+  lft: "680"
   id: "341"
   parent_id: "331"
   longitude: "109.9404760"
+  rgt: "681"
 geos_151: 
   name: !binary |
     5Lic6JCl
 
   latitude: "37.4353820"
+  zipcode: 
+  zoom_level: "9"
+  lft: "300"
   id: "151"
   parent_id: "146"
   longitude: "118.6754870"
+  rgt: "301"
 geos_532: 
   name: Mauritius
   latitude: "-20.3484040"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1062"
   id: "532"
   parent_id: "394"
   longitude: "57.5521520"
+  rgt: "1063"
 geos_105: 
   name: !binary |
     5Li95rC0
 
   latitude: "28.4516950"
+  zipcode: 
+  zoom_level: "9"
+  lft: "208"
   id: "105"
   parent_id: "94"
   longitude: "119.9168750"
+  rgt: "209"
 geos_342: 
   name: !binary |
     55SY6IKD
 
   latitude: "36.0593000"
+  zipcode: 
+  zoom_level: "7"
+  lft: "683"
   id: "342"
   parent_id: 
   longitude: "103.8263630"
+  rgt: "712"
 geos_152: 
   name: !binary |
     54Of5Y+w
 
   latitude: "37.5392970"
+  zipcode: 
+  zoom_level: "9"
+  lft: "302"
   id: "152"
   parent_id: "146"
   longitude: "121.3913820"
+  rgt: "303"
 geos_580: 
   name: Saint Pierre and Miquelon
   latitude: "46.9419360"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1158"
   id: "580"
   parent_id: "394"
   longitude: "-56.2711100"
+  rgt: "1159"
 geos_533: 
   name: Mayotte
   latitude: "-12.8275000"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1064"
   id: "533"
   parent_id: "394"
   longitude: "45.1662440"
+  rgt: "1065"
 geos_106: 
   name: !binary |
     5a6J5b69
 
   latitude: "31.8606110"
+  zipcode: 
+  zoom_level: "7"
+  lft: "211"
   id: "106"
   parent_id: 
   longitude: "117.2847000"
+  rgt: "246"
 geos_390: 
   name: !binary |
     5LqU5a625rig
 
   latitude: "44.1678276"
+  zipcode: 
+  zoom_level: "9"
+  lft: "778"
   id: "390"
   parent_id: "372"
   longitude: "87.5462181"
+  rgt: "779"
 geos_343: 
   name: !binary |
     5YWw5bee
 
   latitude: "36.0612550"
+  zipcode: 
+  zoom_level: "9"
+  lft: "684"
   id: "343"
   parent_id: "342"
   longitude: "103.8343770"
+  rgt: "685"
 geos_153: 
   name: !binary |
     5r2N5Z2K
 
   latitude: "36.7068240"
+  zipcode: 
+  zoom_level: "9"
+  lft: "304"
   id: "153"
   parent_id: "146"
   longitude: "119.1619290"
+  rgt: "305"
 geos_581: 
   name: Saint Vincent and the Grenadines
   latitude: "12.9843050"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1160"
   id: "581"
   parent_id: "394"
   longitude: "-61.2872280"
+  rgt: "1161"
 geos_534: 
   name: Mexico
   latitude: "23.6345010"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1066"
   id: "534"
   parent_id: "394"
   longitude: "-102.5527840"
+  rgt: "1067"
 geos_107: 
   name: !binary |
     5ZCI6IKl
 
   latitude: "31.8657790"
+  zipcode: 
+  zoom_level: "9"
+  lft: "212"
   id: "107"
   parent_id: "106"
   longitude: "117.2869830"
+  rgt: "213"
 geos_391: 
   name: !binary |
     6aaZ5riv
 
   latitude: "22.4060834"
+  zipcode: 
+  zoom_level: "9"
+  lft: "781"
   id: "391"
   parent_id: 
   longitude: "114.1201536"
+  rgt: "782"
 geos_344: 
   name: !binary |
     5ZiJ5bOq5YWz
 
   latitude: "39.7731300"
+  zipcode: 
+  zoom_level: "9"
+  lft: "686"
   id: "344"
   parent_id: "342"
   longitude: "98.2891520"
+  rgt: "687"
 geos_154: 
   name: !binary |
     5aiB5rW3
 
   latitude: "37.5130680"
+  zipcode: 
+  zoom_level: "9"
+  lft: "306"
   id: "154"
   parent_id: "146"
   longitude: "122.1204200"
+  rgt: "307"
 geos_582: 
   name: Samoa
   latitude: "-13.7590290"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1162"
   id: "582"
   parent_id: "394"
   longitude: "-172.1046290"
+  rgt: "1163"
 geos_535: 
   name: Micronesia, Federated States of
   latitude: "31.224353"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1068"
   id: "535"
   parent_id: "394"
   longitude: "121.475916"
+  rgt: "1069"
 geos_108: 
   name: !binary |
     6Iqc5rmW
 
   latitude: "31.3387900"
+  zipcode: 
+  zoom_level: "9"
+  lft: "214"
   id: "108"
   parent_id: "106"
   longitude: "118.3851560"
+  rgt: "215"
 geos_392: 
   name: !binary |
     5r6z6Zeo
 
   latitude: "22.1987450"
+  zipcode: 
+  zoom_level: "9"
+  lft: "783"
   id: "392"
   parent_id: 
   longitude: "113.5438730"
+  rgt: "784"
 geos_345: 
   name: !binary |
     6YeR5piM
 
   latitude: "38.5200890"
+  zipcode: 
+  zoom_level: "9"
+  lft: "688"
   id: "345"
   parent_id: "342"
   longitude: "102.1880430"
+  rgt: "689"
 geos_155: 
   name: !binary |
     5rWO5a6B
 
   latitude: "35.4148650"
+  zipcode: 
+  zoom_level: "9"
+  lft: "308"
   id: "155"
   parent_id: "146"
   longitude: "116.5870750"
+  rgt: "309"
 geos_583: 
   name: San Marino
   latitude: "43.9423600"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1164"
   id: "583"
   parent_id: "394"
   longitude: "12.4577770"
+  rgt: "1165"
 geos_536: 
   name: Moldova, Republic of
   latitude: "46.8333333"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1070"
   id: "536"
   parent_id: "394"
   longitude: "29.6166667"
+  rgt: "1071"
 geos_109: 
   name: !binary |
     6JqM5Z+g
 
   latitude: "32.9162820"
+  zipcode: 
+  zoom_level: "9"
+  lft: "216"
   id: "109"
   parent_id: "106"
   longitude: "117.3897100"
+  rgt: "217"
 geos_393: 
   name: !binary |
     5Y+w5rm+
 
   latitude: "23.6978100"
+  zipcode: 
+  zoom_level: "7"
+  lft: "785"
   id: "393"
   parent_id: 
   longitude: "120.9605150"
+  rgt: "786"
 geos_346: 
   name: !binary |
     55m96ZO2
 
   latitude: "36.5448270"
+  zipcode: 
+  zoom_level: "9"
+  lft: "690"
   id: "346"
   parent_id: "342"
   longitude: "104.1376190"
+  rgt: "691"
 geos_156: 
   name: !binary |
     5rOw5a6J
 
   latitude: "36.2000200"
+  zipcode: 
+  zoom_level: "9"
+  lft: "310"
   id: "156"
   parent_id: "146"
   longitude: "117.0881150"
+  rgt: "311"
 geos_584: 
   name: Sao Tome and Principe
   latitude: "0.1863600"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1166"
   id: "584"
   parent_id: "394"
   longitude: "6.6130810"
+  rgt: "1167"
 geos_537: 
   name: Monaco
   latitude: "43.7502980"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1072"
   id: "537"
   parent_id: "394"
   longitude: "7.4128410"
+  rgt: "1073"
 geos_394: 
   name: !binary |
     5rW35aSW
 
   latitude: 
+  zipcode: 
+  zoom_level: "7"
+  lft: "787"
   id: "394"
   parent_id: 
   longitude: 
+  rgt: "1270"
 geos_347: 
   name: !binary |
     5aSp5rC0
 
   latitude: "34.5808620"
+  zipcode: 
+  zoom_level: "9"
+  lft: "692"
   id: "347"
   parent_id: "342"
   longitude: "105.7249470"
+  rgt: "693"
 geos_157: 
   name: !binary |
     5pel54Wn
 
   latitude: "35.4163770"
+  zipcode: 
+  zoom_level: "9"
+  lft: "312"
   id: "157"
   parent_id: "146"
   longitude: "119.5268880"
+  rgt: "313"
 geos_585: 
   name: Saudi Arabia
   latitude: "23.8859420"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1168"
   id: "585"
   parent_id: "394"
   longitude: "45.0791620"
+  rgt: "1169"
 geos_538: 
   name: Mongolia
   latitude: "46.8624960"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1074"
   id: "538"
   parent_id: "394"
   longitude: "103.8466560"
+  rgt: "1075"
 geos_395: 
   name: United States
   latitude: "37.0902400"
+  zipcode: 
+  zoom_level: "5"
+  lft: "788"
   id: "395"
   parent_id: "394"
   longitude: "-95.7128910"
+  rgt: "789"
 geos_348: 
   name: !binary |
     5q2m5aiB
 
   latitude: "37.9283360"
+  zipcode: 
+  zoom_level: "9"
+  lft: "694"
   id: "348"
   parent_id: "342"
   longitude: "102.6380090"
+  rgt: "695"
 geos_158: 
   name: !binary |
     6I6x6Iqc
 
   latitude: "36.2136910"
+  zipcode: 
+  zoom_level: "9"
+  lft: "314"
   id: "158"
   parent_id: "146"
   longitude: "117.6767310"
+  rgt: "315"
 geos_586: 
   name: Senegal
   latitude: "14.4974010"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1170"
   id: "586"
   parent_id: "394"
   longitude: "-14.4523620"
+  rgt: "1171"
 geos_539: 
   name: Montenegro
   latitude: "42.7086780"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1076"
   id: "539"
   parent_id: "394"
   longitude: "19.3743900"
+  rgt: "1077"
 geos_396: 
   name: Japan
   latitude: "36.2048240"
+  zipcode: 
+  zoom_level: "5"
+  lft: "790"
   id: "396"
   parent_id: "394"
   longitude: "138.2529240"
+  rgt: "791"
 geos_349: 
   name: !binary |
     5byg5o6W
 
   latitude: "38.9256460"
+  zipcode: 
+  zoom_level: "9"
+  lft: "696"
   id: "349"
   parent_id: "342"
   longitude: "100.4498220"
+  rgt: "697"
 geos_159: 
   name: !binary |
     5Li05rKC
 
   latitude: "35.0517120"
+  zipcode: 
+  zoom_level: "9"
+  lft: "316"
   id: "159"
   parent_id: "146"
   longitude: "118.3477080"
+  rgt: "317"
 geos_587: 
   name: Serbia
   latitude: "44.0165210"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1172"
   id: "587"
   parent_id: "394"
   longitude: "21.0058590"
+  rgt: "1173"
 geos_397: 
   name: Korea, Republic of
   latitude: "10.7740154"
+  zipcode: 
+  zoom_level: "5"
+  lft: "792"
   id: "397"
   parent_id: "394"
   longitude: "106.6956943"
+  rgt: "793"
 geos_588: 
   name: Seychelles
   latitude: "-4.6795740"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1174"
   id: "588"
   parent_id: "394"
   longitude: "55.4919770"
+  rgt: "1175"
 geos_400: 
   name: Albania
   latitude: "41.1533320"
+  zipcode: 
+  zoom_level: "5"
+  lft: "798"
   id: "400"
   parent_id: "394"
   longitude: "20.1683310"
+  rgt: "799"
 geos_210: 
   name: !binary |
     55uK6Ziz
 
   latitude: "28.5804830"
+  zipcode: 
+  zoom_level: "9"
+  lft: "418"
   id: "210"
   parent_id: "201"
   longitude: "112.3553380"
+  rgt: "419"
 geos_020: 
   name: !binary |
     5pmL5Z+O
 
   latitude: "35.4908700"
+  zipcode: 
+  zoom_level: "9"
+  lft: "38"
   id: "20"
   parent_id: "15"
   longitude: "112.8517680"
+  rgt: "39"
 geos_398: 
   name: Afghanistan
   latitude: "33.9391100"
+  zipcode: 
+  zoom_level: "5"
+  lft: "794"
   id: "398"
   parent_id: "394"
   longitude: "67.7099530"
+  rgt: "795"
 geos_589: 
   name: Sierra Leone
   latitude: "8.4605550"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1176"
   id: "589"
   parent_id: "394"
   longitude: "-11.7798890"
+  rgt: "1177"
 geos_401: 
   name: Algeria
   latitude: "28.0338860"
+  zipcode: 
+  zoom_level: "5"
+  lft: "800"
   id: "401"
   parent_id: "394"
   longitude: "1.6596260"
+  rgt: "801"
 geos_211: 
   name: !binary |
     6YO05bee
 
   latitude: "25.7705100"
+  zipcode: 
+  zoom_level: "9"
+  lft: "420"
   id: "211"
   parent_id: "201"
   longitude: "113.0147180"
+  rgt: "421"
 geos_021: 
   name: !binary |
     5pyU5bee
 
   latitude: "39.3311490"
+  zipcode: 
+  zoom_level: "9"
+  lft: "40"
   id: "21"
   parent_id: "15"
   longitude: "112.4327140"
+  rgt: "41"
 geos_399: 
   name: Aland Islands
   latitude: "60.1770020"
+  zipcode: 
+  zoom_level: "5"
+  lft: "796"
   id: "399"
   parent_id: "394"
   longitude: "19.9150020"
+  rgt: "797"
 geos_402: 
   name: American Samoa
   latitude: "-14.2709720"
+  zipcode: 
+  zoom_level: "5"
+  lft: "802"
   id: "402"
   parent_id: "394"
   longitude: "-170.1322170"
+  rgt: "803"
 geos_212: 
   name: !binary |
     5rC45bee
 
   latitude: "26.4203940"
+  zipcode: 
+  zoom_level: "9"
+  lft: "422"
   id: "212"
   parent_id: "201"
   longitude: "111.6134450"
+  rgt: "423"
 geos_022: 
   name: !binary |
     5pmL5Lit
 
   latitude: "37.6872040"
+  zipcode: 
+  zoom_level: "9"
+  lft: "42"
   id: "22"
   parent_id: "15"
   longitude: "112.7526360"
+  rgt: "43"
 geos_450: 
   name: Cote d'Ivoire
   latitude: "7.5399890"
+  zipcode: 
+  zoom_level: "5"
+  lft: "898"
   id: "450"
   parent_id: "394"
   longitude: "-5.5470800"
+  rgt: "899"
 geos_403: 
   name: Andorra
   latitude: "42.5462450"
+  zipcode: 
+  zoom_level: "5"
+  lft: "804"
   id: "403"
   parent_id: "394"
   longitude: "1.6015540"
+  rgt: "805"
 geos_213: 
   name: !binary |
     5oCA5YyW
 
   latitude: "27.5549780"
+  zipcode: 
+  zoom_level: "9"
+  lft: "424"
   id: "213"
   parent_id: "201"
   longitude: "109.9984880"
+  rgt: "425"
 geos_023: 
   name: !binary |
     6L+Q5Z+O
 
   latitude: "35.0263720"
+  zipcode: 
+  zoom_level: "9"
+  lft: "44"
   id: "23"
   parent_id: "15"
   longitude: "111.0073240"
+  rgt: "45"
 geos_260: 
   name: !binary |
     5Lic5pa5
 
   latitude: "1.6171435"
+  zipcode: 
+  zoom_level: "9"
+  lft: "518"
   id: "260"
   parent_id: "253"
   longitude: "26.8059540"
+  rgt: "519"
 geos_070: 
   name: !binary |
     5Y+M6bit5bGx
 
   latitude: "46.6469230"
+  zipcode: 
+  zoom_level: "9"
+  lft: "138"
   id: "70"
   parent_id: "65"
   longitude: "131.1595530"
+  rgt: "139"
 geos_451: 
   name: Croatia
   latitude: "45.1000000"
+  zipcode: 
+  zoom_level: "5"
+  lft: "900"
   id: "451"
   parent_id: "394"
   longitude: "15.2000000"
+  rgt: "901"
 geos_404: 
   name: Angola
   latitude: "-11.2026920"
+  zipcode: 
+  zoom_level: "5"
+  lft: "806"
   id: "404"
   parent_id: "394"
   longitude: "17.8738870"
+  rgt: "807"
 geos_214: 
   name: !binary |
     5aiE5bqV
 
   latitude: "27.7016930"
+  zipcode: 
+  zoom_level: "9"
+  lft: "426"
   id: "214"
   parent_id: "201"
   longitude: "111.9960010"
+  rgt: "427"
 geos_024: 
   name: !binary |
     5b+75bee
 
   latitude: "38.4163640"
+  zipcode: 
+  zoom_level: "9"
+  lft: "46"
   id: "24"
   parent_id: "15"
   longitude: "112.7342690"
+  rgt: "47"
 geos_261: 
   name: !binary |
     5YSL5bee
 
   latitude: "19.5211340"
+  zipcode: 
+  zoom_level: "9"
+  lft: "520"
   id: "261"
   parent_id: "253"
   longitude: "109.5808110"
+  rgt: "521"
 geos_071: 
   name: !binary |
     5aSn5bqG
 
   latitude: "46.5901900"
+  zipcode: 
+  zoom_level: "9"
+  lft: "140"
   id: "71"
   parent_id: "65"
   longitude: "125.1046370"
+  rgt: "141"
 geos_452: 
   name: Cuba
   latitude: "21.5217570"
+  zipcode: 
+  zoom_level: "5"
+  lft: "902"
   id: "452"
   parent_id: "394"
   longitude: "-77.7811670"
+  rgt: "903"
 geos_405: 
   name: Anguilla
   latitude: "18.2205540"
+  zipcode: 
+  zoom_level: "5"
+  lft: "808"
   id: "405"
   parent_id: "394"
   longitude: "-63.0686150"
+  rgt: "809"
 geos_215: 
   name: !binary |
     5rmY6KW/
 
   latitude: "28.3118340"
+  zipcode: 
+  zoom_level: "9"
+  lft: "428"
   id: "215"
   parent_id: "201"
   longitude: "109.7388420"
+  rgt: "429"
 geos_025: 
   name: !binary |
     5Li05rG+
 
   latitude: "36.0877430"
+  zipcode: 
+  zoom_level: "9"
+  lft: "48"
   id: "25"
   parent_id: "15"
   longitude: "111.5188500"
+  rgt: "49"
 geos_262: 
   name: !binary |
     5p6X6auY
 
   latitude: "21.5013530"
+  zipcode: 
+  zoom_level: "9"
+  lft: "522"
   id: "262"
   parent_id: "253"
   longitude: "110.6062070"
+  rgt: "523"
 geos_072: 
   name: !binary |
     5LyK5pil
 
   latitude: "47.7275420"
+  zipcode: 
+  zoom_level: "9"
+  lft: "142"
   id: "72"
   parent_id: "65"
   longitude: "128.8406610"
+  rgt: "143"
 geos_453: 
   name: Cyprus
   latitude: "35.1264130"
+  zipcode: 
+  zoom_level: "5"
+  lft: "904"
   id: "453"
   parent_id: "394"
   longitude: "33.4298590"
+  rgt: "905"
 geos_406: 
   name: Antarctica
   latitude: "-75.2509730"
+  zipcode: 
+  zoom_level: "5"
+  lft: "810"
   id: "406"
   parent_id: "394"
   longitude: "-0.0713890"
+  rgt: "811"
 geos_216: 
   name: !binary |
     5bm/5Lic
 
   latitude: "23.1316140"
+  zipcode: 
+  zoom_level: "7"
+  lft: "431"
   id: "216"
   parent_id: 
   longitude: "113.2665580"
+  rgt: "474"
 geos_026: 
   name: !binary |
     5ZCV5qKB
 
   latitude: "37.5189720"
+  zipcode: 
+  zoom_level: "9"
+  lft: "50"
   id: "26"
   parent_id: "15"
   longitude: "111.1441380"
+  rgt: "51"
 geos_263: 
   name: !binary |
     5r6E6L+I
 
   latitude: "19.7385210"
+  zipcode: 
+  zoom_level: "9"
+  lft: "524"
   id: "263"
   parent_id: "253"
   longitude: "110.0067550"
+  rgt: "525"
 geos_073: 
   name: !binary |
     5L2z5pyo5pav
 
   latitude: "46.7999230"
+  zipcode: 
+  zoom_level: "9"
+  lft: "144"
   id: "73"
   parent_id: "65"
   longitude: "130.3189170"
+  rgt: "145"
 geos_454: 
   name: Czech Republic
   latitude: "49.8174920"
+  zipcode: 
+  zoom_level: "5"
+  lft: "906"
   id: "454"
   parent_id: "394"
   longitude: "15.4729620"
+  rgt: "907"
 geos_407: 
   name: Antigua And Barbuda
   latitude: "17.0608160"
+  zipcode: 
+  zoom_level: "5"
+  lft: "812"
   id: "407"
   parent_id: "394"
   longitude: "-61.7964280"
+  rgt: "813"
 geos_217: 
   name: !binary |
     5bm/5bee
 
   latitude: "23.1290750"
+  zipcode: 
+  zoom_level: "9"
+  lft: "432"
   id: "217"
   parent_id: "216"
   longitude: "113.2644230"
+  rgt: "433"
 geos_027: 
   name: !binary |
     5YaF6JKZ5Y+k
 
   latitude: "40.8235420"
+  zipcode: 
+  zoom_level: "6"
+  lft: "53"
   id: "27"
   parent_id: 
   longitude: "111.6741210"
+  rgt: "78"
 geos_264: 
   name: !binary |
     5a6a5a6J
 
   latitude: "19.6973710"
+  zipcode: 
+  zoom_level: "9"
+  lft: "526"
   id: "264"
   parent_id: "253"
   longitude: "110.3284860"
+  rgt: "527"
 geos_074: 
   name: !binary |
     5LiD5Y+w5rKz
 
   latitude: "45.7719750"
+  zipcode: 
+  zoom_level: "9"
+  lft: "146"
   id: "74"
   parent_id: "65"
   longitude: "131.0049150"
+  rgt: "147"
 geos_455: 
   name: Denmark
   latitude: "56.2639200"
+  zipcode: 
+  zoom_level: "5"
+  lft: "908"
   id: "455"
   parent_id: "394"
   longitude: "9.5017850"
+  rgt: "909"
 geos_408: 
   name: Argentina
   latitude: "-38.4160970"
+  zipcode: 
+  zoom_level: "5"
+  lft: "814"
   id: "408"
   parent_id: "394"
   longitude: "-63.6166720"
+  rgt: "815"
 geos_218: 
   name: !binary |
     5rex5Zyz
 
   latitude: "22.5434470"
+  zipcode: 
+  zoom_level: "9"
+  lft: "434"
   id: "218"
   parent_id: "216"
   longitude: "114.0578180"
+  rgt: "435"
 geos_028: 
   name: !binary |
     5ZG85ZKM5rWp54m5
 
   latitude: "40.8423100"
+  zipcode: 
+  zoom_level: "9"
+  lft: "54"
   id: "28"
   parent_id: "27"
   longitude: "111.7488470"
+  rgt: "55"
 geos_265: 
   name: !binary |
     5bGv5piM
 
   latitude: "19.3517660"
+  zipcode: 
+  zoom_level: "9"
+  lft: "528"
   id: "265"
   parent_id: "253"
   longitude: "110.1034150"
+  rgt: "529"
 geos_075: 
   name: !binary |
     54mh5Li55rGf
 
   latitude: "44.5876330"
+  zipcode: 
+  zoom_level: "9"
+  lft: "148"
   id: "75"
   parent_id: "65"
   longitude: "129.6146650"
+  rgt: "149"
 geos_456: 
   name: Djibouti
   latitude: "11.8251380"
+  zipcode: 
+  zoom_level: "5"
+  lft: "910"
   id: "456"
   parent_id: "394"
   longitude: "42.5902750"
+  rgt: "911"
 geos_219: 
   name: !binary |
     54+g5rW3
 
   latitude: "22.2709400"
+  zipcode: 
+  zoom_level: "9"
+  lft: "436"
   id: "219"
   parent_id: "216"
   longitude: "113.5772610"
+  rgt: "437"
 geos_029: 
   name: !binary |
     5YyF5aS0
 
   latitude: "40.6574470"
+  zipcode: 
+  zoom_level: "9"
+  lft: "56"
   id: "29"
   parent_id: "27"
   longitude: "109.8403850"
+  rgt: "57"
 geos_266: 
   name: !binary |
     5piM5rGf6buO5peP6Ieq5rK7
 
   latitude: "19.2602880"
+  zipcode: 
+  zoom_level: "9"
+  lft: "530"
   id: "266"
   parent_id: "253"
   longitude: "109.0541260"
+  rgt: "531"
 geos_076: 
   name: !binary |
     6buR5rKz
 
   latitude: "50.2453570"
+  zipcode: 
+  zoom_level: "9"
+  lft: "150"
   id: "76"
   parent_id: "65"
   longitude: "127.5280970"
+  rgt: "151"
 geos_457: 
   name: Dominica
   latitude: "15.4149990"
+  zipcode: 
+  zoom_level: "5"
+  lft: "912"
   id: "457"
   parent_id: "394"
   longitude: "-61.3709760"
+  rgt: "913"
 geos_409: 
   name: Armenia
   latitude: "40.0690990"
+  zipcode: 
+  zoom_level: "5"
+  lft: "816"
   id: "409"
   parent_id: "394"
   longitude: "45.0381890"
+  rgt: "817"
 geos_267: 
   name: !binary |
     55m95rKZ6buO5peP6Ieq5rK7
 
   latitude: "19.2233030"
+  zipcode: 
+  zoom_level: "9"
+  lft: "532"
   id: "267"
   parent_id: "253"
   longitude: "109.4512520"
+  rgt: "533"
 geos_077: 
   name: !binary |
     57ul5YyW
 
   latitude: "46.6366310"
+  zipcode: 
+  zoom_level: "9"
+  lft: "152"
   id: "77"
   parent_id: "65"
   longitude: "126.9800060"
+  rgt: "153"
 geos_458: 
   name: Dominican Republic
   latitude: "18.7356930"
+  zipcode: 
+  zoom_level: "5"
+  lft: "914"
   id: "458"
   parent_id: "394"
   longitude: "-70.1626510"
+  rgt: "915"
 geos_268: 
   name: !binary |
     55C85Lit6buO5peP6IuX5peP6Ieq5rK7
 
   latitude: "31.224353"
+  zipcode: 
+  zoom_level: "9"
+  lft: "534"
   id: "268"
   parent_id: "253"
   longitude: "121.475916"
+  rgt: "535"
 geos_078: 
   name: !binary |
     5aSn5YW05a6J5bKt
 
   latitude: "52.3204480"
+  zipcode: 
+  zoom_level: "9"
+  lft: "154"
   id: "78"
   parent_id: "65"
   longitude: "124.6947210"
+  rgt: "155"
 geos_459: 
   name: Ecuador
   latitude: "-1.8312390"
+  zipcode: 
+  zoom_level: "5"
+  lft: "916"
   id: "459"
   parent_id: "394"
   longitude: "-78.1834060"
+  rgt: "917"
 geos_269: 
   name: !binary |
     6Zm15rC06buO5peP6Ieq5rK7
 
   latitude: "18.4304180"
+  zipcode: 
+  zoom_level: "9"
+  lft: "536"
   id: "269"
   parent_id: "253"
   longitude: "109.8573640"
+  rgt: "537"
 geos_079: 
   name: !binary |
     5LiK5rW3
 
   latitude: "31.2307080"
+  zipcode: 
+  zoom_level: "9"
+  lft: "157"
   id: "79"
   parent_id: 
   longitude: "121.4729160"
+  rgt: "158"
 geos_510: 
   name: Korea, Democratic People's Republic of
   latitude: "1.2800431"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1018"
   id: "510"
   parent_id: "394"
   longitude: "103.8488744"
+  rgt: "1019"
 geos_320: 
   name: !binary |
     5b635a6P
 
   latitude: "24.4333530"
+  zipcode: 
+  zoom_level: "9"
+  lft: "638"
   id: "320"
   parent_id: "306"
   longitude: "98.5848950"
+  rgt: "639"
 geos_130: 
   name: !binary |
     5ryz5bee
 
   latitude: "24.5133210"
+  zipcode: 
+  zoom_level: "9"
+  lft: "258"
   id: "130"
   parent_id: "124"
   longitude: "117.6473630"
+  rgt: "259"
 geos_511: 
   name: Kuwait
   latitude: "29.3116600"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1020"
   id: "511"
   parent_id: "394"
   longitude: "47.4817660"
+  rgt: "1021"
 geos_321: 
   name: !binary |
     5oCS5rGf
 
   latitude: "25.8525480"
+  zipcode: 
+  zoom_level: "9"
+  lft: "640"
   id: "321"
   parent_id: "306"
   longitude: "98.8530970"
+  rgt: "641"
 geos_131: 
   name: !binary |
     5Y2X5bmz
 
   latitude: "26.6416710"
+  zipcode: 
+  zoom_level: "9"
+  lft: "260"
   id: "131"
   parent_id: "124"
   longitude: "118.1773900"
+  rgt: "261"
 geos_512: 
   name: Kyrgyzstan
   latitude: "41.2043800"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1022"
   id: "512"
   parent_id: "394"
   longitude: "74.7660980"
+  rgt: "1023"
 geos_322: 
   name: !binary |
     6L+q5bqG
 
   latitude: "27.8188820"
+  zipcode: 
+  zoom_level: "9"
+  lft: "642"
   id: "322"
   parent_id: "306"
   longitude: "99.7022340"
+  rgt: "643"
 geos_132: 
   name: !binary |
     6b6Z5bKp
 
   latitude: "25.1006010"
+  zipcode: 
+  zoom_level: "9"
+  lft: "262"
   id: "132"
   parent_id: "124"
   longitude: "117.0341920"
+  rgt: "263"
 geos_560: 
   name: Palau
   latitude: "7.5149800"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1118"
   id: "560"
   parent_id: "394"
   longitude: "134.5825200"
+  rgt: "1119"
 geos_513: 
   name: Lao People's Democratic Republic
   latitude: "19.8562700"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1024"
   id: "513"
   parent_id: "394"
   longitude: "102.4954960"
+  rgt: "1025"
 geos_323: 
   name: !binary |
     6KW/6JeP
 
   latitude: "29.6479510"
+  zipcode: 
+  zoom_level: "6"
+  lft: "645"
   id: "323"
   parent_id: 
   longitude: "91.1170060"
+  rgt: "660"
 geos_133: 
   name: !binary |
     5a6B5b63
 
   latitude: "26.6662910"
+  zipcode: 
+  zoom_level: "9"
+  lft: "264"
   id: "133"
   parent_id: "124"
   longitude: "119.5262870"
+  rgt: "265"
 geos_370: 
   name: !binary |
     5Zu65Y6f
 
   latitude: "36.0158550"
+  zipcode: 
+  zoom_level: "9"
+  lft: "738"
   id: "370"
   parent_id: "366"
   longitude: "106.2426100"
+  rgt: "739"
 geos_180: 
   name: !binary |
     5rWO5rqQ
 
   latitude: "35.0670030"
+  zipcode: 
+  zoom_level: "9"
+  lft: "358"
   id: "180"
   parent_id: "164"
   longitude: "112.6024700"
+  rgt: "359"
 geos_561: 
   name: Palestinian Territory, Occupied
   latitude: "31.224353"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1120"
   id: "561"
   parent_id: "394"
   longitude: "121.475916"
+  rgt: "1121"
 geos_514: 
   name: Latvia
   latitude: "56.8796350"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1026"
   id: "514"
   parent_id: "394"
   longitude: "24.6031890"
+  rgt: "1027"
 geos_324: 
   name: !binary |
     5ouJ6JCo
 
   latitude: "29.6455540"
+  zipcode: 
+  zoom_level: "9"
+  lft: "646"
   id: "324"
   parent_id: "323"
   longitude: "91.1408560"
+  rgt: "647"
 geos_134: 
   name: !binary |
     5rGf6KW/
 
   latitude: "28.6746280"
+  zipcode: 
+  zoom_level: "7"
+  lft: "267"
   id: "134"
   parent_id: 
   longitude: "115.9089300"
+  rgt: "290"
 geos_371: 
   name: !binary |
     5Lit5Y2r
 
   latitude: "37.5168920"
+  zipcode: 
+  zoom_level: "9"
+  lft: "740"
   id: "371"
   parent_id: "366"
   longitude: "105.1738370"
+  rgt: "741"
 geos_181: 
   name: !binary |
     6K645piM
 
   latitude: "34.0356080"
+  zipcode: 
+  zoom_level: "9"
+  lft: "360"
   id: "181"
   parent_id: "164"
   longitude: "113.8539400"
+  rgt: "361"
 geos_562: 
   name: Panama
   latitude: "8.5379810"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1122"
   id: "562"
   parent_id: "394"
   longitude: "-80.7821270"
+  rgt: "1123"
 geos_515: 
   name: Lebanon
   latitude: "33.8547210"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1028"
   id: "515"
   parent_id: "394"
   longitude: "35.8622850"
+  rgt: "1029"
 geos_325: 
   name: !binary |
     5piM6YO9
 
   latitude: "31.1409690"
+  zipcode: 
+  zoom_level: "9"
+  lft: "648"
   id: "325"
   parent_id: "323"
   longitude: "97.1720200"
+  rgt: "649"
 geos_135: 
   name: !binary |
     5Y2X5piM
 
   latitude: "28.6764930"
+  zipcode: 
+  zoom_level: "9"
+  lft: "268"
   id: "135"
   parent_id: "134"
   longitude: "115.8921510"
+  rgt: "269"
 geos_372: 
   name: !binary |
     5paw55aG
 
   latitude: "43.7931470"
+  zipcode: 
+  zoom_level: "7"
+  lft: "743"
   id: "372"
   parent_id: 
   longitude: "87.6275460"
+  rgt: "780"
 geos_182: 
   name: !binary |
     6aqh5rKz
 
   latitude: "31.224353"
+  zipcode: 
+  zoom_level: "9"
+  lft: "362"
   id: "182"
   parent_id: "164"
   longitude: "121.475916"
+  rgt: "363"
 geos_563: 
   name: Papua New Guinea
   latitude: "-6.3149930"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1124"
   id: "563"
   parent_id: "394"
   longitude: "143.9555500"
+  rgt: "1125"
 geos_516: 
   name: Lesotho
   latitude: "-29.6099880"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1030"
   id: "516"
   parent_id: "394"
   longitude: "28.2336080"
+  rgt: "1031"
 geos_326: 
   name: !binary |
     5bGx5Y2X
 
   latitude: "29.2315520"
+  zipcode: 
+  zoom_level: "9"
+  lft: "650"
   id: "326"
   parent_id: "323"
   longitude: "91.7615380"
+  rgt: "651"
 geos_136: 
   name: !binary |
     5pmv5b636ZWH
 
   latitude: "25.6145200"
+  zipcode: 
+  zoom_level: "9"
+  lft: "270"
   id: "136"
   parent_id: "134"
   longitude: "111.2627670"
+  rgt: "271"
 geos_373: 
   name: !binary |
     5LmM6bKB5pyo6b2Q
 
   latitude: "43.8256660"
+  zipcode: 
+  zoom_level: "9"
+  lft: "744"
   id: "373"
   parent_id: "372"
   longitude: "87.6172980"
+  rgt: "745"
 geos_183: 
   name: !binary |
     5rmW5YyX
 
   latitude: "30.5456500"
+  zipcode: 
+  zoom_level: "7"
+  lft: "365"
   id: "183"
   parent_id: 
   longitude: "114.3417190"
+  rgt: "400"
 geos_564: 
   name: Paraguay
   latitude: "-23.4425030"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1126"
   id: "564"
   parent_id: "394"
   longitude: "-58.4438320"
+  rgt: "1127"
 geos_517: 
   name: Liberia
   latitude: "6.4280550"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1032"
   id: "517"
   parent_id: "394"
   longitude: "-9.4294990"
+  rgt: "1033"
 geos_327: 
   name: !binary |
     5pel5ZaA5YiZ
 
   latitude: "29.2668700"
+  zipcode: 
+  zoom_level: "9"
+  lft: "652"
   id: "327"
   parent_id: "323"
   longitude: "88.8805830"
+  rgt: "653"
 geos_137: 
   name: !binary |
     6JCN5Lmh
 
   latitude: "26.2655160"
+  zipcode: 
+  zoom_level: "9"
+  lft: "272"
   id: "137"
   parent_id: "134"
   longitude: "111.5957770"
+  rgt: "273"
 geos_374: 
   name: !binary |
     5YWL5ouJ546b5L6d
 
   latitude: "45.5798890"
+  zipcode: 
+  zoom_level: "9"
+  lft: "746"
   id: "374"
   parent_id: "372"
   longitude: "84.8892070"
+  rgt: "747"
 geos_184: 
   name: !binary |
     5q2m5rGJ
 
   latitude: "30.5930880"
+  zipcode: 
+  zoom_level: "9"
+  lft: "366"
   id: "184"
   parent_id: "183"
   longitude: "114.3051720"
+  rgt: "367"
 geos_565: 
   name: Peru
   latitude: "-9.1899670"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1128"
   id: "565"
   parent_id: "394"
   longitude: "-75.0151520"
+  rgt: "1129"
 geos_518: 
   name: Libyan Arab Jamahiriya
   latitude: "26.3351000"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1034"
   id: "518"
   parent_id: "394"
   longitude: "17.2283310"
+  rgt: "1035"
 geos_328: 
   name: !binary |
     6YKj5puy
 
   latitude: "31.4764960"
+  zipcode: 
+  zoom_level: "9"
+  lft: "654"
   id: "328"
   parent_id: "323"
   longitude: "92.0589040"
+  rgt: "655"
 geos_138: 
   name: !binary |
     5Lmd5rGf
 
   latitude: "29.7050960"
+  zipcode: 
+  zoom_level: "9"
+  lft: "274"
   id: "138"
   parent_id: "134"
   longitude: "116.0019820"
+  rgt: "275"
 geos_375: 
   name: !binary |
     5ZCQ6bKB55Wq
 
   latitude: "42.9513840"
+  zipcode: 
+  zoom_level: "9"
+  lft: "748"
   id: "375"
   parent_id: "372"
   longitude: "89.1896550"
+  rgt: "749"
 geos_185: 
   name: !binary |
     6buE55+z
 
   latitude: "30.1996520"
+  zipcode: 
+  zoom_level: "9"
+  lft: "368"
   id: "185"
   parent_id: "183"
   longitude: "115.0385200"
+  rgt: "369"
 geos_566: 
   name: Philippines
   latitude: "12.8797210"
+  zipcode: 
+  zoom_level: "5"
+  lft: "1130"
   id: "566"
   parent_id: "394"
   longitude: "121.7740170"
+  rgt: "1131"
 geos_329: 
   name: !binary |
     6Zi/6YeM
 
   latitude: "32.5010340"
+  zipcode: 
+  zoom_level: "9"
+  lft: "656"
   id: "329"
   parent_id: "323"
   longitude: "80.1056520"
+  rgt: "657"
 geos_139: 
   name: !binary |
     5paw5L2Z
 
   latitude: "27.8178230"
+  zipcode: 
+  zoom_level: "9"
+  lft: "276"
   id: "139"
   parent_id: "134"
   longitude: "114.9174100"
+  rgt: "277"
 geos_376: 
   name: !binary |
     5ZOI5a+G
 
   latitude: "42.8194330"
+  zipcode: 
+  zoom_level: "9"
+  lft: "750"
   id: "376"
   parent_id: "372"
   longitude: "93.5150520"
+  rgt: "751"
 geos_186: 
   name: !binary |
     6KWE5qiK
 
   latitude: "32.0234430"
+  zipcode: 
+  zoom_level: "9"
+  lft: "370"
   id: "186"
   parent_id: "183"
   longitude: "112.1553940"
+  rgt: "371"
