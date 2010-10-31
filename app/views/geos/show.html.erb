@@ -3,7 +3,7 @@
 <% end %>
 
 <div style="float:right">
-  <%= form_tag geos_path,:id =>'locate' do %>
+  <%= form_tag geos_path,:id =>'locate',:remote => true do %>
     <%= text_field_tag 'address', @address,:size => 10%>
     <%= submit_tag '定位',:class => 'button'%>
   <% end %>
@@ -43,7 +43,7 @@
       initialize();
       $('#create_venue').click(mark_latlng);
       $('#cancel_mark').click(cancel_mark);
-      $('#locate').submit(function(){geocoding($('#address').attr('value'));return false;})
+      $('#locate').submit(function(){geocoding($('#address').attr('value'))})
     });
   </script>
 <% end %>  

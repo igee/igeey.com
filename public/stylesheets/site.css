@@ -430,6 +430,7 @@ a#logo{
 
 #nav_links li{
   text-decoration:none;
+  list-style:none;
   float:left;
   color:white;
   margin:0 15px;
