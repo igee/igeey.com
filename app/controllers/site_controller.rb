@@ -7,6 +7,7 @@ class SiteController < ApplicationController
     @public_timeline += Record.limit(10)
     @public_timeline += Plan.limit(10)
     @public_timeline = @public_timeline.sort{|x,y| y.created_at <=> x.created_at }[0..10]
+    @my_plans = current_user.plans.undone if logged_in?
   end
   
   def my_timeline

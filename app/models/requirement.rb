@@ -25,6 +25,14 @@ class Requirement < ActiveRecord::Base
   def users_count
     self.plans.map(&:user).uniq.size
   end
+  
+  def total_number
+    {'money' => "#{total_money}元",'goods' => "#{total_goods}件",'time' => "#{total_people}人"}[self.action.for_what]
+  end
+  
+  def finished_status
+    {'money' => "已获捐#{self.records.map(&:money).sum}元",'goods' => "已获捐#{self.records.map(&:goods).sum}件",'time' => "已有#{self.plans.map(&:user).sum}人参加"}[self.action.for_what]
+  end
    
   def percentage
     if self.action.for_what == 'money'

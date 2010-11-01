@@ -5,10 +5,10 @@
     <p class="impact"><%= @requirement.description %></p>
     <p class="explanation"><%= @requirement.detail %><p>
     <div class="saying_colon" style="text-align:right;margin-top:-10px;margin-right:-20px">”</div>
+    <span>了解<%= link_to @requirement.venue.name,@requirement.venue%></span>
   </div>
   <div class="saying_tail"></div>
   <div class="clear"></div>
-  
 </div>
 
 <div class="box">
