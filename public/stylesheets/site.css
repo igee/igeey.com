@@ -339,6 +339,18 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
 
 .event_box.hover .event_panel{display:block}
 
+.event_type{
+  position:absolute;
+  width:14px;
+  height:86px;
+  border-left:2px solid #fff;
+  margin-left:-19px;
+  }
+
+.event_type[title="requirement"]{background-color:#dfd;border-color:#bfb}
+.event_type[title="record"]{background-color:#fdd;border-color:#fbb}
+.event_type[title="plan"]{background-color:#ddf;border-color:#bbf}
+
 .addition{
   margin-top:10px;
 }

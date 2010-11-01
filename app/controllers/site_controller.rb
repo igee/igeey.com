@@ -4,9 +4,9 @@ class SiteController < ApplicationController
   def index
     # group requirements,plans and records to list
     @public_timeline = Requirement.limit(10)
-    @public_timeline += Record.limit(10)
     @public_timeline += Plan.limit(10)
     @public_timeline = @public_timeline.sort{|x,y| y.created_at <=> x.created_at }[0..10]
+    @record_timeline = Record.limit(10)
     @my_plans = current_user.plans.undone if logged_in?
   end
   

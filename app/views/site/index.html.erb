@@ -7,12 +7,17 @@
 
 <div id="tabContaier">
   <ul>
-    <li><%= link_to '最新信息','#public_timeline'%></a></li>
+    <li><%= link_to '正在发生','#public_timeline'%></a></li>
+    <li><%= link_to '最近完成','#record_timeline'%></a></li>
     <li><%= link_to '我的关注','#my_timeline',:id => 'my_timeline_tab' if logged_in?%></li>
   </ul>
   
   <div id="public_timeline" class="tabContents">
     <%= render :partial => 'public/event', :collection => @public_timeline %>
+  </div>
+  
+  <div id="record_timeline" class="tabContents">
+    <%= render :partial => 'public/event', :collection => @record_timeline %>
   </div>
   
   <div id="my_timeline" class="tabContents">
