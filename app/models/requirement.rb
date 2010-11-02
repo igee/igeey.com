@@ -31,7 +31,7 @@ class Requirement < ActiveRecord::Base
   end
   
   def finished_status
-    {'money' => "已获捐#{self.records.map(&:money).sum}元",'goods' => "已获捐#{self.records.map(&:goods).sum}件",'time' => "已有#{self.plans.map(&:user).sum}人参加"}[self.action.for_what]
+    {'money' => "已获捐#{self.records.map(&:money).sum}元",'goods' => "已获捐#{self.records.map(&:goods).sum}件",'time' => "已有#{self.plans.map(&:user).uniq.size}人参加"}[self.action.for_what]
   end
    
   def percentage

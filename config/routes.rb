@@ -27,7 +27,9 @@ Igee::Application.routes.draw do
   resources :actions
   
   resources :requirements do
-    resources :plans
+    get   :next_step ,:on => :collection
+    resources :plans do 
+    end
   end
     
   resources :geos do
@@ -41,7 +43,7 @@ Igee::Application.routes.draw do
       
     end
   end
-  resources :records
+  
   resources :feedbacks do 
       get :thanks, :on => :collection
   end

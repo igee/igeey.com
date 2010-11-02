@@ -1,8 +1,8 @@
 class RequirementsController < ApplicationController
   respond_to :html
   before_filter :login_required, :except => [:index, :show]
-  before_filter :find_requirement, :except => [:index, :new, :create]
-  after_filter :clean_unread, :only => [:show]
+  before_filter :find_requirement, :except => [:index, :new, :create,:next_step]
+  after_filter  :clean_unread, :only => [:show]
    
   def index
     @requirements = Requirement.all
@@ -50,6 +50,9 @@ class RequirementsController < ApplicationController
   def destroy
     @requirement.destroy
     respond_with @requirement
+  end
+  
+  def next_step
   end
   
   private
