@@ -107,9 +107,9 @@ class User < ActiveRecord::Base
     self.sina.post('http://api.t.sina.com.cn/statuses/update.xml',{:status => message[0..139]}, {"Content-Type" =>  "application/atom+xml"}  )
   end
 
-  def send_to_miniblogs(message,h)
-    puts self.send_to_douban_miniblog(message) if (h[:to_douban] && douban?)
-    puts self.send_to_sina_miniblog(message) if (h[:to_sina] && sina?)
+  def send_to_miniblogs(message,options={})
+    puts self.send_to_douban_miniblog(message) if (options[:to_douban] && douban?)
+    puts self.send_to_sina_miniblog(message) if (options[:to_sina] && sina?)
   end
 
   protected
