@@ -267,7 +267,6 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
   border-bottom:1px dashed #9bd;
   }
 
-
 .saying{
   float:right;
   width:450px;
@@ -280,7 +279,7 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
   margin-bottom:8px;
 }
 
-.saying  input{text-align:right}
+.saying input{text-align:right}
 
 .saying_tail{
   float:right;
@@ -298,7 +297,7 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
 .impact{
   margin:0;
   font-weight:bold;
-  font-size:17px;
+  font-size:16px;
   }
   
 .comment{
@@ -347,9 +346,9 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
   margin-left:-19px;
   }
 
-.event_type[title="requirement"]{background-color:#dfd;border-color:#bfb}
-.event_type[title="record"]{background-color:#fdd;border-color:#fbb}
-.event_type[title="plan"]{background-color:#ddf;border-color:#bbf}
+.event_type[title="requirement"]{background-color:#d6ffd6;border-color:#bfb}
+.event_type[title="record"]{background-color:#ffd6d6;border-color:#fbb}
+.event_type[title="plan"]{background-color:#d6d6ff;border-color:#bbf}
 
 .addition{
   margin-top:10px;
@@ -504,7 +503,7 @@ a#logo{
 #feedback:hover{left:0;}
 
 #tabContaier ul{
-  border-bottom:1px solid #ddd;
+  border-bottom:1px solid #ccc;
   height:28px;
   margin:0;
 }
@@ -514,7 +513,7 @@ a#logo{
   margin:0 3px;
 }
 #tabContaier li a{
-  border:1px solid #ddd;
+  border:1px solid #ccc;
   border-bottom:none;
   background:#eee;
   color:#999;
@@ -535,7 +534,7 @@ a#logo{
 #tabContaier li a.active{
   height:27px;
   background:#fff;
-  border:1px solid #ddd;
+  border:1px solid #ccc;
   border-bottom:none;
   color:#666;
 }

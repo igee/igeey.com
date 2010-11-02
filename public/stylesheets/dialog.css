@@ -1,6 +1,6 @@
 #floatBoxBg{width:100%;height:100%;background:#000;filter:alpha(opacity=60);opacity:0.6;position:absolute;top:0;left:0;}
-.floatBox{border:#679 3px solid;width:560px;position:absolute;top:50px;left:auto;}
-.floatBox .dialog_title{height:26px;padding:7px 10px 0;background:#568;color:#fff;}
+.floatBox{border:#789 3px solid;width:560px;position:absolute;top:50px;left:auto;}
+.floatBox .dialog_title{height:26px;padding:7px 10px 0;background:#457;color:#fff;}
 .floatBox .dialog_title h4{float:left;padding:0;margin:0;font-size:15px;line-height:18px;color:#fff}
 .floatBox .dialog_title span{float:right;cursor:pointer;color:#fff}
 .floatBox .dialog_content{padding:20px 15px;background-color:#fbfbff}
