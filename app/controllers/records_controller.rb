@@ -21,9 +21,10 @@ class RecordsController < ApplicationController
     @record = current_user.records.build(params[:record])
     if @record.save
       @oauth_message = "(这是oauth同步测试）我#{@record.description}  #{record_url(@record)}"
-      if @record.sync_to_douban && current_user.douban?
-        current_user.send_to_douban_miniblog(@oauth_message)
-      end
+      current_user.send_to_miniblogs( @oauth_message,
+                                      :to_douban => (@record.sync_to_douban && current_user.douban?),
+                                      :to_sina => (@record.sync_to_douban && current_user.sina?)
+                                      )
     end  
     respond_with(@record)
   end

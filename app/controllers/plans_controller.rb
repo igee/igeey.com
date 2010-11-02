@@ -20,9 +20,10 @@ class PlansController < ApplicationController
     @plan.save
     if @plan.save
       @oauth_message = "(这是oauth同步测试）： 我要#{@plan.description}  #{requirement_plan_url(@plan.requirement,@plan)}"
-      if @plan.sync_to_douban && current_user.douban?
-        current_user.send_to_douban_miniblog(@oauth_message)
-      end
+      current_user.send_to_miniblogs( @oauth_message,
+                                      :to_douban => (@plan.sync_to_douban && current_user.douban?),
+                                      :to_sina => (@plan.sync_to_douban && current_user.sina?)
+                                      )
     end
     redirect_to @plan.requirement
   end
