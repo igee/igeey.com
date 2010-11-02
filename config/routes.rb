@@ -31,7 +31,8 @@ Igee::Application.routes.draw do
     resources :plans do 
     end
   end
-    
+  
+  resources :records
   resources :geos do
     get   :list ,:on => :collection
   end
