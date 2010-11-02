@@ -20,7 +20,7 @@ class Venue < ActiveRecord::Base
                             :default_url=>"/defaults/:attachment/venue/:style.png"
 
   default_scope :order => 'created_at DESC'
-  scope :hot,order('follows_count DESC').limit(10)
+  scope :popular,order('follows_count DESC')
   
   validates :name,:latitude,:longitude, :presence   => true
   validates :intro,:length     => { :within => 0..140 }

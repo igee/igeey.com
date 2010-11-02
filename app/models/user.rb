@@ -23,7 +23,8 @@ class User < ActiveRecord::Base
   has_many :followings,     :class_name => "Follow",:foreign_key => :user_id
   has_many :follows,        :as => :followable, :dependent => :destroy
   has_many :followers,      :through => :follows, :source => :user
-  # set_table_name 'users'
+
+  scope :popular,order('follows_count DESC')
 
   validates :login, :uniqueness => true,
                     :length     => { :within => 1..40,:message => '用户名字数在1至40之间'},

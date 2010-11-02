@@ -23,8 +23,16 @@
 </div>
 
 <% content_for :sidebar do %>
-  <h4>热点聚点：</h4>
-  <%= render :partial => '/public/venue',:collection => @venues %>
+  <div class="box">
+    <h4>热点聚点：</h4>
+    <%= render :partial => '/public/venue',:collection => @venues %>
+    <div class="clear"></div>
+  </div>
+  <div class="box">
+    <h4>活跃用户：</h4>
+    <%= render :partial => '/public/user',:collection => @users %>
+    <div class="clear"></div>
+  </div>
 <% end %>
 
 <% content_for :extension do %>
