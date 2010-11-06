@@ -59,17 +59,18 @@
     return false;
   };
   
+  
   function geocoding(address){
     geocoder.geocode( {'address': address }, function(results, status) {
-      $.map(results, function(item) {
-        if(status == google.maps.GeocoderStatus.OK){
-          map.setCenter(new google.maps.LatLng(item.geometry.location.lat(),item.geometry.location.lng()));
-          map.setZoom(9);
-        }
-        else{
-          alert('没有找到'+ address);
-        }      
-      })
+      if(status == google.maps.GeocoderStatus.OK){
+          $.map(results, function(item) {
+            map.setCenter(new google.maps.LatLng(item.geometry.location.lat(),item.geometry.location.lng()));
+            map.setZoom(9);
+          })
+      }
+      else{
+        alert('没有找到'+ address);
+      };      
     });
   }
   
