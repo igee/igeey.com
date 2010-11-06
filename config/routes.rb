@@ -20,6 +20,7 @@ Igee::Application.routes.draw do
   resources :venues do
     member do
       get :have_done
+      get :cover
       get :publish_requirement
     end
   end

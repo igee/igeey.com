@@ -4,7 +4,6 @@
   <div style="float:left;text-align:center;">
     <%= image_tag @user.avatar.url(:_72x72),:class => "avatar" %>
     <br/>
-    <%= @user == current_user ? link_to('用户设置',setting_path) : raw(follow_to(@user)) %>
   </div>
   <div style="float:left;width:100px;text-align:left;padding:0 10px">
   </div>

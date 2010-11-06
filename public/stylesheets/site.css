@@ -36,7 +36,7 @@ a{
 
 a:hover{color:#f63}
 
-input{
+input[type="text_field"]{
     text-decoration:none;
     border:1px solid #bbb;
     margin:0px 4px;

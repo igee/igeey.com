@@ -1,0 +1,10 @@
+<%= form_for @venue,:html => { :multipart => true } do |form| %>
+    <div>
+      <h4>选择要上传的文件</h4>
+      <%= form.file_field :cover%>
+      <%= form.submit '上传',:class => "button"%>
+    </div>
+<% end %>
+
+<% content_for :extension do %>
+<% end %>
