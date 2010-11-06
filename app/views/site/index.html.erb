@@ -31,7 +31,7 @@
       <div class="sidebar_panel">
         <h4>你的计划：</h4>
       <% @my_plans.each do |plan|%>
-          <p><%= link_to "要#{plan.description}",requirement_plan_path(plan.requirement,plan)%></p>
+          <p><%= link_to "要#{plan.description}",calling_plan_path(plan.calling,plan)%></p>
       <% end %>
       </div>
     </div>
@@ -54,7 +54,7 @@
     </div>
     <div class="guide">
       <div>
-        <%= link_to "发掘更多的公益需求",requirements_path%>
+        <%= link_to "发掘更多的公益需求",callings_path%>
       </div>
       <p>有能力做得更多？去寻找更多需要帮助的人吧。</p>
     </div>

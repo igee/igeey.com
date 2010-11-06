@@ -7,10 +7,10 @@ class RecordsController < ApplicationController
   def new    
     @record = current_user.records.build(:action_id => params[:action_id],:venue_id => params[:venue_id],:plan_id => params[:plan_id])
     @plan = @record.plan
-    @requirement = @plan.nil? ? @record.requirement : @plan.requirement
-    @venue = @requirement.nil? ? @record.venue : @requirement.venue
-    @action = @requirement.nil? ? @record.action : @requirement.action
-    @record = Record.new(:action => @action,:venue => @venue,:requirement => @requirement,:plan => @plan)
+    @calling = @plan.nil? ? @record.calling : @plan.calling
+    @venue = @calling.nil? ? @record.venue : @calling.venue
+    @action = @calling.nil? ? @record.action : @calling.action
+    @record = Record.new(:action => @action,:venue => @venue,:calling => @calling,:plan => @plan)
     if @venue.nil? 
       @venues = Venue.all
       render "select_venue"
@@ -32,7 +32,7 @@ class RecordsController < ApplicationController
   def show
     @venue = @record.venue
     @action = @record.action
-    @requirement = @record.requirement
+    @calling = @record.calling
     @comment = Comment.new
     @comments = @record.comments
     @photo = Photo.new

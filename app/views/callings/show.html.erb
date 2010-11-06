@@ -1,11 +1,11 @@
 <div class="box">  
-  <%= render :partial => '/public/user' ,:object => @requirement.publisher ,:locals => {:with_name => true}%>
+  <%= render :partial => '/public/user' ,:object => @calling.publisher ,:locals => {:with_name => true}%>
   <div class="saying">
     <div class="saying_colon" style="text-align:left;margin-bottom:-10px;margin-left:-20px">“</div>
-    <p class="impact"><%= @requirement.description %></p>
-    <p class="explanation"><%= @requirement.detail %><p>
+    <p class="impact"><%= @calling.description %></p>
+    <p class="explanation"><%= @calling.detail %><p>
     <div class="saying_colon" style="text-align:right;margin-top:-10px;margin-right:-20px">”</div>
-    <span>了解<%= link_to @requirement.venue.name,@requirement.venue%></span>
+    <span>了解<%= link_to @calling.venue.name,@calling.venue%></span>
   </div>
   <div class="saying_tail"></div>
   <div class="clear"></div>
@@ -20,22 +20,22 @@
       <%= render :partial => '/public/user',:object => @my_plan.user%>
       <div class="event">
         <p>
-          <%= link_to "你计划#{@my_plan.description}。",requirement_plan_path(@requirement,@my_plan) %>
+          <%= link_to "你计划#{@my_plan.description}。",calling_plan_path(@calling,@my_plan) %>
         </p>
         <div style="text-align:right">
           <%= link_to "已经完成?","#{new_record_path}?plan_id=#{@my_plan.id}",:class => "button" %>
-          <%= link_to "取消",requirement_plan_path(@requirement,@my_plan),:method => :delete,:class => "button" %>
+          <%= link_to "取消",calling_plan_path(@calling,@my_plan),:method => :delete,:class => "button" %>
         </div>
        </div>
     </div>
   <% else %>
     <div style="clear:both;padding:4px 200px">
-      <%= link_to "我要参与",(logged_in? ? new_requirement_plan_path(@requirement) : signup_path ),:class => "big_button open_dialog",:id => 'plan_to' ,:title =>(logged_in? ? '我要参与' : '注册' )%>
+      <%= link_to "我要参与",(logged_in? ? new_calling_plan_path(@calling) : signup_path ),:class => "big_button open_dialog",:id => 'plan_to' ,:title =>(logged_in? ? '我要参与' : '注册' )%>
     </div>
   <% end %>
 </div>
 
-<%= render :partial => '/photos/gallery' ,:locals => {:imageable => @requirement}%>
+<%= render :partial => '/photos/gallery' ,:locals => {:imageable => @calling}%>
   
 <div class="box">
   <h4>行动记录:</h4>
@@ -48,13 +48,13 @@
   <h4>大家的留言：</h4>
   <%= render :partial => '/public/comment' ,:collection => @comments %>
 </div>
-<%= render :partial => '/comments/form' ,:locals => {:commentable => @requirement}%>
+<%= render :partial => '/comments/form' ,:locals => {:commentable => @calling}%>
 
 <% content_for :sidebar do %>
   <div class="box">
     <h4>需求完成度：</h4>
     <div style="text-align:center;margin:10px 0">
-      <span style="font-size:54px;"><%= @requirement.percentage %></span>
+      <span style="font-size:54px;"><%= @calling.percentage %></span>
       <span style="font-size:24px">%<span>
     </div>
   </div>

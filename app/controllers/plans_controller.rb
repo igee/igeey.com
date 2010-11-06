@@ -5,8 +5,8 @@ class PlansController < ApplicationController
   after_filter :clean_unread, :only => [:show]
   
   def new
-    @requirement = Requirement.find(params[:requirement_id])
-    @plan = @requirement.plans.build()
+    @calling = Calling.find(params[:calling_id])
+    @plan = @calling.plans.build()
     if params[:layout] == 'false'
       render :layout => false
     end  
@@ -14,18 +14,18 @@ class PlansController < ApplicationController
   
   def create
     @plan = current_user.plans.build(params[:plan])
-    @plan.requirement = Requirement.find(params[:requirement_id])
-    @plan.venue = @plan.requirement.venue
-    @plan.action = @plan.requirement.action
+    @plan.calling = Calling.find(params[:calling_id])
+    @plan.venue = @plan.calling.venue
+    @plan.action = @plan.calling.action
     @plan.save
     if @plan.save
-      @oauth_message = "(这是oauth同步测试）： 我要#{@plan.description}  #{requirement_plan_url(@plan.requirement,@plan)}"
+      @oauth_message = "(这是oauth同步测试）： 我要#{@plan.description}  #{calling_plan_url(@plan.calling,@plan)}"
       current_user.send_to_miniblogs( @oauth_message,
                                       :to_douban => (@plan.sync_to_douban && current_user.douban?),
                                       :to_sina => (@plan.sync_to_douban && current_user.sina?)
                                       )
     end
-    redirect_to @plan.requirement
+    redirect_to @plan.calling
   end
   
   def edit
@@ -35,14 +35,14 @@ class PlansController < ApplicationController
   end
   
   def show
-    @requirement = @plan.requirement
+    @calling = @plan.calling
     @comment = Comment.new
     @comments = @plan.comments
   end
   
   def destroy
     @plan.destroy
-    redirect_to @plan.requirement
+    redirect_to @plan.calling
   end
     
   private

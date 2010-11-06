@@ -21,13 +21,13 @@ Igee::Application.routes.draw do
     member do
       get :have_done
       get :cover
-      get :publish_requirement
+      get :publish_calling
     end
   end
 
   resources :actions
   
-  resources :requirements do
+  resources :callings do
     get   :next_step ,:on => :collection
     resources :plans do 
     end

@@ -2,7 +2,7 @@ class Record < ActiveRecord::Base
   belongs_to :user
   belongs_to :venue
   belongs_to :action
-  belongs_to :requirement
+  belongs_to :calling
   belongs_to :plan
   belongs_to :parent,   :class_name => :record,:foreign_key => :parent_id
   has_many   :comments, :as => :commentable,    :dependent => :destroy

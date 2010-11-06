@@ -18,7 +18,7 @@
   
   <% if @venue.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@venue.errors.count, "error") %> prohibited this requirement from being saved:</h2>
+      <h2><%= pluralize(@venue.errors.count, "error") %> prohibited this calling from being saved:</h2>
       <ul>
       <% @venue.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>

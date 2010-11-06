@@ -1,7 +1,7 @@
 class Plan < ActiveRecord::Base
   belongs_to :venue
   belongs_to :action
-  belongs_to :requirement
+  belongs_to :calling
   belongs_to :user
   belongs_to :parent,:class_name => "Plan",:foreign_key => "parent_id"
   has_one    :record
@@ -16,7 +16,7 @@ class Plan < ActiveRecord::Base
   
   scope :undone ,where(:is_done => false)
   
-  validates :user_id,:action_id,:requirement_id,:venue_id,:presence => true
+  validates :user_id,:action_id,:calling_id,:venue_id,:presence => true
   validates :plan_at,:date => {:after_or_equal_to => Date.today.to_date,:allow_nil => true}
   
   def validate
@@ -30,11 +30,11 @@ class Plan < ActiveRecord::Base
   
   def description
     if self.action.for_what == 'money'
-      "为#{self.venue.name}#{self.action.name}#{self.money}元，用于#{self.requirement.donate_for}。"
+      "为#{self.venue.name}#{self.action.name}#{self.money}元，用于#{self.calling.donate_for}。"
     elsif self.action.for_what == 'goods'
-      "为#{self.venue.name}#{self.action.name}#{self.requirement.goods_is}#{self.goods}件。"
+      "为#{self.venue.name}#{self.action.name}#{self.calling.goods_is}#{self.goods}件。"
     elsif self.action.for_what == 'time'
-      "在#{self.formatted_plan_at}为#{self.venue.name}#{self.action.name}:#{self.requirement.do_what}。"
+      "在#{self.formatted_plan_at}为#{self.venue.name}#{self.action.name}:#{self.calling.do_what}。"
     end
   end
   

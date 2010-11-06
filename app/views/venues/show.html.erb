@@ -13,14 +13,14 @@
 
 <div class="box" style="text-align:center">
   <%= raw(follow_to(@venue)) %>
-  <%= link_to '发布新需求',publish_requirement_venue_path(@venue),:class => "button open_dialog",:id => 'plan_to',:title => '发布需求'%>
+  <%= link_to '发布新需求',publish_calling_venue_path(@venue),:class => "button open_dialog",:id => 'plan_to',:title => '发布需求'%>
   <%= link_to '我为这里做过...',have_done_venue_path(@venue),:class => "button",:id => 'have_done' %>
   <%= link_to '更新信息',edit_venue_path(@venue),:class => "button",:id => 'update_info' %>
 </div>
 
 <div class="box">  
   <h4>这里正需要:</h4>
-  <%= render :partial => 'public/requirement', :collection => @requirements %>
+  <%= render :partial => 'public/calling', :collection => @callings %>
 </div>
 
 <%= render :partial => '/photos/gallery' ,:locals => {:imageable => @venue}%>

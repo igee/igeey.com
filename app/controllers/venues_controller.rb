@@ -1,6 +1,6 @@
 class VenuesController < ApplicationController
   respond_to :html,:json
-  before_filter :login_required, :except => [:index, :show,:publish_requirement,:mark_venue,:have_done]
+  before_filter :login_required, :except => [:index, :show,:publish_calling,:mark_venue,:have_done]
   before_filter :find_venue, :except => [:index,:new,:create]
   
   def index
@@ -33,7 +33,7 @@ class VenuesController < ApplicationController
   end
   
   def show
-    @requirements = @venue.requirements
+    @callings = @venue.callings
     @records = @venue.records
     @photo = Photo.new
     @photos = @venue.photos
@@ -45,7 +45,7 @@ class VenuesController < ApplicationController
     render :layout => false if params[:layout] == 'false'
   end
   
-  def publish_requirement
+  def publish_calling
     @actions = Action.all
     render :layout => false if params[:layout] == 'false'
   end

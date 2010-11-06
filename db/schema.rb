@@ -56,7 +56,7 @@ ActiveRecord::Schema.define() do
     t.integer  :user_id
     t.integer  :venue_id
     t.integer  :action_id
-    t.integer  :requirement_id
+    t.integer  :calling_id
     t.integer  :record_id
     t.integer  :parent_id
     t.integer  :money
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define() do
     t.integer  :venue_id
     t.integer  :action_id
     t.integer  :plan_id
-    t.integer  :requirement_id
+    t.integer  :calling_id
     t.integer  :parent_id
     t.integer  :money
     t.string   :donate_for,  :limit => 40
@@ -116,7 +116,7 @@ ActiveRecord::Schema.define() do
   
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
   
-  create_table "requirements", :force => true do |t|
+  create_table "callings", :force => true do |t|
     t.integer :venue_id
     t.integer :action_id
     t.integer :publisher_id

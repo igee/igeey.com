@@ -1,7 +1,7 @@
-<% if @requirements.present? %>  
+<% if @callings.present? %>  
   <div class="box">
     <h4>以下需求有新留言：<h4>
-    <%= render :partial => "/public/requirement" ,:collection => @requirements %>
+    <%= render :partial => "/public/calling" ,:collection => @callings %>
   </div>
 <% end %>
 

@@ -1,4 +1,4 @@
-class Requirement < ActiveRecord::Base
+class Calling < ActiveRecord::Base
   belongs_to :publisher, :class_name => "User", :foreign_key => :publisher_id
   belongs_to :venue
   belongs_to :action

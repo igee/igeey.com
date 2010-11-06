@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
                             
   has_many :records
   has_many :plans
-  has_many :requirements,   :foreign_key => :publisher_id
+  has_many :callings,   :foreign_key => :publisher_id
   has_many :venues,         :foreign_key => :creator_id
   has_many :comments
   has_many :photos
@@ -90,12 +90,12 @@ class User < ActiveRecord::Base
     self.plans.where(:has_new_comment => true).present?
   end
   
-  def has_unread_requirement_comment?
-    self.requirements.where(:has_new_comment => true).present?
+  def has_unread_calling_comment?
+    self.callings.where(:has_new_comment => true).present?
   end
   
   def has_unread_comment?
-    has_unread_requirement_comment? || has_unread_plan_comment? || has_unread_plan_comment?
+    has_unread_calling_comment? || has_unread_plan_comment? || has_unread_plan_comment?
   end
   
   # Use OAuth::AccessToken to access oauth api. powered by oauth_side 

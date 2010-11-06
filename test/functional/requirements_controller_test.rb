@@ -1,15 +1,15 @@
 require 'test_helper'
 
-class RequirementsControllerTest < ActionController::TestCase
+class callingsControllerTest < ActionController::TestCase
   setup do
-    @requirement = requirements(:one)
+    @calling = callings(:one)
     current_user = users(:quentin)
   end
 
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:requirements)
+    assert_not_nil assigns(:callings)
   end
 
   test "should get new" do
@@ -17,34 +17,34 @@ class RequirementsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create requirement" do
-    assert_difference('Requirement.count') do
-      post :create, :requirement => @requirement.attributes
+  test "should create calling" do
+    assert_difference('calling.count') do
+      post :create, :calling => @calling.attributes
     end
 
-    assert_redirected_to requirement_path(assigns(:requirement))
+    assert_redirected_to calling_path(assigns(:calling))
   end
 
-  test "should show requirement" do
-    get :show, :id => @requirement.to_param
+  test "should show calling" do
+    get :show, :id => @calling.to_param
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, :id => @requirement.to_param
+    get :edit, :id => @calling.to_param
     assert_response :success
   end
 
-  test "should update requirement" do
-    put :update, :id => @requirement.to_param, :requirement => @requirement.attributes
-    assert_redirected_to requirement_path(assigns(:requirement))
+  test "should update calling" do
+    put :update, :id => @calling.to_param, :calling => @calling.attributes
+    assert_redirected_to calling_path(assigns(:calling))
   end
 
-  test "should destroy requirement" do
-    assert_difference('Requirement.count', -1) do
-      delete :destroy, :id => @requirement.to_param
+  test "should destroy calling" do
+    assert_difference('calling.count', -1) do
+      delete :destroy, :id => @calling.to_param
     end
 
-    assert_redirected_to requirements_path
+    assert_redirected_to callings_path
   end
 end

@@ -35,7 +35,7 @@ module AuthenticatedSystem
       logged_in?
     end
 
-    # Filter method to enforce a login requirement.
+    # Filter method to enforce a login Calling.
     #
     # To require logins for all actions, use this in your controllers:
     #

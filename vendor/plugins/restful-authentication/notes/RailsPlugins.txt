@@ -14,9 +14,9 @@ From
 
 * http://github.com/jbarket/restful-authorization/tree/master
 
-* http://agilewebdevelopment.com/plugins/rolerequirement
-  http://code.google.com/p/rolerequirement/
-  http://rolerequirement.googlecode.com/svn/tags/role_requirement/
+* http://agilewebdevelopment.com/plugins/rolecalling
+  http://code.google.com/p/rolecalling/
+  http://rolecalling.googlecode.com/svn/tags/role_calling/
   9 votes
 
 * http://github.com/ezmobius/acl_system2/

@@ -1,6 +1,6 @@
 <h2><%= @venue.name %>需要什么帮助？</h2>
 <p>
 <% @actions.each do |a| %>
-  <%= link_to(a.name,"#{new_requirement_path()}?venue_id=#{@venue.id}&action_id=#{a.id}",:class => "big_button") %>
+  <%= link_to(a.name,"#{new_calling_path()}?venue_id=#{@venue.id}&action_id=#{a.id}",:class => "big_button") %>
 <% end %>
 </p>

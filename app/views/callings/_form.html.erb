@@ -1,17 +1,17 @@
-<%= form_for @requirement do |form| %>
-  <%= raw error_explanation_for(@requirement) if @requirement.errors.present?%>
+<%= form_for @calling do |form| %>
+  <%= raw error_explanation_for(@calling) if @calling.errors.present?%>
   <%= form.hidden_field :action_id %>
   <%= form.hidden_field :venue_id %>
   <%= render :partial => '/public/user' ,:object => current_user ,:locals => {:with_name => true}%>
   <div class="saying">
     <div class="saying_colon" style="text-align:left;margin-bottom:-10px;margin-left:-20px">“</div>
     <p>
-      <%="#{@requirement.venue.name}"%>需要
-      <% if @requirement.action.for_what == 'money' %>
+      <%="#{@calling.venue.name}"%>需要
+      <% if @calling.action.for_what == 'money' %>
         总计<%= form.text_field :total_money, :size => 4,:placeholder => "多少"%>元用于<%= form.text_field :donate_for ,:size => 10 ,:placeholder => "用来做什么？"%>。            
-      <% elsif @requirement.action.for_what == 'goods'%>
+      <% elsif @calling.action.for_what == 'goods'%>
         总计<%= form.text_field :total_goods, :size => 6 ,:placeholder => "多少"%>件<%= form.text_field :goods_is, :size => 8,:placeholder => "物资名称"%>。
-      <% elsif @requirement.action.for_what == 'time'%>
+      <% elsif @calling.action.for_what == 'time'%>
         总计 <%= form.text_field :total_people, :size => 4, :placeholder => "多少" %> 人 <%= form.text_field :do_what, :size => 8,:placeholder => "做什么？"%>。
       <% end %>
       <br/>
@@ -33,12 +33,12 @@
       <%= raw sync_form_tag(form)%>
     </p>
     <%= form.submit '确定',:class => 'button'%>
-    <%= button_to_function '取消',"javascript:window.location='#{venue_path(@requirement.venue)}'",:class => "button"%>
+    <%= button_to_function '取消',"javascript:window.location='#{venue_path(@calling.venue)}'",:class => "button"%>
   </div>
 
   <script type="text/javascript">
       function updateCount() {
-      document.getElementById("character_counter").innerHTML = document.getElementById("requirement_detail").value.length;
+      document.getElementById("character_counter").innerHTML = document.getElementById("calling_detail").value.length;
       setTimeout(updateCount, 400);
        }
       updateCount();

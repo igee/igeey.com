@@ -346,7 +346,7 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
   margin-left:-19px;
   }
 
-.event_type[title="requirement"]{background-color:#d6ffd6;border-color:#bfb}
+.event_type[title="calling"]{background-color:#d6ffd6;border-color:#bfb}
 .event_type[title="record"]{background-color:#ffd6d6;border-color:#fbb}
 .event_type[title="plan"]{background-color:#d6d6ff;border-color:#bbf}
 
