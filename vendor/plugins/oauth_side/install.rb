@@ -19,12 +19,10 @@ def copy from,to,prefix=''
 end
 
 begin
-  oauth_dir="#{Rails.root.to_s}/config/oauth"
-  assets_dir="#{File.dirname(__FILE__)}/assets"
   #1. 在 config 目录下添加一个 oauth 目录，用于存放各个网站的 oauth 配置信息
-  mkdir oauth_dir
+  mkdir "#{Rails.root.to_s}/config/oauth"
   #2. 添加一个名为 OauthToken 的模型，用于存放用户的临时凭证（request token）和令牌凭证（access token）
-  copy "#{assets_dir}/create_oauth_tokens.rb", "#{Rails.root.to_s}/db/migrate/", Time.new.strftime('%Y%m%d%H%M%S')+"_"
+  copy "#{File.dirname(__FILE__)}/assets/create_oauth_tokens.rb", "#{Rails.root.to_s}/db/migrate/", Time.new.strftime('%Y%m%d%H%M%S')+"_"
 rescue Exception => e
   $stderr.puts e.message
 end

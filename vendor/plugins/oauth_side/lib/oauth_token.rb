@@ -1,4 +1,3 @@
-require 'oauth/consumer'
 class OauthToken < ActiveRecord::Base
 
   attr_accessor :site_config
@@ -31,11 +30,7 @@ class OauthToken < ActiveRecord::Base
 
   # 获取访问授权信息，从这里开始系统就可以提供对用户的服务了
   def authorize oauth_verifier = nil
-    if oauth_verifier
-      @access = request_token.get_access_token :oauth_verifier => oauth_verifier
-    else
-      @access = request_token.get_access_token :oauth_verifier => oauth_verifier
-    end
+    @access = request_token.get_access_token :oauth_verifier => oauth_verifier
     update_attributes :access_key => @access.token, :access_secret => @access.secret
     @access
   end
