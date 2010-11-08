@@ -1,14 +1,21 @@
-<div class="intro_box">
-  <h4>记录做过的公益行动</h4>
-  <p class="explanation">公益需要被记录和传播，记录下自己做过的事情..balabala</p>
-</div>
+<h2>选择你行动服务的聚点：</h2>
+<div id="tabContaier">
+  <ul>
+    <li><%= link_to '全部聚点','#all_venues'%></li>
+    <li><%= link_to '我关注的','#followed_venues'%></a></li>
+    <li><%= link_to '我的城市','#city_venues'%></a></li>
+  </ul>
   
-<div class="box">
-  <h4>你要记录的行动属于哪种类型？</h4>
-  <p>
-    <% @actions.each do |a| %>
-      <%= link_to(a.name,"#{new_record_path()}?action_id=#{a.id}",:class => "action_button") %>
-    <% end %>
-  </p>
-</div>
+  <div id="all_venues" class="tabContents">
+    <%= render :partial => '/records/venue', :collection => @all_venues %>
+  </div>
   
+  <div id="followed_venues" class="tabContents">
+    <%= render :partial => '/records/venue', :collection => @followed_venues %>
+  </div>
+  
+  <div id="city_venues" class="tabContents">
+    <%= render :partial => '/records/venue', :collection => @city_venues %>
+  </div>
+  
+</div>

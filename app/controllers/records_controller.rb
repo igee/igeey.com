@@ -8,16 +8,28 @@ class RecordsController < ApplicationController
     @actions = Action.all
   end
   
-  def new    
+  def new
     @record = current_user.records.build(:action_id => params[:action_id],:venue_id => params[:venue_id],:plan_id => params[:plan_id])
     @plan = @record.plan
+    
+    if @plan.nil? && @record.action.nil?
+      @actions = Action.all
+      @venue = Venue.find(params[:venue_id])
+      render :select_action
+    end
+    
+    if @plan.nil? && @record.venue.nil?
+      @action = Action.find params[:action_id]
+      @followed_venues = current_user.followings.where(:followable_type => 'Venue').map(&:followable)
+      @city_venues = current_user.geo.venues if current_user.geo
+      @all_venues = Venue.all
+      render :select_venue
+    end
+    
     @calling = @plan.nil? ? @record.calling : @plan.calling
     @venue = @calling.nil? ? @record.venue : @calling.venue
     @action = @calling.nil? ? @record.action : @calling.action
     @record = Record.new(:action => @action,:venue => @venue,:calling => @calling,:plan => @plan)
-    if @venue.nil? 
-      @venues = Venue.all
-    end    
   end
   
   def create
@@ -40,6 +52,10 @@ class RecordsController < ApplicationController
     @comments = @record.comments
     @photo = Photo.new
     @photos = @record.photos
+  end
+  
+  def select_venue
+    
   end
   
   private

@@ -1,0 +1,6 @@
+<div class="venue">
+  <%= link_to image_tag(venue.cover.url(:_80x60),:class => "venue_thumb_cover"),"#{new_record_path}?action_id=#{@action.id}&venue_id=#{venue.id}" %>
+  <br/>
+  <span><%= link_to venue.name ,"#{new_record_path}?action_id=#{@action.id}&venue_id=#{venue.id}"%></span>
+</div>
+  

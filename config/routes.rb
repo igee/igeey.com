@@ -20,7 +20,6 @@ Igee::Application.routes.draw do
 
   resources :venues do
     member do
-      get :have_done
       get :cover
       get :select_calling_action
     end
@@ -35,7 +34,11 @@ Igee::Application.routes.draw do
     end
   end
   
-  resources :records
+  resources :records do
+    get   :select_venue ,:on => :collection
+    get   :select_action ,:on => :collection
+  end
+  
   resources :geos do
     get   :list ,:on => :collection
   end
