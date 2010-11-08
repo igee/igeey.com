@@ -2,13 +2,16 @@ one:
   id:        1
   name:      '志愿服务'
   for_what:  'time'
+  slug:      'volunteer_service'
 
 two:
   id:        2
   name:      '捐款'
   for_what:  'money'
+  slug:      'money_donation'
 
 three:
   id:        3
   name:      '捐物'
   for_what:  'goods'
+  slug:      'goods_donation'

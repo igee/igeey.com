@@ -22,15 +22,15 @@
     <div class="container" id="nav">
       <%= link_to image_tag('/images/logo.png'), root_path,:id => 'logo' %>
       <ul id="nav_links">
-        <li><%= link_to '首页',root_path%></li>
-        <li><%= link_to '地图',geos_path%></li>
+        <li><%= link_to '首页',root_path,:class => "#{'selected' if controller_name == 'site'}"%></li>
+        <li><%= link_to '地图',geos_path,:class => "#{'selected' if controller_name == 'geos'}"%></li>
         <% if logged_in? %>
-        <li><%= link_to '我的主页',user_path(current_user)%></li>
+        <li><%= link_to '我的主页',user_path(current_user),:class => "#{'selected' if controller_name == 'users'}"%></li>
         <% end %>
       </ul>
       <div id="login_state">
         <% if logged_in? %>
-          <span>欢迎,<%= current_user.login %></span>
+          <span>欢迎,<%= current_user.login %>　</span>
           <%= link_to '设置',setting_path%> |
           <%= link_to "退出",logout_path %>
         <% else %>

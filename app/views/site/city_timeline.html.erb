@@ -1,0 +1,17 @@
+  <%= render :partial => 'public/event', :collection => @city_timeline %>
+  
+  <p>
+    <%= raw "你还没有设置自己的城市。<br/>快去#{link_to '设置',setting_path}吧。" if @geo.nil? %>
+    <%= raw "你关注的城市还没有新信息。" if @geo.present? && @city_timeline.empty? %>
+  </p>
+
+  <script type="text/javascript">
+    $(".event_box").hover(
+      function () {
+        $(this).addClass("hover");
+      },
+      function () {
+        $(this).removeClass("hover");
+      }
+    );
+  </script>

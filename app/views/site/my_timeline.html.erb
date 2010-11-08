@@ -1,8 +1,8 @@
   <%= render :partial => 'public/event', :collection => @my_timeline %>
   
   <p>
-    <%= raw "你还没有关注过任何聚点和用户。<br/>快去关注你的朋友、还有你身边的聚点吧。" if @my_followings.empty? %>
-    <%= raw "你关注的聚点和用户还没有新信息。" if !@my_followings.empty? && @my_timeline.empty? %>
+    <%= raw "你还没有关注过任何聚点和用户。<br/>去#{link_to '探索',geos_path}并关注你的朋友、还有你身边的聚点吧。" if @my_followings.empty? %>
+    <%= raw "你关注的聚点和用户还没有新信息。" if @my_followings.present? && @my_timeline.empty? %>
   </p>
   
   <script type="text/javascript">

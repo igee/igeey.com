@@ -1,14 +1,14 @@
 body{
   font-size:14px;
   background-color:#c3e0ff;
-  color:#606060
+  color:#555
   }
 
 body,h1{margin:0}
 
 h3,h4,h5,h6{
-    margin:0.4em 0;
-    color:#999;
+    margin:0.5em 0;
+    color:#666;
     }
     
 #sidebar h3,#sidebar h4,#sidebar h5{color:#469}    
@@ -18,12 +18,15 @@ ul,dl{
     line-height:1.7em;
     padding:0;
     }
+
+li{list-style:none}
+    
 p{
   line-height:1.9em;
   margin:6px 0;}
 
 span{
-  color:#808080;
+  color:#888;
   font-size:12px;
 }
 
@@ -36,7 +39,7 @@ a{
 
 a:hover{color:#f63}
 
-input[type="text_field"]{
+input[type="text_field"],input[type="text"],input[type="password"]{
     text-decoration:none;
     border:1px solid #bbb;
     margin:0px 4px;
@@ -65,6 +68,23 @@ input:focus{background-color:#ffffc0;outline:none;border:1px solid #e95}
 
 img{border:none;}
 
+.action_button{
+  display:block;
+  float:left;
+  text-align:center;
+  color:#fff;
+  font-size:16px;
+  width:90px;
+  padding:30px 0;
+  height:30px;
+  margin:6px;
+  background-color:#d75;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  }
+
+.action_button:hover{color:#fff;background-color:#e86;}
+
 .title{
     font-size:16px;
     }
@@ -86,14 +106,14 @@ button,.button{
     text-align:center;
     margin:5px;
     color:white;
-    font-size:15px;
+    font-size:14px;
     font-weight:bold;
     font-family:sans-serif;
-    background-color:#333;
-    padding:4px 16px;
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    border:none;
+    background-color:#d75;
+    padding:2px 12px;
+    border:1px solid #a64;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
     cursor:pointer;
 }
 
@@ -105,15 +125,15 @@ button,.button{
     font-size:18px;
     font-family:sans-serif;
     font-weight:bold;
-    background-color:#333;
-    padding:16px 12px;
+    background-color:#d75;
+    padding:12px 18px;
+    border:2px solid #a64;
     border-radius: 8px;
     -moz-border-radius: 8px;
-    border:none;
     cursor:pointer;
 }
 
-button:hover,.button:hover,.big_button:hover{background:#c00}
+button:hover,.button:hover,.big_button:hover{background:#c42;color:white;}
 
 .dialog_rightbar{
   float:right;
@@ -144,6 +164,8 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
 .field_with_errors{
   display:inline;
   }
+
+.field_with_errors input{border-color:#f33;}
 
 #error_explanation{
   text-align:center;
@@ -185,7 +207,7 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
   }
 
 .guide a:hover{
-  background-color:#ff6633;
+  background-color:#e74;
   color:#fff;
   }
 
@@ -197,29 +219,6 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
   position:relative;
   top:2px;
   }
-
-.radio_button{
-    color:#888;
-    font-size:13px;
-    list-style:none;
-    display:inline;
-    padding:2px 8px;
-    margin:0 5px;
-    border-radius: 3px;
-    -moz-border-radius: 3px;
-    background-color:#ccc;
-    cursor:pointer;
-}
-
-.radio_button:hover{
-    background-color:#d80;
-    color:white
-    }
-
-.selected {
-    background-color:#c60;
-    color:white
-    }
     
 .user{
     float:left;
@@ -270,7 +269,7 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
 .saying{
   float:right;
   width:450px;
-  background-color:#ececf3;
+  background-color:#e6e6f0;
   color:#505050;
   -moz-border-radius: 10px;
   border-radius: 10px;
@@ -288,11 +287,25 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
   height:72px;
 }
 
-.saying_colon{
-  font-size:30px;
+.saying_colon_left{
   font-family:'times new roman';
   color:#999;
+  text-align:left;
+  margin-bottom:-15px;
+  margin-left:-20px;
+  font-size:30px;
   }
+
+
+.saying_colon_right{
+  font-family:'times new roman';
+  color:#999;
+  text-align:right;
+  margin-top:-15px;
+  margin-right:-20px;
+  font-size:30px;
+  }
+
 
 .impact{
   margin:0;
@@ -306,7 +319,7 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
 
 .comment p{
     width:490px;
-    background-color:#ececf3;
+    background-color:#e6e6f0;
     color:#505050;
     -moz-border-radius: 6px;
     border-radius: 6px;
@@ -340,9 +353,9 @@ button:hover,.button:hover,.big_button:hover{background:#c00}
 
 .event_type{
   position:absolute;
-  width:14px;
+  width:16px;
   height:86px;
-  border-left:2px solid #fff;
+  border-left:3px solid #fff;
   margin-left:-19px;
   }
 
@@ -398,6 +411,28 @@ input.todo:hover{
   height:60px;
   }
 
+.setting_box,.profile_box,.intro_box{
+  padding:10px 20px;
+  margin:10px 0 20px;
+  clear:both;
+  border-bottom:2px solid;
+  border-top:2px solid;
+  }
+
+.setting_box{
+  background-color:#eef;
+  border-color:#ddf;
+  }
+
+.intro_box{
+  background-color:#dfd;
+  border-color:#cec;}
+
+.profile_box{
+  background-color:#ffc;
+  border-color:#fea;
+  }
+
 
 a#logo{
   padding:0px 5px 10px;
@@ -409,9 +444,18 @@ a#logo{
     border:none;
     }
 
-#login_state{float:right;padding:8px}
+#login_state{
+  float:right;
+  padding:6px 12px;
+  color:#fdc;
+  background-color:#c75;
+  margin-right:4px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  -moz-border-radius: 0 0 5px 5px;}
 
-#login_state a{color:#269}
+#login_state a{color:#fff}
+#login_state span{color:#fdc}
     
 #header{
     height:74px;
@@ -437,7 +481,7 @@ a#logo{
   height:74px;
   }
 
-#content .container{background:url('/images/background.png') repeat-y;}
+#content .container{background:#fff url('/images/background.png') repeat-y;}
 
 #footer .container{background:url('/images/shoes.png') no-repeat;height:48px}
 
@@ -450,19 +494,24 @@ a#logo{
 
 #nav_links{
   float:left;
-  margin:40px 36px 0;
+  margin:44px 40px 0;
   }
 
 #nav_links li{
-  text-decoration:none;
-  list-style:none;
   float:left;
-  color:white;
-  margin:0 15px;
-  font-weight:bold;
 }
 
-#nav_links a{color:#fff}
+#nav_links a{
+  color:white;
+  font-weight:bold;
+  padding:6px 16px;
+  }
+
+#nav_links a.selected{
+  border-top:2px solid #55aaff;
+  padding:4px 16px 6px;
+  background-color:#6091c9
+  }
 
 #footer_links{
   float:left;
@@ -481,7 +530,7 @@ a#logo{
 }
 
 
-#record_counters{float:left;}
+#record_counters{float:right;}
 
 #upload_photo{
   background-color:#f0f0f0;

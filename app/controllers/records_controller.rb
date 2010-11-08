@@ -4,6 +4,10 @@ class RecordsController < ApplicationController
   before_filter :find_record, :except => [:index,:new,:create]
   after_filter :clean_unread, :only => [:show]
   
+  def index
+    @actions = Action.all
+  end
+  
   def new    
     @record = current_user.records.build(:action_id => params[:action_id],:venue_id => params[:venue_id],:plan_id => params[:plan_id])
     @plan = @record.plan
@@ -13,7 +17,6 @@ class RecordsController < ApplicationController
     @record = Record.new(:action => @action,:venue => @venue,:calling => @calling,:plan => @plan)
     if @venue.nil? 
       @venues = Venue.all
-      render "select_venue"
     end    
   end
   

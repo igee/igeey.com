@@ -1,34 +1,39 @@
 <h2>用户设置</h2>
-<%= error_messages_for @user %>
-<div class="box">
-  <h4>设置头像：</h4>
+
+<div class="setting_box">
+  <h4>一 与你的社区帐号连接：</h4>
+    <span>通过链接你的社区帐号，可以很方便的把你的公益行动告诉你的朋友。</span>
+    <br/>
+  <ul style="line-height:36px;margin-top:10px">
+    <li><%= image_tag "/images/icon/douban#{'_gary' unless @user.douban?}.gif",:class=> 'icon'%> <%= @user.douban? ? '豆瓣连接成功' : '还没有和豆瓣链接'%> <%= link_to('立即连接',:controller => 'oauth', :action => 'douban') unless @user.douban?%></li>
+    <li><%= image_tag "/images/icon/sina#{'_gary' unless @user.sina?}.gif",:class=> 'icon'%> <%= @user.sina? ? '新浪微博连接成功' : '还没有和新浪微博连接'%> <%= link_to('立即连接',:controller => 'oauth', :action => 'sina') unless @user.sina?%></li>
+  </ul>
+</div>
+
+<div class="setting_box">
+  <h4 class="setting_title">二 设置头像：</h4>
+  <span>有个拉风的头像，做公益才更带劲。</span><br/><br/>
   <%= form_for @user, :html => { :multipart => true } do |form| -%>
-  <div style="float:right;width:540px">
+  <div style="float:right;width:500px">
     <p>
     <%= form.file_field :avatar,:style => "background:none;border:none;font-size:13px" %>
     </p>
-    <p><%= submit_tag '更换', :class => 'button' %></p>
+    <p><%= submit_tag '确定', :class => 'button' %></p>
   </div>
   <%= image_tag @user.avatar.url(:_72x72),:class => "avatar" %>
   <% end -%>
 </div>
 
-<div class="box">
-  <h4>你的居住城市：</h4>
+<div class="setting_box">
+  <h4 class="setting_title">三 个性化信息：</h4>
   <%= form_for @user do |form| -%>
-    <span>设置你的城市后，我们能更容易的筛选出与你相关的信息。</span>
+    <br/> 
+    <%= form.label :geo_id,'所在城市'%> <%= form.select :geo_id, nested_set_options(Geo) {|i| "#{'-' * i.level} #{i.name}" } %>
     <br/>
-    <%= form.select :geo_id,geo_list %>
-    <%= form.submit '设置', :class => 'button' %>
+    <br/>
+    <%= form.label :signature,'个性签名'%> <%= form.text_field :signature,:size => 20 %>
+    <br/>
+    <br/>
+    <%= form.submit '确定', :class => 'button' %>
   <% end -%>
-</div>
-
-<div class="box">
-  <h4>与你的社区帐号设置消息同步：</h4>
-    <span>通过信息同步，可以很方便的把你的公益行动告诉你的朋友。</span>
-    <br/>
-  <ul>
-    <li><%= @user.douban? ? '已经和豆瓣连接了' : link_to('连接豆瓣',:controller => 'oauth', :action => 'douban')%></li>
-    <li><%= @user.sina? ? '已经和新浪微博连接了' : link_to('连接新浪微博',:controller => 'oauth', :action => 'sina')%></li>
-  </ul>
 </div>

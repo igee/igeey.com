@@ -12,6 +12,7 @@ Igee::Application.routes.draw do
   
   match 'unread_comments' => 'site#unread_comments'
   match 'my_timeline' => 'site#my_timeline'
+  match 'city_timeline' => 'site#city_timeline'
   match 'oauth(/:action)' => 'oauth#(/:action)'
   match 'setting' => 'users#edit'
   
@@ -21,7 +22,7 @@ Igee::Application.routes.draw do
     member do
       get :have_done
       get :cover
-      get :publish_calling
+      get :select_calling_action
     end
   end
 
@@ -29,7 +30,8 @@ Igee::Application.routes.draw do
   
   resources :callings do
     get   :next_step ,:on => :collection
-    resources :plans do 
+    resources :plans do
+      get   :duplicate ,:on => :member
     end
   end
   

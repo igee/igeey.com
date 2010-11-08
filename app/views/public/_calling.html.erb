@@ -1,19 +1,19 @@
 <div class="event_type" title='calling'></div>
 <div class="event_box">
-  <%= render :partial => '/public/user', :object => Calling.publisher %>
+  <%= render :partial => '/public/user', :object => calling.user %>
   <div class="event">
     <div class="event_panel">
       <%= link_to '了解更多' ,calling%> &raquo; 
     </div>
     <p>
       <span style="font-size:20px;font-family:'times new roman';color:#999">“</span>
-          <%= Calling.description%>
+          <%= "#{calling.user.login}#{calling.description}"%>
       <span style="font-size:20px;font-family:'times new roman';color:#999">”</span>
     </p>
     <div class="addition">
       <span>
-        <%= Calling.users_count.zero? ? '还没有人参与' : "已有#{calling.users_count}人参与" %>
-        <%= '(你已参与)' if logged_in? && Calling.plans.map(&:user_id).include?(current_user.id) %>
+        <%= calling.users_count.zero? ? '还没有人参与' : "已有#{calling.users_count}人参与" %>
+        <%= '(你已参与)' if logged_in? && calling.plans.map(&:user_id).include?(current_user.id) %>
       </span>
     </div>
   </div>

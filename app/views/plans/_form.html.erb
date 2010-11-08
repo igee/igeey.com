@@ -7,20 +7,21 @@
     <%= form.hidden_field :calling_id %>
     <%= render :partial => '/public/user' ,:object => current_user ,:locals => {:with_name => true}%>
       <div class="saying" style="width:360px">
-          <div class="saying_colon" style="text-align:left;margin-bottom:-10px;margin-left:-20px">“</div>
+          <div class="saying_colon_left">“</div>
           <p>
-            <%= "我要为#{@venue.name}"%><%= @action.name %>:
+            <%= @parent.nil? ? "我要响应#{@calling.user.login}的号召：" : "我要跟随#{@parent.user.login}："%>
             <% if @action.for_what == 'money' %>
-              <%= form.text_field :money, :size => 4 %>元<%= "用于#{@calling.donate_for}" %>。
+              <%= "为#{@venue.name}捐款。"%><br/>
+              要捐多少(元)？<%= form.text_field :money, :size => 4 ,:placeholder => '金额'%>。
             <% elsif @action.for_what == 'goods'%>
-              <%= form.text_field :goods, :size => 4 %>件<%= @calling.goods_is %>。
+              <%= "为#{@venue.name}捐#{@calling.goods_is}。"%><br/>
+              要捐多少件？<%= form.text_field :goods, :size => 4 ,:placeholder => '数量'%>
             <% elsif @action.for_what == 'time'%>
-              <%= @calling.do_what %>
-              <br/>
-              日期计划是<%= form.text_field :plan_at, :size => 8,:class => 'with_calendar',:placeholder => "yyyy-mm-dd"%>。
+              <%= "去#{@venue.name}#{@calling.do_what}。"%><br/>
+              在哪天呢？<%= form.text_field :plan_at, :size => 8,:class => 'with_calendar',:placeholder => "yyyy-mm-dd"%>。
             <% end %>
           </p>
-          <div class="saying_colon" style="text-align:right;margin-top:-10px;margin-right:-20px">”</div>
+          <div class="saying_colon_right">”</div>
       </div>
       <div class="saying_tail"></div>
     </div>

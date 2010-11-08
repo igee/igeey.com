@@ -10,6 +10,7 @@
     <li><%= link_to '正在发生','#public_timeline'%></a></li>
     <li><%= link_to '已经完成','#record_timeline'%></a></li>
     <li><%= link_to '我的关注','#my_timeline',:id => 'my_timeline_tab' if logged_in?%></li>
+    <li><%= link_to '我的城市','#city_timeline',:id => 'city_timeline_tab' if logged_in?%></li>
   </ul>
   
   <div id="public_timeline" class="tabContents">
@@ -21,6 +22,10 @@
   </div>
   
   <div id="my_timeline" class="tabContents">
+    <p>读取中...</p>
+  </div>
+  
+  <div id="city_timeline" class="tabContents">
     <p>读取中...</p>
   </div>
 </div>
@@ -48,7 +53,7 @@
   <div class="box">
     <div class="guide">
       <div>
-        <%= link_to "记录做过的公益行动",new_record_path%>
+        <%= link_to "记录做过的公益行动",records_path%>
       </div>
       <p>留下一点一滴的公益回忆，汇集成自己的公益档案。</p>
     </div>
@@ -62,7 +67,7 @@
       <div>
         <%= link_to "探索爱聚的世界",geos_path%>
       </div>
-      <p>发现和提交新的聚点，更新聚点的的需求，以及更多..</p>
+      <p>发现和提交新的聚点，为聚点的号召行动，以及更多..</p>
     </div>
   </div>
 <% end %>
@@ -72,6 +77,11 @@
     $('#my_timeline_tab').click(function(){
       $.get('<%= my_timeline_path%>',function(data){
         $('#my_timeline').html(data)
+      })
+    })
+    $('#city_timeline_tab').click(function(){
+      $.get('<%= city_timeline_path%>',function(data){
+        $('#city_timeline').html(data)
       })
     })
     

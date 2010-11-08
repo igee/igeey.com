@@ -46,6 +46,8 @@ class UsersController < ApplicationController
     @records = @user.records
     @plans = @user.plans.undone
     @followers = @user.followers
+    @followed_users = @user.followings.where(:followable_type => 'User').map(&:followable)
+    @followed_venues = @user.followings.where(:followable_type => 'Venue').map(&:followable)
     @photos = @user.photos
   end
   

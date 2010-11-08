@@ -34,7 +34,7 @@ class CallingsController < ApplicationController
   def create
     @calling = current_user.callings.build(params[:calling])
     if @calling.save
-      @oauth_message = "(这是oauth同步测试）我在爱聚网站发布了新的公益需求： #{@calling.description}  #{calling_url(@calling)}"
+      @oauth_message = "(这是oauth同步测试) 我#{@calling.description}  #{calling_url(@calling)}"
       current_user.send_to_miniblogs( @oauth_message,
                                       :to_douban => (@calling.sync_to_douban && current_user.douban?),
                                       :to_sina => (@calling.sync_to_douban && current_user.sina?)
@@ -62,7 +62,7 @@ class CallingsController < ApplicationController
   end
   
   def clean_unread
-    @calling.update_attribute(:has_new_comment,false) if @calling.publisher == current_user
+    @calling.update_attribute(:has_new_comment,false) if @calling.user == current_user
   end
   
 end

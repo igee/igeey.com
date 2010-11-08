@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   add_oauth  # add dynamic method for confirmation of oauth status
   
   belongs_to  :geo
-  belongs_to  :publisher,   :class_name => :user,:foreign_key => :publisher_id
+  belongs_to  :user,   :class_name => :user,:foreign_key => :user_id
   has_attached_file :avatar,:styles => {:_48x48 => ["48x48#",:png],:_72x72 => ["72x72#",:png]},
                             :default_url=>"/defaults/:attachment/:style.png",
                             :default_style=> :_48x48,
@@ -16,14 +16,14 @@ class User < ActiveRecord::Base
                             
   has_many :records
   has_many :plans
-  has_many :callings,   :foreign_key => :publisher_id
+  has_many :callings,   :foreign_key => :user_id
   has_many :venues,         :foreign_key => :creator_id
   has_many :comments
   has_many :photos
   has_many :followings,     :class_name => "Follow",:foreign_key => :user_id
   has_many :follows,        :as => :followable, :dependent => :destroy
   has_many :followers,      :through => :follows, :source => :user
-
+  
   scope :popular,order('follows_count DESC')
 
   validates :login, :uniqueness => true,
@@ -43,7 +43,8 @@ class User < ActiveRecord::Base
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
-  attr_accessible :login, :email, :name, :password, :password_confirmation,:avatar,:avatar_file_name,:geo_id
+  
+  attr_accessible :login, :email, :name, :password, :password_confirmation,:avatar,:avatar_file_name,:geo_id,:signature
 
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.

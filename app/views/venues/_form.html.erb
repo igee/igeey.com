@@ -1,7 +1,7 @@
 <%= form_for @venue,:html => { :multipart => true } do |form| %>
   <div>
     <p>
-      <%= form.label :name,'聚点名称：'%> <%= form.text_field :name, :size => 24, :class => "underline title", :placeholder => "例如：XX社区，XX村"%>
+      <%= form.label :name,'聚点名称：'%> <%= form.text_field :name, :size => 24, :class => "title", :placeholder => "例如：XX社区，XX村"%>
       <br/>
       类型：<%= form.select :category ,Venue::CATEGORIES_HASH.invert.to_a.sort_by{|value| value[1]}%>
       <br/>
@@ -9,7 +9,7 @@
       <br/>
       <%= form.label :intro,'简介：'%>
       <br/>
-      <%= form.text_area :intro, :cols => 36, :rows => 5,:class => "underline",:placeholder => "为聚点写篇140字以内的简介吧"%>
+      <%= form.text_area :intro, :cols => 36, :rows => 5,:placeholder => "为聚点写篇140字以内的简介吧"%>
       <%= form.hidden_field :latitude %>
       <%= form.hidden_field :longitude %>
       <%= form.submit '填写好了，提交',:class => "button"%>

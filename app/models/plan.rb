@@ -3,10 +3,11 @@ class Plan < ActiveRecord::Base
   belongs_to :action
   belongs_to :calling
   belongs_to :user
-  belongs_to :parent,:class_name => "Plan",:foreign_key => "parent_id"
+  belongs_to :parent,:class_name => :plan,:foreign_key => :parent_id
   has_one    :record
   has_many   :comments, :as => :commentable, :dependent => :destroy
   has_many   :plans
+  has_many   :children, :class_name => :plan ,:foreign_key => :parent_id
   
   attr_accessor :sync_to_sina,:sync_to_douban,:sync_to_renren
   
@@ -21,6 +22,7 @@ class Plan < ActiveRecord::Base
   
   def validate
     errors[:number] = '数量必须为大于0的整数' unless ((money.to_i > 0) && for_what == 'money') || ((goods.to_i > 0) && for_what == 'goods') || (for_what == 'time')
+    errors[:plan_at] = '请填写你计划日期' if (for_what == 'time') && plan_at.nil?
   end
   
   def formatted_plan_at

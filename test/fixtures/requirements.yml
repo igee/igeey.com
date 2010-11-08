@@ -5,7 +5,7 @@
 # below each fixture, per the syntax in the comments below
 one:
   action_id:     1
-  publisher_id:  1
+  user_id:  1
   venue_id:      1
   total_money:   1
   total_people:  1

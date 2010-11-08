@@ -18,10 +18,13 @@ class Record < ActiveRecord::Base
   validates :done_at,:date => {:before_or_equal_to => Date.today.to_date}
   
   def validate
-    if (money && donate_for && (for_what == 'money')) || (goods && goods_is && for_what == 'goods') || (time && do_what && for_what == 'time')
+    if (money.present? && donate_for.present? && (for_what == 'money')) || \
+       (goods.present? && goods_is.present? && for_what == 'goods') || \
+       (time.present? && do_what.present? && for_what == 'time')
+      
       errors[:number] << '数量必须为大于0的整数' unless number > 0
     else
-      errors[:info] << '请将需求信息填写完整' 
+      errors[:info] << '请将时记录信息填写完整' 
     end
     if plan.present? && plan.is_done
       errors[:info] <<  '你已经完成了这个计划' 

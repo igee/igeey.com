@@ -1,6 +1,6 @@
 <% if @callings.present? %>  
   <div class="box">
-    <h4>以下需求有新留言：<h4>
+    <h4>以下号召有了新留言：<h4>
     <%= render :partial => "/public/calling" ,:collection => @callings %>
   </div>
 <% end %>
@@ -14,7 +14,7 @@
 
 <% if @records.present? %>  
   <div class="box">
-    <h4>有新留言给你的需求:<h4>
+    <h4>以下行动记录有了新留言:<h4>
     <%= render :partial => "/public/record" ,:collection => @records %>
   </div>
 <% end %>

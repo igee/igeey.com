@@ -13,9 +13,10 @@
 ActiveRecord::Schema.define() do
 
   create_table "actions", :force => true do |t|
-    t.string  :name,       :limit => 40
-    t.text    :intro
+    t.string  :name,        :limit => 40
+    t.string  :slug,        :limit => 40
     t.string  :for_what,    :limit => 40
+    t.text    :intro
   end
 
 
@@ -75,11 +76,7 @@ ActiveRecord::Schema.define() do
     t.string   :photo_file_name
     t.timestamps
   end
-
-  create_table "profiles", :force => true do |t|
-    t.integer :user_id
-  end
-
+  
   create_table "records", :force => true do |t|
     t.integer  :user_id
     t.integer  :venue_id
@@ -94,6 +91,7 @@ ActiveRecord::Schema.define() do
     t.integer  :time
     t.string   :do_what,     :limit => 40
     t.datetime :done_at
+    t.text     :detail
     t.boolean  :has_new_comment,  :default => false
     t.boolean  :has_photo,  :default => false
     t.timestamps
@@ -112,6 +110,7 @@ ActiveRecord::Schema.define() do
     t.integer  :follows_count,           :default => 0
     t.string   :remember_token,            :limit => 40
     t.datetime :remember_token_expires_at
+    t.string   :signature
   end
   
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
@@ -119,7 +118,7 @@ ActiveRecord::Schema.define() do
   create_table "callings", :force => true do |t|
     t.integer :venue_id
     t.integer :action_id
-    t.integer :publisher_id
+    t.integer :user_id
     t.integer :total_money
     t.string  :donate_for,  :limit => 40
     t.integer :total_goods

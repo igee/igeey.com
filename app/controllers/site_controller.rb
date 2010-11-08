@@ -19,7 +19,24 @@ class SiteController < ApplicationController
         @my_timeline += object.callings.limit(5)
         @my_timeline += object.plans.limit(5)
       end
-      @my_timeline = @my_timeline.sort{|x,y| y.created_at <=> x.created_at }[0..10]
+      @my_timeline = @my_timeline.uniq.sort{|x,y| y.created_at <=> x.created_at }[0..10]
+    end
+    render :layout => false
+  end
+  
+  
+  def city_timeline
+    if logged_in?
+      @city_timeline = []
+      @geo = current_user.geo
+      if @geo
+        @geo.venues.each do |venue|
+          @city_timeline += venue.records.limit(5) 
+          @city_timeline += venue.callings.limit(5)
+          @city_timeline += venue.plans.limit(5)
+        end
+        @city_timeline = @city_timeline.sort{|x,y| y.created_at <=> x.created_at }[0..10]
+      end
     end
     render :layout => false
   end

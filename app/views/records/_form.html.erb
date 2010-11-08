@@ -11,7 +11,7 @@
     <%= form.hidden_field :plan_id %>
     <%= render :partial => '/public/user' ,:object => current_user ,:locals => {:with_name => true}%>
     <div class="saying">
-        <div class="saying_colon" style="text-align:left;margin-bottom:-10px;margin-left:-20px">“</div>
+        <div class="saying_colon_left"> “</div>
         <p>
             <%= form.label :done_at,'我在'%><%= form.text_field :done_at, :size => 8,:class => 'with_calendar',:placeholder => "yyyy-mm-dd"%><%="为#{@venue.name}"%><%= @action.name %>:<br/>          
             <% if @action.for_what == 'money' %>
@@ -24,7 +24,7 @@
             <% end %>
             <br/>
         </p>
-        <div class="saying_colon" style="text-align:right;margin-top:-10px;margin-right:-20px">”</div>
+        <div class="saying_colon_right">”</div>
     </div>
     <div class="saying_tail"></div>
     <div style="clear:both;text-align:right">

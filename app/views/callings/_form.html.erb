@@ -1,26 +1,26 @@
+<h3>请将你的号召填写完整</h3>
 <%= form_for @calling do |form| %>
   <%= raw error_explanation_for(@calling) if @calling.errors.present?%>
   <%= form.hidden_field :action_id %>
   <%= form.hidden_field :venue_id %>
   <%= render :partial => '/public/user' ,:object => current_user ,:locals => {:with_name => true}%>
   <div class="saying">
-    <div class="saying_colon" style="text-align:left;margin-bottom:-10px;margin-left:-20px">“</div>
+    <div class="saying_colon_left"> “</div>
     <p>
-      <%="#{@calling.venue.name}"%>需要
-      <% if @calling.action.for_what == 'money' %>
-        总计<%= form.text_field :total_money, :size => 4,:placeholder => "多少"%>元用于<%= form.text_field :donate_for ,:size => 10 ,:placeholder => "用来做什么？"%>。            
-      <% elsif @calling.action.for_what == 'goods'%>
-        总计<%= form.text_field :total_goods, :size => 6 ,:placeholder => "多少"%>件<%= form.text_field :goods_is, :size => 8,:placeholder => "物资名称"%>。
-      <% elsif @calling.action.for_what == 'time'%>
-        总计 <%= form.text_field :total_people, :size => 4, :placeholder => "多少" %> 人 <%= form.text_field :do_what, :size => 8,:placeholder => "做什么？"%>。
+      <% if @calling.action.for_what == 'money' -%>
+        <%="为#{@calling.venue.name}募捐" %><%= form.text_field :total_money, :size => 3,:placeholder => "多少"%>元，用于<%= form.text_field :donate_for ,:size => 8 ,:placeholder => "做什么？"%>。            
+      <% elsif @calling.action.for_what == 'goods' %>
+        <%="为#{@calling.venue.name}募捐物资" %><%= form.text_field :goods_is, :size => 7,:placeholder => "物资名称"%>共需<%= form.text_field :total_goods, :size => 6 ,:placeholder => "多少"%>件。
+      <% elsif @calling.action.for_what == 'time' %>
+        <%="为#{@calling.venue.name}召集" %> <%= form.text_field :total_people, :size => 3, :placeholder => "多少" %> 人去<%= form.text_field :do_what, :size => 9,:placeholder => "做什么服务？"%>。
       <% end %>
       <br/>
     </p>
-    <div class="saying_colon" style="text-align:right;margin-top:-10px;margin-right:-20px">”</div>
+    <div class="saying_colon_right">”</div>
     <p>
       <h6>详细信息：(不要少于50字)</h6>
-      <p class="explanation">请说明你是如何了解这个需求的，以及其他人参与所必要信息：<br/>例如，募捐的收款人(与联系方式)，志愿行动的集合时间(与地点)。</p>
-      <%= form.text_area :detail, :cols => 56, :rows => 8,:class => "underline"%>
+      <p class="explanation">请说明你发起号召的原因、响应你的号召需要做什么，以及一些必要信息，例如：<br/>捐款的收款人(以及联系方式)，志愿服务的集合时间地点。</p>
+      <%= form.text_area :detail, :cols => 53, :rows => 7%>
       <p class="explanation">目前字数：<span id="character_counter"></span></p>
     </p>
   </div>

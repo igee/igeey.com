@@ -2,12 +2,20 @@
   <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false"></script>
 <% end %>
 
+<% if action_name == 'index'%>
+  <div class="intro_box">
+    <h4>探索爱聚的世界</h4>
+    <p>balabala</p>
+  </div>
+<% end %>
+
 <div style="float:right">
   <%= form_tag geos_path,:id =>'locate',:remote => true do %>
     <%= text_field_tag 'address', @address,:size => 10%>
     <%= submit_tag '定位',:class => 'button'%>
   <% end %>
 </div>
+
 <h2 style="display:inline"><%= @geo.name%></h2> <%= link_to '切换地区',list_geos_path,:class => 'open_dialog',:title => '切换地区'%>
 
 <div id="map_canvas" style="width:100%;height:420px;clear:both;margin:10px 0"></div>  
@@ -23,16 +31,6 @@
 </div>
 
 <% content_for :sidebar do %>
-  <div class="box">
-    <h4>热点聚点：</h4>
-    <%= render :partial => '/public/venue',:collection => @venues %>
-    <div class="clear"></div>
-  </div>
-  <div class="box">
-    <h4>活跃用户：</h4>
-    <%= render :partial => '/public/user',:collection => @users %>
-    <div class="clear"></div>
-  </div>
 <% end %>
 
 <% content_for :extension do %>
