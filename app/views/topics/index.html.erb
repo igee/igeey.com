@@ -1,0 +1,8 @@
+<div class="box">
+  <div style="float:right"><%= link_to '发布话题',new_topic_path ,:class => 'button'%></div>
+  <h3>社区论坛：</h3>
+</div>
+  
+<div class="box">
+  <%= render :partial => '/public/topic',:collection => @topics %>
+</div>

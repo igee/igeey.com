@@ -362,6 +362,7 @@ button:hover,.button:hover,.big_button:hover{background:#c42;color:white;}
 .event_type[title="calling"]{background-color:#d6ffd6;border-color:#bfb}
 .event_type[title="record"]{background-color:#ffd6d6;border-color:#fbb}
 .event_type[title="plan"]{background-color:#d6d6ff;border-color:#bbf}
+.event_type[title="topic"]{background-color:#e0d0ff;border-color:#cbf}
 
 .addition{
   margin-top:10px;

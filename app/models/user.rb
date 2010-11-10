@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   has_many :callings,   :foreign_key => :user_id
   has_many :venues,         :foreign_key => :creator_id
   has_many :comments
+  has_many :topics
   has_many :photos
   has_many :followings,     :class_name => "Follow",:foreign_key => :user_id
   has_many :follows,        :as => :followable, :dependent => :destroy

@@ -54,6 +54,8 @@ Igee::Application.routes.draw do
   resources :feedbacks do 
       get :thanks, :on => :collection
   end
+  
+  resources :topics
   resources :follows
   resources :comments
   resources :photos

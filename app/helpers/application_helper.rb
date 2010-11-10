@@ -1,5 +1,9 @@
 module ApplicationHelper
   
+  def short_text(text,length=20)
+    text.mb_chars.slice(0..length).to_s.lstrip + (text.mb_chars[length].nil?? "" : "...")
+  end
+  
   def error_explanation_for(object)
     html = '<ul id="error_explanation">'
     object.errors.each do |msg|

@@ -3,7 +3,7 @@
   <%= raw error_explanation_for(@calling) if @calling.errors.present?%>
   <%= form.hidden_field :action_id %>
   <%= form.hidden_field :venue_id %>
-  <%= render :partial => '/public/user' ,:object => current_user ,:locals => {:with_name => true}%>
+  <%= render :partial => '/public/user' ,:object => current_user %>
   <div class="saying">
     <div class="saying_colon_left"> “</div>
     <p>

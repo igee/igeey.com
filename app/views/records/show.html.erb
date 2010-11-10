@@ -1,5 +1,5 @@
   <div class="box">
-    <%= render :partial => '/public/user' ,:object => @record.user ,:locals => {:with_name => true}%>
+    <%= render :partial => '/public/user' ,:object => @record.user %>
       <div class="saying">
         <div style="text-align:right;margin-top:5px;margin-right:-15px;"><span><%= link_to "更正信息？",edit_record_path(@record) %></span></div>
         <div class="saying_colon_left"> “</div>

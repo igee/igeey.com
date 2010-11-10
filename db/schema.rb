@@ -63,6 +63,7 @@ ActiveRecord::Schema.define() do
     t.integer  :money
     t.integer  :goods
     t.datetime :plan_at
+    t.integer  :comments_count,:default => 0
     t.boolean  :has_new_comment,  :default => false
     t.boolean  :is_done,  :default => false
     t.timestamps
@@ -92,6 +93,7 @@ ActiveRecord::Schema.define() do
     t.string   :do_what,     :limit => 40
     t.datetime :done_at
     t.text     :detail
+    t.integer  :comments_count,   :default => 0
     t.boolean  :has_new_comment,  :default => false
     t.boolean  :has_photo,  :default => false
     t.timestamps
@@ -126,6 +128,7 @@ ActiveRecord::Schema.define() do
     t.integer :total_people
     t.string  :do_what,     :limit => 40
     t.text    :detail
+    t.integer :comments_count,   :default => 0
     t.boolean :has_new_comment,  :default => false
     t.boolean :has_photo,  :default => false
     t.timestamps
@@ -152,6 +155,17 @@ ActiveRecord::Schema.define() do
     t.string  :access_key
     t.string  :access_secret
     t.string  :site
+    t.timestamps
+  end
+  
+  create_table "topics",:force => true do |t|
+    t.integer  :user_id
+    t.string   :title
+    t.text     :content
+    t.datetime :last_replied_at
+    t.integer  :last_replied_user_id
+    t.boolean :has_new_comment,  :default => false
+    t.integer  :comments_count,   :default => 0
     t.timestamps
   end
 end

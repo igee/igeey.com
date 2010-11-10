@@ -1,5 +1,5 @@
 <div class="box">  
-  <%= render :partial => '/public/user' ,:object => @calling.user ,:locals => {:with_name => true}%>
+  <%= render :partial => '/public/user' ,:object => @calling.user %>
   <div class="saying">
     <div class="saying_colon_left"> “</div>
     <p class="impact"><%= "#{@calling.user.login}#{@calling.description}" %></p>
@@ -61,7 +61,7 @@
   
   <div class="box">
     <h4>所有参与的用户：</h4>
-    <%= render :partial => '/public/user',:collection => @plans.map(&:user),:locals => {:with_name => true}%>
+    <%= render :partial => '/public/user',:collection => @plans.map(&:user)%>
     <div class="clear"></div>
   </div>
 

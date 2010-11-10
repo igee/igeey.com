@@ -1,0 +1,21 @@
+<div class="box">  
+  <%= render :partial => '/public/user' ,:object => @topic.user %>
+  <div class="saying">
+    <div class="saying_colon_left"> “</div>
+    <p class="impact"><%= @topic.title %></p>
+    <p class="explanation"><%= @topic.content %><p>
+    <div class="saying_colon_right">”</div>
+  </div>
+  <div class="saying_tail"></div>
+  <div class="clear"></div>
+</div>
+
+<div class="box">
+  <h4>大家的留言：</h4>
+  <%= render :partial => '/public/comment' ,:collection => @comments %>
+</div>
+<%= render :partial => '/comments/form' ,:locals => {:commentable => @topic}%>
+
+<% content_for :sidebar do %>
+ <%= link_to '返回论坛',topics_path%>
+<% end %>
