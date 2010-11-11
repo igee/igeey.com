@@ -450,7 +450,7 @@ a#logo{
   float:right;
   padding:6px 12px;
   color:#fdc;
-  background-color:#c75;
+  background-color:#68f;
   margin-right:4px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -460,8 +460,8 @@ a#logo{
 #login_state span{color:#fdc}
     
 #header{
-    height:74px;
-    
+    height:96px;
+    background:url('/images/sawtooth.png') repeat-x;
     }
 #footer{
     height:48px;
@@ -480,7 +480,7 @@ a#logo{
 
 #header .container{
   background:url('/images/cap.png');
-  height:74px;
+  height:96px;
   }
 
 #content .container{background:#fff url('/images/background.png') repeat-y;}
@@ -496,7 +496,7 @@ a#logo{
 
 #nav_links{
   float:left;
-  margin:44px 40px 0;
+  margin:24px 56px 0;
   }
 
 #nav_links li{
@@ -504,16 +504,29 @@ a#logo{
 }
 
 #nav_links a{
-  color:white;
+  color:#60a0de;
+  font-size:15px;
   font-weight:bold;
-  padding:6px 16px;
+  padding:5px 16px;
+  margin:0 4px;
   }
 
 #nav_links a.selected{
-  border-top:2px solid #55aaff;
-  padding:4px 16px 6px;
-  background-color:#6091c9
+  padding:5px 16px;
+  color:#fff;
+  background-color:#a0d0ff;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
   }
+
+#nav_links a:hover{
+  padding:5px 16px;
+  color:#fff;
+  background-color:#a9d9ff;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  }
+
 
 #footer_links{
   float:left;
