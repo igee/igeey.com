@@ -410,14 +410,15 @@ var DateTimeShortcuts = {
         // Shortcut links (calendar icon and "Today" link)
         var shortcuts_span = document.createElement('span');
         $(inp).before(shortcuts_span);
-        
+        $(inp).click(function(){return false})
+        $(inp).focus(function(){DateTimeShortcuts.openCalendar(num);})
         var today_link = document.createElement('a');
         today_link.setAttribute('href', 'javascript:DateTimeShortcuts.handleCalendarQuickLink(' + num + ', 0);');
         today_link.appendChild(document.createTextNode(gettext('Today')));
         var cal_link = document.createElement('a');
         cal_link.setAttribute('href', 'javascript:DateTimeShortcuts.openCalendar(' + num + ');');
         cal_link.id = DateTimeShortcuts.calendarLinkName + num;
-        quickElement('img', cal_link, '', 'src', '/images/calendar/icon_calendar.gif', 'alt', gettext('Calendar'),'style','vertical-align:middle;');
+        //quickElement('img', cal_link, '', 'src', '/images/calendar/icon_calendar.gif', 'alt', gettext('Calendar'),'style','vertical-align:middle;');
         shortcuts_span.appendChild(document.createTextNode('\240'));
         shortcuts_span.appendChild(cal_link);
         //shortcuts_span.appendChild(document.createTextNode('\240|\240'));
