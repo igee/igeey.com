@@ -8,11 +8,11 @@
     <div class="saying_colon_left"> “</div>
     <p>
       <% if @calling.action.for_what == 'money' -%>
-        <%="为#{@calling.venue.name}募捐" %><%= form.text_field :total_money, :size => 3,:placeholder => "多少"%>元，用于<%= form.text_field :donate_for ,:size => 8 ,:placeholder => "做什么？"%>。            
+        <%="我为#{@calling.venue.name}募捐" %><%= form.text_field :total_money, :size => 3,:placeholder => "多少"%>元，用于<%= form.text_field :donate_for ,:size => 8 ,:placeholder => "做什么？"%>。            
       <% elsif @calling.action.for_what == 'goods' %>
-        <%="为#{@calling.venue.name}募捐物资" %><%= form.text_field :goods_is, :size => 7,:placeholder => "物资名称"%>共需<%= form.text_field :total_goods, :size => 6 ,:placeholder => "多少"%>件。
+        <%="我为#{@calling.venue.name}募捐物资" %><%= form.text_field :goods_is, :size => 7,:placeholder => "物资名称"%>共需<%= form.text_field :total_goods, :size => 6 ,:placeholder => "多少"%>件。
       <% elsif @calling.action.for_what == 'time' %>
-        <%="召集" %> <%= form.text_field :total_people, :size => 3, :placeholder => "多少" %> 人去<%="#{@calling.venue.name}"%><%= form.text_field :do_what, :size => 9,:placeholder => "做什么服务？"%>。
+        <%="我召集" %> <%= form.text_field :total_people, :size => 3, :placeholder => "多少" %> 人去<%="#{@calling.venue.name}"%><%= form.text_field :do_what, :size => 9,:placeholder => "做什么服务？"%>。
       <% end %>
       <br/>
     </p>
