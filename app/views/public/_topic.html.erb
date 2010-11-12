@@ -2,13 +2,8 @@
 <div class="event_box">
   <%= render :partial => '/public/user', :object => topic.user %>
   <div class="event">
-    <div class="event_panel">
-      <%= link_to '查看全文' ,topic%> &raquo; 
-    </div>
     <p>
-      <span style="font-size:20px;font-family:'times new roman';color:#999">“</span>
-          <%= "#{topic.title}"%>
-      <span style="font-size:20px;font-family:'times new roman';color:#999">”</span>
+          <%= link_to topic.title ,topic%> 
     </p>
     <div class="explanation"></div>
     <div class="addition">

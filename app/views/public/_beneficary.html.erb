@@ -1,0 +1,9 @@
+    <div class="venue_list">
+      <div style="float:left;padding:5px">
+        <%= link_to image_tag(beneficary.cover.url(:_80x60),:class => "venue_thumb_cover"),beneficary %>
+      </div>
+      <div style="float:left;padding:0 5px;width:480px">
+        <h5><%= link_to beneficary.name ,beneficary%></h5>
+        <p class="explanation"><%= beneficary.intro%></p>
+      </div>
+    </div>

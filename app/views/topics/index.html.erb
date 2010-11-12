@@ -1,8 +1,20 @@
 <div class="box">
-  <div style="float:right"><%= link_to '发布话题',new_topic_path ,:class => 'button'%></div>
+  
   <h3>社区论坛：</h3>
 </div>
   
-<div class="box">
-  <%= render :partial => '/public/topic',:collection => @topics %>
-</div>
+<div id="tabContaier">
+  <div style="float:right"><%= link_to '发布话题',new_topic_path ,:class => 'button'%></div>
+  <ul>
+    <li><%= link_to '所有话题','#alltopic'%></a></li>
+    <li><%= link_to '我的话题','#my_topic' if logged_in?%></li>
+  </ul>
+  
+  <div id="all_topic" class="tabContents">
+    <%= render :partial => '/public/topic',:collection => @topics %>
+  </div>
+  
+  <div id="my_topic" class="tabContents">
+    <%= render :partial => '/public/topic',:collection => @my_topics %>
+  </div>
+</div>  

@@ -1,7 +1,7 @@
 <div class="box">
   <div style="float:right">
     <% if logged_in? %>
-      <%= link_to "上传照片","#",:onclick => "javascript:$('#upload_photo').slideDown();return false;"%>
+      <%= link_to "上传照片","#",:id => 'upload_link',:title => '上传图片'%>
     <% else %>
       <%= link_to "上传照片",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%>
     <% end %>
@@ -9,5 +9,8 @@
   <h4>相册：</h4>
   <%= render :partial => "/photos/form",:locals => {:imageable => imageable}%>
   <%= render :partial => "/public/photo",:collection => @photos %>
-  <div class="clear"></div>  
+  <div class="clear"></div>
+  <script type="text/javascript">
+    $("#upload_link").click(function(){dialog($(this).attr('title'),("id:upload_photo"),"540px","auto","text");  return false;})
+  </script>
 </div>

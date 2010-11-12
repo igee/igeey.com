@@ -5,6 +5,7 @@ class TopicsController < ApplicationController
   
   def index
     @topics = Topic.all
+    @my_topics = (current_user.comments.where(:commentable_type => 'Topic').map(&:commentable) + current_user.topics).uniq if current_user
   end
   
   def new

@@ -7,18 +7,13 @@
           <%="#{@plan.user.login}要#{@plan.description}"%>
         </p>
         <div class="saying_colon_right">”</div>
-        <span><%= "总共需要#{@plan.calling.total_number},#{@plan.calling.finished_status}。"%></span>
-        <p>
-          <span><%= @plan.calling.detail%><br/><%=link_to '了解更多',@plan.calling%></span></p>
       </div>
       <div class="saying_tail"></div>
       <div class="clear"></div>
   </div>
-      
-    <div style="clear:both;padding:0 230px">
-      <% if @plan.is_done%>
-        计划已完成 <%= link_to '立即查看',@plan.record %>
-      <% else %>
+  
+  <div class="box">
+    <div style="clear:both;padding:10px 230px">
         <% if @plan.can_edit_by?(current_user) %>
           <%= link_to "已经完成?","#{new_record_path}?plan_id=#{@plan.id}",:class => "big_button" %>
         <% elsif @my_plan %>
@@ -26,12 +21,73 @@
         <% else %>
           <%= link_to "我也要做",(logged_in? ? "#{duplicate_calling_plan_path(@calling,@plan)}" : signup_path ),:class => "big_button open_dialog",:id => 'plan_to' ,:title =>(logged_in? ? '我要参与' : '注册' )%>
         <% end %>
-      <%end%>
+        <% if @plan.is_done%>
+          计划已完成 <%= link_to '立即查看',@plan.record %>
+        <% end %>
     </div>
-  
+  </div>
+     
+  <div class="profile_box">
+    <h4>受益：</h4>
+    <%= render :partial => '/public/beneficary',:object => @venue%>
+    <div class="clear"></div>
+  </div>
        
+  <div class="box">
+    <h4>发起人说：</h4>
+      <%= render :partial => '/public/user' ,:object => @calling.user %>
+      <div class="saying">
+        
+        <p class="explanation" >
+          <span style="font-size:20px;font-family:'times new roman';color:#999">“</span>
+          <%= @calling.detail %>
+          <span style="font-size:20px;font-family:'times new roman';color:#999">”</span>
+        </p>
+      </div>
+      <div class="saying_tail"></div>
+      <div class="clear"></div>
+  </div>
+  
+  <div class="box">
+    <h4>捐赠地址：</h4>
+    <p style="padding:5px 10px">
+      <%= @calling.info%>
+    </p>
+  </div>
+  
+  <div class="box">
+    <h4>行动流程：</h4>
+    <p style="padding:5px 10px">
+      1、点击“我要捐赠”，填写捐赠信息，并邀请您的好友一起参与<br/>
+      2、在七日内将捐赠物资邮寄、快递或自行运输到捐赠地址；<br/>
+      3、完成捐赠行动记录,上传照片、补充详情。
+    </p>
+  </div>
+      
   <div class="box">
     <h4>大家的留言：</h4>
     <%= render :partial => '/public/comment' ,:collection => @comments %>
   </div>
-  <%= render :partial => '/comments/form' ,:locals => {:commentable => @plan}%>
+  <%= render :partial => '/comments/form' ,:locals => {:commentable => @calling}%>
+  
+  
+  
+<% content_for :sidebar do %>
+  <div class="box">
+    <h4>完成度：</h4>
+    <div style="text-align:center;margin:10px 0">
+      <span style="font-size:54px;"><%= @calling.percentage %></span>
+      <span style="font-size:24px">%<span>
+      <br/>
+      <span><%= "总共需要#{@plan.calling.total_number},#{@plan.calling.finished_status}。"%></span>
+    </div>
+  </div>
+  
+  <div class="box">
+    <h4>贡献者：</h4>
+    <%= render :partial => '/public/user',:collection => @calling.plans.map(&:user)%>
+    <div class="clear"></div>
+  </div>
+  
+  <%= render :partial => '/photos/gallery' ,:locals => {:imageable => @calling}%>
+<% end %>

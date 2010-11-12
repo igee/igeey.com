@@ -1,4 +1,4 @@
-  <%= render :partial => 'public/event', :collection => @my_timeline %>
+  <%= render :partial => '/public/event', :collection => @my_timeline %>
   
   <p>
     <%= raw "你还没有关注过任何聚点和用户。<br/>去#{link_to '探索',geos_path}并关注你的朋友、还有你身边的聚点吧。" if @my_followings.empty? %>

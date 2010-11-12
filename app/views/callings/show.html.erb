@@ -5,7 +5,6 @@
     <p class="impact"><%= "#{@calling.user.login}#{@calling.description}" %></p>
     <p class="explanation"><%= @calling.detail %><p>
     <div class="saying_colon_right">”</div>
-    <span>了解<%= link_to @calling.venue.name,@calling.venue%></span>
   </div>
   <div class="saying_tail"></div>
   <div class="clear"></div>
@@ -22,26 +21,39 @@
         <p>
           <%= link_to "你计划#{@my_plan.description}。",calling_plan_path(@calling,@my_plan) %>
         </p>
-        <div style="text-align:right">
+        <div style="text-align:right;padding:8px 0">
           <%= link_to "已经完成?","#{new_record_path}?plan_id=#{@my_plan.id}",:class => "button" %>
           <%= link_to "取消",calling_plan_path(@calling,@my_plan),:method => :delete,:class => "button" %>
         </div>
        </div>
     </div>
   <% else %>
-    <div style="clear:both;padding:0 230px">
+    <div style="clear:both;padding:10px 230px">
       <%= link_to "我要响应",(logged_in? ? new_calling_plan_path(@calling) : signup_path ),:class => "big_button open_dialog",:id => 'plan_to' ,:title =>(logged_in? ? '我要响应' : '注册' )%>
     </div>
   <% end %>
 </div>
 
-<%= render :partial => '/photos/gallery' ,:locals => {:imageable => @calling}%>
-  
-<div class="box">
-  <h4>行动记录:</h4>
-  <%= render :partial => '/public/record', :collection => @records %>
-  <%= render :partial => '/public/plan', :collection => @plans %>
+<div class="profile_box">
+  <h4>受益：</h4>
+  <%= render :partial => '/public/beneficary',:object => @venue%>
   <div class="clear"></div>
+</div>
+
+<div class="box">
+  <h4><%= {'goods' => '捐赠地址','time' => '集合地址','money' => '捐赠地址'}[@calling.action.for_what]%>：</h4>
+  <p style="padding:5px 10px">
+    <%= @calling.info%>
+  </p>
+</div>
+
+<div class="box">
+  <h4>行动流程：</h4>
+  <p style="padding:5px 10px">
+    1、点击“我要捐赠”，填写捐赠信息，并邀请您的好友一起参与<br/>
+    2、在七日内将捐赠物资邮寄、快递或自行运输到捐赠地址；<br/>
+    3、完成捐赠行动记录,上传照片、补充详情。
+  </p>
 </div>
 
 <div class="box">
@@ -60,9 +72,10 @@
   </div>
   
   <div class="box">
-    <h4>所有参与的用户：</h4>
+    <h4>贡献者：</h4>
     <%= render :partial => '/public/user',:collection => @plans.map(&:user)%>
     <div class="clear"></div>
   </div>
 
+  <%= render :partial => '/photos/gallery' ,:locals => {:imageable => @calling}%>
 <% end %>

@@ -99,7 +99,7 @@ img{border:none;}
 
 .box{
     clear:both;
-    margin-bottom:20px;
+    margin-bottom:30px;
 }
 
 button,.button{
@@ -448,7 +448,7 @@ a#logo{
 
 #login_state{
   float:right;
-  padding:6px 12px;
+  padding:2px 12px 6px;
   color:#fdc;
   background-color:#68f;
   margin-right:4px;
@@ -461,8 +461,10 @@ a#logo{
     
 #header{
     height:96px;
+    border-top:4px solid #68f;
     background:url('/images/sawtooth.png') repeat-x;
     }
+    
 #footer{
     height:48px;
     }
@@ -496,7 +498,7 @@ a#logo{
 
 #nav_links{
   float:left;
-  margin:24px 56px 0;
+  margin:26px 56px 0;
   }
 
 #nav_links li{
@@ -504,7 +506,7 @@ a#logo{
 }
 
 #nav_links a{
-  color:#60a0de;
+  color:#5999c9;
   font-size:15px;
   font-weight:bold;
   padding:5px 16px;
