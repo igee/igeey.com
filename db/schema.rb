@@ -166,7 +166,7 @@ ActiveRecord::Schema.define() do
     t.text     :content
     t.datetime :last_replied_at
     t.integer  :last_replied_user_id
-    t.boolean :has_new_comment,  :default => false
+    t.boolean  :has_new_comment,  :default => false
     t.integer  :comments_count,   :default => 0
     t.timestamps
   end

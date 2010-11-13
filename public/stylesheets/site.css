@@ -1,7 +1,7 @@
 body{
   font-size:14px;
   background-color:#c3e0ff;
-  color:#555
+  color:#666
   }
 
 body,h1{margin:0}
@@ -11,7 +11,7 @@ h3,h4,h5,h6{
     color:#666;
     }
     
-#sidebar h3,#sidebar h4,#sidebar h5{color:#469}    
+#sidebar h3,#sidebar h4,#sidebar h5{color:#78a}    
     
 ul,dl{
     margin:6px 0;
@@ -30,7 +30,6 @@ span{
   font-size:12px;
 }
 
-#sidebar span{color:#fff}
 
 a{
   text-decoration:none;
@@ -185,7 +184,7 @@ button:hover,.button:hover,.big_button:hover{background:#c42;color:white;}
 .guide{
   margin:5px;
   padding:15px 30px 5px;
-  background-color:#3b91c7;
+  background-color:#6bb1e7;
   border-radius: 6px;
   -moz-border-radius: 6px;
   text-align:center;
@@ -253,7 +252,7 @@ button:hover,.button:hover,.big_button:hover{background:#c42;color:white;}
 
 .sidebar_panel{
   padding:6px 10px;
-  background-color:#bdf;
+  background-color:#cef;
   margin:5px;
   font-size:12px;
   -moz-border-radius: 4px;
@@ -450,19 +449,19 @@ a#logo{
 #login_state{
   float:right;
   padding:2px 12px 6px;
-  color:#fdc;
-  background-color:#68f;
+  color:#cdf;
+  background-color:#79c;
   margin-right:4px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   -moz-border-radius: 0 0 5px 5px;}
 
 #login_state a{color:#fff}
-#login_state span{color:#fdc}
+#login_state span{color:#cdf}
     
 #header{
     height:96px;
-    border-top:4px solid #68f;
+    border-top:4px solid #79c;
     background:url('/images/sawtooth.png') repeat-x;
     }
     
@@ -507,7 +506,7 @@ a#logo{
 }
 
 #nav_links a{
-  color:#5999c9;
+  color:#5390b9;
   font-size:15px;
   font-weight:bold;
   padding:5px 16px;
@@ -516,7 +515,7 @@ a#logo{
 
 #nav_links a.selected{
   padding:5px 16px;
-  color:#fff;
+  color:#f0f6ff;
   background-color:#a0d0ff;
   -moz-border-radius: 3px;
   border-radius: 3px;

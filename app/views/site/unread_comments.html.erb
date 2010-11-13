@@ -5,10 +5,10 @@
   </div>
 <% end %>
 
-<% if @plans.present? %>  
+<% if @topics.present? %>  
   <div class="box">
-    <h4>以下计划有了新留言：<h4>
-    <%= render :partial => "/public/plan" ,:collection => @plans %>
+    <h4>以下话题有了新留言：<h4>
+    <%= render :partial => "/public/topic" ,:collection => @topics %>
   </div>
 <% end %>
 

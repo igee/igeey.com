@@ -27,18 +27,13 @@
 </div>
 
 <div class="box">
+  <h4>Ta的行动：</h4>
+  <%= render :partial => '/public/event',:collection => @timeline%>
+</div>
+
+<div class="box">
   <h4>上传的照片:</h4>
   <%= render :partial => '/public/photo',:collection => @photos %>
-</div>
-
-<div class="box">
-  <h4>行动计划：</h4>
-  <%= render :partial => '/public/plan',:collection => @plans%>
-</div>
-
-<div class="box">
-  <h4>行动记录:</h4>
-  <%= render :partial => '/public/record',:collection => @records %>
 </div>
 
 <% content_for :sidebar do %>

@@ -42,7 +42,7 @@ class SiteController < ApplicationController
   end
   
   def unread_comments
-    @plans = current_user.plans.where(:has_new_comment => true)
+    @topics = current_user.topics.where(:has_new_comment => true)
     @records = current_user.records.where(:has_new_comment => true)
     @callings = current_user.callings.where(:has_new_comment => true)
   end

@@ -84,20 +84,28 @@ class User < ActiveRecord::Base
     !self.followings.where(:followable_id => followable.id,:followable_type => followable.class).limit(1).blank?
   end
 
-  def has_unread_record_comment?
-    self.records.where(:has_new_comment => true).present?
+  def followed_users
+    self.followings.where(:followable_type => 'User').map(&:followable)
   end
 
-  def has_unread_plan_comment?
-    self.plans.where(:has_new_comment => true).present?
+  def followed_venues
+    self.followings.where(:followable_type => 'Venue').map(&:followable)
+  end
+
+  def has_unread_record_comment?
+    self.records.where(:has_new_comment => true).present?
   end
   
   def has_unread_calling_comment?
     self.callings.where(:has_new_comment => true).present?
   end
   
+  def has_unread_topic_comment?
+    self.topics.where(:has_new_comment => true).present?
+  end
+  
   def has_unread_comment?
-    has_unread_calling_comment? || has_unread_plan_comment? || has_unread_plan_comment?
+    has_unread_calling_comment? || has_unread_record_comment? || has_unread_topic_comment?
   end
   
   # Use OAuth::AccessToken to access oauth api. powered by oauth_side 

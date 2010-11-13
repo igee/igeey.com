@@ -43,11 +43,13 @@ class UsersController < ApplicationController
   end
   
   def show
-    @records = @user.records
-    @plans = @user.plans.undone
+    @timeline = @user.callings
+    @timeline += @user.plans.undone
+    @timeline += @user.records
+    @timeline = @timeline.sort{|x,y| y.created_at <=> x.created_at }
     @followers = @user.followers
-    @followed_users = @user.followings.where(:followable_type => 'User').map(&:followable)
-    @followed_venues = @user.followings.where(:followable_type => 'Venue').map(&:followable)
+    @followed_users = @user.followed_users
+    @followed_venues = @user.followed_venues
     @photos = @user.photos
   end
   

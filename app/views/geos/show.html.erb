@@ -2,13 +2,6 @@
   <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false"></script>
 <% end %>
 
-<% if action_name == 'index'%>
-  <div class="intro_box">
-    <h4>探索爱聚的世界</h4>
-    <p>balabala</p>
-  </div>
-<% end %>
-
 <div style="float:right">
   <%= form_tag geos_path,:id =>'locate',:remote => true do %>
     <%= text_field_tag 'address', @address,:size => 10%>
@@ -18,7 +11,7 @@
 
 <h2 style="display:inline"><%= @geo.name%></h2> <%= link_to '切换地区',list_geos_path,:class => 'open_dialog',:title => '切换地区'%>
 
-<div id="map_canvas" style="width:100%;height:420px;clear:both;margin:10px 0"></div>  
+<div id="map_canvas" style="width:100%;height:360px;clear:both;margin:10px 0"></div>  
 <div>
   <p>
     <%= link_to "添加聚点",new_venue_path,:id => "create_venue",:class => 'button' %>
@@ -36,7 +29,7 @@
 <% content_for :extension do %>
   <script type="text/javascript">
     function initialize() {
-      var latlng = new google.maps.LatLng(<%= "#{@geo.latitude || 33.724339},#{@geo.longitude || 105.1171875}"%>)
+      var latlng = new google.maps.LatLng(<%= "#{@geo.latitude || 35.0},#{@geo.longitude || 105.0}"%>)
       var myOptions = {
         zoom: <%= @geo.zoom_level || 4%>,
         center: latlng,
