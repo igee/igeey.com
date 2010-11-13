@@ -37,7 +37,11 @@ class Record < ActiveRecord::Base
     
   def info
     {'money'=> donate_for,'goods'=> goods_is,'time'=> do_whats}[for_what]
-  end  
+  end
+  
+  def can_edit_by?(current_user)
+    self.user == current_user
+  end
     
   def formatted_done_at
     date = self.done_at
@@ -45,13 +49,13 @@ class Record < ActiveRecord::Base
   end
   
   def description
-    result = "在#{self.formatted_done_at}为#{self.venue.name}#{self.action.name}"
+    result = "在#{self.formatted_done_at}"
     if self.action.for_what == 'money'
-      result << "#{self.money}元，用于#{self.donate_for}。"
+      result << "捐款#{self.money}元到#{self.venue.name}，用于#{self.donate_for}。"
     elsif self.action.for_what == 'goods'
-      result << "#{self.goods}件#{self.goods_is}。"
+      result << "捐赠#{self.goods}件#{self.goods_is}给#{self.venue.name}。"
     elsif self.action.for_what == 'time'
-      result << "#{self.time}小时，#{self.do_what}。"
+      result << "去#{self.venue.name}做了#{self.time}小时的#{self.do_what}。"
     end
   end
   

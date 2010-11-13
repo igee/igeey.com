@@ -9,16 +9,12 @@
     <div class="saying" style="width:360px">
         <div class="saying_colon_left">“</div>
         <p>
-          <%= @parent.nil? ? "我要响应#{@calling.user.login}的号召：" : "我要跟随#{@parent.user.login}："%>
           <% if @action.for_what == 'money' %>
-            <%= "为#{@venue.name}捐款。"%><br/>
             要捐多少(元)？<%= form.text_field :money, :size => 4 ,:placeholder => '金额'%>。
           <% elsif @action.for_what == 'goods'%>
-            <%= "为#{@venue.name}捐#{@calling.goods_is}。"%><br/>
             要捐多少件？<%= form.text_field :goods, :size => 4 ,:placeholder => '数量'%>
           <% elsif @action.for_what == 'time'%>
-            <%= "去#{@venue.name}#{@calling.do_what}。"%><br/>
-            在哪天呢？<%= form.text_field :plan_at, :size => 8,:class => 'with_calendar',:placeholder => "yyyy-mm-dd"%>。
+            计划在哪天去？<%= form.text_field :plan_at, :size => 8,:class => 'with_calendar',:placeholder => "yyyy-mm-dd"%>。
           <% end %>
         </p>
         <div class="saying_colon_right">”</div>

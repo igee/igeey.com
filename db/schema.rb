@@ -17,6 +17,7 @@ ActiveRecord::Schema.define() do
     t.string  :slug,        :limit => 40
     t.string  :for_what,    :limit => 40
     t.text    :intro
+    t.text    :step_by_step
   end
 
 

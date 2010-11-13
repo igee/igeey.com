@@ -32,17 +32,15 @@ class Plan < ActiveRecord::Base
   
   def description
     if self.action.for_what == 'money'
-      "为#{self.venue.name}#{self.action.name}#{self.money}元，用于#{self.calling.donate_for}。"
+      "为#{self.venue.name}捐款#{self.money}元，用于#{self.calling.donate_for}。"
     elsif self.action.for_what == 'goods'
-      "为#{self.venue.name}#{self.action.name}#{self.calling.goods_is}#{self.goods}件。"
+      "为#{self.venue.name}捐赠#{self.calling.goods_is}#{self.goods}件。"
     elsif self.action.for_what == 'time'
-      "在#{self.formatted_plan_at}为#{self.venue.name}#{self.action.name}:#{self.calling.do_what}。"
+      "在#{self.formatted_plan_at}去#{self.venue.name}#{self.action.name}:#{self.calling.do_what}。"
     end
   end
   
   def can_edit_by?(current_user)
     self.user == current_user
   end
-  
 end
-

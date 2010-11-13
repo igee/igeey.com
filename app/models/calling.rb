@@ -46,11 +46,11 @@ class Calling < ActiveRecord::Base
   
   def description
     if self.action.for_what == 'money'
-      "为#{self.venue.name}募捐#{self.total_money}元用于#{self.donate_for}。"
+      "在为#{self.venue.name}募捐#{self.total_money}元用于#{self.donate_for}。"
     elsif self.action.for_what == 'goods'
-      "为#{self.venue.name}募捐物资#{self.total_goods}件#{self.goods_is}。"
+      "在为#{self.venue.name}募捐物资#{self.total_goods}件#{self.goods_is}。"
     elsif self.action.for_what == 'time'
-      "为#{self.venue.name}召集#{self.total_people}人去#{self.do_what}。"
+      "在为#{self.venue.name}召集#{self.total_people}人去#{self.do_what}。"
     end
   end
    
