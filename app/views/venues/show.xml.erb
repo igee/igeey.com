@@ -1,5 +1,9 @@
-<div>
-  <%= image_tag(@venue.cover.url(:_80x60),:class => "venue_thumb_cover") %>
-  <%= link_to @venue.name ,@venue%>
+<div style="padding:5px;width:320px">
+  <%= image_tag(@venue.cover.url(:_80x60),:class => "venue_thumb_cover",:style => "float:left;padding:5px 10px 5px 0")%>
+  <h5><%= link_to @venue.name ,@venue%></h5>
+  <p class="explanation">
+    <%= @venue.intro %>
+  </p>
+  <div class="clear"></div>
 </div>
   

@@ -17,7 +17,7 @@
     <%= link_to "添加聚点",new_venue_path,:id => "create_venue",:class => 'button' %>
   </p>
   <div id="mark_guide" style="display:none">
-    <p>聚点在哪里?<br/>拖动地图上红色坐标，把它标记出来。</p>
+    <p>先 <span style="color:#c52;font-size:14px">拖动地图</span> 确定要添加的聚点位置。(做到尽量精确吧)</p>
     <%= link_to "标记完毕，下一步","#{new_venue_path}?latitude=#{@geo.latitude}&longitude=#{@geo.longitude}&geo_id=#{@geo.id}",:id => "next_step",:class => 'button' %>
     <%= link_to "取消",'#',:id => "cancel_mark",:class => 'button' %>
   </div>
@@ -62,16 +62,28 @@
       marker = new google.maps.Marker({
         position: map.getCenter(), 
         title: "聚点坐标",
-        draggable: true,
       });
       
-      google.maps.event.addListener(marker, "dragend", function() {
+      google.maps.event.addListener(map, "drag", function() {
+        marker.setPosition(map.getCenter())
         $('#next_step').attr(
            'href',
            '<%= "#{new_venue_path}" %>?latitude=' + marker.getPosition().lat() + '&longitude=' + marker.getPosition().lng() + "&geo_id=<%=@geo.id%>"
         );
       });
-    };
+      
+      google.maps.event.addListener(map, 'dblclick', function() {
+        setTimeout(function(){
+          marker.setPosition(map.getCenter())
+          $('#next_step').attr(
+           'href',
+           '<%= "#{new_venue_path}" %>?latitude=' + marker.getPosition().lat() + '&longitude=' + marker.getPosition().lng() + "&geo_id=<%=@geo.id%>"
+          );
+        }, 400);
+      });
+      
+      
+    }; //initialize_end()
     
     function mark_latlng(){
       marker.setPosition(map.getCenter())
@@ -94,7 +106,8 @@
         if(status == google.maps.GeocoderStatus.OK){
             $.map(results, function(item) {
               map.setCenter(new google.maps.LatLng(item.geometry.location.lat(),item.geometry.location.lng()));
-              map.setZoom(9);
+              map.setZoom(item.address_components.length * 2 + 3);
+              marker.setPosition(map.getCenter())
             })
         }
         else{
