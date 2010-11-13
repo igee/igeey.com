@@ -23,8 +23,7 @@
               给<%="#{@venue.name}"%>。
               <%= form.hidden_field(:goods_is,:value => @calling.good_is) if @record.plan.present?%>
             <% elsif @action.for_what == 'time' %>
-              去<%="#{@venue.name}"%>做了<%= form.text_field :time, :size => 6,:placeholder => "多少" %> 小时的
-              <%= form.text_field :do_what, :size => 7 ,:placeholder => "做了什么？",:value => (@calling.do_what if @calling)%> 。
+              去<%="#{@venue.name}"%><%= form.text_field :do_what, :size => 7 ,:placeholder => "做了什么？",:value => (@calling.do_what if @calling)%><%= form.text_field :time, :size => 3,:placeholder => "多少" %> 小时。
             <% end %>
             <br/>
         </div>

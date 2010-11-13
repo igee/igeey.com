@@ -62,8 +62,13 @@ textarea{
     -moz-border-radius: 3px;
     font-size:13px;
     }
-
-input:focus{background-color:#ffffc0;outline:none;border:1px solid #e95}
+input.blur{color:#bbb}
+input:focus{
+  background-color:#ffffc0;
+  outline:none;
+  border:1px solid #e95;
+  color:#666
+  }
 
 img{border:none;}
 
@@ -164,7 +169,13 @@ button:hover,.button:hover,.big_button:hover{background:#c42;color:white;}
   display:inline;
   }
 
-.field_with_errors input{border-color:#f33;}
+.field_with_errors input{
+  border-color:#f63;
+  background-color:#fed;
+  border-radius: 0;
+  -moz-border-radius: 0;
+  
+  }
 
 #error_explanation{
   text-align:center;

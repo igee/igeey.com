@@ -16,7 +16,7 @@ class Calling < ActiveRecord::Base
 
   def validate
     if (total_money && donate_for) || (total_goods && goods_is) || (total_people && do_what)
-      errors[:number] << '数量必须为大于0的整数' unless (total_money.to_i > 0)||(total_goods.to_i > 0)||(total_people.to_i > 0)
+      errors[for_what] << '数量必须为大于0的整数' unless (total_money.to_i > 0)||(total_goods.to_i > 0)||(total_people.to_i > 0)
     else
       errors[:info] << '请将号召信息填写完整' 
     end

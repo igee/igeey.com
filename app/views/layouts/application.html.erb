@@ -1,5 +1,5 @@
-
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN"> 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>爱聚-igee.org [测试中] </title>
@@ -9,6 +9,7 @@
   <%= javascript_include_tag 'dialog' %>
   <%= javascript_include_tag 'calendar' %>
   <%= javascript_include_tag 'jquery.poshytip.min.js' %>
+  <%= javascript_include_tag 'jquery.hint.js' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tag %>
   <%= yield :head %>  
@@ -57,7 +58,7 @@
       <div id="sidebar">
         <%= yield :sidebar %>
       </div>
-      <div style="clear:both">
+      <div style="clear:both"></div>
     </div>
   </div>
 

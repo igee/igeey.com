@@ -30,8 +30,11 @@
       }
     );
     
-    $(".tabContents").hide(); // Hide all tab conten divs by default
+    if(!('placeholder' in document.createElement('input'))){
+      $('input[placeholder!=""]').hint();
+    }
     
+    $(".tabContents").hide(); // Hide all tab conten divs by default
     $(".tabContents:first").show(); // Show the first div of tab content by default
     $("#tabContaier ul li a:first").addClass("active");
     $("#tabContaier ul li a").click(function(){ //Fire the click event

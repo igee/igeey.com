@@ -22,7 +22,7 @@ class Record < ActiveRecord::Base
        (goods.present? && goods_is.present? && for_what == 'goods') || \
        (time.present? && do_what.present? && for_what == 'time')
       
-      errors[:number] << '数量必须为大于0的整数' unless number > 0
+      errors[for_what] << '数量必须为大于0的整数' unless number > 0
     else
       errors[:info] << '请将时记录信息填写完整' 
     end
