@@ -20,7 +20,7 @@ class RecordsController < ApplicationController
     
     if @plan.nil? && @record.venue.nil?
       @action = Action.find params[:action_id]
-      @followed_venues = current_user.followings.where(:followable_type => 'Venue').map(&:followable)
+      @following_venues = current_user.followings.where(:followable_type => 'Venue').map(&:followable)
       @city_venues = current_user.geo.venues if current_user.geo
       @all_venues = Venue.all
       render :select_venue

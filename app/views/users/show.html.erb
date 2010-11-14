@@ -25,7 +25,7 @@
   
   <div class="clear"></div>
 </div>
-
+<%= raw(follow_to(@user)) %>
 <div class="box">
   <h4>Ta的行动：</h4>
   <%= render :partial => '/public/event',:collection => @timeline%>
@@ -41,13 +41,13 @@
   
   <div class="box">
     <h4><%= "#{@user.login}关注的人："%></h4>
-    <%= render :partial => '/public/user',:collection => @followed_users %>
+    <%= render :partial => '/public/user',:collection => @following_users %>
   </div>
 
   
   <div class="box">
     <h4><%= "#{@user.login}关注的聚点："%></h4>
-    <%= render :partial => '/public/venue',:collection => @followed_venues %>
+    <%= render :partial => '/public/venue',:collection => @following_venues %>
   </div>
 
 <% end %>

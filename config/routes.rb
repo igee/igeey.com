@@ -47,7 +47,8 @@ Igee::Application.routes.draw do
       get   :welcome
     end
     member do
-      
+      get   :following_venues
+      get   :following_users
     end
   end
   

@@ -84,11 +84,11 @@ class User < ActiveRecord::Base
     !self.followings.where(:followable_id => followable.id,:followable_type => followable.class).limit(1).blank?
   end
 
-  def followed_users
+  def following_users
     self.followings.where(:followable_type => 'User').map(&:followable)
   end
 
-  def followed_venues
+  def following_venues
     self.followings.where(:followable_type => 'Venue').map(&:followable)
   end
 
@@ -106,6 +106,14 @@ class User < ActiveRecord::Base
   
   def has_unread_comment?
     has_unread_calling_comment? || has_unread_record_comment? || has_unread_topic_comment?
+  end
+  
+  def influence
+    [self.callings.map{|c| c.plans},self.plans.map{|p| p.children}].flatten.uniq.size
+  end
+    
+  def latest_update
+    [self.records.first,self.callings.first,self.plans.first].compact.sort{|x,y| y.created_at <=> x.created_at }.first
   end
   
   # Use OAuth::AccessToken to access oauth api. powered by oauth_side 

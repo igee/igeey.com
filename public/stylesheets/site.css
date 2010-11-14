@@ -28,6 +28,7 @@ p{
 span{
   color:#999;
   font-size:12px;
+  font-weight:normal;
 }
 
 
@@ -270,7 +271,7 @@ button:hover,.button:hover,.big_button:hover{background:#c42;color:white;}
   }
 
 
-.sidebar_panel p{
+.sidebar_panel li{
   padding-bottom:6px;
   border-bottom:1px dashed #9bd;
   }
@@ -340,7 +341,7 @@ button:hover,.button:hover,.big_button:hover{background:#c42;color:white;}
 
 
 .event {
-  height:64px;
+  height:68px;
   width:532px;
   margin-left:72px;
   }
@@ -364,7 +365,7 @@ button:hover,.button:hover,.big_button:hover{background:#c42;color:white;}
 .event_type{
   position:absolute;
   width:16px;
-  height:86px;
+  height:90px;
   border-left:3px solid #fff;
   margin-left:-19px;
   }

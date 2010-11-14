@@ -2,7 +2,7 @@
 <div id="tabContaier">
   <ul>
     <li><%= link_to '全部聚点','#all_venues'%></li>
-    <li><%= link_to '我关注的','#followed_venues'%></a></li>
+    <li><%= link_to '我关注的','#following_venues'%></a></li>
     <li><%= link_to '我的城市','#city_venues'%></a></li>
   </ul>
   
@@ -10,8 +10,8 @@
     <%= render :partial => '/records/venue', :collection => @all_venues %>
   </div>
   
-  <div id="followed_venues" class="tabContents">
-    <%= render :partial => '/records/venue', :collection => @followed_venues %>
+  <div id="following_venues" class="tabContents">
+    <%= render :partial => '/records/venue', :collection => @following_venues %>
   </div>
   
   <div id="city_venues" class="tabContents">

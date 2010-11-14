@@ -29,6 +29,12 @@ class UsersController < ApplicationController
     end
   end
   
+  def welcome
+    if params[:layout] == 'false'
+      render :layout => false
+    end  
+  end
+  
   def edit
     @user = current_user
   end
@@ -48,15 +54,28 @@ class UsersController < ApplicationController
     @timeline += @user.records
     @timeline = @timeline.sort{|x,y| y.created_at <=> x.created_at }
     @followers = @user.followers
-    @followed_users = @user.followed_users
-    @followed_venues = @user.followed_venues
+    @following_users = @user.following_users
+    @following_venues = @user.following_venues
     @photos = @user.photos
   end
   
-  def welcome
-    if params[:layout] == 'false'
-      render :layout => false
-    end  
+  def show
+    @timeline = @user.callings
+    @timeline += @user.plans.undone
+    @timeline += @user.records
+    @timeline = @timeline.sort{|x,y| y.created_at <=> x.created_at }
+    @followers = @user.followers
+    @following_users = @user.following_users
+    @following_venues = @user.following_venues
+    @photos = @user.photos
+  end
+  
+  def following_venues
+    @following_venues = @user.following_venues
+  end
+  
+  def following_users
+    @following_users = @user.following_users
   end
 
   private

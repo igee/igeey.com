@@ -1,0 +1,2 @@
+<h3><%= @user.login%>关注的用户：</h3>
+<%= render :partial => '/users/user',:collection => @following_users%>

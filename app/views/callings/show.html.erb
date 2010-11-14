@@ -19,7 +19,7 @@
       <%= render :partial => '/public/user',:object => @my_plan.user%>
       <div class="event">
         <p>
-          <%= link_to "你计划#{@my_plan.description}。",calling_plan_path(@calling,@my_plan) %>
+          <%= link_to "你#{@my_plan.description}。",calling_plan_path(@calling,@my_plan) %>
         </p>
         <div style="text-align:right;padding:8px 0">
           <%= link_to "已经完成?","#{new_record_path}?plan_id=#{@my_plan.id}",:class => "button" %>
