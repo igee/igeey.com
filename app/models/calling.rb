@@ -10,16 +10,18 @@ class Calling < ActiveRecord::Base
   default_scope :order => 'created_at DESC'
   
   attr_accessor :sync_to_sina,:sync_to_douban,:sync_to_renren
+  delegate :for_what, :to => :action
   
-  validates :detail,:length => { :within => 50..1000 ,:message => '详细信息要不能少于50字'}
+  validates :detail,:length => {:within => 50..1000 ,:message => '详细信息要不能少于50字'}
   validates :user_id,:action_id,:venue_id,:presence   => true
 
   def validate
-    if (total_money && donate_for) || (total_goods && goods_is) || (total_people && do_what)
-      errors[for_what] << '数量必须为大于0的整数' unless (total_money.to_i > 0)||(total_goods.to_i > 0)||(total_people.to_i > 0)
-    else
-      errors[:info] << '请将号召信息填写完整' 
-    end
+    errors["total_#{for_what}"] << '数量必须为大于0的整数' unless total_number > 0
+    errors[(content.blank? ? {'time' => :do_what,'money' => :donate_for,'goods' => :goods_is}[for_what] : "total_#{for_what}")] = '请将记录信息填写完整' 
+  end
+  
+  def content
+    {'time' => do_what,'money' => donate_for,'goods' => goods_is}[for_what]
   end
     
   def users_count
@@ -27,11 +29,11 @@ class Calling < ActiveRecord::Base
   end
   
   def total_number
-    {'money' => "#{total_money}元",'goods' => "#{total_goods}件",'time' => "#{total_people}人"}[self.action.for_what]
+    {'money' => total_money,'goods' => total_goods,'time' => total_people }[for_what] || 0
   end
   
   def finished_status
-    {'money' => "已获捐#{self.records.map(&:money).sum}元",'goods' => "已获捐#{self.records.map(&:goods).sum}件",'time' => "已有#{self.plans.map(&:user).uniq.size}人参加"}[self.action.for_what]
+    {'money' => "已获捐#{self.records.map(&:money).sum}元",'goods' => "已获捐#{self.records.map(&:goods).sum}件",'time' => "已有#{self.plans.map(&:user).uniq.size}人参加"}[for_what]
   end
    
   def percentage

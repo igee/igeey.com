@@ -128,7 +128,7 @@ ActiveRecord::Schema.define() do
     t.string  :goods_is,    :limit => 40
     t.integer :total_people
     t.string  :do_what,     :limit => 40
-    t.string  :info,        :limit => 40
+    t.string  :info,        :limit => 80
     t.text    :detail
     t.integer :comments_count,   :default => 0
     t.boolean :has_new_comment,  :default => false

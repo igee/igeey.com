@@ -14,29 +14,24 @@ class Record < ActiveRecord::Base
   
   delegate :for_what, :to => :action
   
-  validates :user_id,:action_id,:venue_id,:presence   => true
+  validates :user_id,:action_id,:venue_id,:presence  => true
   validates :done_at,:date => {:before_or_equal_to => Date.today.to_date}
   
   def validate
-    if (money.present? && donate_for.present? && (for_what == 'money')) || \
-       (goods.present? && goods_is.present? && for_what == 'goods') || \
-       (time.present? && do_what.present? && for_what == 'time')
-      
-      errors[for_what] << '数量必须为大于0的整数' unless number > 0
-    else
-      errors[:info] << '请将时记录信息填写完整' 
-    end
+    errors[for_what] << '数量必须为大于0的整数' unless number > 0
+    errors[(content.blank? ? {'time' => :do_what,'money' => :donate_for,'goods' => :goods_is}[for_what] : for_what)] = '请将记录信息填写完整' 
+    
     if plan.present? && plan.is_done
-      errors[:info] <<  '你已经完成了这个计划' 
+      errors[:status] <<  '你已经完成了这个计划' 
     end
   end
   
-  def number
-    {'money'=> money,'goods'=> goods,'time'=> time}[for_what]
+  def content
+    {'time' => do_what,'money' => donate_for,'goods' => goods_is}[for_what]
   end
-    
-  def info
-    {'money'=> donate_for,'goods'=> goods_is,'time'=> do_whats}[for_what]
+  
+  def number
+    {'money'=> money,'goods'=> goods,'time'=> time}[for_what] || 0
   end
   
   def can_edit_by?(current_user)
