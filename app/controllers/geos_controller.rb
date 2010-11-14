@@ -23,5 +23,5 @@ class GeosController < ApplicationController
   def find_geo
     @geo = Geo.find(params[:id])
   end
-
+  
 end

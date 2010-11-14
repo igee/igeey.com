@@ -19,16 +19,11 @@
 </div>
 
 <div class="box">  
-  <h4>行动号召:</h4>
-  <%= render :partial => '/public/calling', :collection => @callings %>
+  <h4>大家的行动:</h4>
+  <%= render :partial => '/public/event', :collection => @timeline %>
 </div>
 
 <%= render :partial => '/photos/gallery' ,:locals => {:imageable => @venue}%>
-
-<div class="box">  
-  <h4>行动记录:</h4>
-  <%= render :partial => '/public/record', :collection => @records %>
-</div>
 
 <% content_for :sidebar do %>
   <div class="box">

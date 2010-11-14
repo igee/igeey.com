@@ -26,7 +26,7 @@ p{
   margin:6px 0;}
 
 span{
-  color:#888;
+  color:#999;
   font-size:12px;
 }
 
@@ -253,6 +253,7 @@ button:hover,.button:hover,.big_button:hover{background:#c42;color:white;}
   border-radius: 8px;
   -moz-border-radius: 8px;
 }
+.record_counter span{color:#777}
 
 .record_counter h1{
   margin-top:10px;
@@ -261,8 +262,8 @@ button:hover,.button:hover,.big_button:hover{background:#c42;color:white;}
 
 .sidebar_panel{
   padding:6px 10px;
-  background-color:#cef;
-  margin:5px;
+  background-color:#d6e6f6;
+  margin:0px 5px 15px;
   font-size:12px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -459,7 +460,7 @@ a#logo{
   float:right;
   padding:2px 12px 6px;
   color:#cdf;
-  background-color:#79c;
+  background-color:#68c;
   margin-right:4px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -470,7 +471,7 @@ a#logo{
     
 #header{
     height:96px;
-    border-top:4px solid #79c;
+    border-top:4px solid #68c;
     background:url('/images/sawtooth.png') repeat-x;
     }
     

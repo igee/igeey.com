@@ -62,7 +62,7 @@ class CallingsController < ApplicationController
   end
   
   def clean_unread
-    @calling.update_attribute(:has_new_comment,false) if @calling.user == current_user
+    @calling.update_attribute(:has_new_comment,false) if @calling.user == current_user && @calling.has_new_comment
   end
   
 end

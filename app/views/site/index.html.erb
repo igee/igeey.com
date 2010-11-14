@@ -32,22 +32,18 @@
 
 <% content_for :sidebar do %>
   <% unless @my_plans.blank? %>
-    <div class="box">
-      <div class="sidebar_panel">
-        <h4>你的计划：</h4>
-      <% @my_plans.each do |plan|%>
-          <p><%= link_to "要#{plan.description}",calling_plan_path(plan.calling,plan)%></p>
-      <% end %>
-      </div>
+    <div class="sidebar_panel">
+      <h4>你的计划完成了么？</h4>
+    <% @my_plans.each do |plan|%>
+        <p><%= link_to "要#{plan.description}",calling_plan_path(plan.calling,plan)%></p>
+    <% end %>
     </div>
   <% end %>
   
   <% if logged_in? && current_user.has_unread_comment? %>
-  <div class="box">
     <div class="sidebar_panel">
       <%= link_to "有人在你的消息下留言了，去看看?",unread_comments_path%>
     </div>
-  </div>
   <% end %>
   
   <div class="box">

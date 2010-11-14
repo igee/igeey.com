@@ -2,6 +2,7 @@ class TopicsController < ApplicationController
   respond_to :html
   before_filter :login_required, :except => [:index, :show]
   before_filter :find_topic, :except => [:index,:new,:create]
+  after_filter  :clean_unread, :only => [:show]
   
   def index
     @topics = Topic.all
@@ -30,6 +31,10 @@ class TopicsController < ApplicationController
   private
   def find_topic
     @topic = Topic.find(params[:id])
+  end
+  
+  def clean_unread
+    @topic.update_attribute(:has_new_comment,false) if @topic.user == current_user && @topic.has_new_comment
   end
 
 end

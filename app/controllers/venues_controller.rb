@@ -33,8 +33,10 @@ class VenuesController < ApplicationController
   end
   
   def show
-    @callings = @venue.callings
-    @records = @venue.records
+    @timeline = @venue.callings
+    @timeline += @venue.plans.undone
+    @timeline += @venue.records
+    @timeline = @timeline.sort{|x,y| y.created_at <=> x.created_at }
     @photo = Photo.new
     @photos = @venue.photos
     @followers = @venue.followers

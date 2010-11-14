@@ -11,7 +11,10 @@
       <span style="font-size:20px;font-family:'times new roman';color:#999">”</span>
     </p>
     <div class="addition">
-      
+      <span>
+        <%= "已有#{plan.calling.users_count}人参与，" %><%= "#{plan.calling.finished_status}。"%>
+        <%= image_tag '/images/icon/photo.gif',:class => "icon",:alt => '有照片哦' if plan.calling.has_photo%>
+      </span>
     </div>
   </div>
 </div>

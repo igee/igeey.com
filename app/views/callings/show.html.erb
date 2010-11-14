@@ -41,7 +41,7 @@
 </div>
 
 <div class="box">
-  <h4><%= {'goods' => '捐赠地址','time' => '集合地址','money' => '捐赠地址'}[@calling.for_what]%>：</h4>
+  <h4><%= {'goods' => '捐赠信息','time' => '集合信息','money' => '捐增信息'}[@calling.for_what]%>：</h4>
   <p style="padding:5px 10px">
     <%= @calling.info%>
   </p>
@@ -70,7 +70,7 @@
   </div>
   
   <div class="box">
-    <h4>贡献者：</h4>
+    <h4>所有参与者：</h4>
     <%= render :partial => '/public/user',:collection => @plans.map(&:user)%>
     <div class="clear"></div>
   </div>
