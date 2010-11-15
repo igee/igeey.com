@@ -15,13 +15,13 @@
         <div class="impact">
           我在<%= form.text_field :done_at, :size => 8,:class => 'with_calendar',:placeholder => "yyyy-mm-dd"%>
             <% if @action.for_what == 'money' %>
-              捐款<%= form.text_field :money, :size => 4 ,:placeholder => "多少"%>元到<%="#{@venue.name}"%>，用于
+              捐赠了<%= form.text_field :money, :size => 4 ,:placeholder => "多少"%>元到<%="#{@venue.name}"%>，用于
               <%= @calling.present? ? @calling.donate_for : form.text_field(:donate_for, :size => 8,:placeholder => "用于做什么？")%>。
               <%= form.hidden_field(:donate_for,:value => @calling.donate_for) if @record.plan.present?%>
             <% elsif @action.for_what == 'goods' %>
-              捐赠<%= form.text_field :goods, :size => 4 ,:placeholder => "多少"%>件<%= @record.plan.present? ? @calling.goods_is : form.text_field(:goods_is, :size => 8,:placeholder => "物资名称？")%>
+              捐赠了<%= form.text_field :goods, :size => 4 ,:placeholder => "多少"%>件<%= @record.plan.present? ? @calling.goods_is : form.text_field(:goods_is, :size => 8,:placeholder => "物资名称？")%>
               给<%="#{@venue.name}"%>。
-              <%= form.hidden_field(:goods_is,:value => @calling.good_is) if @record.plan.present?%>
+              <%= form.hidden_field(:goods_is,:value => @calling.goods_is) if @record.plan.present?%>
             <% elsif @action.for_what == 'time' %>
               去<%="#{@venue.name}"%><%= form.text_field :do_what, :size => 7 ,:placeholder => "做了什么？",:value => (@calling.do_what if @calling)%><%= form.text_field :time, :size => 3,:placeholder => "多少" %> 小时。
             <% end %>

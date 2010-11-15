@@ -1,4 +1,4 @@
-<div class="profile_box">
+<div class="box">
   <div id="record_counts">
     <div style="text-align:center;margin-bottom:4px;font-size:12px;color:#a76;font-weight:bold">公益贡献</div>
     <% [[@user.time_count,'小时'],[@user.money_count,'元捐款'],[@user.goods_count,'件物品']].each do |counter_list|%>
@@ -11,7 +11,9 @@
   
   <div style="float:left;text-align:center;padding-top:16px">
     <%= image_tag @user.avatar.url(:_72x72),:class => "avatar" %>
-    <br/>
+    <p>
+      <%= raw(follow_to(@user)) %>
+    </p>
   </div>
   <div style="float:left;width:200px;text-align:left;padding:16px 10px 0">
     <h3 style="display:inline"><%= @user.login %></h3>
@@ -25,7 +27,9 @@
   
   <div class="clear"></div>
 </div>
-<%= raw(follow_to(@user)) %>
+
+
+
 <div class="box">
   <h4>Ta的行动：</h4>
   <%= render :partial => '/public/event',:collection => @timeline%>
