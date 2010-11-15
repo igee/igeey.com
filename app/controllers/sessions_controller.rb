@@ -2,7 +2,10 @@
 class SessionsController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   # include AuthenticatedSystem
-
+  
+  def show
+    redirect_to :root
+  end
   # render new.rhtml
   def new
     redirect_to :root if logged_in?

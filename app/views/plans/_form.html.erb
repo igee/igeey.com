@@ -10,9 +10,9 @@
         <div class="saying_colon_left">“</div>
         <p>
           <% if @action.for_what == 'money' %>
-            要捐多少(元)？<%= form.text_field :money, :size => 4 ,:placeholder => '填写金额'%>。
+            要捐多少(元)？<%= form.text_field :money, :size => 6 ,:placeholder => '填写金额'%>。
           <% elsif @action.for_what == 'goods'%>
-            要捐多少(件)？<%= form.text_field :goods, :size => 4 ,:placeholder => '填写数量'%>
+            要捐多少(件)？<%= form.text_field :goods, :size => 6 ,:placeholder => '填写数量'%>
           <% elsif @action.for_what == 'time'%>
             计划在哪天去？<%= form.text_field :plan_at, :size => 8,:class => 'with_calendar',:placeholder => "yyyy-mm-dd"%>。
           <% end %>

@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
                             
   has_many :records
   has_many :plans
-  has_many :callings,       :foreign_key => :user_id
+  has_many :callings
   has_many :venues,         :foreign_key => :creator_id
   has_many :comments
   has_many :topics
@@ -84,7 +84,7 @@ class User < ActiveRecord::Base
   def goods_count
     self.records.map(&:goods).compact.sum
   end
-
+   
   def following?(followable)
     !self.followings.where(:followable_id => followable.id,:followable_type => followable.class).limit(1).blank?
   end

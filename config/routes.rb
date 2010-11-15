@@ -16,7 +16,7 @@ Igee::Application.routes.draw do
   match 'oauth(/:action)' => 'oauth#(/:action)'
   match 'setting' => 'users#edit'
   
-  resource :session, :only => [:new, :create, :destroy]
+  resource :session, :only => [:new, :create, :destroy,:show]
 
   resources :venues do
     member do

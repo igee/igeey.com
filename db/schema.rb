@@ -125,6 +125,7 @@ ActiveRecord::Schema.define() do
     t.datetime :created_at
     t.datetime :updated_at
     t.integer  :follows_count,             :default => 0
+    t.integer  :comments_count,            :default => 0
     t.integer  :records_count,             :default => 0
     t.integer  :plans_count,               :default => 0
     t.integer  :callings_count,            :default => 0

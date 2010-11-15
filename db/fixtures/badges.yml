@@ -11,7 +11,7 @@ badge_2:
   name:      '公益处女座'
   slug:      'calling_once' 
   condition_factor: 'callings'
-  condition_number: 1
+  condition_number: 0
   intro:     '第一次发起号召'
   
 badge_3:
@@ -19,5 +19,5 @@ badge_3:
   name:      '行动初体验'
   slug:      'plan_once' 
   condition_factor: 'plans'
-  condition_number: 1
+  condition_number: 0
   intro:     '第一次要行动'
