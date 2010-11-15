@@ -36,7 +36,7 @@
     <div class="sidebar_panel">
       <div style="padding:5px 5px;float:right;width:150px">
         <h4><%= link_to current_user.login,current_user%></h4>
-        关注: <%= link_to "#{current_user.following_venues.size}个聚点",following_venues_user_path(current_user) %>　<%= link_to "#{current_user.following_users.size}个用户",following_users_user_path(current_user) %>
+        关注：<%= link_to "#{current_user.following_venues.size}个聚点",following_venues_user_path(current_user) %>　<%= link_to "#{current_user.following_users.size}个用户",following_users_user_path(current_user) %>
       </div>
       <div style="padding:10px 5px;">
         <%= image_tag current_user.avatar.url(:_48x48),:class => "avatar" %>
