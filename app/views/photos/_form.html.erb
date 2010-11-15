@@ -13,7 +13,7 @@
         <br/>
         <p>
           <%= submit_tag '上传',:class => 'button' %>
-          <%= button_to_function '取消',"javascript:$('#floatBox .dialog_title span').click()",:class => "button"%>
+          <%= button_to_function '取消',"javascript:$('#floatBox #close_dialog').click()",:class => "button"%>
         </p>
       <% end %>
     </div>

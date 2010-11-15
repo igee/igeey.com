@@ -7,19 +7,18 @@ if(dialogFirst==true){
   var temp_float=new String;
   temp_float="<div id=\"floatBoxBg\" style=\"height:"+$(document).height()+"px;filter:alpha(opacity=0);opacity:0;\"></div>";
   temp_float+="<div id=\"floatBox\" class=\"floatBox\">";
-  temp_float+="<div class=\"dialog_title\"><h4></h4><span>关闭</span></div>";
+  temp_float+="<div class=\"dialog_title\"><h4></h4><span id='close_dialog'>关闭</span></div>";
   temp_float+="<div class=\"dialog_content\"></div>";
   temp_float+="</div>";
   $("body").append(temp_float);
   dialogFirst=false;
 }
 
-$("#floatBox .dialog_title span").click(function(){
+$("#floatBox #close_dialog").click(function(){
   $("#floatBoxBg").animate({opacity:"0"},"normal",function(){$(this).hide();});
   $("#floatBox").animate({top:($(document).scrollTop()-(height=="auto"?300:parseInt(height)))+"px"},"normal",function(){$(this).hide();}); 
 });
-$("#floatBoxBg").click(function(){$("#floatBox .dialog_title span").click()})
-
+$("#floatBoxBg").click(function(){$("#floatBox #close_dialog").click()})
 
 $("#floatBox .dialog_title h4").html(title);
 contentType=content.substring(0,content.indexOf(":"));
