@@ -1,6 +1,6 @@
 class BadgesController < ApplicationController
   before_filter :login_required
-  #after_filter  :clean_unread
+  after_filter  :clean_unread
   
   def get_badges
     @badges = current_user.grants.where(:unread => true).map(&:badge)
