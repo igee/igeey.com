@@ -20,7 +20,21 @@ ActiveRecord::Schema.define() do
     t.text    :step_by_step
   end
 
-
+  create_table "badges", :force => true do |t|
+    t.string  :name,             :limit => 40
+    t.string  :slug,             :limit => 40
+    t.string  :condition_factor, :limit => 40
+    t.integer :condition_number
+    t.text    :intro
+  end
+  
+  create_table "grants", :force => true do |t|
+    t.integer  :user_id,    :null => false
+    t.integer  :badge_id
+    t.boolean  :unread,     :default => true
+    t.timestamps
+  end
+  
   create_table "comments", :force => true do |t|
     t.integer  :user_id,    :null => false
     t.text     :content
@@ -110,7 +124,10 @@ ActiveRecord::Schema.define() do
     t.integer  :geo_id
     t.datetime :created_at
     t.datetime :updated_at
-    t.integer  :follows_count,           :default => 0
+    t.integer  :follows_count,             :default => 0
+    t.integer  :records_count,             :default => 0
+    t.integer  :plans_count,               :default => 0
+    t.integer  :callings_count,            :default => 0
     t.string   :remember_token,            :limit => 40
     t.datetime :remember_token_expires_at
     t.string   :signature

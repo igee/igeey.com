@@ -1,5 +1,5 @@
 class Record < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user,     :counter_cache => true
   belongs_to :venue
   belongs_to :action
   belongs_to :calling

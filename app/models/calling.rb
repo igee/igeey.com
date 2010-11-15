@@ -1,5 +1,5 @@
 class Calling < ActiveRecord::Base
-  belongs_to :user, :class_name => "User", :foreign_key => :user_id
+  belongs_to :user,     :counter_cache => true
   belongs_to :venue
   belongs_to :action
   has_many   :records

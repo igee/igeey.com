@@ -2,8 +2,8 @@ class Plan < ActiveRecord::Base
   belongs_to :venue
   belongs_to :action
   belongs_to :calling
-  belongs_to :user
-  belongs_to :parent,:class_name => :plan,:foreign_key => :parent_id
+  belongs_to :user,     :counter_cache => true
+  belongs_to :parent,   :class_name => :plan,:foreign_key => :parent_id
   has_one    :record
   has_many   :comments, :as => :commentable, :dependent => :destroy
   has_many   :plans

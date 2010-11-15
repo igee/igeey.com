@@ -22,7 +22,7 @@
       <h5>详细信息：(不要少于50字)</h5>
       <p class="explanation">请说明你发起号召的原因、响应你的号召需要做什么。</p>
       <%= form.text_area :detail, :style => "width:430px;height:100px"%>
-      <p class="explanation">目前字数：<span id="character_counter"></span></p>
+      <p class="explanation">目前字数：<span id="character_count"></span></p>
     </p>
   </div>
   <div class="saying_tail"></div>
@@ -39,7 +39,7 @@
 
   <script type="text/javascript">
       function updateCount() {
-      document.getElementById("character_counter").innerHTML = document.getElementById("calling_detail").value.length;
+      document.getElementById("character_count").innerHTML = document.getElementById("calling_detail").value.length;
       setTimeout(updateCount, 400);
        }
       updateCount();

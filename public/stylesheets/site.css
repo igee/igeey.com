@@ -63,7 +63,9 @@ textarea{
     -moz-border-radius: 3px;
     font-size:13px;
     }
+
 input.blur{color:#bbb}
+
 input:focus{
   background-color:#ffffc0;
   outline:none;
@@ -243,7 +245,7 @@ button:hover,.button:hover,.big_button:hover{background:#c42;color:white;}
     overflow:hidden;
     }    
 
-.record_counter{
+.record_count{
   background-color:#aaa;
   color:white;
   float:left;
@@ -254,9 +256,9 @@ button:hover,.button:hover,.big_button:hover{background:#c42;color:white;}
   border-radius: 8px;
   -moz-border-radius: 8px;
 }
-.record_counter span{color:#777}
+.record_count span{color:#777}
 
-.record_counter h1{
+.record_count h1{
   margin-top:10px;
   font-weight:normal;
   } 
@@ -558,7 +560,7 @@ a#logo{
 }
 
 
-#record_counters{float:right;}
+#record_counts{float:right;}
 
 #upload_photo{
   background-color:#f0f0f0;
@@ -578,6 +580,11 @@ a#logo{
   }
   
 #feedback:hover{left:0;}
+
+#get_badges{
+  position:absolute;
+  width:100%;
+  }
 
 #tabContaier ul{
   border-bottom:1px solid #ccc;

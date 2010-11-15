@@ -1,0 +1,23 @@
+badge_1:
+  id:        1
+  name:      '爱聚元老'
+  slug:      'vizir' 
+  condition_factor: 'id'
+  condition_number: 100
+  intro:     '网站的前一百名用户'
+  
+badge_2:
+  id:        2
+  name:      '公益处女座'
+  slug:      'calling_once' 
+  condition_factor: 'callings'
+  condition_number: 1
+  intro:     '第一次发起号召'
+  
+badge_3:
+  id:        3
+  name:      '行动初体验'
+  slug:      'plan_once' 
+  condition_factor: 'plans'
+  condition_number: 1
+  intro:     '第一次要行动'

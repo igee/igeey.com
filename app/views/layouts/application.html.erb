@@ -19,6 +19,9 @@
   <div id="feedback">
     <%= link_to (image_tag('/images/feedback.png')),new_feedback_path,:class=> "open_dialog",:title => "反馈"%>
   </div>
+    
+  <div id="get_badges"></div>
+    
   <div id="header">
     <div class="container" id="nav">
       <%= link_to image_tag('/images/logo.png'), root_path,:id => 'logo' %>
@@ -74,6 +77,15 @@
       <div class="clear"></div>
     </div>
   </div>
-  <%= yield :extension %>
 </body>
+<%= yield :extension %>
+
+<% if logged_in? && current_user.has_new_badge?%>
+  <script>
+      $.get('<%= get_badges_badges_path%>',function(data){
+        $('#get_badges').html(data)
+      })
+  </script>
+<% end %>
+
 </html>

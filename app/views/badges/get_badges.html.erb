@@ -1,0 +1,19 @@
+<div id="opacity_background">
+</div>
+<div style="position:absolute;z-index:5;width:100%;">
+  <div class="container" style="padding-top:120px;">
+    <div style="margin:0 auto;width:400px;background-color:#ffc;padding:20px 30px;border:3px solid #fc9;">
+      <h4>Hi,你获得了徽章奖励:</h4>
+      <% current_user.grants.where(:unread => true).map(&:badge).each do |badge|%>
+        <h3><%= badge.name%></h3>
+        <p><%= badge.intro%></p>
+      <% end %>
+      <p style="text-align:right">
+        <%= button_to_function '确认',"javascript:$('#get_badges').hide()",:class => "button"%>
+      </p>
+    </div>
+  </div>
+</div>
+<script>
+  $('#opacity_background').attr('style',("width:100%;height:" + $(document).height() + "px;background-color:#000;filter:alpha(opacity=0.3);opacity:0.3;position:absolute;z-index:4;"))
+</script>

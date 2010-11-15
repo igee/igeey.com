@@ -24,8 +24,10 @@ Igee::Application.routes.draw do
       get :select_calling_action
     end
   end
-
-  resources :actions
+  
+  resources :badges do
+    get   :get_badges ,:on => :collection
+  end
   
   resources :callings do
     get   :next_step ,:on => :collection
@@ -60,6 +62,9 @@ Igee::Application.routes.draw do
   resources :follows
   resources :comments
   resources :photos
+  resources :actions
+  
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

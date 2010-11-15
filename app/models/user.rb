@@ -16,11 +16,12 @@ class User < ActiveRecord::Base
                             
   has_many :records
   has_many :plans
-  has_many :callings,   :foreign_key => :user_id
+  has_many :callings,       :foreign_key => :user_id
   has_many :venues,         :foreign_key => :creator_id
   has_many :comments
   has_many :topics
   has_many :photos
+  has_many :grants
   has_many :followings,     :class_name => "Follow",:foreign_key => :user_id
   has_many :follows,        :as => :followable, :dependent => :destroy
   has_many :followers,      :through => :follows, :source => :user
@@ -67,16 +68,20 @@ class User < ActiveRecord::Base
   def email=(value)
     write_attribute :email, (value ? value.downcase : nil)
   end
-
-  def time_counter
+  
+  def id_count  #hack for top 100 earlier user badge
+    200 - self.id
+  end
+  
+  def time_count
     self.records.map(&:time).compact.sum
   end
   
-  def money_counter
+  def money_count
     self.records.map(&:money).compact.sum
   end
 
-  def goods_counter
+  def goods_count
     self.records.map(&:goods).compact.sum
   end
 
@@ -108,6 +113,10 @@ class User < ActiveRecord::Base
     has_unread_calling_comment? || has_unread_record_comment? || has_unread_topic_comment?
   end
   
+  def has_new_badge?
+    self.grants.where(:unread => true).first.present?
+  end
+  
   def influence
     [self.callings.map{|c| c.plans},self.plans.map{|p| p.children}].flatten.uniq.size
   end
@@ -129,6 +138,16 @@ class User < ActiveRecord::Base
   def send_to_miniblogs(message,options={})
     puts self.send_to_douban_miniblog(message) if (options[:to_douban] && douban?)
     puts self.send_to_sina_miniblog(message) if (options[:to_sina] && sina?)
+  end
+  
+  def check_badge_condition_on(*args)
+    args.each do |condition_factor|
+      Badge.where(:condition_factor => condition_factor).each do |badge|
+        if self.grants.where(:badge_id => badge.id).blank? && (self.method("#{badge.condition_factor}_count").call >= badge.condition_number)
+          Grant.create(:user_id => id,:badge_id => badge.id)
+        end
+      end
+    end
   end
 
   protected

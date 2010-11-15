@@ -31,15 +31,15 @@ class Venue < ActiveRecord::Base
     CATEGORIES_HASH[self.category]
   end
   
-  def time_counter
+  def time_count
     self.records.map(&:time).compact.sum
   end
   
-  def money_counter
+  def money_count
     self.records.map(&:money).compact.sum
   end
 
-  def goods_counter
+  def goods_count
     self.records.map(&:goods).compact.sum
   end
 end
