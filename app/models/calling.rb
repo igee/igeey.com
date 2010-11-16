@@ -32,16 +32,26 @@ class Calling < ActiveRecord::Base
     {'money' => total_money,'goods' => total_goods,'time' => total_people }[for_what] || 0
   end
   
+  def remaining_number
+    self.total_number - self.plans.map(&(for_what.to_sym)).sum
+  end
+  
   def finished_status
-    #{'money' => "已获捐#{self.records.map(&:money).sum}元",'goods' => "已获捐#{self.records.map(&:goods).sum}件",'time' => "已有#{self.plans.map(&:user).uniq.size}人参加"}[for_what]
+    if for_what == 'money'
+      "要划捐增#{self.plans.map(&:money).sum}元"
+    elsif for_what == 'goods'
+      "要捐增#{self.plans.map(&:goods).sum}件"
+    elsif for_what == 'time'
+      "已有#{self.plans.map(&:user).uniq.size}人要参加"
+    end
   end
    
   def percentage
-    if self.action.for_what == 'money'
+    if for_what == 'money'
       (self.records.map(&:money).sum*100 / self.total_money)
-    elsif self.action.for_what == 'time'
-      (self.plans.map(&:user).uniq.size*100 / self.total_people)
-    elsif self.action.for_what == 'goods'
+    elsif for_what == 'time'
+      (self.plans.map(&:user).size*100 / self.total_people)
+    elsif for_what == 'goods'
       (self.records.map(&:goods).sum*100 / self.total_goods)
     end
   end

@@ -17,7 +17,7 @@
         <% if @plan.can_edit_by?(current_user) %>
           <%= link_to "已经完成?","#{new_record_path}?plan_id=#{@plan.id}",:class => "big_button" %>
         <% elsif @my_plan %>
-          你已响应： <%= link_to '查看我的计划',calling_plan_path(@calling,@my_plan)%>
+          你已参与： <%= link_to '查看我的计划',calling_plan_path(@calling,@my_plan)%>
         <% else %>
           <%= link_to "我也要#{{'time' => '去','money' => '捐','goods' => '捐'}[@calling.action.for_what]}",(logged_in? ? "#{duplicate_calling_plan_path(@calling,@plan)}" : signup_path ),:class => "big_button open_dialog",:id => 'plan_to' ,:title =>(logged_in? ? '我要参与' : '注册' )%>
         <% end %>

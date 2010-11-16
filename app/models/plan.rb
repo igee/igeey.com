@@ -34,11 +34,21 @@ class Plan < ActiveRecord::Base
     "#{date.year == Date.today.year ? '' : "#{date.year}年"}#{date.month}月#{date.day}日"
   end
   
+  def finished_status
+    if for_what == 'money'
+      "要捐增#{self.calling.plans.map(&:money).sum}元，还需要#{self.calling.remaining_number}#{{'money' => '元','time' => '人','goods' => '件'}[for_what]}"
+    elsif for_what == 'goods'
+      "要捐增#{self.calling.plans.map(&:goods).sum}件，还需要#{self.calling.remaining_number}#{{'money' => '元','time' => '人','goods' => '件'}[for_what]}"
+    elsif for_what == 'time'
+      "要参加，还需要#{self.calling.remaining_number}#{{'money' => '元','time' => '人','goods' => '件'}[for_what]}"
+    end
+  end
+  
   def description
     if self.action.for_what == 'money'
       "要为#{self.venue.name}捐款#{self.money}元，用于#{self.calling.donate_for}。"
     elsif self.action.for_what == 'goods'
-      "要为#{self.venue.name}捐赠#{self.calling.goods_is}#{self.goods}件。"
+      "要为#{self.venue.name}捐赠#{self.goods}件#{self.calling.goods_is}。"
     elsif self.action.for_what == 'time'
       "要在#{self.formatted_plan_at}去#{self.venue.name}#{self.action.name}:#{self.calling.do_what}。"
     end
