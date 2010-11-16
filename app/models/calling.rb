@@ -33,7 +33,11 @@ class Calling < ActiveRecord::Base
   end
   
   def remaining_number
-    self.total_number - self.plans.map(&(for_what.to_sym)).sum
+    if for_what == 'time'
+      self.total_number - self.plans.size
+    else
+      self.total_number - self.plans.map(&(for_what.to_sym)).sum
+    end
   end
   
   def finished_status
