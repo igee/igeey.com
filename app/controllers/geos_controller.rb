@@ -6,7 +6,11 @@ class GeosController < ApplicationController
     @venues = Venue.popular.limit(6)
     @geo = Geo.new(:name => '全国')
     @users = User.popular.limit(8)
-    render :show
+    if logged_in? && current_user.geo_id.present? && current_user.use_local_geo
+      redirect_to geo_path(current_user.geo_id)
+    else
+      render :show
+    end
   end
   
   def show

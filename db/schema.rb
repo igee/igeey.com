@@ -132,6 +132,8 @@ ActiveRecord::Schema.define() do
     t.string   :remember_token,            :limit => 40
     t.datetime :remember_token_expires_at
     t.string   :signature
+    t.boolean  :is_admin,                  :default => false
+    t.boolean  :use_local_geo,         :default => false
   end
   
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true

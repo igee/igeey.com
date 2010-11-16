@@ -39,6 +39,14 @@
 </div>
 
 <% content_for :sidebar do %>
+  <div class="box">
+    <h4>获得徽章:</h4>
+    <%= user.grands.map(&:badge)%>
+    
+  </div>
+
+
+  
   <%=render :partial => "/public/followers" %>
   
   <div class="box">

@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
   
-  attr_accessible :login, :email, :name, :password, :password_confirmation,:avatar,:avatar_file_name,:geo_id,:signature
+  attr_accessible :login, :email, :name, :password, :password_confirmation,:avatar,:avatar_file_name,:geo_id,:signature,:use_local_geo
 
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.

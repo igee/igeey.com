@@ -27,13 +27,18 @@
 <div class="setting_box">
   <h4 class="setting_title">三 个性化信息：</h4>
   <%= form_for @user do |form| -%>
-    <br/> 
+    <p> 
     <%= form.label :geo_id,'所在城市'%> <%= form.select :geo_id, nested_set_options(Geo) {|i| "#{'-' * i.level} #{i.name}" } %>
-    <br/>
-    <br/>
+    </p>
+    <p>
+    <%= form.label :use_local_geo,'使用我的默认城市做地图首页'%> <%= form.check_box :use_local_geo %>
+    </p>
+    <p>
     <%= form.label :signature,'个性签名'%> <%= form.text_field :signature,:size => 20 %>
-    <br/>
-    <br/>
-    <%= form.submit '确定', :class => 'button' %>
+    </p>
+    <%= form.submit '修改', :class => 'button' %>
   <% end -%>
+</div>
+<div style="text-align:right">
+  设置好了？<%= link_to '返回首页',root_path,:class => "button"%>
 </div>
