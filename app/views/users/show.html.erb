@@ -41,11 +41,10 @@
 <% content_for :sidebar do %>
   <div class="box">
     <h4>获得徽章:</h4>
-    <%= user.grands.map(&:badge)%>
-    
+    <% @user.grants.map(&:badge).each do |badge|%>
+      <%= badge.name %>
+    <% end %>
   </div>
-
-
   
   <%=render :partial => "/public/followers" %>
   
