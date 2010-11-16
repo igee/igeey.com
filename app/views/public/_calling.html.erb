@@ -12,7 +12,7 @@
     </p>
     <div class="addition">
       <span>
-        <%= calling.users_count.zero? ? '还没有人参与' : "已有#{calling.users_count}人#{calling.finished_status}"%>
+        <%= calling.status %>
         <%= image_tag '/images/icon/photo.gif',:class => "icon",:alt => '有照片哦' if calling.has_photo%>
       </span>
     </div>

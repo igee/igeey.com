@@ -33,14 +33,14 @@ class Plan < ActiveRecord::Base
     date = self.plan_at
     "#{date.year == Date.today.year ? '' : "#{date.year}年"}#{date.month}月#{date.day}日"
   end
-  
-  def finished_status
+
+  def status
     if for_what == 'money'
-      "要捐增#{self.calling.plans.map(&:money).sum}元，还需要#{self.calling.remaining_number}#{{'money' => '元','time' => '人','goods' => '件'}[for_what]}"
+      "已有#{self.calling.users_count}人要捐增#{self.calling.plans.map(&:money).sum}元，还需要#{self.calling.remaining_number}#{{'money' => '元','time' => '人','goods' => '件'}[for_what]}"
     elsif for_what == 'goods'
-      "要捐增#{self.calling.plans.map(&:goods).sum}件，还需要#{self.calling.remaining_number}#{{'money' => '元','time' => '人','goods' => '件'}[for_what]}"
+      "已有#{self.calling.users_count}人要捐增#{self.calling.plans.map(&:goods).sum}件，还需要#{self.calling.remaining_number}#{{'money' => '元','time' => '人','goods' => '件'}[for_what]}"
     elsif for_what == 'time'
-      "要参加，还需要#{self.calling.remaining_number}#{{'money' => '元','time' => '人','goods' => '件'}[for_what]}"
+      "已有#{self.calling.users_count}人要参加，还需要#{self.calling.remaining_number}#{{'money' => '元','time' => '人','goods' => '件'}[for_what]}"
     end
   end
   

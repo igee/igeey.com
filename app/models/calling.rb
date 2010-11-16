@@ -40,13 +40,17 @@ class Calling < ActiveRecord::Base
     end
   end
   
-  def finished_status
-    if for_what == 'money'
-      "要划捐增#{self.plans.map(&:money).sum}元"
-    elsif for_what == 'goods'
-      "要捐增#{self.plans.map(&:goods).sum}件"
-    elsif for_what == 'time'
-      "已有#{self.plans.map(&:user).uniq.size}人要参加"
+  def status
+    if self.users_count.zero?
+      '还没有人参与'
+    else
+      if for_what == 'money'
+        "已有#{self.users_count}人要捐增#{self.plans.map(&:money).sum}元"
+      elsif for_what == 'goods'
+        "已有#{self.users_count}人要捐增#{self.plans.map(&:goods).sum}件"
+      elsif for_what == 'time'
+        "已有#{self.users_count}人要参加"
+      end  
     end
   end
    
