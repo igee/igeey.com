@@ -7,7 +7,7 @@ module Authentication
   # self.login_regex       = /\A[[:alnum:]][[:alnum:]\.\-_@]+\z/     # Unicode, strict
   # self.login_regex       = /\A[^[:cntrl:]\\<>\/&]*\z/              # Unicode, permissive
 
-  self.bad_login_message = "use only letters, numbers, and .-_@ please.".freeze
+  self.bad_login_message = "用户名请使用汉字、字母和数字".freeze
 
   self.name_regex        = /\A[^[:cntrl:]\\<>\/&]*\z/              # Unicode, permissive
   self.bad_name_message  = "avoid non-printing characters and \\&gt;&lt;&amp;/ please.".freeze

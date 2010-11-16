@@ -2,7 +2,6 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 zh:
-  hello: "Hello world"
   errors:
     messages:
       not_a_date: "日期格式不对，格式为:20XX-0X-0X"
@@ -10,4 +9,13 @@ zh:
       after_or_equal_to: "日期不能在%{value}之前"
       before: "日期必须在%{value}之前"
       before_or_equal_to: "日期不能在%{value}之后"
-
+      
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            login:
+              taken: "用户名已经被使用，请换一个用户名注册"
+            email:
+              taken: "这个邮箱已经被使用，你是不是已经注册了？"
