@@ -348,9 +348,11 @@ button:hover,.button:hover{background:#d64;color:white;}
   }
   
 .event p{
-    font-size:15px;
+    font-size:16px;
     font-weight:bold;
     }
+    
+.event_link{color:#777}
 
 .event_panel{
   margin:40px 10px 0;

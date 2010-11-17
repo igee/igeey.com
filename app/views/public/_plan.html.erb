@@ -3,11 +3,11 @@
   <%= render :partial => '/public/user',:object => plan.user %>
   <div class="event">
     <div class="event_panel">
-      <%= link_to '了解更多' ,calling_plan_path(plan.calling,plan) %> &raquo; 
+      
     </div>
     <p>
       <span style="font-size:20px;font-family:'times new roman';color:#999">“</span>
-      <%= "#{plan.user.login}#{plan.description}" %>
+      <%= link_to "#{plan.user.login}#{plan.description}",calling_plan_path(plan.calling_id,plan),:class => "event_link"%>
       <span style="font-size:20px;font-family:'times new roman';color:#999">”</span>
     </p>
     <div class="addition">
