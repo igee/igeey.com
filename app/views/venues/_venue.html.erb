@@ -2,9 +2,11 @@
   <div class="event_box">
     <%= link_to image_tag(venue.cover.url(:_80x60),:class => "venue_thumb_cover"),venue,:style=>'float:left'%>
     <div class="event" style="margin-left:96px;margin-top:-10px;width:510px">
-      <div class="event_panel">
+      <div class="event_panel" style="width:488px">
+        <span>&raquo; <%= link_to '发起号召',"#{new_calling_path}?venue_id=#{venue.id}",:class => 'open_dialog',:title => '发起号召'%>　<%= link_to '记录行动',"#{new_record_path}?venue_id=#{venue.id}",:class => 'open_dialog',:title => '记录行动'%></span>
       </div>
-        <h4><%= link_to venue.name ,venue%> <span><%= venue.geo.name %></span></h4>
-        <div class="explanation" style="margin-top:-4px"><%= venue.intro%></div>
+      
+      <h4><%= link_to venue.name ,venue%> <span><%= venue.geo.name %></span></h4>
+      <div class="explanation" style="margin-top:-4px"><%= venue.intro%></div>
     </div>
   </div>

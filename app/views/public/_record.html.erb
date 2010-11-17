@@ -4,7 +4,7 @@
   <div class="event">
     <% if record.user == current_user %>
       <div class="event_panel">
-            &raquo; <%= link_to '修改信息',edit_record_path(record)%>
+        <span>&raquo; <%= link_to '修改信息',edit_record_path(record)%></span>
       </div>
     <% end %>
     <p>

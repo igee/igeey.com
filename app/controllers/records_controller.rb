@@ -15,7 +15,7 @@ class RecordsController < ApplicationController
     if @plan.nil? && @record.action.nil?
       @actions = Action.all
       @venue = Venue.find(params[:venue_id])
-      render :select_action
+      render :select_action, :layout =>  !(params[:layout] == 'false')
     end
     
     if @plan.nil? && @record.venue.nil?

@@ -12,7 +12,7 @@
 
 <div class="box">
   <% if @my_record.present? %>
-    我已行动，<%= link_to '查看我的行动',@my_record %>。
+    <p style="text-align:center">我已行动，<%= link_to '查看我的行动',@my_record %>。</p>
   <% elsif @my_plan.present? %>
     <h4>你的计划：</h4>
     <div class="event_box">

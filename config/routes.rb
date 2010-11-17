@@ -22,7 +22,6 @@ Igee::Application.routes.draw do
   resources :venues do
     member do
       get :cover
-      get :select_calling_action
     end
   end
   

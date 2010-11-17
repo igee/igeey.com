@@ -27,7 +27,7 @@
       <%= raw sync_form_tag(form) %>
     </p>
     <%= form.submit '确定',:class => "button"%>
-    <%= button_to_function '取消',"javascript:$('#floatBox #close_dialog').click();window.location='#{calling_path(@plan.calling) unless params[:layout] == 'false'}'",:class => "button"%>
+    <%= button_to_function '取消',"javascript:$('#floatBox #close_dialog').click();window.history.back()",:class => "button"%>
   </div>
 
   <script type="text/javascript" charset="utf-8">

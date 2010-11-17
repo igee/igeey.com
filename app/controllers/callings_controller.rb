@@ -24,7 +24,11 @@ class CallingsController < ApplicationController
 
   def new
     @calling = current_user.callings.build(:venue_id => params[:venue_id],:action_id => params[:action_id])
-    respond_with @calling
+    if @calling.action.nil?
+      @actions = Action.all
+      @venue = Venue.find(params[:venue_id])
+      render :select_action, :layout =>  !(params[:layout] == 'false')
+    end
   end
 
   def edit
