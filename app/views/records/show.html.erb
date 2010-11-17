@@ -9,7 +9,7 @@
       </div>
       <div class="saying_tail"></div>
       <div class="clear"></div>
-      <div style="text-align:right;"><span><%= link_to "更正记录？",edit_record_path(@record) if  @record.can_edit_by?(current_user)%></span></div>
+      <div style="text-align:right;"><span><%= link_to "修改信息？",edit_record_path(@record) if  @record.can_edit_by?(current_user)%></span></div>
   </div>
 
   <div class="profile_box">
