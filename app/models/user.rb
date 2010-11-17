@@ -102,19 +102,23 @@ class User < ActiveRecord::Base
   end
 
   def has_unread_record_comment?
-    self.records.where(:has_new_comment => true).present?
+    self.records.where(:has_new_comment => true).first.present?
   end
   
   def has_unread_calling_comment?
-    self.callings.where(:has_new_comment => true).present?
+    self.callings.where(:has_new_comment => true).first.present?
   end
   
   def has_unread_topic_comment?
-    self.topics.where(:has_new_comment => true).present?
+    self.topics.where(:has_new_comment => true).first.present?
   end
   
   def has_unread_comment?
     has_unread_calling_comment? || has_unread_record_comment? || has_unread_topic_comment?
+  end
+  
+  def has_unread_plan?
+    self.callings.where(:has_new_plan => true).first.present?
   end
   
   def has_new_badge?

@@ -1,3 +1,24 @@
+<% content_for :head do %>
+  <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false"></script>
+<% end %>
+
+<div class="box">
+  <div style="float:left;text-align:center;padding-top:16px">
+    <%= image_tag @user.avatar.url(:_72x72),:class => "avatar" %>
+  </div>
+  <div style="float:left;width:400px;text-align:left;padding:16px 10px 0">
+    <h2 style="display:inline"><%= @user.login %></h2> <span><%= "#{@user.geo.name}" unless @user.geo.nil? %></span>
+    <div>
+      <% [[@user.venues.count,'个聚点'],[@user.money_count,'元捐款'],[@user.goods_count,'件捐赠'],[@user.records_count,'个行动']].each do |counter_list|%>
+      <div class="record_counter">
+        <h2><%= counter_list[0] %></h2>
+        <span><%= counter_list[1]%></span>
+      </div>
+      <%end%>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>
 
 <div class="box">
   <h4>我的行动：</h4>
@@ -10,43 +31,71 @@
 </div>
 
 <% content_for :sidebar do %>
-
-    <div class="sidebar_panel">
-      <div style="padding:5px 5px;float:right;width:150px">
-        <h4><%= link_to current_user.login,current_user%></h4>
-        <h4><%= current_user.signature %></h4>
-      </div>
-      <div style="padding:10px 5px;">
-        <%= image_tag current_user.avatar.url(:_48x48),:class => "avatar" %>
-      </div>
-      <div class="clear"></div>
-        <div class="following_counter" style="border:none">
-          <%= link_to raw("<p>#{current_user.following_venues.size}</p>关注聚点"),following_venues_user_path(current_user) %>
-        </div>
-        <div class="following_counter">
-          <%= link_to raw("<p>#{current_user.following_callings.size}</p>关注行动"),following_callings_user_path(current_user) %>
-        </div>
-        <div class="following_counter">
-          <%= link_to raw("<p>#{current_user.following_callings.size}</p>关注用户"),following_users_user_path(current_user) %>
-        </div>
+    <div class="sidebar_panel" id="my_news">
+        <%= link_to "有人在你的消息下留言了，去看看?",unread_comments_path if current_user.has_unread_comment?%>
+        <%= link_to "你的召集有人响应了，快去看看?",unread_plans_path if current_user.has_unread_plan?%>
+    </div>
+    
+    <div class="box">
+      <h4>获得徽章:</h4>
+      <% @user.grants.map(&:badge).each do |badge|%>
+        <%= badge.name %>
+      <% end %>
+    </div>
+    
+    <div class="box">
+      <h4>我服务过...</h4>
+        <%= render :partial => '/public/venue',:collection => @venues%>
       <div class="clear"></div>
     </div>
     
-    <% if current_user.has_unread_comment? %>
-      <div class="sidebar_panel">
-        <%= link_to "有人在你的消息下留言了，去看看?",unread_comments_path%>
-      </div>
-    <% end %>
-    
-    <% unless @my_plans.blank? %>
-      <div class="sidebar_panel">
-        <h4>你的计划完成了么？</h4>
-        <ul>
-        <% @my_plans.each do |plan|%>
-          <li><%= link_to "#{plan.description}",calling_plan_path(plan.calling,plan)%></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>  
+    <div class="box">
+      <h4>我的公益地图</h4>
+      <div id="map_canvas" style="width:100%;height:160px;clear:both;margin:10px 0"></div>
+    </div>
+<% end %>
 
+<% content_for :extension do %>
+  <script type="text/javascript">
+    function initialize() {
+      var latlng = new google.maps.LatLng(<%= "#{@geo.latitude || 35.0},#{@geo.longitude || 105.0}"%>)
+      var myOptions = {
+        zoom: <%= @geo.zoom_level || 3%>,
+        center: latlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+      geocoder = new google.maps.Geocoder();
+      
+      var icon_list = new Array("","school.png","hostel.png","daycare.png","flowers.png","embassy.png")
+      
+      $.getJSON('<%="#{venues_path(:format => :json)}?user_id=#{@user.id}"%>', function(data){
+        markers = new Array
+        $.each(data, function(i,item){
+            markers[i] = new google.maps.Marker({
+              icon: "http://google-maps-icons.googlecode.com/files/" + icon_list[item.venue.category],
+              position: new google.maps.LatLng(parseFloat(item.venue.latitude), parseFloat(item.venue.longitude)),
+              title: item.venue.name,
+              map: map,
+            });
+            google.maps.event.addListener(markers[i], "click", function(){
+              $.ajax({
+                url:"/venues/" + item.venue.id + ".xml",
+                success:function(data, textStatus, XMLHttpRequest){new google.maps.InfoWindow({content:XMLHttpRequest.responseText}).open(map,markers[i]);},
+                dataType:'xml'
+              })
+            })
+          });
+      });
+                
+    }; //initialize_end()
+    
+    $(document).ready(function(){
+      //use javascript to check whether there are news for performance
+      if($.trim($('#my_news').html()).length == 0){$('#my_news').html('<span>暂时没有新鲜事</span>')}
+      initialize();
+    });  
+
+
+  </script>
 <% end %>

@@ -8,9 +8,11 @@ class Calling < ActiveRecord::Base
   has_many   :photos,   :as => :imageable,   :dependent => :destroy
   has_many   :follows,  :as => :followable,  :dependent => :destroy
   has_many   :followers,:through => :follows,:source => :user
+  
   default_scope :order => 'created_at DESC'
   
   attr_accessor :sync_to_sina,:sync_to_douban,:sync_to_renren
+  
   delegate :for_what, :to => :action
   
   validates :detail,:length => {:within => 50..1000 ,:message => '详细信息要不能少于50字'}

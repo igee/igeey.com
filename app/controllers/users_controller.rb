@@ -59,17 +59,6 @@ class UsersController < ApplicationController
     @photos = @user.photos
   end
   
-  def show
-    @timeline = @user.callings
-    @timeline += @user.plans.undone
-    @timeline += @user.records
-    @timeline = @timeline.sort{|x,y| y.created_at <=> x.created_at }
-    @followers = @user.followers
-    @following_users = @user.following_users
-    @following_venues = @user.following_venues
-    @photos = @user.photos
-  end
-  
   def following_venues
     @following_venues = @user.following_venues
   end

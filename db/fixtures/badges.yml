@@ -1,10 +1,10 @@
-badge_1:
-  id:        1
-  name:      '爱聚元老'
-  slug:      'vizir' 
-  condition_factor: 'id'
-  condition_number: 100
-  intro:     '网站的前一百名用户'
+#badge_1:
+  #id:        1
+  #name:      '爱聚元老'
+  #slug:      'vizir' 
+  #condition_factor: 'id'
+  #condition_number: 100
+  #intro:     '网站的前一百名用户'
   
 badge_2:
   id:        2
@@ -12,7 +12,7 @@ badge_2:
   slug:      'calling_once' 
   condition_factor: 'callings'
   condition_number: 0
-  intro:     '第一次发起号召'
+  intro:     '第一次行动召集'
   
 badge_3:
   id:        3

@@ -153,6 +153,7 @@ ActiveRecord::Schema.define() do
     t.integer :comments_count,   :default => 0
     t.integer :follows_count,    :default => 0
     t.boolean :has_new_comment,  :default => false
+    t.boolean :has_new_plan,     :default => false
     t.boolean :has_photo,  :default => false
     t.timestamps
   end  

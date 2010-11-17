@@ -16,15 +16,17 @@ class SiteController < ApplicationController
     @timeline += @user.plans.undone
     @timeline += @user.records
     @timeline = @timeline.sort{|x,y| y.created_at <=> x.created_at }
+    @venues = @user.records.map(&:venue).uniq
+    @geo = Geo.new(:name => '全国')
     @photos = @user.photos
   end
 
   
   def my_timeline
     if logged_in?
-      @my_timeline = []
       @my_followings = current_user.followings
-      @my_followings.map(&:followable).each do |object|
+      @my_timeline = current_user.following_callings
+      @my_followings.where("followable_type != ?",'Calling' ).map(&:followable).each do |object|
         @my_timeline += object.records.limit(5) 
         @my_timeline += object.callings.limit(5)
         @my_timeline += object.plans.limit(5)

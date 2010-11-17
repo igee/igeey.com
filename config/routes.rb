@@ -12,6 +12,7 @@ Igee::Application.routes.draw do
   
   match 'myigee' => 'site#myigee'
   match 'unread_comments' => 'site#unread_comments'
+  match 'unread_plans' => 'site#unread_plans'
   match 'my_timeline' => 'site#my_timeline'
   match 'city_timeline' => 'site#city_timeline'
   match 'oauth(/:action)' => 'oauth#(/:action)'

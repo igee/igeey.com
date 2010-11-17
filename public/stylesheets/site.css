@@ -258,22 +258,22 @@ button:hover,.button:hover{background:#d64;color:white;}
     overflow:hidden;
     }    
 
-.record_count{
+.record_counter{
   background-color:#aaa;
   color:white;
   float:left;
-  width:72px;
-  height:72px;
+  width:63px;
+  height:50px;
   margin:0 5px;
   text-align:center;
   border-radius: 8px;
   -moz-border-radius: 8px;
 }
-.record_count span{color:#777}
+.record_counter span{color:#777}
 
-.record_count h1{
-  margin-top:10px;
+.record_counter h2{
   font-weight:normal;
+  margin:4px 0 0;
   } 
 
 .sidebar_panel{
@@ -379,6 +379,7 @@ button:hover,.button:hover{background:#d64;color:white;}
 
 .event_box.hover .event_panel{display:block}
 
+/*
 .event_type{
   position:absolute;
   width:16px;
@@ -386,7 +387,7 @@ button:hover,.button:hover{background:#d64;color:white;}
   border-left:3px solid #fff;
   margin-left:-19px;
   }
-
+*/
 .event_type[title="calling"]{background-color:#d6ffd6;border-color:#bfb}
 .event_type[title="record"]{background-color:#ffd6d6;border-color:#fbb}
 .event_type[title="plan"]{background-color:#d6d6ff;border-color:#bbf}
@@ -587,7 +588,7 @@ a#logo{
   margin:50px  36px 10px;
   }
 
-#record_counts{float:right;}
+#record_counters{}
 
 #upload_photo{
   background-color:#f0f0f0;

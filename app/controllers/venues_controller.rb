@@ -1,10 +1,14 @@
 class VenuesController < ApplicationController
-  respond_to :html,:json
+  respond_to :json
   before_filter :login_required, :except => [:index, :show,:mark_venue,:select_record_action]
   before_filter :find_venue, :except => [:index,:new,:create]
   
   def index
-    @venues = Venue.all
+    if params[:user_id].present?
+      @venues = User.find(params[:user_id]).records.map(&:venue)
+    else
+      @venues = Venue.all
+    end
     respond_with(@venues)
   end
   
