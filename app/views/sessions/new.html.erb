@@ -10,14 +10,12 @@
     <p>
       <%= label_tag 'password','密码:　' %>
       <%= password_field_tag 'password', nil,:size => 14 ,:class=> 'with_tip',:title => "注意大小写"%>
-    </p>
-    
+    </p>    
     
     <p>
       <%= label_tag 'remember_me', '记住我?' %>
       <%= check_box_tag 'remember_me', '1', @remember_me %>
     </p>
-    
     
     <p>
       <%= submit_tag 'Ok',:class => 'button'%>

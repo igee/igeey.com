@@ -1,6 +1,6 @@
 body{
   font-size:14px;
-  background-color:#c3e0ff;
+  background-color:#bcdcff;
   color:#666
   }
 
@@ -164,7 +164,7 @@ button:hover,.button:hover{background:#d64;color:white;}
 
 .error{
   display:block;
-  background-color:#c40;
+  background-color:#d64;
   color:#ffffff;
   padding:4px 10px;
 }
@@ -197,19 +197,17 @@ button:hover,.button:hover{background:#d64;color:white;}
 .guide{
   margin:5px;
   padding:15px 30px 5px;
-  background-color:#6bb1e7;
   border-radius: 6px;
   -moz-border-radius: 6px;
   text-align:center;
   }
 
 .guide p{
-  color:#bdf;
   font-size:12px
   }
 
 .guide a{
-  background-color:#c0e0ff;
+  background-color:#b0d0ff;
   padding:4px 8px;
   font-size: 15px;
   border-radius: 3px;
@@ -559,6 +557,19 @@ a#logo{
   font-weight:bold;
 }
 
+#signup_button{
+  background-color:#8c5;
+  color:white;
+  display:block;
+  line-height:24px;
+  width:112px;
+  font-size:16px;
+  padding:12px 30px;
+  text-align:center;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  margin:50px  36px 10px;
+  }
 
 #record_counts{float:right;}
 
@@ -599,8 +610,8 @@ a#logo{
 #tabContaier li a{
   border:1px solid #ccc;
   border-bottom:none;
-  background:#eee;
-  color:#999;
+  background:#ddd;
+  color:#aaa;
   font-size:13px;
   display:block;
   height:26px;

@@ -4,7 +4,7 @@
 
 <div style="float:right">
   <%= form_tag geos_path,:id =>'locate',:remote => true do %>
-    <%= text_field_tag 'address', @address,:size => 10%>
+    <%= text_field_tag 'address', @address,:size => 12,:placeholder => '城市,地址...'%>
     <%= submit_tag '定位',:class => 'button'%>
   <% end %>
 </div>
