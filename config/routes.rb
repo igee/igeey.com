@@ -10,6 +10,7 @@ Igee::Application.routes.draw do
   match 'report' => 'site#report'
   match 'faq' => 'site#faq'
   
+  match 'myigee' => 'myigee#index'
   match 'unread_comments' => 'site#unread_comments'
   match 'my_timeline' => 'site#my_timeline'
   match 'city_timeline' => 'site#city_timeline'

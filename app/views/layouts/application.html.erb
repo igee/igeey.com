@@ -30,7 +30,7 @@
         <li><%= link_to '地图',geos_path,:class => "#{'selected' if controller_name == 'geos'}"%></li>
         <li><%= link_to '论坛',topics_path,:class => "#{'selected' if controller_name == 'topics'}"%></li>
         <% if logged_in? %>
-        <li><%= link_to '我的主页',user_path(current_user),:class => "#{'selected' if controller_name == 'users'}"%></li>
+        <li><%= link_to '我的爱聚',myigee_path,:class => "#{'selected' if controller_name == 'users'}"%></li>
         <% end %>
       </ul>
       <div id="login_state">

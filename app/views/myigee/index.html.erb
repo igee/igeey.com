@@ -1,0 +1,62 @@
+<div class="box">
+  <div id="record_counts">
+    <div style="text-align:center;margin-bottom:4px;font-size:12px;color:#a76;font-weight:bold">公益贡献</div>
+    <% [[@user.time_count,'小时'],[@user.money_count,'元捐款'],[@user.goods_count,'件物品']].each do |counter_list|%>
+    <div class="record_count">
+      <h1><%= counter_list[0] %></h1>
+      <span><%= counter_list[1]%></span>
+    </div>
+    <%end%>
+  </div>
+  
+  <div style="float:left;text-align:center;padding-top:16px">
+    <%= image_tag @user.avatar.url(:_72x72),:class => "avatar" %>
+    <p>
+      <%= raw(follow_to(@user)) %>
+    </p>
+  </div>
+  <div style="float:left;width:200px;text-align:left;padding:16px 10px 0">
+    <h3 style="display:inline"><%= @user.login %></h3>
+    <span><%= @user.signature %></span>
+    <p>
+      <span><%= "住在: #{@user.geo.name}" unless @user.geo.nil? %></span>
+      <br/>
+      <span><%= "#{format_date @user.created_at}加入" %></span>
+    </p>
+  </div>
+  
+  <div class="clear"></div>
+</div>
+
+<div class="box">
+  <h4>Ta的行动：</h4>
+  <%= render :partial => '/public/event',:collection => @timeline%>
+</div>
+
+<div class="box">
+  <h4>上传的照片:</h4>
+  <%= render :partial => '/public/photo',:collection => @photos %>
+</div>
+
+<% content_for :sidebar do %>
+  <div class="box">
+    <h4>获得徽章:</h4>
+    <% @user.grants.map(&:badge).each do |badge|%>
+      <%= badge.name %>
+    <% end %>
+  </div>
+  
+  <%=render :partial => "/public/followers" %>
+  
+  <div class="box">
+    <h4><%= "#{@user.login}关注的人："%></h4>
+    <%= render :partial => '/public/user',:collection => @following_users %>
+  </div>
+
+  
+  <div class="box">
+    <h4><%= "#{@user.login}关注的聚点："%></h4>
+    <%= render :partial => '/public/venue',:collection => @following_venues %>
+  </div>
+
+<% end %>
