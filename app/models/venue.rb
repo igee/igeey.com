@@ -42,4 +42,22 @@ class Venue < ActiveRecord::Base
   def goods_count
     self.records.map(&:goods).compact.sum
   end
+  
+  def self.generate_json
+    require 'json'
+    venues = Venue.all
+    venues_json = []
+    venues.each do |v|
+      venues_json << {"venue" => {:id => v.id,
+                      :category => v.category,
+                      :name => v.name,
+                      :latitude => v.latitude,
+                      :longitude => v.longitude,
+                      }}
+    end
+    
+    file = File.open("#{RAILS_ROOT}/public/json/venues.json", 'w')
+    file.write venues_json.to_json
+    file.close    
+  end
 end

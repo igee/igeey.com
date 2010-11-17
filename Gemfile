@@ -10,6 +10,7 @@ gem 'mysql', '2.8.1'
 gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
 gem 'rmagick'
 gem 'oauth'
+gem 'json'
 gem 'date_validator'
 # Use unicorn as the web server
 # gem 'unicorn'

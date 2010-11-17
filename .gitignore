@@ -6,6 +6,6 @@ log/*.log
 tmp/*
 
 public/media/*
-
+public/json/*
 *.kpf
 *.project
