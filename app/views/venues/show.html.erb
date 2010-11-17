@@ -6,13 +6,13 @@
     </p>
   </div>
   <div style="width:400px;height:120px;margin-left:180px">
+    <div style="float:right"><%= raw(follow_to(@venue)) %></div>
     <h4 class="title" style="display:inline"><%= @venue.name%></h4> <span><%= @venue.geo.name %></span>
     <p><%= @venue.intro%></p>      
   </div>
 </div>
 
 <div class="box" style="text-align:center">
-  <%= raw(follow_to(@venue)) %>
   <%= link_to '发起行动号召',select_calling_action_venue_path(@venue),:class => "button open_dialog",:title => '发起行动号召'%>
   <%= link_to '我为这里做过...',"#{new_record_path}?venue_id=#{@venue.id}",:class => "button" %>
   <%= link_to '更新信息',edit_venue_path(@venue),:class => "button",:id => 'update_info' %>

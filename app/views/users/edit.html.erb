@@ -39,6 +39,6 @@
     <%= form.submit '修改', :class => 'button' %>
   <% end -%>
 </div>
-<div style="text-align:right">
-  设置好了？<%= link_to '返回首页',root_path,:class => "button"%>
-</div>
+<p style="text-align:right">
+  设置好了？<%= link_to '返回首页', root_path,:class => "button"%> <%= link_to '回到上个页面', params[:back_path],:class => "button" if params[:back_path].present?%>
+</p>

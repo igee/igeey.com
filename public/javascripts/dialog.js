@@ -30,7 +30,7 @@ switch(contentType){
     $(this).html("loading...");
   });
   $.ajax({
-    url:content_array[0]+"?layout=false",
+    url:content_array[0]+"?layout=false&" + "content_array[1]",
 	error:function(){
 	  $("#floatBox .dialog_content").html("error...");
 	},

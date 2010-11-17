@@ -116,9 +116,9 @@ button,.button{
     font-size:14px;
     font-weight:bold;
     font-family:sans-serif;
-    background-color:#d75;
+    background-color:#e86;
     padding:2px 12px;
-    border:1px solid #a64;
+    border:1px solid #d75;
     border-radius: 3px;
     -moz-border-radius: 3px;
     cursor:pointer;
@@ -126,21 +126,22 @@ button,.button{
 
 .big_button{
     text-align:center;
-    display:block;
     margin:5px 0;
     color:white;
     font-size:18px;
     font-family:sans-serif;
     font-weight:bold;
     background-color:#d75;
-    padding:12px 18px;
-    border:2px solid #a64;
+    padding:10px 30px;
+    border:2px solid #c64;
     border-radius: 8px;
     -moz-border-radius: 8px;
     cursor:pointer;
+    line-height:42px
 }
 
-button:hover,.button:hover,.big_button:hover{background:#c42;color:white;}
+button:hover,.button:hover{background:#d64;color:white;}
+.big_button:hover{background:#c64;color:white;}
 
 .dialog_rightbar{
   float:right;
@@ -377,7 +378,7 @@ button:hover,.button:hover,.big_button:hover{background:#c42;color:white;}
 .event_type[title="plan"]{background-color:#d6d6ff;border-color:#bbf}
 .event_type[title="topic"]{background-color:#e0d0ff;border-color:#cbf}
 
-.addition{padding:0 4px}
+.addition{margin:0 12px;}
 
 .event_box{
   padding:8px 8px;
@@ -461,11 +462,12 @@ a#logo{
   float:right;
   padding:2px 12px 6px;
   color:#cdf;
+  border-top:none;
   background-color:#68c;
   margin-right:4px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  -moz-border-radius: 0 0 5px 5px;}
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  -moz-border-radius: 0 0 6px 6px;}
 
 #login_state a{color:#fff}
 #login_state span{color:#cdf}

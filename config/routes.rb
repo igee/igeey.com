@@ -55,11 +55,11 @@ Igee::Application.routes.draw do
   end
   
   resources :feedbacks do 
-      get :thanks, :on => :collection
+    get :thanks, :on => :collection
   end
   
-  resources :topics
   resources :follows
+  resources :topics
   resources :comments
   resources :photos
   resources :actions

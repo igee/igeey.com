@@ -8,7 +8,7 @@ class OauthController < ApplicationController
     record = OauthToken.find_by_user_id_and_request_key(current_user.id, params[:oauth_token])
 
     access = record.authorize params[:oauth_verifier]
-    redirect_to (session[:oauth_refers]||{})[record.site] || '/' 
+    redirect_to((session[:oauth_refers]||{})[record.site] || '/' )
   end
 
 end

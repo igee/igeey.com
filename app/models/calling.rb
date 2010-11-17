@@ -6,7 +6,8 @@ class Calling < ActiveRecord::Base
   has_many   :plans
   has_many   :comments, :as => :commentable, :dependent => :destroy
   has_many   :photos,   :as => :imageable,   :dependent => :destroy
-  
+  has_many   :follows,  :as => :followable,  :dependent => :destroy
+  has_many   :followers,:through => :follows,:source => :user
   default_scope :order => 'created_at DESC'
   
   attr_accessor :sync_to_sina,:sync_to_douban,:sync_to_renren
@@ -68,7 +69,7 @@ class Calling < ActiveRecord::Base
     if self.action.for_what == 'money'
       "在为#{self.venue.name}募捐#{self.total_money}元用于#{self.donate_for}。"
     elsif self.action.for_what == 'goods'
-      "在为#{self.venue.name}募捐物资#{self.total_goods}件#{self.goods_is}。"
+      "在为#{self.venue.name}募捐#{self.total_goods}件#{self.goods_is}。"
     elsif self.action.for_what == 'time'
       "在为#{self.venue.name}召集#{self.total_people}人去#{self.do_what}。"
     end

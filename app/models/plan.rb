@@ -17,8 +17,9 @@ class Plan < ActiveRecord::Base
   
   scope :undone ,where(:is_done => false)
   
-  validates :user_id,:action_id,:calling_id,:venue_id,:presence => true
+  validates :action_id,:calling_id,:venue_id,:presence => true
   validates :plan_at,:date => {:after_or_equal_to => Date.today.to_date,:allow_nil => true}
+  validates :user_id,    :presence   => true,:uniqueness => {:scope => :calling_id}
   
   def validate
     errors[for_what] = '数量必须为大于0的整数' unless number > 0

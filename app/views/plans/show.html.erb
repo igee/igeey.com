@@ -10,21 +10,30 @@
       </div>
       <div class="saying_tail"></div>
       <div class="clear"></div>
+      
   </div>
   
   <div class="box">
-    <div style="clear:both;padding:10px 230px">
+    <div style="text-align:center;">
         <% if @plan.can_edit_by?(current_user) %>
           <%= link_to "已经完成?","#{new_record_path}?plan_id=#{@plan.id}",:class => "big_button" %>
         <% elsif @my_plan %>
           你已参与： <%= link_to '查看我的计划',calling_plan_path(@calling,@my_plan)%>
         <% else %>
-          <%= link_to "我也要#{{'time' => '去','money' => '捐','goods' => '捐'}[@calling.action.for_what]}",(logged_in? ? "#{duplicate_calling_plan_path(@calling,@plan)}" : signup_path ),:class => "big_button open_dialog",:id => 'plan_to' ,:title =>(logged_in? ? '我要参与' : '注册' )%>
+          <% @link_title = "我也要#{{'time' => '去','money' => '捐','goods' => '捐'}[@calling.for_what]}"%>
+          <%= link_to @link_title,(logged_in? ? "#{duplicate_calling_plan_path(@calling,@plan)}" : signup_path ),:class => "big_button open_dialog",:id => 'plan_to' ,:title =>(logged_in? ? @link_title : '注册' )%>
         <% end %>
         <% if @plan.is_done%>
           计划已完成 <%= link_to '立即查看',@plan.record %>
         <% end %>
     </div>
+      <p style="text-align:right">
+        <% if logged_in? && current_user.following?(@calling) %>
+          已关注 <%= link_to raw("<span>取消关注?</span>"),follow_path(@calling.follows.find_by_user_id(current_user.id)),:method => :delete%>
+        <% else %>
+          <span>或</span><%= link_to "+ 关注进展",(logged_in? ? "#{follows_path}?followable_type=#{@calling.class}&followable_id=#{@calling.id}" : signup_path),:method => :post,:class => 'button',:title =>(logged_in? ? "" : '注册' ),:method => :post %>
+        <% end%>
+      </p>
   </div>
      
   <div class="profile_box">
@@ -37,7 +46,6 @@
     <h4>发起人说：</h4>
       <%= render :partial => '/public/user' ,:object => @calling.user %>
       <div class="saying">
-        
         <p class="explanation" >
           <span style="font-size:20px;font-family:'times new roman';color:#999">“</span>
           <%= @calling.detail %>
@@ -63,7 +71,7 @@
   </div>
       
   <div class="box">
-    <h4>大家的留言：</h4>
+    <h4>留言板：</h4>
     <%= render :partial => '/public/comment' ,:collection => @comments %>
   </div>
   <%= render :partial => '/comments/form' ,:locals => {:commentable => @calling}%>
@@ -77,7 +85,7 @@
       <span style="font-size:54px;"><%= @calling.percentage %></span>
       <span style="font-size:24px">%<span>
       <br/>
-      <span><%= "目标#{@plan.calling.total_number},#{@plan.status}。"%></span>
+      <span><%= "目标#{@calling.total_number},#{@plan.status}。"%></span>
     </div>
   </div>
   
