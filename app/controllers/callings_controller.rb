@@ -16,6 +16,7 @@ class CallingsController < ApplicationController
     @records = @calling.records
     @my_plan = @plans.select{|p| p.user_id == current_user.id}.first if logged_in? # user`s plan on this calling
     @my_record = @records.select{|r| r.user_id == current_user.id}.first if logged_in? # user`s record on this calling
+    @followers = @calling.followers
     @comment = Comment.new
     @comments = @calling.comments
     @photo = Photo.new

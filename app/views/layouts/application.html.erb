@@ -26,11 +26,11 @@
     <div class="container" id="nav">
       <%= link_to image_tag('/images/logo.png'), root_path,:id => 'logo' %>
       <ul id="nav_links">
-        <li><%= link_to '首页',root_path,:class => "#{'selected' if controller_name == 'site'}"%></li>
+        <li><%= link_to '首页',root_path,:class => "#{'selected' if controller_name == 'site' && action_name == 'index'}"%></li>
         <li><%= link_to '地图',geos_path,:class => "#{'selected' if controller_name == 'geos'}"%></li>
         <li><%= link_to '论坛',topics_path,:class => "#{'selected' if controller_name == 'topics'}"%></li>
         <% if logged_in? %>
-        <li><%= link_to '我的爱聚',myigee_path,:class => "#{'selected' if controller_name == 'users'}"%></li>
+        <li><%= link_to '我的爱聚',myigee_path,:class => "#{'selected' if controller_name == 'site' && action_name == 'myigee'}"%></li>
         <% end %>
       </ul>
       <div id="login_state">

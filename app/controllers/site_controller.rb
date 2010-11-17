@@ -1,5 +1,5 @@
 class SiteController < ApplicationController
-  before_filter :login_required, :only=> [:unread_comments]
+  before_filter :login_required, :except=> [:index]
   
   def index
     # group callings,plans and records to list
@@ -9,6 +9,16 @@ class SiteController < ApplicationController
     @record_timeline = Record.limit(10)
     @my_plans = current_user.plans.undone if logged_in?
   end
+  
+  def myigee
+    @user = current_user
+    @timeline = @user.callings
+    @timeline += @user.plans.undone
+    @timeline += @user.records
+    @timeline = @timeline.sort{|x,y| y.created_at <=> x.created_at }
+    @photos = @user.photos
+  end
+
   
   def my_timeline
     if logged_in?

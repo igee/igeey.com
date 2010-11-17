@@ -1,5 +1,5 @@
-<div style="width:510px;">
-  <h2><%= "下一步需要登录了，" if session[:return_to] && params[:layout] != 'false'%>请登录</h2>
+<div style="width:510px;height:200px;">
+  <h3><%= "下一步需要登录了，" if session[:return_to] && params[:layout] != 'false'%>请登录</h3>
   <div class="dialog_leftbar">
     <%= form_tag session_path do -%>
     <p>
@@ -30,14 +30,6 @@
     </p>
   </div>
   <div class="clear"></div>
-  
-  <p>
-    测试数据经常清空，不如先用这几个用户名登录吧：
-    <br/>
-    '安猪','敏感词','奥特曼','草泥马','小白','小灰','小黑'
-    <br/>
-    密码都是 'password'
-  </p>
 </div>
 
 <script type="text/javascript">

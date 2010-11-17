@@ -173,11 +173,25 @@ button:hover,.button:hover{background:#d64;color:white;}
   display:inline;
   }
 
-
 .field_with_errors input,.field_with_errors textarea{
   border-color:#f66;
   background-color:#fee;
   display:inline;
+  }
+
+.following_counter{
+  width:72px;
+  text-align:center;
+  float:left;
+  margin-bottom:10px;
+  border-left:1px solid #c0d0f0;
+  }
+  
+  
+.following_counter p{
+  font-size:17px;
+  line-height:1.4em;
+  margin:0
   }
 
 #error_explanation{
@@ -264,7 +278,7 @@ button:hover,.button:hover{background:#d64;color:white;}
 
 .sidebar_panel{
   padding:6px 10px;
-  background-color:#d6e6f6;
+  background-color:#fff;
   margin:0px 5px 15px;
   font-size:12px;
   -moz-border-radius: 4px;
@@ -600,7 +614,7 @@ a#logo{
   }
 
 #tabContaier ul{
-  border-bottom:1px solid #ccc;
+  border-bottom:1px solid #c0c0c0;
   height:28px;
   margin:0;
 }
@@ -610,7 +624,7 @@ a#logo{
   margin:0 3px;
 }
 #tabContaier li a{
-  border:1px solid #ccc;
+  border:1px solid #bbb;
   border-bottom:none;
   background:#ddd;
   color:#aaa;
@@ -626,12 +640,13 @@ a#logo{
   -moz-border-radius: 5px 5px 0 0;
 }
 #tabContaier li a:hover{
-  background:#fff;
+  background:#f0f0f0;
+  border-color:#bbb;
 }
 #tabContaier li a.active{
   height:27px;
   background:#fff;
-  border:1px solid #ccc;
+  border:1px solid #bbb;
   border-bottom:none;
   color:#666;
 }

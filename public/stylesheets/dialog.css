@@ -3,4 +3,4 @@
 .floatBox .dialog_title{height:26px;padding:7px 10px 0;background:#8bd;color:#fff;border-bottom:5px solid #cef}
 .floatBox .dialog_title h4{float:left;padding:0;margin:0;font-size:15px;line-height:18px;color:#fff}
 #close_dialog{float:right;cursor:pointer;color:#fff}
-.floatBox .dialog_content{padding:20px 15px;background-color:#fbfbff}
+.floatBox .dialog_content{padding:10px 15px;background-color:#fbfbff}

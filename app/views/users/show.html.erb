@@ -15,7 +15,7 @@
       <%= raw(follow_to(@user)) %>
     </p>
   </div>
-  <div style="float:left;width:200px;text-align:left;padding:16px 10px 0">
+  <div style="float:left;width:280px;text-align:left;padding:16px 10px 0">
     <h3 style="display:inline"><%= @user.login %></h3>
     <span><%= @user.signature %></span>
     <p>
@@ -51,12 +51,14 @@
   <div class="box">
     <h4><%= "#{@user.login}关注的人："%></h4>
     <%= render :partial => '/public/user',:collection => @following_users %>
+    <div class="clear"></div>
   </div>
 
   
   <div class="box">
     <h4><%= "#{@user.login}关注的聚点："%></h4>
     <%= render :partial => '/public/venue',:collection => @following_venues %>
+    <div class="clear"></div>
   </div>
 
 <% end %>

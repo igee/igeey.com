@@ -78,6 +78,10 @@ class UsersController < ApplicationController
     @following_users = @user.following_users
   end
 
+  def following_callings
+    @following_callings = @user.following_callings
+  end
+
   private
   def find_user
     @user = User.find(params[:id])

@@ -39,8 +39,9 @@ class PlansController < ApplicationController
     @venue = @plan.venue
     @comment = Comment.new
     @comments = @calling.comments
-    @photos = @calling.photos
+    @followers = @calling.followers
     @photo = Photo.new
+    @photos = @calling.photos
     @my_plan = @calling.plans.select{|p| p.user_id == current_user.id}.first if logged_in?
   end
   

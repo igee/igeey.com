@@ -10,7 +10,7 @@ Igee::Application.routes.draw do
   match 'report' => 'site#report'
   match 'faq' => 'site#faq'
   
-  match 'myigee' => 'myigee#index'
+  match 'myigee' => 'site#myigee'
   match 'unread_comments' => 'site#unread_comments'
   match 'my_timeline' => 'site#my_timeline'
   match 'city_timeline' => 'site#city_timeline'
@@ -51,6 +51,7 @@ Igee::Application.routes.draw do
     member do
       get   :following_venues
       get   :following_users
+      get   :following_callings
     end
   end
   

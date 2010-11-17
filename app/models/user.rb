@@ -96,6 +96,10 @@ class User < ActiveRecord::Base
   def following_venues
     self.followings.where(:followable_type => 'Venue').map(&:followable)
   end
+  
+  def following_callings
+    self.followings.where(:followable_type => 'Calling').map(&:followable)
+  end
 
   def has_unread_record_comment?
     self.records.where(:has_new_comment => true).present?
