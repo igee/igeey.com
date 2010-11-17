@@ -19,7 +19,7 @@ class Record < ActiveRecord::Base
   
   def validate
     errors[for_what] << '数量必须为大于0的整数' unless number > 0
-    errors[(content.blank? ? {'time' => :do_what,'money' => :donate_for,'goods' => :goods_is}[for_what] : for_what)] = '请将记录信息填写完整' 
+    errors[{'time' => :do_what,'money' => :donate_for,'goods' => :goods_is}[for_what]] = '请将记录信息填写完整' if content.blank?
     
     if plan.present? && plan.is_done
       errors[:status] <<  '你已经完成了这个计划' 

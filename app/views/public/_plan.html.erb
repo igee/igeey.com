@@ -2,9 +2,11 @@
 <div class="event_box">
   <%= render :partial => '/public/user',:object => plan.user %>
   <div class="event">
-    <div class="event_panel">
-      
-    </div>
+    <% if plan.user == current_user %>
+      <div class="event_panel">
+        &raquo; <%= link_to '已完成？',"#{new_record_path}?plan_id=#{plan.id}"%>
+      </div>
+    <% end %>
     <p>
       <span style="font-size:20px;font-family:'times new roman';color:#999">“</span>
       <%= link_to "#{plan.user.login}#{plan.description}",calling_plan_path(plan.calling_id,plan),:class => "event_link"%>

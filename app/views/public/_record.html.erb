@@ -2,16 +2,17 @@
 <div class="event_box">
   <%= render :partial => '/public/user', :object => record.user %>
   <div class="event">
-    <div class="event_panel">
-
-    </div>
+    <% if plan.user == current_user %>
+      <div class="event_panel">
+            &raquo; <%= link_to '修改信息',edit_record_path(record)%>
+      </div>
+    <% end %>
     <p>
       <span style="font-size:20px;font-family:'times new roman';color:#999">“</span>
       <%= "#{record.user.login}#{record.description}",record,:class=>'event_link'%>
       <span style="font-size:20px;font-family:'times new roman';color:#999">”</span>
     </p>
     <div class="addition">
-      
     </div>
   </div>
 </div>
