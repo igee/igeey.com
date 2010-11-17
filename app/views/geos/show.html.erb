@@ -50,7 +50,7 @@
       
       var icon_list = new Array("","school.png","hostel.png","daycare.png","flowers.png","embassy.png")
       
-      $.getJSON("/json/venues.json", function(data){
+      $.getJSON("/json/venues.json?#{Venue.first.id}", function(data){
         markers = new Array
         $.each(data, function(i,item){
             markers[i] = new google.maps.Marker({
