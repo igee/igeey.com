@@ -1,5 +1,5 @@
 class VenueObserver < ActiveRecord::Observer
   def after_create(venue)
-    Venue.generate_json
+    venue.class.generate_json
   end
 end

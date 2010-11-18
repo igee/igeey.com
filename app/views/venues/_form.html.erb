@@ -10,6 +10,9 @@
       <%= form.label :intro,'简介：'%>
       <br/>
       <%= form.text_area :intro, :cols => 36, :rows => 5,:placeholder => "为聚点写篇140字以内的简介吧"%>
+      
+      <%= form.label :intro,'上传一张聚点的照片：'%><%= form.file_field :cover%>
+      <br/>
       <%= form.hidden_field :latitude %>
       <%= form.hidden_field :longitude %>
       <%= form.submit '填写好了，提交',:class => "button"%>

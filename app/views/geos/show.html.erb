@@ -76,19 +76,11 @@
       
       google.maps.event.addListener(map, "drag", function() {
         marker.setPosition(map.getCenter())
-        $('#next_step').attr(
-           'href',
-           '<%= "#{new_venue_path}" %>?latitude=' + marker.getPosition().lat() + '&longitude=' + marker.getPosition().lng() + "&geo_id=<%=@geo.id%>"
-        );
       });
       
       google.maps.event.addListener(map, 'dblclick', function() {
         setTimeout(function(){
           marker.setPosition(map.getCenter())
-          $('#next_step').attr(
-           'href',
-           '<%= "#{new_venue_path}" %>?latitude=' + marker.getPosition().lat() + '&longitude=' + marker.getPosition().lng() + "&geo_id=<%=@geo.id%>"
-          );
         }, 400);
       });
       
@@ -128,6 +120,10 @@
     
     $(document).ready(function(){
         initialize();
+        $('#next_step').click(function(){$(this).attr(
+           'href',
+           '<%= "#{new_venue_path}" %>?latitude=' + marker.getPosition().lat() + '&longitude=' + marker.getPosition().lng() + "&geo_id=<%=@geo.id%>"
+        );})
         $('#create_venue').click(mark_latlng);
         $('#cancel_mark').click(cancel_mark);
         $('#locate').submit(function(){geocoding($('#address').attr('value'))})
