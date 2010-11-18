@@ -21,8 +21,8 @@ class Venue < ActiveRecord::Base
   scope :popular,order('follows_count DESC')
   
   validates :name,:latitude,:longitude, :presence   => true
-  validates :intro,:length     => { :within => 0..140 }
-  validates :category,:inclusion => { :in => CATEGORIES_HASH.keys }
+  validates :intro,:length     => { :within => 1..140,:message => '填请写140字以内的简介' }
+  validates :category,:inclusion => { :in => CATEGORIES_HASH.keys}
   validates :cover_file_name,:format => { :with => /([\w-]+\.(gif|png|jpg))|/ }
   
   def category_name

@@ -1,52 +1,45 @@
-<%= form_for @venue,:html => { :multipart => true } do |form| %>
-  <div>
+  <%= form_for @venue do |form| %>
+    <%= raw error_explanation_for(@venue) if @venue.errors.present?%>
     <p>
-      <%= form.label :name,'聚点名称：'%> <%= form.text_field :name, :size => 24, :class => "title", :placeholder => "例如：XX社区，XX村"%>
+      <%= form.label :name,'聚点名称：'%> <%= form.text_field :name, :size => 18, :class => "title", :placeholder => "例如：XX社区，XX村"%>
     </p>
     <p>
-      类型：<%= form.select :category ,Venue::CATEGORIES_HASH.invert.to_a.sort_by{|value| value[1]}%>
-      <span class="category_example" id="category_example_1">区域、河流、山川、自然保护区</span>
-      <span class="category_example" id="category_example_2">村庄、街道及居民小区</span>
-      <span class="category_example" id="category_example_3">运动场、博物馆、公园等</span>
-      <span class="category_example" id="category_example_4">城乡大中小学等</span>
-      <span class="category_example" id="category_example_5">福利院、养老院、少管所、动物收容所等</span>
-      <span class="category_example" id="category_example_6">公司、商店等</span>
-      <span class="category_example" id="category_example_7"></span>
-      <script type="text/javascript">
-        function updateCount() {
-         $(".category_example").hide();$("#category_example_" + $('#venue_category').val()).show();
-          setTimeout(updateCount, 400);
-           }
-        updateCount();
-      </script>
+      <%= form.label :intro,'类型：'%><%= form.select :category ,Venue::CATEGORIES_HASH.invert.to_a.sort_by{|value| value[1]}%>
+      <% category_example_list = ['河流、山川、自然保护区','村庄、街道及居民小区','运动场、博物馆、公园等','城乡大/中/小学及幼儿园','福利院、养老院、动物收容所等','公司、商店等',form.text_field(:custom_category,:size => 8,:placeholder => '请手工填写')]%>
+      <% category_example_list.each_with_index do |e,c|%>
+        <span class="category_example" id="category_example_<%= c+1%>"><%= e%> <%= image_tag "/images/marker/#{c+1}.png",:class=>"icon"%></span>
+      <% end %>
     </p>
     <p>
-      所在城市： <%= form.select :geo_id, nested_set_options(Geo) {|i| "#{'-' * i.level} #{i.name}" } %>
+      <%= form.label :intro,'所在城市：'%> <%= (geo_selector("venue", "geo",nil,@venue.geo)) %>
+    </p>
+    <p>
+      <%= form.label :address,'具体地址：'%> <%= form.text_field :address,:size => 18%>
+    </p>
+    <p>
+      <%= form.label :contact,'联系方式：'%> <%= form.text_field :contact,:size => 18%>
     </p>
     <p>
       <%= form.label :intro,'简介：'%>
       <br/>
-      <%= form.text_area :intro, :cols => 36, :rows => 5,:placeholder => "为聚点写篇140字以内的简介吧"%>
+      <%= form.text_area :intro, :style => "width:320px;height:100px",:placeholder => "为聚点写篇140字以内的简介吧"%>
+      <div class="explanation">剩余字数：<span id="character_count"></span></div>
     </p>
-    <p>  
-      <%= form.label :intro,'上传一张聚点的照片：'%><%= form.file_field :cover%>
-    </p>
+    
       <%= form.hidden_field :latitude %>
       <%= form.hidden_field :longitude %>
       <%= form.submit '填写好了，提交',:class => "button"%>
-  </div>
-  
-  <% if @venue.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@venue.errors.count, "error") %> prohibited this calling from being saved:</h2>
-      <ul>
-      <% @venue.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+      <%= button_to_function '取消',"javascript:window.location=(#{geos_path}))",:class => "button"%>
   <% end %>
-<% end %>
 
 <% content_for :extension do %>
+  <script type="text/javascript">
+      function updateCount() {
+      document.getElementById("character_count").innerHTML = 140 - document.getElementById("venue_intro").value.length;
+       $(".category_example").hide();$("#category_example_" + $('#venue_category').val()).show();
+      setTimeout(updateCount, 400);
+       }
+      updateCount();
+  </script>
+
 <% end %>

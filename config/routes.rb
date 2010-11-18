@@ -43,7 +43,8 @@ Igee::Application.routes.draw do
   end
   
   resources :geos do
-    get   :list ,:on => :collection
+    get   :list     ,:on => :collection
+    get   :selector ,:on => :collection
   end
   resources :users do
     collection do

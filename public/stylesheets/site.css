@@ -22,7 +22,7 @@ ul,dl{
 li{list-style:none}
     
 p{
-  line-height:1.9em;
+  line-height:1.7em;
   margin:6px 0;}
 
 span{
@@ -47,7 +47,7 @@ input[type="text_field"],input[type="text"],input[type="password"]{
     background-color:white;
     border-radius: 3px;
     -moz-border-radius: 3px;
-    font-size:16px;
+    font-size:15px;
     }
     
 input[type="checkbox"]{position:relative;top:2px;}
@@ -195,10 +195,10 @@ button:hover,.button:hover{background:#d64;color:white;}
   }
 
 #error_explanation{
-  text-align:center;
-  padding:2px 10px;
-  margin:10px 80px;
-  background-color:#d64;
+  text-align:left;
+  width:580px;
+  padding:2px 20px;
+  background-color:#e75;
   border-radius: 6px;
   -moz-border-radius: 6px;
   }

@@ -2,7 +2,7 @@
 
 <div class="setting_box">
   <h4>一 与你的社区帐号连接：</h4>
-    <span>通过链接你的社区帐号，可以很方便的把你的公益行动告诉你的朋友。</span>
+    <div class="explanation">通过链接你的社区帐号，可以很方便的把你的公益行动告诉你的朋友。</div>
     <br/>
   <ul style="line-height:36px;margin-top:10px">
     <li><%= image_tag "/images/icon/douban#{'_gary' unless @user.douban?}.gif",:class=> 'icon'%> <%= @user.douban? ? '豆瓣连接成功' : '还没有和豆瓣链接'%> <%= link_to('立即连接',:controller => 'oauth', :action => 'douban') unless @user.douban?%></li>
@@ -12,13 +12,15 @@
 
 <div class="setting_box">
   <h4 class="setting_title">二 设置头像：</h4>
-  <span>有个拉风的头像，做公益才更带劲。</span><br/><br/>
+  
+  <br/>
   <%= form_for @user, :html => { :multipart => true } do |form| -%>
   <div style="float:right;width:500px">
+    <div class="explanation">有个拉风的头像，做公益才更带劲。<br/>(尺寸：72x72以上的正方形效果最好~)</div>
     <p>
-    <%= form.file_field :avatar,:style => "background:none;border:none;font-size:13px" %>
+      <%= form.file_field :avatar,:style => "background:none;border:none;font-size:13px" %><%= submit_tag '确定', :class => 'button' %>
     </p>
-    <p><%= submit_tag '确定', :class => 'button' %></p>
+    
   </div>
   <%= image_tag @user.avatar.url(:_72x72),:class => "avatar" %>
   <% end -%>
@@ -28,7 +30,7 @@
   <h4 class="setting_title">三 个性化信息：</h4>
   <%= form_for @user do |form| -%>
     <p> 
-    <%= form.label :geo_id,'所在城市'%> <%= form.select :geo_id, nested_set_options(Geo) {|i| "#{'-' * i.level} #{i.name}" } %>
+    <%= form.label :geo_id,'所在城市: '%><%= (geo_selector("user", "geo",nil,@user.geo)) %>
     </p>
     <p>
     <%= form.label :use_local_geo,'使用我的默认城市做地图首页'%> <%= form.check_box :use_local_geo %>

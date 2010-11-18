@@ -19,3 +19,7 @@ zh:
               taken: "用户名已经被使用，请换一个用户名注册"
             email:
               taken: "这个邮箱已经被使用，你是不是已经注册了？"
+        venue:
+          attributes:
+            name:
+              blank:  '清填写聚点的名称'

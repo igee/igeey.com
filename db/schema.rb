@@ -162,10 +162,13 @@ ActiveRecord::Schema.define() do
     t.string  :name,         :limit => 40
     t.text    :intro
     t.string  :category,     :limit => 40
+    t.string  :custom_category,     :limit => 40
     t.integer :geo_id
     t.integer :creator_id
     t.string  :latitude,     :limit => 40
     t.string  :longitude,    :limit => 40
+    t.string  :address
+    t.string  :contact
     t.string  :cover_file_name
     t.boolean :has_photo,    :default => false
     t.integer :follows_count,:default => 0

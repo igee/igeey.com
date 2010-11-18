@@ -1722,9 +1722,7 @@ geos_413:
   longitude: "47.5769270"
   rgt: "825"
 geos_270: 
-  name: !binary |
-    5L+d5Lqt6buO5peP6IuX5peP6Ieq5rK7
-
+  name: 保亭
   latitude: "18.6391300"
   zipcode: 
   zoom_level: "9"
@@ -1800,9 +1798,7 @@ geos_414:
   longitude: "-77.3962800"
   rgt: "827"
 geos_271: 
-  name: !binary |
-    5LmQ5Lic6buO5peP6Ieq5rK7
-
+  name: 乐东
   latitude: "31.224353"
   zipcode: 
   zoom_level: "9"
@@ -1878,9 +1874,7 @@ geos_415:
   longitude: "50.6377720"
   rgt: "829"
 geos_272: 
-  name: !binary |
-    6KW/5Y2X5Lit5rKZ576k5bKb5Yqe5LqL5aSE
-
+  name: 西南中沙群岛
   latitude: "19.5615720"
   zipcode: 
   zoom_level: "9"
@@ -6434,9 +6428,7 @@ geos_029:
   longitude: "109.8403850"
   rgt: "57"
 geos_266: 
-  name: !binary |
-    5piM5rGf6buO5peP6Ieq5rK7
-
+  name: 昌江
   latitude: "19.2602880"
   zipcode: 
   zoom_level: "9"
@@ -6478,9 +6470,7 @@ geos_409:
   longitude: "45.0381890"
   rgt: "817"
 geos_267: 
-  name: !binary |
-    55m95rKZ6buO5peP6Ieq5rK7
-
+  name: 白沙
   latitude: "19.2233030"
   zipcode: 
   zoom_level: "9"
@@ -6512,9 +6502,7 @@ geos_458:
   longitude: "-70.1626510"
   rgt: "915"
 geos_268: 
-  name: !binary |
-    55C85Lit6buO5peP6IuX5peP6Ieq5rK7
-
+  name: 琼州
   latitude: "31.224353"
   zipcode: 
   zoom_level: "9"
@@ -6546,9 +6534,7 @@ geos_459:
   longitude: "-78.1834060"
   rgt: "917"
 geos_269: 
-  name: !binary |
-    6Zm15rC06buO5peP6Ieq5rK7
-
+  name: 陵水
   latitude: "18.4304180"
   zipcode: 
   zoom_level: "9"
