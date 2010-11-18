@@ -2,6 +2,7 @@
 config/database.yml
 config/oauth/*.yml
 db/*.sqlite3
+db/migrate/*
 log/*.log
 tmp/*
 

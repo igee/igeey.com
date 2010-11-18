@@ -575,7 +575,7 @@ a#logo{
 }
 
 #signup_button{
-  background-color:#8c5;
+  background-color:#9c6;
   color:white;
   display:block;
   line-height:24px;
@@ -583,10 +583,12 @@ a#logo{
   font-size:16px;
   padding:12px 30px;
   text-align:center;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
   margin:50px  36px 10px;
   }
+
+#signup_button:hover{background-color:#ad7;}
 
 #record_counters{}
 
