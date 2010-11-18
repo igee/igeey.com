@@ -116,7 +116,7 @@ button,.button{
     font-size:14px;
     font-weight:bold;
     font-family:sans-serif;
-    background-color:#e86;
+    background-color:#e97;
     padding:2px 12px;
     border:1px solid #d75;
     border-radius: 3px;
@@ -140,7 +140,7 @@ button,.button{
     line-height:42px
 }
 
-button:hover,.button:hover{background:#d64;color:white;}
+button:hover,.button:hover{background:#d86;color:white;}
 .big_button:hover{background:#c64;color:white;}
 
 .dialog_rightbar{

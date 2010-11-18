@@ -17,7 +17,7 @@
 
 <script type="text/javascript">
   $('#badgeBoxBg').attr('style',("width:100%;height:" + $(document).height() + "px;background-color:#000;filter:alpha(opacity=0.6);opacity:0.6;position:absolute;z-index:4;"))
-  $("#badgeBox").attr('style',"display:block;left:" + (($(document).width())/2-(parseInt(540)/2))+"px;top:80px");
+  $("#badgeBox").attr('style',"display:block;left:" + (($(document).width())/2-(parseInt(580)/2))+"px;top:80px");
   $("#badgeBox #close_dialog").click(function(){
     $("#badgeBoxBg").animate({opacity:"0"},"normal",function(){$(this).hide();});
     $("#badgeBox").animate({opacity:"0"},"normal",function(){$('#get_badges').hide();});

@@ -1,7 +1,7 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
   $(document).ready(function(){
-    $(".open_dialog").click(function(){dialog($(this).attr('title'),("url:"+$(this).attr('href')),"540px","auto","text");  return false;})
+    $(".open_dialog").click(function(){dialog($(this).attr('title'),("url:"+$(this).attr('href')),"570px","auto","text");  return false;})
     $('#dialog_flash a').click();
     $('.with_tip').poshytip({
       className: 'tip-yellowsimple',
