@@ -13,7 +13,7 @@
   <h4 class="setting_title">二 设置头像：</h4>
   <%= form_for @user, :html => { :multipart => true } do |form| -%>
   <div style="float:right;width:500px">
-    <div class="explanation">有个拉风的头像，做公益才更带劲。<br/>(尺寸：72x72以上的正方形效果最好~)</div>
+    <p class="explanation">有个拉风的头像，做公益才更带劲。<br/>(尺寸：72x72以上的正方形效果最好~)</p>
     <p>
       <%= form.file_field :avatar,:style => "background:none;border:none;font-size:13px" %>
     </p>
@@ -39,5 +39,5 @@
   <% end -%>
 </div>
 <p style="text-align:right">
-  设置好了？<%= link_to '返回首页', root_path,:class => "button"%> <%= link_to '回到上个页面', params[:back_path],:class => "button" if params[:back_path].present?%>
+  设置好了？<%= params[:back_path].blank? ? link_to('返回首页', root_path,:class => "button") : link_to('返回刚才的页面', (params[:back_path] + '?' + params.map{|d| "#{d[0]}=#{d[1]}&"}.to_s),:class => "button")%>
 </p>

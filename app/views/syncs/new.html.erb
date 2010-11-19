@@ -1,0 +1,40 @@
+<div class='box'>
+  <p class="explanation">
+    你<%= {:calling => '的召集成功发布了',:plan => '已计划参与行动',:follow =>'已关注这个行动'}[@sync.syncable_type.downcase.to_sym] %>。
+    <br/>
+    再通过你的社交网络把这个消息告诉你的朋友吧，让更多人知道并参与这个行动。
+    <br/>
+    不过也不要发重复的信息干扰别人哦 :)
+  </p>
+  <%= form_for @sync,:url => sync_path do |form| %>
+    <%= form.hidden_field :syncable_id %>
+    <%= form.hidden_field :syncable_type %>
+    <%= render :partial => '/public/user' ,:object => current_user %>
+    <div class="saying" style="<%= 'width:360px' if params[:layout]=='false'%>">
+      <div class="saying_colon_left"> “</div>
+        <%= form.text_area :content,:value=>"我#{@syncable.description} " + eval("#{@sync.syncable_type.downcase}_url(#{@syncable.id})"),:style => "width:#{ params[:layout]=='false' ? '340px' : '440px'};height:80px"%>
+      <div class="saying_colon_right">”</div>
+    </div>
+    <div class="saying_tail"></div>
+    <div class="clear"></div>
+    <p style='text-align:right'>
+    同步到：
+    <%= image_tag('/images/icon/sina.gif',:class=> 'icon')%> 新浪微博 <%= form.check_box :sina ,:disabled => (current_user.sina? ? false : true),:checked => current_user.sina? %>
+    　<%= image_tag('/images/icon/douban.gif',:class => 'icon')%> 豆瓣我说 <%= form.check_box :douban ,:disabled => (current_user.douban? ? false : true),:checked => current_user.douban? %>
+    　<%= link_to '无法勾选同步？先去设置',"#{setting_path}?back_path=#{request.path}&syncable_type=calling&syncable_id=1",:class => 'with_explain',:title => '设置完了可以再回来' unless current_user.sina? && current_user.douban? %>
+    <br/>
+    <%= form.submit '确定',:class => 'button' %>
+    </p>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+  $('.with_explain').poshytip({
+      className: 'tip-yellowsimple',
+      showTimeout: 1,
+      alignTo: 'target',
+      alignX: 'center',
+      offsetY: 5,
+      allowTipHover: false
+    });
+</script>

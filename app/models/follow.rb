@@ -8,5 +8,9 @@ class Follow < ActiveRecord::Base
   
   default_scope :order => 'created_at DESC'
   
-  attr_accessor :sync_to_sina,:sync_to_douban,:sync_to_renren
+  
+  def description
+    "在关注这个行动的进展： #{self.followable.user.login}#{self.followable.description}"
+  end
+  
 end

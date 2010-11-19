@@ -6,10 +6,9 @@ class Plan < ActiveRecord::Base
   belongs_to :parent,   :class_name => :plan,:foreign_key => :parent_id
   has_one    :record
   has_many   :comments, :as => :commentable, :dependent => :destroy
+  has_many   :syncs,    :as => :syncable,    :dependent => :destroy
   has_many   :plans
   has_many   :children, :class_name => 'Plan' ,:foreign_key => :parent_id
-  
-  attr_accessor :sync_to_sina,:sync_to_douban,:sync_to_renren
   
   delegate :for_what, :to => :action
   

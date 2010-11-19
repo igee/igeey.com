@@ -39,12 +39,8 @@ class CallingsController < ApplicationController
   def create
     @calling = current_user.callings.build(params[:calling])
     if @calling.save
-      @oauth_message = "(这是oauth同步测试) 我#{@calling.description}  #{calling_url(@calling)}"
-      current_user.send_to_miniblogs( @oauth_message,
-                                      :to_douban => (@calling.sync_to_douban && current_user.douban?),
-                                      :to_sina => (@calling.sync_to_douban && current_user.sina?)
-                                      )
-    end  
+      flash[:dialog] = "<a href='#{new_sync_path}?syncable_type=#{@calling.class}&syncable_id=#{@calling.id}' class='open_dialog' title='传播这个行动'>同步</a>" 
+    end
     respond_with @calling
   end
 

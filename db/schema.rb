@@ -185,6 +185,16 @@ ActiveRecord::Schema.define() do
     t.timestamps
   end
   
+  create_table "syncs",:force => true do |t|
+    t.integer  :user_id
+    t.integer  :syncable_id
+    t.string   :syncable_type, :limit => 40
+    t.text     :content
+    t.boolean  :sina,    :default => false
+    t.boolean  :douban,  :default => false
+    t.timestamps
+  end
+  
   create_table "topics",:force => true do |t|
     t.integer  :user_id
     t.string   :title

@@ -19,6 +19,7 @@
       <% else %>
         <% if @plan.can_edit_by?(current_user) %>
           <%= link_to "已经完成?","#{new_record_path}?plan_id=#{@plan.id}",:class => "big_button" %>
+          　<%= link_to "取消",calling_plan_path(@calling,@plan),:method => :delete %>
         <% elsif @my_plan %>
           你已参与： <%= link_to '查看我的计划',calling_plan_path(@calling,@my_plan)%>
         <% else %>

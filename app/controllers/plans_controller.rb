@@ -1,6 +1,6 @@
 class PlansController < ApplicationController
   respond_to :html
-  before_filter :login_required, :except => [:index, :show]
+  before_filter :login_required, :except => [:index, :show,:redirect]
   before_filter :find_plan, :except => [:index,:new,:create,:duplicate]
   after_filter  :clean_unread, :only => [:show]
   
@@ -17,15 +17,10 @@ class PlansController < ApplicationController
     @plan.calling = Calling.find(params[:calling_id])
     @plan.venue = @plan.calling.venue
     @plan.action = @plan.calling.action
-    @plan.save
     if @plan.save
-      @oauth_message = "(这是oauth同步测试）： 我要#{@plan.description}  #{calling_plan_url(@plan.calling,@plan)}"
-      current_user.send_to_miniblogs( @oauth_message,
-                                      :to_douban => (@plan.sync_to_douban && current_user.douban?),
-                                      :to_sina => (@plan.sync_to_douban && current_user.sina?)
-                                      )
+      flash[:dialog] = "<a href='#{new_sync_path}?syncable_type=#{@plan.class}&syncable_id=#{@plan.id}' class='open_dialog' title='传播这个行动'>同步</a>" 
     end
-    redirect_to @plan.calling
+    respond_with @plan
   end
   
   def edit
@@ -59,6 +54,10 @@ class PlansController < ApplicationController
     else
       render :action => 'new'
     end  
+  end
+  
+  def redirect
+    redirect_to calling_plan_path(@plan.calling,@plan)
   end
     
   private

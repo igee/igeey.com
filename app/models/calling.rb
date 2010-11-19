@@ -5,13 +5,12 @@ class Calling < ActiveRecord::Base
   has_many   :records
   has_many   :plans
   has_many   :comments, :as => :commentable, :dependent => :destroy
+  has_many   :syncs,    :as => :syncable,    :dependent => :destroy
   has_many   :photos,   :as => :imageable,   :dependent => :destroy
   has_many   :follows,  :as => :followable,  :dependent => :destroy
   has_many   :followers,:through => :follows,:source => :user
   
   default_scope :order => 'created_at DESC'
-  
-  attr_accessor :sync_to_sina,:sync_to_douban,:sync_to_renren
   
   delegate :for_what, :to => :action
   

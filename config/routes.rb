@@ -16,10 +16,12 @@ Igee::Application.routes.draw do
   match 'my_timeline' => 'site#my_timeline'
   match 'city_timeline' => 'site#city_timeline'
   match 'oauth(/:action)' => 'oauth#(/:action)'
+  match 'plan(/:id)' => 'plans#redirect', :as => :plan
   match 'setting' => 'users#edit'
   
   resource :session, :only => [:new, :create, :destroy,:show]
-
+  resource :sync, :only => [:new, :create]
+  
   resources :venues do
     member do
       get :cover
