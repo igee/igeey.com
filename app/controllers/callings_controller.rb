@@ -8,6 +8,23 @@ class CallingsController < ApplicationController
     @callings = Calling.all
   end
 
+  def new
+    @calling = current_user.callings.build(:venue_id => params[:venue_id],:action_id => params[:action_id])
+    if @calling.action.nil?
+      @actions = Action.all
+      @venue = Venue.find(params[:venue_id])
+      render :select_action, :layout =>  !(params[:layout] == 'false')
+    end
+  end
+  
+  def create
+    @calling = current_user.callings.build(params[:calling])
+    if @calling.save
+      flash[:dialog] = "<a href='#{new_sync_path}?syncable_type=#{@calling.class}&syncable_id=#{@calling.id}' class='open_dialog' title='传播这个行动'>同步</a>" 
+    end
+    respond_with @calling
+  end
+
   def show
     @calling = Calling.find(params[:id])
     @venue = @calling.venue
@@ -22,36 +39,26 @@ class CallingsController < ApplicationController
     @photo = Photo.new
     @photos = @calling.photos.limit(3)
   end
-
-  def new
-    @calling = current_user.callings.build(:venue_id => params[:venue_id],:action_id => params[:action_id])
-    if @calling.action.nil?
-      @actions = Action.all
-      @venue = Venue.find(params[:venue_id])
-      render :select_action, :layout =>  !(params[:layout] == 'false')
-    end
-  end
-
+  
   def edit
-    @calling = Calling.find(params[:id])
   end
-
-  def create
-    @calling = current_user.callings.build(params[:calling])
-    if @calling.save
-      flash[:dialog] = "<a href='#{new_sync_path}?syncable_type=#{@calling.class}&syncable_id=#{@calling.id}' class='open_dialog' title='传播这个行动'>同步</a>" 
-    end
-    respond_with @calling
-  end
-
+  
   def update
     @calling.update_attributes(params[:calling])
-    respond_with @calling
+    if params[:back_path].present?
+      redirect_to params[:back_path]
+    else
+      respond_with @calling
+    end
   end
 
   def destroy
     @calling.destroy
-    respond_with @calling
+    if params[:back_path].present?
+      redirect_to params[:back_path]
+    else
+      respond_with @calling
+    end
   end
   
   def next_step

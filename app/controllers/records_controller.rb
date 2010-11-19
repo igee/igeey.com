@@ -48,6 +48,27 @@ class RecordsController < ApplicationController
     @photos = @record.photos
   end
   
+  def edit
+  end
+  
+  def update
+    @record.update_attributes(params[:plan]) if @record.user_id == current_user.id
+    if params[:back_path].present?
+      redirect_to params[:back_path]
+    else
+      respond_with @record
+    end
+  end
+  
+  def destroy
+    @record.destroy  if @record.user_id == current_user.id
+    if params[:back_path].present?
+      redirect_to params[:back_path]
+    else
+      respond_with @record
+    end
+  end
+    
   def select_venue
     
   end

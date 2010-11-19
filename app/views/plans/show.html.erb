@@ -9,7 +9,11 @@
       </div>
       <div class="saying_tail"></div>
       <div class="clear"></div>
-      <div style="text-align:right"><span><%= link_to "修改信息？",edit_record_path(@plan) if @plan.can_edit_by?(current_user)%></span></div>
+      <div style="text-align:right">
+        <% if @plan.can_edit_by?(current_user)%>
+        <span><%= link_to("修改",edit_calling_plan_path(@plan.calling,@plan))%>　<%= link_to "取消",calling_plan_path(@calling,@plan),:method => :delete %></span>
+        <% end %>
+      </div>
   </div>
   
   <div class="box">
@@ -19,7 +23,6 @@
       <% else %>
         <% if @plan.can_edit_by?(current_user) %>
           <%= link_to "已经完成?","#{new_record_path}?plan_id=#{@plan.id}",:class => "big_button" %>
-          　<%= link_to "取消",calling_plan_path(@calling,@plan),:method => :delete %>
         <% elsif @my_plan %>
           你已参与： <%= link_to '查看我的计划',calling_plan_path(@calling,@my_plan)%>
         <% else %>

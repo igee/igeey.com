@@ -2,8 +2,13 @@
 <div class="event_box">
   <%= render :partial => '/public/user', :object => calling.user %>
   <div class="event">
-    <div class="event_panel">
-    </div>
+    
+    <% if calling.user == current_user %>
+      <div class="event_panel">
+        <%= link_to "修改","#{edit_calling_path(calling)}?back_path=#{request.path}"%>
+        　<%= link_to "删除","#{calling_path(calling)}?back_path=#{request.path}",:method => :delete,:confirm => '你确定要删除这个行动召集么' %>
+      </div>
+    <% end %>
     <p>
       <span style="font-size:20px;font-family:'times new roman';color:#999">“</span>
       <%= link_to "#{calling.user.login}#{calling.description}",calling,:class => 'event_link'%>

@@ -369,7 +369,7 @@ button:hover,.button:hover{background:#d86;color:white;}
 .event_link{color:#777}
 
 .event_panel{
-  margin:40px 10px 0;
+  margin:48px 10px 0;
   width:510px;
   text-align:right;
   display:none;
@@ -462,6 +462,7 @@ input.todo:hover{
   border-color:#fea;
   }
 
+.with_calendar{width:77px}
 
 a#logo{
   padding:0px 5px 10px;

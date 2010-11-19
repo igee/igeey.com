@@ -11,18 +11,14 @@ class Record < ActiveRecord::Base
   
   default_scope :order => 'created_at DESC'
   
-  delegate :for_what, :to => :action
-  
-  validates :user_id,:action_id,:venue_id,:presence  => true
+  delegate  :for_what, :to => :action
+  validate  :user_id, :presence  => true,:uniqueness => {:scope => [:plan_id]}
+  validates :action_id,:venue_id,:presence  => true
   validates :done_at,:date => {:before_or_equal_to => Date.today.to_date}
   
   def validate
     errors[for_what] << '数量必须为大于0的整数' unless number > 0
     errors[{'time' => :do_what,'money' => :donate_for,'goods' => :goods_is}[for_what]] = '请将记录信息填写完整' if content.blank?
-    
-    if plan.present? && plan.is_done
-      errors[:status] <<  '你已经完成了这个计划' 
-    end
   end
   
   def content

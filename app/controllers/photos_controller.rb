@@ -11,12 +11,12 @@ class PhotosController < ApplicationController
   end
 
   def update
-    @photo.update_attributes(params[:photo])
+    @photo.update_attributes(params[:photo]) if @photo.user_id == current_user.id
     redirect_to :back
   end
 
   def destroy
-    @photo.destroy
+    @photo.destroy if @photo.user_id == current_user.id
     redirect_to :back
   end
 

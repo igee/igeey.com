@@ -1,8 +1,12 @@
 class PlansController < ApplicationController
   respond_to :html
   before_filter :login_required, :except => [:index, :show,:redirect]
-  before_filter :find_plan, :except => [:index,:new,:create,:duplicate]
+  before_filter :find_plan_and_calling, :except => [:index,:new,:create,:duplicate]
   after_filter  :clean_unread, :only => [:show]
+  
+  def index
+    redirect_to calling_path(@calling)
+  end
   
   def new
     @calling = Calling.find(params[:calling_id])
@@ -23,14 +27,7 @@ class PlansController < ApplicationController
     respond_with @plan
   end
   
-  def edit
-  end
-  
-  def update
-  end
-  
   def show
-    @calling = @plan.calling
     @venue = @plan.venue
     @comment = Comment.new
     @comments = @calling.comments
@@ -40,13 +37,24 @@ class PlansController < ApplicationController
     @my_plan = @calling.plans.select{|p| p.user_id == current_user.id}.first if logged_in?
   end
   
-  def destroy
-    @plan.destroy
-    redirect_to @plan.calling
+  def edit
+  end
+  
+  def update
+    @plan.update_attributes(params[:plan])  if @plan.user_id == current_user.id
+    if params[:back_path].present?
+      redirect_to params[:back_path]
+    else
+      respond_with @plan
+    end
+  end
+  
+  def destroy  
+    @plan.destroy if @plan.user_id == current_user.id
+    redirect_to :back
   end
     
   def duplicate
-    @calling = Calling.find(params[:calling_id])
     @parent = Plan.find(params[:id])
     @plan = @calling.plans.build(:parent_id => @parent.id)
     if params[:layout] == 'false'
@@ -61,8 +69,15 @@ class PlansController < ApplicationController
   end
     
   private
-  def find_plan
-    @plan = Plan.find(params[:id])
+  def find_plan_and_calling
+    begin 
+      @plan = Plan.find(params[:id])
+      @calling = @plan.calling
+    rescue
+      @plan = Plan.new
+      @calling = Calling.find(params[:calling_id])
+      render :no_found
+    end  
   end
   
   def clean_unread

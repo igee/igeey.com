@@ -2,9 +2,15 @@
 <div class="event_box">
   <%= render :partial => '/public/user',:object => plan.user %>
   <div class="event">
-    <% if plan.user == current_user %>
+    <% if plan.is_done  %>
       <div class="event_panel">
-        <span>&raquo; <%= link_to '已完成？',"#{new_record_path}?plan_id=#{plan.id}"%></span>
+        已行动
+      </div>
+    <% elsif (plan.user == current_user) %>
+      <div class="event_panel">
+          <%= link_to '完成?',"#{new_record_path}?plan_id=#{plan.id}"%>
+        　<%= link_to "修改","#{edit_calling_plan_path(plan.calling,plan)}?back_path=#{request.path}"%>
+        　<%= link_to "取消",calling_plan_path(plan.calling,plan),:method => :delete %>
       </div>
     <% end %>
     <p>
