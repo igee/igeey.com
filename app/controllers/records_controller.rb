@@ -52,7 +52,7 @@ class RecordsController < ApplicationController
   end
   
   def update
-    @record.update_attributes(params[:plan]) if @record.user_id == current_user.id
+    @record.update_attributes(params[:record]) if @record.user_id == current_user.id
     if params[:back_path].present?
       redirect_to params[:back_path]
     else

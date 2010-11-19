@@ -26,9 +26,12 @@
               去<%="#{@venue.name}"%><%= form.text_field :do_what, :size => 7 ,:placeholder => "做了什么？",:value => (@calling.do_what if @calling)%><%= form.text_field :time, :size => 3,:placeholder => "多少" %> 小时。
             <% end %>
             <br/>
-            <%= form.text_area :detail, :style => "width:430px;height:100px"%>
         </div>
         <div class="saying_colon_right">”</div>
+        <h5>行动详情：</h5>
+        <p class="explanation">补充一些细节，让大家知道你是怎么做的吧</p>
+        <%= form.text_area :detail, :style => "width:430px;height:100px"%>
+        <br/>
     </div>
     <div class="saying_tail"></div>
     <div style="clear:both;text-align:right">

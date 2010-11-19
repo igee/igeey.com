@@ -40,7 +40,7 @@
       <div id="login_state">
         <% if logged_in? %>
           <span>欢迎,<%= current_user.login %>　</span>
-          <%= link_to '设置',"#{setting_path}?back_path=#{request.path unless controller_name == 'site' && action_name = 'index'}"%> |
+          <%= link_to '设置',"#{setting_path}?back_path=#{request.path unless controller_name == 'site' && action_name == 'index'}"%> |
           <%= link_to "退出",logout_path %>
         <% else %>
           <%= link_to "登录",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%> |
@@ -86,9 +86,11 @@
 
 <% if logged_in? && current_user.has_new_badge?%>
   <script>
+  $(document).ready(function(){
       $.get('<%= get_badges_badges_path%>',function(data){
         $('#get_badges').html(data)
       })
+    })
   </script>
 <% end %>
 

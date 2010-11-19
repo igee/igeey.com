@@ -1,16 +1,16 @@
 <h2>注册成功啦，欢迎你来到爱聚 :)</h2>
 <div class="box">
   <p>爱聚是一个合作型的公益的平台，在这里你可以把行动带给世界，并和大家一起体验公益的乐趣。</p>
-  <p>我们鼓励新成员去设置自己的爱聚帐号：</p>
-  <p>
-    　     1. 设置同步，连接自己的社区帐户，把公益传播给自己的朋友；
-    <br/>　2. 上传头像，让别人一眼就能认出你来；
-    <br/>　3. 设置城市，方便你探索身边的公益；
+  <p>我们鼓励新成员立即去设置自己的爱聚帐号：</p>
+  <p style="padding:4px 10px;">
+          1. 设置同步，连接自己的社区帐户，把公益传播给自己的朋友；
+    <br/> 2. 上传头像，让别人一眼就能认出你来；
+    <br/> 3. 设置城市，方便你探索身边的公益；
   </p>
   <br/>
   <br/>
   <div style="text-align:right">
-    <%= link_to '去设置', setting_url,:class => 'button'%>
+    <%= link_to '去设置', "#{setting_url}?back_path=#{request.env['HTTP_REFERER']}",:class => 'button'%>
     <%= link_to '继续', "#",:class => 'button',:onclick => "javascript:$('#floatBox #close_dialog').click();return false"%>
   </div>
 </div>

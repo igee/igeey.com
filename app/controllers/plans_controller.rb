@@ -24,6 +24,7 @@ class PlansController < ApplicationController
     if @plan.save
       flash[:dialog] = "<a href='#{new_sync_path}?syncable_type=#{@plan.class}&syncable_id=#{@plan.id}' class='open_dialog' title='传播这个行动'>同步</a>" 
     end
+    @calling = Calling.find(params[:calling_id])
     respond_with @plan
   end
   

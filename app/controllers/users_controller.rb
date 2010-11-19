@@ -23,7 +23,7 @@ class UsersController < ApplicationController
       # reset session
       self.current_user = @user # !! now logged in
       flash[:dialog] = "<a href=#{welcome_users_path} class='open_dialog' title='欢迎'>欢迎</a>"
-      redirect_back_or_default('/')
+      redirect_to :back
     else
       render :action => 'new' 
     end

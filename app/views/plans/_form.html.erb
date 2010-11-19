@@ -1,4 +1,5 @@
-<%= form_for [@calling,@plan] do |form| %>
+
+<%= form_for [:calling,@plan] do |form| %>
   <%= raw error_explanation_for(@plan) if @plan.errors.present?%>  
   <% @venue = @calling.venue %>
   <% @action = @calling.action %>
