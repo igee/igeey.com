@@ -1,6 +1,9 @@
 <div class="box">
   <div style="float:left;text-align:center;padding-top:16px">
     <%= image_tag @user.avatar.url(:_72x72),:class => "avatar" %>
+    <div style="margin:6px;">
+      <%= raw(follow_to(@user)) unless @user == current_user%>
+    </div>
   </div>
   <div style="float:left;width:400px;text-align:left;padding:16px 10px 0">
     <h2 style="display:inline"><%= @user.login %></h2> <span><%= "#{@user.geo.name}" unless @user.geo.nil? %></span>
@@ -38,14 +41,14 @@
   
   <div class="box">
     <h4><%= "#{@user.login}关注的人："%></h4>
-    <%= render :partial => '/public/user',:collection => @following_users %>
+    <%= render :partial => '/users/user',:collection => @following_users %>
     <div class="clear"></div>
   </div>
 
   
   <div class="box">
     <h4><%= "#{@user.login}关注的聚点："%></h4>
-    <%= render :partial => '/public/venue',:collection => @following_venues %>
+    <%= render :partial => '/venues/venue',:collection => @following_venues %>
     <div class="clear"></div>
   </div>
 

@@ -9,7 +9,7 @@
   <%= form_for @sync,:url => sync_path do |form| %>
     <%= form.hidden_field :syncable_id %>
     <%= form.hidden_field :syncable_type %>
-    <%= render :partial => '/public/user' ,:object => current_user %>
+    <%= render :partial => '/users/user' ,:object => current_user %>
     <div class="saying" style="<%= 'width:360px' if params[:layout]=='false'%>">
       <div class="saying_colon_left"> “</div>
         <%= form.text_area :content,:value=>"我#{@syncable.description} " + eval("#{@sync.syncable_type.downcase}_url(#{@syncable.id})"),:style => "width:#{ params[:layout]=='false' ? '340px' : '440px'};height:80px"%>

@@ -1,6 +1,6 @@
 <div class="event_type" title='plan'></div>
 <div class="event_box">
-  <%= render :partial => '/public/user',:object => plan.user %>
+  <%= render :partial => '/users/user',:object => plan.user %>
   <div class="event">
     <% if plan.is_done  %>
       <div class="event_panel">

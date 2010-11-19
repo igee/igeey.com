@@ -1,6 +1,6 @@
 <div class="event_type" title='calling'></div>
 <div class="event_box">
-  <%= render :partial => '/public/user', :object => calling.user %>
+  <%= render :partial => '/users/user', :object => calling.user %>
   <div class="event">
     
     <% if calling.user == current_user %>

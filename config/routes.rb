@@ -11,6 +11,7 @@ Igee::Application.routes.draw do
   match 'faq' => 'site#faq'
   
   match 'myigee' => 'site#myigee'
+  match 'followings' => 'site#followings'
   match 'unread_comments' => 'site#unread_comments'
   match 'unread_plans' => 'site#unread_plans'
   match 'my_timeline' => 'site#my_timeline'

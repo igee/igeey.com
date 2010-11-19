@@ -1,0 +1,21 @@
+<div id="tabContaier">
+  <ul>
+    <li><%= link_to '关注的聚点','#following_venues'%></li>
+    <li><%= link_to '关注的行动','#following_callings'%></li>
+    <li><%= link_to '关注的用户','#following_users'%></li>
+  </ul>
+  
+  <div id="following_venues" class="tabContents">
+    <%= render :partial => '/public/venue',:collection => @following_venues%>
+  </div>
+  
+  <div id="following_callings" class="tabContents">
+    <%= render :partial => '/public/calling',:collection => @following_callings%>
+  </div>
+  
+  <div id="following_users" class="tabContents">
+    <%= render :partial => '/public/user',:collection => @following_users%>
+  </div>
+  
+</div>
+

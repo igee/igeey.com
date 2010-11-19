@@ -4,7 +4,7 @@
   <% @action = @calling.action %>
   <div style="clear:both">
     <%= form.hidden_field :calling_id %>
-    <%= render :partial => '/public/user' ,:object => current_user %>
+    <%= render :partial => '/users/user' ,:object => current_user %>
     <div class="saying" style="<%= 'width:360px' if params[:layout]=='false'%>">
         <div class="saying_colon_left">“</div>
         <p>

@@ -1,7 +1,17 @@
-<div class='user'>
-    <%= link_to (image_tag user.avatar.url,:class => "user_avatar"),user %>
-    <% unless (defined? without_name)&&(without_name == true)%>
-      <br/>
-      <span><%= link_to user.login,user%></span>
-    <% end %>
-</div>
+  <div class="event_type" title=''></div>
+  <div class="event_box">
+    <%= render :partial => '/users/user', :object => user ,:locals => {:without_name => true}%>
+    <div class="event">
+      <div class="event_panel">
+        
+      </div>
+      <h4>
+        <%= link_to user.login,user %> <span><%= user.signature%></span>
+      </h4>
+      
+      <span>
+          <%=raw "最新行动: #{link_to user.latest_update.description,user.latest_update}" if user.latest_update.present?%>
+      </span>
+      
+    </div>
+  </div>

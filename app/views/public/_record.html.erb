@@ -1,6 +1,6 @@
 <div class="event_type" title='record'></div>
 <div class="event_box">
-  <%= render :partial => '/public/user', :object => record.user %>
+  <%= render :partial => '/users/user', :object => record.user %>
   <div class="event">
     <% if record.user == current_user %>
       <div class="event_panel">

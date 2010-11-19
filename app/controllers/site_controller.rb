@@ -21,6 +21,12 @@ class SiteController < ApplicationController
     @photos = @user.photos
   end
 
+  def followings
+    @user = current_user
+    @following_venues = @user.following_venues
+    @following_callings = @user.following_callings
+    @following_users = @user.following_users
+  end
   
   def my_timeline
     if logged_in?

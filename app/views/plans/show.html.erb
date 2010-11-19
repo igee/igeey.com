@@ -1,5 +1,5 @@
   <div class="box">
-    <%= render :partial => '/public/user' ,:object => @plan.user %>
+    <%= render :partial => '/users/user' ,:object => @plan.user %>
       <div class="saying">
         <div class="saying_colon_left"> “</div>
         <p class="impact">
@@ -48,7 +48,7 @@
        
   <div class="box">
     <h4>发起人说：</h4>
-      <%= render :partial => '/public/user' ,:object => @calling.user %>
+      <%= render :partial => '/users/user' ,:object => @calling.user %>
       <div class="saying">
         <p class="explanation" >
           <span style="font-size:20px;font-family:'times new roman';color:#999">“</span>
@@ -95,7 +95,7 @@
   
   <div class="box">
     <h4>所有参与者：</h4>
-    <%= render :partial => '/public/user',:collection => @calling.plans.map(&:user)%>
+    <%= render :partial => '/users/user',:collection => @calling.plans.map(&:user)%>
     <div class="clear"></div>
   </div>
   

@@ -1,3 +1,4 @@
+
 <% content_for :head do %>
   <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false"></script>
 <% end %>
@@ -45,7 +46,7 @@
     
     <div class="box">
       <h4>我服务过...</h4>
-        <%= render :partial => '/public/venue',:collection => @venues%>
+        <%= render :partial => '/venues/venue',:collection => @venues%>
       <div class="clear"></div>
     </div>
     

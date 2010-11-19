@@ -1,5 +1,5 @@
 <div class="box">  
-  <%= render :partial => '/public/user' ,:object => @calling.user %>
+  <%= render :partial => '/users/user' ,:object => @calling.user %>
   <div class="saying">
     <div class="saying_colon_left"> “</div>
     <p class="impact"><%= "#{@calling.user.login}#{@calling.description}" %></p>
@@ -16,7 +16,7 @@
   <% elsif @my_plan.present? %>
     <h4>你的计划：</h4>
     <div class="event_box">
-      <%= render :partial => '/public/user',:object => @my_plan.user%>
+      <%= render :partial => '/users/user',:object => @my_plan.user%>
       <div class="event">
         <p>
           <%= link_to "你#{@my_plan.description}。",calling_plan_path(@calling,@my_plan) %>
@@ -80,7 +80,7 @@
   
   <div class="box">
     <h4>所有参与者：</h4>
-    <%= render :partial => '/public/user',:collection => @plans.map(&:user)%>
+    <%= render :partial => '/users/user',:collection => @plans.map(&:user)%>
     <div class="clear"></div>
   </div>
   

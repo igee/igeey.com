@@ -1,7 +1,7 @@
 <%= form_for @topic do |form| %>
   <%= raw error_explanation_for(@topic) if @topic.errors.present?%>  
   <div style="clear:both">
-    <%= render :partial => '/public/user' ,:object => current_user %>
+    <%= render :partial => '/users/user' ,:object => current_user %>
       <div class="saying">
           <div class="saying_colon_left">“</div>
           <p>

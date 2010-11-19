@@ -42,7 +42,11 @@ class VenuesController < ApplicationController
   
   def update
     @venue.update_attributes(params[:venue])
-    respond_with(@venue)
+    if params[:back_path].present?
+      redirect_to params[:back_path]
+    else
+      respond_with(@venue)
+    end
   end
 
   def cover

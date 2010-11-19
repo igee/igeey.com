@@ -2,7 +2,7 @@
   <h4>发表留言：</h4>
   
   <% if logged_in?%>
-    <%= render :partial => '/public/user' ,:object => current_user %>
+    <%= render :partial => '/users/user' ,:object => current_user %>
     <div style="padding:4px;float:left">
       <div>
         <%= form_for @comment,:url => comments_path(commentable) do |form| %>
