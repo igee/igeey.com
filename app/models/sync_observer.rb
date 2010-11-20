@@ -4,5 +4,6 @@ class SyncObserver < ActiveRecord::Observer
                                 :to_douban => (sync.douban && sync.user.douban?),
                                 :to_sina => (sync.sina && sync.user.sina?)
                                 )
+    sync.user.check_badge_condition_on('syncs_count')
   end
 end

@@ -22,10 +22,12 @@ class User < ActiveRecord::Base
   has_many :topics
   has_many :photos
   has_many :grants
+  #followings are user self`s follow,follows are follows that follow to user 
   has_many :followings,     :class_name => "Follow",:foreign_key => :user_id
   has_many :follows,        :as => :followable, :dependent => :destroy
-  has_many :syncs,          :as => :syncable,   :dependent => :destroy
   has_many :followers,      :through => :follows, :source => :user
+  has_many :syncs,          :as => :syncable,   :dependent => :destroy
+  
   
   scope :popular,order('follows_count DESC')
 
@@ -89,7 +91,35 @@ class User < ActiveRecord::Base
   def goods_count
     self.records.map(&:goods).compact.sum
   end
-   
+  
+  def photos_count
+    self.photos.size
+  end
+  
+  def venues_count
+    self.venues.size
+  end
+  
+  def syncs_count
+    self.syncs.size
+  end  
+  
+  def followings_count
+    self.followings.size
+  end  
+  
+  def influence_count
+    [self.callings.map{|c| c.plans.where(:parent_id => nil)},self.plans.map{|p| p.children}].flatten.uniq.size
+  end
+  
+  def douban_count
+    self.douban? ? 1 : 0
+  end
+  
+  def sina_count
+    self.sina? ? 1 : 0
+  end
+  
   def following?(followable)
     !self.followings.where(:followable_id => followable.id,:followable_type => followable.class).limit(1).blank?
   end
@@ -133,10 +163,6 @@ class User < ActiveRecord::Base
   def has_new_badge?
     self.grants.where(:unread => true).first.present?
   end
-  
-  def influence_count
-    [self.callings.map{|c| c.plans.where(:parent_id => nil)},self.plans.map{|p| p.children}].flatten.uniq.size
-  end
     
   def latest_update
     [self.records.first,self.callings.first,self.plans.first].compact.sort{|x,y| y.created_at <=> x.created_at }.first
@@ -160,8 +186,8 @@ class User < ActiveRecord::Base
   def check_badge_condition_on(*args)
     args.each do |condition_factor|
       Badge.where(:condition_factor => condition_factor).each do |badge|
-        if self.grants.where(:badge_id => badge.id).blank? && (self.method("#{badge.condition_factor}_count").call >= badge.condition_number)
-          Grant.create(:user_id => id,:badge_id => badge.id)
+        if (self.method("#{badge.condition_factor}").call >= badge.condition_number)
+          self.grants.build(:badge_id => badge.id).save
         end
       end
     end

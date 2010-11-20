@@ -3,6 +3,7 @@ class PhotoObserver < ActiveRecord::Observer
     if photo.imageable.present?
       photo.imageable.update_attribute(:has_photo,true)
     end
+    photo.user.check_badge_condition_on('count_photos')
   end
   
   def after_destroy(photo)

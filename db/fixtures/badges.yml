@@ -8,16 +8,153 @@
   
 badge_2:
   id:        2
-  name:      '公益处女座'
-  slug:      'calling_once' 
-  condition_factor: 'callings'
-  condition_number: 0
-  intro:     '第一次行动召集'
+  name:      '小喇叭'
+  slug:      '1st_calling' 
+  condition_factor: 'callings_count'
+  condition_number: 1
+  intro:     '第一次发起行动召集，就可一获得小喇叭徽章'
   
 badge_3:
   id:        3
-  name:      '行动初体验'
-  slug:      'plan_once' 
-  condition_factor: 'plans'
-  condition_number: 0
-  intro:     '第一次要行动'
+  name:      '括音器'
+  slug:      '3rd_calling' 
+  condition_factor: 'callings_count'
+  condition_number: 3
+  intro:     '发起了三次的行动召集'
+
+badge_4:
+  id:        4
+  name:      '广播站'
+  slug:      '10th_calling' 
+  condition_factor: 'callings_count'
+  condition_number: 10
+  intro:     '发起了十次的行动召集'
+
+badge_5:
+  id:        5
+  name:      '卫星电台'
+  slug:      '20th_calling' 
+  condition_factor: 'callings_count'
+  condition_number: 20
+  intro:     '发起了二十次的行动召集'
+  
+badge_6:
+  id:        6
+  name:      '行动新人'
+  slug:      '1st_plan' 
+  condition_factor: 'plans_count'
+  condition_number: 1
+  intro:     '第一次参与行动'
+  
+badge_7:
+  id:        7
+  name:      '行动先锋'
+  slug:      '5th_plan' 
+  condition_factor: 'plans_count'
+  condition_number: 5
+  intro:     '参与了5次公益行动'
+
+badge_8:
+  id:        8
+  name:      '行动达人'
+  slug:      '10th_plan' 
+  condition_factor: 'plans_count'
+  condition_number: 10
+  intro:     '参与了10次公益行动'
+
+badge_9:
+  id:        9
+  name:      '行动大师'
+  slug:      '20th_plan' 
+  condition_factor: 'plans_count'
+  condition_number: 20
+  intro:     '参与了20次公益行动'
+
+badge_10:
+  id:        10
+  name:      '行动超人'
+  slug:      '50th_plan' 
+  condition_factor: 'plans_count'
+  condition_number: 50
+  intro:     '参与了50次公益行动'
+
+badge_11:
+  id:        11
+  name:      '豆瓣'
+  slug:      'linked_douban' 
+  condition_factor: 'douban_count'
+  condition_number: 1
+  intro:     '链接了豆瓣'
+
+badge_12:
+  id:        12
+  name:      '新浪微博'
+  slug:      'linked_sina' 
+  condition_factor: 'sina_count'
+  condition_number: 1
+  intro:     '链接了新浪微博'
+
+badge_13:
+  id:        13
+  name:      '宣传委员'
+  slug:      '20th_sync' 
+  condition_factor: 'syncs_count'
+  condition_number: 20
+  intro:     '向站外同步了20次'
+
+badge_14:
+  id:        14
+  name:      '一次性相机'
+  slug:      '5th_photo' 
+  condition_factor: 'photo_count'
+  condition_number: 5
+  intro:     '上传了5张照片'
+
+badge_15:
+  id:        15
+  name:      'LOMO相机'
+  slug:      '20th_photo' 
+  condition_factor: 'photo_count'
+  condition_number: 20
+  intro:     '上传了20张照片'
+
+badge_16:
+  id:        16
+  name:      '单反相机'
+  slug:      '50th_photo' 
+  condition_factor: 'photo_count'
+  condition_number: 50
+  intro:     '上传了50张照片'
+
+badge_17:
+  id:        17
+  name:      '哥伦布水手'
+  slug:      '1st_venue' 
+  condition_factor: 'venues_count'
+  condition_number: 1
+  intro:     '添加了一个新聚点'
+
+badge_18:
+  id:        18
+  name:      '哥伦布舵手'
+  slug:      '5st_venue' 
+  condition_factor: 'venues_count'
+  condition_number: 5
+  intro:     '添加了5个新聚点'
+
+badge_19:
+  id:        19
+  name:      '哥伦布船长'
+  slug:      '10st_venue' 
+  condition_factor: 'venues_count'
+  condition_number: 10
+  intro:     '添加了10个新聚点'
+
+
+badge_20:
+  id:        20
+  name:      '眼观六路'
+  slug:      '25th_follow' 
+  condition_factor: 'followings_count'
+  condition_number: 25
+  intro:     '关注了25人'
