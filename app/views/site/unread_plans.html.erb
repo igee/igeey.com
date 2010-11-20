@@ -1,0 +1,13 @@
+<% if @callings.present? %>  
+  <div class="box">
+    <h4>以下行动召集有了新参与者：<h4>
+    <%= render :partial => "/public/calling" ,:collection => @callings %>
+  </div>
+<% end %>
+
+<% if @plans.present? %>  
+  <div class="box">
+    <h4>以下行动有了新的跟随者：<h4>
+    <%= render :partial => "/public/plan" ,:collection => @plans %>
+  </div>
+<% end %>

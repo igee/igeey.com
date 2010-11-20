@@ -43,7 +43,6 @@ class SiteController < ApplicationController
     render :layout => false
   end
   
-  
   def city_timeline
     if logged_in?
       @city_timeline = []
@@ -65,5 +64,10 @@ class SiteController < ApplicationController
     @records = current_user.records.where(:has_new_comment => true)
     @callings = current_user.callings.where(:has_new_comment => true)
   end
-    
+  
+  def unread_plans
+    @callings = current_user.callings.where(:has_new_plan => true)
+    @plans = current_user.plans.where(:has_new_child => true)
+  end
+  
 end

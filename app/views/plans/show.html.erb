@@ -27,7 +27,7 @@
           你已参与： <%= link_to '查看我的计划',calling_plan_path(@calling,@my_plan)%>
         <% else %>
           <% @link_title = "我也要#{{'time' => '去','money' => '捐','goods' => '捐'}[@calling.for_what]}"%>
-          <%= link_to @link_title,(logged_in? ? "#{duplicate_calling_plan_path(@calling,@plan)}" : signup_path ),:class => "big_button open_dialog",:id => 'plan_to' ,:title =>(logged_in? ? @link_title : '注册' )%>
+          <%= link_to @link_title,(logged_in? ? "#{duplicate_calling_plan_path(@calling,@plan,:parent_id => @plan.id)}" : signup_path ),:class => "big_button open_dialog",:id => 'plan_to' ,:title =>(logged_in? ? @link_title : '注册' )%>
         <% end %>
       <% end %>
     </div>

@@ -126,12 +126,16 @@ class User < ActiveRecord::Base
     self.callings.where(:has_new_plan => true).first.present?
   end
   
+  def has_unread_child?
+    self.plans.where(:has_new_child => true).first.present?
+  end
+  
   def has_new_badge?
     self.grants.where(:unread => true).first.present?
   end
   
-  def influence
-    [self.callings.map{|c| c.plans},self.plans.map{|p| p.children}].flatten.uniq.size
+  def influence_count
+    [self.callings.map{|c| c.plans.where(:parent_id => nil)},self.plans.map{|p| p.children}].flatten.uniq.size
   end
     
   def latest_update
@@ -149,8 +153,8 @@ class User < ActiveRecord::Base
   end
 
   def send_to_miniblogs(message,options={})
-    puts self.send_to_douban_miniblog(message) if (options[:to_douban] && douban?)
-    puts self.send_to_sina_miniblog(message) if (options[:to_sina] && sina?)
+    self.send_to_douban_miniblog(message) if (options[:to_douban] && douban?)
+    self.send_to_sina_miniblog(message) if (options[:to_sina] && sina?)
   end
   
   def check_badge_condition_on(*args)

@@ -78,7 +78,8 @@ ActiveRecord::Schema.define() do
     t.integer  :money
     t.integer  :goods
     t.datetime :plan_at
-    t.integer  :comments_count,:default => 0
+    t.integer  :comments_count,   :default => 0
+    t.boolean  :has_new_child,    :default => false
     t.boolean  :has_new_comment,  :default => false
     t.boolean  :is_done,  :default => false
     t.timestamps

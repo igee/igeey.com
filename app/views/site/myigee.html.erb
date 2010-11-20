@@ -34,7 +34,8 @@
 <% content_for :sidebar do %>
     <div class="sidebar_panel" id="my_news">
         <%= link_to "有人在你的消息下留言了，去看看?",unread_comments_path if current_user.has_unread_comment?%>
-        <%= link_to "你的召集有人响应了，快去看看?",unread_plans_path if current_user.has_unread_plan?%>
+        <%= link_to "你的召集有人响应了，去看看?",unread_plans_path if current_user.has_unread_plan? %>
+        <%= link_to "有人跟随你的行动，也要做了，去看看?",unread_plans_path if current_user.has_unread_child? %>
     </div>
     
     <div class="box">

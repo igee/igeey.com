@@ -1,8 +1,8 @@
 class PlansController < ApplicationController
   respond_to :html
   before_filter :login_required, :except => [:index, :show,:redirect]
-  before_filter :find_plan_and_calling, :except => [:index,:new,:create,:duplicate]
-  after_filter  :clean_unread, :only => [:show]
+  before_filter :find_plan_and_calling, :except => [:index,:new,:create]
+  after_filter  :clean_unreads, :only => [:show]
   
   def index
     redirect_to calling_path(@calling)
@@ -11,6 +11,7 @@ class PlansController < ApplicationController
   def new
     @calling = Calling.find(params[:calling_id])
     @plan = @calling.plans.build()
+    @plan.pranet_id = params[:parent_id]
     if params[:layout] == 'false'
       render :layout => false
     end  
@@ -81,7 +82,8 @@ class PlansController < ApplicationController
     end  
   end
   
-  def clean_unread
+  def clean_unreads
     @plan.update_attribute(:has_new_comment,false) if @plan.user == current_user && @plan.has_new_comment
+    @plan.update_attribute(:has_new_child,false) if @plan.user == current_user && @plan.has_new_child
   end
 end
