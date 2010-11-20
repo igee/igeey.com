@@ -1,0 +1,34 @@
+<h3>我的行动：</h3>
+<div id="tabContaier">
+  <ul>
+    <li><%= link_to '行动召集','#my_callings',:id => "my_callings_link"%></li>
+    <li><%= link_to '行动记录','#my_reords',:id => "my_records_link"%></li>
+    <li><%= link_to '未完成计划','#my_plans',:id => "my_plans_link"%></li>
+  </ul>
+  
+  <div id="my_venues" class="tabContents">
+    <%= render :partial => '/public/calling',:collection => @my_callings%>
+  </div>
+  
+  <div id="my_callings" class="tabContents">
+    <%= render :partial => '/public/record',:collection => @my_records%>
+  </div>
+  
+  <div id="my_users" class="tabContents">
+    <%= render :partial => '/public/plan',:collection => @my_plans%>
+  </div>
+  
+</div>
+
+
+<% content_for :sidebar do %>  
+    <%= render :partial => "sidebar_panel" %>
+<% end %>
+
+<% content_for :extension do %>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('#<%= params[:start_at]%>_link').click()
+  })
+  </script>
+<% end %>

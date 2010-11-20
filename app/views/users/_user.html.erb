@@ -1,7 +1,4 @@
 <div class='user'>
     <%= link_to (image_tag user.avatar.url,:class => "user_avatar"),user %>
-    <% unless (defined? without_name)&&(without_name == true)%>
-      <br/>
-      <span><%= link_to user.login,user%></span>
-    <% end %>
+    <span><%= link_to user.login,user%></span>
 </div>

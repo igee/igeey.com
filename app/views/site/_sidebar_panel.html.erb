@@ -1,0 +1,34 @@
+    <div class="sidebar_panel">
+      <div style="padding:5px 5px;float:right;width:150px">
+        <h4><%= link_to current_user.login,current_user%></h4>
+          <div class="actions_counter"><%= link_to raw("#{current_user.callings_count}个召集"),actions_path(:start_at => 'my_callings') %></div>
+          <div class="actions_counter"><%= link_to raw("#{current_user.records_count}个记录"),actions_path(:start_at => 'my_records') %></div>
+          <div class="actions_counter" style="width:140px"><%= link_to raw("#{current_user.undone_plans_count}个未完成计划"),actions_path(:start_at => 'my_plans') %></div>
+          
+      </div>
+      <div style="padding:10px 5px;">
+        <%= image_tag current_user.avatar.url(:_48x48),:class => "avatar" %>
+      </div>
+      
+      <div class="clear"></div>
+    </div>    
+    
+    <div class="sidebar_panel">
+      <div id="my_followings">                                               
+        <div class="followings_counter" style="border-left:none">
+          <%= link_to raw("<p>#{current_user.following_venues.size}</p>聚点关注"),followings_path(:start_at => 'following_venues') %>
+        </div>
+        <div class="followings_counter">
+          <%= link_to raw("<p>#{current_user.following_callings.size}</p>行动关注"),followings_path(:start_at => 'following_callings') %>
+        </div>
+        <div class="followings_counter">
+          <%= link_to raw("<p>#{current_user.following_users.size}</p>用户关注"),followings_path(:start_at => 'following_users') %>
+        </div>
+        <div class="clear"></div>
+      </div>  
+      
+      
+        
+        
+      
+    </div>

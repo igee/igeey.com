@@ -70,8 +70,12 @@ class User < ActiveRecord::Base
     write_attribute :email, (value ? value.downcase : nil)
   end
   
-  def id_count  #hack for top 100 earlier user badge
-    200 - self.id
+  #def id_count  #hack for top 100 earlier user badge
+    #200 - self.id
+  #end
+  
+  def undone_plans_count
+    self.plans.undone.size
   end
   
   def time_count

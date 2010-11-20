@@ -19,6 +19,7 @@ class SiteController < ApplicationController
     @venues = @user.records.map(&:venue).uniq
     @geo = Geo.new(:name => '全国')
     @photos = @user.photos
+    @my_plans = current_user.plans.undone if logged_in?
   end
 
   def followings

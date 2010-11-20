@@ -4,7 +4,7 @@
 </div>
 <br/>
 <% end %>
-
+<h3>最新动态</h3>
 <div id="tabContaier">
   <ul>
     <li><%= link_to '正在发生','#public_timeline'%></li>
@@ -32,13 +32,31 @@
 
 <% content_for :sidebar do %>  
   
-  <% unless logged_in?%>
-  <div class="box" style="text-align:center">
+  <% if logged_in?%>
+    <%= render :partial => "sidebar_panel" %>
+  <% else %>
+  <div class="box" style="text-align:center;height:140px">
     <%= link_to raw("现在加入<br/>一起改变世界"),signup_path,:class=>"open_dialog",:id => "signup_button",:title=>'注册'%>
     <span>已经是用户？<%= link_to '直接登录' ,login_path, :class=>"open_dialog", :title => '登录'%></span>
   </div>
-  
+  <div class="clear"></div>
   <% end %>
+  
+  <h4 class="ribbon">在爱聚你可以做什么？</h4>
+  <div class="explanation" id="guide">
+    <p>
+      记录做过的公益行动，形成个人公益档案
+    </p>
+    <p>
+      发起公益行动召集，满足身边的公益需求
+    </p>
+    <p>
+      参与各种各样的行动，和大家一起做公益
+    </p>
+    <div style="text-align:right;margin-right:15px">
+      <%= link_to '了解更多','#'%>
+    </div>
+  </div>
 
 <% end %>
 
