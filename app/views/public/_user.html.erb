@@ -2,8 +2,11 @@
   <div class="event_box">
     <%= render :partial => '/users/user', :object => user ,:locals => {:without_name => true}%>
     <div class="event">
+      <% if logged_in? && user.follows.where(:user_id => current_user.id).present?%>
       <div class="event_panel">
+        <%= link_to raw("取消关注?"),follow_path(user.follows.find_by_user_id(current_user.id)),:method => :delete%>
       </div>
+      <%end%>
       <p>
         <span>
           <%= "#{user.records_count}个行动记录，#{user.callings_count}行动召集，#{user.follows_count}个关注者"%>
