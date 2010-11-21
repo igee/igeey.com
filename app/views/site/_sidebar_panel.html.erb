@@ -10,7 +10,7 @@
         <%= image_tag current_user.avatar.url(:_48x48),:class => "avatar" %>
       </div>
       
-      <div class="clear"></div>
+      
     </div>    
     
     <div class="sidebar_panel">
@@ -24,7 +24,7 @@
         <div class="followings_counter">
           <%= link_to raw("<p>#{current_user.following_users.size}</p>用户关注"),followings_path(:start_at => 'following_users') %>
         </div>
-        <div class="clear"></div>
+        
       </div>  
       
       

@@ -30,7 +30,7 @@
       <%= form.hidden_field :longitude %>
       <%= hidden_field_tag :back_path,params[:back_path]%>
       <%= form.submit '填写好了，提交',:class => "button"%>
-      <%= button_to_function '取消',"javascript:window.location=(#{geos_path}))",:class => "button"%>
+      <%= button_to_function '取消',"javascript:window.location=('#{geos_path}')",:class => "button"%>
   <% end %>
 
 <% content_for :extension do %>

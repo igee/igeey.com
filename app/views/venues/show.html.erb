@@ -2,7 +2,8 @@
   <div style="float:left;text-align:center;">
     <%= image_tag(@venue.cover.url,:class => "venue_cover") %>
     <p>
-      <%= link_to "#{@venue.cover_file_name ? '更新' : '上传'}主题图",cover_venue_path(@venue),:class => "open_dialog",:title => "#{@venue.cover_file_name ? '更新' : '上传'}主题图" if logged_in?%>
+      <%= link_to "#{@venue.cover_file_name ? '更新' : '上传'}主题图",cover_venue_path(@venue),:class => "open_dialog",:title => "#{@venue.cover_file_name ? '更新' : '上传'}主题图" if logged_in? && @venue.creator == current_user%>
+      　<%= link_to '更新信息',edit_venue_path(@venue),:id => 'update_info' if logged_in? && @venue.creator == current_user %>
     </p>
   </div>
   <div style="width:400px;height:120px;margin-left:180px">
@@ -13,9 +14,8 @@
 </div>
 
 <div class="box" style="text-align:center">
-  <%= link_to '行动召集',"#{new_calling_path}?venue_id=#{@venue.id}",:class => "button open_dialog",:title => '行动召集'%>
-  <%= link_to '记录行动',"#{new_record_path}?venue_id=#{@venue.id}",:class => "button open_dialog",:title => '记录行动'%>
-  <%= link_to '更新信息',edit_venue_path(@venue),:class => "button",:id => 'update_info' %>
+  <%= link_to '行动召集',"#{new_calling_path}?venue_id=#{@venue.id}",:class => "big_button open_dialog",:title => '行动召集'%>
+  <%= link_to '记录行动',"#{new_record_path}?venue_id=#{@venue.id}",:class => "big_button open_dialog",:title => '记录行动'%>
 </div>
 
 <div class="box">  
@@ -36,7 +36,7 @@
         </div>
       <%end%>
     </div>
-    <div class="clear"></div>
+    
   </div>
   <%=render :partial => "/public/followers" %>
 <% end %>

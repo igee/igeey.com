@@ -16,7 +16,7 @@
       <div class="saying_colon_right">”</div>
     </div>
     <div class="saying_tail"></div>
-    <div class="clear"></div>
+    
     <p style='text-align:right'>
     同步到：
     <%= image_tag('/images/icon/sina.gif',:class=> 'icon')%> 新浪微博 <%= form.check_box :sina ,:disabled => (current_user.sina? ? false : true),:checked => current_user.sina? %>

@@ -35,11 +35,11 @@
   <% if logged_in?%>
     <%= render :partial => "sidebar_panel" %>
   <% else %>
-  <div class="box" style="text-align:center;height:140px">
+  <div class="box" style="text-align:center;height:180px">
     <%= link_to raw("现在加入<br/>一起改变世界"),signup_path,:class=>"open_dialog",:id => "signup_button",:title=>'注册'%>
     <span>已经是用户？<%= link_to '直接登录' ,login_path, :class=>"open_dialog", :title => '登录'%></span>
   </div>
-  <div class="clear"></div>
+  
   <% end %>
   
   <h4 class="ribbon">在爱聚你可以做什么？</h4>

@@ -9,7 +9,7 @@
   <h4>相册：</h4>
   <%= render :partial => "/photos/form",:locals => {:imageable => imageable}%>
   <%= render :partial => "/photos/photo",:collection => @photos %>
-  <div class="clear"></div>
+  
   <script type="text/javascript">
     $("#upload_link").click(function(){dialog($(this).attr('title'),("id:upload_photo"),"570px","auto","text");  return false;})
     function set_title(photo_id){$('#photo_set_title_' + photo_id).show();$('#set_title_' + photo_id).hide();$('#delete_link_' + photo_id).hide();$('#sumbit_link_' + photo_id).show();}

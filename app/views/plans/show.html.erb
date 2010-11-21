@@ -8,7 +8,7 @@
         <div class="saying_colon_right">”</div>
       </div>
       <div class="saying_tail"></div>
-      <div class="clear"></div>
+      
       <div style="text-align:right">
         <% if @plan.can_edit_by?(current_user)%>
         <span><%= link_to("修改",edit_calling_plan_path(@plan.calling,@plan))%>　<%= link_to "取消",calling_plan_path(@calling,@plan),:method => :delete %></span>
@@ -43,7 +43,6 @@
   <div class="profile_box">
     <h4>受益：</h4>
     <%= render :partial => '/public/beneficary',:object => @venue%>
-    <div class="clear"></div>
   </div>
        
   <div class="box">
@@ -57,7 +56,6 @@
         </p>
       </div>
       <div class="saying_tail"></div>
-      <div class="clear"></div>
   </div>
   
   <div class="box">
@@ -96,7 +94,6 @@
   <div class="box">
     <h4>所有参与者：</h4>
     <%= render :partial => '/users/user',:collection => @calling.plans.map(&:user)%>
-    <div class="clear"></div>
   </div>
   
   <%= render :partial => "/public/followers" %>
