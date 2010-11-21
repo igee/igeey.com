@@ -536,6 +536,7 @@ a#logo{
 
 #sidebar{
     float:right;
+    _position:absolute;
     width:250px;
     padding:15px;    
 }
@@ -574,8 +575,10 @@ a#logo{
   }
 
 #footer_links{
-  float:left;
-  margin-left:560px;
+  margin:0;
+  position:relative;
+  left:580px;
+  top:8px;
   }
 
 #footer_links a{color:#80a0c0;}
