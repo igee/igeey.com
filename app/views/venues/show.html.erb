@@ -1,10 +1,11 @@
 <div class="box">
   <div style="float:left;text-align:center;">
     <%= image_tag(@venue.cover.url,:class => "venue_cover") %>
-    <p>
+    <br/>
+    <span>
       <%= link_to "#{@venue.cover_file_name ? '更新' : '上传'}主题图",cover_venue_path(@venue),:class => "open_dialog",:title => "#{@venue.cover_file_name ? '更新' : '上传'}主题图" if logged_in? && @venue.creator == current_user%>
       　<%= link_to '更新信息',edit_venue_path(@venue),:id => 'update_info' if logged_in? && @venue.creator == current_user %>
-    </p>
+    </span>
   </div>
   <div style="width:440px;height:122px;margin-left:180px">
     <div style="float:right"><%= raw(follow_to(@venue)) %></div>

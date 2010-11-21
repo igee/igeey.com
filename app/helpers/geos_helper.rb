@@ -27,7 +27,7 @@ module GeosHelper
         ")
       end
     
-    inputs << raw(%Q"<img src='/images/icon/waiting.gif' id='#{attr}_indicator' class='indicator' style='display:none' />")
+    inputs << raw(%Q" <img src='/images/icon/waiting.gif' id='#{attr}_indicator' class='indicator' style='display:none' />")
     inputs << raw(%Q"<script type='text/javascript'>
                   $('#geo_root').change(function(){
                     $.ajax({
