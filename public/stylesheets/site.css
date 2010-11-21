@@ -45,8 +45,7 @@ input[type="text_field"],input[type="text"],input[type="password"]{
     margin:0px 4px;
     padding:1px 4px;
     background-color:white;
-    border-radius: 3px;
-    -moz-border-radius: 3px;
+    -webkit-border-radius:3px;-moz-border-radius:3px;border-radius: 3px;
     font-size:15px;
     }
     
@@ -59,8 +58,7 @@ textarea{
     margin:4px 0;
     padding:2px 4px;
     background-color:white;
-    border-radius: 3px;
-    -moz-border-radius: 3px;
+    -webkit-border-radius:3px;-moz-border-radius: 3px;border-radius: 3px;
     font-size:13px;
     }
 
@@ -86,8 +84,7 @@ img{border:none;}
   height:26px;
   margin:8px;
   background-color:#d75;
-  border-radius: 6px;
-  -moz-border-radius: 6px;
+  -webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;
   }
 
 .action_button:hover{color:#fff;background-color:#e86;}
@@ -121,8 +118,7 @@ button,.button{
     background-color:#e97;
     padding:2px 12px;
     border:1px solid #d75;
-    border-radius: 3px;
-    -moz-border-radius: 3px;
+    -webkit-border-radius:3px;-moz-border-radius: 3px;border-radius: 3px;
     cursor:pointer;
 }
 
@@ -136,7 +132,7 @@ button,.button{
     background-color:#d75;
     padding:8px 24px;
     border:2px solid #c64;
-    -webkit-border-radius: 6px;-moz-border-radius: 6px;border-radius: 6px;
+    -webkit-border-radius:6px;-moz-border-radius:6px;border-radius: 6px;
     cursor:pointer;
     line-height:42px
 }
@@ -205,8 +201,7 @@ button:hover,.button:hover{background:#d86;color:white;}
   width:580px;
   padding:2px 20px;
   background-color:#e75;
-  border-radius: 6px;
-  -moz-border-radius: 6px;
+  -webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;
   }
 
 #error_explanation li{
@@ -226,7 +221,7 @@ button:hover,.button:hover{background:#d86;color:white;}
   
 #guide p{
   color:#896;
-  line-height:24px}
+  line-height:20px}
   
 .icon{
   position:relative;
@@ -251,13 +246,14 @@ button:hover,.button:hover{background:#d86;color:white;}
   background-color:#aaa;
   color:white;
   float:left;
-  width:63px;
-  height:50px;
-  margin:0 5px;
+  width:72px;
+  height:52px;
+  padding:10px 0;
+  margin:0 3px;
   text-align:center;
-  border-radius: 8px;
-  -moz-border-radius: 8px;
+  -webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;
 }
+
 .record_counter span{color:#777}
 
 .record_counter h2{
@@ -299,8 +295,7 @@ button:hover,.button:hover{background:#d86;color:white;}
   width:450px;
   background-color:#e6e6f0;
   color:#505050;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
+  -webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;
   padding:10px 40px;
   list-style:none;    
   margin-bottom:8px;
@@ -357,11 +352,18 @@ button:hover,.button:hover{background:#d86;color:white;}
     padding:10px 20px;
 }
 
+.event_box{
+  padding:8px 8px 10px;
+  border-bottom:1px dashed #ccc;
+  }
+
+.event_box.hover{background-color:#f6f6f6}
+
 
 .event {
   height:68px;
-  width:532px;
-  margin-left:72px;
+  width:508px;
+  margin-left:86px;
   }
   
 .event p{
@@ -372,8 +374,8 @@ button:hover,.button:hover{background:#d86;color:white;}
 .event_link{color:#777}
 
 .event_panel{
-  margin:50px 10px 0;
-  width:510px;
+  margin:54px 10px 0;
+  width:500px;
   text-align:right;
   display:none;
   position:absolute;
@@ -390,20 +392,14 @@ button:hover,.button:hover{background:#d86;color:white;}
   border-left:3px solid #fff;
   margin-left:-19px;
   }
-*/
+
 .event_type[title="calling"]{background-color:#d6ffd6;border-color:#bfb}
 .event_type[title="record"]{background-color:#ffd6d6;border-color:#fbb}
 .event_type[title="plan"]{background-color:#d6d6ff;border-color:#bbf}
 .event_type[title="topic"]{background-color:#e0d0ff;border-color:#cbf}
+*/
 
-.addition{margin:0 12px;}
-
-.event_box{
-  padding:8px 8px;
-  border-bottom:1px dashed #ccc;
-  }
-
-.event_box.hover{background-color:#f6f6f6}
+.addition{margin:0}
 
 .photo_box{
   float:left;
@@ -488,7 +484,8 @@ a#logo{
   margin-right:4px;
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
-  -moz-border-radius: 0 0 6px 6px;}
+  -moz-border-radius: 0 0 6px 6px;
+  -webkit-border-radius:0 0 6px 6px;}
 
 #login_state a{color:#fff}
 #login_state span{color:#cdf}
@@ -595,7 +592,7 @@ a#logo{
 
 #signup_button:hover{background-color:#9d6;}
 
-#record_counters{}
+#record_counters{float:right}
 
 #upload_photo{
   background-color:#f0f0f0;
@@ -620,6 +617,8 @@ a#logo{
   position:absolute;
   width:100%;
   }
+
+.tabContents{display:none}
 
 #tabContaier ul{
   border-bottom:1px solid #c0c0c0;

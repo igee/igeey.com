@@ -14,9 +14,7 @@
       </div>
     <% end %>
     <p>
-      <span style="font-size:20px;font-family:'times new roman';color:#999">“</span>
-      <%= link_to "#{plan.user.login}#{plan.description}",calling_plan_path(plan.calling_id,plan),:class => "event_link"%>
-      <span style="font-size:20px;font-family:'times new roman';color:#999">”</span>
+      <%= link_to "#{plan.description}",calling_plan_path(plan.calling_id,plan),:class => "event_link"%>
     </p>
     <div class="addition">
       <span>

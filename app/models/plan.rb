@@ -50,7 +50,7 @@ class Plan < ActiveRecord::Base
     elsif self.action.for_what == 'goods'
       "要为#{self.venue.name}捐赠#{self.goods}件#{self.calling.goods_is}。"
     elsif self.action.for_what == 'time'
-      "要在#{self.formatted_plan_at}去#{self.venue.name}#{self.action.name}:#{self.calling.do_what}。"
+      "要在#{self.formatted_plan_at}去#{self.venue.name}#{self.calling.do_what}。"
     end
   end
   

@@ -9,7 +9,7 @@
       </div>
       <div class="saying_tail"></div>
       
-      <div style="text-align:right">
+      <div style="clear:both;text-align:right">
         <% if @plan.can_edit_by?(current_user)%>
         <span><%= link_to("修改",edit_calling_plan_path(@plan.calling,@plan))%>　<%= link_to "取消",calling_plan_path(@calling,@plan),:method => :delete %></span>
         <% end %>

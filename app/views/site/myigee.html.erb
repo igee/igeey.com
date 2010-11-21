@@ -4,12 +4,11 @@
 <% end %>
 
 <div class="box">
-  <div style="float:left;text-align:center;padding-top:16px">
+  <div style="float:left;text-align:center;padding-top:16px;width:100px">
     <%= image_tag @user.avatar.url(:_72x72),:class => "avatar" %>
   </div>
-  <div style="float:left;width:400px;text-align:left;padding:16px 10px 0">
-    <h2 style="display:inline"><%= @user.login %></h2> <span><%= "#{@user.geo.name}" unless @user.geo.nil? %></span>
-    <div>
+  <div style="float:left;width:500px;text-align:left;padding:16px 10px 0">
+    <div id="record_counters">
       <% [[@user.venues.count,'个聚点'],[@user.money_count,'元捐款'],[@user.goods_count,'件捐赠'],[@user.records_count,'个行动']].each do |counter_list|%>
       <div class="record_counter">
         <h2><%= counter_list[0] %></h2>
@@ -17,6 +16,7 @@
       </div>
       <%end%>
     </div>
+    <h2 style="display:inline"><%= @user.login %></h2> <span><%= "#{@user.geo.name}" unless @user.geo.nil? %></span>
   </div>
   
 </div>

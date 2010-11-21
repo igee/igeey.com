@@ -36,7 +36,7 @@
 <% content_for :extension do %>
   <script type="text/javascript">
       function updateCount() {
-      document.getElementById("character_count").innerHTML = 120 - document.getElementById("venue_intro").value.length;
+      document.getElementById("character_count").innerHTML = 100 - document.getElementById("venue_intro").value.length;
        $(".category_example").hide();$("#category_example_" + $('#venue_category').val()).show();
       setTimeout(updateCount, 400);
        }

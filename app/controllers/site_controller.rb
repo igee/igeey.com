@@ -29,6 +29,13 @@ class SiteController < ApplicationController
     @following_users = @user.following_users
   end
   
+  def actions
+    @user = current_user
+    @my_callings = @user.callings
+    @my_plans = @user.plans.undone
+    @my_records = @user.records
+  end
+  
   def my_timeline
     if logged_in?
       @my_followings = current_user.followings

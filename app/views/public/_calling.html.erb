@@ -1,8 +1,7 @@
 <div class="event_type" title='calling'></div>
 <div class="event_box">
   <%= render :partial => '/users/user', :object => calling.user %>
-  <div class="event">
-    
+  <div class="event"> 
     <% if calling.user == current_user %>
       <div class="event_panel">
         <%= link_to "修改","#{edit_calling_path(calling)}?back_path=#{request.path}"%>
@@ -10,9 +9,7 @@
       </div>
     <% end %>
     <p>
-      <span style="font-size:20px;font-family:'times new roman';color:#999">“</span>
-      <%= link_to "#{calling.user.login}#{calling.description}",calling,:class => 'event_link'%>
-      <span style="font-size:20px;font-family:'times new roman';color:#999">”</span>
+      <%= link_to "#{calling.description}",calling,:class => 'event_link'%>
     </p>
     <div class="addition">
       <span>

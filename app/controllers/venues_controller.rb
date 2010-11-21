@@ -41,7 +41,7 @@ class VenuesController < ApplicationController
   end
   
   def update
-    @venue.update_attributes(params[:venue])
+    @venue.update_attributes(params[:venue]) if @venue.user == current_user
     if params[:back_path].present?
       redirect_to params[:back_path]
     else
