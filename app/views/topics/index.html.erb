@@ -2,7 +2,7 @@
   <div style="float:right"><%= link_to '发布话题',new_topic_path ,:class => 'button'%></div>
   <ul>
     <li><%= link_to '所有话题','#all_topic'%></li>
-    <li><%= link_to '我参与的话题','#my_topic' if logged_in?%></li>
+    <li><%= link_to '我参与的','#my_topic' if logged_in?%></li>
   </ul>
   
   <div id="all_topic" class="tabContents">

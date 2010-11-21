@@ -622,7 +622,7 @@ a#logo{
   position:fixed;
   _position:absolute;
   top:200px;
-  left:-2px;
+  left:-3px;
   }
   
 #feedback:hover{left:0;}
