@@ -105,7 +105,7 @@ img{border:none;}
     clear:both;
     overflow:hidden;
     zoom:1;
-    margin-bottom:20px;
+    margin:5px 0 15px;
 }
 
 button,.button{
@@ -113,6 +113,7 @@ button,.button{
     margin:5px;
     color:white;
     font-size:14px;
+    line-height:14px;
     font-weight:bold;
     font-family:sans-serif;
     background-color:#e97;
@@ -124,7 +125,7 @@ button,.button{
 
 .big_button{
     text-align:center;
-    margin:5px 0;
+    margin:5px;
     color:white;
     font-size:17px;
     font-family:sans-serif;
@@ -213,10 +214,10 @@ button:hover,.button:hover{background:#d86;color:white;}
   position:relative;
   left:-14px;
   top:-18px;
-  width:219px;
-  padding:10px 30px;
+  width:239px;
+  padding:10px 20px;
   background-color:#e0ffc0;
-  border-bottom:1px solid #cea
+  border-bottom:2px solid #cea
   }
   
 #guide p{
@@ -225,7 +226,7 @@ button:hover,.button:hover{background:#d86;color:white;}
   
 .icon{
   position:relative;
-  top:2px;
+  top:3px;
   }
     
 .user{
@@ -249,7 +250,7 @@ button:hover,.button:hover{background:#d86;color:white;}
   width:72px;
   height:52px;
   padding:10px 0;
-  margin:0 3px;
+  margin:0 5px;
   text-align:center;
   -webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;
 }
@@ -357,8 +358,11 @@ button:hover,.button:hover{background:#d86;color:white;}
   border-bottom:1px dashed #ccc;
   }
 
-.event_box.hover{background-color:#f6f6f6}
+.event_box.hover{background-color:#f8f8f8}
+.event_box.hover p{color:#777}
 
+.by_self{background-color:#f3f3f9}
+.by_self.hover{background-color:#eeeef3}
 
 .event {
   height:68px;
@@ -388,7 +392,7 @@ button:hover,.button:hover{background:#d86;color:white;}
 .event_type{
   position:absolute;
   width:16px;
-  height:90px;
+  height:92px;
   border-left:3px solid #fff;
   margin-left:-19px;
   }
@@ -494,17 +498,26 @@ a#logo{
     height:96px;
     border-top:4px solid #68c;
     background:url('/images/sawtooth.png') repeat-x;
+    overflow:hidden;
+    zoom:1;
     }
+
+#content{
+  overflow:hidden;
+  zoom:1;
+  } 
     
 #footer{
     height:48px;
+    overflow:hidden;
+    zoom:1;
     }
     
 #main{
     float:left;
     width:620px;
     padding:10px 20px;
-    min-height:600px
+    min-height:600px;
 }
 
 #map_canvas{
@@ -577,7 +590,7 @@ a#logo{
 }
 
 #signup_button{
-  background-color:#9c6;
+  background-color:#bd8;
   color:white;
   display:block;
   line-height:24px;
@@ -607,8 +620,9 @@ a#logo{
 
 #feedback{
   position:fixed;
+  _position:absolute;
   top:200px;
-  left:-3px;
+  left:-2px;
   }
   
 #feedback:hover{left:0;}
@@ -623,10 +637,12 @@ a#logo{
 #tabContaier ul{
   border-bottom:1px solid #c0c0c0;
   height:28px;
+  display:block;
   margin:0;
 }
 #tabContaier li{
   float:left;
+  display:block;
   list-style:none;
   margin:0 3px;
 }
@@ -642,6 +658,8 @@ a#logo{
   padding:0 16px;
   position:relative;
   top:1px;
+  text-align:center;
+  width:76px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   -moz-border-radius: 5px 5px 0 0;

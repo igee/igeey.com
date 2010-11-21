@@ -13,6 +13,8 @@
   <%= javascript_include_tag 'jquery.hint.js' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tag %>
+  <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script>
+
   <%= yield :head %>  
 </head>
 
@@ -74,24 +76,22 @@
         <li><%= link_to '媒体报道',report_path%></li>
         <li><%= link_to '常见问题',faq_path%></li>
         <li><%= link_to '博客',"http://blog.igee.org"%></li>
-      </ul>
-      
+      </ul>    
     </div>
   </div>
   
-  
 <%= yield :extension %>
 
-<% if logged_in? && current_user.has_new_badge?%>
-  <script type="text/javascript">
+<script type="text/javascript">
   $(document).ready(function(){
+    <% if logged_in? && current_user.has_new_badge?%>
       $.get('<%= get_badges_badges_path%>',function(data){
         $('#get_badges').html(data)
       })
-    })
-  </script>
-<% end %>
+    <% end %>
+    <%= "$('.user[user_id=#{current_user.id}]').parent().addClass('by_self')" if logged_in? %>
+  })
+</script>
 
-  <script src=”http://letskillie6.googlecode.com/svn/trunk/letskillie6.zh_CN.pack.js”><!–mce:0–></script>
 </body>
 </html>

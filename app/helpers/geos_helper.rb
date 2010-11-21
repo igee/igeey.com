@@ -3,7 +3,6 @@ module GeosHelper
     Geo.all.map{|geo| [geo.name,geo.id]}  
   end
   
-  
   #-_-b a helper transplant from 1kg.org
   def geo_selector(object, attr, extra_field=[], value=nil)
     geo_root = extra_field.blank? ? Geo.roots.collect{|g| [g.name, g.id]} : ([extra_field] + Geo.roots.collect{|g| [g.name, g.id]})
@@ -28,7 +27,7 @@ module GeosHelper
         ")
       end
     
-    inputs << raw(%Q"<img src='/images/indicator.gif' id='#{attr}_indicator' class='indicator' style='display:none' />")
+    inputs << raw(%Q"<img src='/images/icon/waiting.gif' id='#{attr}_indicator' class='indicator' style='display:none' />")
     inputs << raw(%Q"<script type='text/javascript'>
                   $('#geo_root').change(function(){
                     $.ajax({

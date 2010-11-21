@@ -1,4 +1,4 @@
-<div style="width=100%;padding:20px">
+<div class="box">
   <div style="float:left;text-align:center;">
     <%= image_tag(@venue.cover.url,:class => "venue_cover") %>
     <p>
@@ -6,9 +6,9 @@
       　<%= link_to '更新信息',edit_venue_path(@venue),:id => 'update_info' if logged_in? && @venue.creator == current_user %>
     </p>
   </div>
-  <div style="width:400px;height:120px;margin-left:180px">
+  <div style="width:440px;height:122px;margin-left:180px">
     <div style="float:right"><%= raw(follow_to(@venue)) %></div>
-    <h4 class="title" style="display:inline"><%= @venue.name%></h4> <span><%= @venue.geo.name %></span>
+    <h4 class="title"><%= @venue.name%> <span><%= @venue.geo.name %></span></h4>
     <p><%= @venue.intro%></p>      
   </div>
 </div>
