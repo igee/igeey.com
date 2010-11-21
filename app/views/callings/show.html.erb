@@ -28,7 +28,7 @@
     </div>
   <% else %>
     <div style="clear:both;text-align:center">
-      <%= link_to "我要#{{'time' => '去做','money' => '捐赠','goods' => '捐赠'}[@calling.action.for_what]}",(logged_in? ? new_calling_plan_path(@calling) : signup_path ),:class => "big_button open_dialog",:id => 'plan_to' ,:title =>(logged_in? ? '我要响应' : '注册' )%>
+      <%= link_to "我要#{{'time' => '去','money' => '捐赠','goods' => '捐赠'}[@calling.action.for_what]}",(logged_in? ? new_calling_plan_path(@calling) : signup_path ),:class => "big_button open_dialog",:id => 'plan_to' ,:title =>(logged_in? ? '我要响应' : '注册' )%>
     </div>
   <% end %>
       <p style="text-align:right">
