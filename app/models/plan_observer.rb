@@ -1,15 +1,11 @@
 class PlanObserver < ActiveRecord::Observer
 
   def after_create(plan)
-    User.reset_counters(plan.user.id,:plans)
-    plan.user.check_badge_condition_on('plans_count')
     plan.calling.update_attribute(:has_new_plan ,true)
     plan.parent.update_attribute(:has_new_child ,true) if plan.parent.present?
-    plan.followers << plan.user
-    plan.venue.followers << plan.user
-  end
-
-  def after_save(plan)
+    plan.venue.follows.new(:user_id => plan.user_id).save
+    plan.calling.follows.new(:user_id => plan.user_id).saves
+    plan.user.check_badge_condition_on('realtime_plans_count') 
   end
   
 end

@@ -151,6 +151,8 @@ ActiveRecord::Schema.define() do
     t.string  :do_what,     :limit => 40
     t.string  :info,        :limit => 80
     t.text    :detail
+    t.datetime :do_at
+    t.string   :unit,  :limit => 40
     t.integer :comments_count,   :default => 0
     t.integer :follows_count,    :default => 0
     t.boolean :has_new_comment,  :default => false

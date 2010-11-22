@@ -315,7 +315,9 @@ button:hover,.button:hover{background:#d86;color:white;}
   zoom:1;
 }
 
-.saying input{text-align:right}
+.saying input{text-align:right;margin:4px;}
+
+.saying p{}
 
 .saying_tail{
   float:right;
@@ -403,21 +405,6 @@ button:hover,.button:hover{background:#d86;color:white;}
 .event_box.hover .event_panel{display:block}
 
 .comment .event_panel{margin:0;width:520px}
-
-/*
-.event_type{
-  position:absolute;
-  width:16px;
-  height:92px;
-  border-left:3px solid #fff;
-  margin-left:-19px;
-  }
-
-.event_type[title="calling"]{background-color:#d6ffd6;border-color:#bfb}
-.event_type[title="record"]{background-color:#ffd6d6;border-color:#fbb}
-.event_type[title="plan"]{background-color:#d6d6ff;border-color:#bbf}
-.event_type[title="topic"]{background-color:#e0d0ff;border-color:#cbf}
-*/
 
 .addition{margin:0}
 
@@ -640,13 +627,20 @@ a#logo{
 #dialog_flash{display:none}
 
 #feedback{
+  display:block;
+  background-color:#68c;
+  padding:14px 2px;
+  border:1px solid #888;
+  line-height:18px;
+  font-size:15px;
   position:fixed;
   _position:absolute;
   top:200px;
   left:-2px;
+  color:#fff;
   }
   
-#feedback:hover{left:0;}
+#feedback:hover{left:0;background-color:#c86;}
 
 #get_badges{
   position:absolute;

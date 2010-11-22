@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   
   def create
     @comment = current_user.comments.new(params[:comment])
-    @comment.content = @comment.content.strip
+    @comment.content = @comment.content
     @comment.save
     redirect_to :back
   end

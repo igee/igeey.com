@@ -8,9 +8,8 @@
     <br/> 3. 设置城市，方便你探索身边的公益；
   </p>
   <br/>
-  <br/>
-  <div style="text-align:right">
+  <p style="text-align:right">
     <%= link_to '去设置', "#{setting_url}?back_path=#{request.env['HTTP_REFERER']}",:class => 'button'%>
     <%= link_to '继续', "#",:class => 'button',:onclick => "javascript:$('#floatBox #close_dialog').click();return false"%>
-  </div>
+  </p>
 </div>

@@ -9,16 +9,17 @@
       <% if @calling.action.for_what == 'money' -%>
         <%="我为#{@calling.venue.name}募捐" %><%= form.text_field :total_money, :size => 3,:placeholder => "多少"%>元，用于<%= form.text_field :donate_for ,:size => 8 ,:placeholder => "做什么？"%>。            
       <% elsif @calling.action.for_what == 'goods' %>
-        <%="我为#{@calling.venue.name}募捐" %><%= form.text_field :goods_is, :size => 7,:placeholder => "物资名称"%>共需<%= form.text_field :total_goods, :size => 6 ,:placeholder => "多少"%>件。
+        <%="我为#{@calling.venue.name}募捐" %><%= form.text_field :goods_is, :size => 5,:placeholder => "物资名称"%><%= form.text_field :total_goods, :size => 3 ,:placeholder => "多少"%><span id="defalut_unit" style="font-size:14px;color:#505050"><%= @calling.unit%></span>
+        <%= form.text_field :unit,:size =>1,:style => "display:none;"%>。<span><%= link_to "修改单位","#",:onclick => "javascript:$('#defalut_unit').hide();$('#calling_unit').show();$(this).hide();return false"%></span>
       <% elsif @calling.action.for_what == 'time' %>
-        <%="我召集" %> <%= form.text_field :total_people, :size => 3, :placeholder => "多少" %> 人去<%="#{@calling.venue.name}"%><%= form.text_field :do_what, :size => 9,:placeholder => "做什么？"%>。
+        <%="我召集" %><%= form.text_field :total_people, :size => 2, :placeholder => "多少" %>人在<%= form.text_field :do_at, :size => 8,:class => 'with_calendar',:placeholder => "yyyy-mm-dd"%>去<%="#{@calling.venue.name}"%><%= form.text_field :do_what, :size => 9,:placeholder => "做什么？"%>。
       <% end %>
       <br/>
     </div>
     <div class="saying_colon_right">”</div>
     <p>
-      <h5><%= {'goods' => '捐赠信息','time' => '行动信息','money' => '捐赠信息'}[@calling.for_what]%>：
-      <%= form.text_field :info, :size => 33, :placeholder => {'goods' => "捐赠地址，接收人，联系电话",'time' => "集合时间、地址，联系方式",'money' => "捐赠地址，接收人，联系电话"}[@calling.for_what],:style => "text-align:left" %></h5>
+      <h5>关键信息：
+      <%= form.text_field :info, :size => 33, :placeholder => {'goods' => "捐赠地址，接收人，联系方式",'time' => "集合地址，联系人，联系方式",'money' => "捐赠地址，接收人，联系方式"}[@calling.for_what],:style => "text-align:left" %></h5>
       <h5>详细信息：(不要少于50字)</h5>
       <p class="explanation">请说明你召集的原因、响应你的召集需要做什么。</p>
       <%= form.text_area :detail, :style => "width:430px;height:100px"%>
@@ -35,14 +36,16 @@
     <%= hidden_field_tag :back_path,params[:back_path]%>
     <%= form.submit '确定',:class => 'button'%>
     <%= button_to_function '取消',"javascript:window.history.back()",:class => 'button'%>
-    
   </div>
 
   <script type="text/javascript">
+  $(document).ready(function(){
+      DateTimeShortcuts.init()
       function updateCount() {
       document.getElementById("character_count").innerHTML = document.getElementById("calling_detail").value.length;
       setTimeout(updateCount, 400);
        }
       updateCount();
+    })
   </script>
 <% end %>

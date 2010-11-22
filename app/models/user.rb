@@ -14,14 +14,14 @@ class User < ActiveRecord::Base
                             :default_style=> :_48x48,
                             :url=>"/media/:attachment/:id/:style.:extension"
                             
-  has_many :records
-  has_many :plans
-  has_many :callings
-  has_many :venues,         :foreign_key => :creator_id
-  has_many :comments
-  has_many :topics
-  has_many :photos
-  has_many :grants
+  has_many :records,        :dependent => :destroy
+  has_many :plans,          :dependent => :destroy
+  has_many :callings,       :dependent => :destroy
+  has_many :venues,         :foreign_key => :creator_id,:dependent => :destroy
+  has_many :comments,       :dependent => :destroy
+  has_many :topics,         :dependent => :destroy
+  has_many :photos,         :dependent => :destroy
+  has_many :grants,         :dependent => :destroy
   #followings are user self`s follow,follows are follows that follow to user 
   has_many :followings,     :class_name => "Follow",:foreign_key => :user_id
   has_many :follows,        :as => :followable, :dependent => :destroy
@@ -118,6 +118,14 @@ class User < ActiveRecord::Base
   
   def sina_count
     self.sina? ? 1 : 0
+  end
+  
+  def realtime_plans_count
+    self.plans.count
+  end
+  
+  def realtime_callings_count
+    self.callings.count
   end
   
   def following?(followable)

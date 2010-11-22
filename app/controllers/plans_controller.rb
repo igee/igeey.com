@@ -10,7 +10,7 @@ class PlansController < ApplicationController
   
   def new
     @calling = Calling.find(params[:calling_id])
-    @plan = @calling.plans.build()
+    @plan = @calling.plans.build(:plan_at => @calling.do_at)
     @plan.parent_id = params[:parent_id]
     if params[:layout] == 'false'
       render :layout => false
@@ -18,15 +18,18 @@ class PlansController < ApplicationController
   end
   
   def create
+    @calling = Calling.find(params[:calling_id])
     @plan = current_user.plans.build(params[:plan])
     @plan.calling = Calling.find(params[:calling_id])
     @plan.venue = @plan.calling.venue
     @plan.action = @plan.calling.action
     if @plan.save
       flash[:dialog] = "<a href='#{new_sync_path}?syncable_type=#{@plan.class}&syncable_id=#{@plan.id}' class='open_dialog' title='传播这个行动'>同步</a>" 
+      respond_with [@calling,@plan]
+    else
+      render :new
     end
-    @calling = Calling.find(params[:calling_id])
-    respond_with [@calling,@plan]
+    
   end
   
   def show
@@ -58,7 +61,7 @@ class PlansController < ApplicationController
     
   def duplicate
     @parent = Plan.find(params[:id])
-    @plan = @calling.plans.build(:parent_id => @parent.id)
+    @plan = @calling.plans.build(:parent_id => @parent.id,:plan_at => @calling.do_at)
     if params[:layout] == 'false'
       render :action => 'new',:layout => false
     else

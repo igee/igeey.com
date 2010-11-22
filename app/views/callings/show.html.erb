@@ -5,8 +5,17 @@
     <p class="impact"><%= "#{@calling.user.login}#{@calling.description}" %></p>
     <div class="saying_colon_right">”</div>
     <pre class="explanation" style="display:block;"><%= @calling.detail.strip %></pre>
+    <br/>
   </div>
-  <div class="saying_tail"></div>  
+  <div class="saying_tail"></div>
+  <div style="clear:both;text-align:right">
+        <% if @calling.can_edit_by?(current_user)%>
+          <span>
+          <%= link_to "修改","#{edit_calling_path(@calling)}?back_path=#{request.path}"%>
+          　<%= link_to "删除","#{calling_path(@calling)}?back_path=#{request.path}",:method => :delete,:confirm => '你确定要删除这个行动召集么' %>
+          </span>
+        <% end %>
+      </div>
 </div>
 
 <div class="box">

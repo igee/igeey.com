@@ -4,4 +4,8 @@ class CommentObserver < ActiveRecord::Observer
     @commentable.update_attribute(:has_new_comment ,true)
     @commentable.update_attributes(:last_replied_user_id => comment.user.id,:last_replied_at => Time.now) if comment.commentable_type == 'Topic'
   end
+  
+  def before_validation(comment)
+    comment.content = comment.content.strip
+  end
 end

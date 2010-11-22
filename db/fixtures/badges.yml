@@ -10,7 +10,7 @@ badge_2:
   id:        2
   name:      '小喇叭'
   slug:      '1st_calling' 
-  condition_factor: 'callings_count'
+  condition_factor: 'realtime_callings_count'
   condition_number: 1
   intro:     '第一次发起行动召集，就可一获得小喇叭徽章'
   
@@ -18,7 +18,7 @@ badge_3:
   id:        3
   name:      '括音器'
   slug:      '3rd_calling' 
-  condition_factor: 'callings_count'
+  condition_factor: 'realtime_callings_count'
   condition_number: 3
   intro:     '发起了三次的行动召集'
 
@@ -26,7 +26,7 @@ badge_4:
   id:        4
   name:      '广播站'
   slug:      '10th_calling' 
-  condition_factor: 'callings_count'
+  condition_factor: 'realtime_callings_count'
   condition_number: 10
   intro:     '发起了十次的行动召集'
 
@@ -34,7 +34,7 @@ badge_5:
   id:        5
   name:      '卫星电台'
   slug:      '20th_calling' 
-  condition_factor: 'callings_count'
+  condition_factor: 'realtime_callings_count'
   condition_number: 20
   intro:     '发起了二十次的行动召集'
   
@@ -42,7 +42,7 @@ badge_6:
   id:        6
   name:      '行动新人'
   slug:      '1st_plan' 
-  condition_factor: 'plans_count'
+  condition_factor: 'realtime_plans_count'
   condition_number: 1
   intro:     '第一次参与行动'
   
@@ -50,7 +50,7 @@ badge_7:
   id:        7
   name:      '行动先锋'
   slug:      '5th_plan' 
-  condition_factor: 'plans_count'
+  condition_factor: 'realtime_plans_count'
   condition_number: 5
   intro:     '参与了5次公益行动'
 
@@ -58,7 +58,7 @@ badge_8:
   id:        8
   name:      '行动达人'
   slug:      '10th_plan' 
-  condition_factor: 'plans_count'
+  condition_factor: 'realtime_plans_count'
   condition_number: 10
   intro:     '参与了10次公益行动'
 
@@ -66,7 +66,7 @@ badge_9:
   id:        9
   name:      '行动大师'
   slug:      '20th_plan' 
-  condition_factor: 'plans_count'
+  condition_factor: 'realtime_plans_count'
   condition_number: 20
   intro:     '参与了20次公益行动'
 
@@ -74,7 +74,7 @@ badge_10:
   id:        10
   name:      '行动超人'
   slug:      '50th_plan' 
-  condition_factor: 'plans_count'
+  condition_factor: 'realtime_plans_count'
   condition_number: 50
   intro:     '参与了50次公益行动'
 

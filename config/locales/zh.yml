@@ -22,4 +22,8 @@ zh:
         venue:
           attributes:
             name:
-              blank:  '清填写聚点的名称'
+              blank:  '请填写聚点的名称'
+        calling:
+          attributes:
+            info:
+              blank:  '请填写行动关键信息'

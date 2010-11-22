@@ -9,7 +9,7 @@ class CallingsController < ApplicationController
   end
 
   def new
-    @calling = current_user.callings.build(:venue_id => params[:venue_id],:action_id => params[:action_id])
+    @calling = current_user.callings.build(:venue_id => params[:venue_id],:action_id => params[:action_id],:unit => '件')
     if @calling.action.nil?
       @actions = Action.all
       @venue = Venue.find(params[:venue_id])
