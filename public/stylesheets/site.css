@@ -540,6 +540,7 @@ a#logo{
 #sidebar{
     float:right;
     _position:absolute;
+    _z-index:0;
     width:250px;
     padding:15px;    
 }
