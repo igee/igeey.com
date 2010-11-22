@@ -8,6 +8,7 @@ Igee::Application.routes.draw do
   
   match 'about' => 'site#about'
   match 'report' => 'site#report'
+  match 'guide' => 'site#guide'
   match 'faq' => 'site#faq'
   
   match 'myigee' => 'site#myigee'

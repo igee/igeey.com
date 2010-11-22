@@ -33,31 +33,31 @@
   <% if logged_in?%>
     <%= render :partial => "sidebar_panel" %>
   <% else %>
-  <div class="box" style="text-align:center;height:180px">
-    <%= link_to raw("现在加入<br/>一起改变世界"),signup_path,:class=>"open_dialog",:id => "signup_button",:title=>'注册'%>
-    <span>已经是用户？<%= link_to '直接登录' ,login_path, :class=>"open_dialog", :title => '登录'%></span>
-  </div>
-  
+    <div class="box" style="text-align:center;height:180px">
+      <%= link_to raw("现在加入<br/>一起改变世界"),signup_path,:class=>"open_dialog",:id => "signup_button",:title=>'注册'%>
+      <span>已经是用户？<%= link_to '直接登录' ,login_path, :class=>"open_dialog", :title => '登录'%></span>
+    </div>
+    
+    <h4 class="ribbon">在爱聚你可以做什么？</h4>
+    <div class="explanation" id="guide">
+      <p>
+        <%= image_tag "/images/icon/write.png",:class=>"icon"%>
+        　记录做过的行动，形成个人公益档案
+      </p>
+      <p>
+        <%= image_tag "/images/icon/spread.png",:class=>"icon"%>
+        　发起行动召集，满足身边的公益需求
+      </p>
+      <p>
+        <%= image_tag "/images/icon/respond.png",:class=>"icon"%>
+        　参与各类的行动，和大家一起做公益
+      </p>
+      <div style="text-align:right;margin:10px 15px 0 0">
+        <%= link_to '了解更多',guide_path%>
+      </div>
+    </div>
   <% end %>
   
-  <h4 class="ribbon">在爱聚你可以做什么？</h4>
-  <div class="explanation" id="guide">
-    <p>
-      <%= image_tag "/images/icon/write.png",:class=>"icon"%>
-      　记录做过的行动，形成个人公益档案
-    </p>
-    <p>
-      <%= image_tag "/images/icon/spread.png",:class=>"icon"%>
-      　发起行动召集，满足身边的公益需求
-    </p>
-    <p>
-      <%= image_tag "/images/icon/respond.png",:class=>"icon"%>
-      　参与各类的行动，和大家一起做公益
-    </p>
-    <div style="text-align:right;margin:10px 15px 0 0">
-      <%= link_to '了解更多','#'%>
-    </div>
-  </div>
 
 <% end %>
 
