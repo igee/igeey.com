@@ -11,6 +11,7 @@
     <div class="saying" style="<%= 'width:360px' if params[:layout]=='false'%>">
       <div class="saying_colon_left"> “</div>
         <%= form.text_area :content,:value=>"我#{@syncable.description} " + eval("#{@sync.syncable_type.downcase}_url(#{@syncable.id})"),:style => "width:#{ params[:layout]=='false' ? '340px' : '440px'};height:80px"%>
+        <div class="explanation">截取前140字，剩余字数：<span id="character_count"></span></div>
       <div class="saying_colon_right">”</div>
     </div>
     <div class="saying_tail"></div>
@@ -35,4 +36,11 @@
       offsetY: 5,
       allowTipHover: false
     });
+  
+    function updateCount() {
+    document.getElementById("character_count").innerHTML = (140 - document.getElementById("sync_content").value.length);
+    setTimeout(updateCount, 400);
+     }
+    updateCount();
+
 </script>

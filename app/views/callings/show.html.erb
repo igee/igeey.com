@@ -4,7 +4,7 @@
     <div class="saying_colon_left"> “</div>
     <p class="impact"><%= "#{@calling.user.login}#{@calling.description}" %></p>
     <div class="saying_colon_right">”</div>
-    <p class="explanation"><%= @calling.detail %><p>
+    <pre class="explanation" style="display:block;"><%= @calling.detail.strip %></pre>
   </div>
   <div class="saying_tail"></div>  
 </div>
@@ -31,11 +31,11 @@
       <%= link_to "我要#{{'time' => '去','money' => '捐赠','goods' => '捐赠'}[@calling.action.for_what]}",(logged_in? ? new_calling_plan_path(@calling) : signup_path ),:class => "big_button open_dialog",:id => 'plan_to' ,:title =>(logged_in? ? '我要响应' : '注册' )%>
     </div>
   <% end %>
-      <p style="text-align:right">
+      <p style="text-align:center">
         <% if logged_in? && current_user.following?(@calling) %>
           已关注 <%= link_to raw("<span>取消关注?</span>"),follow_path(@calling.follows.find_by_user_id(current_user.id)),:method => :delete%>
         <% else %>
-          <%= link_to "+ 关注进展",(logged_in? ? "#{follows_path}?followable_type=#{@calling.class}&followable_id=#{@calling.id}" : signup_path),:method => :post,:class => 'button',:title =>(logged_in? ? "" : '注册' ),:method => :post %>
+          还无法决定？先 <%= link_to "关注进展",(logged_in? ? "#{follows_path}?followable_type=#{@calling.class}&followable_id=#{@calling.id}" : signup_path),:method => :post,:title =>(logged_in? ? "" : '注册' ),:method => :post %>
         <% end%>
       </p>
 </div>
@@ -77,10 +77,10 @@
   <div class="box">
     <h4>所有参与者：</h4>
     <%= render :partial => '/users/user',:collection => @plans.map(&:user)%>
-    
   </div>
+  <%= render :partial => '/photos/gallery' ,:locals => {:imageable => @calling}%>
   
   <%= render :partial => "/public/followers" %>
   
-  <%= render :partial => '/photos/gallery' ,:locals => {:imageable => @calling}%>
+  
 <% end %>

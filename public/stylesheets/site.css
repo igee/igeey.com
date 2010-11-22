@@ -23,7 +23,18 @@ li{list-style:none}
     
 p{
   line-height:1.7em;
-  margin:6px 0;}
+  margin:6px 0;
+  }
+
+pre {
+  margin:0;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+  line-height:1.7em;
+  } 
 
 span{
   color:#999;

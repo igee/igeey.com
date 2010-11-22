@@ -3,7 +3,7 @@
   <%= render :partial => '/users/user', :object => topic.user %>
   <div class="event">
     <p>
-          <%= link_to topic.title ,topic%> 
+      <%= link_to topic.title ,topic,:class => 'event_link'%> 
     </p>
     <div class="explanation"></div>
     <div class="addition">

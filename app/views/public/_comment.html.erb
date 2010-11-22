@@ -2,7 +2,7 @@
     
     <%= render :partial => '/users/user',:object => comment.user %>
     <div class="comment">
-      <pre><%= comment.content.strip %></pre>
+      <pre><%= comment.content %></pre>
       <% if logged_in? %>
         <div class="event_panel">
           <%= link_to '回复',"#new_comment",:onclick => "javascript:reply_to('#{comment.user.login}')"%>
