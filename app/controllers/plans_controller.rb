@@ -11,7 +11,7 @@ class PlansController < ApplicationController
   def new
     @calling = Calling.find(params[:calling_id])
     @plan = @calling.plans.build()
-    @plan.pranet_id = params[:parent_id]
+    @plan.parent_id = params[:parent_id]
     if params[:layout] == 'false'
       render :layout => false
     end  
@@ -26,7 +26,7 @@ class PlansController < ApplicationController
       flash[:dialog] = "<a href='#{new_sync_path}?syncable_type=#{@plan.class}&syncable_id=#{@plan.id}' class='open_dialog' title='传播这个行动'>同步</a>" 
     end
     @calling = Calling.find(params[:calling_id])
-    respond_with @plan
+    respond_with [@calling,@plan]
   end
   
   def show
