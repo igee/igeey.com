@@ -1,5 +1,5 @@
 class SiteController < ApplicationController
-  before_filter :login_required, :except=> [:index]
+  before_filter :login_required, :except=> [:index,:faq,:guide,:about,:report]
   
   def index
     # group callings,plans and records to list
