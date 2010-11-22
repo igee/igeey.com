@@ -69,17 +69,8 @@
       
       marker = new google.maps.Marker({
         position: map.getCenter(), 
-        title: "聚点坐标"
-      });
-      
-      google.maps.event.addListener(map, "drag", function() {
-        marker.setPosition(map.getCenter())
-      });
-      
-      google.maps.event.addListener(map, 'dblclick', function() {
-        setTimeout(function(){
-          marker.setPosition(map.getCenter())
-        }, 400);
+        title: "聚点坐标",
+        draggable: true
       });
       
       

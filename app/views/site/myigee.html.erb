@@ -1,4 +1,3 @@
-
 <% content_for :head do %>
   <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false"></script>
 <% end %>
@@ -17,8 +16,7 @@
       <%end%>
     </div>
     <h2 style="display:inline"><%= @user.login %></h2> <span><%= "#{@user.geo.name}" unless @user.geo.nil? %></span>
-  </div>
-  
+  </div>  
 </div>
 
 <div class="box">
@@ -48,7 +46,6 @@
     <div class="box">
       <h4>我服务过...</h4>
         <%= render :partial => '/venues/venue',:collection => @venues%>
-      
     </div>
     
     <div class="box">
@@ -69,16 +66,15 @@
       map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
       geocoder = new google.maps.Geocoder();
       
-      var icon_list = new Array("","school.png","hostel.png","daycare.png","flowers.png","embassy.png")
       
       $.getJSON('<%="#{venues_path(:format => :json)}?user_id=#{@user.id}"%>', function(data){
         markers = new Array
         $.each(data, function(i,item){
             markers[i] = new google.maps.Marker({
-              icon: "http://google-maps-icons.googlecode.com/files/" + icon_list[item.venue.category],
+              icon: "/images/marker/" + item.venue.category + ".png",
               position: new google.maps.LatLng(parseFloat(item.venue.latitude), parseFloat(item.venue.longitude)),
               title: item.venue.name,
-              map: map,
+              map: map
             });
             google.maps.event.addListener(markers[i], "click", function(){
               $.ajax({
@@ -97,7 +93,5 @@
       if($('#my_news').html().trim().length == 0){$('#my_news').html('<span>暂时没有新鲜事</span>')}
       initialize();
     });  
-
-
   </script>
 <% end %>
