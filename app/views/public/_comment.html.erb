@@ -1,14 +1,14 @@
-<div class="event_box">  
+<div class="event_box">
+    
     <%= render :partial => '/users/user',:object => comment.user %>
     <div class="comment">
-      <p>
-        <span style="font-size:20px;font-family:'times new roman';color:#999">“</span>
-        <%= comment.content %>
-        <span style="font-size:20px;font-family:'times new roman';color:#999">”</span>
-      </p>
+      <pre><%= comment.content.strip %></pre>
+      <% if logged_in? %>
+        <div class="event_panel">
+          <%= link_to '回复',"#new_comment",:onclick => "javascript:reply_to('#{comment.user.login}')"%>
+        </div>
+      <% end %>
       <span>#<%= comment_counter +1%> at <%= format_date(comment.created_at) %></span>
     </div>
-    <div class="saying_tail"></div>
-    
-    
+    <div class="saying_tail"></div>  
 </div>

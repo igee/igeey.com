@@ -1,0 +1,15 @@
+  <div class="box">
+    <h4>留言板：</h4>
+    <%= render :partial => '/public/comment' ,:collection => @comments %>
+  </div>
+    
+  <script type="text/javascript">
+    function reply_to(username){
+	    replyContent = $("#comment_content");
+		oldContent = replyContent.val();
+		prefix = "@" + username + " ";
+		newContent = prefix + oldContent
+		replyContent.focus();
+		replyContent.val(newContent);
+	}
+  </script>

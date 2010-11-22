@@ -70,11 +70,8 @@
       <%= raw @plan.action.step_by_step%>
     </p>
   </div>
-      
-  <div class="box">
-    <h4>留言板：</h4>
-    <%= render :partial => '/public/comment' ,:collection => @comments %>
-  </div>
+  
+  <%= render :partial => '/comments/board'%>    
   <%= render :partial => '/comments/form' ,:locals => {:commentable => @calling}%>
   
   

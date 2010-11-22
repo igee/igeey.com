@@ -344,27 +344,28 @@ button:hover,.button:hover{background:#d86;color:white;}
     float:right;
 }
 
-.comment p{
+.comment pre{
     width:490px;
+    display:block;
     background-color:#e6e6f0;
     color:#505050;
     -moz-border-radius: 6px;
     border-radius: 6px;
-    min-height:30px;
+    min-height:20px;
+    margin:5px 0px;
     font-size:13px;
-    padding:10px 20px;
+    padding:15px 20px;
 }
 
 .event_box{
   padding:8px 8px 10px;
   border-bottom:1px dashed #ccc;
+  overflow:hidden;
+  zoom:1;
   }
 
-.event_box.hover{background-color:#f8f8f8}
+.event_box.hover{background-color:#f9f9f9}
 .event_box.hover p{color:#777}
-
-.event_box.by_self{background-color:#f3f3f9}
-.event_box.by_self.hover{background-color:#eeeef3}
 
 .event {
   height:68px;
@@ -389,6 +390,8 @@ button:hover,.button:hover{background:#d86;color:white;}
 }
 
 .event_box.hover .event_panel{display:block}
+
+.comment .event_panel{margin:0;width:520px}
 
 /*
 .event_type{
