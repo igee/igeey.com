@@ -33,15 +33,19 @@ class Calling < ActiveRecord::Base
     self.plans.map(&:user).uniq.size
   end
   
-  def total_number
+  def total_number_tag
     {'money' => "#{total_money}元",'goods' => "#{total_goods}#{unit}",'time' => "#{total_people}人" }[for_what]
+  end
+  
+  def total_number
+    {'money' => total_money ,'goods' => total_goods,'time' => total_people }[for_what]
   end
   
   def remaining_number
     if for_what == 'time'
-      self.total_number - self.plans.size
+      (self.total_number > self.plans.size) ?  (self.total_number - self.plans.size) : 0
     else
-      self.total_number - self.plans.map(&(for_what.to_sym)).sum
+      (self.total_number > self.plans.map(&(for_what.to_sym)).sum) ? (self.total_number - self.plans.map(&(for_what.to_sym))) : 0
     end
   end
   

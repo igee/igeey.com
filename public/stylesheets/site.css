@@ -260,21 +260,21 @@ button:hover,.button:hover{background:#d86;color:white;}
     overflow:hidden;
     }    
 
-.record_counter{
-  background-color:#aaa;
-  color:white;
+.record_counter_wrapper{
   float:left;
   width:72px;
-  height:52px;
-  padding:10px 0;
-  margin:0 4px;
+  height:30px;
   text-align:center;
-  -webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;
+  margin:0 4px;
 }
 
-.record_counter span{color:#777}
+.record_counter_wrapper h4{color:#39c}
 
-.record_counter h2{
+.record_counter{
+  background-color:#39c;
+  color:white;
+  -webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;
+  padding:10px 0;
   font-weight:normal;
   margin:4px 0 0;
   } 
@@ -504,9 +504,7 @@ a#logo{
 #login_state span{color:#cdf}
     
 #header{
-    height:96px;
-    border-top:4px solid #68c;
-    background:url('/images/sawtooth.png') repeat-x;
+    height:64px;
     overflow:hidden;
     zoom:1;
     }
@@ -554,7 +552,11 @@ a#logo{
 
 #nav_links{
   float:left;
-  margin:26px 56px 0;
+  margin:12px 128px 0;
+  padding:2px 30px;
+  background-color:#e4f3fb;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
   }
 
 #nav_links li{
@@ -562,28 +564,13 @@ a#logo{
 }
 
 #nav_links a{
-  color:#5390b9;
+  color:#69b;
   font-size:15px;
   font-weight:bold;
   padding:5px 16px;
   margin:0 4px;
   }
 
-#nav_links a.selected{
-  padding:5px 16px;
-  color:#f0f6ff;
-  background-color:#a0d0ff;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  }
-
-#nav_links a:hover{
-  padding:5px 16px;
-  color:#fff;
-  background-color:#a9d9ff;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  }
 
 #footer_links{
   margin:0;
@@ -613,7 +600,7 @@ a#logo{
   padding:12px 30px;
   text-align:center;
   -moz-border-radius: 8px;
-  border-radius: 8px;
+  -webkit-border-radius: 8px;
   margin:50px  36px 10px;
   }
 

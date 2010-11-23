@@ -63,7 +63,7 @@
       <span style="font-size:20px">%<span>
       <br/>
       <span>
-        <%= "目标#{@calling.total_number}，"%>
+        <%= "目标#{@calling.total_number_tag}，"%>
         <%= {:goods=>"已捐#{@calling.records.map(&:goods).sum}#{@calling.unit}",:time => "已有#{@calling.plans.size}人要去"}[@calling.for_what.to_sym]%>
         </span>
     </div>
