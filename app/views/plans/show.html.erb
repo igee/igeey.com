@@ -1,105 +1,215 @@
-  <div class="box">
-    <%= render :partial => '/users/user' ,:object => @plan.user %>
-      <div class="saying">
-        <div class="saying_colon_left"> “</div>
-        <p class="impact">
-          <%="#{@plan.user.login}#{@plan.description}"%>
-        </p>
-        <div class="saying_colon_right">”</div>
-      </div>
-      <div class="saying_tail"></div>      
-      <div style="clear:both;text-align:right">
-        <% if @plan.can_edit_by?(current_user)%>
-        <span><%= link_to("修改",edit_calling_plan_path(@plan.calling,@plan))%>　<%= link_to "取消",calling_plan_path(@calling,@plan),:method => :delete,:confirm => '确定要取消你的计划么?' %></span>
+<!DOCTYPE html>
+<html lang="zh-CN"> 
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>爱聚-igee.org [测试中] </title>
+  <link href="/favicon.ico" rel="shortcut icon"/>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag 'jquery-1.4.2.min' %>
+  <%= javascript_include_tag 'rails' %>
+  <%= javascript_include_tag 'dialog' %>
+  <%= javascript_include_tag 'calendar' %>
+  <%= javascript_include_tag 'jquery.poshytip.min.js' %>
+  <%= javascript_include_tag 'jquery.hint.js' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tag %>
+  <%= yield :head %>  
+</head>
+
+<body>
+  <%= link_to raw('反<br/>馈'),new_feedback_path,:class=> "open_dialog",:title => "反馈",:id => 'feedback'%>
+    
+  <div id="get_badges"></div>
+  
+  <div id="header">
+    <div class="container" id="nav" style="background:none">
+      <%= link_to image_tag('/images/logo.png'), root_path,:id => 'logo',:style=>"margin-left:120px" %>
+      <div id="login_state" style="margin-right:120px;">
+        <% if logged_in? %>
+          <span>欢迎, <%= current_user.login %>　</span>
+          <%= link_to '设置',"#{setting_path}?back_path=#{request.path unless controller_name == 'site' && action_name == 'index'}"%> |
+          <%= link_to "退出",logout_path %>
+        <% else %>
+          <%= link_to "登录",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%> |
+          <%= link_to "注册",signup_path ,:class => "open_dialog",:title => '注册',:id => "signup" %>
         <% end %>
       </div>
-  </div>
-  
-  <div class="box">
-    <div style="text-align:center;">
-      <% if @plan.is_done%>
-          计划已完成 <%= link_to '立即查看',@plan.record %>
-      <% else %>
-        <% if @plan.can_edit_by?(current_user) %>
-          <%= link_to "已经完成?","#{new_record_path}?plan_id=#{@plan.id}",:class => "big_button" %>
-        <% elsif @my_plan %>
-          你已参与： <%= link_to '查看我的计划',calling_plan_path(@calling,@my_plan)%>
-        <% else %>
-          <% @link_title = "我也要#{{'time' => '去','money' => '捐','goods' => '捐'}[@calling.for_what]}"%>
-          <%= link_to @link_title,(logged_in? ? "#{duplicate_calling_plan_path(@calling,@plan,:parent_id => @plan.id)}" : signup_path ),:class => "big_button open_dialog",:id => 'plan_to' ,:title =>(logged_in? ? @link_title : '注册' )%>
-        <% end %>
-      <% end %>
+      
     </div>
-      <p style="text-align:center">
-        <% if logged_in? && current_user.following?(@calling) %>
-          已关注 <%= link_to raw("<span>取消关注?</span>"),follow_path(@calling.follows.find_by_user_id(current_user.id)),:method => :delete%>
-        <% else %>
-         还无法决定？先 <%= link_to "关注进展",(logged_in? ? "#{follows_path}?followable_type=#{@calling.class}&followable_id=#{@calling.id}" : signup_path),:method => :post,:title =>(logged_in? ? "" : '注册' ),:method => :post %>
-        <% end%>
-      </p>
   </div>
-     
-  <div class="profile_box">
-    <h4>受益：</h4>
-    <%= render :partial => '/public/beneficary',:object => @venue%>
-  </div>
-       
-  <div class="box">
-    <h4>发起人说：</h4>
-      <%= render :partial => '/users/user' ,:object => @calling.user %>
-      <div class="saying">
-        <p class="explanation" >
-          <span style="font-size:20px;font-family:'times new roman';color:#999">“</span>
-          <%= @calling.detail %>
-          <span style="font-size:20px;font-family:'times new roman';color:#999">”</span>
-        </p>
+    
+  <div id="content">
+    <div class="container" style="background:none">
+      <div id="sidebar">
+        <%= yield :sidebar %>
       </div>
-      <div class="saying_tail"></div>
-  </div>
-  
-  <div class="box">
-    <h4><%= {'goods' => '捐赠信息','time' => '集合信息','money' => '捐增信息'}[@plan.for_what]%>：</h4>
-    <p style="padding:5px 10px">
-      <%= @calling.info%>
-    </p>
-  </div>
-  
-  <div class="box">
-    <h4>行动流程：</h4>
-    <p style="padding:5px 10px">
-      <%= raw @plan.action.step_by_step%>
-    </p>
-  </div>
-  
-  <%= render :partial => '/comments/board'%>    
-  <%= render :partial => '/comments/form' ,:locals => {:commentable => @calling}%>
-  
-  
-  
-<% content_for :sidebar do %>
-  <div class="box">
-    <h4>完成度：</h4>
-    <div style="text-align:center;margin:10px 0">
-      <span style="font-size:54px;"><%= @calling.percentage %></span>
-      <span style="font-size:24px">%<span>
-      <br/>
-      <span><%= "目标#{@calling.total_number},#{@plan.status}。"%></span>
+      
+      <div style="width:660px;margin:0 auto;">
+      <% if flash[:dialog] -%>
+        <div id="dialog_flash"><%= raw flash[:dialog] %></div>
+      <% end -%>
+      
+      <div style="background-color:#fff;padding:10px 20px;border-radius:8px;-moz-border-radius:8px;-webkit-border-radius:8px;margin-bottom:20px;">        
+        <div class="box">
+          <%= render :partial => '/users/user' ,:object => @plan.user %>
+            <div class="saying">
+              <div class="saying_colon_left"> “</div>
+              <p class="impact">
+                <%="#{@plan.user.login}#{@plan.description}"%>
+              </p>
+              <div class="saying_colon_right">”</div>
+            </div>
+            <div class="saying_tail"></div>      
+            <div style="clear:both;text-align:right">
+              <% if @plan.can_edit_by?(current_user)%>
+              <span><%= link_to("修改",edit_calling_plan_path(@plan.calling,@plan))%>　<%= link_to "取消",calling_plan_path(@calling,@plan),:method => :delete,:confirm => '确定要取消你的计划么?' %></span>
+              <% end %>
+            </div>
+        </div>
+        
+        <div class="box">
+          <div style="text-align:center;">
+            <% if @plan.is_done%>
+                计划已完成 <%= link_to '立即查看',@plan.record %>
+            <% else %>
+              <% if @plan.can_edit_by?(current_user) %>
+                <%= link_to "已经完成?","#{new_record_path}?plan_id=#{@plan.id}",:class => "big_button" %>
+              <% elsif @my_plan %>
+                你已参与： <%= link_to '查看我的计划',calling_plan_path(@calling,@my_plan)%>
+              <% else %>
+                <% @link_title = "我也要#{{'time' => '去','money' => '捐','goods' => '捐'}[@calling.for_what]}"%>
+                <%= link_to @link_title,(logged_in? ? "#{duplicate_calling_plan_path(@calling,@plan,:parent_id => @plan.id)}" : signup_path ),:class => "big_button open_dialog",:id => 'plan_to' ,:title =>(logged_in? ? @link_title : '注册' )%>
+              <% end %>
+            <% end %>
+          </div>
+            <p style="text-align:center">
+              <% if logged_in? && current_user.following?(@calling) %>
+                已关注 <%= link_to raw("<span>取消关注?</span>"),follow_path(@calling.follows.find_by_user_id(current_user.id)),:method => :delete%>
+              <% else %>
+               还无法决定？先 <%= link_to "关注进展",(logged_in? ? "#{follows_path}?followable_type=#{@calling.class}&followable_id=#{@calling.id}" : signup_path),:method => :post,:title =>(logged_in? ? "" : '注册' ),:method => :post %>
+              <% end%>
+            </p>
+        </div>
+      </div>
+      
+      <div style="background-color:#fff;padding:6px 20px;width:60px;-moz-border-radius:8px 8px 0 0;-webkit-border-radius:8px 8px 0 0"><h4 style="margin:0">行动详情</h4></div>
+      <div style="background-color:#fff;padding:20px;-moz-border-radius:0 8px 8px 8px;-webkit-border-radius:0 8px 8px 8px;margin-bottom:10px;">            
+        <div class="box">
+        <div class="action_status">
+          <div style="padding:0 20px;height:100px;overflow:hidden;zoom:1">
+            <%= render :partial => '/venues/venue',:object => @venue%>
+          </div>
+          <h4>受益聚点</h4>
+        </div>
+        
+        <div class="action_status">
+          <div style="text-align:center;height:80px;padding:10px 0">
+            <span style="font-size:54px;"><%= @calling.percentage %></span>
+            <span style="font-size:20px">%<span>
+            <br/>
+            <span>
+              <%= "目标#{@calling.total_number}，"%>
+              <%= {:goods=>"已捐#{@calling.records.map(&:goods).sum}#{@calling.unit}",:time => "已有#{@calling.plans.size}人要去"}[@calling.for_what.to_sym]%>
+              </span>
+          </div>
+          <h4>完成度</h4>
+        </div>
+        
+        <div class="action_status">
+          <div style="text-align:center;height:80px;padding:10px 33px">
+            <div class="action_button"><%= @calling.action.name%></div>
+          </div>
+          <h4>行动类型</h4>
+        </div>
+        </div>
+        
+        <div class="box">
+          <h4>发起人说：</h4>
+            <%= render :partial => '/users/user' ,:object => @calling.user %>
+            <div class="saying">
+              <p class="explanation" >
+                <span style="font-size:20px;font-family:'times new roman';color:#999">“</span>
+                <%= @calling.detail %>
+                <span style="font-size:20px;font-family:'times new roman';color:#999">”</span>
+              </p>
+            </div>
+            <div class="saying_tail"></div>
+        </div>
+        
+        <div class="box">
+          <h4><%= {'goods' => '捐赠信息','time' => '集合信息','money' => '捐增信息'}[@plan.for_what]%>：</h4>
+          <p style="padding:5px 10px">
+            <%= @calling.info%>
+          </p>
+          <h4>行动流程：</h4>
+          <p style="padding:5px 10px">
+            <%= raw @plan.action.step_by_step%>
+          </p>
+        </div>
+          
+        <% if @plan.user == current_user %>
+        <div class="box">
+          <h4><%= @plan.user.login%>的跟随者：</h4>
+          <%= render :partial => '/users/user',:collection => @plan.children.map(&:user)%>
+        </div>
+        <% end %>
+        
+        <div class="box">
+          <h4>所有参与者：</h4>
+          <% @calling.plans.each do |plan|%>
+            <div class='user' user_id="<%=plan.user.id%>">
+              <div class="action_counter_wrapper"><span class="action_counter">+<%= plan.number%></span></div>
+              <%= link_to (image_tag plan.user.avatar.url,:class => "user_avatar"),plan.user %>
+            <span><%= link_to plan.user.login,plan.user%></span>
+            </div>
+          <% end %>
+        </div>
+        
+        <div class="box">
+          <div style="text-align:center;">
+            <% if @plan.is_done%>
+                计划已完成 <%= link_to '立即查看',@plan.record %>
+            <% else %>
+              <% if @plan.can_edit_by?(current_user) %>
+                <%= link_to "已经完成?","#{new_record_path}?plan_id=#{@plan.id}",:class => "big_button" %>
+              <% elsif @my_plan %>
+                你已参与： <%= link_to '查看我的计划',calling_plan_path(@calling,@my_plan)%>
+              <% else %>
+                <% @link_title = "我也要#{{'time' => '去','money' => '捐','goods' => '捐'}[@calling.for_what]}"%>
+                <%= link_to @link_title,(logged_in? ? "#{duplicate_calling_plan_path(@calling,@plan,:parent_id => @plan.id)}" : signup_path ),:class => "big_button open_dialog",:id => 'plan_to' ,:title =>(logged_in? ? @link_title : '注册' )%>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      
+        
+        <%= render :partial => '/comments/board'%>    
+        <%= render :partial => '/comments/form' ,:locals => {:commentable => @calling}%>
+        
+      </div>
+      </div>
+      <div class="clear"></div>
     </div>
   </div>
-  
-  <div class="box">
-    <h4>跟随者：</h4>
-    <%= render :partial => '/users/user',:collection => @plan.children.map(&:user)%>
-  </div>
-  
-  <div class="box">
-    <h4>所有参与者：</h4>
-    <%= render :partial => '/users/user',:collection => @calling.plans.map(&:user)%>
-  </div>
-  
-  <%= render :partial => '/photos/gallery' ,:locals => {:imageable => @calling}%>
-  
-  <%= render :partial => "/public/followers" %>
-  
-  
-<% end %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    <% if logged_in? && current_user.has_new_badge?%>
+      $.get('<%= get_badges_badges_path%>',function(data){
+        $('#get_badges').html(data)
+      })
+    <% end %>
+    <%= "$('.user[user_id=#{current_user.id}]').parent().addClass('by_self')" if logged_in? %>
+  })
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

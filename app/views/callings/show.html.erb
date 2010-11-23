@@ -49,12 +49,35 @@
       </p>
 </div>
 
-<div class="profile_box">
-  <h4>受益：</h4>
-  <%= render :partial => '/public/beneficary',:object => @venue%>
+<div class="box">
+  <div class="action_status">
+   <div style="padding:0 20px;height:100px;overflow:hidden;zoom:1">
+      <%= render :partial => '/venues/venue',:object => @venue%>
+    </div>
+    <h4>受益聚点</h4>
+  </div>
   
+  <div class="action_status">
+    <div style="text-align:center;height:80px;padding:10px 0">
+      <span style="font-size:54px;"><%= @calling.percentage %></span>
+      <span style="font-size:20px">%<span>
+      <br/>
+      <span>
+        <%= "目标#{@calling.total_number}，"%>
+        <%= {:goods=>"已捐#{@calling.records.map(&:goods).sum}#{@calling.unit}",:time => "已有#{@calling.plans.size}人要去"}[@calling.for_what.to_sym]%>
+        </span>
+    </div>
+    <h4>完成度</h4>
+  </div>
+  
+  <div class="action_status">
+    <div style="text-align:center;height:80px;padding:10px 33px">
+      <div class="action_button"><%= @calling.action.name%></div>
+    </div>
+    <h4>行动类型</h4>
+  </div>
 </div>
-
+  
 <div class="box">
   <h4><%= {'goods' => '捐赠信息','time' => '集合信息','money' => '捐增信息'}[@calling.for_what]%>：</h4>
   <p style="padding:5px 10px">
@@ -73,20 +96,18 @@
 <%= render :partial => '/comments/form' ,:locals => {:commentable => @calling}%>
 
 <% content_for :sidebar do %>
-  <div class="box">
-    <h4>完成度：</h4>
-    <div style="text-align:center;margin:10px 0">
-      <span style="font-size:54px;"><%= @calling.percentage %></span>
-      <span style="font-size:24px">%<span>
-      <br/>
-      <span><%= "目标#{@calling.total_number},#{@calling.status}。"%></span>
-    </div>
-  </div>
   
   <div class="box">
     <h4>所有参与者：</h4>
-    <%= render :partial => '/users/user',:collection => @plans.map(&:user)%>
+    <% @calling.plans.each do |plan|%>
+      <div class='user' user_id="<%=plan.user.id%>">
+        <div class="action_counter_wrapper"><span class="action_counter">+<%= plan.number%></span></div>
+        <%= link_to (image_tag plan.user.avatar.url,:class => "user_avatar"),plan.user %>
+      <span><%= link_to plan.user.login,plan.user%></span>
+      </div>
+    <% end %>
   </div>
+        
   <%= render :partial => '/photos/gallery' ,:locals => {:imageable => @calling}%>
   
   <%= render :partial => "/public/followers" %>

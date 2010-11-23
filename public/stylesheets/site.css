@@ -90,8 +90,8 @@ img{border:none;}
   text-align:center;
   color:#fff;
   font-size:16px;
-  width:86px;
-  padding:30px 0;
+  width:80px;
+  padding:24px 0;
   height:26px;
   margin:8px;
   background-color:#d75;
@@ -99,6 +99,12 @@ img{border:none;}
   }
 
 .action_button:hover{color:#fff;background-color:#e86;}
+
+.action_status{float:left;padding:10px 20px;width:160px;text-align:center}
+.action_status h4{margin-left:30px;width:80px;padding:2px 10px;background-color:#79f;color:#fff}
+.action_counter_wrapper{position:absolute;text-align:right;width:55px;margin-top:36px;}
+
+span.action_counter{color:#fff;background-color:#e75;padding:2px 4px;font-size:10px}
 
 .title{
     font-size:16px;

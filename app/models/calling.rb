@@ -34,7 +34,7 @@ class Calling < ActiveRecord::Base
   end
   
   def total_number
-    {'money' => total_money,'goods' => total_goods,'time' => total_people }[for_what] || 0
+    {'money' => "#{total_money}元",'goods' => "#{total_goods}#{unit}",'time' => "#{total_people}人" }[for_what]
   end
   
   def remaining_number
