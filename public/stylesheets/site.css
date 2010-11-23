@@ -101,6 +101,8 @@ img{border:none;}
 .action_button:hover{color:#fff;background-color:#e86;}
 
 .action_status{float:left;padding:10px 20px;width:160px;text-align:center}
+#sidebar .action_status{width:120px;padding:0}
+
 .action_status h4{margin-left:12px;width:110px;padding:4px 14px;background-color:#00c7ff;color:#fff}
 .action_counter_wrapper{position:absolute;text-align:right;width:55px;margin-top:36px;}
 

@@ -1,7 +1,7 @@
   <div class="event_box">
     <%= link_to image_tag(venue.cover.url(:_80x60),:class => "venue_thumb_cover"),venue,:style=>'float:left'%>
     <div class="event" style="margin-left:96px;margin-top:-5px;width:510px">
-      <div class="event_panel" style="width:488px">
+      <div class="event_panel" style="width:480px">
         <%= link_to '行动召集',"#{new_calling_path}?venue_id=#{venue.id}",:class => 'open_dialog',:title => '行动召集'%>
         　<%= link_to '记录行动',"#{new_record_path}?venue_id=#{venue.id}",:class => 'open_dialog',:title => '记录行动'%>
       </div>

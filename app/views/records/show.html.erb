@@ -1,11 +1,9 @@
   <div class="box">
     <%= render :partial => '/users/user' ,:object => @record.user %>
       <div class="saying">
-        
         <p class="impact">
           <%="#{@record.user.login}#{@record.description}"%>
         </p>
-        
         <p class="explanation"><%= @record.detail %><p>
       </div>
       <div class="saying_tail"></div>
@@ -17,16 +15,10 @@
         </span>
       </div>
   </div>
-
-  <div class="profile_box">
-    <h4>受益：</h4>
-    <%= render :partial => '/public/beneficary',:object => @venue%>
-    
-  </div>
     
   <% if @calling%>
   <div class="box">
-    <h4>行动来自这个召集:</h4>
+    <h4>行动来自<%= @calling.user.login%>的召集:</h4>
     <%= render :partial => "/public/calling",:object => @calling %>
   </div>
   <% end %>
@@ -34,7 +26,14 @@
   <%= render :partial => '/photos/gallery' ,:locals => {:imageable => @record}%>
   
   <div class="box">
-    <h4>大家的留言：</h4>
+    <h4>留言板：</h4>
     <%= render :partial => '/public/comment' ,:collection => @comments %>
   </div>
   <%= render :partial => '/comments/form' ,:locals => {:commentable => @record}%>
+
+<% content_for :sidebar do %>
+  <div class="box">
+    <h4>受益聚点</h4>
+    <%= render :partial => '/venues/venue',:object => @venue%>
+  </div>
+<%end%>        

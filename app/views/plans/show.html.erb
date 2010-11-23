@@ -75,7 +75,7 @@
               <% if logged_in? && current_user.following?(@calling) %>
                 已关注 <%= link_to raw("<span>取消关注?</span>"),follow_path(@calling.follows.find_by_user_id(current_user.id)),:method => :delete%>
               <% else %>
-               还无法决定？先 <%= link_to "关注进展",(logged_in? ? "#{follows_path}?followable_type=#{@calling.class}&followable_id=#{@calling.id}" : signup_path),:method => :post,:title =>(logged_in? ? "" : '注册' ),:method => :post %>
+                <%= link_to "关注进展",(logged_in? ? "#{follows_path}?followable_type=#{@calling.class}&followable_id=#{@calling.id}" : signup_path),:method => :post,:title =>(logged_in? ? "" : '注册' ),:method => :post %>
               <% end%>
             </p>
         </div>
@@ -84,32 +84,32 @@
       <div style="background-color:#fff;padding:6px 20px;width:60px;-moz-border-radius:8px 8px 0 0;-webkit-border-radius:8px 8px 0 0"><h4 style="margin:0">行动详情</h4></div>
       <div style="background-color:#fff;padding:20px;-moz-border-radius:0 8px 8px 8px;-webkit-border-radius:0 8px 8px 8px;margin-bottom:10px;">            
         <div class="box">
-        <div class="action_status">
-          <div style="padding:0 20px;height:100px;overflow:hidden;zoom:1">
-            <%= render :partial => '/venues/venue',:object => @venue%>
+          <div class="action_status">
+            <div style="padding:0 20px;height:100px;overflow:hidden;zoom:1">
+              <%= render :partial => '/venues/venue',:object => @venue%>
+            </div>
+            <h4>受益聚点</h4>
           </div>
-          <h4>受益聚点</h4>
-        </div>
-        
-        <div class="action_status">
-          <div style="text-align:center;height:80px;padding:10px 0">
-            <span style="font-size:54px;font-family:ariel;font-weight:bold;color:#004d68;"><%= @calling.percentage %></span>
-            <span style="font-size:20px;color:#004d68;">%<span>
-            <br/>
-            <span>
-              <%= "目标#{@calling.total_number_tag}，"%>
-              <%= {:goods=>"已捐#{@calling.complete_number}#{@calling.unit}",:time => "已有#{@calling.complete_number}人要去"}[@calling.for_what.to_sym]%>
-              </span>
+          
+          <div class="action_status">
+            <div style="text-align:center;height:80px;padding:10px 0">
+              <span style="font-size:54px;font-family:ariel;font-weight:bold;color:#004d68;"><%= @calling.percentage %></span>
+              <span style="font-size:20px;color:#004d68;">%<span>
+              <br/>
+              <span>
+                <%= "目标#{@calling.total_number_tag}，"%>
+                <%= {:goods=>"已捐#{@calling.complete_number}#{@calling.unit}",:time => "已有#{@calling.complete_number}人要去"}[@calling.for_what.to_sym]%>
+                </span>
+            </div>
+            <h4>完成度</h4>
           </div>
-          <h4>完成度</h4>
-        </div>
-        
-        <div class="action_status">
-          <div style="text-align:center;height:80px;padding:10px 33px">
-            <div class="action_button"><%= @calling.action.name%></div>
+          
+          <div class="action_status">
+            <div style="text-align:center;height:80px;padding:10px 33px">
+              <div class="action_button"><%= @calling.action.name%></div>
+            </div>
+            <h4>行动类型</h4>
           </div>
-          <h4>行动类型</h4>
-        </div>
         </div>
         
         <div class="box">
@@ -167,8 +167,7 @@
               <% end %>
             <% end %>
           </div>
-        </div>
-      
+        </div>      
         
         <%= render :partial => '/comments/board'%>    
         <%= render :partial => '/comments/form' ,:locals => {:commentable => @calling}%>
