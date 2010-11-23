@@ -1,7 +1,7 @@
 <div class="box">
   <div style="float:right">
     <% if logged_in? %>
-      <%= link_to "上传照片","#",:id => 'upload_link',:title => '上传图片'%>
+      <%= image_tag "/images/icon/upload.gif",:class=>"icon"%> <%= link_to "上传照片","#",:id => 'upload_link',:title => '上传图片'%>
     <% else %>
       <%= link_to "上传照片",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%>
     <% end %>
