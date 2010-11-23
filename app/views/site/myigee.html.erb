@@ -19,14 +19,19 @@
   </div>  
 </div>
 
-<div class="box">
-  <h4>我的行动：</h4>
-  <%= render :partial => '/public/event',:collection => @timeline%>
-</div>
-
-<div class="box">
-  <h4>上传的照片:</h4>
-  <%= render :partial => '/public/photo',:collection => @photos %>
+<div id="tabContaier">
+  <ul>
+    <li><%= link_to '我的行动','#my_actions'%></li>
+    <li><%= link_to '我的关注','#my_followings'%></li>
+  </ul>
+  
+  <div id="my_actions" class="tabContents">
+    <%= render :partial => '/public/event',:collection => @my_actions%>
+  </div>
+  
+  <div id="my_followings" class="tabContents">
+    <%= render :partial => '/public/event',:collection => @my_followings%>
+  </div>
 </div>
 
 <% content_for :sidebar do %>
@@ -42,15 +47,20 @@
         <%= badge.name %>
       <% end %>
     </div>
-    
-    <div class="box">
-      <h4>我服务过...</h4>
-        <%= render :partial => '/venues/venue',:collection => @venues%>
-    </div>
-    
+        
     <div class="box">
       <h4>我的公益地图:</h4>
       <div id="map_canvas" style="width:100%;height:160px;clear:both;margin:10px 0"></div>
+    </div>
+    
+    <div class="box" style="padding:0 10px">
+      <ul>
+        <li><%= link_to '添加/关注新聚点',(logged_in? && current_user.geo_id.present? && current_user.use_local_geo ? geo_path(current_user.geo_id) : geos_path)%></li>
+        <li><%= link_to '发起行动召集',following_venues_user_path(current_user) %></li>
+        <li><%= link_to '记录公益行动',following_venues_user_path(current_user) %></li>
+        <li><%= link_to '爱聚指南',guide_path %></li>
+        <li><%= link_to '站务论坛',topics_path %></li>
+      </ul>
     </div>
 <% end %>
 

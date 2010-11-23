@@ -4,13 +4,10 @@
           <div class="actions_counter"><%= link_to raw("#{current_user.callings_count}个召集"),actions_path(:start_at => 'my_callings') %></div>
           <div class="actions_counter"><%= link_to raw("#{current_user.records_count}个记录"),actions_path(:start_at => 'my_records') %></div>
           <div class="actions_counter" style="width:140px"><%= link_to raw("#{current_user.undone_plans_count}个未完成计划"),actions_path(:start_at => 'my_plans') %></div>
-          
       </div>
       <div style="padding:10px 5px;">
         <%= image_tag current_user.avatar.url(:_48x48),:class => "avatar" %>
-      </div>
-      
-      
+      </div>      
     </div>    
     
     <div class="sidebar_panel">
@@ -23,12 +20,16 @@
         </div>
         <div class="followings_counter">
           <%= link_to raw("<p>#{current_user.following_users.size}</p>用户关注"),followings_path(:start_at => 'following_users') %>
-        </div>
-        
+        </div>        
       </div>  
-      
-      
-        
-        
-      
+    </div>
+    
+    <div class="box" style="padding:0 10px">
+      <ul>
+        <li><%= link_to '添加/关注新聚点',(logged_in? && current_user.geo_id.present? && current_user.use_local_geo ? geo_path(current_user.geo_id) : geos_path)%></li>
+        <li><%= link_to '发起行动召集',following_venues_user_path(current_user) %></li>
+        <li><%= link_to '记录公益行动',following_venues_user_path(current_user) %></li>
+        <li><%= link_to '爱聚指南',guide_path %></li>
+        <li><%= link_to '站务论坛',topics_path %></li>
+      </ul>
     </div>

@@ -12,13 +12,10 @@ class SiteController < ApplicationController
   
   def myigee
     @user = current_user
-    @timeline = @user.callings
-    @timeline += @user.plans.undone
-    @timeline += @user.records
-    @timeline = @timeline.sort{|x,y| y.created_at <=> x.created_at }
-    @venues = @user.records.map(&:venue).uniq
+    @my_actions = @user.callings + @user.plans.undone + @user.records
+    @my_actions = @my_actions.sort{|x,y| y.created_at <=> x.created_at }
+    @my_followings = @user.followings.map(&:followable)
     @geo = Geo.new(:name => '全国')
-    @photos = @user.photos
     @my_plans = current_user.plans.undone if logged_in?
   end
 

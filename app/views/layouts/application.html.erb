@@ -26,8 +26,6 @@
       <%= link_to image_tag('/images/logo.png'), root_path,:id => 'logo' %>
       <ul id="nav_links">
         <li><%= link_to '首页',root_path,:class => "#{'selected' if controller_name == 'site' && action_name == 'index'}"%></li>
-        <li><%= link_to '聚点',(logged_in? && current_user.geo_id.present? && current_user.use_local_geo ? geo_path(current_user.geo_id) : geos_path),:class => "#{'selected' if ['venues','geos'].include?(controller_name)}"%></li>
-        <li><%= link_to '论坛',topics_path,:class => "#{'selected' if controller_name == 'topics'}"%></li>
         <% if logged_in? %>
         <li><%= link_to '我的爱聚',myigee_path,:class => "#{'selected' if controller_name == 'site' && action_name == 'myigee'}"%></li>
         <% end %>
