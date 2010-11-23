@@ -200,6 +200,7 @@ ActiveRecord::Schema.define() do
   
   create_table "topics",:force => true do |t|
     t.integer  :user_id
+    t.integer  :venue_id
     t.string   :title
     t.text     :content
     t.datetime :last_replied_at
