@@ -45,7 +45,7 @@ class Calling < ActiveRecord::Base
     if for_what == 'time'
       (self.total_number > self.plans.size) ?  (self.total_number - self.plans.size) : 0
     else
-      (self.total_number > self.plans.map(&(for_what.to_sym)).sum) ? (self.total_number - self.plans.map(&(for_what.to_sym))) : 0
+      (self.total_number > self.plans.map(&(for_what.to_sym)).sum) ? (self.total_number - self.plans.map(&(for_what.to_sym)).sum) : 0
     end
   end
   
