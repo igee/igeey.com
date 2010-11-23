@@ -116,11 +116,9 @@
           <h4>发起人说：</h4>
             <%= render :partial => '/users/user' ,:object => @calling.user %>
             <div class="saying">
-              <p class="explanation" >
-                <span style="font-size:20px;font-family:'times new roman';color:#999">“</span>
+              <pre class="explanation" >
                 <%= @calling.detail %>
-                <span style="font-size:20px;font-family:'times new roman';color:#999">”</span>
-              </p>
+              </pre>
             </div>
             <div class="saying_tail"></div>
         </div>
