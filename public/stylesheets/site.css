@@ -481,10 +481,11 @@ input.todo:hover{
 a#logo{
   padding:0px 5px 10px;
     color:#fff;
-    float:left;
+    position:absolute;
     display:inline;
     font-size:24px;
     font-weight:bold;
+    margin-top:24px;
     border:none;
     }
 
@@ -504,7 +505,7 @@ a#logo{
 #login_state span{color:#cdf}
     
 #header{
-    height:64px;
+    height:72px;
     overflow:hidden;
     zoom:1;
     }
@@ -551,16 +552,16 @@ a#logo{
 }
 
 #nav_links{
-  float:left;
-  margin:12px 128px 0;
-  padding:2px 30px;
+  float:right;
+  margin:22px 280px 0;
+  padding:4px 26px;
   background-color:#e4f3fb;
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
   }
 
 #nav_links li{
-  float:left;
+  float:right;
 }
 
 #nav_links a{
