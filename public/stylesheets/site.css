@@ -505,6 +505,7 @@ a#logo{
 #login_state span{color:#cdf}
     
 #header{
+    margin-top:24px;
     height:72px;
     overflow:hidden;
     zoom:1;
