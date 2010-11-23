@@ -1,9 +1,9 @@
 <div class="box">  
   <%= render :partial => '/users/user' ,:object => @calling.user %>
   <div class="saying">
-    <div class="saying_colon_left"> “</div>
+    
     <p class="impact"><%= "#{@calling.user.login}#{@calling.description}" %></p>
-    <div class="saying_colon_right">”</div>
+    
     <pre class="explanation" style="display:block;"><%= @calling.detail.strip %></pre>
     <br/>
   </div>

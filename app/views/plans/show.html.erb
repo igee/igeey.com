@@ -23,7 +23,7 @@
   
   <div id="header">
     <div class="container" id="nav" style="background:none">
-      <%= link_to image_tag('/images/logo.png'), root_path,:id => 'logo',:style=>"margin-left:120px" %>      
+      <%= link_to image_tag('/images/logo.png'), root_path,:id => 'logo',:style=>"margin-left:140px" %>      
     </div>
   </div>
     
@@ -42,11 +42,11 @@
         <div class="box">
           <%= render :partial => '/users/user' ,:object => @plan.user %>
             <div class="saying">
-              <div class="saying_colon_left"> “</div>
+              
               <p class="impact">
                 <%="#{@plan.user.login}#{@plan.description}"%>
               </p>
-              <div class="saying_colon_right">”</div>
+              
             </div>
             <div class="saying_tail"></div>      
             <div style="clear:both;text-align:right">
@@ -93,8 +93,8 @@
         
         <div class="action_status">
           <div style="text-align:center;height:80px;padding:10px 0">
-            <span style="font-size:54px;"><%= @calling.percentage %></span>
-            <span style="font-size:20px">%<span>
+            <span style="font-size:54px;font-family:ariel;font-weight:bold;color:#004d68;"><%= @calling.percentage %></span>
+            <span style="font-size:20px;color:#004d68;">%<span>
             <br/>
             <span>
               <%= "目标#{@calling.total_number_tag}，"%>
@@ -194,11 +194,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-

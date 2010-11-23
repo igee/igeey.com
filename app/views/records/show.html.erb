@@ -1,11 +1,11 @@
   <div class="box">
     <%= render :partial => '/users/user' ,:object => @record.user %>
       <div class="saying">
-        <div class="saying_colon_left"> “</div>
+        
         <p class="impact">
           <%="#{@record.user.login}#{@record.description}"%>
         </p>
-        <div class="saying_colon_right">”</div>
+        
         <p class="explanation"><%= @record.detail %><p>
       </div>
       <div class="saying_tail"></div>

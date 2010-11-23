@@ -4,7 +4,7 @@
   <%= form.hidden_field :venue_id %>
   <%= render :partial => '/users/user' ,:object => current_user %>
   <div class="saying">
-    <div class="saying_colon_left"> “</div>
+    
     <div style="padding:10px 0">
       <% if @calling.action.for_what == 'money' -%>
         <%="我为#{@calling.venue.name}募捐" %><%= form.text_field :total_money, :size => 3,:placeholder => "多少"%>元，用于<%= form.text_field :donate_for ,:size => 8 ,:placeholder => "做什么？"%>。            
@@ -16,7 +16,7 @@
       <% end %>
       <br/>
     </div>
-    <div class="saying_colon_right">”</div>
+    
     <p>
       <h5>关键信息：
       <%= form.text_field :info, :size => 33, :placeholder => {'goods' => "捐赠地址，接收人，联系方式",'time' => "集合地址，联系人，联系方式",'money' => "捐赠地址，接收人，联系方式"}[@calling.for_what],:style => "text-align:left" %></h5>
