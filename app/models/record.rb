@@ -45,7 +45,7 @@ class Record < ActiveRecord::Base
     elsif self.action.for_what == 'goods'
       result << "捐赠了#{self.goods}件#{self.goods_is}给#{self.venue.name}。"
     elsif self.action.for_what == 'time'
-      result << "去#{self.venue.name}做了#{self.time}小时的#{self.do_what}。"
+      result << "去#{self.venue.name}#{self.do_what}#{self.time}个小时。"
     end
   end
   
