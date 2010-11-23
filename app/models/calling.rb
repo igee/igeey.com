@@ -95,7 +95,11 @@ class Calling < ActiveRecord::Base
       "为#{self.venue.name}召集#{self.total_people}人在#{self.formatted_do_at}去#{self.do_what}。"
     end
   end
-   
+  
+  def name
+    "为#{self.venue.name}发起的行动召集"
+  end
+  
   def can_edit_by?(current_user)
     self.user == current_user
   end

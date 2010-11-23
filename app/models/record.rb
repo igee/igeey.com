@@ -49,4 +49,9 @@ class Record < ActiveRecord::Base
     end
   end
   
+  def name
+    "在#{self.venue.name}的行动记录"
+  end
+  
+    
 end
