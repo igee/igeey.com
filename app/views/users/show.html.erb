@@ -7,16 +7,16 @@
   </div>
   <div style="float:left;width:500px;text-align:left;padding:16px 10px 0">
     <div id="record_counters">
-      <% [[@user.venues.count,'个聚点'],[@user.money_count,'元捐款'],[@user.goods_count,'件捐赠'],[@user.records_count,'个行动']].each do |counter_list|%>
-      <div class="record_counter">
-        <h2><%= counter_list[0] %></h2>
-        <span><%= counter_list[1]%></span>
+      <% [[@user.records_count,'参与行动'],[@user.records.map(&:venue).uniq.count,'服务聚点'],[@user.time_count,'贡献小时'],[@user.goods_count,'捐赠物资']].each do |counter_list|%>
+      <div class="record_counter_wrapper">
+        <h4><%= counter_list[1] %></h4>
+        <h2 class="record_counter"><%= counter_list[0] %></h2>
       </div>
       <%end%>
     </div> 
-    <h2 style="display:inline"><%= @user.login %></h2> <span><%= "#{@user.geo.name}" unless @user.geo.nil? %></span>
+    <h2><%= @user.login %></h2>
+    <span><%= "#{@user.geo.full_name}" unless @user.geo.nil? %></span>
   </div>
-  
 </div>
 
 <div class="box">
@@ -42,14 +42,11 @@
   <div class="box">
     <h4><%= "#{@user.login}关注的人："%></h4>
     <%= render :partial => '/users/user',:collection => @following_users %>
-    
   </div>
 
-  
   <div class="box">
     <h4><%= "#{@user.login}关注的聚点："%></h4>
-    <%= render :partial => '/venues/venue',:collection => @following_venues %>
-    
+    <%= render :partial => '/venues/venue',:collection => @following_venues %>    
   </div>
 
 <% end %>

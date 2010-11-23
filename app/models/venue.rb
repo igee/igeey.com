@@ -41,6 +41,10 @@ class Venue < ActiveRecord::Base
     self.records.map(&:goods).compact.sum
   end
   
+  def records_count
+    self.records.size
+  end
+    
   def self.generate_json
     require 'json'
     venues = Venue.all

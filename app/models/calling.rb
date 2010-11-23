@@ -49,6 +49,14 @@ class Calling < ActiveRecord::Base
     end
   end
   
+  def complete_number
+    if for_what == 'time'
+      self.plans.size
+    else
+      self.records.present? ? self.records.map(&(for_what.to_sym)).sum : 0
+    end
+  end
+  
   def status
     if self.users_count.zero?
       '还没有人参与'

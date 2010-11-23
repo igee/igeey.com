@@ -593,7 +593,7 @@ a#logo{
   font-weight:bold;
 }
 
-#record_counters{float:right}
+#record_counters{float:right;height:74px}
 
 #upload_photo{
   background-color:#f0f0f0;

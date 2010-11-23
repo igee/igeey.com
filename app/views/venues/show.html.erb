@@ -30,10 +30,10 @@
   <div class="box">
     <h4>获得服务统计：</h4>
     <div id="record_counters">
-      <% [[@venue.time_count,'小时'],[@venue.money_count,'元捐款'],[@venue.goods_count,'件物品']].each do |counter_list|%>
-        <div class="record_counter">
-          <h2><%= counter_list[0] %></h2>
-          <span><%= counter_list[1]%></span>
+      <% [[@venue.records_count,'行动次数'],[@venue.time_count,'志愿小时'],[@venue.goods_count,'物资捐赠']].each do |counter_list|%>
+        <div class="record_counter_wrapper">
+          <h4><%= counter_list[1] %></h4>
+          <h2 class="record_counter"><%= counter_list[0] %></h2>
         </div>
       <%end%>
     </div>
