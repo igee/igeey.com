@@ -46,11 +46,11 @@ class Plan < ActiveRecord::Base
   
   def description
     if self.action.for_what == 'money'
-      "要为#{self.venue.name}捐款#{self.money}元，用于#{self.calling.donate_for}。"
+      "要为#{self.venue.name}捐款#{self.money}元，用于#{self.calling.donate_for}"
     elsif self.action.for_what == 'goods'
-      "要为#{self.venue.name}捐赠#{self.goods}件#{self.calling.goods_is}。"
+      "要为#{self.venue.name}捐赠#{self.goods}件#{self.calling.goods_is}"
     elsif self.action.for_what == 'time'
-      "要在#{self.formatted_plan_at}去#{self.venue.name}#{self.calling.do_what}。"
+      "要在#{self.formatted_plan_at}去#{self.venue.name}#{self.calling.do_what}"
     end
   end
   

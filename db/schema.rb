@@ -25,6 +25,7 @@ ActiveRecord::Schema.define() do
     t.string  :slug,             :limit => 40
     t.string  :condition_factor, :limit => 40
     t.integer :condition_number
+    t.string  :cover_file_name
     t.text    :intro
   end
   

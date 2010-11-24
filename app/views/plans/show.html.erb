@@ -44,7 +44,7 @@
             <div class="saying">
               
               <p class="impact" style="font-size:20px">
-                <%="#{@plan.user.login}#{@plan.description}"%>
+                <%="#{@plan.user.login}#{@plan.description}。"%>
               </p>
               
             </div>
@@ -81,19 +81,19 @@
         </div>
       </div>
       
-      <div style="background-color:#fff;padding:6px 20px;width:60px;-moz-border-radius:8px 8px 0 0;-webkit-border-radius:8px 8px 0 0"><h4 style="margin:0">行动详情</h4></div>
+      <div style="background-color:#fff;padding:6px 20px;width:64px;-moz-border-radius:8px 8px 0 0;-webkit-border-radius:8px 8px 0 0;text-align:center"><h4 style="margin:0">行动详情</h4></div>
       <div style="background-color:#fff;padding:20px;-moz-border-radius:0 8px 8px 8px;-webkit-border-radius:0 8px 8px 8px;margin-bottom:10px;">            
         <div class="box">
-          <div class="action_status">
+          <div class="calling_status">
             <div style="padding:0 20px;height:100px;overflow:hidden;zoom:1">
               <%= render :partial => '/venues/venue',:object => @venue%>
             </div>
             <h4>受益聚点</h4>
           </div>
           
-          <div class="action_status">
+          <div class="calling_status">
             <div style="text-align:center;height:80px;padding:10px 0">
-              <span style="font-size:64px;font-family:Ariel;font-weight:bold;color:#004d68;line-height:70px"><%= @calling.percentage %>%</span>
+              <span style="font-size:58px;font-family:Ariel;font-weight:bold;color:#004d68;line-height:70px"><%= @calling.percentage %>%</span>
               <br/>
               <span>
                 <%= "目标#{@calling.total_number_tag}，"%>
@@ -103,7 +103,7 @@
             <h4>完成度</h4>
           </div>
           
-          <div class="action_status">
+          <div class="calling_status">
             <div style="text-align:center;height:80px;padding:10px 33px">
               <div class="action_button"><%= @calling.action.name%></div>
             </div>

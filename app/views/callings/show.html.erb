@@ -12,7 +12,7 @@
         <% if @calling.can_edit_by?(current_user)%>
           <span>
           <%= link_to "修改","#{edit_calling_path(@calling)}?back_path=#{request.path}"%>
-          　<%= link_to "删除","#{calling_path(@calling)}?back_path=#{request.path}",:method => :delete,:confirm => '你确定要删除这个行动召集么' %>
+          　<%= link_to "删除","#{calling_path(@calling)}?back_path=#{request.path}",:method => :delete,:confirm => '你确定要删除这个召集行动么' %>
           </span>
         <% end %>
       </div>
@@ -50,14 +50,14 @@
 </div>
 
 <div class="box">
-  <div class="action_status">
+  <div class="calling_status">
    <div style="padding:0 20px;height:100px;overflow:hidden;zoom:1">
       <%= render :partial => '/venues/venue',:object => @venue%>
     </div>
     <h4>受益聚点</h4>
   </div>
   
-  <div class="action_status">
+  <div class="calling_status">
     <div style="text-align:center;height:80px;padding:10px 0">
       <span style="font-size:54px;"><%= @calling.percentage %></span>
       <span style="font-size:20px">%<span>
@@ -70,7 +70,7 @@
     <h4>完成度</h4>
   </div>
   
-  <div class="action_status">
+  <div class="calling_status">
     <div style="text-align:center;height:80px;padding:10px 33px">
       <div class="action_button"><%= @calling.action.name%></div>
     </div>

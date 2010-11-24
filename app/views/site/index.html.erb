@@ -7,8 +7,8 @@
 <div id="tabContaier">
   <ul>
     <li><%= link_to '正在召集','#calling_timeline'%></li>
+    <li><%= link_to '正在行动','#plan_timeline'%></li>
     <li><%= link_to '刚刚完成','#record_timeline'%></li>
-    <li><%= link_to '即将参与','#plan_timeline'%></li>
     <li><%= link_to '我的关注','#my_timeline',:id => 'my_timeline_tab' if logged_in?%></li>
     <li><%= link_to '我的城市','#city_timeline',:id => 'city_timeline_tab' if logged_in?%></li>
   </ul>
@@ -17,12 +17,12 @@
     <%= render :partial => '/public/event', :collection => @calling_timeline %>
   </div>
   
-  <div id="record_timeline" class="tabContents">
-    <%= render :partial => '/public/event', :collection => @record_timeline %>
-  </div>
-  
   <div id="plan_timeline" class="tabContents">
     <%= render :partial => '/public/event', :collection => @plan_timeline %>
+  </div>
+  
+  <div id="record_timeline" class="tabContents">
+    <%= render :partial => '/public/event', :collection => @record_timeline %>
   </div>
   
   <div id="my_timeline" class="tabContents">
@@ -72,7 +72,7 @@
       </p>
       <p>
         <%= image_tag "/images/icon/spread.png",:class=>"icon"%>
-        　发起行动召集，满足身边的公益需求
+        　发起召集行动，满足身边的公益需求
       </p>
       <p>
         <%= image_tag "/images/icon/respond.png",:class=>"icon"%>

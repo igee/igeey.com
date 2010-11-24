@@ -100,13 +100,36 @@ img{border:none;}
 
 .action_button:hover{color:#fff;background-color:#e86;}
 
-.action_status{float:left;padding:10px 20px;width:160px;text-align:center}
-#sidebar .action_status{width:120px;padding:0}
+.calling_status{
+  float:left;
+  padding:10px 20px;
+  width:160px;
+  text-align:center
+  }
+  
+#sidebar .calling_status{width:120px;padding:0}
 
-.action_status h4{margin-left:12px;width:110px;padding:4px 14px;background-color:#00c7ff;color:#fff}
-.action_counter_wrapper{position:absolute;text-align:right;width:55px;margin-top:36px;}
+.calling_status h4{
+  margin-left:12px;
+  width:110px;
+  padding:4px 14px;
+  background-color:#00c7ff;
+  color:#fff;
+  }
 
-span.action_counter{color:#fff;background-color:#e75;padding:2px 4px;font-size:10px}
+.action_counter_wrapper{
+  position:absolute;
+  text-align:right;
+  width:55px;
+  margin-top:36px;
+  }
+
+span.action_counter{
+  color:#fff;
+  background-color:#e75;
+  padding:2px 4px;
+  font-size:10px
+  }
 
 .title{
     font-size:16px;
@@ -488,7 +511,7 @@ a#logo{
     display:inline;
     font-size:24px;
     font-weight:bold;
-    margin-top:24px;
+    margin-top:4px;
     border:none;
     }
 
@@ -508,8 +531,8 @@ a#logo{
 #login_state span{color:#cdf}
     
 #header{
-    margin-top:24px;
     height:72px;
+    padding-top:40px;
     overflow:hidden;
     zoom:1;
     }
@@ -539,13 +562,16 @@ a#logo{
 
 #header .container{
   background:url('/images/cap.png');
-  height:96px;
+  padding-top:14px;
+  height:58px;
   }
 
 #content .container{background:#fff url('/images/background.png') repeat-y;}
 
-#footer .container{background:url('/images/shoes.png') no-repeat;height:48px}
-
+#footer .container{
+  background:url('/images/shoes.png') no-repeat;
+  height:48px;
+  }
 
 #sidebar{
     float:right;
@@ -556,16 +582,19 @@ a#logo{
 }
 
 #nav_links{
-  float:right;
-  margin:22px 280px 0;
+  margin-left:280px;
+  margin-right:280px;
   padding:4px 26px;
   background-color:#e4f3fb;
+  overflow:hidden;
+  zoom:1;
+  text-align:center;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   }
 
 #nav_links li{
-  float:right;
+  display:inline;
 }
 
 #nav_links a{

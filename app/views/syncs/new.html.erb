@@ -10,7 +10,7 @@
     <%= render :partial => '/users/user' ,:object => current_user %>
     <div class="saying" style="<%= 'width:360px' if params[:layout]=='false'%>">
       
-        <%= form.text_area :content,:value=>"我#{@syncable.description} " + eval("#{@sync.syncable_type.downcase}_url(#{@syncable.id})"),:style => "width:#{ params[:layout]=='false' ? '340px' : '440px'};height:80px"%>
+        <%= form.text_area :content,:value=>"我#{@syncable.description}#{  @sync.syncable_type == "Calling" ? {:time => "，请大家踊跃报名！",:goods => "，请大家支持！"}[@syncable.for_what.to_sym] : '。'} " + eval("#{@sync.syncable_type.downcase}_url(#{@syncable.id})"),:style => "width:#{ params[:layout]=='false' ? '340px' : '440px'};height:80px"%>
         <div class="explanation">截取前140字，剩余字数：<span id="character_count"></span></div>
       
     </div>

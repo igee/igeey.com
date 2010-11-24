@@ -57,7 +57,7 @@
     <div class="box" style="padding:0 10px">
       <ul>
         <li><%= link_to '添加/关注新聚点',(logged_in? && current_user.geo_id.present? && current_user.use_local_geo ? geo_path(current_user.geo_id) : geos_path)%></li>
-        <li><%= link_to '发起行动召集',following_venues_user_path(current_user) %></li>
+        <li><%= link_to '召集公益行动',following_venues_user_path(current_user) %></li>
         <li><%= link_to '记录公益行动',following_venues_user_path(current_user) %></li>
         <li><%= link_to '爱聚指南',guide_path %></li>
         <li><%= link_to '站务论坛',topics_path %></li>

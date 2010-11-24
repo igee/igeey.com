@@ -88,16 +88,16 @@ class Calling < ActiveRecord::Base
   
   def description
     if self.action.for_what == 'money'
-      "为#{self.venue.name}募捐#{self.total_money}元用于#{self.donate_for}。"
+      "为#{self.venue.name}募捐#{self.total_money}元用于#{self.donate_for}"
     elsif self.action.for_what == 'goods'
-      "为#{self.venue.name}募捐#{self.total_goods}#{self.unit}#{self.goods_is}。"
+      "为#{self.venue.name}募捐#{self.total_goods}#{self.unit}#{self.goods_is}"
     elsif self.action.for_what == 'time'
-      "为#{self.venue.name}召集#{self.total_people}人在#{self.formatted_do_at}去#{self.do_what}。"
+      "为#{self.venue.name}召集#{self.total_people}人在#{self.formatted_do_at}去#{self.do_what}"
     end
   end
   
   def name
-    "为#{self.venue.name}发起的行动召集"
+    "为#{self.venue.name}发起的召集"
   end
   
   def can_edit_by?(current_user)

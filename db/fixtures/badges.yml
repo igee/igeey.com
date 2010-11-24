@@ -12,7 +12,7 @@ badge_2:
   slug:      '1st_calling' 
   condition_factor: 'realtime_callings_count'
   condition_number: 1
-  intro:     '第一次发起行动召集，就可一获得小喇叭徽章'
+  intro:     '第一次发起召集行动，就可一获得小喇叭徽章'
   
 badge_3:
   id:        3
@@ -20,7 +20,7 @@ badge_3:
   slug:      '3rd_calling' 
   condition_factor: 'realtime_callings_count'
   condition_number: 3
-  intro:     '发起了三次的行动召集'
+  intro:     '发起了三次的召集行动'
 
 badge_4:
   id:        4
@@ -28,7 +28,7 @@ badge_4:
   slug:      '10th_calling' 
   condition_factor: 'realtime_callings_count'
   condition_number: 10
-  intro:     '发起了十次的行动召集'
+  intro:     '发起了十次的召集行动'
 
 badge_5:
   id:        5
@@ -36,7 +36,7 @@ badge_5:
   slug:      '20th_calling' 
   condition_factor: 'realtime_callings_count'
   condition_number: 20
-  intro:     '发起了二十次的行动召集'
+  intro:     '发起了二十次的召集行动'
   
 badge_6:
   id:        6
