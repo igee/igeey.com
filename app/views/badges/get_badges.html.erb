@@ -3,17 +3,13 @@
 <div id="badgeBox" class="floatBox text">
   <div class="dialog_title"><h4>Hi,你得到了新徽章！</h4><span id="close_dialog">关闭</span></div>
   <div class="dialog_content">
-    <% current_user.grants.where(:unread => true).map(&:badge).each do |badge|%>
-      <h3><%= badge.name%></h3>
-      <p><%= badge.intro%></p>
-    <% end %>
+    <%= render :partial => '/public/badge' ,:collection => current_user.grants.where(:unread => true).map(&:badge) %>
     <p style="text-align:right">
+      <span>获得的所有徽章都可以到你的个人页面查看</span>
       <%= button_to_function '确认',"javascript:$('#badgeBox #close_dialog').click()",:class => "button"%>
     </p>
-    
   </div>
 </div>
-
 
 <script type="text/javascript">
   $('#badgeBoxBg').attr('style',("width:100%;height:" + $(document).height() + "px;background-color:#000;filter:alpha(opacity=0.6);opacity:0.6;position:absolute;z-index:4;"))

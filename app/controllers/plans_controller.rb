@@ -12,9 +12,7 @@ class PlansController < ApplicationController
     @calling = Calling.find(params[:calling_id])
     @plan = @calling.plans.build(:plan_at => @calling.do_at)
     @plan.parent_id = params[:parent_id]
-    if params[:layout] == 'false'
-      render :layout => false
-    end  
+    render :layout => false if params[:layout] == 'false'
   end
   
   def create

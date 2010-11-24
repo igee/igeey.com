@@ -12,7 +12,7 @@ badge_2:
   slug:      '1st_calling' 
   condition_factor: 'realtime_callings_count'
   condition_number: 1
-  intro:     '第一次发起召集行动，就可一获得小喇叭徽章'
+  intro:     '第一次发起召集行动，小喇叭徽章奖励给你，祝你的处女座召集行动顺利完成！'
   
 badge_3:
   id:        3
@@ -20,7 +20,7 @@ badge_3:
   slug:      '3rd_calling' 
   condition_factor: 'realtime_callings_count'
   condition_number: 3
-  intro:     '发起了三次的召集行动'
+  intro:     '发起了3次的召集行动，奖励给你扩音器徽章，再接再励用你的声音影响更多人行动。'
 
 badge_4:
   id:        4
@@ -28,7 +28,7 @@ badge_4:
   slug:      '10th_calling' 
   condition_factor: 'realtime_callings_count'
   condition_number: 10
-  intro:     '发起了十次的召集行动'
+  intro:     '发起了10次的召集行动，奖励给你广播站徽章，相信在你的号召已经有很多的公益行动产生，继续保持吧。'
 
 badge_5:
   id:        5
@@ -36,7 +36,7 @@ badge_5:
   slug:      '20th_calling' 
   condition_factor: 'realtime_callings_count'
   condition_number: 20
-  intro:     '发起了二十次的召集行动'
+  intro:     '发起了20次的召集行动，奖励给你卫星电台徽章。Woo! 你简直就是个公益家，相信你已经能看到你的号召带来的明显改变。'
   
 badge_6:
   id:        6
@@ -44,7 +44,7 @@ badge_6:
   slug:      '1st_plan' 
   condition_factor: 'realtime_plans_count'
   condition_number: 1
-  intro:     '第一次参与行动'
+  intro:     '第一次参与行动，奖励给你行动新人徽章，祝你能顺利完成你在爱聚的公益初体验！'
   
 badge_7:
   id:        7
@@ -52,7 +52,7 @@ badge_7:
   slug:      '5th_plan' 
   condition_factor: 'realtime_plans_count'
   condition_number: 5
-  intro:     '参与了5次公益行动'
+  intro:     '参与了5次公益行动，奖励给你行动先锋徽章，看来你已经找到做公益的感觉了，继续加油！'
 
 badge_8:
   id:        8
@@ -60,7 +60,7 @@ badge_8:
   slug:      '10th_plan' 
   condition_factor: 'realtime_plans_count'
   condition_number: 10
-  intro:     '参与了10次公益行动'
+  intro:     '参与了10次公益行动，奖励给你行动达人徽章，10次已经不是个小数目了，绝对配的上行动达人的称号！'
 
 badge_9:
   id:        9
@@ -68,7 +68,7 @@ badge_9:
   slug:      '20th_plan' 
   condition_factor: 'realtime_plans_count'
   condition_number: 20
-  intro:     '参与了20次公益行动'
+  intro:     '参与了20次公益行动，奖励给你行动大师徽章，继续用你的行动改变世界吧！'
 
 badge_10:
   id:        10
@@ -76,7 +76,7 @@ badge_10:
   slug:      '50th_plan' 
   condition_factor: 'realtime_plans_count'
   condition_number: 50
-  intro:     '参与了50次公益行动'
+  intro:     '参与了50次公益行动，'
 
 badge_11:
   id:        11
@@ -84,7 +84,7 @@ badge_11:
   slug:      'linked_douban' 
   condition_factor: 'douban_count'
   condition_number: 1
-  intro:     '链接了豆瓣'
+  intro:     '成功连接了豆瓣，奖励给你豆瓣徽章，这样大家就能知道你是可爱的豆瓣用户了，别忘了利用同步功能把你的公益行动告诉你在豆瓣的好友们。'
 
 badge_12:
   id:        12
@@ -92,7 +92,7 @@ badge_12:
   slug:      'linked_sina' 
   condition_factor: 'sina_count'
   condition_number: 1
-  intro:     '链接了新浪微博'
+  intro:     '成功连接了新浪微博，奖励给你新浪微博徽章，相信喜欢用微博用户都是很酷的，别忘了通过同步让你朋友们知道做公益也很酷。'
 
 badge_13:
   id:        13
@@ -100,29 +100,29 @@ badge_13:
   slug:      '20th_sync' 
   condition_factor: 'syncs_count'
   condition_number: 20
-  intro:     '向站外同步了20次'
+  intro:     '向站外同步了20次，奖励给你宣传委员徽章，很可能你有着自己都不敢相信的公益影响力。'
 
 badge_14:
   id:        14
   name:      '一次性相机'
   slug:      '5th_photo' 
-  condition_factor: 'photo_count'
+  condition_factor: 'photos_count'
   condition_number: 5
-  intro:     '上传了5张照片'
+  intro:     '上传了5张照片，奖励给你一次性相机徽章，”有图有真相“，让公益更有说服力。'
 
 badge_15:
   id:        15
   name:      'LOMO相机'
   slug:      '20th_photo' 
-  condition_factor: 'photo_count'
+  condition_factor: 'photos_count'
   condition_number: 20
-  intro:     '上传了20张照片'
+  intro:     '上传了20张照片，奖励给你LOMO相机徽章，照片往往是最能打动人的，希望你的照片能够打动更多的人。'
 
 badge_16:
   id:        16
   name:      '单反相机'
   slug:      '50th_photo' 
-  condition_factor: 'photo_count'
+  condition_factor: 'photos_count'
   condition_number: 50
   intro:     '上传了50张照片'
 
@@ -132,7 +132,7 @@ badge_17:
   slug:      '1st_venue' 
   condition_factor: 'venues_count'
   condition_number: 1
-  intro:     '添加了一个新聚点'
+  intro:     '第一次添加聚点，奖励给你哥伦布水手徽章，为你添加的聚点做些什么事情吧，比如上传一些照片？'
 
 badge_18:
   id:        18
@@ -140,12 +140,12 @@ badge_18:
   slug:      '5st_venue' 
   condition_factor: 'venues_count'
   condition_number: 5
-  intro:     '添加了5个新聚点'
+  intro:     '添加了5个新聚点，奖励给你哥伦布舵手徽章，继续探索更多的聚点吧。'
 
 badge_19:
   id:        19
   name:      '哥伦布船长'
-  slug:      '10st_venue' 
+  slug:      '10st_venue'
   condition_factor: 'venues_count'
   condition_number: 10
   intro:     '添加了10个新聚点'
@@ -157,4 +157,4 @@ badge_20:
   slug:      '25th_follow' 
   condition_factor: 'followings_count'
   condition_number: 25
-  intro:     '关注了25人'
+  intro:     '你关注了25次，眼观六路徽章奖励给你，你的公益消息最灵通！'

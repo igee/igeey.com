@@ -1,11 +1,21 @@
 class Badge < ActiveRecord::Base
-  has_many :grants
-  has_many :owners,:through => :grant,:class_name => 'User'
   
+  CONDITIONS_HASH = {'realtime_plans_count' => '参与行动次数',
+                     'realtime_callings_count' => '召集行动次数',
+                     'douban_count' => '连接豆瓣',
+                     'sina_count' => '连接新浪',
+                     'venues_count' => '添加聚点数',
+                     'photos_count' => '上传照片数',
+                     'syncs_count'=> '同步次数',
+                     'followings_count'=> '关注次数',
+                    }
+  
+  has_many :grants
+  has_many :owners,:through => :grant,:class_name => 'User'  
   has_attached_file :cover, :styles => {:_143x143 => ["143x143#"],:_50 => ["50x50#"]},
-                            :url=>"/media/:attachment/:id/:style.:extension",
+                            :url=>"/media/:attachment/badges/:id/:style.:extension",
                             :default_style=> :_50x50,
-                            :default_url=>"/defaults/:attachment/:style.png"
+                            :default_url=>"/defaults/:attachment/badge/:style.png"
   
   validates :cover_file_name,:format => { :with => /([\w-]+\.(gif|png|jpg))|/ }
   

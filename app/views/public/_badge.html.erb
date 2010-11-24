@@ -1,0 +1,8 @@
+<div class="event_box">
+    <%= image_tag badge.cover.url('_143x143'),:style=>"float:left"%>
+    <div style="margin-left:170px;height:143px;">
+      <%= link_to('修改',edit_badge_path(badge),:style=>'float:right',:class => 'open_dialog',:title => '修改徽章' ) if logged_in? && current_user.is_admin%>
+      <h3><%= badge.name%></h3>
+      <p><%= badge.intro%></p>
+    </div>
+</div>

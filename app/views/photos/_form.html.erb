@@ -1,7 +1,7 @@
 <div id="upload_photo">
   <% if logged_in?%>
     <div>
-      <%= form_for @photo,:url => photos_path,:html => { :multipart => true } do |form| %>
+      <%= form_for @photo,:html => { :multipart => true } do |form| %>
         <%= form.hidden_field :imageable_type,:value => imageable.class %>
         <%= form.hidden_field :imageable_id,:value => imageable.id %>
         <p>

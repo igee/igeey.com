@@ -7,17 +7,17 @@
   <div class="dialog_leftbar">
     <%= form_for :user, :url => users_path do |f| -%>
     <p>
-      <%= f.label 'login','用户名:' %>
+      <%= f.label 'login','用户名：' %>
       <%= f.text_field :login,:size => 14 %>
     </p>
     
     <p>
-      <%= f.label 'email','邮箱:　' %>
+      <%= f.label 'email','　邮箱：' %>
       <%= f.text_field :email, :size => 14 %>
     </p>
     
     <p>
-      <%= f.label 'password','密码:　' %>
+      <%= f.label 'password','　密码：' %>
       <%= f.password_field :password,:size => 14,:class=> 'with_tip',:title => "密码不要少于6位" %>
     </p>
     
@@ -25,12 +25,12 @@
       
     </p>
     
-    <p>
-      <%= submit_tag 'Ok',:class => 'button' %>
+    <p style="text-align:center">
+      <%= submit_tag '注册',:class => 'button' %>
     </p>
     
     <script type="text/javascript">
-      $('#confirmation').html('<%= raw "#{f.label 'password_confirmation','第二遍:'} #{f.password_field :password_confirmation, :size => 14,:class=> 'with_tip',:title =>'再输入一遍密码'}" %>')
+      $('#confirmation').html('<%= raw "#{f.label 'password_confirmation','第二遍：'} #{f.password_field :password_confirmation, :size => 14,:class=> 'with_tip',:title =>'再输入一遍密码'}" %>')
     </script>
     <% end -%>
   </div>

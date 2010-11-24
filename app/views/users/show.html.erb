@@ -32,9 +32,7 @@
 <% content_for :sidebar do %>
   <div class="box">
     <h4>获得徽章:</h4>
-    <% @user.grants.map(&:badge).each do |badge|%>
-      <%= badge.name %>
-    <% end %>
+    <%= render :partial => '/badges/badge' ,:collection => @user.grants.map(&:badge) %>
   </div>
   
   <%=render :partial => "/public/followers" %>

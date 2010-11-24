@@ -53,7 +53,7 @@ a:hover{color:#f63}
 input[type="text_field"],input[type="text"],input[type="password"]{
     text-decoration:none;
     border:1px solid #bbb;
-    margin:0px 4px;
+    margin:0px 0px;
     padding:1px 4px;
     background-color:white;
     -webkit-border-radius:3px;-moz-border-radius:3px;border-radius: 3px;
@@ -117,14 +117,14 @@ img{border:none;}
   color:#fff;
   }
 
-.action_counter_wrapper{
+.embed_number_wrapper{
   position:absolute;
   text-align:right;
   width:55px;
   margin-top:36px;
   }
 
-span.action_counter{
+span.embed_number{
   color:#fff;
   background-color:#e75;
   padding:2px 4px;
@@ -237,42 +237,15 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 .actions_counter{
   float:left;
   width:74px;
-  margin:3px 0
+  margin-bottom:3px;
   }
 
-#error_explanation{
-  text-align:left;
-  width:580px;
-  padding:2px 20px;
-  background-color:#e75;
-  -webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;
-  }
-
-#error_explanation li{
-  list-style:none;
-  color:#fff
-}
-
-#guide{
-  position:relative;
-  left:-14px;
-  top:-18px;
-  width:239px;
-  padding:10px 20px;
-  background-color:#e0ffc0;
-  border-bottom:2px solid #cea
-  }
-  
-#guide p{
-  color:#896;
-  line-height:24px}
-  
 .icon{
   position:relative;
   top:3px;
   }
     
-.user{
+.user,.badge{
     float:left;
     width:62px;
     height:72px;
@@ -284,7 +257,15 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
     width:48px;
     height:48px;
     overflow:hidden;
-    }    
+    }
+    
+.badge_cover{
+    margin-top:6px;
+    width:50px;
+    height:50px;
+    overflow:hidden;
+    }
+
 
 .record_counter_wrapper{
   float:left;
@@ -504,7 +485,7 @@ input.todo:hover{
 
 .with_calendar{width:77px}
 
-a#logo{
+#logo{
   padding:0px 5px 10px;
     color:#fff;
     position:absolute;
@@ -514,6 +495,35 @@ a#logo{
     margin-top:4px;
     border:none;
     }
+
+
+#error_explanation{
+  text-align:left;
+  width:580px;
+  padding:2px 20px;
+  background-color:#e75;
+  -webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;
+  }
+
+#error_explanation li{
+  list-style:none;
+  color:#fff
+}
+
+#guide{
+  position:relative;
+  left:-14px;
+  top:-18px;
+  width:239px;
+  padding:10px 20px;
+  background-color:#e0ffc0;
+  border-bottom:2px solid #cea
+  }
+  
+#guide p{
+  color:#896;
+  line-height:24px
+  }
 
 #login_state{
   float:right;
@@ -603,8 +613,8 @@ a#logo{
   font-weight:bold;
   padding:5px 16px;
   margin:0 4px;
+  _margin:0 2px;
   }
-
 
 #footer_links{
   margin:0;
@@ -641,7 +651,7 @@ a#logo{
   display:block;
   background-color:#68c;
   padding:14px 2px;
-  border:1px solid #888;
+  border:1px solid #57b;
   line-height:18px;
   font-size:15px;
   position:fixed;
@@ -666,12 +676,14 @@ a#logo{
   display:block;
   margin:0;
 }
+
 #tabContaier li{
   float:left;
   display:block;
   list-style:none;
   margin:0 3px;
 }
+
 #tabContaier li a{
   border:1px solid #bbb;
   border-bottom:none;
@@ -690,10 +702,12 @@ a#logo{
   border-top-right-radius: 5px;
   -moz-border-radius: 5px 5px 0 0;
 }
+
 #tabContaier li a:hover{
   background:#f0f0f0;
   border-color:#bbb;
 }
+
 #tabContaier li a.active{
   height:27px;
   background:#fff;

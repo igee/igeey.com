@@ -1,19 +1,38 @@
 class BadgesController < ApplicationController
+  respond_to :html
+    
   before_filter :login_required
-  after_filter  :clean_unread
+  after_filter  :clean_unread,:only => [:get_badges]
+  before_filter :admin_required,:only => [:index,:edit,:update]
   
   def get_badges
     @badges = current_user.grants.where(:unread => true).map(&:badge)
     render :layout => false
   end
   
-  private
-  def find_calling
-    @calling = Calling.find(params[:id])
+  def index
+    @badges = Badge.all
   end
+  
+  def edit
+    @badge = Badge.find(params[:id])
+    render :layout => false if params[:layout] == 'false'
+  end
+  
+  def update
+    @badge = Badge.find(params[:id])
+    @badge.update_attributes(params[:badge])
+    redirect_to badges_path
+  end
+  
+  private
   
   def clean_unread
     current_user.grants.where(:unread => true).map{|g| g.update_attribute(:unread,false)}
+  end
+  
+  def admin_required
+    redirect_to root_path unless logged_in? && current_user.is_admin
   end
     
 end
