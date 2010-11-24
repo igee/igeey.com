@@ -1,6 +1,6 @@
 <div class="box">
   <%= form_for @badge,:html => { :multipart => true } do |form| %>
-    <%= image_tag @badge.cover.url('_143x143'),:style=>"float:left"%>
+    <%= image_tag @badge.cover.url('_120x120'),:style=>"float:left"%>
     <div style="margin-left:170px;height:143px;">
         <%= form.label :name,'名称：'%> <%= form.text_field :name,:size => 8%>
         <br/>
