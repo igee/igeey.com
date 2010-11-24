@@ -2,12 +2,9 @@ class SiteController < ApplicationController
   before_filter :login_required, :except=> [:index,:faq,:guide,:about,:report]
   
   def index
-    # group callings,plans and records to list
-    @public_timeline = Calling.limit(10)
-    @public_timeline += Plan.limit(10)
-    @public_timeline = @public_timeline.sort{|x,y| y.created_at <=> x.created_at }[0..10]
-    @record_timeline = Record.limit(10)
-    @my_plans = current_user.plans.undone if logged_in?
+    @calling_timeline = Calling.limit(15)
+    @plan_timeline = Plan.limit(15)
+    @record_timeline = Record.limit(15)
   end
   
   def myigee
@@ -34,6 +31,7 @@ class SiteController < ApplicationController
   end
   
   def my_timeline
+    # group callings,plans and records to list
     if logged_in?
       @my_followings = current_user.followings
       @my_timeline = current_user.following_callings
