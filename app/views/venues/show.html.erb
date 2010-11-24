@@ -10,7 +10,7 @@
   </div>
   <div style="width:440px;height:122px;margin-left:180px">
     <div style="float:right"><%= raw(follow_to(@venue)) %></div>
-    <h4 class="title"><%= @venue.name%> <span><%= @venue.geo.name %></span></h4>
+    <h3 class="title"><%= @venue.name%> <span><%= @venue.geo.name %></span></h3>
     <p><%= @venue.intro%></p>      
   </div>
 </div>
@@ -28,7 +28,7 @@
 <%= render :partial => '/photos/gallery' ,:locals => {:imageable => @venue}%>
 
 <div class="box">
-  <h4>聚点论坛：
+  <h4>论坛：
     　<%= image_tag "/images/icon/talk.gif",:class=>"icon"%>
     <span><%= link_to '发布话题',new_topic_path(:venue_id => @venue.id)%></span>
   </h4>
