@@ -19,8 +19,9 @@
               <%= @calling.present? ? @calling.donate_for : form.text_field(:donate_for, :size => 8,:placeholder => "用于做什么？")%>。
               <%= form.hidden_field(:donate_for,:value => @calling.donate_for) if @record.plan.present?%>
             <% elsif @action.for_what == 'goods' %>
-              捐赠了<%= form.text_field :goods, :size => 4 ,:placeholder => "多少",:value => (@record.goods || (@plan.present? && @plan.goods)) || nil%>件<%= @record.plan.present? ? @calling.goods_is : form.text_field(:goods_is, :size => 8,:placeholder => "物资名称？")%>
+              捐赠了<%= form.text_field :goods, :size => 4 ,:placeholder => "多少",:value => (@record.goods || (@plan.present? && @plan.goods)) || nil%><span id="defalut_unit" style="font-size:16px;color:#505050;font-weight:bold;"><%= @unit.present? ? @unit : '件'%></span><%= form.text_field :unit,:size =>2,:style => "display:none;",:placeholder => '单位'%><%= @record.plan.present? ? @calling.goods_is : form.text_field(:goods_is, :size => 8,:placeholder => "物资名称")%>
               给<%="#{@venue.name}"%>。
+              <span><%= link_to "修改单位","#",:onclick => "javascript:$('#defalut_unit').hide();$('#record_unit').show();$(this).hide();return false",:id=>"modify_unit"%></span>
               <%= form.hidden_field(:goods_is,:value => @calling.goods_is) if @record.plan.present?%>
             <% elsif @action.for_what == 'time' %>
               去<%="#{@venue.name}"%><%= form.text_field :do_what, :size => 7 ,:placeholder => "做了什么？",:value => (@calling.do_what if @calling)%><%= form.text_field :time, :size => 3,:placeholder => "多少" %> 小时。
@@ -45,5 +46,8 @@
 <% content_for :extension do %>
 <script type="text/javascript" charset="utf-8">
   $(document).ready(DateTimeShortcuts.init);
+  <% if @record.errors[:unit].present? %>
+    $('#defalut_unit').hide();$('#modify_unit').hide();$('#record_unit').show();
+  <% end %>
 </script>
 <% end %>  

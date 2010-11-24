@@ -93,8 +93,7 @@
           
           <div class="action_status">
             <div style="text-align:center;height:80px;padding:10px 0">
-              <span style="font-size:54px;font-family:ariel;font-weight:bold;color:#004d68;"><%= @calling.percentage %></span>
-              <span style="font-size:20px;color:#004d68;">%<span>
+              <span style="font-size:64px;font-family:Ariel;font-weight:bold;color:#004d68;line-height:70px"><%= @calling.percentage %>%</span>
               <br/>
               <span>
                 <%= "目标#{@calling.total_number_tag}，"%>
@@ -116,9 +115,7 @@
           <h4>发起人说：</h4>
             <%= render :partial => '/users/user' ,:object => @calling.user %>
             <div class="saying">
-              <pre class="explanation" >
-                <%= @calling.detail %>
-              </pre>
+              <pre class="explanation"><%= @calling.detail %></pre>
             </div>
             <div class="saying_tail"></div>
         </div>

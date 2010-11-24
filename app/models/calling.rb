@@ -19,7 +19,7 @@ class Calling < ActiveRecord::Base
   validates :do_at,:date => {:after_or_equal_to => Date.today.to_date,:allow_nil => true}
   
   def validate
-    errors["total_#{for_what}"] << '数量必须为大于0的整数' unless total_number > 0
+    errors["total_#{for_what}"] << '数量必须为大于0的整数' unless total_number && (total_number > 0)
     errors[({'time' => :do_what,'money' => :donate_for,'goods' => :goods_is}[for_what])] = '请将记录信息填写完整' if content.blank?
     errors[:unit] = '请填写物资单位' if (for_what == 'goods') && unit.blank?
     errors[:do_at] = '请填写集合日期' if (for_what == 'time') && do_at.blank?

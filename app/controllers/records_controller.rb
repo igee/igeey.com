@@ -29,7 +29,8 @@ class RecordsController < ApplicationController
     @calling = @plan.nil? ? @record.calling : @plan.calling
     @venue = @calling.nil? ? @record.venue : @calling.venue
     @action = @calling.nil? ? @record.action : @calling.action
-    @record = Record.new(:action => @action,:venue => @venue,:calling => @calling,:plan => @plan)
+    @unit = @calling.nil? ? '件' : @calling.unit
+    @record = Record.new(:action => @action,:venue => @venue,:calling => @calling,:plan => @plan,:unit => @unit)
   end
   
   def create
