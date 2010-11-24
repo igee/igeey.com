@@ -34,6 +34,7 @@ class VenuesController < ApplicationController
     @timeline = @timeline.sort{|x,y| y.created_at <=> x.created_at }
     @photo = Photo.new
     @photos = @venue.photos
+    @topics = @venue.topics
     @followers = @venue.followers
   end
   

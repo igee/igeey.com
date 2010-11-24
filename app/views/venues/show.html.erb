@@ -26,6 +26,12 @@
 
 <%= render :partial => '/photos/gallery' ,:locals => {:imageable => @venue}%>
 
+<div class="box">
+  <div style="float:right"><%= image_tag "/images/icon/talk.gif",:class=>"icon"%> <%= link_to '发布话题',new_topic_path(:venue_id => @venue.id)%></div>
+  <h4>聚点论坛：</h4>
+  <%= render :partial => '/public/topic' ,:collection => @topics%>
+</div>
+
 <% content_for :sidebar do %>
   <div class="box">
     <h4>获得服务统计：</h4>

@@ -5,12 +5,12 @@ class TopicsController < ApplicationController
   after_filter  :clean_unread, :only => [:show]
   
   def index
-    @topics = Topic.all
+    @topics = Topic.where(:venue_id => nil).limit(20)
     @my_topics = (current_user.comments.where(:commentable_type => 'Topic').map(&:commentable) + current_user.topics).uniq if current_user
   end
   
   def new
-    @topic = Topic.new
+    @topic = Topic.new(:venue_id => params[:venue_id])
   end
   
   def create
@@ -21,6 +21,9 @@ class TopicsController < ApplicationController
   end
   
   def edit
+  end
+  
+  def update
   end
   
   def show
