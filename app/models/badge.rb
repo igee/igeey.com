@@ -12,7 +12,7 @@ class Badge < ActiveRecord::Base
   
   has_many :grants
   has_many :owners,:through => :grant,:class_name => 'User'  
-  has_attached_file :cover, :styles => {:_120x120 => ["120x120#"],:_50 => ["50x50#"]},
+  has_attached_file :cover, :styles => {:_120x120 => ["120x120#"],:_50x50 => ["50x50#"]},
                             :url=>"/media/:attachment/badges/:id/:style.:extension",
                             :default_style=> :_50x50,
                             :default_url=>"/defaults/:attachment/badge/:style.png"
