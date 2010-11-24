@@ -684,8 +684,6 @@ input.todo:hover{
 }
 
 #tabContaier li a{
-  border:1px solid #bbb;
-  border-bottom:none;
   background:#ddd;
   color:#aaa;
   font-size:13px;
@@ -697,20 +695,21 @@ input.todo:hover{
   top:1px;
   text-align:center;
   width:66px;
+  border:1px solid #bbb;
+  border-bottom:1px solid #bbb;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   -moz-border-radius: 5px 5px 0 0;
 }
 
 #tabContaier li a:hover{
-  background:#f0f0f0;
+  background:#f3f3f3;
   border-color:#bbb;
 }
 
 #tabContaier li a.active{
-  height:27px;
   background:#fff;
   border:1px solid #bbb;
-  border-bottom:none;
+  border-bottom:1px solid #fff;
   color:#666;
 }
