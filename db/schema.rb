@@ -107,6 +107,7 @@ ActiveRecord::Schema.define() do
     t.string   :goods_is,    :limit => 40
     t.integer  :time
     t.string   :do_what,     :limit => 40
+    t.string   :unit,        :limit => 40
     t.datetime :done_at
     t.text     :detail
     t.integer  :comments_count,   :default => 0

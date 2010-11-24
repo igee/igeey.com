@@ -19,6 +19,7 @@ class Record < ActiveRecord::Base
   def validate
     errors[for_what] << '数量必须为大于0的整数' unless number > 0
     errors[{'time' => :do_what,'money' => :donate_for,'goods' => :goods_is}[for_what]] = '请将记录信息填写完整' if content.blank?
+    errors[:unit] = '请填写物资单位' if (for_what == 'goods') && unit.blank?
   end
   
   def content
@@ -43,7 +44,7 @@ class Record < ActiveRecord::Base
     if self.action.for_what == 'money'
       result << "捐增了#{self.money}元到#{self.venue.name}，用于#{self.donate_for}。"
     elsif self.action.for_what == 'goods'
-      result << "捐赠了#{self.goods}件#{self.goods_is}给#{self.venue.name}。"
+      result << "捐赠了#{self.goods}#{self.unit}#{self.goods_is}给#{self.venue.name}。"
     elsif self.action.for_what == 'time'
       result << "去#{self.venue.name}#{self.do_what}#{self.time}个小时。"
     end
