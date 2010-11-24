@@ -7,7 +7,9 @@
     <li><%= image_tag "/images/icon/douban#{'_gary' unless @user.douban?}.gif",:class=> 'icon'%> <%= @user.douban? ? '豆瓣连接成功' : '还没有和豆瓣链接'%> <%= link_to('立即连接',:controller => 'oauth', :action => 'douban') unless @user.douban?%></li>
     <li><%= image_tag "/images/icon/sina#{'_gary' unless @user.sina?}.gif",:class=> 'icon'%> <%= @user.sina? ? '新浪微博连接成功' : '还没有和新浪微博连接'%> <%= link_to('立即连接',:controller => 'oauth', :action => 'sina') unless @user.sina?%></li>
   </ul>
-<%= "设置好了？" + link_to('返回', (params[:back_path] + '?' + params.map{|d| "#{d[0]}=#{d[1]}&"}.to_s),:class => "button") if params[:back_path].present? %>
+  <p>
+    <%= raw "设置好了？#{link_to('返回', (params[:back_path] + '?' + params.map{|d| "#{d[0]}=#{d[1]}&"}.to_s),:class => "button")}" if params[:back_path].present? %>
+  </p>
 </div>
 
 <div class="setting_box">

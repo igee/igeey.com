@@ -7,7 +7,8 @@ body{
 body,h1{margin:0}
 
 h3,h4,h5,h6{
-    margin:0.5em 0;
+    padding:0 0 0.8em;
+    margin:0;
     color:#666;
     }
     
@@ -103,6 +104,7 @@ img{border:none;}
 .calling_status{
   float:left;
   padding:10px 20px;
+  _padding:10px;
   width:160px;
   text-align:center
   }
@@ -147,7 +149,7 @@ span.embed_number{
     clear:both;
     overflow:hidden;
     zoom:1;
-    margin:5px 0 15px;
+    margin:8px 0 18px;
 }
 
 button,.button{
@@ -460,7 +462,7 @@ input.todo:hover{
   }
 
 .setting_box,.profile_box,.intro_box{
-  padding:10px 20px;
+  padding:15px 20px 10px;
   margin:10px 0 20px;
   clear:both;
   border-bottom:2px solid;

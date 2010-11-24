@@ -97,7 +97,13 @@ class Calling < ActiveRecord::Base
   end
   
   def name
-    "为#{self.venue.name}发起的召集"
+    if self.action.for_what == 'money'
+      "#{self.user.login}为#{self.venue.name}募捐"
+    elsif self.action.for_what == 'goods'
+      "#{self.user.login}为#{self.venue.name}募捐#{self.goods_is}"
+    elsif self.action.for_what == 'time'
+      "#{self.user.login}为#{self.venue.name}召集人#{self.do_what}"
+    end
   end
   
   def can_edit_by?(current_user)

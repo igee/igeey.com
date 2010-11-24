@@ -42,7 +42,7 @@ class Record < ActiveRecord::Base
   def description
     result = "在#{self.formatted_done_at}"
     if self.action.for_what == 'money'
-      result << "捐增了#{self.money}元到#{self.venue.name}，用于#{self.donate_for}"
+      result << "捐增了#{self.money}元给#{self.venue.name}，用于#{self.donate_for}"
     elsif self.action.for_what == 'goods'
       result << "捐赠了#{self.goods}#{self.unit}#{self.goods_is}给#{self.venue.name}"
     elsif self.action.for_what == 'time'
@@ -50,8 +50,15 @@ class Record < ActiveRecord::Base
     end
   end
   
+  
   def name
-    "在#{self.venue.name}的行动记录"
+    if self.action.for_what == 'money'
+      "#{self.user.login}为#{self.venue.name}捐款"
+    elsif self.action.for_what == 'goods'
+      "#{self.user.login}为#{self.venue.name}捐赠l#{self.goods_is}"
+    elsif self.action.for_what == 'time'
+      "#{self.user.login}去#{self.venue.name}#{self.do_what}"
+    end
   end
   
     

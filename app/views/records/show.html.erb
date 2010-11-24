@@ -1,4 +1,5 @@
-  <div class="box">
+<% @title = @record.name%>
+<div class="box">
     <%= render :partial => '/users/user' ,:object => @record.user %>
       <div class="saying">
         <p class="impact">

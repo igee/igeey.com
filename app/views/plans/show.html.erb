@@ -1,13 +1,11 @@
-
+<% @title = @plan.name%>
   <div style="background-color:#fff;padding:10px 20px;border-radius:8px;-moz-border-radius:8px;-webkit-border-radius:8px;margin-bottom:20px;">        
     <div class="box">
       <%= render :partial => '/users/user' ,:object => @plan.user %>
         <div class="saying">
-          
           <p class="impact" style="font-size:20px">
             <%="#{@plan.user.login}#{@plan.description}。"%>
           </p>
-          
         </div>
         <div class="saying_tail"></div>      
         <div style="clear:both;text-align:right">
@@ -20,7 +18,7 @@
     <div class="box">
       <div style="text-align:center;">
         <% if @plan.is_done%>
-            计划已完成 <%= link_to '立即查看',@plan.record %>
+            计划已完成 <%= link_to '立即查看',record_path(@plan.record) %>
         <% else %>
           <% if @plan.can_edit_by?(current_user) %>
             <%= link_to "已经完成?","#{new_record_path}?plan_id=#{@plan.id}",:class => "big_button" %>
@@ -42,7 +40,7 @@
     </div>
   </div>
   
-  <div style="background-color:#fff;padding:6px 20px;width:64px;-moz-border-radius:8px 8px 0 0;-webkit-border-radius:8px 8px 0 0;text-align:center"><h4 style="margin:0">行动详情</h4></div>
+  <div style="background-color:#fff;padding:6px 20px;width:70px;-moz-border-radius:8px 8px 0 0;-webkit-border-radius:8px 8px 0 0;text-align:center"><h4 style="margin:0">行动详情</h4></div>
   <div style="background-color:#fff;padding:20px;-moz-border-radius:0 8px 8px 8px;-webkit-border-radius:0 8px 8px 8px;margin-bottom:10px;">            
     <div class="box">
       <div class="calling_status">
@@ -113,7 +111,7 @@
     <div class="box">
       <div style="text-align:center;">
         <% if @plan.is_done%>
-            计划已完成 <%= link_to '立即查看',@plan.record %>
+            计划已完成 <%= link_to '立即查看',record_path(@plan.record) %>
         <% else %>
           <% if @plan.can_edit_by?(current_user) %>
             <%= link_to "已经完成?","#{new_record_path}?plan_id=#{@plan.id}",:class => "big_button" %>

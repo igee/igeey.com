@@ -1,11 +1,14 @@
 <div class="box">
-  <h4 style="display:inline">相册：</h4>
-    <%= image_tag "/images/icon/upload.gif",:class=>"icon"%>
+  <h4>相册：
+    　<%= image_tag "/images/icon/upload.gif",:class=>"icon"%>
+    <span>
     <% if logged_in? %>
       <%= link_to "上传照片","#",:id => 'upload_link',:title => '上传图片'%>
     <% else %>
       <%= link_to "上传照片",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%>
     <% end %>
+    </span>
+  </h4>
   <div class="clear"></div>
   <%= render :partial => "/photos/form",:locals => {:imageable => imageable}%>
   <%= render :partial => "/photos/photo",:collection => @photos %>

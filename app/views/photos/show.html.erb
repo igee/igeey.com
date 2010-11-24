@@ -1,8 +1,8 @@
-  
+  <% @title = '照片'%>
   <div style="margin:0 auto;">
   <%= link_to (image_tag @photo.photo.url(:max500x400)),@photo,:class => "open_dialog",:title => @photo.title %>
-    <div class="badge">
-      <%= link_to @photo.user.login ,@photo.user%> 在 <%= link_to @photo.imageable.name ,@photo.imageable%>
-      <%=  format_date(@photo.created_at) %>
-    </div>
+    <p>
+      上传在 <%= link_to @photo.imageable.name ,@photo.imageable%><br/>
+      <%= link_to @photo.user.login ,@photo.user%> <%=  format_date(@photo.created_at) %>
+    </p>
   </div>

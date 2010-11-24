@@ -1,3 +1,5 @@
+<% @title = '地图'%>
+
 <% content_for :head do %>
   <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false"></script>
 <% end %>
@@ -51,7 +53,7 @@
       geocoder = new google.maps.Geocoder();
       markers = new Array
       
-      $.getJSON("/json/venues.json?<%=Venue.first.id%>", function(data){
+      $.getJSON("/json/venues.json?<%= Venue.first.id unless Venue.first.nil? %>", function(data){
         $.each(data, function(i,item){
             markers[i] = new google.maps.Marker({
               icon: "/images/marker/" + item.venue.category + ".png",
