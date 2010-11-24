@@ -2,9 +2,9 @@ class SiteController < ApplicationController
   before_filter :login_required, :except=> [:index,:faq,:guide,:about,:report]
   
   def index
-    @calling_timeline = Calling.limit(15)
-    @plan_timeline = Plan.limit(15)
-    @record_timeline = Record.limit(15)
+    @calling_timeline = Calling.limit(logged_in? ? 15 : 5)
+    @plan_timeline = Plan.limit(logged_in? ? 15 : 5)
+    @record_timeline = Record.limit(logged_in? ? 15 : 5)
   end
   
   def myigee

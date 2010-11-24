@@ -38,7 +38,7 @@ class PlansController < ApplicationController
     @photo = Photo.new
     @photos = @calling.photos
     @my_plan = @calling.plans.select{|p| p.user_id == current_user.id}.first if logged_in?
-    render :layout => false
+    render :layout => "no_sidebar"
   end
   
   def edit
