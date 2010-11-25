@@ -100,8 +100,8 @@
     
     $(document).ready(function(){
       //use javascript to check whether there are news for performance
-      if($('#my_news').html().trim().length == 0){$('#my_news').html('<span>暂时没有新鲜事</span>')}
       initialize();
+      if($('#my_news').html().trim().length == 0){$('#my_news').html('<span>暂时没有新鲜事</span>')};
     });  
   </script>
 <% end %>
