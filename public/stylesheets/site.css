@@ -566,6 +566,7 @@ input.todo:hover{
 }
 
 #map_canvas,#sidebar_map_canvas{
+  width:99%;
   background:#d0d0d0;
   border:1px solid #bbb;
 }
