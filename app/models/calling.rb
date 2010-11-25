@@ -12,6 +12,9 @@ class Calling < ActiveRecord::Base
   
   default_scope :order => 'created_at DESC'
   
+  scope :not_closed,where(:close => false) 
+  scope :timing,where(:action_id => [1]) # timeing action list 
+  
   delegate :for_what, :to => :action
   
   validates :detail,:length => {:within => 50..1000 ,:message => '详细信息要不能少于50字'}
