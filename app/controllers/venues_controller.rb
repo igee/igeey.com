@@ -42,7 +42,7 @@ class VenuesController < ApplicationController
   end
   
   def update
-    @venue.update_attributes(params[:venue]) if @venue.user == current_user
+    @venue.update_attributes(params[:venue]) if @venue.creator == current_user
     if params[:back_path].present?
       redirect_to params[:back_path]
     else
@@ -51,6 +51,10 @@ class VenuesController < ApplicationController
   end
 
   def cover
+    render :layout => false if params[:layout] == 'false'
+  end
+  
+  def position
     render :layout => false if params[:layout] == 'false'
   end
   

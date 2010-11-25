@@ -50,7 +50,7 @@
         
     <div class="box">
       <h4>我的公益地图:</h4>
-      <div id="map_canvas" style="width:100%;height:160px;clear:both;margin:10px 0"></div>
+      <div id="map_canvas" style="width:248px;height:160px;clear:both;margin:10px 0"></div>
     </div>
     
     <div class="box" style="padding:0 10px">
@@ -74,9 +74,7 @@
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
       map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-      geocoder = new google.maps.Geocoder();
-      
-      
+            
       $.getJSON('<%="#{venues_path(:format => :json)}?user_id=#{@user.id}"%>', function(data){
         markers = new Array
         $.each(data, function(i,item){

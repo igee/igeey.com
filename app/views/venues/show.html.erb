@@ -1,4 +1,9 @@
 <% @title = @venue.name %>
+
+<% content_for :head do %>
+  <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false"></script>
+<% end %>
+
 <div class="box">
   <div style="float:left;text-align:center;">
     <%= image_tag(@venue.cover.url,:class => "venue_cover") %>
@@ -30,7 +35,7 @@
 <div class="box">
   <h4>论坛：
     　<%= image_tag "/images/icon/talk.gif",:class=>"icon"%>
-    <span><%= link_to '发布话题',new_topic_path(:venue_id => @venue.id)%></span>
+    <span><%= link_to '发布话题',new_topic_path(:venue_id => @venue.id),:class=>"open_dialog",:title=>'发布话题'%></span>
   </h4>
   <%= render :partial => '/public/topic' ,:collection => @topics%>
 </div>
@@ -47,5 +52,37 @@
       <%end%>
     </div>
   </div>
+  
+  <div class="box">
+    <h4>聚点位置： <span><%= link_to '查看大图',position_venue_path(@venue),:class=>'open_dialog',:title => '聚点位置'%></span></h4>
+    <div id="sidebar_map_canvas" style="width:248px;height:160px;clear:both;margin:10px 0"></div>
+  </div>
+  
   <%= render :partial => "/public/followers" %>
+<% end %>
+
+
+<% content_for :extension do %>
+  <script type="text/javascript">
+    function initialize() {
+      var latlng = new google.maps.LatLng(<%= "#{@venue.latitude || 35.0},#{@venue.longitude || 105.0}"%>)
+      var myOptions = {
+        zoom: 11,
+        center: latlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      map = new google.maps.Map(document.getElementById("sidebar_map_canvas"), myOptions);
+      
+      marker = new google.maps.Marker({
+        map: map,
+        position: map.getCenter(),
+        title: '<%= @venue.name %>',
+      });
+    }; //initialize_end()
+    
+    $(document).ready(function(){
+      //use javascript to check whether there are news for performance
+      initialize();
+    });  
+  </script>
 <% end %>
