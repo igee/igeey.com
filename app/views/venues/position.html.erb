@@ -1,0 +1,65 @@
+<% @title = '地图'%>
+
+<% content_for :head do %>
+  <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false"></script>
+<% end %>
+
+<div class="box">
+  <h4>聚点位置</h4>
+  <div id="map_canvas" style="width:100%;height:360px;clear:both;margin:10px 0"></div>
+</div>
+
+<div style="text-align:right">
+  <%= form_for @venue,:html =>{:style => 'display:none'} do |form|%>
+    <%= form.hidden_field :latitude %>
+    <%= form.hidden_field :longitude %>
+    拖动绿色标记修改聚点位置
+    <%= form.submit '确定',:id => "update_position",:class => 'button' %>
+    <%= button_to_function '取消',"javascript:cancel_edit()",:class => 'button' %>
+  <% end %>
+  <div id="panel">
+    <%= button_to_function '修改位置',"javascript:edit_position()",:class => "button"%>
+    <%= button_to_function '返回',"javascript:$('#floatBox #close_dialog').click();#{'window.history.back()' unless params[:layout] == 'false'}",:class => "button"%>
+  </div>
+</div>
+  <script type="text/javascript">
+    function initialize() {
+      var latlng = new google.maps.LatLng(<%= "#{@venue.latitude || 35.0},#{@venue.longitude || 105.0}"%>)
+      var myOptions = {
+        zoom: 13,
+        center: latlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+      
+      marker = new google.maps.Marker({
+        map: map,
+        position: map.getCenter(),
+        title: '<%= @venue.name %>'
+      });
+    }; //initialize_end()
+    
+    function edit_position(){
+      marker.setDraggable(true);
+      marker.setIcon("http://maps.gstatic.cn/intl/zh-CN_cn/mapfiles/marker_green.png");
+      $('#edit_venue_1').show();
+      $('#panel').hide();
+    }
+    
+    
+    function cancel_edit(){
+      marker.setDraggable(false);
+      marker.setIcon("http://maps.gstatic.cn/intl/zh-CN_cn/mapfiles/marker.png");
+      $('#edit_venue_1').hide();
+      $('#panel').show();
+    }
+    
+    $(document).ready(function(){
+      //use javascript to check whether there are news for performance
+      $('#update_position').click(function(){
+        $('#venue_latitude').val(marker.getPosition().lat());
+        $('#venue_longitude').val(marker.getPosition().lng());
+        })
+      initialize();
+    });  
+  </script>

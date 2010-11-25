@@ -28,6 +28,7 @@ Igee::Application.routes.draw do
   resources :venues do
     member do
       get :cover
+      get :position
     end
   end
   

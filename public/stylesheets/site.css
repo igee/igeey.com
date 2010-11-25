@@ -565,8 +565,9 @@ input.todo:hover{
     _height:600px;
 }
 
-#map_canvas{
+#map_canvas,#sidebar_map_canvas{
   background:#d0d0d0;
+  border:1px solid #bbb;
 }
 
 #header .container{

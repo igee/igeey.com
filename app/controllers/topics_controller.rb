@@ -11,6 +11,7 @@ class TopicsController < ApplicationController
   
   def new
     @topic = Topic.new(:venue_id => params[:venue_id])
+    render :layout => false if params[:layout] == 'false'
   end
   
   def create

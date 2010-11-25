@@ -2,12 +2,12 @@
   <%= raw error_explanation_for(@topic) if @topic.errors.present?%>  
   <div style="clear:both">
     <%= render :partial => '/users/user' ,:object => current_user %>
-      <div class="saying">
+      <div class="saying" style="<%= 'width:360px' if params[:layout]=='false'%>">
           <p>
             <%= form.label :title,'标题：'%> <%= form.text_field :title,:size => 20 ,:style => "text-align:left"%>
             <br/>
             <%= form.label :content,'内容：',:style => 'float:left'%>
-            <%= form.text_area :content,:style => "width:380px;height:100px;margin-left:50px"%>
+            <%= form.text_area :content,:style => "#{ params[:layout]=='false' ? 'width:300px' : 'width:390px'};height:80px;margin-left:50px"%>
             <%= form.hidden_field :venue_id %>
           </p>
       </div>
@@ -15,7 +15,7 @@
   </div>
   <div style="clear:both;text-align:right">
     <%= form.submit '发布',:class => "button"%>
-    <%= button_to_function '取消',"javascript:window.history.back()",:class => 'button'%>
+    <%= button_to_function '返回',"javascript:$('#floatBox #close_dialog').click();#{'window.history.back()' unless params[:layout] == 'false'}",:class => "button"%>
   </div>
 <% end %>
 
