@@ -5,10 +5,11 @@ config/oauth/*.yml
 config/deploy.rb
 db/*.sqlite3
 db/migrate/*
-log/*.log
-tmp/*
+log
+tmp
+REVISION
+public/media/
+public/json/
 
-public/media/*
-public/json/*
 *.kpf
 *.project
