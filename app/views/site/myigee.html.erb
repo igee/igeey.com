@@ -73,6 +73,7 @@
         center: latlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
+
       map = new google.maps.Map(document.getElementById("sidebar_map_canvas"), myOptions);
             
       $.getJSON('<%="#{venues_path(:format => :json)}?user_id=#{@user.id}"%>', function(data){
