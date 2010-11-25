@@ -31,11 +31,18 @@ GEM
     arel (1.0.1)
       activesupport (~> 3.0.0)
     builder (2.1.2)
+    capistrano (2.5.19)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.0.0)
     columnize (0.3.1)
     date_validator (0.5.9)
       activemodel (>= 3.0.0)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    highline (1.6.1)
     i18n (0.4.1)
     json (1.4.6)
     linecache (0.43)
@@ -45,6 +52,13 @@ GEM
       treetop (>= 1.4.5)
     mime-types (1.16)
     mysql (2.8.1)
+    net-scp (1.0.3)
+      net-ssh (>= 1.99.1)
+    net-sftp (2.0.5)
+      net-ssh (>= 2.0.9)
+    net-ssh (2.0.23)
+    net-ssh-gateway (1.0.1)
+      net-ssh (>= 1.99.1)
     oauth (0.4.3)
     paperclip (2.3.4)
       activerecord
@@ -85,6 +99,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  capistrano
   date_validator
   json
   mysql (= 2.8.1)
