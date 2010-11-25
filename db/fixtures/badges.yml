@@ -12,7 +12,7 @@ badge_2:
   slug:      '1st_calling' 
   condition_factor: 'realtime_callings_count'
   condition_number: 1
-  intro:     '第一次发起召集行动，小喇叭徽章奖励给你，祝你的处女座召集行动顺利完成！'
+  intro:     '第一次发起召集行动，小喇叭徽章奖励给你，祝你的处女召集行动顺利完成！'
   
 badge_3:
   id:        3
