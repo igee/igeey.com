@@ -37,7 +37,7 @@ Igee::Application.routes.draw do
   end
   
   resources :callings do
-    get   :next_step ,:on => :collection
+    put   :close ,:on => :member
     resources :plans do
       get   :duplicate ,:on => :member
     end

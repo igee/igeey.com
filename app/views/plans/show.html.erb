@@ -24,6 +24,10 @@
             <%= link_to "已经完成?","#{new_record_path}?plan_id=#{@plan.id}",:class => "big_button" %>
           <% elsif @my_plan %>
             你已参与： <%= link_to '查看我的计划',calling_plan_path(@calling,@my_plan)%>
+          <% elsif @calling.close%>
+            <div style="clear:both;text-align:center">
+              召集行动已经关闭  
+            </div>
           <% else %>
             <% @link_title = "我也要#{{'time' => '去','money' => '捐','goods' => '捐'}[@calling.for_what]}"%>
             <%= link_to @link_title,(logged_in? ? "#{duplicate_calling_plan_path(@calling,@plan,:parent_id => @plan.id)}" : signup_path ),:class => "big_button open_dialog",:id => 'plan_to' ,:title =>(logged_in? ? @link_title : '注册' )%>
@@ -117,14 +121,18 @@
             <%= link_to "已经完成?","#{new_record_path}?plan_id=#{@plan.id}",:class => "big_button" %>
           <% elsif @my_plan %>
             你已参与： <%= link_to '查看我的计划',calling_plan_path(@calling,@my_plan)%>
+          <% elsif @calling.close%>
+            <div style="clear:both;text-align:center">
+              召集行动已经关闭  
+            </div>
           <% else %>
             <% @link_title = "我也要#{{'time' => '去','money' => '捐','goods' => '捐'}[@calling.for_what]}"%>
             <%= link_to @link_title,(logged_in? ? "#{duplicate_calling_plan_path(@calling,@plan,:parent_id => @plan.id)}" : signup_path ),:class => "big_button open_dialog",:id => 'plan_to' ,:title =>(logged_in? ? @link_title : '注册' )%>
           <% end %>
         <% end %>
       </div>
-    </div>      
-    
+    </div>
+  
     <%= render :partial => '/comments/board'%>    
     <%= render :partial => '/comments/form' ,:locals => {:commentable => @calling}%>
     

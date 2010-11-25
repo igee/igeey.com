@@ -1,7 +1,7 @@
 class CallingsController < ApplicationController
   respond_to :html
   before_filter :login_required, :except => [:index, :show]
-  before_filter :find_calling, :except => [:index, :new, :create,:next_step]
+  before_filter :find_calling, :except => [:index, :new, :create]
   after_filter  :clean_unread, :only => [:show]
    
   def index
@@ -62,7 +62,9 @@ class CallingsController < ApplicationController
     end
   end
   
-  def next_step
+  def close
+    @calling.update_attributes(:close => true) if @calling.user == current_user
+    respond_with @calling
   end
   
   private

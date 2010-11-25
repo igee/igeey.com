@@ -20,33 +20,28 @@
   
   <div class="box">
     <% if @my_record.present? %>
-      <p style="text-align:center">我已行动，<%= link_to '查看我的行动',@my_record %>。</p>
+      <h4>你已完成：</h4>
+      <%= render :partial => "/public/record",:object => @my_record %>
     <% elsif @my_plan.present? %>
-      <h4>你的计划：</h4>
-      <div class="event_box">
-        <%= render :partial => '/users/user',:object => @my_plan.user%>
-        <div class="event">
-          <p>
-            <%= link_to "你#{@my_plan.description}。",calling_plan_path(@calling,@my_plan) %>
-          </p>
-          <div style="text-align:right;padding:8px 0">
-            <%= link_to "已经完成?","#{new_record_path}?plan_id=#{@my_plan.id}",:class => "button" %>
-            <%= link_to "取消",calling_plan_path(@calling,@my_plan),:method => :delete,:class => "button" %>
-          </div>
-         </div>
+      <h4>你已参与：</h4>
+      <%= render :partial => "/public/plan",:object => @my_plan %>
+    <% elsif @calling.close%>
+      <div style="clear:both;text-align:center">
+        召集行动已经关闭  
       </div>
     <% else %>
       <div style="clear:both;text-align:center">
         <%= link_to "我要#{{'time' => '去','money' => '捐赠','goods' => '捐赠'}[@calling.action.for_what]}",(logged_in? ? new_calling_plan_path(@calling) : signup_path ),:class => "big_button open_dialog",:id => 'plan_to' ,:title =>(logged_in? ? '我要响应' : '注册' )%>
       </div>
     <% end %>
-        <p style="text-align:center">
-          <% if logged_in? && current_user.following?(@calling) %>
-            已关注 <%= link_to raw("<span>取消关注?</span>"),follow_path(@calling.follows.find_by_user_id(current_user.id)),:method => :delete%>
-          <% else %>
-            <%= link_to "关注进展",(logged_in? ? "#{follows_path}?followable_type=#{@calling.class}&followable_id=#{@calling.id}" : signup_path),:method => :post,:title =>(logged_in? ? "" : '注册' ),:method => :post %>
-          <% end%>
-        </p>
+    
+    <p style="text-align:center">
+      <% if logged_in? && current_user.following?(@calling) %>
+        已关注 <%= link_to raw("<span>取消关注?</span>"),follow_path(@calling.follows.find_by_user_id(current_user.id)),:method => :delete%>
+      <% else %>
+        <%= link_to "关注进展",(logged_in? ? "#{follows_path}?followable_type=#{@calling.class}&followable_id=#{@calling.id}" : signup_path),:method => :post,:title =>(logged_in? ? "" : '注册' ),:method => :post %>
+      <% end%>
+    </p>
   </div>
 </div>
 
