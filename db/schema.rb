@@ -142,24 +142,25 @@ ActiveRecord::Schema.define() do
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
   
   create_table "callings", :force => true do |t|
-    t.integer :venue_id
-    t.integer :action_id
-    t.integer :user_id
-    t.integer :total_money
-    t.string  :donate_for,  :limit => 40
-    t.integer :total_goods
-    t.string  :goods_is,    :limit => 40
-    t.integer :total_people
-    t.string  :do_what,     :limit => 40
-    t.string  :info,        :limit => 80
-    t.text    :detail
+    t.integer  :venue_id
+    t.integer  :action_id
+    t.integer  :user_id
+    t.integer  :total_money
+    t.string   :donate_for,  :limit => 40
+    t.integer  :total_goods
+    t.string   :goods_is,    :limit => 40
+    t.integer  :total_people
+    t.string   :do_what,     :limit => 40
+    t.string   :info,        :limit => 80
+    t.text     :detail
     t.datetime :do_at
-    t.string   :unit,  :limit => 40
-    t.integer :comments_count,   :default => 0
-    t.integer :follows_count,    :default => 0
-    t.boolean :has_new_comment,  :default => false
-    t.boolean :has_new_plan,     :default => false
-    t.boolean :has_photo,  :default => false
+    t.string   :unit,        :limit => 40
+    t.boolean  :close,            :default => false
+    t.integer  :comments_count,   :default => 0
+    t.integer  :follows_count,    :default => 0
+    t.boolean  :has_new_comment,  :default => false
+    t.boolean  :has_new_plan,     :default => false
+    t.boolean  :has_photo,        :default => false
     t.timestamps
   end  
 
