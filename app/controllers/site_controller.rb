@@ -37,7 +37,7 @@ class SiteController < ApplicationController
       @my_timeline = current_user.following_callings
       @my_followings.where("followable_type != ?",'Calling' ).map(&:followable).each do |object|
         @my_timeline += object.records.limit(5) 
-        @my_timeline += object.callings.not_close.limit(5)
+        @my_timeline += object.callings.not_closed.limit(5)
         @my_timeline += object.plans.limit(5)
       end
       @my_timeline = @my_timeline.uniq.sort{|x,y| y.created_at <=> x.created_at }[0..15]
@@ -52,7 +52,7 @@ class SiteController < ApplicationController
       if @geo
         @geo.venues.each do |venue|
           @city_timeline += venue.records.limit(5) 
-          @city_timeline += venue.callings.not_close.limit(5)
+          @city_timeline += venue.callings.not_closed.limit(5)
           @city_timeline += venue.plans.limit(5)
         end
         @city_timeline = @city_timeline.sort{|x,y| y.created_at <=> x.created_at }[0..15]
