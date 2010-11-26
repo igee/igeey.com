@@ -11,7 +11,8 @@ class SyncsController < ApplicationController
   end
   
   def create
-    @sync = current_user.syncs.bulid(params[:sync])
+    @sync = Sync.new(params[:sync])
+    @sync.user = current_user
     @sync.content = @sync.content[0..140]
     @sync.save if @sync.syncable.user == current_user
     redirect_to eval("#{@sync.syncable_type.downcase}_url(#{@sync.syncable.id})")
