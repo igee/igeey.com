@@ -24,7 +24,7 @@
   <div id="header">
     <div class="container" id="nav" style="background:none">
       <%= link_to image_tag('/images/logo.png'), root_path,:id => 'logo',:style=>"margin-left:140px" %>
-      <ul id="nav_links" style="margin-right:140px;margin-left:410px">
+      <ul id="nav_links" style="margin-right:140px;margin-left:400px">
         <li><%= link_to '首页',root_path,:class => "#{'selected' if controller_name == 'site' && action_name == 'index'}"%></li>
         <% if logged_in? %>        
           <li><%= link_to '我的爱聚',myigee_path,:class => "#{'selected' if controller_name == 'site' && action_name == 'myigee'}"%></li>
