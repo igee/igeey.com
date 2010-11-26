@@ -15,8 +15,8 @@ class FollowsController < ApplicationController
   end
   
   def destroy
-    @follow = Follow.find(params[:id])
-    @follow.destroy
+    @follow = current_user.followings.where(:id => params[:id]).first
+    @follow.destroy if @follow.present?
     redirect_to :back
   end
 end
