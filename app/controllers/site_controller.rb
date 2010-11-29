@@ -7,7 +7,7 @@ class SiteController < ApplicationController
     @record_timeline = Record.limit(logged_in? ? 15 : 5)
   end
   
-  def myigee
+  def myigeey
     @user = current_user
     @my_actions = @user.callings + @user.plans.undone + @user.records
     @my_actions = @my_actions.sort{|x,y| y.created_at <=> x.created_at }
