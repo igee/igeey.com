@@ -55,7 +55,7 @@ class Record < ActiveRecord::Base
     if self.action.for_what == 'money'
       "#{self.user.login}为#{self.venue.name}捐款"
     elsif self.action.for_what == 'goods'
-      "#{self.user.login}为#{self.venue.name}捐赠l#{self.goods_is}"
+      "#{self.user.login}为#{self.venue.name}捐赠#{self.goods_is}"
     elsif self.action.for_what == 'time'
       "#{self.user.login}去#{self.venue.name}#{self.do_what}"
     end
