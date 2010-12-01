@@ -200,7 +200,21 @@ class User < ActiveRecord::Base
       end
     end
   end
-
+  
+  def generate_password(length)
+    chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
+    password = ''
+    length.times do |i|
+      password << chars[rand(62)]
+    end
+    password
+  end
+  
+  def reset_password!
+    self.password = self.password_confirmation = generate_password(6)
+    Mailer.reset_password(self,self.password).deliver if self.save(false)
+  end
+  
   protected
   
 end

@@ -13,11 +13,15 @@
     </p>    
     
     <p style="text-align:center">
+      <span>忘记密码了？<%= link_to '找回密码',reset_password_path,:class => "open_dialog",:title => '找回密码' %></span>
+    </p>
+    <p style="text-align:center">
       <%= label_tag 'remember_me', '记住我?' %>
       <%= check_box_tag 'remember_me', '1', @remember_me %>
       <%= submit_tag '登录',:class => 'button'%>
     </p>
     <% end -%>
+    
   </div>
   
   <div class="dialog_rightbar">

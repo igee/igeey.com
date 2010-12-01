@@ -5,6 +5,7 @@ Igee::Application.routes.draw do
   match 'register' => 'users#create', :as => :register
   match 'login' => 'sessions#new', :as => :login
   match 'logout' => 'sessions#destroy', :as => :logout
+  match 'reset_password' => 'sessions#reset_password',:as => :reset_password
   
   match 'about' => 'site#about'
   match 'report' => 'site#report'
@@ -20,7 +21,7 @@ Igee::Application.routes.draw do
   match 'city_timeline' => 'site#city_timeline'
   match 'oauth(/:action)' => 'oauth#(/:action)'
   match 'plan(/:id)' => 'plans#redirect', :as => :plan
-  match 'setting' => 'users#edit'
+  match 'setting' => 'users#setting'
   
   resource :session, :only => [:new, :create, :destroy,:show]
   resource :sync, :only => [:new, :create]
@@ -55,8 +56,11 @@ Igee::Application.routes.draw do
   resources :users do
     collection do
       get   :welcome
+      post  :reset_password
+      get   :reset_completed
     end
     member do
+      post  :update_account
       get   :following_venues
       get   :following_users
       get   :following_callings
