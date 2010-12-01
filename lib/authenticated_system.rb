@@ -123,7 +123,6 @@ module AuthenticatedSystem
     # for the paranoid: we _should_ be storing user_token = hash(cookie_token, request IP)
     def login_from_cookie
       user = cookies[:auth_token] && User.find_by_remember_token(cookies[:auth_token])
-      debugger
       if user && user.remember_token?
         self.current_user = user
         handle_remember_cookie! false # freshen cookie token (keeping date)
