@@ -1,0 +1,47 @@
+<h2>用户设置 <span><%= link_to '修改邮箱和密码',edit_user_path(@user)%></span></h2>
+
+<div class="setting_box">
+  <h4>一 与你的社区帐号连接：</h4>
+    <div class="explanation">通过链接你的社区帐号，可以很方便的把你的公益行动告诉你的朋友。</div>
+  <ul style="line-height:36px;margin-top:10px">
+    <li><%= image_tag "/images/icon/douban#{'_gary' unless @user.douban?}.gif",:class=> 'icon'%> <%= @user.douban? ? "豆瓣连接成功" : '还没有和豆瓣链接'%> <%= @user.douban? ? link_to('取消连接',:controller => 'oauth', :action => 'cancel',:site=> 'douban') : link_to('立即连接',:controller => 'oauth', :action => 'douban')%></li>
+    <li><%= image_tag "/images/icon/sina#{'_gary' unless @user.sina?}.gif",:class=> 'icon'%> <%= @user.sina? ? "新浪微博连接成功" : '还没有和新浪微博连接'%> <%=  @user.sina? ? link_to('取消连接',:controller => 'oauth', :action => 'cancel',:site=> 'sina') : link_to('立即连接',:controller => 'oauth', :action => 'sina')%></li>
+  </ul>
+  <p>
+    <%= raw "设置好了？#{link_to('返回', (params[:back_path] + '?' + params.map{|d| "#{d[0]}=#{d[1]}&"}.to_s),:class => "button")}" if params[:back_path].present? %>
+  </p>
+</div>
+
+<div class="setting_box">
+  <h4>二 设置头像：</h4>
+  <%= form_for @user, :html => { :multipart => true } do |form| -%>
+  <div style="float:right;width:500px;margin-top:-10px">
+    <p class="explanation">有个拉风的头像，做公益才更带劲。<br/>(尺寸：72x72以上的正方形效果最好~)</p>
+    <p>
+      <%= form.file_field :avatar %>
+    </p>
+  </div>
+  <%= image_tag @user.avatar.url(:_72x72),:class => "avatar" %>
+  <%= submit_tag '修改', :class => 'button' %>
+  <% end -%>  
+</div>
+
+<div class="setting_box">
+  <h4>三 个性化信息：</h4>
+  <%= form_for @user do |form| -%>
+    <p> 
+    <%= form.label :geo_id,'所在城市: '%><%= (geo_selector("user", "geo",nil,@user.geo)) %>
+    </p>
+    <p>
+    <%= form.label :use_local_geo,'使用我的城市做聚点地图的默认地区'%> <%= form.check_box :use_local_geo %>
+    </p>
+    <p>
+    <%= form.label :signature,'个性签名'%> <%= form.text_field :signature,:size => 20 %>
+    </p>
+    <%= form.submit '修改', :class => 'button' %>
+  <% end %>
+</div>
+
+<p style="text-align:right">
+<%= params[:back_path].blank? ? link_to('回到首页', root_path,:class => "button") : link_to('返回', (params[:back_path] + '?' + params.map{|d| "#{d[0]}=#{d[1]}&"}.to_s),:class => "button")%>
+</p>

@@ -39,6 +39,10 @@ class SessionsController < ApplicationController
     logout_killing_session!
     redirect_back_or_default('/', :notice => "You have been logged out.")
   end
+  
+  def reset_password
+    render :layout => false if params[:layout] == 'false'
+  end
 
 protected
   # Track failed login attempts
