@@ -19,7 +19,7 @@ class Calling < ActiveRecord::Base
   
   validates :detail,:length => {:within => 50..1000 ,:message => '详细信息不能少于50字'}
   validates :user_id,:action_id,:venue_id,:info,:presence   => true
-  validates :do_at,:date => {:after_or_equal_to => Date.today.to_date,:allow_nil => true}
+  validates :do_at,:date => {:after_or_equal_to => Date.today.to_date,:allow_nil => true,:on => :create}
   
   def validate
     errors["total_#{for_what}"] << '数量必须为大于0的整数' unless total_number && (total_number > 0)
