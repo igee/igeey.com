@@ -1,4 +1,4 @@
-igee.org - planing,recording and sharing your good action.
+igeey.com - plan,record and spread your good action.
 
 powered by Ruby on Rails 3
 
@@ -16,12 +16,14 @@ Step 3: edit your database configuration file
 Step 4: edit your local config file
   cp config/config.yml.sample config/config.yml
   vi config/config.yml
+
+Step 5: init statics file
+  touch public/json/venues.json
  
-Step 5: db migration & load fixtures and seed
+Step 6: db migration & load fixtures 
   rake db:create
   rake db:auto:migrate
   rake db:fixtures:load FIXTURES_PATH=db/fixtures
-  rake db:seed
   
-Step 6: Go!launch igee!
+Step 7: Go!launch igee!
   rails s  
