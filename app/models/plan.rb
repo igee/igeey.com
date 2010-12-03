@@ -36,11 +36,11 @@ class Plan < ActiveRecord::Base
 
   def status
     if for_what == 'money'
-      "已有#{self.calling.users_count}人要捐增#{self.calling.plans.map(&:money).sum}元，还需要#{self.calling.remaining_number}#{{'money' => '元','time' => '人','goods' => '件'}[for_what]}"
+      "已有#{self.calling.users_count}人要捐增#{self.calling.plans.map(&:money).sum}元，还需要#{self.calling.remaining_number}元"
     elsif for_what == 'goods'
-      "已有#{self.calling.users_count}人要捐增#{self.calling.plans.map(&:goods).sum}件，还需要#{self.calling.remaining_number}#{{'money' => '元','time' => '人','goods' => '件'}[for_what]}"
+      "已有#{self.calling.users_count}人要捐增#{self.calling.plans.map(&:goods).sum}#{self.calling.unit}，还需要#{self.calling.remaining_number}}#{self.calling.unit}"
     elsif for_what == 'time'
-      "已有#{self.calling.users_count}人要参加，还需要#{self.calling.remaining_number}#{{'money' => '元','time' => '人','goods' => '件'}[for_what]}"
+      "已有#{self.calling.users_count}人要参加，还需要#{self.calling.remaining_number}人"
     end
   end
   
@@ -48,7 +48,7 @@ class Plan < ActiveRecord::Base
     if self.action.for_what == 'money'
       "要为#{self.venue.name}捐款#{self.money}元，用于#{self.calling.donate_for}"
     elsif self.action.for_what == 'goods'
-      "要为#{self.venue.name}捐赠#{self.goods}件#{self.calling.goods_is}"
+      "要为#{self.venue.name}捐赠#{self.goods}#{self.calling.unit}#{self.calling.goods_is}"
     elsif self.action.for_what == 'time'
       "要在#{self.formatted_plan_at}去#{self.venue.name}#{self.calling.do_what}"
     end

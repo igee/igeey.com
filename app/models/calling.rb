@@ -67,7 +67,7 @@ class Calling < ActiveRecord::Base
       if for_what == 'money'
         "已有#{self.users_count}人要捐增#{self.plans.map(&:money).sum}元"
       elsif for_what == 'goods'
-        "已有#{self.users_count}人要捐增#{self.plans.map(&:goods).sum}件"
+        "已有#{self.users_count}人要捐增#{self.plans.map(&:goods).sum}#{self.unit}"
       elsif for_what == 'time'
         "已有#{self.users_count}人要参加"
       end  
@@ -95,7 +95,7 @@ class Calling < ActiveRecord::Base
     elsif self.action.for_what == 'goods'
       "为#{self.venue.name}募捐#{self.total_goods}#{self.unit}#{self.goods_is}"
     elsif self.action.for_what == 'time'
-      "为#{self.venue.name}召集#{self.total_people}人在#{self.formatted_do_at}去#{self.do_what}"
+      "召集#{self.total_people}人在#{self.formatted_do_at}去#{self.venue.name}#{self.do_what}"
     end
   end
   
