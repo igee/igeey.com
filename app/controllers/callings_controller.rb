@@ -75,6 +75,7 @@ class CallingsController < ApplicationController
   def clean_unread
     @calling.update_attribute(:has_new_comment,false) if @calling.user == current_user && @calling.has_new_comment
     @calling.update_attribute(:has_new_plan,false) if @calling.user == current_user && @calling.has_new_plan
+    @calling.follows.where(:user_id => current_user.id).first.update_attribute(:has_new_comment,false) if @calling.follows.where(:user_id => current_user.id).present?
   end
   
 end

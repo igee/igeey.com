@@ -156,6 +156,10 @@ class User < ActiveRecord::Base
     self.topics.where(:has_new_comment => true).first.present?
   end
   
+  def has_unread_follow_comment?
+    self.followings.where(:has_new_comment => true).first.present?
+  end
+  
   def has_unread_comment?
     has_unread_calling_comment? || has_unread_record_comment? || has_unread_topic_comment?
   end

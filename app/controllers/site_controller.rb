@@ -64,7 +64,7 @@ class SiteController < ApplicationController
   def unread_comments
     @topics = current_user.topics.where(:has_new_comment => true)
     @records = current_user.records.where(:has_new_comment => true)
-    @callings = current_user.callings.where(:has_new_comment => true)
+    @callings = current_user.callings.where(:has_new_comment => true) | current_user.followings.where(:has_new_comment => true,:followable_type => "Calling").map(&:followable)
   end
   
   def unread_plans
