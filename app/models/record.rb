@@ -6,6 +6,7 @@ class Record < ActiveRecord::Base
   belongs_to :plan
   belongs_to :parent,   :class_name => :record,:foreign_key => :parent_id
   has_many   :comments, :as => :commentable,    :dependent => :destroy
+  has_many   :follows,  :as => :followable, :dependent => :destroy
   has_many   :syncs,    :as => :syncable,       :dependent => :destroy
   has_many   :photos,   :as => :imageable,      :dependent => :destroy
   
