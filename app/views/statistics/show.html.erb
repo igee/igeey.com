@@ -36,8 +36,7 @@ $(document).ready(function() {
       },
       tooltip: {
          formatter: function() {
-                   return '<b>新'+ this.series.name +'<br/>'+
-               this.y +'</b>';
+                   return this.y;
          }
       },
       legend: {
