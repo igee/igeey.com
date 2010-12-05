@@ -4,4 +4,6 @@
 User-Agent: *
 Disallow: /signup
 Disallow: /login
-
+Disallow: /setting
+Disallow: /statistics
+Disallow: /myigeey

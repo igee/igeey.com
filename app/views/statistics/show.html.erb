@@ -1,0 +1,80 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'highcharts' %>
+<% end %>
+
+<div id="chart" class="div"></div>
+
+<% content_for :sidebar do %>
+<div class="div">
+  <h4>历史总量</h4>
+  <ul>
+    <li>用户： <%= @users_total%></li>
+    <li>聚点： <%= @venues_total%></li>
+    <li>召集： <%= @callings_total%></li>
+    <li>计划： <%= @plans_total%></li>
+    <li>记录： <%= @records_total%></li>
+    <li>照片： <%= @photos_total%></li>
+    <li>留言： <%= @comments_total%></li>
+  </ul>
+</div>
+<% end %>
+
+<% content_for :extension do %>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  new Highcharts.Chart({
+      chart: {
+         renderTo: 'chart',
+         defaultSeriesType: 'line'
+      },
+      title: {text: '每日增长统计',},
+      subtitle: {text: '<%= format_date(30.days.ago)%> - <%= format_date(Date.today)%>',y: 34},
+      xAxis: {categories: []},
+      yAxis: {
+         title: {text: ''}
+      },
+      tooltip: {
+         formatter: function() {
+                   return '<b>新'+ this.series.name +'<br/>'+
+               this.y +'</b>';
+         }
+      },
+      legend: {
+         align: 'center',
+         verticalAlign: 'bottom',
+         borderWidth: 0,
+         itemStyle: {
+	   cursor: 'pointer',
+	   color: '#3E576F',
+           padding: '16px'
+           }
+      },
+      series: [{
+         name: '召集',
+         data: [<%= @callings_per_day.map{|a| "#{a},"}.to_s[0..-2] %>],
+      }, {
+         name: '计划',
+         data: [<%= @plans_per_day.map{|a| "#{a},"}.to_s[0..-2] %>],
+      },{
+         name: '记录',
+         data: [<%= @records_per_day.map{|a| "#{a},"}.to_s[0..-2] %>],
+      },{
+         name: '聚点',
+         data: [<%= @venues_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
+      }, {
+         name: '用户',
+         data: [<%= @users_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
+      },{
+         name: '照片',
+         data: [<%= @photos_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
+      },{
+         name: '留言',
+         data: [<%= @comments_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
+      }]
+   });
+  $('.highcharts-legend:not tspan:gt(2)').click()
+});
+</script>
+
+<% end %>

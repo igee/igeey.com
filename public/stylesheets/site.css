@@ -52,6 +52,8 @@ a{
 
 a:hover{color:#f63}
 
+b{text-align:right}
+
 input[type="text_field"],input[type="text"],input[type="password"]{
     text-decoration:none;
     border:1px solid #bbb;

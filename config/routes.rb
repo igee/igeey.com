@@ -25,6 +25,7 @@ Igee::Application.routes.draw do
   
   resource :session, :only => [:new, :create, :destroy,:show]
   resource :sync, :only => [:new, :create]
+  resource :statistics
   
   resources :venues do
     member do
