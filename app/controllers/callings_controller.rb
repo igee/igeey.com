@@ -54,12 +54,12 @@ class CallingsController < ApplicationController
   end
 
   def destroy
-    @calling.destroy
-    if params[:back_path].present?
-      redirect_to params[:back_path]
-    else
-      respond_with @calling
-    end
+    #@calling.destroy
+    #if params[:back_path].present?
+    #  redirect_to params[:back_path]
+    #else
+    #  respond_with @calling
+    #end
   end
   
   def close
