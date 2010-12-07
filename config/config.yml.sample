@@ -1,17 +1,23 @@
-
-#use random
-
-development:
-  google_analytics_id: 
+development:  
+  google_analytics_id:
   secret_token: 
-  rest_auth_site_key:
-    
+  rest_auth_site_key: 
+  mail_user_name: 
+  mail_password:  
+  developer_mail:
+  
 test:
-  google_analytics_id: 
+  google_analytics_id:
   secret_token: 
-  rest_auth_site_key:   
+  rest_auth_site_key: 
+  mail_user_name: 
+  mail_password:  
+  developer_mail:
 
 production:
   google_analytics_id:
   secret_token: 
   rest_auth_site_key: 
+  mail_user_name: 
+  mail_password:  
+  developer_mail:

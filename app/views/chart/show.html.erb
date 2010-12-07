@@ -5,7 +5,7 @@
 <div id="chart" class="div"></div>
 
 <% content_for :sidebar do %>
-<div class="div">
+<div class="box">
   <h4>历史总量</h4>
   <ul>
     <li>用户： <%= @users_total%></li>
@@ -16,8 +16,16 @@
     <li>照片： <%= @photos_total%></li>
     <li>留言： <%= @comments_total%></li>
     <li>同步： <%= @syncs_total%></li>
-    <li>同步： <%= @topics_total%></li>
+    <li>话题： <%= @topics_total%></li>
     <li>关注： <%= @follows_total%></li>
+  </ul>
+</div>
+<div>
+  <h4>数据对比</h4>
+  <ul>
+    <li>新浪同步 > <%= @sina_syncs%> vs <%= @douban_syncs%> < 豆瓣同步</li>
+    <li>捐物次数 > <%= @goods_records%> vs <%= @time_records%> < 服务次数</li>
+    <li>直接参与 > <%= @directly_plans%> vs <%= @follow_plans %> < 跟随行动</li>
   </ul>
 </div>
 <% end %>
