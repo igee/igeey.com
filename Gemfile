@@ -13,6 +13,7 @@ gem 'oauth'
 gem 'json'
 gem 'date_validator'
 gem 'capistrano'
+gem 'will_paginate', '~> 3.0.beta'
 
 # Use unicorn as the web server
 # gem 'unicorn'

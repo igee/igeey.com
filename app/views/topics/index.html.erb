@@ -8,6 +8,7 @@
   
   <div id="all_topic" class="tabContents">
     <%= render :partial => '/public/topic',:collection => @topics %>
+    <%= will_paginate @topics ,:param_name => :topics_page%>
   </div>
   
   <div id="my_topic" class="tabContents">

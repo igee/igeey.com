@@ -245,7 +245,11 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
   position:relative;
   top:3px;
   }
-    
+
+.pagination{margin:10px;text-align:center}    
+.pagination span{font-size:14px}
+.pagination em{font-style:normal;color:#bbb}
+
 .user,.badge{
     float:left;
     width:62px;

@@ -4,3 +4,4 @@
     <span><%= feedback.email %> @<%= format_date feedback.created_at %></span>
   </div>
 <% end %>
+<%= will_paginate @feedbacks %>

@@ -9,10 +9,12 @@
 
   <div id="my_callings" class="tabContents">
     <%= render :partial => '/public/calling',:collection => @my_callings%>
+    <%= will_paginate @my_callings ,:param_name => :callings_page,:params => {:start_at => 'my_callings'}%>
   </div>
   
   <div id="my_records" class="tabContents">
     <%= render :partial => '/public/record',:collection => @my_records%>
+    <%= will_paginate @my_records ,:param_name => :records_page,:params => {:start_at => 'my_records'}%>
   </div>
     
   <div id="my_plans" class="tabContents">

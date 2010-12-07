@@ -18,16 +18,16 @@ class SiteController < ApplicationController
 
   def followings
     @user = current_user
-    @following_venues = @user.following_venues
-    @following_callings = @user.following_callings
-    @following_users = @user.following_users
+    @following_venues = @user.following_venues.paginate(:page => params[:venues_page], :per_page => 20)
+    @following_callings = @user.following_callings.paginate(:page => params[:callings_page], :per_page => 20)
+    @following_users = @user.following_users.paginate(:page => params[:users_page], :per_page => 20)
   end
   
   def actions
     @user = current_user
-    @my_callings = @user.callings
+    @my_callings = @user.callings.paginate(:page => params[:callings_page], :per_page => 20)
     @my_plans = @user.plans.undone
-    @my_records = @user.records
+    @my_records = @user.records.paginate(:page => params[:records_page], :per_page => 20)
   end
   
   def my_timeline

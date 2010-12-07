@@ -12,7 +12,7 @@ class FeedbacksController < ApplicationController
   end
   
   def index
-    @feedbacks = Feedback.all
+    @feedbacks = Feedback.paginate(:page => params[:page], :per_page => 20)
   end
   
   def thanks
