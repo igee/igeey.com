@@ -1,7 +1,10 @@
 <%= form_for @feedback do |form| %>
   <h4>你遇到了什么问题，或者对网站有什么建议吗？</h4>
-  <%= form.text_area :text, :style => "width:420px;height:80px",:placeholder => "有什么想说的？"%>
-  <%= form.label :email,'如果需要答复，请留下你的email:' %> <%= form.text_field :email,:size => 18 %>
-  <br/>
-  <%= form.submit 'OK',:class => "button"%>
+  <p>
+    <%= form.text_area :text, :style => "width:440px;height:80px",:placeholder => "有什么想说的？"%>
+  </p>
+  <p>
+    <%= form.label :email,'如果需要答复，请留下你的email:' %> <%= form.text_field :email,:style => "width:170px"%>
+    <%= form.submit 'OK',:class => "button"%>
+  </p>
 <% end %>
