@@ -6,7 +6,7 @@ class TopicsController < ApplicationController
   
   def index
     @topics = Topic.where(:venue_id => nil).limit(20)
-    @my_topics = (current_user.comments.where(:commentable_type => 'Topic').map(&:commentable) + current_user.topics).uniq if current_user
+    @my_topics = (current_user.comments.where(:commentable_type => 'Topic').map(&:commentable) | current_user.topics).uniq.sort{|x,y| y.created_at <=> x.created_at} if current_user
   end
   
   def new

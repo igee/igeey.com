@@ -40,7 +40,7 @@ class SiteController < ApplicationController
         @my_timeline += object.callings.not_closed.limit(5)
         @my_timeline += object.plans.limit(5)
       end
-      @my_timeline = @my_timeline.uniq.sort{|x,y| y.created_at <=> x.created_at }[0..15]
+      @my_timeline = @my_timeline.uniq.sort{|x,y| y.last_replied_at  <=> x.last_replied_at  }[0..15]
     end
     render :layout => false
   end

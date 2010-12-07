@@ -15,6 +15,9 @@
     <li>记录： <%= @records_total%></li>
     <li>照片： <%= @photos_total%></li>
     <li>留言： <%= @comments_total%></li>
+    <li>同步： <%= @syncs_total%></li>
+    <li>同步： <%= @topics_total%></li>
+    <li>关注： <%= @follows_total%></li>
   </ul>
 </div>
 <% end %>
@@ -70,6 +73,15 @@ $(document).ready(function() {
       },{
          name: '留言',
          data: [<%= @comments_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
+      },{
+         name: '同步',
+         data: [<%= @syncs_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
+      },{
+         name: '话题',
+         data: [<%= @topics_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
+      },{
+         name: '关注',
+         data: [<%= @follows_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
       }]
    });
   $('.highcharts-legend:not tspan:gt(2)').click()
