@@ -216,7 +216,9 @@ class User < ActiveRecord::Base
   
   def reset_password!
     self.password = self.password_confirmation = generate_password(6)
-    Mailer.reset_password(self,self.password).deliver if self.save(false)
+    self.encrypt_password
+    self.password = nil
+    Mailer.reset_password(self,self.password_confirmation).deliver if self.save
   end
   
   protected

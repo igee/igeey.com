@@ -36,9 +36,9 @@ class Plan < ActiveRecord::Base
 
   def status
     if for_what == 'money'
-      "已有#{self.calling.users_count}人要捐增#{self.calling.plans.map(&:money).sum}元，还需要#{self.calling.remaining_number}元"
+      "已有#{self.calling.users_count}人要捐赠#{self.calling.plans.map(&:money).sum}元，还需要#{self.calling.remaining_number}元"
     elsif for_what == 'goods'
-      "已有#{self.calling.users_count}人要捐增#{self.calling.plans.map(&:goods).sum}#{self.calling.unit}，还需要#{self.calling.remaining_number}}#{self.calling.unit}"
+      "已有#{self.calling.users_count}人要捐赠#{self.calling.plans.map(&:goods).sum}#{self.calling.unit}，还需要#{self.calling.remaining_number}#{self.calling.unit}"
     elsif for_what == 'time'
       "已有#{self.calling.users_count}人要参加，还需要#{self.calling.remaining_number}人"
     end

@@ -43,7 +43,7 @@ class Record < ActiveRecord::Base
   def description
     result = "在#{self.formatted_done_at}"
     if self.action.for_what == 'money'
-      result << "捐增了#{self.money}元给#{self.venue.name}，用于#{self.donate_for}"
+      result << "捐赠了#{self.money}元给#{self.venue.name}，用于#{self.donate_for}"
     elsif self.action.for_what == 'goods'
       result << "捐赠了#{self.goods}#{self.unit}#{self.goods_is}给#{self.venue.name}"
     elsif self.action.for_what == 'time'
