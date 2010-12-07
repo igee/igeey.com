@@ -12,7 +12,7 @@
       <% if @calling.can_edit_by?(current_user)%>
         <span>
         <%= link_to "修改","#{edit_calling_path(@calling)}?back_path=#{request.path}"%>
-        　<%= link_to "关闭","#{close_calling_path(calling)}?back_path=#{request.path}",:method => :put,:confirm => '你确定要关闭这个召集行动么，一旦关闭其他人将不能参与' %>
+        　<%= link_to "关闭","#{close_calling_path(@calling)}?back_path=#{request.path}",:method => :put,:confirm => '你确定要关闭这个召集行动么，一旦关闭其他人将不能参与' %>
         </span>
       <% end %>
     </div>
