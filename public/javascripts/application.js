@@ -45,7 +45,7 @@
       $(activeTab).fadeIn(); // show the target tab content div by matching clicked link.
       return false;
     });
-    var reg = /(http:\/\/|https:\/\/)((\w|=|\?|\.|\/|&|-)+)/g
+    var reg = /(http:\/\/|https:\/\/)((\w|=|\?|\.|\/|&|-|!)+)/g
     $('pre').each(function(index){$(this).html($(this).html().replace(reg, "<a href='$1$2' target='_blank' rel='nofollow'>$1$2</a>"))})
   })
   

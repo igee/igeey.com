@@ -57,7 +57,7 @@ b{text-align:right}
 input[type="text_field"],input[type="text"],input[type="password"]{
     text-decoration:none;
     border:1px solid #bbb;
-    margin:0px 0px;
+    margin:0px;
     padding:1px 4px;
     background-color:white;
     -webkit-border-radius:3px;-moz-border-radius:3px;border-radius: 3px;
@@ -333,7 +333,7 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
   zoom:1;
 }
 
-.saying input{text-align:right;margin:4px;}
+.saying input{text-align:right;}
 
 .saying p{}
 
