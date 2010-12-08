@@ -326,7 +326,7 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
   background-color:#e6e6f0;
   color:#505050;
   -webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;
-  padding:10px 40px;
+  padding:10px 40px 15px;
   list-style:none;    
   margin-bottom:8px;
   overflow:hidden;
