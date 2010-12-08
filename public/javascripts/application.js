@@ -46,6 +46,6 @@
       return false;
     });
     var reg = /(http:\/\/|https:\/\/)((\w|=|\?|\.|\/|&|-)+)/g
-    $('pre').each(function(index){$(this).html($(this).html().replace(reg, "<a href='$1$2'>$1$2</a>"))})
+    $('pre').each(function(index){$(this).html($(this).html().replace(reg, "<a href='$1$2' target='_blank' rel='nofollow'>$1$2</a>"))})
   })
   
