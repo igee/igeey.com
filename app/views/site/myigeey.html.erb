@@ -38,20 +38,17 @@
 
 <% content_for :sidebar do %>
     <div class="sidebar_panel" id="my_news">
-      <p>
       <% if current_user.has_unread_comment? %>
-        <%= link_to "有人在你的消息下留言了，去看看?",unread_comments_path %>
+        <%= raw "#{link_to '有人在你的消息下留言了，去看看?',unread_comments_path}<br/>" %>
       <% elsif current_user.has_unread_follow_comment? %>
-        <%= link_to "你关注的行动有了新留言了，去看看?",unread_comments_path %>
+        <%= raw "#{raw link_to '你关注的行动有新留言了，去看看?',unread_comments_path}<br/>" %>
       <% end %>
-      </p>
-      <p>
+      
       <% if current_user.has_unread_plan? %>
         <%= link_to "你的召集有人响应了，去看看?",unread_plans_path %>
       <% elsif current_user.has_unread_child? %>
         <%= link_to "有人跟随你的行动了，去看看?",unread_plans_path %>
       <% end %>
-      </p>
     </div>
     
     <div class="box">
