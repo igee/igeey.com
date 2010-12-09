@@ -76,6 +76,7 @@ class CallingsController < ApplicationController
     @calling.update_attribute(:has_new_comment,false) if @calling.user == current_user && @calling.has_new_comment
     @calling.update_attribute(:has_new_plan,false) if @calling.user == current_user && @calling.has_new_plan
     @calling.follows.where(:user_id => current_user.id).first.update_attribute(:has_new_comment,false) if current_user && @calling.follows.where(:user_id => current_user.id).present?
+    @calling.comments.where(:user_id => current_user.id).map{|a| a.update_attribute(:has_new_comment,false)} if logged_in? == @calling.comments.where(:user_id => current_user.id).first.present?
   end
   
 end

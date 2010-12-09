@@ -41,6 +41,7 @@ ActiveRecord::Schema.define() do
     t.text     :content
     t.integer  :commentable_id
     t.string   :commentable_type, :limit => 40
+    t.boolean  :has_new_comment,  :default => false
     t.timestamps
   end
 

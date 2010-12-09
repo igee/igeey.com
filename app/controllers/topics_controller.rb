@@ -39,6 +39,7 @@ class TopicsController < ApplicationController
   
   def clean_unread
     @topic.update_attribute(:has_new_comment,false) if @topic.user == current_user && @topic.has_new_comment
+    @topic.comments.where(:user_id => current_user.id).map{|a| a.update_attribute(:has_new_comment,false)} if logged_in? == @topic.comments.where(:user_id => current_user.id).first.present?
   end
 
 end

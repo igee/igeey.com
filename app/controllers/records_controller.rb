@@ -81,5 +81,6 @@ class RecordsController < ApplicationController
   
   def clean_unread
     @record.update_attribute(:has_new_comment,false) if @record.user == current_user && @record.has_new_comment
+    @record.comments.where(:user_id => current_user.id).map{|a| a.update_attribute(:has_new_comment,false)} if logged_in? == @record.comments.where(:user_id => current_user.id).first.present?
   end
 end
