@@ -13,9 +13,9 @@
 
 <h2 style="display:inline"><%= @geo.name%></h2> <%= link_to '切换地区',list_geos_path,:class => 'open_dialog',:title => '切换地区'%>
 
-<div id="map_canvas" style="height:360px;clear:both;margin:10px 0"></div>
+<div id="map_canvas" style="height:360px;clear:both;margin-top:6px"></div>
 
-<div>
+<div class="box">
   <p id="create_venue_box" style="text-align:center;">
     没有找到你要的聚点？
     <%= link_to "添加聚点",new_venue_path,:id => "create_venue" %> 吧。
@@ -29,11 +29,19 @@
   </div>
 </div>
 
+<div class="box">
+  <h4>最新被提交的聚点</h4>
+  <p>
+  <% @venues.each do |venue|%>
+    <%= link_to venue.name,venue_path(venue)%>　
+  <% end %>
+  </p>
+</div>
 <% content_for :sidebar do %>
-<div class="explanation">
+<div class="div">
   <h4>聚点—爱聚的世界</h4>
   <p>
-    爱聚的世界是由一个个需要公益服务的社区组成的，在网站上它们被称做聚点。
+    爱聚的世界是由一个个需要公益服务的社区组成的，它们被称做聚点。
   </p>
   <p>
     每个公益行都需要有关联的聚点，在聚点上，你可以号召大家为聚点做公益，或是记录自己做过的公益行动。
