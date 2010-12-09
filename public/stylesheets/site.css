@@ -35,7 +35,8 @@ pre {
   white-space: -pre-wrap;
   white-space: -o-pre-wrap;
   word-wrap: break-word;
-  line-height:1.7em;
+  line-height:1.8em;
+  margin:5px 0;
   } 
 
 span{
@@ -322,11 +323,11 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 
 .saying{
   float:right;
-  width:450px;
+  width:470px;
   background-color:#e6e6f0;
   color:#505050;
   -webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;
-  padding:10px 40px 15px;
+  padding:10px 30px 15px;
   list-style:none;    
   margin-bottom:8px;
   overflow:hidden;
@@ -365,7 +366,7 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 
 
 .impact{
-  margin:12px 0;
+  margin:10px 0;
   font-weight:bold;
   font-size:16px;
   line-height:1.9em;
@@ -383,7 +384,6 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
     -moz-border-radius: 6px;
     border-radius: 6px;
     min-height:20px;
-    margin:5px 0px;
     font-size:13px;
     padding:15px 20px;
 }
