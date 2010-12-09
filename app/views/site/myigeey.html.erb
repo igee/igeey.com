@@ -45,9 +45,9 @@
       <% end %>
       
       <% if current_user.has_unread_plan? %>
-        <%= raw "#{link_to "你的召集有人响应了，去看看?",unread_plans_path｝}<br/>" %>
+        <%= raw "#{link_to "你的召集有人响应了，去看看?",unread_plans_path}<br/>" %>
       <% elsif current_user.has_unread_child? %>
-        <%= raw "#{link_to "有人跟随你的行动了，去看看?",unread_plans_path｝}<br/>" %>
+        <%= raw "#{link_to "有人跟随你的行动了，去看看?",unread_plans_path}<br/>" %>
       <% end %>
       
       <% if current_user.has_unread_follow_calling? %>
