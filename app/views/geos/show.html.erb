@@ -31,7 +31,7 @@
 
 <div class="box">
   <h4>最新被提交的聚点</h4>
-  <p>
+  <p class="explanation">
   <% @venues.each do |venue|%>
     <%= link_to venue.name,venue_path(venue)%>　
   <% end %>
@@ -40,10 +40,10 @@
 <% content_for :sidebar do %>
 <div class="div">
   <h4>聚点—爱聚的世界</h4>
-  <p>
-    爱聚的世界是由一个个需要公益服务的社区组成的，它们被称做聚点。
+  <p class="explanation">
+    爱聚的世界是由一个个需要公益服务的社区组成的，在网站上，它们被称做聚点。
   </p>
-  <p>
+  <p class="explanation">
     每个公益行都需要有关联的聚点，在聚点上，你可以号召大家为聚点做公益，或是记录自己做过的公益行动。
   </p>
 </div>
