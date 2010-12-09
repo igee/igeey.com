@@ -72,4 +72,9 @@ class SiteController < ApplicationController
     @plans = current_user.plans.where(:has_new_child => true)
   end
   
+  def unread_venues
+    @unread_calling_venues = current_user.followings.where(:has_new_calling => true,:followable_type => "Venue").map(&:followable)
+    @unread_topic_venues = current_user.followings.where(:has_new_topic => true,:followable_type => "Venue").map(&:followable)
+  end
+  
 end

@@ -45,10 +45,17 @@
       <% end %>
       
       <% if current_user.has_unread_plan? %>
-        <%= link_to "你的召集有人响应了，去看看?",unread_plans_path %>
+        <%= raw "#{link_to "你的召集有人响应了，去看看?",unread_plans_path｝}<br/>" %>
       <% elsif current_user.has_unread_child? %>
-        <%= link_to "有人跟随你的行动了，去看看?",unread_plans_path %>
+        <%= raw "#{link_to "有人跟随你的行动了，去看看?",unread_plans_path｝}<br/>" %>
       <% end %>
+      
+      <% if current_user.has_unread_follow_calling? %>
+        <%= raw "#{link_to '你关注的聚点有了新召集行动，去看看?',unread_venues_path}" %>
+      <% elsif current_user.has_unread_follow_topic? %>
+        <%= raw "#{link_to '你关注的聚点有了新话题，去看看?',unread_venues_path}" %>
+      <% end %>
+
     </div>
     
     <div class="box">
