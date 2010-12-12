@@ -3,7 +3,7 @@
 <% @action = @record.action %>
 <% @plan = @record.plan %>
 <div class="box">
-  <%= form_for @record do |form| %>
+  <%= form_for @record,:html => { :multipart => true } do |form| %>
     <%= raw error_explanation_for(@record) if @record.errors.present?%>
     <%= form.hidden_field :action_id %>
     <%= form.hidden_field :venue_id %>
@@ -11,7 +11,6 @@
     <%= form.hidden_field :plan_id %>
     <%= render :partial => '/users/user' ,:object => current_user %>
     <div class="saying">
-        
         <div class="impact">
           我在<%= form.text_field :done_at, :size => 8,:class => 'with_calendar',:placeholder => "年-月-日",:value => (@record.done_at || (@plan.present? && @plan.plan_at)) || nil%>
             <% if @action.for_what == 'money' %>
@@ -32,6 +31,10 @@
         <p class="explanation">补充一些细节，让大家知道你是怎么做的吧</p>
         <%= form.text_area :detail, :style => "width:430px;height:100px"%>
         <br/>
+        <h5>行动照片：</h5>
+        <%= form.fields_for :photos do |photo|%>
+          <%= photo.file_field :photo,:style => "background:none;border:none;font-size:13px" %>
+        <% end %>
     </div>
     <div class="saying_tail"></div>
     <div style="clear:both;text-align:right">

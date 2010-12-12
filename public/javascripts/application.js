@@ -34,6 +34,10 @@
       $('input[placeholder!=""]').hint();
     }
     
+    $(".upload_photo_link").click(function(){dialog($(this).attr('title'),("id:upload_photo_" + $(this).attr('tag')),"570px","auto","text");  return false;})
+    
+    function set_title(photo_id){$('#photo_set_title_' + photo_id).show();$('#set_title_' + photo_id).hide();$('#delete_link_' + photo_id).hide();$('#sumbit_link_' + photo_id).show();}
+    
     $(".tabContents").hide(); // Hide all tab conten divs by default
     $(".tabContents:first").show(); // Show the first div of tab content by default
     $("#tabContaier ul li a:first").addClass("active");

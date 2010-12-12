@@ -3,7 +3,7 @@
     <div class="event" style="margin-left:96px;margin-top:-5px;width:510px">
       <div class="event_panel" style="width:480px">
         <%= link_to '召集行动',"#{new_calling_path}?venue_id=#{venue.id}",:class => 'open_dialog',:title => '召集行动'%>
-        　<%= link_to '记录行动',"#{new_record_path}?venue_id=#{venue.id}",:class => 'open_dialog',:title => '记录行动'%>
+        <%= link_to '记录行动',"#{new_record_path}?venue_id=#{venue.id}",:class => 'open_dialog',:title => '记录行动'%>
       </div>
       <h4><%= link_to venue.name ,venue%> <span><%= venue.geo.full_name %></span></h4>
       <div class="explanation" style="margin-top:-4px"><%= venue.intro%></div>

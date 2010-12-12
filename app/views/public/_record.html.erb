@@ -4,13 +4,18 @@
     <% if record.user == current_user %>
       <div class="event_panel">
         <%= link_to '修改',"#{edit_record_path(record)}?back_path=#{request.path}"%>
-        　<%= link_to "删除","#{record_path(record)}?back_path=#{request.path}",:method => :delete,:confirm => '你确定要删除这个行动记录么' %>
+        <%= render :partial => "/photos/uploader",:locals => {:imageable => record}%>
+        <%= link_to "删除","#{record_path(record)}?back_path=#{request.path}",:method => :delete,:confirm => '你确定要删除这个行动记录么' %>
       </div>
     <% end %>
     <p>
       <%= link_to "#{record.description}",record,:class=>'event_link'%>
     </p>
     <div class="addition">
+      <span>
+        <%= image_tag '/images/icon/photo.gif',:class => "icon",:alt => '有照片哦',:class => 'with_explain icon',:title => "#{image_tag(record.photos.first.photo.url,:class => 'photo')}" if record.has_photo%>
+        <%= image_tag '/images/icon/text.gif',:class => "icon",:alt => '有文字哦',:class => 'with_explain icon',:title => "<pre>#{record.detail}</pre>" unless record.detail.blank? %>
+      </span>
     </div>
   </div>
 </div>

@@ -420,6 +420,8 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
   z-index:1
 }
 
+.event_panel a{margin:0 4px}
+
 .event_box.hover .event_panel{display:block}
 
 .comment .event_panel{margin:0;width:520px}
@@ -428,13 +430,13 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 
 .photo_box{
   float:left;
-  width:120px;
+  width:113px;
   height:100px;
   padding:5px 2px;
   text-align:center;
   }
   
-.photo{margin-bottom:4px;}
+.photo{margin-bottom:4px;width:90px;height:64px}
 
 .photo_box form{display:inline}
 
@@ -643,7 +645,7 @@ input.todo:hover{
 
 #record_counters{float:right;height:74px}
 
-#upload_photo{
+.upload_photo{
   background-color:#f0f0f0;
   padding:8px 8px 0;
   margin:6px 0;

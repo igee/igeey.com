@@ -6,13 +6,16 @@ class Record < ActiveRecord::Base
   belongs_to :plan
   belongs_to :parent,   :class_name => :record,:foreign_key => :parent_id
   has_many   :comments, :as => :commentable,    :dependent => :destroy
-  has_many   :follows,  :as => :followable, :dependent => :destroy
+  has_many   :follows,  :as => :followable,     :dependent => :destroy
   has_many   :syncs,    :as => :syncable,       :dependent => :destroy
-  has_many   :photos,   :as => :imageable,      :dependent => :destroy
+  has_many   :photos,   :as => :imageable,     :dependent => :destroy
   
   default_scope :order => 'created_at DESC'
   
   delegate  :for_what, :to => :action
+  
+  accepts_nested_attributes_for :photos
+  
   validate  :user_id, :presence  => true,:uniqueness => {:scope => [:plan_id]}
   validates :action_id,:venue_id,:presence  => true
   validates :done_at,:date => {:before_or_equal_to => Date.today.to_date}

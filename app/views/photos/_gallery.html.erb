@@ -1,9 +1,9 @@
-<div class="box">
+<div class="box" style="padding:0 12px">
   <h4>相册：
     　<%= image_tag "/images/icon/upload.gif",:class=>"icon"%>
     <span>
     <% if logged_in? %>
-      <%= link_to "上传照片","#",:id => 'upload_link',:title => '上传图片'%>
+      <%= link_to "上传照片","#",:class => 'upload_photo_link',:title => '上传图片',:tag => "#{imageable.class}#{imageable.id}"%>
     <% else %>
       <%= link_to "上传照片",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%>
     <% end %>
@@ -12,9 +12,4 @@
   <div class="clear"></div>
   <%= render :partial => "/photos/form",:locals => {:imageable => imageable}%>
   <%= render :partial => "/photos/photo",:collection => @photos %>
-  
-  <script type="text/javascript">
-    $("#upload_link").click(function(){dialog($(this).attr('title'),("id:upload_photo"),"570px","auto","text");  return false;})
-    function set_title(photo_id){$('#photo_set_title_' + photo_id).show();$('#set_title_' + photo_id).hide();$('#delete_link_' + photo_id).hide();$('#sumbit_link_' + photo_id).show();}
-  </script>
 </div>
