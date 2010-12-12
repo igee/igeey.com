@@ -34,7 +34,7 @@ class SiteController < ApplicationController
     # group callings,plans and records to list
     if logged_in?
       @my_followings = current_user.followings
-      @my_timeline = current_user.following_callings
+      @my_timeline = current_user.calling_followings.map(&:followable)
       @my_followings.where("followable_type != ?",'Calling' ).map(&:followable).each do |object|
         @my_timeline += object.records.limit(5) 
         @my_timeline += object.callings.not_closed.limit(5)
