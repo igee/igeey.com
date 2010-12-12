@@ -447,13 +447,13 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 
 .photo_box{
   float:left;
-  width:113px;
-  height:100px;
-  padding:5px 2px;
+  width:103px;
+  height:90px;
+  margin-top:10px;
   text-align:center;
   }
   
-.photo{margin-bottom:4px;width:90px;height:64px}
+.photo{margin-bottom:2px;width:90px;height:64px}
 
 .photo_box form{display:inline}
 

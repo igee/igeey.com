@@ -47,7 +47,7 @@
 
 <div class="box">
   <h4><%= "上传#{@user.photos.size}张照片："%></h4>
-  <%= render :partial => '/photos/photo',:collection => @photos[0..9] %>
+  <%= render :partial => '/photos/photo',:collection => @photos[0..11] %>
   <%= link_to raw("查看更多 &#8744;"),more_items_user_path(@user,:items => 'photos',:page => 2),:class => "more_items" if @photos[10].present?%>
 </div>
 
@@ -65,7 +65,6 @@
   </div>
   
   <div class="box">
-    
     <h4><%= "关注#{@user.user_followings.size}人："%></h4>
     <%= render :partial => '/users/user',:collection => @following_users[0..7] %>
     <%= link_to raw("查看全部 &#8744;"),more_items_user_path(@user,:items => 'following_users'),:class => "more_items" if  @following_users[8].present?%>
