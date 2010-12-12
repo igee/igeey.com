@@ -211,6 +211,16 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
   padding:4px 10px;
 }
 
+.more_items{
+  text-align:right;
+  display:block;
+  clear:both;
+  font-size:12px;
+  padding:4px 0;
+  margin-right:6px;
+  color:#888
+  }
+
 .field_with_errors{
   display:inline;
   }
@@ -251,13 +261,19 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 .pagination span{font-size:14px}
 .pagination em{font-style:normal;color:#bbb}
 
-.user,.badge{
+.user{
+    float:left;
+    width:62px;
+    height:90px;
+    text-align:center;
+    }
+
+.badge{
     float:left;
     width:62px;
     height:72px;
     text-align:center;
     }
-
 .user_avatar{
     margin-top:6px;
     width:48px;
@@ -389,7 +405,7 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 }
 
 .event_box{
-  padding:8px 8px 10px;
+  padding:8px 8px 4px;
   border-bottom:1px dashed #ccc;
   overflow:hidden;
   zoom:1;

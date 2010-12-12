@@ -72,26 +72,26 @@ class UsersController < ApplicationController
   end
   
   def show
-    @timeline = @user.callings
-    @timeline += @user.plans.undone
-    @timeline += @user.records
-    @timeline = @timeline.sort{|x,y| y.created_at <=> x.created_at }
-    @followers = @user.followers
-    @following_users = @user.following_users
-    @following_venues = @user.following_venues
-    @photos = @user.photos
+    @records = @user.records.limit(7)
+    @callings = @user.callings.limit(7)
+    @plans = @user.plans.undone.limit(7)
+    @followers = @user.followers.limit(9)
+    @following_users = @user.user_followings.limit(9).map(&:followable)
+    @following_venues = @user.venue_followings.limit(7).map(&:followable)
+    @photos = @user.photos.limit(11)
+    @badges = @user.grants.limit(9).map(&:badge)
   end
   
   def following_venues
-    @following_venues = @user.following_venues
+    @following_venues = @user.venue_followings.map(&:followable)
   end
   
   def following_users
-    @following_users = @user.following_users
+    @following_users = @user.user_followings.map(&:followable)
   end
 
   def following_callings
-    @following_callings = @user.following_callings
+    @following_callings = @user.calling_followings.map(&:followable)
   end
 
   def reset_password
@@ -109,6 +109,19 @@ class UsersController < ApplicationController
   def reset_completed
     @email = params[:email]
     render :layout => false if params[:layout] == 'false'
+  end
+  
+  def more_items
+    @items = eval({:badges => '@user.grants[8..-1].map(&:badge)',
+                   :followers => '@user.followers[8..-1]',
+                   :following_users => "@user.user_followings[8..-1].map(&:followable)",
+                   :following_venues => '@user.venue_followings[8..-1].map(&:followable)',
+                   :photos => "@user.photos.paginate(:page => #{params[:page]}, :per_page => 10)",
+                   :callings => "@user.callings.paginate(:page => #{params[:page]}, :per_page => 6)",
+                   :records => "@user.records.paginate(:page => #{params[:page]}, :per_page => 6)",
+                   :plans => "@user.plans.paginate(:page => #{params[:page]}, :per_page => 6)",
+                   }[params[:items].to_sym])
+    render :layout => false
   end
   
   private

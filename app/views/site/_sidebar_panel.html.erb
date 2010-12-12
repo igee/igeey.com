@@ -13,13 +13,13 @@
     <div class="sidebar_panel">
       <div id="my_followings">                                               
         <div class="followings_counter" style="border-left:none">
-          <%= link_to raw("<p>#{current_user.following_venues.size}</p>聚点关注"),followings_path(:start_at => 'following_venues') %>
+          <%= link_to raw("<p>#{current_user.venue_followings.size}</p>聚点关注"),followings_path(:start_at => 'following_venues') %>
         </div>
         <div class="followings_counter">
-          <%= link_to raw("<p>#{current_user.following_callings.size}</p>行动关注"),followings_path(:start_at => 'following_callings') %>
+          <%= link_to raw("<p>#{current_user.calling_followings.size}</p>行动关注"),followings_path(:start_at => 'following_callings') %>
         </div>
         <div class="followings_counter">
-          <%= link_to raw("<p>#{current_user.following_users.size}</p>用户关注"),followings_path(:start_at => 'following_users') %>
+          <%= link_to raw("<p>#{current_user.user_followings.size}</p>用户关注"),followings_path(:start_at => 'following_users') %>
         </div>        
       </div>  
     </div>
