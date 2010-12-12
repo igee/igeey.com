@@ -3,6 +3,12 @@
   $(document).ready(function(){
     $(".open_dialog").click(function(){dialog($(this).attr('title'),("url:"+$(this).attr('href')),"570px","auto","text");  return false;})
     $('#dialog_flash a').click();
+    $('.more_items').click(function(){
+      var container = $(this);
+      container.html('读取中...')
+      $.get(container.attr('href'),function(data){container.replaceWith(data)})
+      return false;
+      });
     $('.with_tip').poshytip({
       className: 'tip-yellowsimple',
       showOn: 'focus',

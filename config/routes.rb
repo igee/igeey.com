@@ -62,6 +62,7 @@ Igee::Application.routes.draw do
     end
     member do
       post  :update_account
+      get   :more_items
       get   :following_venues
       get   :following_users
       get   :following_callings

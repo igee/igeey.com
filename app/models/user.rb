@@ -132,16 +132,16 @@ class User < ActiveRecord::Base
     !self.followings.where(:followable_id => followable.id,:followable_type => followable.class).limit(1).blank?
   end
 
-  def following_users
-    self.followings.where(:followable_type => 'User').map(&:followable)
+  def user_followings
+    self.followings.where(:followable_type => 'User')
   end
 
-  def following_venues
-    self.followings.where(:followable_type => 'Venue').map(&:followable)
+  def venue_followings
+    self.followings.where(:followable_type => 'Venue')
   end
   
-  def following_callings
-    self.followings.where(:followable_type => 'Calling').map(&:followable)
+  def calling_followings
+    self.followings.where(:followable_type => 'Calling')
   end
 
   def has_unread_record_comment?
