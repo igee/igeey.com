@@ -72,4 +72,10 @@ class SiteController < ApplicationController
     @plans = current_user.plans.where(:has_new_child => true)
   end
   
+  def unread_followers
+    @follows = current_user.follows.where(:unread => true)
+    @followers = @follows.map(&:user)
+    @follows.map{|f| f.update_attribute(:unread,false)}
+  end
+  
 end

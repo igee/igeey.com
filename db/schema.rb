@@ -48,6 +48,7 @@ ActiveRecord::Schema.define() do
   create_table "follows", :force => true do |t|
     t.integer  :user_id,    :null => false
     t.boolean  :has_new_comment,  :default => false
+    t.boolean  :unread,           :default => true
     t.integer  :followable_id
     t.string   :followable_type, :limit => 40
     t.timestamps

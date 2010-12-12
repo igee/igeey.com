@@ -179,6 +179,10 @@ class User < ActiveRecord::Base
   def has_new_badge?
     self.grants.where(:unread => true).first.present?
   end
+  
+  def has_unread_follower?
+    self.follows.where(:unread => true).first.present?
+  end
     
   def latest_update
     [self.records.first,self.callings.first,self.plans.first].compact.sort{|x,y| y.created_at <=> x.created_at }.first
