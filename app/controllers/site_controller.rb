@@ -18,9 +18,9 @@ class SiteController < ApplicationController
 
   def followings
     @user = current_user
-    @following_venues = @user.following_venues.paginate(:page => params[:venues_page], :per_page => 20)
-    @following_callings = @user.following_callings.paginate(:page => params[:callings_page], :per_page => 20)
-    @following_users = @user.following_users.paginate(:page => params[:users_page], :per_page => 20)
+    @venue_followings = @user.venue_followings.paginate(:page => params[:venues_page], :per_page => 20)
+    @calling_followings = @user.calling_followings.paginate(:page => params[:callings_page], :per_page => 20)
+    @user_followings = @user.user_followings.paginate(:page => params[:users_page], :per_page => 20)
   end
   
   def actions
@@ -34,7 +34,7 @@ class SiteController < ApplicationController
     # group callings,plans and records to list
     if logged_in?
       @my_followings = current_user.followings
-      @my_timeline = current_user.following_callings
+      @my_timeline = current_user.calling_followings.map(&:followable)
       @my_followings.where("followable_type != ?",'Calling' ).map(&:followable).each do |object|
         @my_timeline += object.records.limit(5) 
         @my_timeline += object.callings.not_closed.limit(5)

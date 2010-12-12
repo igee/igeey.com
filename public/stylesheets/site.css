@@ -479,9 +479,11 @@ input.todo:hover{
 }
 
 .venue_thumb_cover{
-  width:80;
+  width:80px;
   height:60px;
   }
+
+.venue_thumb_box{float:left;padding:4px 0 10px}
 
 .setting_box,.profile_box,.intro_box{
   padding:15px 20px 10px;
