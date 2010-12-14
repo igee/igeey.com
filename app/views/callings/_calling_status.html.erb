@@ -1,0 +1,35 @@
+<div class="box">
+    <div class="calling_status">
+     <div style="padding:0 20px;height:100px;overflow:hidden;zoom:1">
+        <%= render :partial => '/venues/venue',:object => @venue%>
+      </div>
+      <h4>受益聚点</h4>
+    </div>
+    
+    <div class="calling_status">
+      <div style="text-align:center;height:80px;padding:10px 0;overflow:hidden">
+        <%= link_to "#{@calling.percentage}%",progress_calling_path(@calling),:style=>"font-size:58px;font-family:Ariel;font-weight:bold;color:#004d68;line-height:70px"%>
+        <br/>
+        <span>
+          <%= "目标#{@calling.total_number_tag}，"%>
+          <%= {:goods=>"已捐#{@calling.complete_number}#{@calling.unit}",:time => "已有#{@calling.complete_number}人要去"}[@calling.for_what.to_sym]%>
+          </span>
+      </div>
+      <h4>完成度</h4>
+    </div>
+    
+    <div class="calling_status">
+      <div style="text-align:center;height:80px;padding:10px 33px;overflow:hidden">
+        <div class="action_button"><%= @calling.action.name%></div>
+      </div>
+      <h4>行动类型</h4>
+    </div>
+  </div>
+    
+  <div class="box">
+    <h4><%= {'goods' => '捐赠信息','time' => '集合信息','money' => '捐赠信息'}[@calling.for_what]%>：</h4>
+    <p style="padding:5px 10px">
+      <%= @calling.info%>
+    </p>
+  </div>
+  
