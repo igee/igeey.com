@@ -1,10 +1,13 @@
 .bundle
 config/database.yml
 config/config.yml
+config/sphinx.yml
 config/oauth/*.yml
 config/deploy.rb
+config/*.sphinx.conf
 db/*.sqlite3
 db/migrate/*
+db/sphinx/*
 log
 tmp
 REVISION
