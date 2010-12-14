@@ -1,7 +1,8 @@
 body{
   font-size:14px;
   background-color:#bcdcff;
-  color:#666
+  color:#666;
+  word-break:break-all;
   }
 
 body,h1{margin:0}
