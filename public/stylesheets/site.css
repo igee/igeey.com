@@ -40,11 +40,10 @@ pre {
   } 
 
 span{
-  color:#999;
+  color:#a0a0a0;
   font-size:12px;
   font-weight:normal;
 }
-
 
 a{
   text-decoration:none;
@@ -130,9 +129,16 @@ img{border:none;}
   margin-top:36px;
   }
 
-span.embed_number{
+a.plan_embed_number{
   color:#fff;
   background-color:#e75;
+  padding:2px 4px;
+  font-size:10px
+  }
+
+a.record_embed_number{
+  color:#fff;
+  background-color:#4c4;
   padding:2px 4px;
   font-size:10px
   }
@@ -200,7 +206,7 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 }
 
 .explanation{
-  color:#777;
+  color:#888;
   font-size:12px;
   font-weight:normal;
   }
@@ -353,13 +359,17 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 
 .saying input{text-align:right;margin:4px;}
 
-.saying p{}
-
 .saying_tail{
   float:right;
   background:url('/images/saying_tail.png') no-repeat;
   width:8px;
   height:72px;
+}
+
+.sidebar_saying_tail{
+  background:url('/images/sidebar_saying_tail.png') no-repeat;
+  width:36px;
+  height:8px;
 }
 
 .saying_colon_left{
@@ -381,6 +391,15 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
   font-size:30px;
   }
 
+.sidebar_saying{
+  width:220px;
+  background-color:#fff;
+  -webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;
+  padding:15px;
+  list-style:none;
+  overflow:hidden;
+  zoom:1;
+}
 
 .impact{
   margin:10px 0;
@@ -416,20 +435,19 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 .event_box.hover p{color:#777}
 
 .event {
-  height:68px;
   width:508px;
   margin-left:86px;
   }
   
 .event p{
-    font-size:15px;
+    font-size:14px;
     font-weight:bold;
     }
     
 .event_link{color:#777}
 
 .event_panel{
-  margin:54px 10px 0;
+  margin:58px 10px 0;
   width:500px;
   text-align:right;
   display:none;

@@ -13,8 +13,8 @@
     </p>
     <div class="addition">
       <span>
-        <%= image_tag '/images/icon/photo.gif',:class => "icon",:alt => '有照片哦',:class => 'with_explain icon',:title => "#{image_tag(record.photos.first.photo.url,:class => 'photo')}" if record.has_photo%>
-        <%= image_tag '/images/icon/text.gif',:class => "icon",:alt => '有文字哦',:class => 'with_explain icon',:title => "<pre>#{record.detail}</pre>" unless record.detail.blank? %>
+        <%= short_text(record.detail,24)%>
+        <%= image_tag '/images/icon/photo.gif',:class => "icon",:alt => '有照片哦' if record.has_photo%>
       </span>
     </div>
   </div>

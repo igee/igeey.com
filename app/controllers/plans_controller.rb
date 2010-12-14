@@ -36,6 +36,8 @@ class PlansController < ApplicationController
     @comments = @calling.comments
     @followers = @calling.followers
     @photos = @calling.photos
+    @records = @calling.records
+    @plans = @calling.plans.undone
     @my_plan = @calling.plans.select{|p| p.user_id == current_user.id}.first if logged_in?
     render :layout => "no_sidebar"
   end

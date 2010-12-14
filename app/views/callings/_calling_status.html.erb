@@ -8,7 +8,7 @@
     
     <div class="calling_status">
       <div style="text-align:center;height:80px;padding:10px 0;overflow:hidden">
-        <%= link_to "#{@calling.percentage}%",progress_calling_path(@calling),:style=>"font-size:58px;font-family:Ariel;font-weight:bold;color:#004d68;line-height:70px"%>
+        <%= link_to "#{@calling.percentage}%",progress_calling_path(@calling),:style=>"font-size:58px;font-family:Ariel;font-weight:bold;color:#004d68;line-height:70px",:title => "查看结果",:class => 'with_explain'%>
         <br/>
         <span>
           <%= "目标#{@calling.total_number_tag}，"%>

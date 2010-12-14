@@ -66,6 +66,10 @@ class CallingsController < ApplicationController
     respond_with @calling
   end
   
+  def progress
+    @records = @calling.records
+  end
+  
   private
   def find_calling
     @calling = Calling.find(params[:id])

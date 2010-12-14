@@ -54,6 +54,9 @@ class Record < ActiveRecord::Base
     end
   end
   
+  def is_done
+    true
+  end
   
   def name
     if self.action.for_what == 'money'
