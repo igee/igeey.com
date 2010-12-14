@@ -63,4 +63,11 @@ class Venue < ActiveRecord::Base
     file.write venues_json.to_json
     file.close    
   end
+  
+  define_index do
+    # fields
+    indexes name, :sortable => true
+    
+  end
+  
 end
