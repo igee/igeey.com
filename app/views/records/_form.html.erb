@@ -17,14 +17,16 @@
               <%= form.hidden_field(:donate_for,:value => @calling.donate_for) if @record.plan.present?%>
             <% elsif @action.for_what == 'goods' %>
               <div class="impact">
-                我捐赠了<%= form.text_field :goods, :size => 4 ,:placeholder => "多少",:value => (@record.goods || (@plan.present? && @plan.goods)) || nil%><%= form.text_field :unit,:size =>2,:placeholder => '单位'%><%= @record.plan.present? ? @calling.goods_is : form.text_field(:goods_is, :size => 8,:placeholder => "物资名称")%>
+                我捐赠了 <%= form.text_field :goods, :size => 4 ,:placeholder => "多少",:value => (@record.goods || (@plan.present? && @plan.goods)) || nil%>
+                <%= form.text_field :unit,:size =>2,:placeholder => '单位'%>
+                <%= @record.plan.present? ? @calling.goods_is : form.text_field(:goods_is, :size => 8,:placeholder => "物资名称")%>
                 给<%="#{@venue.name}"%>。
               </div>
               <h5>时间：<%= form.text_field :done_at, :size => 8,:class => 'with_calendar',:placeholder => "年-月-日",:value => (@record.done_at || (@plan.present? && @plan.plan_at)) || nil%></h5>
               <%= form.hidden_field(:goods_is,:value => @calling.goods_is) if @record.plan.present?%>
             <% elsif @action.for_what == 'time' %>
               <div class="impact">
-                我去<%="#{@venue.name}"%><%= @calling.do_what ? raw("#{@calling.do_what} #{form.hidden_field(:do_what,:value =>@calling.do_what)}") : form.text_field(:do_what, :size => 7 ,:placeholder => "做了什么？")%>。
+                我去<%="#{@venue.name}"%><%= @calling ? raw("#{@calling.do_what} #{form.hidden_field(:do_what,:value =>@calling.do_what)}") : form.text_field(:do_what, :size => 7 ,:placeholder => "做了什么？")%>。
               </div>
               <h5>时间：<%= form.text_field :done_at, :size => 8,:class => 'with_calendar',:placeholder => "年-月-日",:value => (@record.done_at || (@plan.present? && @plan.plan_at)) || nil%></h5>
               <h5>贡献了: <%= form.text_field :time, :size => 3,:placeholder => "多少" %> 小时。</h5>
