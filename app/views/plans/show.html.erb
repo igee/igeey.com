@@ -3,14 +3,14 @@
     <div class="box">
       <%= render :partial => '/users/user' ,:object => @plan.user %>
         <div class="saying">
-          <p class="impact" style="font-size:20px">
+          <p class="impact" style="font-size:18px">
             <%="#{@plan.user.login}#{@plan.description}。"%>
           </p>
         </div>
         <div class="saying_tail"></div>      
         <div style="clear:both;text-align:right">
           <% if @plan.can_edit_by?(current_user)%>
-          <span><%= link_to("修改",edit_calling_plan_path(@plan.calling,@plan))%>　<%= link_to "取消",calling_plan_path(@calling,@plan),:method => :delete,:confirm => '确定要取消你的计划么?' %></span>
+          <span><%= link_to("修改",edit_calling_plan_path(@plan.calling,@plan))%> | <%= link_to "取消",calling_plan_path(@calling,@plan),:method => :delete,:confirm => '确定要取消你的计划么?' %></span>
           <% end %>
         </div>
     </div>
@@ -77,7 +77,7 @@
     <% end %>
     
     <div class="box">
-      <h4>所有参与者： <span>绿色＝完成</span> <span>红色＝未完成</span></h4>
+      <h4>所有参与者： <span>(绿色＝完成，红色＝未完成)</span></h4>
       <% (@records + @plans).each do |a|%>
         <div class='user' user_id="<%=a.user.id%>">
           <div class="embed_number_wrapper"><%= link_to "+#{a.number}",a,:class => (a.is_done ? "record_embed_number" : "plan_embed_number")%></div>

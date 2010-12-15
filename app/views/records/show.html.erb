@@ -13,8 +13,8 @@
       <div style="clear:both;text-align:right">
         <% if @record.can_edit_by?(current_user)%>
         <span>
-          <%= link_to "修改信息",edit_record_path(@record)%>
-          <%= render :partial => "/photos/uploader",:locals => {:imageable => @record}%>
+          <%= link_to "修改信息",edit_record_path(@record)%> |
+          <%= render :partial => "/photos/uploader",:locals => {:imageable => @record}%> |
           <%= link_to "删除","#{record_path(@record)}?",:method => :delete,:confirm => '你确定要删除这个行动记录么' %>
         </span>
         <% end %>
