@@ -64,11 +64,12 @@
   </div>
 
   <div class="box">
-    <h4>所有参与者：</h4>
+    <h4>所有参与者： <span>绿色＝完成</span> <span>红色＝未完成</span></h4>
     <% (@records + @plans).each do |a|%>
       <div class='user' user_id="<%=a.user.id%>">
         <div class="embed_number_wrapper"><%= link_to "+#{a.number}",a,:class => (a.is_done ? "record_embed_number" : "plan_embed_number")%></div>
         <%= link_to (image_tag a.user.avatar.url,:class => "user_avatar"),a %>
+        <br/>
       <span><%= link_to a.user.login,a.user%></span>
       </div>
     <% end %>
