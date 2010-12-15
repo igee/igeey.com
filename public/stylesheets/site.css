@@ -541,6 +541,7 @@ input.todo:hover{
     border:none;
     }
 
+#my_news a{display:block;margin:4px}
 
 #error_explanation{
   text-align:left;

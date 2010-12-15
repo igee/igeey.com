@@ -152,6 +152,10 @@ class User < ActiveRecord::Base
     self.callings.where(:has_new_comment => true).first.present?
   end
   
+  def has_unread_comment_comment?
+    self.comments.where(:has_new_comment => true).first.present?
+  end
+  
   def has_unread_topic_comment?
     self.topics.where(:has_new_comment => true).first.present?
   end
@@ -174,6 +178,10 @@ class User < ActiveRecord::Base
   
   def has_new_badge?
     self.grants.where(:unread => true).first.present?
+  end
+  
+  def has_unread_follower?
+    self.follows.where(:unread => true).first.present?
   end
     
   def latest_update
