@@ -8,18 +8,18 @@
   </ul>
   
   <div id="following_venues" class="tabContents">
-    <%= render :partial => '/public/venue',:collection => @following_venues%>
-    <%= will_paginate @following_venues ,:param_name => :venues_page,:params => {:start_at => 'following_venues'}%>
+    <%= render :partial => '/public/venue',:collection => @venue_followings.map(&:followable)%>
+    <%= will_paginate @venue_followings ,:param_name => :venues_page,:params => {:start_at => 'following_venues'}%>
   </div>
   
   <div id="following_callings" class="tabContents">
-    <%= render :partial => '/public/calling',:collection => @following_callings%>
-    <%= will_paginate @following_callings ,:param_name => :callings_page,:params => {:start_at => 'following_callings'} %>
+    <%= render :partial => '/public/calling',:collection => @calling_followings.map(&:followable) %>
+    <%= will_paginate @calling_followings ,:param_name => :callings_page,:params => {:start_at => 'following_callings'} %>
   </div>
   
   <div id="following_users" class="tabContents">
-    <%= render :partial => '/public/user',:collection => @following_users%>
-    <%= will_paginate @following_users ,:param_name => :users_page,:params => {:start_at => 'following_users'}%>
+    <%= render :partial => '/public/user',:collection => @user_followings.map(&:followable)%>
+    <%= will_paginate @user_followings ,:param_name => :users_page,:params => {:start_at => 'following_users'}%>
   </div>
   
 </div>

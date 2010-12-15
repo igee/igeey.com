@@ -6,13 +6,16 @@ class Record < ActiveRecord::Base
   belongs_to :plan
   belongs_to :parent,   :class_name => :record,:foreign_key => :parent_id
   has_many   :comments, :as => :commentable,    :dependent => :destroy
-  has_many   :follows,  :as => :followable, :dependent => :destroy
+  has_many   :follows,  :as => :followable,     :dependent => :destroy
   has_many   :syncs,    :as => :syncable,       :dependent => :destroy
-  has_many   :photos,   :as => :imageable,      :dependent => :destroy
+  has_many   :photos,   :as => :imageable,     :dependent => :destroy
   
   default_scope :order => 'created_at DESC'
   
   delegate  :for_what, :to => :action
+  
+  accepts_nested_attributes_for :photos
+  
   validate  :user_id, :presence  => true,:uniqueness => {:scope => [:plan_id]}
   validates :action_id,:venue_id,:presence  => true
   validates :done_at,:date => {:before_or_equal_to => Date.today.to_date}
@@ -41,16 +44,19 @@ class Record < ActiveRecord::Base
   end
   
   def description
-    result = "在#{self.formatted_done_at}"
     if self.action.for_what == 'money'
-      result << "捐赠了#{self.money}元给#{self.venue.name}，用于#{self.donate_for}"
+      result = "捐赠了#{self.money}元给#{self.venue.name}，用于#{self.donate_for}"
     elsif self.action.for_what == 'goods'
-      result << "捐赠了#{self.goods}#{self.unit}#{self.goods_is}给#{self.venue.name}"
+      result = "捐赠了#{self.goods}#{self.unit}#{self.goods_is}给#{self.venue.name}"
     elsif self.action.for_what == 'time'
-      result << "去#{self.venue.name}#{self.do_what}#{self.time}个小时"
+      result = "去#{self.venue.name}#{self.do_what}，贡献：#{self.time}个小时"
     end
+    result << "，时间：#{self.formatted_done_at}"
   end
   
+  def is_done
+    true
+  end
   
   def name
     if self.action.for_what == 'money'

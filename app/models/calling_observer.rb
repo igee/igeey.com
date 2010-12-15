@@ -4,6 +4,7 @@ class CallingObserver < ActiveRecord::Observer
     calling.user.check_badge_condition_on('realtime_callings_count')
     calling.followers << calling.user
     calling.venue.follows.new(:user_id => calling.user_id).save
+    calling.venue.follows.map{|v|  v.update_attribute(:has_new_calling ,true)}
   end
   
   def before_validation(calling)

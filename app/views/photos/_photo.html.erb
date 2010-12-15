@@ -1,7 +1,6 @@
 <div class="photo_box">
   <%= link_to (image_tag photo.photo.url,:class => "photo"),photo,:class => "open_dialog",:title => photo.title %>
   <br/>
-  <span><%= photo.title %></span>
   <% if logged_in? && photo.user.id == current_user.id %>
       <%= form_for photo do |form|%>
         <%=  form.text_field :title,:size => 7,:style => "display:none;font-size:12px",:id => "photo_set_title_#{photo.id}"%>
@@ -11,5 +10,7 @@
         <%= link_to "x",photo,:method => :delete ,:confirm => "确定要删除这张照片么？",:id=>"delete_link_#{photo.id}"%>
         <%= link_to raw('&#8730'),"#",:onclick => "javasciprt:$('#edit_photo_#{photo.id}').submit();return false",:style =>'display:none',:id=>"sumbit_link_#{photo.id}"%>
         </span>
+  <% else %>
+  <span><%= photo.title %></span>
   <% end %>
 </div>

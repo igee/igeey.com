@@ -3,7 +3,7 @@
 <% @action = @record.action %>
 <% @plan = @record.plan %>
 <div class="box">
-  <%= form_for @record do |form| %>
+  <%= form_for @record,:html => { :multipart => true } do |form| %>
     <%= raw error_explanation_for(@record) if @record.errors.present?%>
     <%= form.hidden_field :action_id %>
     <%= form.hidden_field :venue_id %>
@@ -11,31 +11,35 @@
     <%= form.hidden_field :plan_id %>
     <%= render :partial => '/users/user' ,:object => current_user %>
     <div class="saying">
-        
-        <div class="impact">
-          我在<%= form.text_field :done_at, :size => 8,:class => 'with_calendar',:placeholder => "年-月-日",:value => (@record.done_at || (@plan.present? && @plan.plan_at)) || nil%>
             <% if @action.for_what == 'money' %>
-              捐赠了
+              我捐赠了
               <%= form.text_field :money, :size => 4 ,:placeholder => "多少",:value => (@record.money || (@plan.present? && @plan.money)) %>
               元到<%="#{@venue.name}"%>，用于
-              <%= @calling.present? ? @calling.donate_for : form.text_field(:donate_for, :size => 8,:placeholder => "做什么？")%>。
+              <%= @calling.present? ? @calling.donate_for : form.text_field(:donate_for, :size => 8,:placeholder => "用于做什么？")%>。
               <%= form.hidden_field(:donate_for,:value => @calling.donate_for) if @record.plan.present?%>
             <% elsif @action.for_what == 'goods' %>
-              捐赠了 <%= form.text_field :goods, :size => 4 ,:placeholder => "多少",:value => (@record.goods || (@plan.present? && @plan.goods)) || nil%>
-              <%= form.text_field :unit,:size =>2,:placeholder => '单位'%>
-              <%= @record.plan.present? ? @calling.goods_is : form.text_field(:goods_is, :size => 7,:placeholder => "物资名称")%>
-              给<%="#{@venue.name}"%>。
-              <%= form.hidden_field(:goods_is,:value => @calling.goods_is) if @record.plan.present?%>
+              <div class="impact">
+                我捐赠了
+                <%= form.text_field :goods, :size => 4 ,:placeholder => "多少",:value => (@record.goods || (@plan.present? && @plan.goods)) || nil%>
+                <%= form.text_field :unit,:size =>2,:placeholder => '单位'%>
+                <%= raw(@calling.present? ? "#{@calling.goods_is} #{form.hidden_field(:goods_is,:value => @calling.goods_is)}" : "#{form.text_field :goods_is, :size => 8,:placeholder => '物资名称'}")%>
+                给<%="#{@venue.name}"%>。
+              </div>
+              <h5>时间：<%= form.text_field :done_at, :size => 8,:class => 'with_calendar',:placeholder => "年-月-日",:value => (@record.done_at || (@plan.present? && @plan.plan_at)) || nil%></h5>
             <% elsif @action.for_what == 'time' %>
-              去<%="#{@venue.name}"%> <%= form.text_field :do_what, :size => 7 ,:placeholder => "做了什么？",:value => (@calling.do_what if @calling)%><%= form.text_field :time, :size => 3,:placeholder => "多少" %> 小时。
+              <div class="impact">
+                我去<%="#{@venue.name}"%><%= raw(@calling.present? ? "#{@calling.do_what} #{form.hidden_field(:do_what,:value =>@calling.do_what)}" : " #{form.text_field(:do_what, :size => 7 ,:placeholder => '做了什么？')}")%>。
+              </div>
+              <h5>时间：<%= form.text_field :done_at, :size => 8,:class => 'with_calendar',:placeholder => "年-月-日",:value => (@record.done_at || (@plan.present? && @plan.plan_at)) || nil%></h5>
+              <h5>贡献了: <%= form.text_field :time, :size => 3,:placeholder => "多少" %> 小时。</h5>
             <% end %>
-            <br/>
-        </div>
-        
+        <br/>
         <h5>行动详情：</h5>
-        <p class="explanation">补充一些细节，让大家知道你是怎么做的吧</p>
         <%= form.text_area :detail, :style => "width:430px;height:100px"%>
         <br/>
+        <%= form.fields_for :photos do |photo|%>
+          <h5>行动照片：<%= photo.file_field :photo,:style => "background:none;border:none;font-size:13px" %></h5>
+        <% end %>
     </div>
     <div class="saying_tail"></div>
     <div style="clear:both;text-align:right">

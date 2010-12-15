@@ -7,9 +7,9 @@
       </div>
     <% elsif (plan.user == current_user) %>
       <div class="event_panel">
-          <%= link_to '完成?',"#{new_record_path}?plan_id=#{plan.id}"%>
-        　<%= link_to "修改","#{edit_calling_plan_path(plan.calling,plan)}?back_path=#{request.path}"%>
-        　<%= link_to "取消",calling_plan_path(plan.calling,plan),:method => :delete,:confirm => '确定要取消你的计划么?' %>
+        <%= link_to '完成?',"#{new_record_path}?plan_id=#{plan.id}"%>
+        <%= link_to "修改","#{edit_calling_plan_path(plan.calling,plan)}?back_path=#{request.path}"%>
+        <%= link_to "取消",calling_plan_path(plan.calling,plan),:method => :delete,:confirm => '确定要取消你的计划么?' %>
       </div>
     <% end %>
     <p>
