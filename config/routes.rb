@@ -23,6 +23,8 @@ Igee::Application.routes.draw do
   match 'plan(/:id)' => 'plans#redirect', :as => :plan
   match 'setting' => 'users#setting'
   
+  match 'search' => 'search#result'
+  
   resource :session, :only => [:new, :create, :destroy,:show]
   resource :sync, :only => [:new, :create]
   match 'chart' => 'chart#show'
