@@ -17,7 +17,10 @@ Igee::Application.routes.draw do
   match 'actions' => 'site#actions'
   match 'unread_comments' => 'site#unread_comments'
   match 'unread_plans' => 'site#unread_plans'
+
   match 'unread_followers' => 'site#unread_followers'
+  match 'unread_venues' => 'site#unread_venues'
+  
   match 'my_timeline' => 'site#my_timeline'
   match 'city_timeline' => 'site#city_timeline'
   
