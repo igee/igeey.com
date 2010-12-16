@@ -8,3 +8,4 @@ Disallow: /setting
 Disallow: /chart
 Disallow: /myigeey
 Disallow: /feedbacks
+Disallow: /search
