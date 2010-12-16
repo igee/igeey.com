@@ -95,7 +95,7 @@ class Calling < ActiveRecord::Base
     elsif self.action.for_what == 'goods'
       "为#{self.venue.name}募捐#{self.total_goods}#{self.unit}#{self.goods_is}"
     elsif self.action.for_what == 'time'
-      "召集#{self.total_people}人在#{self.formatted_do_at}去#{self.venue.name}#{self.do_what}"
+      "召集#{self.total_people}人去#{self.venue.name}#{self.do_what},时间：#{self.formatted_do_at}"
     end
   end
   

@@ -41,11 +41,10 @@ pre {
   } 
 
 span{
-  color:#999;
+  color:#a0a0a0;
   font-size:12px;
   font-weight:normal;
 }
-
 
 a{
   text-decoration:none;
@@ -59,7 +58,7 @@ b{text-align:right}
 input[type="text_field"],input[type="text"],input[type="password"]{
     text-decoration:none;
     border:1px solid #bbb;
-    margin:0px 0px;
+    margin:0px;
     padding:1px 4px;
     background-color:white;
     -webkit-border-radius:3px;-moz-border-radius:3px;border-radius: 3px;
@@ -131,9 +130,16 @@ img{border:none;}
   margin-top:36px;
   }
 
-span.embed_number{
+a.plan_embed_number{
   color:#fff;
   background-color:#e75;
+  padding:2px 4px;
+  font-size:10px
+  }
+
+a.record_embed_number{
+  color:#fff;
+  background-color:#4c4;
   padding:2px 4px;
   font-size:10px
   }
@@ -201,7 +207,7 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 }
 
 .explanation{
-  color:#777;
+  color:#888;
   font-size:12px;
   font-weight:normal;
   }
@@ -363,15 +369,19 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
   zoom:1;
 }
 
-.saying input{text-align:right;margin:4px;}
-
-.saying p{}
+.saying input{text-align:right;}
 
 .saying_tail{
   float:right;
   background:url('/images/saying_tail.png') no-repeat;
   width:8px;
   height:72px;
+}
+
+.sidebar_saying_tail{
+  background:url('/images/sidebar_saying_tail.png') no-repeat;
+  width:36px;
+  height:8px;
 }
 
 .saying_colon_left{
@@ -393,6 +403,15 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
   font-size:30px;
   }
 
+.sidebar_saying{
+  width:220px;
+  background-color:#fff;
+  -webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;
+  padding:15px;
+  list-style:none;
+  overflow:hidden;
+  zoom:1;
+}
 
 .impact{
   margin:10px 0;
@@ -428,26 +447,27 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 .event_box.hover p{color:#777}
 
 .event {
-  height:68px;
   width:508px;
   margin-left:86px;
   }
   
 .event p{
-    font-size:15px;
+    font-size:14px;
     font-weight:bold;
     }
     
 .event_link{color:#777}
 
 .event_panel{
-  margin:54px 10px 0;
+  margin:58px 10px 0;
   width:500px;
   text-align:right;
   display:none;
   position:absolute;
   z-index:1
 }
+
+.event_panel a{margin:0 4px}
 
 .event_box.hover .event_panel{display:block}
 
@@ -457,13 +477,13 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 
 .photo_box{
   float:left;
-  width:120px;
-  height:100px;
-  padding:5px 2px;
+  width:103px;
+  height:90px;
+  margin-top:10px;
   text-align:center;
   }
   
-.photo{margin-bottom:4px;}
+.photo{margin-bottom:2px;width:90px;height:64px}
 
 .photo_box form{display:inline}
 
@@ -532,6 +552,7 @@ input.todo:hover{
     border:none;
     }
 
+#my_news a{display:block;margin:4px}
 
 #error_explanation{
   text-align:left;
@@ -674,7 +695,7 @@ input.todo:hover{
 
 #record_counters{float:right;height:74px}
 
-#upload_photo{
+.upload_photo{
   background-color:#f0f0f0;
   padding:8px 8px 0;
   margin:6px 0;

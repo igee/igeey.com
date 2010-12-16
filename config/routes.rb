@@ -17,8 +17,13 @@ Igee::Application.routes.draw do
   match 'actions' => 'site#actions'
   match 'unread_comments' => 'site#unread_comments'
   match 'unread_plans' => 'site#unread_plans'
+
+  match 'unread_followers' => 'site#unread_followers'
+  match 'unread_venues' => 'site#unread_venues'
+  
   match 'my_timeline' => 'site#my_timeline'
   match 'city_timeline' => 'site#city_timeline'
+  
   match 'oauth(/:action)' => 'oauth#(/:action)'
   match 'plan(/:id)' => 'plans#redirect', :as => :plan
   match 'setting' => 'users#setting'
@@ -42,7 +47,8 @@ Igee::Application.routes.draw do
   end
   
   resources :callings do
-    put   :close ,:on => :member
+    put   :close    ,:on => :member
+    get   :progress ,:on => :member
     resources :plans do
       get   :duplicate ,:on => :member
     end

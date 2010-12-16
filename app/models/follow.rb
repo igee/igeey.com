@@ -8,9 +8,8 @@ class Follow < ActiveRecord::Base
   
   default_scope :order => 'created_at DESC'
   
-  
   def description
-    "在关注这个行动的进展： #{self.followable.user.login}#{self.followable.description}"
+    "在关注这个行动： #{self.followable.description}"
   end
   
 end

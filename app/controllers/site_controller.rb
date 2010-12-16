@@ -62,14 +62,25 @@ class SiteController < ApplicationController
   end
   
   def unread_comments
-    @topics = current_user.topics.where(:has_new_comment => true)
-    @records = current_user.records.where(:has_new_comment => true)
-    @callings = current_user.callings.where(:has_new_comment => true) | current_user.followings.where(:has_new_comment => true,:followable_type => "Calling").map(&:followable)
+    @topics = current_user.topics.where(:has_new_comment => true) | current_user.comments.where(:has_new_comment => true,:commentable_type => "Topic").map(&:commentable)
+    @records = current_user.records.where(:has_new_comment => true) | current_user.comments.where(:has_new_comment => true,:commentable_type => "Record").map(&:commentable)
+    @callings = current_user.callings.where(:has_new_comment => true) | current_user.followings.where(:has_new_comment => true,:followable_type => "Calling").map(&:followable) | current_user.comments.where(:has_new_comment => true,:commentable_type => "Calling").map(&:commentable)
   end
   
   def unread_plans
     @callings = current_user.callings.where(:has_new_plan => true)
     @plans = current_user.plans.where(:has_new_child => true)
+  end
+  
+  def unread_followers
+    @follows = current_user.follows.where(:unread => true)
+    @followers = @follows.map(&:user)
+    @follows.map{|f| f.update_attribute(:unread,false)}
+  end
+  
+  def unread_venues
+    @unread_calling_venues = current_user.followings.where(:has_new_calling => true,:followable_type => "Venue").map(&:followable)
+    @unread_topic_venues = current_user.followings.where(:has_new_topic => true,:followable_type => "Venue").map(&:followable)
   end
   
 end
