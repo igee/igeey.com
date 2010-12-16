@@ -65,9 +65,12 @@ class Venue < ActiveRecord::Base
   end
   
   define_index do
-    # fields
-    indexes name, :sortable => true
+    indexes name
+    indexes intro
+    indexes geo.name,:as => :city
+    indexes address
     
+    has geo_id
   end
   
 end

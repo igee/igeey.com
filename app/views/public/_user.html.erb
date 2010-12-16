@@ -8,7 +8,8 @@
       <%end%>
       <p>
         <span>
-          <%= "#{user.records_count}个行动记录，#{user.callings_count}召集行动，#{user.follows_count}个关注者"%>
+          <%= "#{user.geo.full_name}" unless user.geo.nil? %>　
+          <%= "#{user.records_count}个行动记录，#{user.callings_count}个召集行动，#{user.follows_count}个关注者"%>
           <br/>
           <%=raw "最新行动: #{link_to user.latest_update.description,user.latest_update}" if user.latest_update.present?%>
         </span>

@@ -24,6 +24,7 @@ Igee::Application.routes.draw do
   match 'setting' => 'users#setting'
   
   match 'search' => 'search#result'
+  match 'search/more' => 'search#more',:as => :more_search
   
   resource :session, :only => [:new, :create, :destroy,:show]
   resource :sync, :only => [:new, :create]

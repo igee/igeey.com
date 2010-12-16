@@ -220,7 +220,14 @@ class User < ActiveRecord::Base
     self.password = nil
     Mailer.reset_password(self,self.password_confirmation).deliver if self.save
   end
-  
+    
+  define_index do
+    indexes login
+    indexes geo.name,:as => :city
+    
+    has geo_id
+  end
+
   protected
   
 end

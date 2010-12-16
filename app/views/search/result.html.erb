@@ -1,3 +1,46 @@
 <% title = '搜索结果' %>
+<h4>"<%= @keywords%>"的搜索结果</h4>
 
-<%= render :partial => "/public/venue",:collection => @venues%>
+
+<div id="tabContaier">
+  <ul>
+    <li><%= link_to "聚点(#{@venues.total_entries > 100 ? '100+' : @venues.total_entries})",'#venue_results' unless @venues.empty?%></li>
+    <li><%= link_to "召集(#{@callings.total_entries > 100 ? '100+' : @callings.total_entries})",'#calling_results' unless @callings.empty?%></li>
+    <li><%= link_to "用户(#{@users.total_entries > 100 ? '100+' : @users.total_entries})",'#user_results' unless @users.empty?%></li>
+    <li><%= link_to "话题(#{@topics.total_entries > 100 ? '100+' : @topics.total_entries})",'#topic_results' unless @topics.empty?%></li>
+  </ul>
+  <div id="results">  
+    <div id="venue_results" class="tabContents">
+      <%= render :partial => "/public/venue",:collection => @venues%>
+      <%= link_to raw("更多结果 &#8744;"),more_search_path(:items => 'venues'),:class => "more_results" if @venues[9].present?%>
+    </div>
+    
+    <div id="calling_results" class="tabContents">
+      <%= render :partial => "/public/calling",:collection => @callings%>
+    </div>
+    
+    <div id="user_results" class="tabContents">
+      <%= render :partial => "/public/user",:collection => @users%>
+      <%= link_to raw("更多结果 &#8744;"),more_search_path(:keywords => params[:keywords],:items => 'users',:page => 2),:class => "more_results" if @users[9].present?%>
+    </div>
+    
+    <div id="topic_results" class="tabContents">
+      <%= render :partial => "/public/topic",:collection => @topics%>
+    </div>
+  </div>
+</div>
+
+<% content_for :extension do %>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('#<%= params[:start_at]%>_link').click();
+    $('.more_results').click(function(){
+      var container = $(this);
+      container.html('读取中...')
+      $.get(container.attr('href'),function(data){container.replaceWith(data)})
+      return false;
+      });
+    $('#results').html($('#results').html().replace(<%= "/(#{@keywords})/g"%>, "<strong class='keyword'>$1</strong>"))
+  })
+  </script>
+<% end %>

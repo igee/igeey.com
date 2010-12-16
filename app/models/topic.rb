@@ -9,4 +9,9 @@ class Topic < ActiveRecord::Base
   
   validate  :title, :presence  => true
   validate  :content, :presence  => true
+
+  define_index do
+    indexes title
+    indexes content
+  end
 end

@@ -112,5 +112,15 @@ class Calling < ActiveRecord::Base
   def can_edit_by?(current_user)
     self.user == current_user
   end
+      
+  define_index do
+    indexes do_what
+    indexes goods_is
+    indexes detail
+    indexes info
+    indexes venue.name ,:as => :venue
+    indexes venue.geo.name ,:as => :city
+    has venue_id
+  end
   
 end

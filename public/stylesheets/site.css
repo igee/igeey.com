@@ -213,12 +213,23 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
   padding:4px 10px;
 }
 
+.keyword{color:#c53}
+
 .more_items{
   text-align:right;
   display:block;
   clear:both;
   font-size:12px;
   padding:4px 0;
+  margin-right:6px;
+  color:#888
+  }
+
+.more_results{
+  text-align:center;
+  display:block;
+  clear:both;
+  padding:6px 0;
   margin-right:6px;
   color:#888
   }
