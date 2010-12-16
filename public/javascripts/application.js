@@ -49,8 +49,6 @@
     $(".upload_photo_link").click(function(){dialog($(this).attr('title'),("id:upload_photo_" + $(this).attr('tag')),"570px","auto","text");  return false;});
     
     $(".tabContents").hide(); // Hide all tab conten divs by default
-    $(".tabContents:first").show(); // Show the first div of tab content by default
-    $("#tabContaier ul li a:first").addClass("active");
     $("#tabContaier ul li a").click(function(){ //Fire the click event
       var activeTab = $(this).attr("href"); // Catch the click link
       $("#tabContaier ul li a").removeClass("active"); // Remove pre-highlighted link
@@ -59,7 +57,7 @@
       $(activeTab).fadeIn(); // show the target tab content div by matching clicked link.
       return false;
     });
-
+    setTimeout(function(){$("#tabContaier ul li a:first").click();}, 600);
     $('pre').each(function(index){$(this).html($(this).html().replace(/(http:\/\/|https:\/\/)((\w|=|\?|\.|\/|&|-|!)+)/g, "<a href='$1$2' target='_blank' rel='nofollow'>$1$2</a>"))})
 
   })
