@@ -100,6 +100,12 @@ ActiveRecord::Schema.define() do
     t.timestamps
   end
   
+  create_table "projects", :force => true do |t|
+    t.string   :title,       :limit => 40
+    t.text     :intro
+    t.string   :cover_file_name
+  end
+  
   create_table "records", :force => true do |t|
     t.integer  :user_id
     t.integer  :venue_id
