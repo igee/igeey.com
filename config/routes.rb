@@ -84,6 +84,7 @@ Igee::Application.routes.draw do
   resources :comments
   resources :photos
   resources :actions
+  resources :projects
   
   
   # The priority is based upon order of creation:

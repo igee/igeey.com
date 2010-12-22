@@ -1,8 +1,9 @@
 class Project < ActiveRecord::Base
+  belongs_to :user
   
-  validates :title,:intro, :presence   => true
+  validates :name,:intro, :presence   => true
   
-  has_attached_file :cover, :styles => {:_160x160 => ["160x160#"],:_80x60 => ["80x80#"]},
+  has_attached_file :cover, :styles => {:_160x160 => ["160x160#"],:_80x80 => ["80x80#"]},
                             :url=>"/media/:attachment/projects/:id/:style.:extension",
                             :default_style=> :_160x160,
                             :default_url=>"/defaults/:attachment/project/:style.png"

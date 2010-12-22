@@ -8,12 +8,7 @@ class User < ActiveRecord::Base
   add_oauth  # add dynamic method for confirmation of oauth status
   
   belongs_to  :geo
-  belongs_to  :user,   :class_name => :user,:foreign_key => :user_id
-  has_attached_file :avatar,:styles => {:_48x48 => ["48x48#",:png],:_72x72 => ["72x72#",:png]},
-                            :default_url=>"/defaults/:attachment/:style.png",
-                            :default_style=> :_48x48,
-                            :url=>"/media/:attachment/:id/:style.:extension"
-                            
+  has_many    :projects                            
   has_many :records,        :dependent => :destroy
   has_many :plans,          :dependent => :destroy
   has_many :callings,       :dependent => :destroy
@@ -28,6 +23,10 @@ class User < ActiveRecord::Base
   has_many :followers,      :through => :follows, :source => :user
   has_many :syncs,          :dependent => :destroy
   
+  has_attached_file :avatar,:styles => {:_48x48 => ["48x48#",:png],:_72x72 => ["72x72#",:png]},
+                            :default_url=>"/defaults/:attachment/:style.png",
+                            :default_style=> :_48x48,
+                            :url=>"/media/:attachment/:id/:style.:extension"
   
   scope :popular,order('follows_count DESC')
 
