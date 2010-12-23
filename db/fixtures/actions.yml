@@ -3,7 +3,9 @@ one:
   name:      '志愿服务'
   for_what:  'time'
   slug:      'volunteer_service'
-  step_by_step: '1、点击“我要去”，填写计划日期，并邀请您的好友一起参与<br/>2、在你计划的日期，按照发起人的要求进行志愿服务；<br/>3、完成志愿服务行动记录，补充详情、上传照片。 '
+  is_for_project: false
+  is_callable:    true
+  step_by_step: '1、点击“我要去”，填写计划日期，并邀请您的好友一起参与；<br/>2、在你计划的日期，按照发起人的要求进行志愿服务；<br/>3、完成志愿服务行动记录，补充详情、上传照片。 '
 
 #two:
   #id:        2
@@ -14,8 +16,9 @@ one:
   
 three:
   id:        3
-  name:      '捐物'
+  name:      '物资捐赠'
   for_what:  'goods'
   slug:      'goods_donation'
-  step_by_step: '1、点击“我要捐赠”，填写捐赠信息，并邀请您的好友一起参与<br/>2、在七日内将捐赠物资邮寄、快递或自行运输到捐赠地址；<br/>3、完成捐赠行动记录,补充详情、上传照片。'
-  
+  is_for_project: false
+  is_callable:    true
+  step_by_step: '1、点击“我要捐赠”，填写捐赠信息，并邀请您的好友一起参与；<br/>2、在七日内将捐赠物资邮寄、快递或自行运输到捐赠地址；<br/>3、完成捐赠行动记录,补充详情、上传照片。'

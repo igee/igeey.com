@@ -2,22 +2,31 @@ class ProjectsController < ApplicationController
   respond_to :html
   before_filter :login_required,   :except => [:show]
   before_filter :find_project,       :except => [:new,:create]
-  before_filter :check_permission, :only => [:destroy,:update]
+  before_filter :check_permission, :only => [:destroy,:update,:new,:edit]
   
   def new
     @project = Project.new
+    @actions = Action.for_project
+  end
+  
+  def edit
+    @actions = Action.for_project
   end
   
   def create
     @project = Project.new(params[:project])
     @project.user = current_user
+    update_tools
     @project.save
     respond_with @project
   end
 
   def update
-    @project.update_attributes(params[:project]) if @project.user_id == current_user.id
-    redirect_to :back
+    @project.update_attributes(params[:project]) if current_user.is_admin
+    update_tools
+    @project.save
+    @actions = Action.for_project
+    respond_with @project
   end
 
   def destroy
@@ -36,7 +45,17 @@ class ProjectsController < ApplicationController
   end
   
   def check_permission
-    redirct_to :back unless current_user.is_admin
+    redirect_to :root unless current_user.is_admin
+  end
+  
+  def update_tools
+    Action.for_project.each do |a|
+      if params[a.slug]
+        @project.tools.new(:action_id => a.id).save
+      else
+        @project.tools.where(:action_id => a.id).map(&:destroy)
+      end
+    end
   end
 
 end

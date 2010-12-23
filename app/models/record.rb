@@ -44,12 +44,12 @@ class Record < ActiveRecord::Base
   end
   
   def description
-    if self.action.for_what == 'money'
-      result = "捐赠了#{self.money}元给#{self.venue.name}，用于#{self.donate_for}"
-    elsif self.action.for_what == 'goods'
-      result = "捐赠了#{self.goods}#{self.unit}#{self.goods_is}给#{self.venue.name}"
-    elsif self.action.for_what == 'time'
+    if self.action.slug == 'volunteer_service'
       result = "去#{self.venue.name}#{self.do_what}，贡献：#{self.time}个小时"
+    elsif self.action.slug == 'goods_donation'
+      result = "捐赠了#{self.goods}#{self.unit}#{self.goods_is}给#{self.venue.name}"
+    elsif self.action.slug == 'money_donation'
+      result = "捐赠了#{self.money}元给#{self.venue.name}，用于#{self.donate_for}"
     end
     result << "，时间：#{self.formatted_done_at}"
   end
@@ -59,14 +59,13 @@ class Record < ActiveRecord::Base
   end
   
   def name
-    if self.action.for_what == 'money'
+    if self.action.slug == 'money_donation'
       "#{self.user.login}为#{self.venue.name}捐款"
-    elsif self.action.for_what == 'goods'
+    elsif self.action.slug == 'goods_donation'
       "#{self.user.login}为#{self.venue.name}捐赠#{self.goods_is}"
-    elsif self.action.for_what == 'time'
+    elsif self.action.slug == 'volunteer_service'
       "#{self.user.login}去#{self.venue.name}#{self.do_what}"
     end
   end
-  
     
 end

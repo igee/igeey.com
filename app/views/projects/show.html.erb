@@ -7,20 +7,19 @@
 <div class="box">
   <div style="float:left;text-align:center;">
     <%= image_tag(@project.cover.url,:class => "project_cover") %>
-    <br/>
-    <span>
-      <%= link_to "#{@project.cover_file_name ? '更新' : '上传'}主题图",cover_project_path(@project),:class => "open_dialog",:title => "#{@project.cover_file_name ? '更新' : '上传'}主题图" if logged_in? && current_user.is_admin %>
-      　<%= link_to '更新信息',edit_project_path(@project),:id => 'update_info' if logged_in? && current_user.is_admin %>
-    </span>
   </div>
   <div style="width:440px;_width:430px;height:122px;margin-left:180px">
-    <h3><%= @project.name%></h3>
-    <p><%= @project.intro%></p>      
+    <h2><%= @project.name%> <span><%= link_to '更新信息',edit_project_path(@project),:id => 'update_info' if logged_in? && current_user.is_admin %></span></h2>
+    <p><%= @project.intro%></p>
+    
   </div>
 </div>
 
 <div class="box" style="text-align:center">
-  <%= link_to '我要参与',(logged_in? ? "#{new_marker_path}?project_id=#{@project.id}" : signup_path),:class => "big_button open_dialog",:title => '我要参与'%>
+  <h3>我要参与</h3>
+  <%= @project.tools.each do |t|%>
+    <%= link_to t.action.name,(logged_in? ? new_record_path(:action_id => 4) : signup_path),:class => "big_button open_dialog",:title => '我要参与'%>
+  <% end %>
 </div>
 
 <% content_for :sidebar do %>

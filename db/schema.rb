@@ -16,6 +16,8 @@ ActiveRecord::Schema.define() do
     t.string  :name,        :limit => 40
     t.string  :slug,        :limit => 40
     t.string  :for_what,    :limit => 40
+    t.boolean :is_for_project, :default => false
+    t.boolean :is_callable,    :default => true
     t.text    :intro
     t.text    :step_by_step
   end
@@ -101,6 +103,7 @@ ActiveRecord::Schema.define() do
   end
   
   create_table "projects", :force => true do |t|
+    t.integer  :user_id
     t.string   :name,       :limit => 40
     t.text     :intro
     t.string   :cover_file_name
@@ -215,6 +218,8 @@ ActiveRecord::Schema.define() do
   create_table "topics",:force => true do |t|
     t.integer  :user_id
     t.integer  :venue_id
+    t.string   :forumable_type
+    t.integer  :forumable_id
     t.string   :title
     t.text     :content
     t.datetime :last_replied_at
@@ -222,5 +227,11 @@ ActiveRecord::Schema.define() do
     t.boolean  :has_new_comment,  :default => false
     t.integer  :comments_count,   :default => 0
     t.timestamps
+  end
+  
+  
+  create_table "tools",:force => true do |t|
+    t.integer  :project_id
+    t.integer  :action_id
   end
 end

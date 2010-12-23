@@ -45,11 +45,11 @@ class Plan < ActiveRecord::Base
   end
   
   def description
-    if self.action.for_what == 'money'
+    if self.action.slug == 'money_donation'
       "要为#{self.venue.name}捐款#{self.money}元，用于#{self.calling.donate_for}"
-    elsif self.action.for_what == 'goods'
+    elsif self.action.slug == 'goods_donation'
       "要为#{self.venue.name}捐赠#{self.goods}#{self.calling.unit}#{self.calling.goods_is}"
-    elsif self.action.for_what == 'time'
+    elsif self.action.slug == 'volunteer_service'
       "要在#{self.formatted_plan_at}去#{self.venue.name}#{self.calling.do_what}"
     end
   end
@@ -59,11 +59,11 @@ class Plan < ActiveRecord::Base
   end
   
   def name
-    if self.action.for_what == 'money'
+    if self.action.slug == 'money_donation'
       "#{self.user.login}要为#{self.venue.name}捐款"
-    elsif self.action.for_what == 'goods'
+    elsif self.action.slug == 'goods_donation'
       "#{self.user.login}要为#{self.venue.name}捐赠#{self.calling.goods_is}"
-    elsif self.action.for_what == 'time'
+    elsif self.action.slug == 'volunteer_service'
       "#{self.user.login}要去#{self.venue.name}#{self.calling.do_what}"
     end
   end

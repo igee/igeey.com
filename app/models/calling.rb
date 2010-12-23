@@ -90,21 +90,21 @@ class Calling < ActiveRecord::Base
   end
   
   def description
-    if self.action.for_what == 'money'
+    if self.action.slug == 'money_donation'
       "为#{self.venue.name}募捐#{self.total_money}元用于#{self.donate_for}"
-    elsif self.action.for_what == 'goods'
+    elsif self.action.slug == 'goods_donation'
       "为#{self.venue.name}募捐#{self.total_goods}#{self.unit}#{self.goods_is}"
-    elsif self.action.for_what == 'time'
+    elsif self.action.slug == 'volunteer_service'
       "召集#{self.total_people}人去#{self.venue.name}#{self.do_what},时间：#{self.formatted_do_at}"
     end
   end
   
   def name
-    if self.action.for_what == 'money'
+    if self.action.slug == 'money_donation'
       "#{self.user.login}为#{self.venue.name}募捐"
-    elsif self.action.for_what == 'goods'
+    elsif self.action.slug == 'goods_donation'
       "#{self.user.login}为#{self.venue.name}募捐#{self.goods_is}"
-    elsif self.action.for_what == 'time'
+    elsif self.action.slug == 'volunteer_service'
       "#{self.user.login}为#{self.venue.name}召集人#{self.do_what}"
     end
   end

@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
   belongs_to :user
-  
+  has_many :tools  
   validates :name,:intro, :presence   => true
   
   has_attached_file :cover, :styles => {:_160x160 => ["160x160#"],:_80x80 => ["80x80#"]},

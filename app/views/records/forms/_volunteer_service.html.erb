@@ -1,0 +1,13 @@
+        <div class="impact">
+          我去<%="#{@venue.name}"%><%= raw(@calling.present? ? "#{@calling.do_what} #{form.hidden_field(:do_what,:value =>@calling.do_what)}" : " #{form.text_field(:do_what, :size => 7 ,:placeholder => '做了什么？')}")%>。
+        </div>
+        <h5>时间：<%= form.text_field :done_at, :size => 8,:class => 'with_calendar',:placeholder => "年-月-日",:value => (@record.done_at || (@plan.present? && @plan.plan_at)) || nil%></h5>
+        <h5>贡献了: <%= form.text_field :time, :size => 3,:placeholder => "多少" %> 小时。</h5>
+        <br/>
+        <h5>行动详情：</h5>
+        <%= form.text_area :detail, :style => "width:430px;height:100px"%>
+        <br/>
+        <%= form.fields_for :photos do |photo|%>
+          <h5>行动照片：<%= photo.file_field :photo,:style => "background:none;border:none;font-size:13px" %></h5>
+        <% end %>
+    

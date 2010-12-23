@@ -5,7 +5,7 @@ class RecordsController < ApplicationController
   after_filter :clean_unread, :only => [:show]
   
   def index
-    @actions = Action.all
+    @actions = Action.callable
   end
   
   def new
@@ -13,25 +13,18 @@ class RecordsController < ApplicationController
     @plan = @record.plan
     
     if @plan.nil? && @record.action.nil?
-      @actions = Action.all
+      @actions = Action.callable
       @venue = Venue.find(params[:venue_id])
       render :select_action, :layout =>  !(params[:layout] == 'false')
+    else
+      @calling = @plan.nil? ? @record.calling : @plan.calling
+      @venue = @calling.nil? ? @record.venue : @calling.venue
+      @action = @calling.nil? ? @record.action : @calling.action
+      @unit = @calling.nil? ? '件' : @calling.unit
+      @record = Record.new(:action => @action,:venue => @venue,:calling => @calling,:plan => @plan,:unit => @unit)
+      @record.photos.build
+      render :layout =>  !(params[:layout] == 'false')
     end
-    
-    if @plan.nil? && @record.venue.nil?
-      @action = Action.find params[:action_id]
-      @following_venues = current_user.followings.where(:followable_type => 'Venue').map(&:followable)
-      @city_venues = current_user.geo.venues if current_user.geo
-      @all_venues = Venue.all
-      render :select_venue
-    end
-    
-    @calling = @plan.nil? ? @record.calling : @plan.calling
-    @venue = @calling.nil? ? @record.venue : @calling.venue
-    @action = @calling.nil? ? @record.action : @calling.action
-    @unit = @calling.nil? ? '件' : @calling.unit
-    @record = Record.new(:action => @action,:venue => @venue,:calling => @calling,:plan => @plan,:unit => @unit)
-    @record.photos.build
   end
   
   def create
