@@ -116,11 +116,14 @@ ActiveRecord::Schema.define() do
     t.integer  :plan_id
     t.integer  :calling_id
     t.integer  :parent_id
+    
     t.integer  :money
-    t.string   :donate_for,  :limit => 40
     t.integer  :goods
-    t.string   :goods_is,    :limit => 40
     t.integer  :time
+    t.integer  :online
+    
+    t.string   :donate_for,  :limit => 40
+    t.string   :goods_is,    :limit => 40
     t.string   :do_what,     :limit => 40
     t.string   :unit,        :limit => 40
     t.datetime :done_at
@@ -159,11 +162,14 @@ ActiveRecord::Schema.define() do
     t.integer  :venue_id
     t.integer  :action_id
     t.integer  :user_id
+    
     t.integer  :total_money
-    t.string   :donate_for,  :limit => 40
-    t.integer  :total_goods
-    t.string   :goods_is,    :limit => 40
+    t.integer  :total_online
     t.integer  :total_people
+    t.integer  :total_goods
+    
+    t.string   :donate_for,  :limit => 40
+    t.string   :goods_is,    :limit => 40
     t.string   :do_what,     :limit => 40
     t.string   :info,        :limit => 80
     t.text     :detail
