@@ -20,7 +20,7 @@
     <p>
       <h5>关键信息：
       <%= form.text_field :info, :size => 33, :placeholder => {'goods' => "捐赠地址，接收人，联系方式...",'time' => "集合地址，联系人，联系方式",'money' => "捐赠地址，接收人，联系方式"}[@calling.for_what],:style => "text-align:left" %></h5>
-      <h5>详细信息：(不要少于50字)</h5>
+      <h5>详细信息：(字数要求：50-1000字)</h5>
       <p class="explanation">请说明你发起召集的原因、响应你的召集需要做什么。</p>
       <%= form.text_area :detail, :style => "width:440px;height:90px"%>
       <p class="explanation">目前字数：<span id="character_count"></span></p>
