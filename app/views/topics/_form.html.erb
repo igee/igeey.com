@@ -7,8 +7,9 @@
             <%= form.label :title,'标题：'%> <%= form.text_field :title,:size => 20 ,:style => "text-align:left"%>
             <br/>
             <%= form.label :content,'内容：',:style => 'float:left'%>
-            <%= form.text_area :content,:style => "#{ params[:layout]=='false' ? 'width:300px' : 'width:390px'};height:80px;margin-left:50px"%>
-            <%= form.hidden_field :venue_id %>
+            <%= form.text_area :content,:style => "#{ params[:layout]=='false' ? 'width:300px' : 'width:390px'};height:100px;margin-left:46px"%>
+            <%= form.hidden_field :forumable_id %>
+            <%= form.hidden_field :forumable_type %>
           </p>
       </div>
       <div class="saying_tail"></div>

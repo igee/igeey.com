@@ -5,12 +5,12 @@ class TopicsController < ApplicationController
   after_filter  :clean_unread, :only => [:show]
   
   def index
-    @topics = Topic.where(:venue_id => nil).paginate(:page => params[:topics_page], :per_page => 20)
+    @topics = Topic.public.paginate(:page => params[:topics_page], :per_page => 20)
     @my_topics = (current_user.comments.where(:commentable_type => 'Topic').map(&:commentable) | current_user.topics).uniq.sort{|x,y| y.created_at <=> x.created_at} if current_user
   end
   
   def new
-    @topic = Topic.new(:venue_id => params[:venue_id])
+    @topic = Topic.new(:forumable_id => params[:forumable_id],:forumable_type => params[:forumable_type])
     render :layout => false if params[:layout] == 'false'
   end
   

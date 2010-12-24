@@ -15,5 +15,5 @@
 <%= render :partial => '/comments/form' ,:locals => {:commentable => @topic}%>
 
 <% content_for :sidebar do %>
- <%= @topic.venue_id.present? ? link_to('返回聚点',venue_path(@topic.venue)) : link_to('返回论坛',topics_path)%>
+ <%= @topic.forumable.present? ? link_to("返回#{@topic.forumable.name}",@topic.forumable) : link_to('返回论坛',topics_path)%>
 <% end %>

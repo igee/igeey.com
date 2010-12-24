@@ -6,6 +6,8 @@
     </p>
     <div class="explanation"></div>
     <div class="addition">
+      <div class="explanation"><%= short_text(topic.content,24)%></div>
+      <br/>
       <span>
         回复数 <%=topic.comments_count%>
         <%= "最后回复 #{topic.last_replied_user.login}" if topic.last_replied_user_id %>

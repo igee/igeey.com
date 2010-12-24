@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  respond_to :html
+  respond_to :html,:json
   before_filter :login_required,   :except => [:show]
   before_filter :find_project,       :except => [:new,:create]
   before_filter :check_permission, :only => [:destroy,:update,:new,:edit]
@@ -35,7 +35,13 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @records = @project.records
     render :layout => false if params[:layout] == 'false'
+  end
+  
+  def records
+    @records = Record.where(:project_id => @project.id)
+    respond_with @records
   end
   
   private

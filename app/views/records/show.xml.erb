@@ -1,0 +1,9 @@
+<div style="padding:5px;width:320px">
+  <%= image_tag(@record.photos.first.photo.url,:style => "float:left;padding:5px 10px 5px 0") unless @record.photos.empty?%>
+  <h5><%= link_to @record.name ,@record,:target => '_blank'%></h5>
+  <p class="explanation">
+    <%= @record.detail %>
+  </p>
+  <div class="clear"></div>
+</div>
+  
