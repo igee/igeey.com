@@ -9,7 +9,7 @@ class RecordsController < ApplicationController
   end
   
   def new
-    @record = current_user.records.build(:action_id => params[:action_id],:venue_id => params[:venue_id],:plan_id => params[:plan_id])
+    @record = current_user.records.build(:action_id => params[:action_id],:venue_id => params[:venue_id],:plan_id => params[:plan_id],:project_id => params[:project_id])
     if @record.action.nil? && @record.plan.nil?
       @actions = Action.callable
       render :select_action, :layout =>  !(params[:layout] == 'false')
@@ -23,7 +23,6 @@ class RecordsController < ApplicationController
     @record = current_user.records.build(params[:record])
     @record.photos.map{|p| p.user_id = current_user.id}
     @record.save
-    @record.photos.build if @record.photos.empty?
     respond_with(@record)
     
   end

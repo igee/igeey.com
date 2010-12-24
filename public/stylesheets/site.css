@@ -46,6 +46,8 @@ span{
   font-weight:normal;
 }
 
+select{padding:2px}
+
 a{
   text-decoration:none;
   color:#48b;

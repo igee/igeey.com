@@ -2,11 +2,12 @@
 <% @venue = @record.venue %>
 <% @action = @record.action %>
 <% @plan = @record.plan %>
+<% @record.photos.build if @record.photos.empty? %>
 <div class="box">
   <%= form_for @record,:html => { :multipart => true } do |form| %>
     <%= raw error_explanation_for(@record) if @record.errors.present?%>
     <%= form.hidden_field :action_id %>
-    <%= form.hidden_field :venue_id %>
+    <%= form.hidden_field :venue_id unless @action.is_for_project%>
     <%= form.hidden_field :calling_id %>
     <%= form.hidden_field :plan_id %>
     <%= render :partial => '/users/user' ,:object => current_user %>

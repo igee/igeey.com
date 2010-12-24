@@ -17,8 +17,8 @@
 
 <div class="box" style="text-align:center">
   <h3>我要参与</h3>
-  <%= @project.tools.each do |t|%>
-    <%= link_to t.action.name,(logged_in? ? new_record_path(:action_id => 4) : signup_path),:class => "big_button open_dialog",:title => '我要参与'%>
+  <% @project.tools.each do |t|%>
+    <%= link_to t.action.name,(logged_in? ? new_record_path(:action_id => 4,:project_id => 1) : signup_path),:class => "big_button",:title => '我要参与'%>
   <% end %>
 </div>
 

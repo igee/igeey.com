@@ -116,6 +116,7 @@ ActiveRecord::Schema.define() do
     t.integer  :plan_id
     t.integer  :calling_id
     t.integer  :parent_id
+    t.integer  :project_id
     
     t.integer  :money
     t.integer  :goods
@@ -126,6 +127,9 @@ ActiveRecord::Schema.define() do
     t.string   :goods_is,    :limit => 40
     t.string   :do_what,     :limit => 40
     t.string   :unit,        :limit => 40
+    t.string   :latitude,    :limit => 40
+    t.string   :longitude,   :limit => 40
+    
     t.datetime :done_at
     t.text     :detail
     t.integer  :comments_count,   :default => 0

@@ -27,3 +27,7 @@ zh:
           attributes:
             info:
               blank:  '请填写行动关键信息'
+        record:
+          attributes:
+            venue_id:
+              blank:  '请选择行动受益的聚点'
