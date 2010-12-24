@@ -1,7 +1,7 @@
 class CallingsController < ApplicationController
   respond_to :html
   before_filter :login_required, :except => [:index, :show]
-  before_filter :find_calling, :except => [:index, :new, :create]
+  before_filter :find_calling, :except => [:index, :new, :create,:progress]
   after_filter  :clean_unread, :only => [:show]
    
   def index
