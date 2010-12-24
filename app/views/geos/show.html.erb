@@ -23,7 +23,7 @@
   <div id="mark_guide" style="display:none;text-align:center;background:#ddd;padding:4px">
     <p>拖动 <span style="color:#c52;font-size:14px">红色标记 </span>确定要添加的聚点位置。<br/> (使用地图右上方的定位功能可以帮助你)</p>
     <p>
-      <%= link_to "标记完毕，下一步","#{new_venue_path}?latitude=#{@geo.latitude}&longitude=#{@geo.longitude}&geo_id=#{@geo.id}",:id => "next_step",:class => 'button' %>
+      <%= link_to "找到了，下一步",new_venue_path,:id => "next_step",:class => 'button' %>
       <%= link_to "取消",'#',:id => "cancel_mark",:class => 'button' %>
     </p>
   </div>
@@ -117,7 +117,7 @@
         initialize();
         $('#next_step').click(function(){$(this).attr(
            'href',
-           '<%= "#{new_venue_path}" %>?latitude=' + marker.getPosition().lat() + '&longitude=' + marker.getPosition().lng() + "&geo_id=<%=@geo.id%>"
+           '<%= "#{new_venue_path}" %>?latitude=' + marker.getPosition().lat() + '&longitude=' + marker.getPosition().lng() + "&geo_id=<%=@geo.id%>" + "&zoom_level=" + map.getZoom()
         );})
         $('#create_venue').click(mark_latlng);
         $('#cancel_mark').click(cancel_mark);

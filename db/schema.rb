@@ -197,6 +197,7 @@ ActiveRecord::Schema.define() do
     t.integer :creator_id
     t.string  :latitude,     :limit => 40
     t.string  :longitude,    :limit => 40
+    t.integer :zoom_level,   :default => 13
     t.string  :address
     t.string  :contact
     t.string  :cover_file_name

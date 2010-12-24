@@ -26,7 +26,7 @@
     function initialize() {
       var latlng = new google.maps.LatLng(<%= "#{@venue.latitude || 35.0},#{@venue.longitude || 105.0}"%>)
       var myOptions = {
-        zoom: 13,
+        zoom: <%= @venue.zoom_level %>,
         center: latlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };

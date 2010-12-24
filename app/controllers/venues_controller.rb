@@ -17,7 +17,7 @@ class VenuesController < ApplicationController
     if params[:latitude].blank? || params[:longitude].blank?
       redirect_to geos_path
     else
-      @venue = Venue.new(:latitude => params[:latitude],:longitude => params[:longitude],:geo_id => params[:geo_id])
+      @venue = Venue.new(:latitude => params[:latitude],:longitude => params[:longitude],:geo_id => params[:geo_id],:zoom_level => params[:zoom_level])
     end
   end
 
