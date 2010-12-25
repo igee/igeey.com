@@ -36,6 +36,7 @@ class ProjectsController < ApplicationController
 
   def show
     @records = @project.records
+    @followers = @project.followers
     render :layout => false if params[:layout] == 'false'
   end
   

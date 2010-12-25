@@ -107,6 +107,7 @@ ActiveRecord::Schema.define() do
     t.string   :name,       :limit => 40
     t.text     :intro
     t.string   :cover_file_name
+    t.integer  :follows_count,             :default => 0
   end
   
   create_table "records", :force => true do |t|

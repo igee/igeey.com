@@ -9,6 +9,7 @@
     <%= image_tag(@project.cover.url,:class => "project_cover") %>
   </div>
   <div style="width:440px;_width:430px;height:122px;margin-left:180px">
+    <div style="float:right;padding:2px 0"><%= raw(follow_to(@project)) %></div>
     <h3><%= @project.name%> <span><%= link_to '更新信息',edit_project_path(@project),:id => 'update_info' if logged_in? && current_user.is_admin %></span></h3>
     <p><%= @project.intro%></p>    
   </div>
@@ -20,7 +21,7 @@
   <% end %>
 </div>
 
-<div id="map_canvas" style="height:360px;clear:both;margin:10px 0"></div>
+<div id="map_canvas" style="height:320px;clear:both;margin:10px 0"></div>
 
 <div class="box">
   <h4>论坛：
@@ -36,7 +37,7 @@
   <div class="box">
     <h4>项目统计：</h4>
     <div id="record_counters">
-      <% [[@records.size,'使用次数'],[@records.map(&:venue).uniq.size,'受益聚点'],[@records.map(&:user).uniq.size,'参与人数']].each do |counter_list|%>
+      <% [[@records.size,'参与次数'],[@records.map(&:venue).uniq.size,'受益聚点'],[@records.map(&:user).uniq.size,'参与人数']].each do |counter_list|%>
         <div class="record_counter_wrapper">
           <h4><%= counter_list[1] %></h4>
           <h2 class="record_counter"><%= counter_list[0] %></h2>
@@ -44,6 +45,8 @@
       <%end%>
     </div>
   </div>
+  
+  <%= render :partial => "/public/followers" %>
 
 <% end %>
 

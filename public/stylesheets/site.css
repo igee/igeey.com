@@ -307,7 +307,7 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
   margin:0 4px;
 }
 
-.record_counter_wrapper h4{color:#39c}
+#record_counters h4{color:#39c}
 
 .record_counter{
   background-color:#39c;
@@ -684,7 +684,7 @@ input.todo:hover{
   font-weight:bold;
 }
 
-#record_counters{float:right;height:74px}
+#record_counters{float:right;height:74px;margin-right:4px}
 
 .upload_photo{
   background-color:#f0f0f0;
