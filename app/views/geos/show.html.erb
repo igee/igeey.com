@@ -30,15 +30,7 @@
 </div>
 
 <% content_for :sidebar do %>
-<div class="explanation">
-  <h4>聚点—爱聚的世界</h4>
-  <p>
-    爱聚的世界是由一个个需要公益服务的社区组成的，在网站上它们被称做聚点。
-  </p>
-  <p>
-    每个公益行都需要有关联的聚点，在聚点上，你可以号召大家为聚点做公益，或是记录自己做过的公益行动。
-  </p>
-</div>
+  <%= render '/venues/what_is_venue'%>
 <% end %>
 
 <% content_for :extension do %>
