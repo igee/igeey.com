@@ -2,11 +2,7 @@
 <div class="box">
     <%= render :partial => '/users/user' ,:object => @record.user %>
       <div class="saying">
-        <p class="impact">
-          <%="#{@record.user.login}#{@record.description}"%>
-        </p>
-        <pre class="explanation"><%= @record.detail %></pre>
-        <%= render :partial => "/photos/photo",:collection => @photos %>   
+        <%=  render :partial => "/records/shows/#{@action.slug}"%>
       </div>
       <div class="saying_tail"></div>
       
@@ -20,6 +16,26 @@
         <% end %>
       </div>
   </div>
+  
+  <% if @project%>
+  <div class="box">
+    <h4>来源项目:</h4>
+    <p>
+      <div class="project_thumb_box">
+        <%= link_to (image_tag @project.cover.url(:_80x80),:class=>"project_thumb_cover"),@project %>
+      </div>
+      <div class="event" style="margin-left:96px;width:510px">
+        <h4><%= link_to @project.name,@project%></h4>
+        <div class="addition">
+          <span>
+            <%= @project.intro%>
+          </span>
+        </div>
+      </div>
+    </p>
+  </div>
+  <% end %>
+
     
   <% if @calling%>
   <div class="box">

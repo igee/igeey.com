@@ -12,8 +12,8 @@
       使用行动模板：
       <br/>
       <% @actions.each do |a|%>
-        <%= check_box_tag(a.slug.to_sym) %>
-        <%= label_tag(a.slug.to_sym,a.name) %>
+        <%= check_box_tag (a.slug.to_sym,true,@project.tools.map(&:action_id).include?(a.id)) %>
+        <%= label_tag(a.slug.to_sym,a.name)%>
       <% end %>
     </p>
     

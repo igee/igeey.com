@@ -21,10 +21,13 @@
   <% end %>
 </div>
 
-<div id="map_canvas" style="height:320px;clear:both;margin:10px 0"></div>
+<div class="box">
+  <h4>项目地图:</h4>
+  <div id="map_canvas" style="height:320px;clear:both;margin:10px 0"></div>
+</div>
 
 <div class="box">
-  <h4>论坛：
+  <h4>项目论坛：
     　<%= image_tag "/images/icon/talk.gif",:class=>"icon"%>
     <span><%= link_to '发布话题',(logged_in? ? new_topic_path(:forumable_id => @project.id,:forumable_type => 'Project') : signup_path),:class=>"open_dialog",:title=>'发布话题'%></span>
   </h4>

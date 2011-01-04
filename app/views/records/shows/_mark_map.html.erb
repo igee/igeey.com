@@ -1,0 +1,38 @@
+    <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false"></script>
+    
+    <p class="impact">
+      <%="#{@record.user.login}#{@record.description}"%>
+    </p>
+    <div id="map_canvas" style="height:300px;clear:both;margin:10px 0"></div>
+    <%= render :partial => "/photos/photo",:collection => @photos %>
+    
+    
+  <script type="text/javascript">
+    function initialize() {
+      var latlng = new google.maps.LatLng(<%= "#{@record.latitude|| 35.0},#{@record.longitude || 105.0}"%>)
+      var myOptions = {
+        zoom: 13,
+        center: latlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+      
+      marker = new google.maps.Marker({
+        map: map,
+        position: latlng,
+        title: '<%= @record.project.name%>标点'
+      });
+      
+      $.ajax({
+        url:'<%= record_path(@record,:format => :xml)%>',
+        success:function(data, textStatus, XMLHttpRequest){new google.maps.InfoWindow({content:XMLHttpRequest.responseText}).open(map,marker);},
+        dataType:'xml'
+      })
+    
+    }; //initialize_end()
+    
+    $(document).ready(function(){
+      //use javascript to check whether there are news for performance
+      initialize();
+    });  
+  </script>

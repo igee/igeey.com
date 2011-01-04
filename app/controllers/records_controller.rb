@@ -31,6 +31,7 @@ class RecordsController < ApplicationController
     @venue = @record.venue
     @action = @record.action
     @calling = @record.calling
+    @project = @record.project
     @comment = Comment.new
     @comments = @record.comments
     @photos = @record.photos
