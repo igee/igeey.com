@@ -1,0 +1,6 @@
+<% @title = '新关注者'%>
+
+<div class="box">
+  <h4>新关注者：<h4>
+  <%= render :partial => "/public/user" ,:collection => @followers %>
+</div>

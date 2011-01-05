@@ -1,6 +1,6 @@
 class CallingsController < ApplicationController
   respond_to :html
-  before_filter :login_required, :except => [:index, :show]
+  before_filter :login_required, :except => [:index, :show,:progress]
   before_filter :find_calling, :except => [:index, :new, :create]
   after_filter  :clean_unread, :only => [:show]
    
@@ -36,7 +36,6 @@ class CallingsController < ApplicationController
     @followers = @calling.followers
     @comment = Comment.new
     @comments = @calling.comments
-    @photo = Photo.new
     @photos = @calling.photos.limit(3)
     render :layout => "no_sidebar"
   end
@@ -67,6 +66,10 @@ class CallingsController < ApplicationController
     respond_with @calling
   end
   
+  def progress
+    @records = @calling.records
+  end
+  
   private
   def find_calling
     @calling = Calling.find(params[:id])
@@ -76,6 +79,7 @@ class CallingsController < ApplicationController
     @calling.update_attribute(:has_new_comment,false) if @calling.user == current_user && @calling.has_new_comment
     @calling.update_attribute(:has_new_plan,false) if @calling.user == current_user && @calling.has_new_plan
     @calling.follows.where(:user_id => current_user.id).first.update_attribute(:has_new_comment,false) if current_user && @calling.follows.where(:user_id => current_user.id).present?
+    @calling.comments.where(:user_id => current_user.id).map{|a| a.update_attribute(:has_new_comment,false)} if current_user && @calling.comments.where(:user_id => current_user.id).first.present?
   end
   
 end

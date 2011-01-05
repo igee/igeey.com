@@ -132,16 +132,16 @@ class User < ActiveRecord::Base
     !self.followings.where(:followable_id => followable.id,:followable_type => followable.class).limit(1).blank?
   end
 
-  def following_users
-    self.followings.where(:followable_type => 'User').map(&:followable)
+  def user_followings
+    self.followings.where(:followable_type => 'User')
   end
 
-  def following_venues
-    self.followings.where(:followable_type => 'Venue').map(&:followable)
+  def venue_followings
+    self.followings.where(:followable_type => 'Venue')
   end
   
-  def following_callings
-    self.followings.where(:followable_type => 'Calling').map(&:followable)
+  def calling_followings
+    self.followings.where(:followable_type => 'Calling')
   end
 
   def has_unread_record_comment?
@@ -152,12 +152,24 @@ class User < ActiveRecord::Base
     self.callings.where(:has_new_comment => true).first.present?
   end
   
+  def has_unread_comment_comment?
+    self.comments.where(:has_new_comment => true).first.present?
+  end
+  
   def has_unread_topic_comment?
     self.topics.where(:has_new_comment => true).first.present?
   end
   
   def has_unread_follow_comment?
     self.followings.where(:has_new_comment => true).first.present?
+  end
+  
+  def has_unread_follow_calling?
+    self.followings.where(:has_new_calling => true).first.present?
+  end
+  
+  def has_unread_follow_topic?
+    self.followings.where(:has_new_topic => true).first.present?
   end
   
   def has_unread_comment?
@@ -174,6 +186,10 @@ class User < ActiveRecord::Base
   
   def has_new_badge?
     self.grants.where(:unread => true).first.present?
+  end
+  
+  def has_unread_follower?
+    self.follows.where(:unread => true).first.present?
   end
     
   def latest_update

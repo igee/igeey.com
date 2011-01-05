@@ -31,12 +31,16 @@ class RecordsController < ApplicationController
     @action = @calling.nil? ? @record.action : @calling.action
     @unit = @calling.nil? ? '件' : @calling.unit
     @record = Record.new(:action => @action,:venue => @venue,:calling => @calling,:plan => @plan,:unit => @unit)
+    @record.photos.build
   end
   
   def create
     @record = current_user.records.build(params[:record])
+    @record.photos.map{|p| p.user_id = current_user.id}
     @record.save
+    @record.photos.build if @record.photos.empty?
     respond_with(@record)
+    
   end
   
   def show
@@ -45,7 +49,6 @@ class RecordsController < ApplicationController
     @calling = @record.calling
     @comment = Comment.new
     @comments = @record.comments
-    @photo = Photo.new
     @photos = @record.photos
   end
   
@@ -81,5 +84,6 @@ class RecordsController < ApplicationController
   
   def clean_unread
     @record.update_attribute(:has_new_comment,false) if @record.user == current_user && @record.has_new_comment
+    @record.comments.where(:user_id => current_user.id).map{|a| a.update_attribute(:has_new_comment,false)} if logged_in? && @record.comments.where(:user_id => current_user.id).first.present?
   end
 end
