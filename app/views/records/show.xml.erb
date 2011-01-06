@@ -1,11 +1,14 @@
 <div style="padding:5px;width:320px">
-  <%= image_tag(@record.photos.first.photo.url,:style => "float:left;padding:5px 10px 5px 0") unless @record.photos.empty?%>
-  
+  <% unless @record.photos.empty? %>
+  <div class="photo_box">
+    <%= image_tag(@record.photos.first.photo.url,:style => "float:left;padding:5px 10px 5px 0")%>
+  </div>
+  <% end %>
   <p class="explanation">
-    <%= @record.detail %>
+    <%= @record.detail %> <%= link_to '查看',@record%>
   </p>
   <div class="clear"></div>
-  <span>提交人：<%= link_to @record.user.login,@user%> 　所属聚点：<%= link_to @record.venue.name,@venue%></span>
+  <span>提交人：<%= link_to @record.user.login,@record.user%> 　所属聚点：<%= link_to @record.venue.name,@venue%></span>
   
 </div>
   

@@ -11,16 +11,29 @@
   <div style="width:440px;_width:430px;height:122px;margin-left:180px">
     <div style="float:right;padding:2px 0"><%= raw(follow_to(@project)) %></div>
     <h3><%= @project.name%> <span><%= link_to '更新信息',edit_project_path(@project),:id => 'update_info' if logged_in? && current_user.is_admin %></span></h3>
-    <p><%= @project.intro%></p>
-    <p><%= "网站： #{link_to @project.website,('http://' + @project.website)}" if @project.website %></p>
+    <p><%= @project.intro%> <%= raw "网站： #{link_to @project.website,('http://' + @project.website)}" if @project.website %></p>
   </div>
 </div>
 
 <div class="box" style="text-align:center">
-  <% @project.tools.each do |t|%>
-    <%= link_to t.action.name,(logged_in? ? new_record_path(:action_id => 4,:project_id => 1) : signup_path),:class => "big_button",:title => '我要参与'%>
+  <% if @project.tools.count == 1 %>
+    <%= link_to '我要参加',(logged_in? ? new_record_path(:action_id => @project.tools.first.action.id,:project_id => @project) : signup_path),:class => "big_button",:title => '我要参与'%>
+  <% else %>  
+    <% @project.tools.each do |t|%>
+      <%= link_to t.action.name,(logged_in? ? new_record_path(:action_id => t.action.id,:project_id => @project.id) : signup_path),:class => "big_button",:title => '我要参与'%>
+    <% end %>
   <% end %>
 </div>
+
+<div class="box">
+  <h4>行动流程：</h4>
+  <p style="padding:5px 10px">
+  <% @project.tools.each do |t|%>
+    <%= raw t.action.step_by_step%>
+  <% end %>
+  </p>
+</div>
+
 
 <div class="box">
   <h4>项目地图:</h4>
