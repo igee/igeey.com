@@ -81,7 +81,7 @@
 
       markers = new Array
       
-      $.getJSON('<%= "#{records_project_path(@proejct)}.json"%>', function(data){
+      $.getJSON('<%= "#{records_project_path(@proejct,:format => :json)}"%>', function(data){
         $.each(data, function(i,item){
             markers[i] = new google.maps.Marker({
               position: new google.maps.LatLng(parseFloat(item.record.latitude), parseFloat(item.record.longitude)),

@@ -85,7 +85,9 @@ Igee::Application.routes.draw do
   resources :photos
   resources :actions
   resources :projects do
-    get :records, :on => :member
+    member do
+      get :records
+    end
   end
   
   

@@ -1,5 +1,5 @@
 class RecordsController < ApplicationController
-  respond_to :html,:xml
+  respond_to :html
   before_filter :login_required, :except => [:index,:show]
   before_filter :find_record, :except => [:index,:new,:create]
   after_filter :clean_unread, :only => [:show]
@@ -24,7 +24,6 @@ class RecordsController < ApplicationController
     @record.photos.map{|p| p.user_id = current_user.id}
     @record.save
     respond_with(@record)
-    
   end
   
   def show
