@@ -18,6 +18,10 @@
     </p>
     
     <p>
+      <%= form.label :website,'相关网站：'%> <%= form.text_field :website, :size => 18, :class => "title", :placeholder => ""%>
+    </p>
+    
+    <p>
       <%= form.label :intro,'简介：'%><span>100字以内</span>
       <br/>
       <%= form.text_area :intro, :style => "width:320px;height:100px",:placeholder => ""%>

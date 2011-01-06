@@ -106,6 +106,7 @@ ActiveRecord::Schema.define() do
     t.integer  :user_id
     t.string   :name,       :limit => 40
     t.text     :intro
+    t.string   :website
     t.string   :cover_file_name
     t.integer  :follows_count,             :default => 0
   end
