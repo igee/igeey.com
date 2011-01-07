@@ -1,4 +1,5 @@
 <% @venues =  current_user.venue_followings.map(&:followable) %>
+<% @projects =  Tool.where(:action_id => 4).map(&:project) %>
 
 <% content_for :head do %>
   <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false"></script>
@@ -6,12 +7,14 @@
 
   <%= form.hidden_field :latitude %>
   <%= form.hidden_field :longitude %>
-  <%= form.hidden_field :project_id %>
+  
   <%= form.hidden_field :online,:value => 1 %>
   <%= form.hidden_field :done_at,:value => Date.today %>
   
   <div class="impact">
-    我要为 <%= form.select :venue_id , [['从你关注的聚点里选择',nil]]+ @venues.map{|v| [v.name,v.id]}%> 标记<%= @record.project.name%>。
+    我要为 <%= @venue.present? ? raw("#{@venue.name} #{form.hidden_field :venue_id}") : (form.select :venue_id , [['从你关注的聚点里选择',nil]]+ @venues.map{|v| [v.name,v.id]})%>
+    标记
+    <%= @project.present? ? raw("#{@project.name} #{form.hidden_field :project_id}") : (form.select :project_id , [['选择有关的地图项目',nil]]+ @projects.map{|v| [v.name,v.id]})%>。
   </div>
   
   <div id="map_canvas" style="height:280px;clear:both;margin:10px 0"></div>

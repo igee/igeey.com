@@ -8,7 +8,7 @@
   </div>
   <div style="float:left;width:500px;text-align:left;padding:16px 10px 0">
     <div id="record_counters">
-      <% [[@user.records_count,'参与行动'],[@user.records.map(&:venue).uniq.count,'服务聚点'],[@user.time_count,'贡献小时'],[@user.goods_count,'捐赠物资']].each do |counter_list|%>
+      <% [[@user.records.map(&:venue).uniq.count,'服务聚点'],[@user.time_count,'贡献小时'],[@user.goods_count,'捐赠物资'],[@user.online_count,'线上行动']].each do |counter_list|%>
       <div class="record_counter_wrapper">
         <h4><%= counter_list[1] %></h4>
         <h2 class="record_counter"><%= counter_list[0] %></h2>

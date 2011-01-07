@@ -23,6 +23,7 @@
 <div class="box" style="text-align:center">
   <%= link_to '召集行动',(logged_in? ? "#{new_calling_path}?venue_id=#{@venue.id}" : signup_path),:class => "big_button open_dialog",:title => '召集行动'%>
   <%= link_to '记录行动',(logged_in? ? "#{new_record_path}?venue_id=#{@venue.id}" : signup_path),:class => "big_button open_dialog",:title => '记录行动'%>
+  <%= link_to '地图标记',(logged_in? ? "#{new_record_path}?venue_id=#{@venue.id}&action_id=4" : signup_path),:class => "big_button",:title => '地图标记'%>
 </div>
 
 <div class="box">  
@@ -44,7 +45,7 @@
   <div class="box">
     <h4>获得服务统计：</h4>
     <div id="record_counters">
-      <% [[@venue.records_count,'行动次数'],[@venue.time_count,'志愿小时'],[@venue.goods_count,'物资捐赠']].each do |counter_list|%>
+      <% [[@venue.time_count,'志愿小时'],[@venue.goods_count,'物资捐赠'],[@venue.online_count,'线上行动']].each do |counter_list|%>
         <div class="record_counter_wrapper">
           <h4><%= counter_list[1] %></h4>
           <h2 class="record_counter"><%= counter_list[0] %></h2>

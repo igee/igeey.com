@@ -87,6 +87,10 @@ class User < ActiveRecord::Base
     self.records.map(&:money).compact.sum
   end
 
+  def online_count
+    self.records.map(&:online).compact.sum
+  end
+  
   def goods_count
     self.records.map(&:goods).compact.sum
   end

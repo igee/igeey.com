@@ -2,6 +2,7 @@
 <% @venue = @record.venue %>
 <% @action = @record.action %>
 <% @plan = @record.plan %>
+<% @project = @record.project%>
 <div class="box">
   <%= form_for @record,:html => { :multipart => true } do |form| %>
     <%= raw error_explanation_for(@record) if @record.errors.present?%>
