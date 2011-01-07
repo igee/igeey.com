@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   respond_to :html,:json
-  before_filter :login_required,   :except => [:show]
+  before_filter :login_required,   :except => [:show,:venues,:records]
   before_filter :find_project,       :except => [:new,:create]
   before_filter :check_permission, :only => [:destroy,:update,:new,:edit]
   
@@ -36,13 +36,19 @@ class ProjectsController < ApplicationController
 
   def show
     @records = @project.records
+    @venues = @records.map(&:venue).uniq
     @followers = @project.followers
     render :layout => false if params[:layout] == 'false'
   end
   
   def records
-    @records = Record.where(:project_id => @project.id)
+    @records = @project.records
     respond_with @records
+  end
+  
+  def venues
+    @venues = @project.records.map(&:venue).uniq
+    respond_with @venues
   end
   
   private

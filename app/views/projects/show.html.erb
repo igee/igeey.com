@@ -36,7 +36,7 @@
 
 
 <div class="box">
-  <h4>项目地图:</h4>
+  <h4>标记地图:</h4>
   <div id="map_canvas" style="height:320px;clear:both;margin:10px 0"></div>
 </div>
 
@@ -63,6 +63,10 @@
     </div>
   </div>
   
+  <div class="box">
+    <h4>受益聚点：</h4>
+    <%= render :partial => '/venues/venue' ,:collection => @venues%>
+  </div>
   <%= render :partial => "/public/followers" %>
 
 <% end %>
@@ -81,7 +85,7 @@
 
       markers = new Array
       
-      $.getJSON('<%= "#{records_project_path(@proejct,:format => :json)}"%>', function(data){
+      $.getJSON('<%= records_project_path(@proejct,:format => :json) %>', function(data){
         $.each(data, function(i,item){
             markers[i] = new google.maps.Marker({
               position: new google.maps.LatLng(parseFloat(item.record.latitude), parseFloat(item.record.longitude)),
