@@ -17,7 +17,9 @@
 
 <div class="box" style="text-align:center">
   <% if @project.tools.count == 1 %>
-    <%= link_to '我要参加',(logged_in? ? new_record_path(:action_id => @project.tools.first.action.id,:project_id => @project) : signup_path),:class => "big_button",:title => '我要参与'%>
+    <div class="event_panel">
+      <%= link_to '我要参与',(logged_in? ? new_record_path(:action_id => @project.tools.first.action.id,:project_id => @project) : signup_path),:class => "big_button",:title => '我要参与'%>
+    </div>
   <% else %>  
     <% @project.tools.each do |t|%>
       <%= link_to t.action.name,(logged_in? ? new_record_path(:action_id => t.action.id,:project_id => @project.id) : signup_path),:class => "big_button",:title => '我要参与'%>

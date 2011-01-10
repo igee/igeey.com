@@ -20,19 +20,22 @@
   <% if @project%>
   <div class="box">
     <h4>来源项目:</h4>
-    <p>
+    <div class="event_box">
       <div class="project_thumb_box">
         <%= link_to (image_tag @project.cover.url(:_80x80),:class=>"project_thumb_cover"),@project %>
       </div>
-      <div class="event" style="margin-left:96px;width:510px">
+      <div class="event" style="margin-left:96px;width:510px;">
+        <div class="event_panel" style="display:block">
+        <%= link_to '我要参与',(logged_in? ? new_record_path(:action_id => @project.tools.first.action.id,:project_id => @project) : signup_path),:title => '我要参与'%>
+        </div>
         <h4><%= link_to @project.name,@project%></h4>
-        <div class="addition">
+        <div class="addition" style="margin-top:-6px">
           <span>
             <%= @project.intro%>
           </span>
         </div>
       </div>
-    </p>
+    </div>
   </div>
   <% end %>
 

@@ -12,17 +12,22 @@
   <%= form.hidden_field :done_at,:value => Date.today %>
   
   <div class="impact">
-    我要为 <%= @venue.present? ? raw("#{@venue.name} #{form.hidden_field :venue_id}") : (form.select :venue_id , [['从你关注的聚点里选择',nil]]+ @venues.map{|v| [v.name,v.id]})%>
+    我要为 <%= @venue.present? ? raw("#{@venue.name} #{form.hidden_field :venue_id}") : (form.select :venue_id , [['选择一个你关注的聚点',nil]]+ @venues.map{|v| [v.name,v.id]})%>
     标记
     <%= @project.present? ? raw("#{@project.name} #{form.hidden_field :project_id}") : (form.select :project_id , [['选择有关的地图项目',nil]]+ @projects.map{|v| [v.name,v.id]})%>。
   </div>
   
+  <% @projects.each do |p| %>
+    <p style="font-size:12px;color:#777;display:none" id="project_intro_<%= p.id%>" class="project_intro">("<%= p.name %>"介绍： <%= p.intro %>)</p>
+  <% end %>
+  
+  <p>拖动红色气泡，找到你要标记的准确位置：</p>
   <div id="map_canvas" style="height:280px;clear:both;margin:10px 0"></div>
 
-  <h5>标记信息：</h5>
+  <h5>信息描述：</h5>
   <%= form.text_area :detail, :style => "width:460px;height:60px"%>
   <%= form.fields_for :photos do |photo|%>
-    <h5>标记照片：<%= photo.file_field :photo,:style => "background:none;border:none;font-size:13px" %></h5>
+    <h5>相关照片：<%= photo.file_field :photo,:style => "background:none;border:none;font-size:13px" %></h5>
   <% end %>
 
 
@@ -61,6 +66,11 @@
         $('#record_latitude').val(marker.getPosition().lat());
         $('#record_longitude').val(marker.getPosition().lng());
         })
+      
+      $('#record_project_id').change(function(){
+        $('.project_intro').hide();
+        $('#project_intro_' + $('#record_project_id').val()).show()
+        });
       initialize();
     });  
   </script>
