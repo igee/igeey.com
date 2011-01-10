@@ -36,7 +36,7 @@ class CallingsController < ApplicationController
     @followers = @calling.followers
     @comment = Comment.new
     @comments = @calling.comments
-    @photos = @calling.photos.limit(3)
+    @photos = @calling.photos
     render :layout => "no_sidebar"
   end
   
