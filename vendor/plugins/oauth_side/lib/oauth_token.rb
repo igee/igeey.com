@@ -4,7 +4,7 @@ class OauthToken < ActiveRecord::Base
 
   def self.request_by user_id, site
     record = find_by_user_id_and_site(user_id,site) || self.create(:user_id => user_id, :site => site)
-    raise "用户已经开通" unless record.access_token.nil?
+    raise "用户已经开通" unless record.access_token.nil? || record.user_id.nil?
     record.request_key = nil
     token = record.request_token
     token.authorize_url 

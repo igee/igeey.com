@@ -2,6 +2,7 @@ Igee::Application.routes.draw do
   root :to => 'site#index'
     
   match 'signup' => 'users#new', :as => :signup
+  match 'connect_account' => 'users#connect_account', :as => :connect_account
   match 'register' => 'users#create', :as => :register
   match 'login' => 'sessions#new', :as => :login
   match 'logout' => 'sessions#destroy', :as => :logout

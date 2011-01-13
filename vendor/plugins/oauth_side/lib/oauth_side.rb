@@ -29,7 +29,7 @@ Rails.oauth.each_pair{|site,props|
   OauthController.class_eval <<-EOF
     def #{site.to_s}
       begin
-        auth_url = OauthToken.request_by(current_user.id,'#{site.to_s}')
+        auth_url = OauthToken.request_by((current_user ? current_user.id : nil),'#{site.to_s}')
         (session[:oauth_refers] ||= {}).update '#{site}' => request.referer
  
         if auth_url =~ /&oauth_callback/
