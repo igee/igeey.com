@@ -58,6 +58,11 @@ class VenuesController < ApplicationController
     render :layout => false if params[:layout] == 'false'
   end
   
+  def records
+      @records = @venue.records.find_tagged_with(params[:tag])
+    respond_with(@records)
+  end
+  
   private
   def find_venue
     @venue = Venue.find(params[:id])

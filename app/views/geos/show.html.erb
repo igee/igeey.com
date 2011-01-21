@@ -57,19 +57,19 @@
       $.getJSON("/json/venues.json?<%= Venue.first.id unless Venue.first.nil? %>", function(data){
         $.each(data, function(i,item){
             markers[i] = new google.maps.Marker({
-              icon: "/images/marker/" + item.venue.category + ".png",
-              position: new google.maps.LatLng(parseFloat(item.venue.latitude), parseFloat(item.venue.longitude)),
+              position: new google.maps.LatLng(parseFloat(item.record.latitude), parseFloat(item.record.longitude)),
               title: item.venue.name,
               map: map
             });
+            
             google.maps.event.addListener(markers[i], "click", function(){
               $.ajax({
-                url:"/venues/" + item.venue.id + ".xml",
+                url:"/records/" + item.record.id + ".xml",
                 success:function(data, textStatus, XMLHttpRequest){new google.maps.InfoWindow({content:XMLHttpRequest.responseText}).open(map,markers[i]);},
                 dataType:'xml'
               })
-            })
-          });
+            });
+        });
       });
       
       marker = new google.maps.Marker({

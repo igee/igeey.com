@@ -15,6 +15,8 @@ class Record < ActiveRecord::Base
   
   delegate  :for_what, :to => :action
   
+  acts_as_taggable
+  
   accepts_nested_attributes_for :photos
   
   validate  :user_id, :presence  => true,:uniqueness => {:scope => [:plan_id]}
@@ -25,7 +27,6 @@ class Record < ActiveRecord::Base
     errors[for_what] << '数量必须为大于0的整数' unless number > 0
     errors[{'time' => :do_what,'money' => :donate_for,'goods' => :goods_is,'online' => nil}[for_what]] = '请将记录信息填写完整' if content.blank?
     errors[:unit] = '请填写物资单位' if (for_what == 'goods') && unit.blank?
-    errors[:project_id] = '请选择相关的公益项目' if self.action.is_for_project && project_id.nil?
   end
   
   def content
@@ -53,7 +54,7 @@ class Record < ActiveRecord::Base
     elsif self.action.slug == 'money_donation'
       result = "捐赠了#{self.money}元给#{self.venue.name}，用于#{self.donate_for}"
     elsif self.action.slug == 'mark_map' 
-      result = "为#{self.venue.name}添加#{self.project.name}标点"
+      result = "为#{self.venue.name}添加了地图标记"
     end
     result << "，时间：#{self.formatted_done_at}"
   end

@@ -20,10 +20,59 @@
   </div>
 </div>
 
-<div class="box" style="text-align:center">
+<div class="box">
+  <div style="width:127px;height:300px;float:right;background:#bbb;margin:10px 0;border:1px solid #aaa;border-left:0;border-bottom">
+    <ul id="layer_list" style="margin:0">
+      <li><%= link_to "位置",'#',:title => "position" ,:class => 'selected'%></li>
+      <li><%= link_to "环境",'#',:title => "environment",:class => 'find_tagged_with' %></li>
+      <li><%= link_to "交通",'#',:title => "traffic",:class => 'find_tagged_with'%></li>
+    </ul>
+    <ul id="panel_list">
+      <li id="panel_position" style="display:block">
+        <%= link_to '修改位置','#',:title => "position",:class => 'button'%>
+        <div class="submit">
+        <%= form_for @venue do |form|%>
+          <%= form.hidden_field :latitude %>
+          <%= form.hidden_field :longitude %>
+          <%= form.submit '确定',:id => "update_position",:class => 'button' %><%= button_to_function '取消',"javascript:cancel_edit()",:class => 'button' %>
+        <% end %>
+        </div>
+      </li>
+      <li id="panel_environment">
+        <%= link_to '添加标记','#',:title => "environment",:class => 'button'%>
+        <div class="submit">
+          <%= button_to_function '确定',"javascript:submit_marker()",:class => 'button' %>
+          <%= button_to_function '取消',"javascript:cancel_edit()",:class => 'button' %>
+        </div>
+      </li>
+      <li id="panel_traffic">
+        <%= link_to '添加标记','#',:title => "traffic",:class => 'button'%>
+        <div class="submit">
+          <%= button_to_function '确定',"javascript:submit_marker()",:class => 'button' %>
+          <%= button_to_function '取消',"javascript:cancel_edit()",:class => 'button' %>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="map_canvas" style="width:490px;height:300px;margin:10px 0 0; "></div>
+  <ul id="cutline_list" style="display:none">
+    <li id="cutline_position">
+      拖动绿色标记修改位置，使用缩放工具调整放大级别。
+    </li>
+    <li id="cutline_environment">
+      <%= link_to raw('河流 ' + image_tag('/images/marker/water.png') ),'#',:onclick => "javascript:add_marker('water')",:class => 'cutline'%>
+      <%= link_to raw('污染 ' + image_tag('/images/marker/pollution.png')),'#',:onclick => "javascript:add_marker('pollution')",:class => 'cutline'%>
+    </li>
+    <li id="cutline_traffic">
+      <%= link_to raw('自行车 ' + image_tag('/images/marker/bike.png') ),'#',:onclick => "javascript:add_marker('bike')",:class => 'cutline'%>
+      <%= link_to raw('公交 ' + image_tag('/images/marker/bus.png')),'#',:onclick => "javascript:add_marker('bus')",:class => 'cutline'%>
+    </li>
+  </ul>
+</div>
+
+<div class="box" style="text-align:center;display:none" >
   <%= link_to '召集行动',(logged_in? ? "#{new_calling_path}?venue_id=#{@venue.id}" : signup_path),:class => "big_button open_dialog",:title => '召集行动'%>
   <%= link_to '记录行动',(logged_in? ? "#{new_record_path}?venue_id=#{@venue.id}" : signup_path),:class => "big_button open_dialog",:title => '记录行动'%>
-  <%= link_to '地图标记',(logged_in? ? "#{new_record_path}?venue_id=#{@venue.id}&action_id=4" : signup_path),:class => "big_button",:title => '地图标记'%>
 </div>
 
 <div class="box">  
@@ -54,11 +103,6 @@
     </div>
   </div>
   
-  <div class="box">
-    <h4>聚点位置： <span><%= link_to '查看大图',position_venue_path(@venue),:class=>'open_dialog',:title => '聚点位置'%></span></h4>
-    <div id="sidebar_map_canvas" style="height:160px;clear:both;margin:10px 0"></div>
-  </div>
-  
   <%= render :partial => "/public/followers" %>
 <% end %>
 
@@ -72,18 +116,121 @@
         center: latlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
-      map = new google.maps.Map(document.getElementById("sidebar_map_canvas"), myOptions);
+      map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
       
-      marker = new google.maps.Marker({
+      markers = new Array();
+      markers['position'] = new Array();
+      markers['position'][0] = new google.maps.Marker({
         map: map,
         position: map.getCenter(),
         title: '<%= @venue.name %>'
       });
+      position = markers['position'][0]
+      current_layer = markers['position']
+      
+      $('.find_tagged_with').each(function(){
+        var tag = $(this).html()
+        var title = $(this).attr('title')
+        markers[title] = new Array();
+        $.getJSON(('<%= records_venue_path(@venue,:format => :json)%>?tag=' + tag ) , function(data){
+          $.each(data, function(i,item){
+              markers[title][i] = new google.maps.Marker({
+                icon: "/images/marker/" + item.record.slug + ".png",
+                position: new google.maps.LatLng(parseFloat(item.record.latitude), parseFloat(item.record.longitude)),
+                title: item.record.name,
+                map: null
+              });
+              google.maps.event.addListener(markers[title][i], "click", function(){
+                $.ajax({
+                  url:"/venues/" + item.record.id + ".xml",
+                  success:function(data, textStatus, XMLHttpRequest){new google.maps.InfoWindow({content:XMLHttpRequest.responseText}).open(map,markers[$(this).attr('title')][i]);},
+                  dataType:'xml'
+                })
+              })
+            });
+        });
+      });
+      
+      marker = new google.maps.Marker({
+        position: map.getCenter(), 
+        title: "标记坐标",
+        draggable: true,
+        zindex: 100
+      });
     }; //initialize_end()
+    
+    function switch_layer(tag){
+      for(var i=0; i< current_layer.length; i++){
+        current_layer[i].setMap(null);
+      };
+      for(var i=0; i< markers[tag].length; i++){
+        markers[tag][i].setMap(map);
+      };
+      current_layer = markers[tag];
+    }
+        
+    function add_marker(slug){
+      $('#close_dialog').click()
+      marker.setIcon("/images/marker/" + slug + ".png");
+      marker.setPosition(map.getCenter());
+      marker.setMap(map);
+      return false;
+    };
+    
+    function cancel_edit(){
+      marker.setMap(null);
+      position.setDraggable(false);
+      position.setIcon("http://maps.gstatic.cn/intl/zh-CN_cn/mapfiles/marker.png");
+      $('#panel_list .submit').hide();
+      $('#panel_list a').show();
+    }
+
+    function submit_marker(){
+      var slug = marker.getIcon().slice(15,-4);
+      var url = '/records/new?latitude=' + marker.getPosition().lat() + '&longitude=' + marker.getPosition().lng() + '&slug=' + slug + '&venue_id=<%=@venue.id%>&action_id=4'
+      window.location = url
+    }
     
     $(document).ready(function(){
       //use javascript to check whether there are news for performance
       initialize();
+      $('#layer_list>li>a').click(function(){
+        switch_layer($(this).attr('title'));
+        cancel_edit();
+        $('#cutline_list').hide();
+        $('#layer_list>li>a.selected').removeClass('selected')
+        $('#panel_list li').hide();
+        $('#panel_' + $(this).attr('title')).show();
+        $(this).addClass('selected');
+        return false;
+        });
+      
+      $('#panel_list>li>a').click(function(){
+        if($(this).attr('title') == 'position'){
+          position.setIcon("http://maps.gstatic.cn/intl/zh-CN_cn/mapfiles/marker_green.png");
+          position.setDraggable(true);
+        }
+        else{
+        $('#cutline_list li').hide();
+        $('#cutline_' + $(this).attr('title')).show();
+        dialog('选择标记类型',("id:cutline_list"),"570px","auto","text");
+        }
+        $(this).hide();
+        $('#panel_list .submit').show();
+        return false;
+        });
+      
+      $('#update_position').click(function(){
+        $('#venue_latitude').val(marker.getPosition().lat());
+        $('#venue_longitude').val(marker.getPosition().lng());
+        })
+      
+      $('#next_step').click(function(){$(this).attr(
+        'href',
+        ''
+      );})
+
+
     });  
   </script>
 <% end %>

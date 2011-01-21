@@ -64,7 +64,7 @@ class ProjectsController < ApplicationController
   def update_tools
     Action.for_project.each do |a|
       if params[a.slug]
-        @project.tools.new(:action_id => a.id).save
+        @project.tools.build(:action_id => a.id)
       else
         @project.tools.where(:action_id => a.id).map(&:destroy)
       end

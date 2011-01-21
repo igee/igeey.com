@@ -107,6 +107,7 @@ ActiveRecord::Schema.define() do
     t.string   :name,       :limit => 40
     t.text     :intro
     t.string   :website
+    t.string   :tag,        :limit => 40
     t.string   :cover_file_name
     t.integer  :follows_count,             :default => 0
   end
@@ -129,6 +130,7 @@ ActiveRecord::Schema.define() do
     t.string   :goods_is,    :limit => 40
     t.string   :do_what,     :limit => 40
     t.string   :unit,        :limit => 40
+    t.string   :slug,        :limit => 40
     t.string   :latitude,    :limit => 40
     t.string   :longitude,   :limit => 40
     
@@ -247,4 +249,19 @@ ActiveRecord::Schema.define() do
     t.integer  :project_id
     t.integer  :action_id
   end
+  
+  create_table :tags do |t|
+    t.column :name, :string
+  end
+  
+  create_table :taggings do |t|
+    t.column :tag_id, :integer
+    t.column :taggable_id, :integer
+    
+    # You should make sure that the column created is
+    # long enough to store the required class names.
+    t.column :taggable_type, :string
+    t.column :created_at, :datetime
+  end
+  
 end
