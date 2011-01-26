@@ -19,6 +19,7 @@ h3,h4,h5,h6{
 ul,dl{
     margin:6px 0;
     line-height:1.7em;
+    overflow:hidden;
     padding:0;
     }
 
@@ -267,6 +268,7 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
   top:3px;
   }
 
+.cutline{padding:4px;float:left;overflow:hidden;margin-top:-8px}
 .cutline img{position:relative;top:4px}
 
 .pagination{margin:10px;text-align:center}    
@@ -555,7 +557,7 @@ input.todo:hover{
 #layer_list li a{color:#fff}
 #layer_list li a.selected{color:#ff6633}
 
-#panel_list li{display:none;width:130px;font-size:13px;position:absolute;margin-top:180px;text-align:center;}
+#panel_list li{float:right;display:none}
 #cutline_list li{display:none;font-size:13px;}
 
 #logo{

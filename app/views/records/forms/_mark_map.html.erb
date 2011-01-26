@@ -1,5 +1,4 @@
 <% @venues =  current_user.venue_followings.map(&:followable) %>
-<% @projects =  Tool.where(:action_id => 4).map(&:project) %>
 
 <% content_for :head do %>
   <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false"></script>
@@ -7,33 +6,53 @@
 
   <%= form.hidden_field :latitude %>
   <%= form.hidden_field :longitude %>
-  
+  <%= form.hidden_field :venue_id %>
+  <%= form.hidden_field :slug %>
+  <%= form.hidden_field :tag_list %>
   <%= form.hidden_field :online,:value => 1 %>
   <%= form.hidden_field :done_at,:value => Date.today %>
   
-  <div class="impact">
-    我要为 <%= @venue.present? ? raw("#{@venue.name} #{form.hidden_field :venue_id}") : (form.select :venue_id , [['选择一个你关注的聚点',nil]]+ @venues.map{|v| [v.name,v.id]})%>
-    标记
-    <%= @project.present? ? raw("#{@project.name} #{form.hidden_field :project_id}") : (form.select :project_id , [['选择有关的地图项目',nil]]+ @projects.map{|v| [v.name,v.id]})%>。
+  <div class="box">
+    <h5>位置： <span>拖动红色标记，放到合适的位置上。</span></h5>
+    <div id="map_canvas" style="height:280px;clear:both;margin:10px 0"></div>
+    
+    <h5>标记类别：</h5>
+    <div id="selected_category" class="cutline"></div><%= button_to_function '选择类别','javascript:choose_category()'%>
+    <br/>
+    <br/>
+  
+    <h5>信息描述：</h5>
+    <%= form.text_area :detail, :style => "width:460px;height:60px"%>
+    <%= form.fields_for :photos do |photo|%>
+      <h5>相关照片：<%= photo.file_field :photo,:style => "background:none;border:none;font-size:13px" %></h5>
+    <% end %>
+  </div>  
+  
+  <div id="dialog_box" style="display:none">
+    <div id="category_list" >
+      <h4>环境</h4>
+      <ul>
+        <li><%= link_to raw('<span>河流 </span> ' + image_tag('/images/marker/water.png')),'',:class => 'cutline',:title => 'water' %></li>
+        <li><%= link_to raw('<span>绿化带 </span> ' + image_tag('/images/marker/green.png')),'',:class => 'cutline',:title => 'green' %></li>
+      </ul>
+      <br/>
+      <h4>交通</h4>
+      <ul>
+        <li><%= link_to raw('<span>绿道 </span> ' + image_tag('/images/marker/road.png')),'',:class => 'cutline',:title => 'road'%></li>
+        <li><%= link_to raw('<span>自行车道 </span> ' + image_tag('/images/marker/bike.png')),'',:class => 'cutline',:title => 'bike'%></li>
+      </ul>
+      <br/>
+      <h4>人工建筑</h4>
+      <ul>
+        <li><%= link_to raw('<span>图书馆 </span> ' + image_tag('/images/marker/library.png')),'',:class => 'cutline',:title => 'library'%></li>
+        <li><%= link_to raw('<span>学校 </span> ' + image_tag('/images/marker/school.png')),'',:class => 'cutline',:title => 'school'%></li>
+      </ul>
+    </div>
   </div>
-  
-  <% @projects.each do |p| %>
-    <p style="font-size:12px;color:#777;display:none" id="project_intro_<%= p.id%>" class="project_intro">("<%= p.name %>"介绍： <%= p.intro %>)</p>
-  <% end %>
-  
-  <p>拖动红色气泡，找到你要标记的准确位置：</p>
-  <div id="map_canvas" style="height:280px;clear:both;margin:10px 0"></div>
-
-  <h5>信息描述：</h5>
-  <%= form.text_area :detail, :style => "width:460px;height:60px"%>
-  <%= form.fields_for :photos do |photo|%>
-    <h5>相关照片：<%= photo.file_field :photo,:style => "background:none;border:none;font-size:13px" %></h5>
-  <% end %>
-
 
   <script type="text/javascript">
     function initialize() {
-      var latlng = new google.maps.LatLng(<%= "#{@record.latitude || 35.0},#{@record.longitude || 105.0}"%>)
+      var latlng = new google.maps.LatLng(<%= "#{@record.latitude || @venue.latitude},#{@record.longitude || @venue.longitude}"%>)
       var myOptions = {
         zoom: 13,
         center: latlng,
@@ -48,6 +67,23 @@
         draggable: true
       });
     }; //initialize_end()
+    
+    
+    function choose_category(){
+      dialog("选择标记类别",("id:dialog_box"),"570px","auto","text");
+      $('#category_list a').click(function(){
+        $('#selected_category').html($(this).html());
+        $('#record_slug').val($(this).attr('title'));
+        $('#record_tag_list').val(
+          //use html structure analysis tags
+          $(this).children("span").html() + $(this).parent().parent().prev().html()
+          );
+        $('#close_dialog').click();
+        return false;
+      });
+    return false;
+    }
+    
     
     $(document).ready(function(){
       //use javascript to check whether there are news for performance
@@ -67,10 +103,6 @@
         $('#record_longitude').val(marker.getPosition().lng());
         })
       
-      $('#record_project_id').change(function(){
-        $('.project_intro').hide();
-        $('#project_intro_' + $('#record_project_id').val()).show()
-        });
       initialize();
     });  
   </script>

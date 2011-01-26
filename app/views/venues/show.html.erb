@@ -26,10 +26,13 @@
       <li><%= link_to "位置",'#',:title => "position" ,:class => 'selected'%></li>
       <li><%= link_to "环境",'#',:title => "environment",:class => 'find_tagged_with' %></li>
       <li><%= link_to "交通",'#',:title => "traffic",:class => 'find_tagged_with'%></li>
+      <li><%= link_to "人工建筑",'#',:title => "artificial",:class => 'find_tagged_with'%></li>
     </ul>
-    <ul id="panel_list">
-      <li id="panel_position" style="display:block">
-        <%= link_to '修改位置','#',:title => "position",:class => 'button'%>
+  </div>
+  <div id="map_canvas" style="width:490px;height:300px;margin:10px 0 0; "></div>
+  <ul id="panel_list" style="width:100%">
+      <li id="panel_position" <%= 'style="display:hide"' unless @venue.creator == current_user %>>
+        <%= link_to '修改位置','#',:title => "position",:class => 'button',:id => 'edit_position'%>
         <div class="submit">
         <%= form_for @venue do |form|%>
           <%= form.hidden_field :latitude %>
@@ -39,35 +42,15 @@
         </div>
       </li>
       <li id="panel_environment">
-        <%= link_to '添加标记','#',:title => "environment",:class => 'button'%>
-        <div class="submit">
-          <%= button_to_function '确定',"javascript:submit_marker()",:class => 'button' %>
-          <%= button_to_function '取消',"javascript:cancel_edit()",:class => 'button' %>
-        </div>
+        <%= link_to '添加标记',new_record_path(:action_id => 4,:venue_id => @venue.id),:title => "environment",:class => 'button'%>
       </li>
       <li id="panel_traffic">
-        <%= link_to '添加标记','#',:title => "traffic",:class => 'button'%>
-        <div class="submit">
-          <%= button_to_function '确定',"javascript:submit_marker()",:class => 'button' %>
-          <%= button_to_function '取消',"javascript:cancel_edit()",:class => 'button' %>
-        </div>
+        <%= link_to '添加标记',new_record_path(:action_id => 4,:venue_id => @venue.id),:title => "traffic",:class => 'button'%>
+      </li>
+      <li id="panel_artificial">
+        <%= link_to '添加标记',new_record_path(:action_id => 4,:venue_id => @venue.id),:title => "traffic",:class => 'button'%>
       </li>
     </ul>
-  </div>
-  <div id="map_canvas" style="width:490px;height:300px;margin:10px 0 0; "></div>
-  <ul id="cutline_list" style="display:none">
-    <li id="cutline_position">
-      拖动绿色标记修改位置，使用缩放工具调整放大级别。
-    </li>
-    <li id="cutline_environment">
-      <%= link_to raw('河流 ' + image_tag('/images/marker/water.png') ),'#',:onclick => "javascript:add_marker('water')",:class => 'cutline'%>
-      <%= link_to raw('污染 ' + image_tag('/images/marker/pollution.png')),'#',:onclick => "javascript:add_marker('pollution')",:class => 'cutline'%>
-    </li>
-    <li id="cutline_traffic">
-      <%= link_to raw('自行车 ' + image_tag('/images/marker/bike.png') ),'#',:onclick => "javascript:add_marker('bike')",:class => 'cutline'%>
-      <%= link_to raw('公交 ' + image_tag('/images/marker/bus.png')),'#',:onclick => "javascript:add_marker('bus')",:class => 'cutline'%>
-    </li>
-  </ul>
 </div>
 
 <div class="box" style="text-align:center;display:none" >
@@ -168,14 +151,6 @@
       };
       current_layer = markers[tag];
     }
-        
-    function add_marker(slug){
-      $('#close_dialog').click()
-      marker.setIcon("/images/marker/" + slug + ".png");
-      marker.setPosition(map.getCenter());
-      marker.setMap(map);
-      return false;
-    };
     
     function cancel_edit(){
       marker.setMap(null);
@@ -205,16 +180,9 @@
         return false;
         });
       
-      $('#panel_list>li>a').click(function(){
-        if($(this).attr('title') == 'position'){
-          position.setIcon("http://maps.gstatic.cn/intl/zh-CN_cn/mapfiles/marker_green.png");
-          position.setDraggable(true);
-        }
-        else{
-        $('#cutline_list li').hide();
-        $('#cutline_' + $(this).attr('title')).show();
-        dialog('选择标记类型',("id:cutline_list"),"570px","auto","text");
-        }
+      $('#edit_position').click(function(){
+        position.setIcon("http://maps.gstatic.cn/intl/zh-CN_cn/mapfiles/marker_green.png");
+        position.setDraggable(true);
         $(this).hide();
         $('#panel_list .submit').show();
         return false;
@@ -224,13 +192,7 @@
         $('#venue_latitude').val(marker.getPosition().lat());
         $('#venue_longitude').val(marker.getPosition().lng());
         })
-      
-      $('#next_step').click(function(){$(this).attr(
-        'href',
-        ''
-      );})
-
-
+    
     });  
   </script>
 <% end %>
