@@ -129,6 +129,7 @@ ActiveRecord::Schema.define() do
     t.string   :donate_for,  :limit => 40
     t.string   :goods_is,    :limit => 40
     t.string   :do_what,     :limit => 40
+    t.string   :title,       :limit => 40
     t.string   :unit,        :limit => 40
     t.string   :slug,        :limit => 40
     t.string   :latitude,    :limit => 40

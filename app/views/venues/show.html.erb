@@ -28,29 +28,14 @@
       <li><%= link_to "交通",'#',:title => "traffic",:class => 'find_tagged_with'%></li>
       <li><%= link_to "人工建筑",'#',:title => "artificial",:class => 'find_tagged_with'%></li>
     </ul>
+    <p style="font-size:12px;text-align:center">
+    <%= link_to '修改位置',position_venue_path(@venue) if @venue.creator == current_user%>
+    </p>
   </div>
   <div id="map_canvas" style="width:490px;height:300px;margin:10px 0 0; "></div>
-  <ul id="panel_list" style="width:100%">
-      <li id="panel_position" <%= 'style="display:hide"' unless @venue.creator == current_user %>>
-        <%= link_to '修改位置','#',:title => "position",:class => 'button',:id => 'edit_position'%>
-        <div class="submit">
-        <%= form_for @venue do |form|%>
-          <%= form.hidden_field :latitude %>
-          <%= form.hidden_field :longitude %>
-          <%= form.submit '确定',:id => "update_position",:class => 'button' %><%= button_to_function '取消',"javascript:cancel_edit()",:class => 'button' %>
-        <% end %>
-        </div>
-      </li>
-      <li id="panel_environment">
-        <%= link_to '添加标记',new_record_path(:action_id => 4,:venue_id => @venue.id),:title => "environment",:class => 'button'%>
-      </li>
-      <li id="panel_traffic">
-        <%= link_to '添加标记',new_record_path(:action_id => 4,:venue_id => @venue.id),:title => "traffic",:class => 'button'%>
-      </li>
-      <li id="panel_artificial">
-        <%= link_to '添加标记',new_record_path(:action_id => 4,:venue_id => @venue.id),:title => "traffic",:class => 'button'%>
-      </li>
-    </ul>
+  <div id="panel_list" style="width:600px;text-align:right;padding:10px 0">
+    <%= link_to '添加标记',new_record_path(:action_id => 4,:venue_id => @venue.id),:title => "environment",:class => 'button'%>
+  </div>
 </div>
 
 <div class="box" style="text-align:center;display:none" >
@@ -95,7 +80,7 @@
     function initialize() {
       var latlng = new google.maps.LatLng(<%= "#{@venue.latitude || 35.0},#{@venue.longitude || 105.0}"%>)
       var myOptions = {
-        zoom: <%= (@venue.zoom_level - 2) %>,
+        zoom: 16 ,
         center: latlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
@@ -125,8 +110,8 @@
               });
               google.maps.event.addListener(markers[title][i], "click", function(){
                 $.ajax({
-                  url:"/venues/" + item.record.id + ".xml",
-                  success:function(data, textStatus, XMLHttpRequest){new google.maps.InfoWindow({content:XMLHttpRequest.responseText}).open(map,markers[$(this).attr('title')][i]);},
+                  url:"/records/" + item.record.id + ".xml",
+                  success:function(data, textStatus, XMLHttpRequest){new google.maps.InfoWindow({content:XMLHttpRequest.responseText}).open(map,markers[title][i]);},
                   dataType:'xml'
                 })
               })

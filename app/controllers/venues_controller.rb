@@ -1,6 +1,6 @@
 class VenuesController < ApplicationController
   respond_to :html,:json
-  before_filter :login_required, :except => [:index, :show,:position]
+  before_filter :login_required, :except => [:index, :show,:records]
   after_filter  :clean_unread,:only => [:show]
   before_filter :find_venue, :except => [:index,:new,:create]
   

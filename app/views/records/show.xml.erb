@@ -5,10 +5,12 @@
   </div>
   <% end %>
   <p class="explanation">
-    <%= @record.detail %> <%= link_to '查看',@record%>
+    <pre><%= @record.detail %></pre>
+    <br/>
+    <%= link_to @record.user.login,@record.user%> 在 <%= link_to format_date(@record.created_at),record_path(@record)%> 标记。
   </p>
   <div class="clear"></div>
-  <span>提交人：<%= link_to @record.user.login,@record.user%> 　所属聚点：<%= link_to @record.venue.name,@venue%></span>
+  <span>所属聚点：<%= link_to @record.venue.name,@venue%></span>
   
 </div>
   

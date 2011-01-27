@@ -16,8 +16,12 @@
     <h5>位置： <span>拖动红色标记，放到合适的位置上。</span></h5>
     <div id="map_canvas" style="height:280px;clear:both;margin:10px 0"></div>
     
+    <h5>名称： <%= form.text_field :title, :size => 20,:style => 'text-align:left'%></h5>
+    <br/>
+    
     <h5>标记类别：</h5>
-    <div id="selected_category" class="cutline"></div><%= button_to_function '选择类别','javascript:choose_category()'%>
+    <div id="selected_category" class="cutline"><%= image_tag("/images/marker/#{@record.slug}.png") unless @record.slug.blank? %></div>
+    <%= button_to_function '选择类别','javascript:choose_category()'%>
     <br/>
     <br/>
   
@@ -54,7 +58,7 @@
     function initialize() {
       var latlng = new google.maps.LatLng(<%= "#{@record.latitude || @venue.latitude},#{@record.longitude || @venue.longitude}"%>)
       var myOptions = {
-        zoom: 13,
+        zoom: 16,
         center: latlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };

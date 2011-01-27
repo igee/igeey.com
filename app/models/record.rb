@@ -25,12 +25,12 @@ class Record < ActiveRecord::Base
   
   def validate
     errors[for_what] << '数量必须为大于0的整数' unless number > 0
-    errors[{'time' => :do_what,'money' => :donate_for,'goods' => :goods_is,'online' => nil}[for_what]] = '请将记录信息填写完整' if content.blank?
+    errors[{'time' => :do_what,'money' => :donate_for,'goods' => :goods_is,'online' => :title }[for_what]] = '请将记录信息填写完整' if content.blank?
     errors[:unit] = '请填写物资单位' if (for_what == 'goods') && unit.blank?
   end
   
   def content
-    {'time' => do_what,'money' => donate_for,'goods' => goods_is,'online' => true }[for_what]
+    {'time' => do_what,'money' => donate_for,'goods' => goods_is,'online' => title }[for_what]
   end
   
   def number
