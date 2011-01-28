@@ -1,3 +1,4 @@
+      <%= form.hidden_field :slug,:value => 'volunter_service' %>
         <div class="impact">
           我去<%="#{@venue.name}"%><%= raw(@calling.present? ? "#{@calling.do_what} #{form.hidden_field(:do_what,:value =>@calling.do_what)}" : " #{form.text_field(:do_what, :size => 7 ,:placeholder => '做了什么？')}")%>。
         </div>
