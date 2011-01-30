@@ -19,7 +19,6 @@ h3,h4,h5,h6{
 ul,dl{
     margin:6px 0;
     line-height:1.7em;
-    overflow:hidden;
     padding:0;
     }
 
@@ -764,7 +763,7 @@ input.todo:hover{
 
 #tabContaier li a{
   background:#ddd;
-  color:#aaa;
+  color:#888;
   font-size:13px;
   display:block;
   height:26px;
@@ -790,5 +789,5 @@ input.todo:hover{
   background:#fff;
   border:1px solid #bbb;
   border-bottom:1px solid #fff;
-  color:#666;
+  color:#555;
 }

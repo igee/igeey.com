@@ -70,17 +70,19 @@
   
 <%= yield :extension %>
 
+<% if logged_in? %>
 <script type="text/javascript">
   $(document).ready(function(){
-    <% if logged_in? && current_user.has_new_badge?%>
+     <% if current_user.has_new_badge? %>
       $.get('<%= get_badges_badges_path%>',function(data){
         $('#get_badges').html(data)
       })
     <% end %>
-    <%= "$('.user[user_id=#{current_user.id}]').parent().addClass('by_self')" if logged_in? %>
+    <%= "$('.user[user_id=#{current_user.id}]').parent().addClass('by_self')" %>
   })
 </script>
-  
+<%end%>
+
 <% if APP_CONFIG['google_analytics_id'].present? %>  
 <script type="text/javascript">
   var _gaq = _gaq || [];
