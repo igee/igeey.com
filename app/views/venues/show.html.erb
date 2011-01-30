@@ -48,7 +48,7 @@
   </div>
   <div id="topic_timeline" class="tabContents">
     <%= image_tag "/images/icon/talk.gif",:class=>"icon"%>
-    <%= link_to '发布话题',(logged_in? ? new_topic_path(:venue_id => @venue.id) : signup_path),:class=>"open_dialog",:title=>'发布话题'%>
+    <%= link_to '发布话题',(logged_in? ? new_topic_path(:forumable_id => @venue.id,:forumable_type => @venue.class.to_s) : signup_path),:class=>"open_dialog",:title=>'发布话题'%>
     <%= render :partial => '/public/topic' ,:collection => @topics%>
   </div>
   <div id="topic_timeline" class="tabContents">
