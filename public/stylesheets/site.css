@@ -267,7 +267,7 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
   top:3px;
   }
 
-.cutline{padding:4px;float:left;overflow:hidden;margin-top:-8px}
+.cutline{padding:6px 10px;float:left;overflow:hidden;margin-top:-8px}
 .cutline img{position:relative;top:4px}
 
 .pagination{margin:10px;text-align:center}    
@@ -542,22 +542,9 @@ input.todo:hover{
 
 .with_calendar{width:77px}
 
-#layer_list li{
-  width:128px;
-  background:#999;
-  color:#fff;
-  text-align:center;
-  font-weight:bold;
-  font-size:15px;
-  line-height:28px;
-  margin:0;
-  border-bottom:1px solid #888;
-  }
-#layer_list li a{color:#fff}
-#layer_list li a.selected{color:#ff6633}
+#category_list ul{overflow:hidden}
+#cutline_list li{font-size:13px;}
 
-#panel_list li{float:right;display:none}
-#cutline_list li{display:none;font-size:13px;}
 
 #logo{
   padding:0px 5px 10px;

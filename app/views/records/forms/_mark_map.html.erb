@@ -34,23 +34,20 @@
   
   <div id="dialog_box" style="display:none">
     <div id="category_list" >
-      <h4>环境</h4>
-      <ul>
-        <li><%= link_to raw('<span>河流 </span> ' + image_tag('/images/marker/water.png')),'',:class => 'cutline',:title => 'water' %></li>
-        <li><%= link_to raw('<span>绿化带 </span> ' + image_tag('/images/marker/green.png')),'',:class => 'cutline',:title => 'green' %></li>
-      </ul>
-      <br/>
-      <h4>交通</h4>
-      <ul>
-        <li><%= link_to raw('<span>绿道 </span> ' + image_tag('/images/marker/road.png')),'',:class => 'cutline',:title => 'road'%></li>
-        <li><%= link_to raw('<span>自行车道 </span> ' + image_tag('/images/marker/bike.png')),'',:class => 'cutline',:title => 'bike'%></li>
-      </ul>
-      <br/>
-      <h4>人工建筑</h4>
-      <ul>
-        <li><%= link_to raw('<span>图书馆 </span> ' + image_tag('/images/marker/library.png')),'',:class => 'cutline',:title => 'library'%></li>
-        <li><%= link_to raw('<span>学校 </span> ' + image_tag('/images/marker/school.png')),'',:class => 'cutline',:title => 'school'%></li>
-      </ul>
+      <% category_hash = {
+        '环境' => [['河流','water'],['绿化带','green'],['山峰','montain'],['花园','garden'],['景点','viewpoint']],
+        '交通' => [['绿道','road'],['自行车道','bike'],['盲道','blind'],['残障设施','disable']],
+        '设施' => [['图书馆','library'],['学校','school'],['幼儿园','children'],['游乐场/康体设施','playground'],['卫生所/医院','hospital'],['社区中心','community'],['古迹','history']],
+        '商业' => [['银行','bank'],['书店','book'],['咖啡馆','cafe'],['餐厅','restaurant']]
+      }%>
+      <% category_hash.each do |category|%>
+        <h4><%= category[0] %></h4>
+        <ul>
+          <% category[1].each do |item| %>
+            <li><%= link_to raw("<span>#{item[0]}</span> " + image_tag("/images/marker/#{item[1]}.png")),'',:class => 'cutline',:title => item[1] %></li>
+          <% end %>
+        </ul>
+      <% end %>
     </div>
   </div>
 

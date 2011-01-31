@@ -5,27 +5,28 @@
 <% end %>
 
 <div class="box">
-  <div style="float:left;text-align:right;">
-    <div id="map_canvas" style="width:300px;height:180px;margin-right:15px; "></div>
+  <div style="float:left;text-align:center;">
+    <div id="map_canvas" style="width:260px;height:160px;"></div>
     <ul style="display:none">  
       <li><%= link_to "环境",'#',:title => "environment",:class => 'find_tagged_with' %></li>
       <li><%= link_to "交通",'#',:title => "traffic",:class => 'find_tagged_with'%></li>
       <li><%= link_to "人工建筑",'#',:title => "artificial",:class => 'find_tagged_with'%></li>
     </ul>
-    <span style="display:none">
-      <%= link_to "#{@venue.cover_file_name ? '更新' : '上传'}主题图",cover_venue_path(@venue),:class => "open_dialog",:title => "#{@venue.cover_file_name ? '更新' : '上传'}主题图" if logged_in? && @venue.creator == current_user%>
-      <%= link_to '更新信息',edit_venue_path(@venue),:id => 'update_info' if logged_in? && @venue.creator == current_user %>
-    </span>
-  </div>
-  <div style="width:440px;_width:430px;height:122px;margin-left:180px">
-    <div style="float:right;padding:2px 0"><%= raw(follow_to(@venue)) %></div>
-    <h3><%= @venue.name%> </h3>
-    <p>地址：<%= @venue.geo.full_name %> <%= @venue.address%></p>
-    
     <p>
       <%= link_to '添加标记',new_record_path(:action_id => 4,:venue_id => @venue.id),:class => 'button'%>
       <%= link_to '修改位置',position_venue_path(@venue),:class => 'button' if @venue.creator == current_user%>
     </p>
+  </div>
+  <div style="width:340px;_width:350px;height:160px;margin-left:280px">
+    <span style="display:none">
+      <%= link_to "#{@venue.cover_file_name ? '更新' : '上传'}主题图",cover_venue_path(@venue),:class => "open_dialog",:title => "#{@venue.cover_file_name ? '更新' : '上传'}主题图" if logged_in? && @venue.creator == current_user%>
+      <%= link_to '更新信息',edit_venue_path(@venue),:id => 'update_info' if logged_in? && @venue.creator == current_user %>
+    </span>
+    <div style="float:right;padding:2px 0"><%= raw(follow_to(@venue)) %></div>
+    <h3><%= @venue.name%> </h3>
+    <p class="explanation">地址：<%= @venue.geo.full_name %> <%= @venue.address%></p>
+    <p class="explanation">类别：<%= @venue.category_name %></p>
+    
   </div>
 </div>
 
@@ -40,9 +41,12 @@
     <li><%= link_to '报到','#checkin_timeline'%></li>
     <li><%= link_to '集思广益','#idea_timeline'%></li>
     <li><%= link_to '论坛','#topic_timeline'%></li>
-    <li><%= link_to '行动','#records_timeline'%></li>
+    <li><%= link_to '行动','#record_timeline'%></li>
   </ul>
-  
+  <div id="record_timeline" class="tabContents">
+  </div>
+  <div id="idea_timeline" class="tabContents">
+  </div>
   <div id="record_timeline" class="tabContents">
     <%= render :partial => '/public/event', :collection => @timeline %>
   </div>
