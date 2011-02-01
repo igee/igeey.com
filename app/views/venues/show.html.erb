@@ -43,7 +43,19 @@
     <li><%= link_to '论坛','#topic_timeline'%></li>
     <li><%= link_to '行动','#record_timeline'%></li>
   </ul>
-  <div id="record_timeline" class="tabContents">
+  <div id="checkin_timeline" class="tabContents">
+    <div style="padding:10px;">
+      <% @record = @venue.records.build(:action_id => 5) %>
+      <% @action = @record.action %>
+      <%= form_for @record do |form| %>
+        <%= form.hidden_field :action_id %>
+        <%= form.hidden_field :venue_id %>
+        <%=  render :partial => "/records/forms/#{@action.slug}",:locals => {:form => form}%>
+        <%= form.submit '报到',:class => "button",:style =>"float:right;margin-right:60px"%>
+      <% end %>
+      <%= render :partial => '/public/event', :collection => @venue.records.where(:action_id => 5) %>
+    </div>
+
   </div>
   <div id="idea_timeline" class="tabContents">
   </div>

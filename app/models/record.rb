@@ -49,16 +49,18 @@ class Record < ActiveRecord::Base
   end
   
   def description
-    if self.action.slug == 'volunteer_service'
-      result = "去#{self.venue.name}#{self.do_what}，贡献：#{self.time}个小时"
-    elsif self.action.slug == 'goods_donation'
-      result = "捐赠了#{self.goods}#{self.unit}#{self.goods_is}给#{self.venue.name}"
-    elsif self.action.slug == 'money_donation'
-      result = "捐赠了#{self.money}元给#{self.venue.name}，用于#{self.donate_for}"
-    elsif self.action.slug == 'mark_map' 
+    case self.action.slug
+    when 'volunteer_service'
+      result = "去#{self.venue.name}#{self.do_what}，贡献：#{self.time}个小时。"
+    when 'goods_donation'
+      result = "捐赠了#{self.goods}#{self.unit}#{self.goods_is}给#{self.venue.name}。"
+    when 'money_donation'
+      result = "捐赠了#{self.money}元给#{self.venue.name}，用于#{self.donate_for}。"
+    when 'mark_map' 
       result = "为#{self.venue.name}添加了地图标记"
+    when 'checkin'
+      result = "在#{self.venue.name}报到：#{self.title}"
     end
-    result << "，时间：#{self.formatted_done_at}"
   end
   
   def is_done
