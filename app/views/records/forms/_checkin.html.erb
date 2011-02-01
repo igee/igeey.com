@@ -1,0 +1,5 @@
+    <%= form.hidden_field :slug,:value => 'checkin' %>
+    <%= form.hidden_field :online,:value => 1 %>
+    <%= form.hidden_field :detail,:value => '' %>
+    <%= form.hidden_field :done_at,:value => Date.today %>
+    <%= form.text_area   :title,:style=> "margin:0;width:460px;height:48px;display:inline" ,:placeholder => "今天你想和#{@venue.name}的朋友们说什么？"%>
