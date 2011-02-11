@@ -1,5 +1,6 @@
 <div class="event_box">
     <%= render :partial => '/users/user',:object => comment.user %>
+    <div class="saying_tail"></div>  
     <div class="comment">
       <pre><%= comment.content %></pre>
       <% if logged_in? %>
@@ -9,5 +10,4 @@
       <% end %>
       <span>#<%= comment_counter +1%> at <%= format_date(comment.created_at) %></span>
     </div>
-    <div class="saying_tail"></div>  
 </div>

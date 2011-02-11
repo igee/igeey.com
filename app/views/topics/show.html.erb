@@ -1,14 +1,11 @@
 <% @title = @topic.title %>
 <div class="box">  
   <%= render :partial => '/users/user' ,:object => @topic.user %>
+  <div class="saying_tail"></div>
   <div class="saying">
-    
     <p class="impact"><%= @topic.title %></p>
     <pre class="explanation"><%= @topic.content %><pre>
-    
   </div>
-  <div class="saying_tail"></div>
-  
 </div>
 
 <%= render :partial => '/comments/board'%>    

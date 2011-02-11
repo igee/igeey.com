@@ -2,12 +2,12 @@
 <div style="background-color:#fff;padding:10px 20px;border-radius:8px;-moz-border-radius:8px;-webkit-border-radius:8px;margin-bottom:20px;">        
   <div class="box">  
     <%= render :partial => '/users/user' ,:object => @calling.user %>
+    <div class="saying_tail"></div>
     <div class="saying">
       <p class="impact"><%= "#{@calling.user.login}#{@calling.description}" %></p>      
       <pre class="explanation" style="display:block;"><%= @calling.detail.strip %></pre>
       <br/>
     </div>
-    <div class="saying_tail"></div>
     <div style="clear:both;text-align:right">
       <% if @calling.can_edit_by?(current_user)%>
         <span>

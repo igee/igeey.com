@@ -83,9 +83,9 @@ textarea{
 input.blur{color:#bbb}
 
 input:focus{
-  background-color:#ffffc0;
+  background-color:#ffffe0;
   outline:none;
-  border:1px solid #e95;
+  border:1px solid #fb9;
   color:#666
   }
 
@@ -366,7 +366,7 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 .saying input{text-align:right;}
 
 .saying_tail{
-  float:right;
+  float:left;
   background:url('/images/saying_tail.png') no-repeat;
   width:8px;
   height:72px;
@@ -417,7 +417,7 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
   }
   
 .comment{
-    float:right;
+  float:left;
 }
 
 .comment pre{
@@ -443,7 +443,7 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 .event_box.hover p{color:#777}
 
 .event {
-  width:508px;
+  width:488px;
   margin-left:86px;
   }
   

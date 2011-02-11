@@ -2,12 +2,12 @@
   <div style="background-color:#fff;padding:10px 20px;border-radius:8px;-moz-border-radius:8px;-webkit-border-radius:8px;margin-bottom:20px;">        
     <div class="box">
       <%= render :partial => '/users/user' ,:object => @plan.user %>
+        <div class="saying_tail"></div>      
         <div class="saying">
           <p class="impact" style="font-size:18px">
             <%="#{@plan.user.login}#{@plan.description}。"%>
           </p>
         </div>
-        <div class="saying_tail"></div>      
         <div style="clear:both;text-align:right">
           <% if @plan.can_edit_by?(current_user)%>
           <span><%= link_to("修改",edit_calling_plan_path(@plan.calling,@plan))%> | <%= link_to "取消",calling_plan_path(@calling,@plan),:method => :delete,:confirm => '确定要取消你的计划么?' %></span>
@@ -52,10 +52,10 @@
     <div class="box">
       <h4>发起人说：</h4>
         <%= render :partial => '/users/user' ,:object => @calling.user %>
+        <div class="saying_tail"></div>
         <div class="saying">
           <pre><%= @calling.detail %></pre>
         </div>
-        <div class="saying_tail"></div>
     </div>
     
     <div class="box">

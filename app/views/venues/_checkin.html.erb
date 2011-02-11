@@ -1,0 +1,25 @@
+<div class="event_box">
+  <div class='user' user_id="<%=checkin.user.id%>" style="height:60px">
+    <%= link_to (image_tag checkin.user.avatar.url,:class => "user_avatar"),checkin.user %>
+  </div>
+  <div class="event">
+    <p><%= link_to checkin.user.login,checkin.user %>：<%= checkin.content %> <span class="timeago"><%= checkin.created_at %></span></p>
+    <div style="text-align:right">
+      <%= link_to "回复#{'(' + checkin.comments.size.to_s + ')' if checkin.comments.first}",'',:class => "checkin_reply"%>　
+    </div>
+  </div>
+  <div style="display:none;margin:5px;">
+    <div style="background:url('/images/reply_tail.png');height:8px;position:relative;top:1px"></div>
+    <div style="padding:15px;background-color:#fff2cc;overflow:hidden;clear:both;border:1px solid #cccccc">
+        <div style="padding:4px;">
+          <%= form_for @comment do |form| %>
+            <%= form.hidden_field :commentable_type,:value => checkin.class %>
+            <%= form.hidden_field :commentable_id,:value => checkin.id %>
+            <%= form.text_field :content, :style => "width:446px;height:20px",:placeholder => "回复"%>
+            <%= submit_tag '回复',:class => 'button' %>
+          <% end %>
+        </div>
+      <%= render :partial => "/public/reply",:collection => checkin.comments %>    
+    </div>
+  </div>
+</div>

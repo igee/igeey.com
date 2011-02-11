@@ -1,11 +1,10 @@
 <% @title = @record.name%>
 <div class="box">
     <%= render :partial => '/users/user' ,:object => @record.user %>
+      <div class="saying_tail"></div>
       <div class="saying">
         <%=  render :partial => "/records/shows/#{@action.slug}"%>
       </div>
-      <div class="saying_tail"></div>
-      
       <div style="clear:both;text-align:right">
         <% if @record.can_edit_by?(current_user)%>
         <span>

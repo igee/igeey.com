@@ -9,14 +9,12 @@
     <%= form.hidden_field :syncable_id %>
     <%= form.hidden_field :syncable_type %>
     <%= render :partial => '/users/user' ,:object => current_user %>
+    <div class="saying_tail"></div>
     <div class="saying" style="<%= 'width:360px' if params[:layout]=='false'%>">
         <% @synclink = @sync.syncable_type == "Follow" ? eval("#{@sync.syncable.followable_type.downcase}_url(#{@syncable.followable.id})") : eval("#{@sync.syncable_type.downcase}_url(#{@syncable.id})") %>
         <%= form.text_area :content,:value=>"我#{@syncable.description}#{  @sync.syncable_type == "Calling" ? {:time => "，请大家踊跃报名！",:goods => "，请大家支持！"}[@syncable.for_what.to_sym] : '。'} " + @synclink,:style => "width:#{ params[:layout]=='false' ? '340px' : '440px'};height:80px"%>
         <div class="explanation">截取前140字，剩余字数：<span id="character_count"></span></div>
-      
     </div>
-    <div class="saying_tail"></div>
-    
     <p style='text-align:right;clear:both'>
     同步到：
     <%= image_tag('/images/icon/sina.gif',:class=> 'icon')%> 新浪微博 <%= form.check_box :sina ,:disabled => (current_user.sina? ? false : true),:checked => current_user.sina? %>

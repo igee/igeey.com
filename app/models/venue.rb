@@ -5,13 +5,14 @@ class Venue < ActiveRecord::Base
   belongs_to :creator, :class_name => "User", :foreign_key => "creator_id"
   belongs_to :geo
   
-  has_many   :callings
-  has_many   :plans
-  has_many   :records
+  has_many   :callings,   :dependent => :destroy
+  has_many   :plans,      :dependent => :destroy
+  has_many   :records,    :dependent => :destroy
   has_many   :photos,     :as => :imageable,   :dependent => :destroy
   has_many   :follows,    :as => :followable,  :dependent => :destroy
-  has_many   :followers,  :through => :follows,:source => :user
-  has_many   :topics,     :as => :forumable
+  has_many   :followers,  :through => :follows,:source => :user,:dependent => :destroy
+  has_many   :topics,     :as => :forumable,:dependent => :destroy
+  has_many   :checkins,   :dependent => :destroy  
 
   has_attached_file :cover, :styles => {:_160x120 => ["160x120#"],:_80x60 => ["80x60#"]},
                             :url=>"/media/:attachment/venues/:id/:style.:extension",

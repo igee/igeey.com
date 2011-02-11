@@ -1,0 +1,8 @@
+<div style="clear:both">
+  <div class='user' user_id="<%=reply.user.id%>" style="height:60px">
+    <%= link_to (image_tag reply.user.avatar.url,:class => "user_avatar"),reply.user %>
+  </div>
+  <div class="comment" width:>
+    <p><%= link_to reply.user.login,reply.user %>：<%= reply.content %> <span class="timeago"><%= reply.created_at %></span></p>
+  </div>
+</div>

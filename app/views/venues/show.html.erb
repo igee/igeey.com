@@ -1,5 +1,5 @@
 <% @title = @venue.name %>
-
+<% @comment = Comment.new %>
 <% content_for :head do %>
   <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false"></script>
 <% end %>
@@ -44,16 +44,16 @@
     <li><%= link_to '行动','#record_timeline'%></li>
   </ul>
   <div id="checkin_timeline" class="tabContents">
-    <div style="padding:10px;">
-      <% @record = @venue.records.build(:action_id => 5) %>
-      <% @action = @record.action %>
-      <%= form_for @record do |form| %>
-        <%= form.hidden_field :action_id %>
-        <%= form.hidden_field :venue_id %>
-        <%=  render :partial => "/records/forms/#{@action.slug}",:locals => {:form => form}%>
-        <%= form.submit '报到',:class => "button",:style =>"float:right;margin-right:60px"%>
+    <div style="padding:15px;">
+      <% @checkin = Checkin.new %>
+      <%= form_for [@venue,@checkin] do |form| %>
+        <%= form.hidden_field :venue_id,:value => @venue.id %>
+        <%= form.text_area  :content,:style=> "margin:0;width:576px;height:72px" ,:placeholder => "今天你想和#{@venue.name}的朋友们说什么？"%>
+        <p style="text-align:right">
+          <%= form.submit '报到',:class => "button"%>
+        </p>
       <% end %>
-      <%= render :partial => '/public/event', :collection => @venue.records.where(:action_id => 5) %>
+      <%= render :partial => 'venues/checkin',:collection => @checkins %>
     </div>
 
   </div>
@@ -144,9 +144,9 @@
     
     
     $(document).ready(function(){
-      //use javascript to check whether there are news for performance
       initialize();
-    
+      $(".timeago").each(function(){$(this).html('(' + $.timeago($(this).html()) + ')' )});
+      $('.checkin_reply').click(function(){$(this).parent().parent().next().toggle();return false})
     });  
   </script>
 <% end %>

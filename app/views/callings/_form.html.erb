@@ -3,8 +3,8 @@
   <%= form.hidden_field :action_id %>
   <%= form.hidden_field :venue_id %>
   <%= render :partial => '/users/user' ,:object => current_user %>
+  <div class="saying_tail"></div>
   <div class="saying">
-    
     <div style="padding:10px 0" class="impact">
       <% if @calling.action.for_what == 'money' -%>
         <%="我为#{@calling.venue.name}募捐" %> <%= form.text_field :total_money, :size => 3,:placeholder => "多少"%> 元，用于 <%= form.text_field :donate_for ,:size => 8 ,:placeholder => "做什么？"%>。            
@@ -26,7 +26,6 @@
       <p class="explanation">目前字数：<span id="character_count"></span></p>
     </p>
   </div>
-  <div class="saying_tail"></div>
   <div style="clear:both;text-align:right;">  
   </div>
   

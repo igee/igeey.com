@@ -245,13 +245,20 @@ ActiveRecord::Schema.define() do
     t.timestamps
   end
   
-  
   create_table "tools",:force => true do |t|
     t.integer  :project_id
     t.integer  :action_id
   end
   
-  create_table :tags do |t|
+  create_table "checkins",:force => true do |t|
+    t.integer  :user_id
+    t.integer  :venue_id
+    t.text     :content
+    t.integer  :comments_count
+    t.timestamps
+  end
+  
+create_table :tags do |t|
     t.column :name, :string
   end
   

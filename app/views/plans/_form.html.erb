@@ -7,6 +7,7 @@
     <%= form.hidden_field :calling_id %>
     <%= form.hidden_field :parent_id %>
     <%= render :partial => '/users/user' ,:object => current_user %>
+    <div class="saying_tail"></div>
     <div class="saying" style="<%= 'width:360px' if params[:layout]=='false'%>">
         <p>
           <% if @action.for_what == 'money' %>
@@ -18,7 +19,6 @@
           <% end %>
         </p>
     </div>
-    <div class="saying_tail"></div>
   </div>
   
   <div style="clear:both;text-align:right">

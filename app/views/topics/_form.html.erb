@@ -2,6 +2,7 @@
   <%= raw error_explanation_for(@topic) if @topic.errors.present?%>  
   <div style="clear:both">
     <%= render :partial => '/users/user' ,:object => current_user %>
+      <div class="saying_tail"></div>
       <div class="saying" style="<%= 'width:360px' if params[:layout]=='false'%>">
           <p>
             <%= form.label :title,'标题：'%> <%= form.text_field :title,:size => 20 ,:style => "text-align:left"%>
@@ -12,7 +13,6 @@
             <%= form.hidden_field :forumable_type %>
           </p>
       </div>
-      <div class="saying_tail"></div>
   </div>
   <div style="clear:both;text-align:right">
     <%= form.submit '发布',:class => "button"%>

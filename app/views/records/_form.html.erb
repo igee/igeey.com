@@ -11,10 +11,10 @@
     <%= form.hidden_field :calling_id %>
     <%= form.hidden_field :plan_id %>
     <%= render :partial => '/users/user' ,:object => current_user %>
+    <div class="saying_tail"></div>
     <div class="saying">
       <%=  render :partial => "/records/forms/#{@action.slug}",:locals => {:form => form}%>
     </div>
-    <div class="saying_tail"></div>
     <div style="clear:both;text-align:right">
       <%= hidden_field_tag :back_path,params[:back_path]%>
       <%= form.submit '确定',:class => "button"%>

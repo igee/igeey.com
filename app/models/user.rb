@@ -17,10 +17,10 @@ class User < ActiveRecord::Base
   has_many :topics,         :dependent => :destroy
   has_many :photos,         :dependent => :destroy
   has_many :grants,         :dependent => :destroy
-  #followings are user self`s follow,follows are follows that follow to user 
   has_many :followings,     :class_name => "Follow",:foreign_key => :user_id
   has_many :follows,        :as => :followable, :dependent => :destroy
   has_many :followers,      :through => :follows, :source => :user
+  has_many :checkins,       :dependent => :destroy
   has_many :syncs,          :dependent => :destroy
   
   has_attached_file :avatar,:styles => {:_48x48 => ["48x48#",:png],:_72x72 => ["72x72#",:png]},
