@@ -153,16 +153,19 @@
         })
       $('.new_comment').submit(function(){
         var size = $(this).find('input[type=text]').val().length
-        if ( size >= 140)
-          { alert('回复不能超过140字,你写了' + size + '个')}
+        if ( size >= 140){
+          alert('回复不能超过140字,你写了' + size + '个');
           return false
+          }
         })
       
       $('#new_checkin').submit(function(){
         var size = $(this).find('textarea').val().length
-        if ( size >= 140)
-          { alert('报到不能超过140字,你写了' + size + '个')}
+        if ( size >= 140){
+          alert('报到不能超过140字,你写了' + size + '个');
           return false
+          }
+          
         })
     });  
   </script>
