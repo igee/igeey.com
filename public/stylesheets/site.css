@@ -38,6 +38,7 @@ pre {
   word-wrap: break-word;
   line-height:1.8em;
   margin:5px 0;
+  text-align:left;
   } 
 
 span{
@@ -468,6 +469,8 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 .event_box.hover .event_panel{display:block}
 
 .comment .event_panel{margin:0;width:520px}
+
+.reply_reply{float:right}
 
 .addition{margin:0}
 
