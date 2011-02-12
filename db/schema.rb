@@ -255,6 +255,8 @@ ActiveRecord::Schema.define() do
     t.integer  :venue_id
     t.text     :content
     t.integer  :comments_count
+    t.datetime :last_replied_at
+    t.integer  :last_replied_user_id
     t.timestamps
   end
   
