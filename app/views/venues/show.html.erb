@@ -48,7 +48,7 @@
       <% @checkin = Checkin.new %>
       <%= form_for [@venue,@checkin] do |form| %>
         <%= form.hidden_field :venue_id,:value => @venue.id %>
-        <%= form.text_area  :content,:style=> "margin:0;width:576px;height:72px" ,:placeholder => "今天你想和#{@venue.name}的朋友们说什么？"%>
+        <%= form.text_area  :content,:style=> "margin:0;width:576px;height:50px" ,:placeholder => "今天你想和#{@venue.name}的朋友们说什么？"%>
         <p style="text-align:right">
           <%= form.submit '报到',:class => "button"%>
         </p>
@@ -146,10 +146,23 @@
       $(".timeago").each(function(){$(this).html('(' + $.timeago($(this).html()) + ')' )});
       $('.checkin_reply').click(function(){$(this).parent().parent().next().toggle();return false})
       $('.reply_reply').click(function(){
-        var reply_field = $(this).parent().parent().parent().parent().find('input:last').prev()
+        var reply_field = $(this).parent().parent().parent().parent().find('input[type=text]')
         reply_field.val($(this).attr('title'));
         reply_field.focus();
         return false;
+        })
+      $('.new_comment').submit(function(){
+        var size = $(this).find('input[type=text]').val().length
+        if ( size >= 140)
+          { alert('回复不能超过140字,你写了' + size + '个')}
+          return false
+        })
+      
+      $('#new_checkin').submit(function(){
+        var size = $(this).find('textarea').val().length
+        if ( size >= 140)
+          { alert('报到不能超过140字,你写了' + size + '个')}
+          return false
         })
     });  
   </script>
