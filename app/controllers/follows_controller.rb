@@ -11,7 +11,7 @@ class FollowsController < ApplicationController
     if @follow.save && @follow.followable_type == 'Calling'
       flash[:dialog] = "<a href='#{new_sync_path}?syncable_type=#{@follow.class}&syncable_id=#{@follow.id}' class='open_dialog' title='传播这个行动'>同步</a>" 
     end
-    redirect_to :back
+    redirect_to @follow.followable
   end
   
   def destroy

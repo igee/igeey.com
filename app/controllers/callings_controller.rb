@@ -1,6 +1,6 @@
 class CallingsController < ApplicationController
   respond_to :html
-  before_filter :login_required, :except => [:index, :show]
+  before_filter :login_required, :except => [:index, :show,:progress]
   before_filter :find_calling, :except => [:index, :new, :create]
   after_filter  :clean_unread, :only => [:show]
    
@@ -36,7 +36,7 @@ class CallingsController < ApplicationController
     @followers = @calling.followers
     @comment = Comment.new
     @comments = @calling.comments
-    @photos = @calling.photos.limit(3)
+    @photos = @calling.photos
     render :layout => "no_sidebar"
   end
   
