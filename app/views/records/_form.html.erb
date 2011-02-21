@@ -11,8 +11,8 @@
     <%= form.hidden_field :calling_id %>
     <%= form.hidden_field :plan_id %>
     <%= render :partial => '/users/user' ,:object => current_user %>
-    <div class="saying_tail"></div>
-    <div class="saying">
+    <div class="bubble_tail"></div>
+    <div class="bubble">
       <%=  render :partial => "/records/forms/#{@action.slug}",:locals => {:form => form}%>
     </div>
     <div style="clear:both;text-align:right">

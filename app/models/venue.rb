@@ -12,7 +12,7 @@ class Venue < ActiveRecord::Base
   has_many   :follows,    :as => :followable,  :dependent => :destroy
   has_many   :followers,  :through => :follows,:source => :user,:dependent => :destroy
   has_many   :topics,     :as => :forumable,:dependent => :destroy
-  has_many   :checkins,   :dependent => :destroy  
+  has_many   :sayings,   :dependent => :destroy  
 
   has_attached_file :cover, :styles => {:_160x120 => ["160x120#"],:_80x60 => ["80x60#"]},
                             :url=>"/media/:attachment/venues/:id/:style.:extension",

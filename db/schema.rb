@@ -250,7 +250,7 @@ ActiveRecord::Schema.define() do
     t.integer  :action_id
   end
   
-  create_table "checkins",:force => true do |t|
+  create_table "sayings",:force => true do |t|
     t.integer  :user_id
     t.integer  :venue_id
     t.text     :content

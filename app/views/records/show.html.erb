@@ -1,8 +1,8 @@
 <% @title = @record.name%>
 <div class="box">
     <%= render :partial => '/users/user' ,:object => @record.user %>
-      <div class="saying_tail"></div>
-      <div class="saying">
+      <div class="bubble_tail"></div>
+      <div class="bubble">
         <%=  render :partial => "/records/shows/#{@action.slug}"%>
       </div>
       <div style="clear:both;text-align:right">

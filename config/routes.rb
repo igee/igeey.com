@@ -38,7 +38,7 @@ Igee::Application.routes.draw do
       get :position
       get :records
     end
-    resources :checkins
+    resources :sayings
   end
   
   resources :badges do

@@ -351,7 +351,7 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
   border-bottom:1px dashed #9bd;
   }
 
-.saying{
+.bubble{
   float:right;
   width:470px;
   background-color:#e6e6f0;
@@ -364,22 +364,22 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
   zoom:1;
 }
 
-.saying input{text-align:right;}
+.bubble input{text-align:right;}
 
-.saying_tail{
+.bubble_tail{
   float:left;
-  background:url('/images/saying_tail.png') no-repeat;
+  background:url('/images/bubble_tail.png') no-repeat;
   width:8px;
   height:72px;
 }
 
-.sidebar_saying_tail{
-  background:url('/images/sidebar_saying_tail.png') no-repeat;
+.sidebar_bubble_tail{
+  background:url('/images/sidebar_bubble_tail.png') no-repeat;
   width:36px;
   height:8px;
 }
 
-.saying_colon_left{
+.bubble_colon_left{
   font-family:'times new roman';
   color:#999;
   text-align:left;
@@ -389,7 +389,7 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
   }
 
 
-.saying_colon_right{
+.bubble_colon_right{
   font-family:'times new roman';
   color:#999;
   text-align:right;
@@ -398,7 +398,7 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
   font-size:30px;
   }
 
-.sidebar_saying{
+.sidebar_bubble{
   width:220px;
   background-color:#fff;
   -webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;

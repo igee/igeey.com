@@ -1,0 +1,23 @@
+<div class="event_box">
+  <div class='user' user_id="<%=saying.user.id%>" style="height:60px;">
+    <%= link_to (image_tag saying.user.avatar.url,:class => "user_avatar"),saying.user %>
+  </div>
+  <div class="event">
+    <p><pre><%= link_to saying.user.login,saying.user %>：<%= saying.content %> <span class="timeago"><%= saying.created_at %></span></pre></p>
+    <div style="text-align:right">
+      <%= link_to "回复#{'(' + saying.comments.size.to_s + ')' if saying.comments.first}",'',:class => "checkin_reply"%>　
+    </div>
+  </div>
+  <div style="display:none;margin:5px;" class="replys">
+    <%= form_for @comment do |form| %>
+      <div style="background:url('/images/reply_tail.png');height:8px;position:relative;top:1px"></div>
+      <div style="padding:15px;background-color:#fff6d9;overflow:hidden;clear:both;border:1px solid #e9c6b9">
+            <%= form.hidden_field :commentable_type,:value => saying.class %>
+            <%= form.hidden_field :commentable_id,:value => saying.id %>
+            <%= form.text_field :content, :style => "width:446px;height:20px",:placeholder => ""%>
+            <%= submit_tag '回复',:class => 'button' %>         
+        <%= render :partial => "/public/reply",:collection => saying.comments.order('created_at desc') %>    
+      </div>
+    <% end %>
+  </div>
+</div>
