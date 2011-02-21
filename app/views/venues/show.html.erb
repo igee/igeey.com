@@ -38,9 +38,9 @@
       <% @checkin = Saying.new %>
       <%= form_for [@venue,@checkin] do |form| %>
         <%= form.hidden_field :venue_id,:value => @venue.id %>
-        <%= form.text_area  :content,:style=> "margin:0;width:576px;height:50px" ,:placeholder => "今天你想和#{@venue.name}的朋友们说什么？"%>
+        <%= form.text_area  :content,:style=> "margin:0;width:576px;height:64px" ,:placeholder => "今天你想和#{@venue.name}的朋友们说什么？"%>
         <p style="text-align:right">
-          <%= form.submit '报到',:class => "button"%>
+          <%= form.submit '发 布',:class => "gary_button"%>
         </p>
       <% end %>
       <%= render :partial => 'public/saying',:collection => @sayings %>
@@ -57,9 +57,9 @@
     <%= render :partial => "/photos/photo",:collection => @photos %>    
   </div>
   <div id="record_timeline" class="tabContents">      
-    <div style="text-align:right;margin-top:6px" >
-      <%= link_to '召集行动',(logged_in? ? "#{new_calling_path}?venue_id=#{@venue.id}" : signup_path),:class => "button open_dialog",:title => '召集行动'%>
-      <%= link_to '记录行动',(logged_in? ? "#{new_record_path}?venue_id=#{@venue.id}" : signup_path),:class => "button open_dialog",:title => '记录行动'%>
+    <div style="text-align:right;margin-top:12px" >
+      <%= link_to '召集行动',(logged_in? ? "#{new_calling_path}?venue_id=#{@venue.id}" : signup_path),:class => "gary_button open_dialog",:title => '召集行动'%>
+      <%= link_to '记录行动',(logged_in? ? "#{new_record_path}?venue_id=#{@venue.id}" : signup_path),:class => "gary_button open_dialog",:title => '记录行动'%>
     </div>
     <%= render :partial => '/public/event', :collection => @timeline %>
   </div>
