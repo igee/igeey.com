@@ -28,11 +28,6 @@
   -->
 </div>
 
-<div class="box" style="text-align:center;display:none" >
-  <%= link_to '召集行动',(logged_in? ? "#{new_calling_path}?venue_id=#{@venue.id}" : signup_path),:class => "big_button open_dialog",:title => '召集行动'%>
-  <%= link_to '记录行动',(logged_in? ? "#{new_record_path}?venue_id=#{@venue.id}" : signup_path),:class => "big_button open_dialog",:title => '记录行动'%>
-</div>
-
 <div id="tabContaier">
   <ul>
     <li><%= link_to '报到','#checkin_timeline'%></li>
@@ -50,22 +45,24 @@
       <% end %>
       <%= render :partial => 'public/saying',:collection => @sayings %>
     </div>
-
   </div>
   <div id="idea_timeline" class="tabContents">
-  </div>
-  <div id="record_timeline" class="tabContents">
-    <%= render :partial => '/public/event', :collection => @timeline %>
   </div>
   <div id="topic_timeline" class="tabContents">
     <%= image_tag "/images/icon/talk.gif",:class=>"icon"%>
     <%= link_to '发布话题',(logged_in? ? new_topic_path(:forumable_id => @venue.id,:forumable_type => @venue.class.to_s) : signup_path),:class=>"open_dialog",:title=>'发布话题'%>
     <%= render :partial => '/public/topic' ,:collection => @topics%>
   </div>
-  <div id="topic_timeline" class="tabContents">
+  <div id="photo_timeline" class="tabContents">
     <%= render :partial => "/photos/photo",:collection => @photos %>    
   </div>
-  
+  <div id="record_timeline" class="tabContents">      
+    <div style="text-align:right;margin-top:6px" >
+      <%= link_to '召集行动',(logged_in? ? "#{new_calling_path}?venue_id=#{@venue.id}" : signup_path),:class => "button open_dialog",:title => '召集行动'%>
+      <%= link_to '记录行动',(logged_in? ? "#{new_record_path}?venue_id=#{@venue.id}" : signup_path),:class => "button open_dialog",:title => '记录行动'%>
+    </div>
+    <%= render :partial => '/public/event', :collection => @timeline %>
+  </div>
 </div>  
 
 
@@ -84,7 +81,10 @@
   </div>
   -->
   <%= render :partial => "/public/followers" %>
-  <div id="map_canvas" style="width:250px;height:160px;"></div>
+  <div class="box">
+    <h4>地图：</h4>
+    <div id="map_canvas" style="width:250px;height:160px;"></div>
+  </div>
 <% end %>
 
 
@@ -154,16 +154,14 @@
           alert('回复不能超过140字,你写了' + size + '个');
           return false
           }
-        })
-      
+        })      
       $('#new_checkin').submit(function(){
         var size = $(this).find('textarea').val().length
         if ( size >= 140){
           alert('报到不能超过140字,你写了' + size + '个');
           return false
           }          
-        })
-      
+        })      
     });  
   </script>
 <% end %>
