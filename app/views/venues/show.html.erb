@@ -5,27 +5,19 @@
 <% end %>
 
 <div class="box">
-  <div style="float:right;padding:2px 0"><%= raw(follow_to(@venue)) %></div>
-  <h3><%= @venue.name%> </h3>
-  
-  <!--
-    <p class="explanation">地址：<%= @venue.geo.full_name %> <%= @venue.address%></p>
-    <p class="explanation">类别：<%= @venue.category_name %></p>
-    
-    <ul style="display:none">  
-      <li><%= link_to "环境",'#',:title => "environment",:class => 'find_tagged_with' %></li>
-      <li><%= link_to "交通",'#',:title => "traffic",:class => 'find_tagged_with'%></li>
-      <li><%= link_to "人工建筑",'#',:title => "artificial",:class => 'find_tagged_with'%></li>
-    </ul>
-    <p>
-      <%= link_to '添加标记',new_record_path(:action_id => 4,:venue_id => @venue.id),:class => 'button'%>
-      <%= link_to '修改位置',position_venue_path(@venue),:class => 'button' if @venue.creator == current_user%>
-    </p>
-    <span style="display:none">
+  <div style="float:left;text-align:center;">
+    <%= image_tag(@venue.cover.url,:class => "venue_cover") %>
+    <br/>
+    <span>
       <%= link_to "#{@venue.cover_file_name ? '更新' : '上传'}主题图",cover_venue_path(@venue),:class => "open_dialog",:title => "#{@venue.cover_file_name ? '更新' : '上传'}主题图" if logged_in? && @venue.creator == current_user%>
-      <%= link_to '更新信息',edit_venue_path(@venue),:id => 'update_info' if logged_in? && @venue.creator == current_user %>
+      　<%= link_to '更新信息',edit_venue_path(@venue),:id => 'update_info' if logged_in? && @venue.creator == current_user %>
     </span>
-  -->
+  </div>
+  <div style="width:440px;_width:430px;height:122px;margin-left:180px">
+    <div style="float:right;padding:2px 0"><%= raw(follow_to(@venue)) %></div>
+    <h3><%= @venue.name%> <span><%= @venue.geo.full_name %></span></h3>
+    <p><%= @venue.intro%></p>      
+  </div>
 </div>
 
 <div id="tabContaier">
@@ -155,7 +147,7 @@
           return false
           }
         })      
-      $('#new_checkin').submit(function(){
+      $('#new_saying').submit(function(){
         var size = $(this).find('textarea').val().length
         if ( size >= 140){
           alert('报到不能超过140字,你写了' + size + '个');
