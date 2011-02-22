@@ -1,11 +1,15 @@
 <div class="event_box">
   <%= render :partial => "/venues/venue",:object => saying.venue %>
   <div class="event">
-    <p><pre><%= link_to saying.user.login,saying.user %>：<%= saying.content %> <span class="timeago"><%= saying.created_at %></span></pre></p>
+    
+      <span><%= link_to saying.user.login,saying.user %> 在 <%= link_to saying.venue.name,saying.venue %> 报到：</span>
+      <pre><%= saying.content %></pre>
+    
+    <div class="event_action">
+      <span class="timeago" style="float:left"><%= saying.created_at %></span>
+      <%= link_to "删除","#{saying_path(saying)}?back_path=#{request.path}",:method => :delete,:confirm => '你确定要删除这条报到么？' if current_user && current_user.id == saying.user_id%>
+      　<%= link_to "回复#{'(' + saying.comments.size.to_s + ')' if saying.comments.first}",'',:class => "event_reply"%>　
+    </div>
+    <%= render :partial => "/public/reply_form",:locals =>  {:object => saying}%>
   </div>
-  <div style="text-align:right">
-      <%= link_to "删除","#{saying_path(saying)}?back_path=#{request.path}",:method => :delete,:confirm => '你确定要删除这条报到么？' if saying.user == current_user%>
-      <%= link_to "回复#{'(' + saying.comments.size.to_s + ')' if saying.comments.first}",'',:class => "event_reply"%>
-  </div>
-  <%= render :partial => "/public/reply_form",:locals =>  {:object => saying}%>
 </div>

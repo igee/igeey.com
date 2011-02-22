@@ -1,7 +1,7 @@
 body{
   font-size:14px;
   background-color:#bcdcff;
-  color:#666;
+  color:#555;
   word-break:break-all;
   }
 
@@ -109,7 +109,7 @@ img{border:none;}
 .action_button:hover{color:#fff;background-color:#e86;}
 
 .gary_button{
-   text-align:center;
+    text-align:center;
     margin:0 5px;
     color:white;
     font-size:15px;
@@ -465,7 +465,7 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 }
 
 .event_box{
-  padding:8px;
+  padding:6px;
   border-bottom:1px dashed #ccc;
   overflow:hidden;
   zoom:1;
@@ -477,6 +477,7 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 .event {
   width:508px;
   margin-left:86px;
+  padding:6px 0;
   }
   
 .event p{
@@ -485,6 +486,12 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
     }
     
 .event_link{color:#777}
+
+.event_action{
+  text-align:right;
+  font-size:12px;
+  margin-top:10px;
+}
 
 .event_panel{
   margin:58px 10px 0;

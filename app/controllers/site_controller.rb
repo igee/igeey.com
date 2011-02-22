@@ -3,15 +3,17 @@ class SiteController < ApplicationController
   
   def index
     if logged_in?
-      @my_timeline = current_user.calling_followings.map(&:followable)
-      @my_followings = current_user.followings.where(:followable_type => 'Venue' ).map(&:followable)
-      @my_followings.each do |v|
-        @my_timeline += v.records.limit(5) 
-        @my_timeline += v.callings.not_closed.limit(5)
-        @my_timeline += v.plans.limit(5)
-        @my_timeline += v.sayings.limit(5)
+      @timeline = current_user.calling_followings.map(&:followable)
+      @followings = current_user.followings.where(:followable_type => 'Venue' ).map(&:followable)
+      @followings.each do |v|
+        @timeline += v.records.limit(5) 
+        @timeline += v.callings.not_closed.limit(5)
+        @timeline += v.plans.limit(5)
+        @timeline += v.sayings.limit(5)
       end
-      @my_timeline = @my_timeline.uniq.sort{|x,y| y.created_at  <=> x.created_at  }[0..15]
+      @timeline = @timeline.uniq.sort{|x,y| y.created_at  <=> x.created_at  }[0..15]
+    else
+      @timeline = Record.limit(10)
     end
   end
   
