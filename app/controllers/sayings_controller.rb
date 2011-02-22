@@ -7,5 +7,15 @@ class SayingsController < ApplicationController
     @saying.save
     redirect_to @saying.venue
   end
+  
+  def destroy
+    @saying = Saying.find(params[:id])
+    @saying.destroy if @saying.user_id == current_user.id
+    if params[:back_path].present?
+      redirect_to params[:back_path]
+    else
+      respond_with @saying
+    end
+  end
 
 end

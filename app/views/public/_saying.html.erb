@@ -6,6 +6,7 @@
     <p><pre><%= link_to saying.user.login,saying.user %>：<%= saying.content %> <span class="timeago"><%= saying.created_at %></span></pre></p>
     <div style="text-align:right">
       <%= link_to "回复#{'(' + saying.comments.size.to_s + ')' if saying.comments.first}",'',:class => "checkin_reply"%>　
+      <%= link_to "删除","#{saying_path(saying)}?back_path=#{request.path}",:method => :delete,:confirm => '你确定要删除这条报到么？' if saying.user == current_user%>
     </div>
   </div>
   <div style="display:none;margin:5px;" class="replys">
