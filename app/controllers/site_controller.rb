@@ -2,9 +2,17 @@ class SiteController < ApplicationController
   before_filter :login_required, :except=> [:index,:faq,:guide,:about,:report]
   
   def index
-    @calling_timeline = Calling.not_closed.limit(logged_in? ? 15 : 5)
-    @plan_timeline = Plan.limit(logged_in? ? 15 : 5)
-    @record_timeline = Record.limit(logged_in? ? 15 : 5)
+    if logged_in?
+      @my_timeline = current_user.calling_followings.map(&:followable)
+      @my_followings = current_user.followings.where(:followable_type => 'Venue' ).map(&:followable)
+      @my_followings.each do |v|
+        @my_timeline += v.records.limit(5) 
+        @my_timeline += v.callings.not_closed.limit(5)
+        @my_timeline += v.plans.limit(5)
+        @my_timeline += v.sayings.limit(5)
+      end
+      @my_timeline = @my_timeline.uniq.sort{|x,y| y.created_at  <=> x.created_at  }[0..15]
+    end
   end
   
   def myigeey

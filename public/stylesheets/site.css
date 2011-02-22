@@ -465,7 +465,7 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 }
 
 .event_box{
-  padding:8px 8px 4px;
+  padding:8px;
   border-bottom:1px dashed #ccc;
   overflow:hidden;
   zoom:1;
@@ -475,7 +475,7 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 .event_box.hover p{color:#777}
 
 .event {
-  width:488px;
+  width:508px;
   margin-left:86px;
   }
   
@@ -525,12 +525,17 @@ input.todo:hover{
 
 .venue{
   float:left;
-  width:100px;
-  height:80px;
   margin:10px 10px;
-  padding:5px 0;
+  padding:0px 0;
   text-align:center;
 }
+
+.venue img{
+  border:1px solid #ccc;
+  padding:1px;
+  height:52px;
+  width:52px
+  }
 
 .venue_cover{
   width:160px;
@@ -539,8 +544,8 @@ input.todo:hover{
 }
 
 .venue_thumb_cover{
-  width:80px;
-  height:60px;
+  width:48px;
+  height:48px;
   }
 
 .venue_thumb_box,.project_thumb_box{float:left;padding:4px 0 10px}

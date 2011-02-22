@@ -7,14 +7,3 @@
       <%= "还没有新消息。" if @my_timeline.empty? %>
     <% end %>
   </p>
-    
-  <script type="text/javascript">
-    $(".event_box").hover(
-      function () {
-        $(this).addClass("hover");
-      },
-      function () {
-        $(this).removeClass("hover");
-      }
-    );
-  </script>

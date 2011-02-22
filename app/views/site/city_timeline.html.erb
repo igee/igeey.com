@@ -4,14 +4,3 @@
     <%= raw "哦，你还没有设置自己所在的城市，快去 #{link_to '设置',setting_path} 吧。" if @geo.nil? %>
     <%= raw "你的城市(#{@geo.name})还没有什么新消息。" if @geo.present? && @city_timeline.empty? %>
   </p>
-
-  <script type="text/javascript">
-    $(".event_box").hover(
-      function () {
-        $(this).addClass("hover");
-      },
-      function () {
-        $(this).removeClass("hover");
-      }
-    );
-  </script>

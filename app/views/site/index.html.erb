@@ -1,42 +1,23 @@
 <% @title = '首页'%>
-<% unless logged_in? %>
 
+<% unless logged_in? %>
 <%= image_tag '/images/title.png',:style=> "border:1px solid #ddd"%>
 <%= link_to raw('&raquo; 了解更多'),guide_path ,:style=>"position:relative;top:-60px;left:490px"%>
 <% end %>
 <h3>最新动态</h3>
-<div id="tabContaier">
-  <ul>
-    <li><%= link_to '正在召集','#calling_timeline'%></li>
-    <li><%= link_to '正在行动','#plan_timeline'%></li>
-    <li><%= link_to '刚刚完成','#record_timeline'%></li>
-    <li><%= link_to '我的关注','#my_timeline',:id => 'my_timeline_tab' if logged_in?%></li>
-    <li><%= link_to '我的城市','#city_timeline',:id => 'city_timeline_tab' if logged_in?%></li>
-  </ul>
+
+  <%= render :partial => '/public/event', :collection => @my_timeline %>
   
-  <div id="calling_timeline" class="tabContents">
-    <%= render :partial => '/public/calling', :collection => @calling_timeline %>
-  </div>
-  
-  <div id="plan_timeline" class="tabContents">
-    <%= render :partial => '/public/plan', :collection => @plan_timeline %>
-  </div>
-  
-  <div id="record_timeline" class="tabContents">
-    <%= render :partial => '/public/record', :collection => @record_timeline %>
-  </div>
-  
-  <div id="my_timeline" class="tabContents">
-    <p>读取中...</p>
-  </div>
-  
-  <div id="city_timeline" class="tabContents">
-    <p>读取中...</p>
-  </div>
-</div>
+  <p style="margin:0;padding:6px 10px">
+    <% if @my_followings.empty? %>
+      <%= "你还没有关注过任何聚点和用户。去关注你的朋友、还有你身边的聚点吧。"  %>
+    <% else %>
+      <%= "还没有新消息。" if @my_timeline.empty? %>
+    <% end %>
+  </p>
 
 <% content_for :sidebar do %>  
-  
+
   <% if logged_in?%>
     <%= render :partial => "sidebar_panel" %>
   <% else %>
@@ -99,5 +80,30 @@
         $('#city_timeline').html(data)
       })
     })
+    
+    $(document).ready(function(){
+      $(".timeago").each(function(){$(this).html('(' + $.timeago($(this).html()) + ')' )});
+      $('.event_reply').click(function(){$(this).parent().next().toggle();return false})
+      $('.reply_reply').click(function(){
+        var reply_field = $(this).parent().parent().parent().parent().find('input[type=text]')
+        reply_field.val($(this).attr('title'));
+        reply_field.focus();
+        return false;
+        })
+      $('.new_comment').submit(function(){
+        var size = $(this).find('input[type=text]').val().length
+        if ( size >= 140){
+          alert('回复不能超过140字,你写了' + size + '个');
+          return false
+          }
+        })      
+      $('#new_checkin').submit(function(){
+        var size = $(this).find('textarea').val().length
+        if ( size >= 140){
+          alert('报到不能超过140字,你写了' + size + '个');
+          return false
+          }          
+        })      
+    });
   </script>
 <% end %>
