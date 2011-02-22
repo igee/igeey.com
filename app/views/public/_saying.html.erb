@@ -4,21 +4,22 @@
   </div>
   <div class="event">
     <p><pre><%= link_to saying.user.login,saying.user %>：<%= saying.content %> <span class="timeago"><%= saying.created_at %></span></pre></p>
-    <div style="text-align:right">
-      <%= link_to "回复#{'(' + saying.comments.size.to_s + ')' if saying.comments.first}",'',:class => "checkin_reply"%>　
-      <%= link_to "删除","#{saying_path(saying)}?back_path=#{request.path}",:method => :delete,:confirm => '你确定要删除这条报到么？' if saying.user == current_user%>
+    <div class="event_action">
+      <%= link_to "删除","#{saying_path(saying)}?back_path=#{request.path}",:method => :delete,:confirm => '你确定要删除这条报到么？' if current_user && current_user.id == saying.user_id%>
+      　<%= link_to "回复#{'(' + saying.comments.size.to_s + ')' if saying.comments.first}",'',:class => "checkin_reply"%>　
     </div>
-  </div>
-  <div style="display:none;margin:5px;" class="replys">
-    <%= form_for @comment do |form| %>
-      <div style="background:url('/images/reply_tail.png');height:8px;position:relative;top:1px"></div>
-      <div style="padding:15px;background-color:#fff6d9;overflow:hidden;clear:both;border:1px solid #e9c6b9">
-            <%= form.hidden_field :commentable_type,:value => saying.class %>
-            <%= form.hidden_field :commentable_id,:value => saying.id %>
-            <%= form.text_field :content, :style => "width:436px;height:20px",:placeholder => ""%>
-            <%= submit_tag '回复',:class => 'button' %> 
-        <%= render :partial => "/public/reply",:collection => saying.comments.order('created_at desc') %>
-      </div>
-    <% end %>
+      
+    <div style="display:none;margin:5px;" class="replys">
+      <%= form_for @comment do |form| %>
+        <div style="background:url('/images/reply_tail.png');height:8px;position:relative;top:1px"></div>
+        <div style="padding:15px;background-color:#fff6d9;overflow:hidden;clear:both;border:1px solid #e9c6b9">
+              <%= form.hidden_field :commentable_type,:value => saying.class %>
+              <%= form.hidden_field :commentable_id,:value => saying.id %>
+              <%= form.text_field :content, :style => "width:360px;height:20px",:placeholder => ""%>
+              <%= submit_tag '回复',:class => 'button' %> 
+          <%= render :partial => "/public/reply",:collection => saying.comments.order('created_at desc') %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
