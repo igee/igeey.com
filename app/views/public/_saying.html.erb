@@ -14,9 +14,9 @@
       <div style="padding:15px;background-color:#fff6d9;overflow:hidden;clear:both;border:1px solid #e9c6b9">
             <%= form.hidden_field :commentable_type,:value => saying.class %>
             <%= form.hidden_field :commentable_id,:value => saying.id %>
-            <%= form.text_field :content, :style => "width:440px;height:20px",:placeholder => ""%>
-            <%= submit_tag '回复',:class => 'button' %>         
-        <%= render :partial => "/public/reply",:collection => saying.comments.order('created_at desc') %>    
+            <%= form.text_field :content, :style => "width:436px;height:20px",:placeholder => ""%>
+            <%= submit_tag '回复',:class => 'button' %> 
+        <%= render :partial => "/public/reply",:collection => saying.comments.order('created_at desc') %>
       </div>
     <% end %>
   </div>
