@@ -1,7 +1,6 @@
 <div class="event_box">
   <%= render :partial => "/venues/venue",:object => saying.venue %>
-  <div class="event">
-    
+  <div class="event">  
       <span><%= link_to saying.user.login,saying.user %> 在 <%= link_to saying.venue.name,saying.venue %> 报到：</span>
       <pre><%= saying.content %></pre>
     
