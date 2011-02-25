@@ -3,17 +3,15 @@ class SiteController < ApplicationController
   
   def index
     if logged_in?
-      @timeline = current_user.calling_followings.map(&:followable)
+      @timeline = []
       @followings = current_user.followings.where(:followable_type => 'Venue' ).map(&:followable)
       @followings.each do |v|
-        @timeline += v.records.limit(5) 
-        @timeline += v.callings.not_closed.limit(5)
-        @timeline += v.plans.limit(5)
-        @timeline += v.sayings.limit(5)
+        @timeline += v.callings.not_closed.limit(10)
+        @timeline += v.sayings.limit(10)
       end
-      @timeline = @timeline.uniq.sort{|x,y| y.created_at  <=> x.created_at  }[0..15]
+      @timeline = @timeline.uniq.sort{|x,y| y.created_at  <=> x.created_at  }[0..4]
     else
-      @timeline = Record.limit(10)
+      @timeline = (Calling.limit(10) + Saying.limit(10)).sort{|x,y| y.created_at  <=> x.created_at  }[0..10]
     end
   end
   
@@ -40,18 +38,14 @@ class SiteController < ApplicationController
     @my_records = @user.records.paginate(:page => params[:records_page], :per_page => 20)
   end
   
-  def my_timeline
-    # group callings,plans and records to list
-    if logged_in?
-      @my_followings = current_user.followings
-      @my_timeline = current_user.calling_followings.map(&:followable)
-      @my_followings.where("followable_type != ?",'Calling' ).map(&:followable).each do |object|
-        @my_timeline += object.records.limit(5) 
-        @my_timeline += object.callings.not_closed.limit(5)
-        @my_timeline += object.plans.limit(5)
-      end
-      @my_timeline = @my_timeline.uniq.sort{|x,y| y.created_at  <=> x.created_at  }[0..15]
+  def more_timeline
+    @timeline = []
+    @followings = current_user.followings.where(:followable_type => 'Venue' ).map(&:followable)
+    @followings.each do |v|
+      @timeline += v.callings.not_closed.limit(30)
+      @timeline += v.sayings.limit(30)
     end
+    @timeline = @timeline.uniq.sort{|x,y| y.created_at  <=> x.created_at  }[0..200].paginate(:page => params[:page], :per_page => 5)
     render :layout => false
   end
   

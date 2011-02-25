@@ -126,6 +126,7 @@ ActiveRecord::Schema.define() do
     t.integer  :time
     t.integer  :online
     
+    t.string   :title,       :limit => 40
     t.string   :donate_for,  :limit => 40
     t.string   :goods_is,    :limit => 40
     t.string   :do_what,     :limit => 40
@@ -170,13 +171,12 @@ ActiveRecord::Schema.define() do
   create_table "callings", :force => true do |t|
     t.integer  :venue_id
     t.integer  :action_id
-    t.integer  :user_id
-    
+    t.integer  :user_id    
     t.integer  :total_money
     t.integer  :total_online
     t.integer  :total_people
     t.integer  :total_goods
-    
+    t.string   :title,       :limit => 40   
     t.string   :donate_for,  :limit => 40
     t.string   :goods_is,    :limit => 40
     t.string   :do_what,     :limit => 40
@@ -190,6 +190,8 @@ ActiveRecord::Schema.define() do
     t.boolean  :has_new_comment,  :default => false
     t.boolean  :has_new_plan,     :default => false
     t.boolean  :has_photo,        :default => false
+    t.datetime :last_bumped_at
+    t.string   :last_bumped_type, :limit => 40
     t.timestamps
   end  
 

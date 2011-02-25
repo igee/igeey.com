@@ -56,6 +56,8 @@ a{
 
 a:hover{color:#f63}
 
+span a{color:#6ad}
+
 b{text-align:right}
 
 input[type="text_field"],input[type="text"],input[type="password"]{
@@ -475,7 +477,7 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 .event_box.hover p{color:#777}
 
 .event {
-  width:508px;
+  width:520px;
   margin-left:86px;
   padding:6px 0;
   }
@@ -487,10 +489,13 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
     
 .event_link{color:#777}
 
+.event_info{float:left}
+
 .event_action{
   text-align:right;
   font-size:12px;
   margin-top:10px;
+  color:#aaa;
 }
 
 .event_panel{
@@ -509,8 +514,6 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 .comment .event_panel{margin:0;width:520px}
 
 .reply_reply{float:right}
-
-.addition{margin:0}
 
 .photo_box{
   float:left;

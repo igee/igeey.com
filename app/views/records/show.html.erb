@@ -28,11 +28,9 @@
         <%= link_to '我要参与',(logged_in? ? new_record_path(:action_id => @project.tools.first.action.id,:project_id => @project) : signup_path),:title => '我要参与'%>
         </div>
         <h4><%= link_to @project.name,@project%></h4>
-        <div class="addition" style="margin-top:-6px">
           <span>
             <%= @project.intro%>
           </span>
-        </div>
       </div>
     </div>
   </div>

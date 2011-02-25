@@ -4,15 +4,17 @@
 <%= image_tag '/images/title.png',:style=> "border:1px solid #ddd"%>
 <%= link_to raw('&raquo; 了解更多'),guide_path ,:style=>"position:relative;top:-60px;left:490px"%>
 <% end %>
-<h3>最新动态</h3>
+<h3>你的世界在发生...</h3>
 
   <%= render :partial => '/public/event', :collection => @timeline %>
+  <br/>
+  <%= link_to('查看更多..',more_timeline_path(:page => 2),:id => 'more_timeline',:onclick => 'javascript:more_timeline();return false;') if logged_in? && @timeline.size == 5  %>
   
   <p style="margin:0;padding:6px 10px">
     <% if logged_in? && @followings.empty? %>
-      <%= "你还没有关注过任何聚点和用户。去关注你的朋友、还有你身边的聚点吧。"  %>
+      <%= "你还没有关注过任何聚点和用户。去关注你身边的聚点吧。"  %>
     <% else %>
-      <%= "还没有新消息。" if @timeline.empty? %>
+      <%= "你关注的聚点还没有新消息。" if @timeline.empty? %>
     <% end %>
   </p>
 
@@ -70,19 +72,15 @@
 
 <% content_for :extension do %>
   <script type="text/javascript">
-    $('#timeline_tab').click(function(){
-      $.get('<%= my_timeline_path%>',function(data){
-        $('#timeline').html(data)
-      })
-    })
-    $('#city_timeline_tab').click(function(){
-      $.get('<%= city_timeline_path%>',function(data){
-        $('#city_timeline').html(data)
-      })
-    })
+    
+    function more_timeline(){
+      dom = $('#more_timeline');
+      $.get(dom.attr('href'),function(data){
+        dom.replaceWith(data);
+      });
+    };
     
     $(document).ready(function(){
-      
       $('.new_comment').submit(function(){
         var size = $(this).find('input[type=text]').val().length
         if ( size >= 140){
