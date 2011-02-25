@@ -1,4 +1,4 @@
   <%= render :partial => '/public/event', :collection => @timeline %>
-  <%= link_to('查看更多..',more_timeline_path(:page => (params[:page] + 1)),:id => 'more_timeline',:onclick => 'javascript:more_timeline();return false;') if logged_in? && @timeline.size > 5  %>
-  <%= '没有更多新鲜事了' if @timeline.size < 5 %>
+  <%= link_to('查看更多..',more_timeline_path(:page => (params[:page] + 1)),:id => 'more_timeline',:onclick => 'javascript:more_timeline();return false;') %>
+  <%= '没有更多新鲜事了' if @timeline.empty? %>
   
