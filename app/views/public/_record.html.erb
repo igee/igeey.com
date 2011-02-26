@@ -1,7 +1,7 @@
 <div class="event_box">
   <%= render :partial => "/venues/venue",:object => record.venue %>
   <div class="event">
-    <span><%= link_to record.user.login,record.user %> 完成了为 <%= link_to record.venue.name,record.venue %> 的行动：</span>
+    <span><%= link_to record.user.login,record.user unless controller_name == 'users' %> 完成了为 <%= link_to record.venue.name,record.venue %> 的行动：</span>
     <pre><%= record.title %></pre>
     <div class="event_action">
       <span class="timeago" style="float:left"><%= record.created_at %></span>

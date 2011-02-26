@@ -132,7 +132,6 @@ ActiveRecord::Schema.define() do
     t.string   :do_what,     :limit => 40
     t.string   :title,       :limit => 40
     t.string   :unit,        :limit => 40
-    t.string   :slug,        :limit => 40
     t.string   :latitude,    :limit => 40
     t.string   :longitude,   :limit => 40
     

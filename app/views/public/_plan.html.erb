@@ -1,10 +1,7 @@
 <div class="event_box">
   <%= render :partial => "/venues/venue",:object => plan.venue %>
   <div class="event">
-    
-      
-    
-    <span><%= link_to plan.user.login,plan.user %> 要参与 <%= link_to plan.venue.name,plan.venue %> 的活动：</span>
+    <span><%= link_to plan.user.login,plan.user unless controller_name == 'users' %> 要参与 <%= link_to plan.venue.name,plan.venue %> 的活动：</span>
     <pre><%= plan.calling.title %> <%= link_to calling_plan_url(plan.calling_id,plan),calling_plan_path(plan.calling_id,plan)%></pre>
     <div class="event_action">
       <span  style="float:left"><%= "#{plan.status}"%></span>

@@ -6,10 +6,17 @@ namespace :misc do
     end
   end 
   
-  desc "Turned description into title for calling"
+  desc "Turn description into title for calling"
   task :create_calling_title => :environment do
     Calling.where(:title => nil).each do |c|
       c.update_attributes(:title => c.do_what || "捐赠#{c.goods_is}" )
+    end
+  end
+  
+  desc "Turn description into title for record"
+  task :create_record_title => :environment do
+    Record.where(:title => nil).each do |r|
+      r.update_attributes(:title => (r.do_what || "捐赠#{r.goods_is}") )
     end
   end
   
