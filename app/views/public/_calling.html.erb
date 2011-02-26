@@ -1,9 +1,6 @@
 <div class="event_box">
   <%= render :partial => "/venues/venue",:object => calling.venue %>
   <div class="event"> 
-    <% if calling.user == current_user %>
-      
-    <% end %>
     <span><%= link_to calling.user.login,calling.user %> 为 <%= link_to calling.venue.name,calling.venue %> 召集行动：</span>
     <pre><%= calling.title %> <%= link_to calling_url(calling),calling_path(calling)%></pre>
     <div class="event_info">

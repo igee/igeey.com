@@ -515,6 +515,8 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 
 .reply_reply{float:right}
 
+.timeline_footer{text-align:center;clear:both;display:block;margin:8px 0;}
+
 .photo_box{
   float:left;
   width:103px;

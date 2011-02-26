@@ -4,11 +4,11 @@
 <%= image_tag '/images/title.png',:style=> "border:1px solid #ddd"%>
 <%= link_to raw('&raquo; 了解更多'),guide_path ,:style=>"position:relative;top:-60px;left:490px"%>
 <% end %>
-<h3>你的世界在发生...</h3>
+<h3><%= logged_in? ? '你的' : '爱聚的' %>世界在发生...</h3>
 
   <%= render :partial => '/public/event', :collection => @timeline %>
-  <br/>
-  <%= link_to('查看更多..',more_timeline_path(:page => 2),:id => 'more_timeline',:onclick => 'javascript:more_timeline();return false;') if logged_in? && @timeline.size == 5  %>
+  
+  <%= link_to('查看更多..',more_timeline_path(:page => 2),:id => 'more_timeline',:class => 'timeline_footer',:onclick => 'javascript:more_timeline();return false;') if logged_in? && @timeline.size == 5 %>
   
   <p style="margin:0;padding:6px 10px">
     <% if logged_in? && @followings.empty? %>

@@ -1,24 +1,20 @@
 <div class="event_box">
   <%= render :partial => "/venues/venue",:object => plan.venue %>
   <div class="event">
-    <% if plan.is_done  %>
-      <div class="event_panel">
-        已行动
-      </div>
-    <% elsif (plan.user == current_user) %>
-      <div class="event_panel">
-        <%= link_to '完成?',"#{new_record_path}?plan_id=#{plan.id}"%>
-        <%= link_to "修改","#{edit_calling_plan_path(plan.calling,plan)}?back_path=#{request.path}"%>
-        <%= link_to "取消",calling_plan_path(plan.calling,plan),:method => :delete,:confirm => '确定要取消你的计划么?' %>
-      </div>
-    <% end %>
+    
+      
+    
     <span><%= link_to plan.user.login,plan.user %> 要参与 <%= link_to plan.venue.name,plan.venue %> 的活动：</span>
     <pre><%= plan.calling.title %> <%= link_to calling_plan_url(plan.calling_id,plan),calling_plan_path(plan.calling_id,plan)%></pre>
     <div class="event_action">
       <span  style="float:left"><%= "#{plan.status}"%></span>
       <span class="timeago" style="float:left"><%= plan.created_at %></span>
-      <%= link_to "删除","#{plan_path(plan)}?back_path=#{request.path}",:method => :delete,:confirm => '你确定要删除这条报到么？' if current_user && current_user.id == plan.user_id%>
-      　<%= link_to "回复#{'(' + plan.calling.comments.size.to_s + ')' if plan.calling.comments.first}",'',:class => "event_reply"%>　
+      <% if (plan.user == current_user) %>
+        <%= link_to '完成',"#{new_record_path}?plan_id=#{plan.id}"%> |
+        <%= link_to "修改","#{edit_calling_plan_path(plan.calling,plan)}?back_path=#{request.path}"%> |
+        <%= link_to "取消",calling_plan_path(plan.calling,plan),:method => :delete,:confirm => '确定要取消你的计划么?' %> |
+      <% end %>
+        <%= link_to "回复#{'(' + plan.calling.comments.size.to_s + ')' if plan.calling.comments.first}",'',:class => "event_reply"%>　
     </div>
     <%= render :partial => "/public/reply_form",:locals =>  {:object => plan.calling}%>
   </div>
