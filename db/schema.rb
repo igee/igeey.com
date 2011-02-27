@@ -16,7 +16,7 @@ ActiveRecord::Schema.define() do
     t.string  :name,        :limit => 40
     t.string  :slug,        :limit => 40
     t.string  :for_what,    :limit => 40
-    t.boolean :is_for_project, :default => false
+    #t.boolean :is_for_project, :default => false
     t.boolean :is_callable,    :default => true
     t.text    :intro
     t.text    :step_by_step
@@ -102,15 +102,15 @@ ActiveRecord::Schema.define() do
     t.timestamps
   end
   
-  create_table "projects", :force => true do |t|
-    t.integer  :user_id
-    t.string   :name,       :limit => 40
-    t.text     :intro
-    t.string   :website
-    t.string   :tag,        :limit => 40
-    t.string   :cover_file_name
-    t.integer  :follows_count,             :default => 0
-  end
+  #create_table "projects", :force => true do |t|
+  #  t.integer  :user_id
+  #  t.string   :name,       :limit => 40
+  #  t.text     :intro
+  #  t.string   :website
+  #  t.string   :tag,        :limit => 40
+  #  t.string   :cover_file_name
+  #  t.integer  :follows_count,             :default => 0
+  #end
   
   create_table "records", :force => true do |t|
     t.integer  :user_id
@@ -119,7 +119,7 @@ ActiveRecord::Schema.define() do
     t.integer  :plan_id
     t.integer  :calling_id
     t.integer  :parent_id
-    t.integer  :project_id
+    #t.integer  :project_id
     
     t.integer  :money
     t.integer  :goods
@@ -247,7 +247,7 @@ ActiveRecord::Schema.define() do
   end
   
   create_table "tools",:force => true do |t|
-    t.integer  :project_id
+    #t.integer  :project_id
     t.integer  :action_id
   end
   
