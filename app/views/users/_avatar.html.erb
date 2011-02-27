@@ -1,0 +1,4 @@
+<% user = avatar %>
+<div class='avatar' user_id="<%=user.id%>">
+    <%= link_to (image_tag user.avatar.url,:class => "user_avatar"),user %>
+</div>

@@ -1,5 +1,5 @@
 <div class="event_box">
-  <%= render :partial => "/venues/venue",:object => saying.venue %>
+  <%= controller_name == 'venues' ? (render :partial => "/users/avatar",:object => saying.user) : (render :partial => "/venues/venue",:object => saying.venue) %>
   <div class="event">  
       <span><%= link_to saying.user.login,saying.user unless controller_name == 'users' %> 在 <%= link_to saying.venue.name,saying.venue %> 报到：</span>
       <pre><%= saying.content %></pre>

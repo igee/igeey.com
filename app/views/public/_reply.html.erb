@@ -1,9 +1,11 @@
-<div style="clear:both">
-  <div class='user' user_id="<%=reply.user.id%>" style="height:60px">
-    <%= link_to (image_tag reply.user.avatar.url,:class => "user_avatar"),reply.user %>
+<div class="reply">
+  <div class='avatar' user_id="<%=reply.user.id%>">
+    <%= link_to (image_tag reply.user.avatar.url,:class => "user_avatar",:style =>"width:36px;height:36px;"),reply.user%>
   </div>
-  <div style="width:400px;border-bottom:1px dashed #d6d6d6;text-align:right;float:left;padding-bottom:4px">
-    <pre><%= link_to reply.user.login,reply.user %>：<%= reply.content %> <span class="timeago"><%= reply.created_at %></span></pre>
+  <div style="width:420px;float:right;padding:2px 0 10px;">
+    <pre><%= link_to reply.user.login,reply.user %>：<%= reply.content %> </pre>
+    <span class="timeago"><%= reply.created_at %></span>
     <%= link_to "回复",'#',:class => 'reply_reply',:title => "回复@#{reply.user.login} " %>
   </div>
+  <div style="clear:both;border-bottom:1px dashed #d6d6d6;"></div>
 </div>

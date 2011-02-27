@@ -1,5 +1,5 @@
 <div class="event_box">
-  <%= render :partial => "/venues/venue",:object => plan.venue %>
+  <%= controller_name == 'venues' ? (render :partial => "/users/avatar",:object => plan.user) : (render :partial => "/venues/venue",:object => plan.venue) %>
   <div class="event">
     <span><%= link_to plan.user.login,plan.user unless controller_name == 'users' %> 要参与 <%= link_to plan.venue.name,plan.venue %> 的活动：</span>
     <pre><%= plan.calling.title %> <%= link_to calling_plan_url(plan.calling_id,plan),calling_plan_path(plan.calling_id,plan)%></pre>
@@ -11,7 +11,7 @@
         <%= link_to "修改","#{edit_calling_plan_path(plan.calling,plan)}?back_path=#{request.path}"%> |
         <%= link_to "取消",calling_plan_path(plan.calling,plan),:method => :delete,:confirm => '确定要取消你的计划么?' %> |
       <% end %>
-        <%= link_to "回复#{'(' + plan.calling.comments.size.to_s + ')' if plan.calling.comments.first}",'',:class => "event_reply"%>　
+      <%= link_to "回复#{'(' + plan.calling.comments.size.to_s + ')' if plan.calling.comments.first}",'',:class => "event_reply"%>　
     </div>
     <%= render :partial => "/public/reply_form",:locals =>  {:object => plan.calling}%>
   </div>
