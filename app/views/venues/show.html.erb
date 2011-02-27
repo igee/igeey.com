@@ -4,18 +4,13 @@
 <% end %>
 
 <div class="box">
-  <div style="float:left;text-align:center;">
-    <%= image_tag(@venue.cover.url,:class => "venue_cover") %>
-    <br/>
-    <span>
-      <%= link_to "#{@venue.cover_file_name ? '更新' : '上传'}主题图",cover_venue_path(@venue),:class => "open_dialog",:title => "#{@venue.cover_file_name ? '更新' : '上传'}主题图" if logged_in? && @venue.creator == current_user%>
-      　<%= link_to '更新信息',edit_venue_path(@venue),:id => 'update_info' if logged_in? && @venue.creator == current_user %>
-    </span>
-  </div>
-  <div style="width:440px;_width:430px;height:122px;margin-left:180px">
+    <%= image_tag(@venue.cover.url,:class => "venue_cover") %>    
+  <div style="width:488px;_width:478px;height:100px;margin-left:120px">
     <div style="float:right;padding:2px 0"><%= raw(follow_to(@venue)) %></div>
     <h3><%= @venue.name%> <span><%= @venue.geo.full_name %></span></h3>
-    <p><%= @venue.intro%></p>      
+    <pre style="font-size:13px"><%= @venue.intro%></pre>
+    <%= link_to "#{@venue.cover_file_name ? '更新' : '上传'}主题图",cover_venue_path(@venue),:class => "open_dialog",:title => "#{@venue.cover_file_name ? '更新' : '上传'}主题图" if logged_in? && @venue.creator == current_user%> |
+    <%= link_to '更新信息',edit_venue_path(@venue),:id => 'update_info' if logged_in? && @venue.creator == current_user %>
   </div>
 </div>
 
