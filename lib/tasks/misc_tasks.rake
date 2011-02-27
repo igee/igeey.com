@@ -38,12 +38,13 @@ namespace :misc do
     require 'RMagick'
     dir = Dir.new("#{Rails.root}/public/media/covers/venues")
     path = "#{dir.path}"
-    dir.map()[0..-3].each do |f|
-      clown = Magick::Image.read("#{dir.path}/#{f}/original.jpg").first
+    (dir.map() - ["..","."]).each do |id|
+      filename = Dir.new("#{dir.path}/#{id}").map{|f| f if f =~ /^original\..*/}
+      clown = Magick::Image.read("#{dir.path}/#{id}/#{filename}").first
       clown.crop_resized!(128, 128, Magick::NorthGravity)
-      clown.write("#{dir.path}/#{f}/_128x128.jpg")
+      clown.write("#{dir.path}/#{id}/_128x128.jpg")
       clown.crop_resized!(48, 48, Magick::NorthGravity)
-      clown.write("#{dir.path}/#{f}/_48x48.jpg")
+      clown.write("#{dir.path}/#{id}/_48x48.jpg")
     end
   end 
 end
