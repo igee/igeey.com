@@ -5,7 +5,7 @@
   <%= render :partial => '/users/user' ,:object => current_user %>
   <div class="bubble_tail"></div>
   <div class="bubble">
-    <%=  render :partial => "/callings/forms/#{@calling.action.slug}",:locals => {:form => form}%>
+    <%= render :partial => "/callings/forms/#{@calling.action.slug}",:locals => {:form => form}%>
   </div>
   <div style="clear:both;text-align:right;">  
   </div>

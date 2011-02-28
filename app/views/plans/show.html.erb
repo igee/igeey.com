@@ -4,9 +4,8 @@
       <%= render :partial => '/users/user' ,:object => @plan.user %>
         <div class="bubble_tail"></div>      
         <div class="bubble">
-          <p class="impact" style="font-size:18px">
-            <%="#{@plan.user.login}#{@plan.description}。"%>
-          </p>
+          <span><%= link_to @plan.user.login,@plan.user %> 要参与 <%= link_to @plan.venue.name,@plan.venue %> 的活动：</span>
+          <%= render :partial => "/plans/shows/#{@plan.action.slug}"%>
         </div>
         <div style="clear:both;text-align:right">
           <% if @plan.can_edit_by?(current_user)%>
@@ -50,7 +49,7 @@
   <%= render :partial => '/callings/calling_status'%>
   
     <div class="box">
-      <h4>发起人说：</h4>
+      <h4>行动发起人说：</h4>
         <%= render :partial => '/users/user' ,:object => @calling.user %>
         <div class="bubble_tail"></div>
         <div class="bubble">

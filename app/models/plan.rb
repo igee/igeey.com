@@ -16,7 +16,7 @@ class Plan < ActiveRecord::Base
   scope :undone ,where(:is_done => false)
   
   validates :action_id,:calling_id,:venue_id,:presence => true
-  validates :plan_at,:date => {:after_or_equal_to => Date.today.to_date,:allow_nil => true}
+  validates :plan_at,:date => {:after_or_equal_to => 1.day.ago,:allow_nil => true}
   validates :user_id,    :presence   => true,:uniqueness => {:scope => :calling_id}
   
   def validate
@@ -38,13 +38,7 @@ class Plan < ActiveRecord::Base
   end
   
   def description
-    if self.action.slug == 'money_donation'
-      "捐款#{self.money}元，用于#{self.calling.donate_for}"
-    elsif self.action.slug == 'goods_donation'
-      "#{self.goods}#{self.calling.unit}#{self.calling.goods_is}"
-    elsif self.action.slug == 'volunteer_service'
-      "在#{self.formatted_plan_at}去#{self.calling.do_what}"
-    end
+    self.calling.title
   end
   
   def can_edit_by?(current_user)

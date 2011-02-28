@@ -84,13 +84,7 @@ class Calling < ActiveRecord::Base
   end
   
   def description
-    if self.action.slug == 'money_donation'
-      "为#{self.venue.name}募捐#{self.total_money}元用于#{self.donate_for}"
-    elsif self.action.slug == 'goods_donation'
-      "为#{self.venue.name}募捐#{self.total_goods}#{self.unit}#{self.goods_is}"
-    elsif self.action.slug == 'volunteer_service'
-      "召集#{self.total_people}人去#{self.venue.name}#{self.do_what},时间：#{self.formatted_do_at}"
-    end
+    self.calling.title
   end
   
   def name

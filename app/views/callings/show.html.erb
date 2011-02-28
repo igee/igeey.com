@@ -1,12 +1,11 @@
 <% @title = @calling.name%>
 <div style="background-color:#fff;padding:10px 20px;border-radius:8px;-moz-border-radius:8px;-webkit-border-radius:8px;margin-bottom:20px;">        
   <div class="box">  
-    <%= render :partial => '/users/user' ,:object => @calling.user %>
+    <%= render :partial => '/users/avatar' ,:object => @calling.user %>
     <div class="bubble_tail"></div>
     <div class="bubble">
-      <p class="impact"><%= "#{@calling.title}" %></p>
-      <pre class="explanation" style="display:block;"><%= @calling.detail.strip %></pre>
-      <br/>
+      <span><%= link_to @calling.user.login,@calling.user %> 为 <%= link_to @calling.venue.name,@calling.venue %> 召集行动：</span>
+      <%=  render :partial => "/callings/shows/#{@action.slug}"%>
     </div>
     <div style="clear:both;text-align:right">
       <% if @calling.can_edit_by?(current_user)%>

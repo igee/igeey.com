@@ -30,8 +30,7 @@ class VenuesController < ApplicationController
   
   def show
     @timeline = @venue.callings
-    @timeline += @venue.plans.undone
-    @timeline += @venue.records
+    @timeline += @venue.records.where(:calling_id => nil)
     @timeline = @timeline.sort{|x,y| y.created_at <=> x.created_at }
     @photos = @venue.photos
     @topics = @venue.topics

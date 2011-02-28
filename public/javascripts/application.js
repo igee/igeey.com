@@ -9,7 +9,7 @@
   $(document).ready(function(){
     $(".open_dialog").click(function(){dialog($(this).attr('title'),("url:"+$(this).attr('href')),"570px","auto","text");  return false;})
     $('#dialog_flash a').click();
-    $(".timeago").each(function(){$(this).html('(' + $.timeago($(this).html()) + ')' )});
+    $(".timeago").each(function(){$(this).html('(' + jQuery.timeago($(this).html()) + ')' )});
     $('.more_items').click(function(){
       var container = $(this);
       container.html('读取中...')

@@ -3,7 +3,6 @@
   name:      '志愿服务'
   for_what:  'time'
   slug:      'volunteer_service'
-  is_for_project: false
   is_callable:    true
   step_by_step: '1、点击“我要去”，填写计划日期，并邀请您的好友一起参与；<br/>2、在你计划的日期，按照发起人的要求进行志愿服务；<br/>3、完成志愿服务行动记录，补充详情、上传照片。 '
 
@@ -20,7 +19,6 @@
   for_what:  'goods'
   slug:      'goods_donation'
   is_for_project: false
-  is_callable:    true
   step_by_step: '1、点击“我要捐赠”，填写捐赠信息，并邀请您的好友一起参与；<br/>2、在七日内将捐赠物资邮寄、快递或自行运输到捐赠地址；<br/>3、完成捐赠行动记录,补充详情、上传照片。'
 
 4th:
@@ -29,7 +27,6 @@
   for_what:  'online'
   slug:      'mark_map'
   is_for_project: true
-  is_callable:    false
   step_by_step: '1、点击“我要标记”，选择你要标记的聚点；<br/>2、在地图上找到聚点附近需要标记的点，填写信息并上传照片；<br/>3、把你的标记成果告诉你的朋友，让他们也参与进来。'
 
 5th:
@@ -37,6 +34,5 @@
   name:      '报到'
   for_what:  'online'
   slug:      'checkin'
-  is_for_project: false
   is_callable:    false
   step_by_step:  ''

@@ -1,5 +1,8 @@
     <p class="impact">
-      <%="#{@record.user.login}#{@record.description}"%>
+      <%="#{@record.description}"%>
     </p>
+    <div class="info">
+      捐赠数量：<%= @record.goods %> <span>(小时)</span> 　行动日期：<%= @record.done_at.to_date %>
+    </div>
     <pre class="explanation"><%= @record.detail %></pre>
     <%= render :partial => "/photos/photo",:collection => @photos %>   

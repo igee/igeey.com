@@ -7,12 +7,13 @@
   <%= form_for @record,:html => { :multipart => true } do |form| %>
     <%= raw error_explanation_for(@record) if @record.errors.present?%>
     <%= form.hidden_field :action_id %>
-    <%= form.hidden_field :venue_id unless @action.is_for_project%>
     <%= form.hidden_field :calling_id %>
     <%= form.hidden_field :plan_id %>
+    <%= form.hidden_field :venue_id %>
     <%= render :partial => '/users/user' ,:object => current_user %>
     <div class="bubble_tail"></div>
     <div class="bubble">
+      <span>我完成了为 <%= link_to @venue.name,@record.venue %> 的行动：</span>
       <%=  render :partial => "/records/forms/#{@action.slug}",:locals => {:form => form}%>
     </div>
     <div style="clear:both;text-align:right">

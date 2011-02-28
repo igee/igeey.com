@@ -1,0 +1,10 @@
+    <p class="impact"><%= "#{@plan.calling.title}" %></p>
+    <div class="info">
+      物资数量：<%= @plan.calling.total_goods %>
+      <br/>
+      邮寄地址：<%= @plan.calling.address %>
+      <br/>
+      联系方式：<%= @plan.calling.contact %>
+    </div>
+    <pre class="explanation" style="display:block;"><%= @plan.calling.detail.strip %></pre>
+    <%= render :partial => "/photos/photo",:collection => @photos %>   

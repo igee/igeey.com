@@ -344,6 +344,8 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
   margin:0 4px;
 }
 
+.info{line-height:22px;color:#aaa;font-size:13px;}
+
 #record_counters h4{color:#39c}
 
 .record_counter{
@@ -390,14 +392,12 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
   background-color:#e6e6f0;
   color:#505050;
   -webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;
-  padding:10px 30px 15px;
+  padding:15px 30px 15px;
   list-style:none;    
   margin-bottom:8px;
   overflow:hidden;
   zoom:1;
 }
-
-.bubble input{text-align:right;}
 
 .bubble_tail{
   float:left;
@@ -444,7 +444,7 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 .submit{display:none}
 
 .impact{
-  margin:10px 0;
+  margin:4px 0;
   font-weight:bold;
   font-size:16px;
   line-height:1.8em;

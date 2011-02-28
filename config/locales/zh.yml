@@ -35,3 +35,5 @@ zh:
           attributes:
             venue_id:
               blank:  '请选择行动受益的聚点'
+            title:
+              blank:  '请填写行动标题'

@@ -21,13 +21,11 @@ class Record < ActiveRecord::Base
   accepts_nested_attributes_for :photos
   
   validate  :user_id, :presence  => true,:uniqueness => {:scope => [:plan_id]}
-  validates :action_id,:venue_id,:presence  => true
+  validates :action_id,:venue_id,:title,:presence  => true
   validates :done_at,:date => {:before_or_equal_to => Date.today.to_date}
   
   def validate
     errors[for_what] << '数量必须为大于0的整数' unless number > 0
-    errors[{'time' => :do_what,'money' => :donate_for,'goods' => :goods_is,'online' => :title }[for_what]] = '请将记录信息填写完整' if content.blank?
-    errors[:unit] = '请填写物资单位' if (for_what == 'goods') && unit.blank?
   end
   
   def content
@@ -46,20 +44,9 @@ class Record < ActiveRecord::Base
     date = self.done_at
     "#{date.year == Date.today.year ? '' : "#{date.year}年"}#{date.month}月#{date.day}日"
   end
-  
+
   def description
-    case self.action.slug
-    when 'volunteer_service'
-      result = "去#{self.venue.name}#{self.do_what}，贡献：#{self.time}个小时。"
-    when 'goods_donation'
-      result = "捐赠了#{self.goods}#{self.unit}#{self.goods_is}给#{self.venue.name}。"
-    when 'money_donation'
-      result = "捐赠了#{self.money}元给#{self.venue.name}，用于#{self.donate_for}。"
-    when 'mark_map' 
-      result = "为#{self.venue.name}添加了地图标记"
-    when 'checkin'
-      result = "在#{self.venue.name}报到：#{self.title}"
-    end
+    self.title
   end
   
   def is_done
