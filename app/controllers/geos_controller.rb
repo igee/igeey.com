@@ -3,15 +3,13 @@ class GeosController < ApplicationController
   before_filter :find_geo, :except => [:index,:new,:list,:selector]
     
   def index
-    @venues = Venue.popular.limit(6)
+    @venues = Venue.limit(20)
     @geo = Geo.new(:name => '全国')
-    @users = User.popular.limit(8)
     render :show
   end
   
   def show
-    @venues = @geo.venues.popular.limit(8)
-    @users = @geo.users.popular.limit(8)
+    @venues = @geo.venues.limit(20)
   end
   
   def list

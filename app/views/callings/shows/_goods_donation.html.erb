@@ -1,0 +1,8 @@
+    <p class="impact"><%= "#{@calling.title}" %></p>
+    <div class="info">
+      物资数量：<%= @calling.total_goods %><br/>
+      邮寄地址：<%= @calling.address %><br/>
+      联系方式：<%= @calling.contact %>
+    </div>
+    <pre class="explanation" style="display:block;"><%= @calling.detail.strip %></pre>
+    <%= render :partial => "/photos/photo",:collection => @photos %>   

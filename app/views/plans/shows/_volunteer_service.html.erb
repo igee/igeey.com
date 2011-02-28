@@ -1,0 +1,10 @@
+    <p class="impact"><%= "#{@plan.calling.title}" %></p>
+    <div class="info">
+      行动日期：<%= @plan.calling.do_at.to_date %>
+      <br/>
+      集合地址：<%= @plan.calling.address %>
+      <br/>
+      联系方式：<%= @plan.calling.contact %>
+    </div>
+    <pre class="explanation" style="display:block;"><%= @plan.calling.detail.strip %></pre>
+    <%= render :partial => "/photos/photo",:collection => @photos %>   

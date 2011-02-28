@@ -4,7 +4,7 @@
   <% if logged_in?%>
     <div style="padding:4px">
       <div>
-        <%= form_for @comment,:url => comments_path(commentable) do |form| %>
+        <%= form_for Comment.new,:url => comments_path(commentable) do |form| %>
           <%= form.hidden_field :commentable_type,:value => commentable.class %>
           <%= form.hidden_field :commentable_id,:value => commentable.id %>
           <%= form.text_area :content, :style => "width:540px;height:60px",:placeholder => "有什么想说的？"%>

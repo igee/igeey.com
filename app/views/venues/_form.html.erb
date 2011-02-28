@@ -28,6 +28,7 @@
     
       <%= form.hidden_field :latitude %>
       <%= form.hidden_field :longitude %>
+      <%= form.hidden_field :zoom_level %>
       <%= hidden_field_tag :back_path,params[:back_path]%>
     <p>
       <%= form.submit '填写好了，提交',:class => "button"%>

@@ -5,7 +5,6 @@ class Plan < ActiveRecord::Base
   belongs_to :user,     :counter_cache => true
   belongs_to :parent,   :class_name => 'Plan',:foreign_key => :parent_id
   has_one    :record
-  has_many   :comments, :as => :commentable, :dependent => :destroy
   has_many   :syncs,    :as => :syncable,    :dependent => :destroy
   has_many   :plans
   has_many   :children, :class_name => 'Plan' ,:foreign_key => :parent_id
@@ -17,7 +16,7 @@ class Plan < ActiveRecord::Base
   scope :undone ,where(:is_done => false)
   
   validates :action_id,:calling_id,:venue_id,:presence => true
-  validates :plan_at,:date => {:after_or_equal_to => Date.today.to_date,:allow_nil => true}
+  validates :plan_at,:date => {:after_or_equal_to => 1.day.ago,:allow_nil => true}
   validates :user_id,    :presence   => true,:uniqueness => {:scope => :calling_id}
   
   def validate
@@ -35,23 +34,11 @@ class Plan < ActiveRecord::Base
   end
 
   def status
-    if for_what == 'money'
-      "已有#{self.calling.users_count}人要捐赠#{self.calling.plans.map(&:money).sum}元，还需要#{self.calling.remaining_number}元"
-    elsif for_what == 'goods'
-      "已有#{self.calling.users_count}人要捐赠#{self.calling.plans.map(&:goods).sum}#{self.calling.unit}，还需要#{self.calling.remaining_number}#{self.calling.unit}"
-    elsif for_what == 'time'
-      "已有#{self.calling.users_count}人要参加，还需要#{self.calling.remaining_number}人"
-    end
+    self.calling.status
   end
   
   def description
-    if self.action.for_what == 'money'
-      "要为#{self.venue.name}捐款#{self.money}元，用于#{self.calling.donate_for}"
-    elsif self.action.for_what == 'goods'
-      "要为#{self.venue.name}捐赠#{self.goods}#{self.calling.unit}#{self.calling.goods_is}"
-    elsif self.action.for_what == 'time'
-      "要在#{self.formatted_plan_at}去#{self.venue.name}#{self.calling.do_what}"
-    end
+    "要参加#{calling.venue.name}的行动：#{self.calling.title}"
   end
   
   def can_edit_by?(current_user)
@@ -59,11 +46,11 @@ class Plan < ActiveRecord::Base
   end
   
   def name
-    if self.action.for_what == 'money'
+    if self.action.slug == 'money_donation'
       "#{self.user.login}要为#{self.venue.name}捐款"
-    elsif self.action.for_what == 'goods'
+    elsif self.action.slug == 'goods_donation'
       "#{self.user.login}要为#{self.venue.name}捐赠#{self.calling.goods_is}"
-    elsif self.action.for_what == 'time'
+    elsif self.action.slug == 'volunteer_service'
       "#{self.user.login}要去#{self.venue.name}#{self.calling.do_what}"
     end
   end

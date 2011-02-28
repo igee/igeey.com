@@ -5,17 +5,18 @@ class Venue < ActiveRecord::Base
   belongs_to :creator, :class_name => "User", :foreign_key => "creator_id"
   belongs_to :geo
   
-  has_many   :callings
-  has_many   :plans
-  has_many   :records
+  has_many   :callings,   :dependent => :destroy
+  has_many   :plans,      :dependent => :destroy
+  has_many   :records,    :dependent => :destroy
   has_many   :photos,     :as => :imageable,   :dependent => :destroy
   has_many   :follows,    :as => :followable,  :dependent => :destroy
-  has_many   :followers,  :through => :follows,:source => :user
-  has_many   :topics
+  has_many   :followers,  :through => :follows,:source => :user,:dependent => :destroy
+  has_many   :topics,     :as => :forumable,:dependent => :destroy
+  has_many   :sayings,   :dependent => :destroy  
 
-  has_attached_file :cover, :styles => {:_160x120 => ["160x120#"],:_80x60 => ["80x60#"]},
-                            :url=>"/media/:attachment/venues/:id/:style.:extension",
-                            :default_style=> :_160x120,
+  has_attached_file :cover, :styles => {:_48x48 => ["48x48#",:jpg],:_100x100 => ["100x100#",:jpg]},
+                            :url=>"/media/:attachment/venues/:id/:style.jpg",
+                            :default_style=> :_100x100,
                             :default_url=>"/defaults/:attachment/venue/:style.png"
 
   default_scope :order => 'created_at DESC'
@@ -36,6 +37,10 @@ class Venue < ActiveRecord::Base
   
   def money_count
     self.records.map(&:money).compact.sum
+  end
+  
+  def online_count
+    self.records.map(&:online).compact.sum
   end
 
   def goods_count
@@ -69,7 +74,6 @@ class Venue < ActiveRecord::Base
     indexes intro
     indexes geo.name,:as => :city
     indexes address
-    
     has geo_id
   end
   

@@ -6,11 +6,11 @@
 
 <% content_for :sidebar do %>
   <div class="box">
-    <div class="sidebar_saying">
+    <div class="sidebar_bubble">
       <p><%= link_to "#{@calling.description}",@calling %></p>
       <pre class="explanation" style="display:block;"><%= @calling.detail.strip %></pre>
     </div>
-    <div class="sidebar_saying_tail"></div>
+    <div class="sidebar_bubble_tail"></div>
     <%= render :partial => '/users/user' ,:object => @calling.user %>
     <div style="float:right;width:174px;padding:5px">
     <span><%= raw "#{@calling.user.records_count}个行动记录<br/>#{@calling.user.callings_count}召集行动<br/>#{@calling.user.follows_count}个关注者"%><span>

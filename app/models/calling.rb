@@ -10,21 +10,19 @@ class Calling < ActiveRecord::Base
   has_many   :follows,  :as => :followable,  :dependent => :destroy
   has_many   :followers,:through => :follows,:source => :user
   
-  default_scope :order => 'created_at DESC'
+  default_scope :order => 'last_bumped_at DESC'
   
   scope :not_closed,where(:close => false) 
   scope :timing,where(:action_id => [1]) # timeing action list 
   
   delegate :for_what, :to => :action
   
-  validates :detail,:length => {:within => 50..1000 ,:message => '详细信息不能少于50字'}
-  validates :user_id,:action_id,:venue_id,:info,:presence   => true
-  validates :do_at,:date => {:after_or_equal_to => Date.today.to_date,:allow_nil => true,:on => :create}
+  validates :detail,:length => {:within => 50..1000 ,:message => '详细信息需要在50字-1000字之间'}
+  validates :user_id,:action_id,:venue_id,:title,:address,:contact,  :presence => true
+  validates :do_at,:date => {:after_or_equal_to => 1.day.ago ,:allow_nil => true,:on => :create}
   
   def validate
-    errors["total_#{for_what}"] << '数量必须为大于0的整数' unless total_number && (total_number > 0)
-    errors[({'time' => :do_what,'money' => :donate_for,'goods' => :goods_is}[for_what])] = '请将记录信息填写完整' if content.blank?
-    errors[:unit] = '请填写物资单位' if (for_what == 'goods') && unit.blank?
+    errors["total_#{for_what == 'time' ? 'people' : for_what }"] << '数量必须为大于0的整数' unless total_number && (total_number > 0)
     errors[:do_at] = '请填写集合日期' if (for_what == 'time') && do_at.blank?
   end
   
@@ -61,16 +59,12 @@ class Calling < ActiveRecord::Base
   end
   
   def status
-    if self.users_count.zero?
-      '还没有人参与'
-    else
-      if for_what == 'money'
-        "已有#{self.users_count}人要捐赠#{self.plans.map(&:money).sum}元"
-      elsif for_what == 'goods'
-        "已有#{self.users_count}人要捐赠#{self.plans.map(&:goods).sum}#{self.unit}"
-      elsif for_what == 'time'
-        "已有#{self.users_count}人要参加"
-      end  
+    if for_what == 'money'
+      "共需#{self.total_number}元,已捐#{self.plans.map(&:money).sum}元"
+    elsif for_what == 'goods'
+      "共需#{self.total_number}件,已捐#{self.plans.map(&:goods).sum}件"
+    elsif for_what == 'time'
+      "共需#{self.total_number}人,已报名#{self.users_count}人"
     end
   end
    
@@ -90,23 +84,21 @@ class Calling < ActiveRecord::Base
   end
   
   def description
-    if self.action.for_what == 'money'
-      "为#{self.venue.name}募捐#{self.total_money}元用于#{self.donate_for}"
-    elsif self.action.for_what == 'goods'
-      "为#{self.venue.name}募捐#{self.total_goods}#{self.unit}#{self.goods_is}"
-    elsif self.action.for_what == 'time'
-      "召集#{self.total_people}人去#{self.venue.name}#{self.do_what},时间：#{self.formatted_do_at}"
-    end
+    "为#{self.venue.name}发起行动：#{self.title}"
   end
   
   def name
-    if self.action.for_what == 'money'
+    if self.action.slug == 'money_donation'
       "#{self.user.login}为#{self.venue.name}募捐"
-    elsif self.action.for_what == 'goods'
+    elsif self.action.slug == 'goods_donation'
       "#{self.user.login}为#{self.venue.name}募捐#{self.goods_is}"
-    elsif self.action.for_what == 'time'
+    elsif self.action.slug == 'volunteer_service'
       "#{self.user.login}为#{self.venue.name}召集人#{self.do_what}"
     end
+  end
+  
+  def stamped_at
+    last_bumped_at
   end
   
   def can_edit_by?(current_user)

@@ -1,21 +1,17 @@
 <div class="event_box">
-  <%= render :partial => '/users/user', :object => record.user %>
+  <%= controller_name == 'venues' ? (render :partial => "/users/avatar",:object => record.user) : (render :partial => "/venues/venue",:object => record.venue) %>
   <div class="event">
-    <% if record.user == current_user %>
-      <div class="event_panel">
-        <%= link_to '修改',"#{edit_record_path(record)}?back_path=#{request.path}"%>
-        <%= render :partial => "/photos/uploader",:locals => {:imageable => record}%>
-        <%= link_to "删除","#{record_path(record)}?back_path=#{request.path}",:method => :delete,:confirm => '你确定要删除这个行动记录么' %>
-      </div>
-    <% end %>
-    <p>
-      <%= link_to "#{record.description}",record,:class=>'event_link'%>
-    </p>
-    <div class="addition">
-      <span>
-        <%= short_text(record.detail,24)%>
-        <%= image_tag '/images/icon/photo.gif',:class => "icon",:alt => '有照片哦' if record.has_photo%>
-      </span>
+    <span><%= link_to record.user.login,record.user unless controller_name == 'users' %> 完成了为 <%= link_to record.venue.name,record.venue %> 的行动：</span>
+    <pre><%= record.title %></pre>
+    <div class="event_action">
+      <span class="timeago" style="float:left"><%= record.created_at %></span>
+      <% if record.user == current_user %>
+        <%= link_to '修改',"#{edit_record_path(record)}?back_path=#{request.path}"%> |
+        <%= render :partial => "/photos/uploader",:locals => {:imageable => record}%> |
+        <%= link_to "删除","#{record_path(record)}?back_path=#{request.path}",:method => :delete,:confirm => '你确定要删除这个行动记录么' if current_user && current_user.id == record.user_id%> |
+      <% end %>
+      <%= link_to "回复#{'(' + record.comments.size.to_s + ')' if record.comments.first}",'',:class => "event_reply"%>　
     </div>
+    <%= render :partial => "/public/reply_form",:locals =>  {:object => record}%>
   </div>
 </div>

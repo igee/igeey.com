@@ -1,15 +1,11 @@
 <% @title = @record.name%>
 <div class="box">
     <%= render :partial => '/users/user' ,:object => @record.user %>
-      <div class="saying">
-        <p class="impact">
-          <%="#{@record.user.login}#{@record.description}"%>
-        </p>
-        <pre class="explanation"><%= @record.detail %></pre>
-        <%= render :partial => "/photos/photo",:collection => @photos %>   
+      <div class="bubble_tail"></div>
+      <div class="bubble">
+        <span>完成了为 <%= link_to @record.venue.name,@record.venue %> 的行动：</span>
+        <%=  render :partial => "/records/shows/#{@action.slug}"%>
       </div>
-      <div class="saying_tail"></div>
-      
       <div style="clear:both;text-align:right">
         <% if @record.can_edit_by?(current_user)%>
         <span>

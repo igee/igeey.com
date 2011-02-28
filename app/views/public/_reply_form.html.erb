@@ -1,0 +1,12 @@
+  <div style="display:none;" class="replys">
+      <%= form_for Comment.new do |form| %>
+        <img  src='/images/reply_tail.png' style="position:relative;top:4px;"/>
+        <div style="padding:15px;background-color:#fff6d9;overflow:hidden;border:1px solid #e9c6b9;">
+          <%= form.hidden_field :commentable_type,:value => object.class %>
+          <%= form.hidden_field :commentable_id,:value => object.id %>
+          <%= form.text_field :content, :style => "width:400px;height:18px;margin:4px 0 12px 8px",:placeholder => ""%>
+          <%= submit_tag '回复' %> 
+          <%= render :partial => "/public/reply",:collection => object.comments.order('created_at desc') %>
+        </div>
+      <% end %>
+    </div>

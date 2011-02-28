@@ -1,6 +1,6 @@
 class VenuesController < ApplicationController
   respond_to :html,:json
-  before_filter :login_required, :except => [:index, :show,:position]
+  before_filter :login_required, :except => [:index, :show,:records]
   after_filter  :clean_unread,:only => [:show]
   before_filter :find_venue, :except => [:index,:new,:create]
   
@@ -17,7 +17,7 @@ class VenuesController < ApplicationController
     if params[:latitude].blank? || params[:longitude].blank?
       redirect_to geos_path
     else
-      @venue = Venue.new(:latitude => params[:latitude],:longitude => params[:longitude],:geo_id => params[:geo_id])
+      @venue = Venue.new(:latitude => params[:latitude],:longitude => params[:longitude],:geo_id => params[:geo_id],:zoom_level => params[:zoom_level])
     end
   end
 
@@ -30,11 +30,11 @@ class VenuesController < ApplicationController
   
   def show
     @timeline = @venue.callings
-    @timeline += @venue.plans.undone
-    @timeline += @venue.records
+    @timeline += @venue.records.where(:calling_id => nil)
     @timeline = @timeline.sort{|x,y| y.created_at <=> x.created_at }
     @photos = @venue.photos
     @topics = @venue.topics
+    @sayings = @venue.sayings
     @followers = @venue.followers
   end
   
@@ -56,6 +56,17 @@ class VenuesController < ApplicationController
   
   def position
     render :layout => false if params[:layout] == 'false'
+  end
+  
+  def records
+    if params[:tag].present?
+      @records = @venue.records.find_tagged_with(params[:tag])
+    elsif params[:marker] == 'true'
+      @records = @venue.records.markers
+    else
+      @record = @venue.records
+    end
+    respond_with(@records)
   end
   
   private

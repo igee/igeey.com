@@ -1,3 +1,4 @@
 <% @title = '记录行动'%>
-<h3>填写你的行动记录</h3>
+<% @record.photos.build if @record.photos.empty? %>
+<h3>填写你的记录信息</h3>
 <%= render "form" %>

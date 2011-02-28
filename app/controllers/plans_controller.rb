@@ -32,7 +32,6 @@ class PlansController < ApplicationController
   
   def show
     @venue = @plan.venue
-    @comment = Comment.new
     @comments = @calling.comments
     @followers = @calling.followers
     @photos = @calling.photos

@@ -6,4 +6,12 @@ module FollowsHelper
       link_to("+关注","#{follows_path}?followable_type=#{followable.class}&followable_id=#{followable.id}",:method => :post,:class => 'button')
     end
   end
+  
+  def follow_status(followable)
+    if logged_in? && current_user.following?(followable)
+      "<span>关注中</span> | #{link_to raw("&times;"),follow_path(followable.follows.find_by_user_id(current_user.id)),:method => :delete}"
+    else  
+      link_to("+关注","#{follows_path}?followable_type=#{followable.class}&followable_id=#{followable.id}",:method => :post)
+    end
+  end
 end

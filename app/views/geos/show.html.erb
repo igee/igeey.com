@@ -13,9 +13,9 @@
 
 <h2 style="display:inline"><%= @geo.name%></h2> <%= link_to '切换地区',list_geos_path,:class => 'open_dialog',:title => '切换地区'%>
 
-<div id="map_canvas" style="height:360px;clear:both;margin:10px 0"></div>
+<div id="map_canvas" style="height:360px;clear:both;margin-top:6px"></div>
 
-<div>
+<div class="box">
   <p id="create_venue_box" style="text-align:center;">
     没有找到你要的聚点？
     <%= link_to "添加聚点",new_venue_path,:id => "create_venue" %> 吧。
@@ -23,22 +23,25 @@
   <div id="mark_guide" style="display:none;text-align:center;background:#ddd;padding:4px">
     <p>拖动 <span style="color:#c52;font-size:14px">红色标记 </span>确定要添加的聚点位置。<br/> (使用地图右上方的定位功能可以帮助你)</p>
     <p>
-      <%= link_to "标记完毕，下一步","#{new_venue_path}?latitude=#{@geo.latitude}&longitude=#{@geo.longitude}&geo_id=#{@geo.id}",:id => "next_step",:class => 'button' %>
+      <%= link_to "找到了，下一步",new_venue_path,:id => "next_step",:class => 'button' %>
       <%= link_to "取消",'#',:id => "cancel_mark",:class => 'button' %>
     </p>
   </div>
 </div>
 
-<% content_for :sidebar do %>
-<div class="explanation">
-  <h4>聚点—爱聚的世界</h4>
-  <p>
-    爱聚的世界是由一个个需要公益服务的社区组成的，在网站上它们被称做聚点。
-  </p>
-  <p>
-    每个公益行都需要有关联的聚点，在聚点上，你可以号召大家为聚点做公益，或是记录自己做过的公益行动。
+<div class="box">
+  <h4>最新被提交的聚点</h4>
+  <p class="explanation">
+  <% @venues.each do |venue|%>
+    <%= link_to venue.name,venue_path(venue)%>　
+  <% end %>
   </p>
 </div>
+
+<% content_for :sidebar do %>
+
+  <%= render '/venues/what_is_venue'%>
+
 <% end %>
 
 <% content_for :extension do %>
@@ -117,7 +120,7 @@
         initialize();
         $('#next_step').click(function(){$(this).attr(
            'href',
-           '<%= "#{new_venue_path}" %>?latitude=' + marker.getPosition().lat() + '&longitude=' + marker.getPosition().lng() + "&geo_id=<%=@geo.id%>"
+           '<%= "#{new_venue_path}" %>?latitude=' + marker.getPosition().lat() + '&longitude=' + marker.getPosition().lng() + "&geo_id=<%=@geo.id%>" + "&zoom_level=" + map.getZoom()
         );})
         $('#create_venue').click(mark_latlng);
         $('#cancel_mark').click(cancel_mark);

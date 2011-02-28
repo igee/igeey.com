@@ -1,0 +1,8 @@
+    <p class="impact"><%= "#{@calling.title}" %></p>
+    <div class="info">
+      需要人数：<%= @calling.total_people %> 　行动日期：<%= @calling.do_at.to_date %><br/>
+      集合地址：<%= @calling.address %><br/>
+      联系方式：<%= @calling.contact %>
+    </div>
+    <pre class="explanation" style="display:block;"><%= @calling.detail.strip %></pre>
+    <%= render :partial => "/photos/photo",:collection => @photos %>
