@@ -77,6 +77,14 @@
       dom = $('#more_timeline');
       $.get(dom.attr('href'),function(data){
         dom.replaceWith(data);
+        $(".timeago").each(function(){$(this).html('(' + jQuery.timeago($(this).html()) + ')' );$(this).removeClass('timeago')});
+        $('.event_reply').click(function(){$(this).parent().next().toggle();return false})
+        $('.reply_reply').click(function(){
+            var reply_field = $(this).parent().parent().parent().parent().find('input[type=text]')
+            reply_field.val($(this).attr('title'));
+            reply_field.focus();
+            return false;
+            })   
       });
     };
     

@@ -6,7 +6,7 @@
           <div class="actions_counter" style="width:140px"><%= link_to raw("#{current_user.undone_plans_count}个未完成计划"),actions_path(:start_at => 'my_plans') %></div>
       </div>
       <div style="padding:10px 5px;">
-        <%= image_tag current_user.avatar.url(:_48x48),:class => "avatar" %>
+        <%= image_tag current_user.avatar.url(:_48x48) %>
       </div>      
     </div>    
     
