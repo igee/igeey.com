@@ -38,7 +38,7 @@ class Plan < ActiveRecord::Base
   end
   
   def description
-    self.calling.title
+    "要参加这个行动：#{self.calling.title}"
   end
   
   def can_edit_by?(current_user)

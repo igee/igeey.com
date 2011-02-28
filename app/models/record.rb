@@ -46,7 +46,7 @@ class Record < ActiveRecord::Base
   end
 
   def description
-    self.title
+    "完成了在#{self.venue.name}的行动：#{self.title}"
   end
   
   def is_done

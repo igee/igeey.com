@@ -84,7 +84,7 @@ class Calling < ActiveRecord::Base
   end
   
   def description
-    self.calling.title
+    "为#{self.venue.name}发起行动：#{self.title}"
   end
   
   def name
