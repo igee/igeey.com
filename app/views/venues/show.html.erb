@@ -125,6 +125,9 @@
     }; //initialize_end()
 
     $(document).ready(function(){
+      initialize();
+      $(".timeago").each(function(){$(this).html('(' + $.timeago($(this).html()) + ')' )});
+      $('.checkin_reply').click(function(){$(this).parent().next().toggle();return false})
       $('.reply_reply').click(function(){
         var reply_field = $(this).parent().parent().parent().parent().find('input[type=text]')
         reply_field.val($(this).attr('title'));
