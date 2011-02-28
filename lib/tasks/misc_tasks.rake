@@ -42,9 +42,9 @@ namespace :misc do
       filename = Dir.new("#{dir.path}/#{id}").map{|f| f if f =~ /^original\..*/}
       clown = Magick::Image.read("#{dir.path}/#{id}/#{filename}").first
       clown.crop_resized!(128, 128, Magick::NorthGravity)
-      clown.write("#{dir.path}/#{id}/_128x128.jpg")
+      clown.write("#{dir.path}/#{id}/_128x128.#{extension}")
       clown.crop_resized!(48, 48, Magick::NorthGravity)
-      clown.write("#{dir.path}/#{id}/_48x48.jpg")
+      clown.write("#{dir.path}/#{id}/_48x48.#{extension}")
     end
   end 
 end
