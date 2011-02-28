@@ -1,8 +1,10 @@
 <div class="box">
     <div class="calling_status">
-     <div style="padding:0 20px;height:100px;overflow:hidden;zoom:1">
-        <%= render :partial => '/venues/venue',:object => @venue%>
-      </div>
+     <div style="padding-top:10px;height:90px;overflow:hidden;zoom:1;text-align:center">
+        <%= link_to(image_tag(@venue.cover.url,:style=>'height:64px;width:64px;float:none'),@venue) %>
+        <br/>
+        <%= link_to(@venue.name,@venue) %>
+     </div>
       <h4>受益聚点</h4>
     </div>
     

@@ -4,7 +4,7 @@
     <%= render :partial => '/users/user' ,:object => @calling.user %>
     <div class="bubble_tail"></div>
     <div class="bubble">
-      <p class="impact"><%= "#{@calling.user.login}#{@calling.description}" %></p>      
+      <p class="impact"><%= "#{@calling.title}" %></p>
       <pre class="explanation" style="display:block;"><%= @calling.detail.strip %></pre>
       <br/>
     </div>
@@ -48,13 +48,6 @@
 <div style="background-color:#fff;padding:6px 20px;width:70px;-moz-border-radius:8px 8px 0 0;-webkit-border-radius:8px 8px 0 0;text-align:center"><h4 style="margin:0">行动详情</h4></div>
 <div style="background-color:#fff;padding:20px;-moz-border-radius:0 8px 8px 8px;-webkit-border-radius:0 8px 8px 8px;margin-bottom:10px;">            
   <%= render :partial => '/callings/calling_status'%>
-    
-  <div class="box">
-    <h4><%= {'goods' => '捐赠信息','time' => '集合信息','money' => '捐赠信息'}[@calling.for_what]%>：</h4>
-    <p style="padding:5px 10px">
-      <%= @calling.info%>
-    </p>
-  </div>
   
   <div class="box">
     <h4>行动流程：</h4>

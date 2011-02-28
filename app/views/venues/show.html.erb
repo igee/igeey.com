@@ -5,11 +5,11 @@
 
 <div class="box">
     <%= image_tag(@venue.cover.url,:class => "venue_cover") %>    
-  <div style="width:488px;_width:478px;height:100px;margin-left:120px">
+  <div style="width:488px;_width:478px;;margin-left:120px;margin-bottom:10px">
     <div style="float:right;padding:2px 0"><%= raw(follow_to(@venue)) %></div>
     <h3><%= @venue.name%> <span><%= @venue.geo.full_name %></span></h3>
     <pre style="font-size:13px"><%= @venue.intro%></pre>
-    <%= link_to "#{@venue.cover_file_name ? '更新' : '上传'}主题图",cover_venue_path(@venue),:class => "open_dialog",:title => "#{@venue.cover_file_name ? '更新' : '上传'}主题图" if logged_in? && @venue.creator == current_user%> |
+    <%= link_to "#{@venue.cover_file_name ? '更新' : '上传'}主题图",cover_venue_path(@venue),:class => "open_dialog",:title => "#{@venue.cover_file_name ? '更新' : '上传'}主题图" if logged_in? && @venue.creator == current_user%>
     <%= link_to '更新信息',edit_venue_path(@venue),:id => 'update_info' if logged_in? && @venue.creator == current_user %>
   </div>
 </div>
@@ -44,8 +44,8 @@
   </div>
   <div id="record_timeline" class="tabContents">      
     <div style="text-align:right;margin:16px 0 8px;" >
-      <%= link_to '召集行动',(logged_in? ? "#{new_calling_path}?venue_id=#{@venue.id}" : signup_path),:class => "gary_button open_dialog",:title => '召集行动',:style=>'font-size:13px'%>
-      <%= link_to '记录行动',(logged_in? ? "#{new_record_path}?venue_id=#{@venue.id}" : signup_path),:class => "gary_button open_dialog",:title => '记录行动',:style=>'font-size:13px'%>
+      <%= link_to '召集行动',(logged_in? ? "#{new_calling_path}?venue_id=#{@venue.id}" : login_path),:class => "gary_button open_dialog",:title => '召集行动',:style=>'font-size:13px'%>
+      <%= link_to '记录行动',(logged_in? ? "#{new_record_path}?venue_id=#{@venue.id}" : login_path),:class => "gary_button open_dialog",:title => '记录行动',:style=>'font-size:13px'%>
     </div>
     <%= render :partial => '/public/event', :collection => @timeline %>
   </div>

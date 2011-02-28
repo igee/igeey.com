@@ -5,26 +5,7 @@
   <%= render :partial => '/users/user' ,:object => current_user %>
   <div class="bubble_tail"></div>
   <div class="bubble">
-    <div style="padding:10px 0" class="impact">
-      <% if @calling.action.for_what == 'money' -%>
-        <%="我为#{@calling.venue.name}募捐" %> <%= form.text_field :total_money, :size => 3,:placeholder => "多少"%> 元，用于 <%= form.text_field :donate_for ,:size => 8 ,:placeholder => "做什么？"%>。            
-      <% elsif @calling.action.for_what == 'goods' %>
-        <%="我为#{@calling.venue.name}募捐" %> <%= form.text_field :goods_is, :size => 6,:placeholder => "物资名称"%> <%= form.text_field :total_goods, :size => 3 ,:placeholder => '多少'%>
-        <%= form.text_field :unit,:size =>2,:placeholder=>'单位'%>。
-      <% elsif @calling.action.for_what == 'time' %>
-        <%="我召集" %> <%= form.text_field :total_people, :size => 2, :placeholder => "多少" %> 人去 <%="#{@calling.venue.name}"%> <%= form.text_field :do_what, :size => 9,:placeholder => "做什么？"%>，时间：<%= form.text_field :do_at, :size => 8,:class => 'with_calendar',:placeholder => "年-月-日"%>。
-      <% end %>
-      <br/>
-    </div>
-    
-    <p>
-      <h5>关键信息：
-      <%= form.text_field :info, :size => 33, :placeholder => {'goods' => "捐赠地址，接收人，联系方式...",'time' => "集合地址，联系人，联系方式",'money' => "捐赠地址，接收人，联系方式"}[@calling.for_what],:style => "text-align:left" %></h5>
-      <h5>详细信息：(字数要求：50-1000字)</h5>
-      <p class="explanation">请说明你发起召集的原因、响应你的召集需要做什么。</p>
-      <%= form.text_area :detail, :style => "width:440px;height:90px"%>
-      <p class="explanation">目前字数：<span id="character_count"></span></p>
-    </p>
+    <%=  render :partial => "/callings/forms/#{@calling.action.slug}",:locals => {:form => form}%>
   </div>
   <div style="clear:both;text-align:right;">  
   </div>

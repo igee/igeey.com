@@ -180,6 +180,8 @@ ActiveRecord::Schema.define() do
     t.string   :goods_is,    :limit => 40
     t.string   :do_what,     :limit => 40
     t.string   :info,        :limit => 80
+    t.string   :address
+    t.string   :contact
     t.text     :detail
     t.datetime :do_at
     t.string   :unit,        :limit => 40

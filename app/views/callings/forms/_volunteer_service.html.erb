@@ -1,0 +1,18 @@
+<p style="font-size:16px;font-weight:bold;margin-bottom:14px">
+  <%= form.label 'title','行动标题：'%> <%= form.text_field :title, :size => 20, :placeholder => "" %>
+</p>
+<h5>志愿服务必填信息：</h5>
+<div style="line-height:30px">
+  <%= form.label 'totle_people','需要人数：'%> <%= form.text_field :total_people, :size => 3, :placeholder => "" %>
+  　<%= form.label 'totle_people','行动时间：'%><%= form.text_field :do_at, :size => 8,:class => 'with_calendar',:placeholder => ""%>
+  <br/>
+  <%= form.label 'address','集合地址：'%> <%= form.text_field :address, :size => 24, :placeholder => '',:style => "text-align:left" %>
+  <br/>
+  <%= form.label 'contact','联系方式：'%> <%= form.text_field :contact, :size => 24, :placeholder => '',:style => "text-align:left" %>
+</div>
+
+      
+<p>详细信息：(字数要求：50-1000字)</p>
+  <span class="explanation">请说明你发起召集的原因、响应你的召集需要做什么。</span>
+  <%= form.text_area :detail, :style => "width:440px;height:90px"%>
+<p class="explanation">目前字数：<span id="character_count"></span></p>
