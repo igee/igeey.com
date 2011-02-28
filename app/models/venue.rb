@@ -14,7 +14,7 @@ class Venue < ActiveRecord::Base
   has_many   :topics,     :as => :forumable,:dependent => :destroy
   has_many   :sayings,   :dependent => :destroy  
 
-  has_attached_file :cover, :styles => {:_48x48 => ["48x48#"],:_100x100 => ["100x100#"]},
+  has_attached_file :cover, :styles => {:_48x48 => ["48x48#",:jpg],:_100x100 => ["100x100#",:jpg]},
                             #:url=>"/media/:attachment/venues/:id/:style.:extension",
                             :url=>"/media/:attachment/venues/:id/:style.jpg",
                             :default_style=> :_100x100,
