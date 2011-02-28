@@ -9,9 +9,9 @@ class SiteController < ApplicationController
         @timeline += v.callings.not_closed.limit(10)
         @timeline += v.sayings.limit(10)
       end
-      @timeline = @timeline.uniq.sort{|x,y| y.created_at  <=> x.created_at  }[0..4]
+      @timeline = @timeline.uniq.sort{|x,y| y.created_at  <=> x.created_at  }[0..9]
     else
-      @timeline = (Calling.limit(10) + Saying.limit(10)).sort{|x,y| y.created_at  <=> x.created_at  }[0..10]
+      @timeline = (Calling.limit(10) + Saying.limit(10)).sort{|x,y| y.created_at  <=> x.created_at  }[0..9]
     end
   end
   
@@ -45,7 +45,7 @@ class SiteController < ApplicationController
       @timeline += v.callings.not_closed.limit(30)
       @timeline += v.sayings.limit(30)
     end
-    @timeline = @timeline.uniq.sort{|x,y| y.created_at  <=> x.created_at  }[0..200].paginate(:page => params[:page], :per_page => 5)
+    @timeline = @timeline.uniq.sort{|x,y| y.created_at  <=> x.created_at  }[0..200].paginate(:page => params[:page], :per_page => 10)
     render :layout => false
   end
   
