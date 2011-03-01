@@ -2,7 +2,7 @@ class SearchController < ApplicationController
   def result
     unless params[:keywords].blank?
     @keywords = params[:keywords].split.join('+')
-      [Venue,User,Calling,Topic].each do |model|
+      [Venue,User].each do |model|
         eval("@#{model.name.downcase}s = #{model.name}.search(@keywords,:page => (params[:page] || 1),:per_page => 10)")
       end
     end
