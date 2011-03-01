@@ -65,6 +65,12 @@
   </div>
   
   <div class="box">
+    <h4><%= "关注#{@user.venue_followings.size}个地点："%></h4>
+    <%= render :partial => '/venues/venue',:collection => @following_venues[0..5] %>
+    <%= link_to raw("查看全部 &#8744;"),more_items_user_path(@user,:items => 'following_venues'),:class => "more_items" if  @following_venues[6].present?%>
+  </div>
+  
+  <div class="box">
     <h4><%= "#{@user.follows.size}个关注者："%></h4>
     <%= render :partial => "/users/user",:collection => @followers[0..7] %>
     <%= link_to raw("查看全部 &#8744;"),more_items_user_path(@user,:items => 'followers'),:class => "more_items" if @followers[8].present?%>
@@ -74,11 +80,5 @@
     <h4><%= "关注#{@user.user_followings.size}人："%></h4>
     <%= render :partial => '/users/user',:collection => @following_users[0..7] %>
     <%= link_to raw("查看全部 &#8744;"),more_items_user_path(@user,:items => 'following_users'),:class => "more_items" if  @following_users[8].present?%>
-  </div>
-
-  <div class="box">
-    <h4><%= "关注#{@user.venue_followings.size}个地点："%></h4>
-    <%= render :partial => '/venues/venue',:collection => @following_venues[0..5] %>
-    <%= link_to raw("查看全部 &#8744;"),more_items_user_path(@user,:items => 'following_venues'),:class => "more_items" if  @following_venues[6].present?%>
   </div>
 <% end %>
