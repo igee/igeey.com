@@ -9,7 +9,7 @@
   <h4>历史总量</h4>
   <ul>
     <li>用户： <%= @users_total%></li>
-    <li>聚点： <%= @venues_total%></li>
+    <li>地点： <%= @venues_total%></li>
     <li>召集： <%= @callings_total%></li>
     <li>计划： <%= @plans_total%></li>
     <li>记录： <%= @records_total%></li>
@@ -70,7 +70,7 @@ $(document).ready(function() {
          name: '记录',
          data: [<%= @records_per_day.map{|a| "#{a},"}.to_s[0..-2] %>],
       },{
-         name: '聚点',
+         name: '地点',
          data: [<%= @venues_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
       }, {
          name: '用户',

@@ -1,14 +1,14 @@
-<% @title = '聚点新消息'%>
+<% @title = '地点新消息'%>
 <% if @unread_calling_venues.present? %>  
   <div class="box">
-    <h4>以下聚点有了新的召集行动：<h4>
+    <h4>以下地点有了新的召集行动：<h4>
     <%= render :partial => "/public/venue" ,:collection => @unread_calling_venues %>
   </div>
 <% end %>
 
 <% if @unread_topic_venues.present? %>  
   <div class="box">
-    <h4>以下聚点有了新话题：<h4>
+    <h4>以下地点有了新话题：<h4>
     <%= render :partial => "/public/venue" ,:collection => @unread_topic_venues %>
   </div>
 <% end %>

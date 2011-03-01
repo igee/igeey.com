@@ -54,7 +54,7 @@
   <div class="box">
     <h4>项目统计：</h4>
     <div id="record_counters">
-      <% [[@records.size,'参与次数'],[@records.map(&:venue).uniq.size,'受益聚点'],[@records.map(&:user).uniq.size,'参与人数']].each do |counter_list|%>
+      <% [[@records.size,'参与次数'],[@records.map(&:venue).uniq.size,'受益地点'],[@records.map(&:user).uniq.size,'参与人数']].each do |counter_list|%>
         <div class="record_counter_wrapper">
           <h4><%= counter_list[1] %></h4>
           <h2 class="record_counter"><%= counter_list[0] %></h2>
@@ -64,7 +64,7 @@
   </div>
   
   <div class="box">
-    <h4>受益聚点：</h4>
+    <h4>受益地点：</h4>
     <%= render :partial => '/venues/venue' ,:collection => @venues%>
   </div>
   <%= render :partial => "/public/followers" %>

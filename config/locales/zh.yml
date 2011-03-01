@@ -22,7 +22,7 @@ zh:
         venue:
           attributes:
             name:
-              blank:  '请填写聚点的名称'
+              blank:  '请填写地点的名称'
         calling:
           attributes:
             title:
@@ -34,6 +34,6 @@ zh:
         record:
           attributes:
             venue_id:
-              blank:  '请选择行动受益的聚点'
+              blank:  '请选择行动受益的地点'
             title:
               blank:  '请填写行动标题'

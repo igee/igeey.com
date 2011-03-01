@@ -9,7 +9,7 @@
   </div>
   <div style="float:left;width:500px;text-align:left;padding:16px 10px 0">
     <div id="record_counters">
-      <% [[@user.records_count,'参与行动'],[@user.records.map(&:venue).uniq.count,'服务聚点'],[@user.time_count,'贡献小时'],[@user.goods_count,'捐赠物资']].each do |counter_list|%>
+      <% [[@user.records_count,'参与行动'],[@user.records.map(&:venue).uniq.count,'服务地点'],[@user.time_count,'贡献小时'],[@user.goods_count,'捐赠物资']].each do |counter_list|%>
       <div class="record_counter_wrapper">
         <h4><%= counter_list[1] %></h4>
         <h2 class="record_counter"><%= counter_list[0] %></h2>
@@ -55,9 +55,9 @@
       <% end %>
       
       <% if current_user.has_unread_follow_calling? %>
-        <%= raw "#{link_to '你关注的聚点有了新召集行动，去看看?',unread_venues_path}" %>
+        <%= raw "#{link_to '你关注的地点有了新召集行动，去看看?',unread_venues_path}" %>
       <% elsif current_user.has_unread_follow_topic? %>
-        <%= raw "#{link_to '你关注的聚点有了新话题，去看看?',unread_venues_path}" %>
+        <%= raw "#{link_to '你关注的地点有了新话题，去看看?',unread_venues_path}" %>
       <% end %>
 
     </div>
@@ -74,7 +74,7 @@
     
     <div class="box" style="padding:0 10px">
       <ul>
-        <li><%= link_to '添加/关注新聚点',(logged_in? && current_user.geo_id.present? && current_user.use_local_geo ? geo_path(current_user.geo_id) : geos_path)%></li>
+        <li><%= link_to '添加/关注新地点',(logged_in? && current_user.geo_id.present? && current_user.use_local_geo ? geo_path(current_user.geo_id) : geos_path)%></li>
         <li><%= link_to '召集公益行动',following_venues_user_path(current_user) %></li>
         <li><%= link_to '记录公益行动',following_venues_user_path(current_user) %></li>
         <li><%= link_to '爱聚指南',guide_path %></li>

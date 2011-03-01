@@ -16,7 +16,7 @@
 <h4>"<%= params[:keywords]%>"的搜索结果：</h4>
   <div id="tabContaier">
     <ul>
-      <li><%= link_to "聚点(#{@venues.total_entries > 50 ? '50+' : @venues.total_entries})",'#venue_results' unless @venues.blank?%></li>
+      <li><%= link_to "地点(#{@venues.total_entries > 50 ? '50+' : @venues.total_entries})",'#venue_results' unless @venues.blank?%></li>
       <li><%= link_to "用户(#{@users.total_entries > 50 ? '50+' : @users.total_entries})",'#user_results' unless @users.blank?%></li>
     </ul>
     <div id="results">  

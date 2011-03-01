@@ -1,6 +1,6 @@
 <div class="box">
-  <h3><%= @user.login%>关注的聚点</h3>
-  <div style="text-align:right;position:relative;top:-26px">没有你要想的？<%= link_to '去聚点地图寻找',logged_in? && current_user.geo_id.present? && current_user.use_local_geo ? geo_path(current_user.geo_id) : geos_path %></div>
+  <h3><%= @user.login%>关注的地点</h3>
+  <div style="text-align:right;position:relative;top:-26px">没有你要想的？<%= link_to '去地点地图寻找',logged_in? && current_user.geo_id.present? && current_user.use_local_geo ? geo_path(current_user.geo_id) : geos_path %></div>
   <%= render :partial => '/public/venue',:collection => @following_venues%>
   <% content_for :sidebar do %>  
     <% if logged_in?%>

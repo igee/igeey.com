@@ -4,7 +4,7 @@ class Badge < ActiveRecord::Base
                      'realtime_callings_count' => '召集行动次数',
                      'douban_count' => '连接豆瓣',
                      'sina_count' => '连接新浪',
-                     'venues_count' => '添加聚点数',
+                     'venues_count' => '添加地点数',
                      'photos_count' => '上传照片数',
                      'syncs_count'=> '同步次数',
                      'followings_count'=> '关注次数',

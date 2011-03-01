@@ -132,7 +132,7 @@ badge_17:
   slug:      '1st_venue' 
   condition_factor: 'venues_count'
   condition_number: 1
-  intro:     '第一次添加聚点，奖励给你哥伦布水手徽章，为你添加的聚点上传一些照片吧。'
+  intro:     '第一次添加地点，奖励给你哥伦布水手徽章，为你添加的地点上传一些照片吧。'
 
 badge_18:
   id:        18
@@ -140,7 +140,7 @@ badge_18:
   slug:      '5st_venue' 
   condition_factor: 'venues_count'
   condition_number: 5
-  intro:     '添加了5个新聚点，奖励给你哥伦布舵手徽章，继续探索更多的聚点吧。'
+  intro:     '添加了5个新地点，奖励给你哥伦布舵手徽章，继续探索更多的地点吧。'
 
 badge_19:
   id:        19
@@ -148,7 +148,7 @@ badge_19:
   slug:      '10st_venue'
   condition_factor: 'venues_count'
   condition_number: 10
-  intro:     '添加了10个新聚点'
+  intro:     '添加了10个新地点'
 
 
 badge_20:

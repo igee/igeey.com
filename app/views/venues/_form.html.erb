@@ -1,7 +1,7 @@
   <%= form_for @venue do |form| %>
     <%= raw error_explanation_for(@venue) if @venue.errors.present?%>
     <p>
-      <%= form.label :name,'聚点名称：'%> <%= form.text_field :name, :size => 18, :class => "title", :placeholder => "例如：XX社区，XX村"%>
+      <%= form.label :name,'地点名称：'%> <%= form.text_field :name, :size => 18, :class => "title", :placeholder => "例如：XX社区，XX村"%>
     </p>
     <p>
       <%= form.label :intro,'类型：'%><%= form.select :category ,Venue::CATEGORIES_HASH.invert.to_a.sort_by{|value| value[1]}%>
@@ -22,7 +22,7 @@
     <p>
       <%= form.label :intro,'简介：'%><span>100字以内</span>
       <br/>
-      <%= form.text_area :intro, :style => "width:320px;height:100px",:placeholder => "为聚点写篇100字以内的简介吧"%>
+      <%= form.text_area :intro, :style => "width:320px;height:100px",:placeholder => "为地点写篇100字以内的简介吧"%>
       <div class="explanation">剩余字数：<span id="character_count"></span></div>
     </p>
     

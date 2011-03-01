@@ -17,11 +17,11 @@
 
 <div class="box">
   <p id="create_venue_box" style="text-align:center;">
-    没有找到你要的聚点？
-    <%= link_to "添加聚点",new_venue_path,:id => "create_venue" %> 吧。
+    没有找到你要的地点？
+    <%= link_to "添加地点",new_venue_path,:id => "create_venue" %> 吧。
   </p>
   <div id="mark_guide" style="display:none;text-align:center;background:#ddd;padding:4px">
-    <p>拖动 <span style="color:#c52;font-size:14px">红色标记 </span>确定要添加的聚点位置。<br/> (使用地图右上方的定位功能可以帮助你)</p>
+    <p>拖动 <span style="color:#c52;font-size:14px">红色标记 </span>确定要添加的地点位置。<br/> (使用地图右上方的定位功能可以帮助你)</p>
     <p>
       <%= link_to "找到了，下一步",new_venue_path,:id => "next_step",:class => 'button' %>
       <%= link_to "取消",'#',:id => "cancel_mark",:class => 'button' %>
@@ -30,7 +30,7 @@
 </div>
 
 <div class="box">
-  <h4>最新被提交的聚点</h4>
+  <h4>最新被提交的地点</h4>
   <p class="explanation">
   <% @venues.each do |venue|%>
     <%= link_to venue.name,venue_path(venue)%>　
@@ -77,7 +77,7 @@
       
       marker = new google.maps.Marker({
         position: map.getCenter(), 
-        title: "聚点坐标",
+        title: "地点坐标",
         draggable: true,
         zindex: 100
       });

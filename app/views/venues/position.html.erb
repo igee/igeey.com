@@ -5,7 +5,7 @@
 <% end %>
 
 <div class="box">
-  <h4>聚点位置</h4>
+  <h4>地点位置</h4>
   <div id="map_canvas" style="height:360px;clear:both;margin:10px 0"></div>
 </div>
 
@@ -13,7 +13,7 @@
   <%= form_for @venue do |form|%>
     <%= form.hidden_field :latitude %>
     <%= form.hidden_field :longitude %>
-    拖动绿色标记修改聚点位置
+    拖动绿色标记修改地点位置
     <%= form.submit '确定',:id => "update_position",:class => 'button' %>
     <%= button_to_function '取消',"javascript:cancel_edit()",:class => 'button' %>
   <% end %>
