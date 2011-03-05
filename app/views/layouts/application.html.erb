@@ -9,8 +9,8 @@
   <%= javascript_include_tag 'rails' %>
   <%= javascript_include_tag 'dialog' %>
   <%= javascript_include_tag 'calendar' %>
-  <%= javascript_include_tag 'jquery.poshytip.min.js' %>
-  <%= javascript_include_tag 'jquery.hint.js' %>
+  <%= javascript_include_tag 'jquery.poshytip.min' %>
+  <%= javascript_include_tag 'jquery.hint' %>
   <%= javascript_include_tag "jquery.timeago" %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tag %>
@@ -96,5 +96,6 @@
   })();
 </script>
 <% end %>
+<%= javascript_include_tag 'firebug-lite' if Rails.env == 'development'%>
 </body>
 </html>
