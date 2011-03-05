@@ -18,7 +18,7 @@
 </head>
 
 <body>
-  <!--[if lte IE 7]>
+  <!--[if lt IE 7]>
   <div style='background: #282927; text-align: center; clear: both; height: 52px; position:absolute;width:100%;padding-top:2px'>
     <div class="container">
       <a href='#' onclick='javascript:this.parentNode.parentNode.style.display="none"; return false;' style="color:#ddd;float:right;font-size:12px">关闭</a>
@@ -34,7 +34,7 @@
       </div>
     </div>
   </div>
-  < ![endif]-->
+  <![endif]-->
   
   <%= link_to raw('反<br/>馈'),new_feedback_path,:class=> "open_dialog",:title => "反馈",:id => 'feedback'%>
   <div id="get_badges"></div>
