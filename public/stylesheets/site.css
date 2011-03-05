@@ -488,7 +488,7 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 .event_box.hover p{color:#777}
 
 .event {
-  width:520px;
+  width:518px;
   margin-left:86px;
   padding:6px 0;
   }
@@ -524,7 +524,7 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 
 .comment .event_panel{margin:0;width:520px}
 
-.reply{font-size:12px;}
+.reply{font-size:12px;border-bottom:1px dashed #d6d6d6;}
 
 .reply_reply{float:right}
 
@@ -550,14 +550,14 @@ input.todo:hover{
 
 .avatar{
   float:left;
-  margin:10px 0 4px 15px;
-  padding:0px 0;
+  padding:10px 0 4px 15px;
   text-align:center;
 }
 
 .venue{
   float:left;
-  margin:10px 10px;
+  margin:10px;
+  -margin-left:5px;
   padding:0px 0;
   text-align:center;
 }
