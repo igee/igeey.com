@@ -49,5 +49,12 @@ namespace :misc do
       clown.crop_resized!(48, 48, Magick::NorthGravity)
       clown.write("#{dir.path}/#{id}/_48x48.#{extension}")
     end
-  end 
+  end
+  
+  desc "Create venue_id for photo"
+  task :photo_venue_id => :environment do
+    Photo.all.each do |p|
+      p.update_attributes(:venue_id => (p.imageable_type == 'Venue' ? p.imageable.id : p.imageable.venue.id))
+    end
+  end
 end

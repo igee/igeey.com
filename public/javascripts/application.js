@@ -47,7 +47,7 @@
       $('input[placeholder!=""]').hint();
     };
     
-    $(".upload_photo_link").click(function(){dialog($(this).attr('title'),("id:upload_photo_" + $(this).attr('tag')),"570px","auto","text");  return false;});
+    $(".upload_photo_link").click(function(){dialog($(this).attr('title'),("id:upload_photo_venue_" + $(this).attr('tag')),"570px","auto","text");  return false;});
     
     $(".tabContents").hide();
     $(".tabContents:first").show();

@@ -1,5 +1,6 @@
 class Photo < ActiveRecord::Base
   belongs_to :user
+  belongs_to :venue
   belongs_to :imageable, :polymorphic => true
   default_scope :order => 'created_at DESC'
   
@@ -9,6 +10,7 @@ class Photo < ActiveRecord::Base
                             :default_url=>"/defaults/:attachment/:style.png"
   
   validates :photo_file_name, :presence   => true,:format => { :with => /([\w-]+\.(gif|png|jpg))|/ }
+  validates :venue_id, :presence   => true
   
   def can_edit_by?(current_user)
     self.user == current_user

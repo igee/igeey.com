@@ -17,6 +17,7 @@
 <div id="tabContaier">
   <ul>
     <li><%= link_to '报到','#checkin_timeline'%></li>
+    <li><%= link_to '照片','#photo_timeline'%></li>
     <li><%= link_to '行动','#record_timeline'%></li>
   </ul>
   <div id="checkin_timeline" class="tabContents">
@@ -32,15 +33,11 @@
     </div>
     <%= render :partial => 'public/saying',:collection => @sayings %>
   </div>
-  <div id="idea_timeline" class="tabContents">
-  </div>
-  <div id="topic_timeline" class="tabContents">
-    <%= image_tag "/images/icon/talk.gif",:class=>"icon"%>
-    <%= link_to '发布话题',(logged_in? ? new_topic_path(:forumable_id => @venue.id,:forumable_type => @venue.class.to_s) : signup_path),:class=>"open_dialog",:title=>'发布话题'%>
-    <%= render :partial => '/public/topic' ,:collection => @topics%>
-  </div>
   <div id="photo_timeline" class="tabContents">
-    <%= render :partial => "/photos/photo",:collection => @photos %>    
+    <div style="text-align:right;margin:16px 0 8px;" >
+      <%= render :partial => "/photos/uploader",:locals => {:venue => @venue}%>
+    </div>
+    <%= render :partial => "/public/photo",:collection => @photos %>    
   </div>
   <div id="record_timeline" class="tabContents">      
     <div style="text-align:right;margin:16px 0 8px;" >

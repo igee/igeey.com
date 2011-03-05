@@ -7,7 +7,6 @@
       <span class="timeago" style="float:left"><%= record.created_at %></span>
       <% if record.user == current_user %>
         <%= link_to '修改',"#{edit_record_path(record)}?back_path=#{request.path}"%> |
-        <%= render :partial => "/photos/uploader",:locals => {:imageable => record}%> |
         <%= link_to "删除","#{record_path(record)}?back_path=#{request.path}",:method => :delete,:confirm => '你确定要删除这个行动记录么' if current_user && current_user.id == record.user_id%> |
       <% end %>
       <%= link_to "回复#{'(' + record.comments.size.to_s + ')' if record.comments.first}",'',:class => "event_reply"%>　

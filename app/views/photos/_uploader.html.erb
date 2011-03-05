@@ -1,11 +1,12 @@
-<%= link_to "上传照片","#",:class => 'upload_photo_link',:title => '上传图片',:tag => "#{imageable.class}#{imageable.id}"%>
-<div id=<%= "upload_photo_#{imageable.class}#{imageable.id}"%> class="upload_photo">
+<%= link_to "上传照片","#",:class => 'upload_photo_link',:title => '上传图片',:tag => "#{venue.id}"%>
+<div id=<%= "upload_photo_venue_#{venue.id}"%> class="upload_photo">
   <% @photo = Photo.new%>
   <% if logged_in?%>
     <div>
       <%= form_for @photo,:html => { :multipart => true } do |form| %>
-        <%= form.hidden_field :imageable_type,:value => imageable.class %>
-        <%= form.hidden_field :imageable_id,:value => imageable.id %>
+        <%= form.hidden_field :venue_type,:value => venue.class %>
+        <%= form.hidden_field :venue_id,:value => venue.id %>
+        <%= form.hidden_field :venue_id,:value => venue.id %>
         <p>
           <%= form.file_field :photo,:style => "background:none;border:none;font-size:13px" %>
         </p>

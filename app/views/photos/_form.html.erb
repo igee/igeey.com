@@ -5,6 +5,7 @@
       <%= form_for @photo,:html => { :multipart => true } do |form| %>
         <%= form.hidden_field :imageable_type,:value => imageable.class %>
         <%= form.hidden_field :imageable_id,:value => imageable.id %>
+        <%= form.hidden_field :venue_id,:value => venue.id %>
         <p>
           <%= form.file_field :photo,:style => "background:none;border:none;font-size:13px" %>
         </p>

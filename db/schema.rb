@@ -95,6 +95,7 @@ ActiveRecord::Schema.define() do
 
   create_table "photos", :force => true do |t|
     t.integer  :user_id
+    t.integer  :venue_id
     t.integer  :imageable_id
     t.string   :imageable_type
     t.string   :title,       :limit => 40
