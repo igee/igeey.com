@@ -206,6 +206,7 @@ button,.button{
     font-family:sans-serif;
     background-color:#ff8f00;
     padding:3px 12px;
+    -padding:4px 12px 2px;
     -webkit-border-radius:3px;-moz-border-radius: 3px;border-radius: 3px;
     cursor:pointer;
     border:none
