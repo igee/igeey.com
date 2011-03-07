@@ -5,7 +5,7 @@
     <div>
       <%= link_to (image_tag photo.photo.url,:class => "photo"),photo,:class => "open_dialog",:title => photo.title,:style => 'float:left' %>
       <p style="margin-left:100px;"><%= photo.title %></p>
-      <pre style="margin-left:100px;"><%= photo.detail %></pre>
+      <pre style="margin-left:100px;" class="explanation"><%= photo.detail %></pre>
     </div>  
     <div style="clear:both"></div> 
     <div class="event_info">
