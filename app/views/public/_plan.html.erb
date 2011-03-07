@@ -1,9 +1,10 @@
 <div class="event_box">
   <%= controller_name == 'venues' ? (render :partial => "/users/avatar",:object => plan.user) : (render :partial => "/venues/venue",:object => plan.venue) %>
   <div class="event">
-    <span><%= link_to plan.user.login,plan.user unless controller_name == 'users' %> 要参与 <%= link_to plan.venue.name,plan.venue %> 的活动：</span>
+    <span><%= link_to plan.venue.name,plan.venue %> 的行动参与：</span>
     <pre><%= plan.calling.title %> <%= link_to calling_plan_url(plan.calling_id,plan),calling_plan_path(plan.calling_id,plan)%></pre>
     <div class="event_action">
+      <span>by <%= link_to plan.user.login,plan.user unless controller_name == 'users' %></span>
       <span  style="float:left"><%= "#{plan.status}"%></span>
       <span class="timeago" style="float:left"><%= plan.created_at %></span>
       <% if (plan.user == current_user) %>

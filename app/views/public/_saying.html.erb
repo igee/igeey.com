@@ -1,10 +1,11 @@
 <div class="event_box">
   <%= controller_name == 'venues' ? (render :partial => "/users/avatar",:object => saying.user) : (render :partial => "/venues/venue",:object => saying.venue) %>
   <div class="event">  
-      <span><%= link_to saying.user.login,saying.user unless controller_name == 'users' %> 在 <%= link_to saying.venue.name,saying.venue %> 报到：</span>
+      <span><%= raw "#{link_to saying.venue.name,saying.venue} 的报到：" unless controller_name == 'venues' %></span>
       <pre><%= saying.content %></pre>
     
     <div class="event_info">
+      <span><%= raw "by #{link_to saying.user.login,saying.user}" unless controller_name == 'users' %></span>
       <span class="timeago"><%= saying.created_at %></span>
     </div>
     <div class="event_action">

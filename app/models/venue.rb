@@ -8,7 +8,7 @@ class Venue < ActiveRecord::Base
   has_many   :callings,   :dependent => :destroy
   has_many   :plans,      :dependent => :destroy
   has_many   :records,    :dependent => :destroy
-  has_many   :photos,     :as => :imageable,   :dependent => :destroy
+  has_many   :photos
   has_many   :follows,    :as => :followable,  :dependent => :destroy
   has_many   :followers,  :through => :follows,:source => :user,:dependent => :destroy
   has_many   :topics,     :as => :forumable,:dependent => :destroy

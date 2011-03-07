@@ -1,9 +1,10 @@
 <div class="event_box">
   <%= controller_name == 'venues' ? (render :partial => "/users/avatar",:object => calling.user) : (render :partial => "/venues/venue",:object => calling.venue) %>
   <div class="event"> 
-    <span><%= link_to calling.user.login,calling.user unless controller_name == 'users' %> 为 <%= link_to calling.venue.name,calling.venue %> 召集行动：</span>
+    <span><%= raw "#{link_to calling.venue.name,calling.venue} 的行动召集：" unless controller_name == 'venues' %></span>
     <pre><%= calling.title %> <%= link_to calling_url(calling),calling_path(calling)%></pre>
     <div class="event_info">
+        <span><%= raw "by #{link_to calling.user.login,calling.user}" unless controller_name == 'users' %></span>
         <span><%= "#{calling.status}"%></span>
         <span class="timeago"><%= calling.created_at %></span>
     </div>    

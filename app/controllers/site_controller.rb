@@ -8,6 +8,7 @@ class SiteController < ApplicationController
       @followings.each do |v|
         @timeline += v.callings.not_closed.limit(10)
         @timeline += v.sayings.limit(10)
+        @timeline += v.photos.limit(10)
       end
       @timeline = @timeline.uniq.sort{|x,y| y.created_at  <=> x.created_at  }[0..9]
     else
@@ -44,6 +45,7 @@ class SiteController < ApplicationController
     @followings.each do |v|
       @timeline += v.callings.not_closed.limit(30)
       @timeline += v.sayings.limit(30)
+      @timeline += v.photos.limit(30)
     end
     @timeline = @timeline.uniq.sort{|x,y| y.created_at  <=> x.created_at  }[0..200].paginate(:page => params[:page], :per_page => 10)
     render :layout => false

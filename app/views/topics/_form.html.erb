@@ -3,7 +3,7 @@
   <div style="clear:both">
     <%= render :partial => '/users/user' ,:object => current_user %>
       <div class="bubble_tail"></div>
-      <div class="bubble" style="<%= 'width:360px' if params[:layout]=='false'%>">
+      <div class="bubble" style="<%= 'width:380px' if params[:layout]=='false'%>">
           <p>
             <%= form.label :title,'标题：'%> <%= form.text_field :title,:size => 20 ,:style => "text-align:left"%>
             <br/>

@@ -123,14 +123,6 @@
 
     $(document).ready(function(){
       initialize();
-      $(".timeago").each(function(){$(this).html('(' + $.timeago($(this).html()) + ')' )});
-      $('.checkin_reply').click(function(){$(this).parent().next().toggle();return false})
-      $('.reply_reply').click(function(){
-        var reply_field = $(this).parent().parent().parent().parent().find('input[type=text]')
-        reply_field.val($(this).attr('title'));
-        reply_field.focus();
-        return false;
-        });
       $('.new_comment').submit(function(){
         var size = $(this).find('input[type=text]').val().length
         if ( size >= 140){

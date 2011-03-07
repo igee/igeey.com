@@ -491,16 +491,13 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
   width:520px;
   margin-left:86px;
   padding:6px 0;
-  }
-  
-.event p{
-    font-size:14px;
-    font-weight:bold;
-    }
+  } 
     
 .event_link{color:#777}
 
 .event_info{float:left}
+
+.event_info span{margin-right:2px}
 
 .event_action{
   text-align:right;

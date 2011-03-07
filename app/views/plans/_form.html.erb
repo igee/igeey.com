@@ -8,7 +8,7 @@
     <%= form.hidden_field :parent_id %>
     <%= render :partial => '/users/user' ,:object => current_user %>
     <div class="bubble_tail"></div>
-    <div class="bubble" style="<%= 'width:360px' if params[:layout]=='false'%>">
+    <div class="bubble" style="<%= 'width:380px' if params[:layout]=='false'%>">
         <p>
           <% if @action.for_what == 'money' %>
             要捐多少(元)？ <%= form.text_field :money, :size => 4 ,:placeholder => '金额'%>。

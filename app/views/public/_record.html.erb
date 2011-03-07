@@ -1,10 +1,13 @@
 <div class="event_box">
   <%= controller_name == 'venues' ? (render :partial => "/users/avatar",:object => record.user) : (render :partial => "/venues/venue",:object => record.venue) %>
   <div class="event">
-    <span><%= link_to record.user.login,record.user unless controller_name == 'users' %> 完成了为 <%= link_to record.venue.name,record.venue %> 的行动：</span>
-    <pre><%= record.title %></pre>
-    <div class="event_action">
+    <span><%= link_to record.venue.name,record.venue %> 的行动记录：</span>
+    <pre><%= record.title %>  <%= link_to record_url(record),record_path(record)%></pre>
+    <div class="event_info">
+      <span><%= raw "by #{link_to record.user.login,record.user}" unless controller_name == 'users' %></span>
       <span class="timeago" style="float:left"><%= record.created_at %></span>
+    </div>  
+    <div class="event_action">
       <% if record.user == current_user %>
         <%= link_to '修改',"#{edit_record_path(record)}?back_path=#{request.path}"%> |
         <%= link_to "删除","#{record_path(record)}?back_path=#{request.path}",:method => :delete,:confirm => '你确定要删除这个行动记录么' if current_user && current_user.id == record.user_id%> |
