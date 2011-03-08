@@ -62,6 +62,7 @@
     });
  
     $('pre').each(function(index){$(this).html($(this).html().replace(/(http:\/\/|https:\/\/)((\w|=|\?|\.|\/|&|-|!)+)/g, "<a href='$1$2' target='_blank' rel='nofollow'>$1$2</a>"))});
+    $('form').submit(function(){$(this).find('input:submit').attr('disabled',true)})
     
     $('.event_reply').click(function(){$(this).parent().next().toggle();return false})
     $('.reply_reply').click(function(){
@@ -69,5 +70,6 @@
         reply_field.val($(this).attr('title'));
         reply_field.focus();
         return false;
-        })   
+        })
+    
   })
