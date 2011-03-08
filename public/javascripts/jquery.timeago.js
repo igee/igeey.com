@@ -34,7 +34,7 @@
         prefixFromNow: "从现在开始",
         suffixAgo: "前",
         suffixFromNow: null,
-        seconds: "刚刚",
+        seconds: "不到1分钟",
         minute: "1分钟",
         minutes: "%d分钟",
         hour: "1小时",
