@@ -485,7 +485,6 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
   }
 
 .event_box.hover{background-color:#f9f9f9}
-.event_box.hover p{color:#777}
 
 .event {
   width:520px;
@@ -536,6 +535,8 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
   }
   
 .photo{margin-bottom:2px;width:90px;height:64px}
+
+.zoomed_photo{display:none;width:360px;}
 
 .photo_box form{display:inline}
 

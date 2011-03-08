@@ -24,6 +24,7 @@
   <div id="tabContaier">
     <ul>
       <li><%= link_to '报到','#my_sayings'%></li>
+      <li><%= link_to '照片','#my_photos'%></li>
       <li><%= link_to '行动记录','#my_records'%></li>
       <li><%= link_to '召集行动','#my_callings'%></li>
       <li><%= link_to '未完成计划','#my_plans'%></li>
@@ -32,6 +33,11 @@
     <div id="my_sayings" class="tabContents">
       <%= render :partial => '/public/saying',:collection => @sayings[0..5]%>
       <%= link_to raw("查看更多 &#8744;"),more_items_user_path(@user,:items => 'sayings',:page => 2),:class => "more_items" if @sayings[6].present?%>
+    </div>
+    
+    <div id="my_photos" class="tabContents">
+      <%= render :partial => '/public/photo',:collection => @photos[0..5]%>
+      <%= link_to raw("查看更多 &#8744;"),more_items_user_path(@user,:items => 'photos',:page => 2),:class => "more_items" if @photos[6].present?%>
     </div>
     
     <div id="my_records" class="tabContents">
@@ -49,12 +55,6 @@
       <%= link_to raw("查看更多 &#8744;"),more_items_user_path(@user,:items => 'plans',:page => 2),:class => "more_items" if @plans[6].present?%>
     </div>  
   </div>
-</div>
-
-<div class="box">
-  <h4><%= "上传#{@user.photos.size}张照片："%></h4>
-  <%= render :partial => '/photos/photo',:collection => @photos[0..11] %>
-  <%= link_to raw("查看更多 &#8744;"),more_items_user_path(@user,:items => 'photos',:page => 2),:class => "more_items" if @photos[10].present?%>
 </div>
 
 <% content_for :sidebar do %>
