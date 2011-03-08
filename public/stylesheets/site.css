@@ -537,7 +537,7 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
   
 .photo{margin-bottom:2px;width:90px;height:64px}
 
-.zoomed_photo{display:none;width:360px;}
+.zoomed_photo{display:none;width:360px;background:url('/images/icon/waiting.gif') no-repeat}
 
 .photo_box form{display:inline}
 
