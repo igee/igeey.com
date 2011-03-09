@@ -131,7 +131,7 @@ class User < ActiveRecord::Base
     self.callings.count
   end
   
-  def following?(followable)
+  def is_following?(followable)
     !self.followings.where(:followable_id => followable.id,:followable_type => followable.class).limit(1).blank?
   end
 
@@ -147,6 +147,9 @@ class User < ActiveRecord::Base
     self.followings.where(:followable_type => 'Calling')
   end
 
+  
+  #need refactory. use dynamic methods
+  
   def has_unread_record_comment?
     self.records.where(:has_new_comment => true).first.present?
   end
@@ -162,21 +165,9 @@ class User < ActiveRecord::Base
   def has_unread_topic_comment?
     self.topics.where(:has_new_comment => true).first.present?
   end
-  
-  def has_unread_follow_comment?
-    self.followings.where(:has_new_comment => true).first.present?
-  end
-  
-  def has_unread_follow_calling?
-    self.followings.where(:has_new_calling => true).first.present?
-  end
-  
-  def has_unread_follow_topic?
-    self.followings.where(:has_new_topic => true).first.present?
-  end
-  
+    
   def has_unread_comment?
-    has_unread_calling_comment? || has_unread_record_comment? || has_unread_topic_comment?
+    has_unread_comment_comment? || has_unread_saying_comment? || has_unread_photo_comment? || has_unread_comment_comment? || has_unread_record_comment? || has_unread_topic_comment? || has_unread_calling_comment?
   end
   
   def has_unread_plan?

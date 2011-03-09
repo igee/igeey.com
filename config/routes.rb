@@ -12,7 +12,6 @@ Igee::Application.routes.draw do
   match 'guide' => 'site#guide'
   match 'faq' => 'site#faq'
   
-  match 'myigeey' => 'site#myigeey'
   match 'followings' => 'site#followings'
   match 'actions' => 'site#actions'
   match 'unread_comments' => 'site#unread_comments'

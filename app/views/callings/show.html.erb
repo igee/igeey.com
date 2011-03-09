@@ -35,7 +35,7 @@
     <% end %>
     
     <p style="text-align:center">
-      <% if logged_in? && current_user.following?(@calling) %>
+      <% if logged_in? && current_user.is_following?(@calling) %>
         已关注 <%= link_to raw("<span>取消关注?</span>"),follow_path(@calling.follows.find_by_user_id(current_user.id)),:method => :delete%>
       <% else %>
         <%= link_to "关注进展",(logged_in? ? "#{follows_path}?followable_type=#{@calling.class}&followable_id=#{@calling.id}" : signup_path),:method => :post,:title =>(logged_in? ? "" : '注册' ),:method => :post %>

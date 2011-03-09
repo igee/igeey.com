@@ -3,7 +3,6 @@ class RecordObserver < ActiveRecord::Observer
     if record.plan.present?
       record.plan.update_attribute(:is_done,true)
     end
-    record.venue.follows.new(:user_id => record.user_id).save
   end
   
   def after_destroy(record)

@@ -21,12 +21,10 @@ class SiteController < ApplicationController
     @my_actions = @user.callings + @user.plans.undone + @user.records
     @my_actions = @my_actions.sort{|x,y| y.created_at <=> x.created_at }
     @my_followings = @user.followings.map(&:followable)
-    @geo = Geo.new(:name => '全国')
     @my_plans = current_user.plans.undone if logged_in?
   end
 
   def followings
-    @user = current_user
     @venue_followings = @user.venue_followings.paginate(:page => params[:venues_page], :per_page => 20)
     @calling_followings = @user.calling_followings.paginate(:page => params[:callings_page], :per_page => 20)
     @user_followings = @user.user_followings.paginate(:page => params[:users_page], :per_page => 20)
@@ -88,5 +86,4 @@ class SiteController < ApplicationController
     @unread_calling_venues = current_user.followings.where(:has_new_calling => true,:followable_type => "Venue").map(&:followable)
     @unread_topic_venues = current_user.followings.where(:has_new_topic => true,:followable_type => "Venue").map(&:followable)
   end
-  
 end
