@@ -10,18 +10,18 @@
       </div>      
     </div>    
 
-    <div class="sidebar_panel" id="my_news">
-      <% if current_user.has_unread_comment? %>
+    <div class="sidebar_panel" id="notices">
       
-      <% end %>
+      <%= raw "<li>#{link_to '你的消息有新回复啦，看看都有什么？',unread_comments_path}</li>" if current_user.has_unread_comment? %>
       
-      <%= link_to '有人关注你了，去看看是谁..',unread_followers_path if current_user.has_unread_follower?%>
+      <%= raw "<li>#{link_to '有人关注你了，去看看是谁..',unread_followers_path}</li>" if current_user.has_unread_follower?%>
       
       <% if current_user.has_unread_plan? %>
-        <%= link_to '你的召集有人响应了，去看看?',unread_plans_path %>
+        <%= raw "<li>#{link_to '你的召集有人响应了，去看看?',unread_plans_path}</li>" %>
       <% elsif current_user.has_unread_child? %>
-        <%= link_to '有人跟随你的行动了，去看看?',unread_plans_path %>
+        <%= raw "#{link_to '有人跟随你的行动了，去看看?',unread_plans_path}</li>" %>
       <% end %>
+      </li>
     </div>
 
     <div class="sidebar_panel">
@@ -38,3 +38,6 @@
       </div>  
     </div>
     
+    <script type="text/javascript">
+      if($('#notices').html().trim().length == 0){$('#notices').html('<span>暂时没有新鲜事，去<%= link_to "看看",''%>大家的新鲜事？</span>')};
+    </script>

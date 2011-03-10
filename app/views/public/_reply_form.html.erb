@@ -6,7 +6,7 @@
           <%= form.hidden_field :commentable_id,:value => object.id %>
           <%= form.text_field :content, :style => "width:400px;height:18px;margin:4px 0 12px 8px",:placeholder => ""%>
           <%= submit_tag '回复' %> 
-          <%= render :partial => "/public/reply",:collection => object.comments.order('created_at desc') %>
+          <%= render :partial => "/public/reply",:collection => object.comments %>
         </div>
       <% end %>
     </div>

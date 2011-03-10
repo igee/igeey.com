@@ -1,22 +1,16 @@
-<% @title = '新留言'%>
-
-<% if @callings.present? %>  
+<% @title = '查看新留言'%>
   <div class="box">
-    <h4>以下召集有了新留言：<h4>
-    <%= render :partial => "/public/calling" ,:collection => @callings %>
+    <h4>查看全部新留言：</h4>
+    <%= render :partial => "/public/event" ,:collection => @timeline %>
   </div>
-<% end %>
 
-<% if @topics.present? %>  
-  <div class="box">
-    <h4>以下话题有了新留言：<h4>
-    <%= render :partial => "/public/topic" ,:collection => @topics %>
-  </div>
-<% end %>
 
-<% if @records.present? %>  
-  <div class="box">
-    <h4>以下行动记录有了新留言:<h4>
-    <%= render :partial => "/public/record" ,:collection => @records %>
-  </div>
+<% content_for :extension do %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.event_reply').click()
+  })
+</script>
+
 <% end %>

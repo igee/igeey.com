@@ -35,6 +35,17 @@ namespace :misc do
     end
   end
   
+  desc "Create last replied stamp to models"
+  task :stamp_last_replied => :environment do
+    [Record,Calling,Photo,Saying,Topic].each do |model|
+      model.all.each do |item|
+        item.last_replied_at = (item.comments.empty? ? item.created_at : item.comments.last.created_at )
+        item.last_replied_user_id = (item.comments.empty? ? nil : item.comments.last.user_id )
+        item.save(false)
+      end
+    end
+  end
+  
   desc "Create square thumbnails for venue"
   task :square_venue_cover => :environment do
     require 'RMagick'

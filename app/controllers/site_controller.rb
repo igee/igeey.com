@@ -15,14 +15,6 @@ class SiteController < ApplicationController
       @timeline = (Calling.limit(10) + Saying.limit(10)).sort{|x,y| y.created_at  <=> x.created_at  }[0..9]
     end
   end
-  
-  def myigeey
-    @user = current_user
-    @my_actions = @user.callings + @user.plans.undone + @user.records
-    @my_actions = @my_actions.sort{|x,y| y.created_at <=> x.created_at }
-    @my_followings = @user.followings.map(&:followable)
-    @my_plans = current_user.plans.undone if logged_in?
-  end
 
   def followings
     @venue_followings = @user.venue_followings.paginate(:page => params[:venues_page], :per_page => 20)
@@ -66,9 +58,14 @@ class SiteController < ApplicationController
   end
   
   def unread_comments
-    @topics = current_user.topics.where(:has_new_comment => true) | current_user.comments.where(:has_new_comment => true,:commentable_type => "Topic").map(&:commentable)
-    @records = current_user.records.where(:has_new_comment => true) | current_user.comments.where(:has_new_comment => true,:commentable_type => "Record").map(&:commentable)
-    @callings = current_user.callings.where(:has_new_comment => true) | current_user.followings.where(:has_new_comment => true,:followable_type => "Calling").map(&:followable) | current_user.comments.where(:has_new_comment => true,:commentable_type => "Calling").map(&:commentable)
+    @timeline = []
+    @timeline += current_user.sayings.where(:has_new_comment => true)
+    @timeline += current_user.photos.where(:has_new_comment => true)
+    @timeline += current_user.topics.where(:has_new_comment => true)
+    @timeline += current_user.callings.where(:has_new_comment => true)
+    @timeline += current_user.records.where(:has_new_comment => true)
+    @timeline += current_user.comments.where(:has_new_comment => true).map(&:commentable)
+    @timeline = @timeline.uniq.sort{|x,y| y.last_replied_at <=> x.last_replied_at}
   end
   
   def unread_plans
@@ -81,9 +78,5 @@ class SiteController < ApplicationController
     @followers = @follows.map(&:user)
     @follows.map{|f| f.update_attribute(:unread,false)}
   end
-  
-  def unread_venues
-    @unread_calling_venues = current_user.followings.where(:has_new_calling => true,:followable_type => "Venue").map(&:followable)
-    @unread_topic_venues = current_user.followings.where(:has_new_topic => true,:followable_type => "Venue").map(&:followable)
-  end
+
 end
