@@ -23,19 +23,12 @@
       <% end %>
       </li>
     </div>
-
-    <div class="sidebar_panel">
-      <div id="my_followings">                                               
-        <div class="followings_counter" style="border-left:none">
-          <%= link_to raw("<p>#{current_user.venue_followings.size}</p>地点关注"),followings_path(:start_at => 'following_venues') %>
-        </div>
-        <div class="followings_counter">
-          <%= link_to raw("<p>#{current_user.calling_followings.size}</p>行动关注"),followings_path(:start_at => 'following_callings') %>
-        </div>
-        <div class="followings_counter">
-          <%= link_to raw("<p>#{current_user.user_followings.size}</p>用户关注"),followings_path(:start_at => 'following_users') %>
-        </div>        
-      </div>  
+    
+    <div class="box">
+      <p style="color:#999">关注的地点：</p>
+    <% current_user.venue_followings.limit(8).map(&:followable).each do |v|%>
+      <%= link_to image_tag(v.cover.url(:_48x48),:class => "thumb_avatar"),v,:title => v.name %>
+    <% end%>
     </div>
     
     <script type="text/javascript">

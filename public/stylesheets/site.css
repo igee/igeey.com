@@ -333,9 +333,16 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
     height:72px;
     text-align:center;
     }
+
 .user_avatar{
     width:48px;
     height:48px;
+    overflow:hidden;
+    }
+
+.thumb_avatar{
+    width:36px;
+    height:36px;
     overflow:hidden;
     }
     
