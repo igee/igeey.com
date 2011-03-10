@@ -66,6 +66,10 @@ class SiteController < ApplicationController
     @timeline += current_user.records.where(:has_new_comment => true)
     @timeline += current_user.comments.where(:has_new_comment => true).map(&:commentable)
     @timeline = @timeline.uniq.sort{|x,y| y.last_replied_at <=> x.last_replied_at}
+    @timeline.each do |i|
+      i.update_attribute(:has_new_comment,false)
+      i.comments.where(:user_id => current_user.id).map{|c| c.update_attribute(:has_new_comment,false)}
+    end
   end
   
   def unread_plans

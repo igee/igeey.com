@@ -165,7 +165,15 @@ class User < ActiveRecord::Base
   def has_unread_topic_comment?
     self.topics.where(:has_new_comment => true).first.present?
   end
+  
+  def has_unread_saying_comment?
+    self.sayings.where(:has_new_comment => true).first.present?
+  end
     
+  def has_unread_photo_comment?
+    self.photos.where(:has_new_comment => true).first.present?
+  end
+      
   def has_unread_comment?
     has_unread_comment_comment? || has_unread_saying_comment? || has_unread_photo_comment? || has_unread_comment_comment? || has_unread_record_comment? || has_unread_topic_comment? || has_unread_calling_comment?
   end
