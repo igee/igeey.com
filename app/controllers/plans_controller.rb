@@ -2,7 +2,6 @@ class PlansController < ApplicationController
   respond_to :html
   before_filter :login_required, :except => [:index, :show,:redirect]
   before_filter :find_plan_and_calling, :except => [:index,:new,:create]
-  after_filter  :clean_unreads, :only => [:show]
   
   def index
     redirect_to calling_path(@calling)
@@ -84,8 +83,4 @@ class PlansController < ApplicationController
     end  
   end
   
-  def clean_unreads
-    @plan.update_attribute(:has_new_comment,false) if @plan.user == current_user && @plan.has_new_comment
-    @plan.update_attribute(:has_new_child,false) if @plan.user == current_user && @plan.has_new_child
-  end
 end

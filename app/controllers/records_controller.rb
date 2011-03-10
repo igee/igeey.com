@@ -2,7 +2,6 @@ class RecordsController < ApplicationController
   respond_to :html,:json
   before_filter :login_required, :except => [:index,:show]
   before_filter :find_record, :except => [:index,:new,:create,:find_by_tag]
-  after_filter :clean_unread, :only => [:show]
   
   def index
     @actions = Action.callable
@@ -68,8 +67,4 @@ class RecordsController < ApplicationController
     @record = Record.find(params[:id])
   end
   
-  def clean_unread
-    @record.update_attribute(:has_new_comment,false) if @record.user == current_user && @record.has_new_comment
-    @record.comments.where(:user_id => current_user.id).map{|a| a.update_attribute(:has_new_comment,false)} if logged_in? && @record.comments.where(:user_id => current_user.id).first.present?
-  end
 end

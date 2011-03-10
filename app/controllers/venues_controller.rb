@@ -1,7 +1,6 @@
 class VenuesController < ApplicationController
   respond_to :html,:json
   before_filter :login_required, :except => [:index, :show,:records]
-  after_filter  :clean_unread,:only => [:show]
   before_filter :find_venue, :except => [:index,:new,:create]
   
   def index
@@ -72,10 +71,6 @@ class VenuesController < ApplicationController
   private
   def find_venue
     @venue = Venue.find(params[:id])
-  end
-  
-  def clean_unread
-    @venue.follows.where(:user_id => current_user.id).map{|g| g.update_attributes(:has_new_calling => false,:has_new_topic => false)} if logged_in?
   end
 
 end
