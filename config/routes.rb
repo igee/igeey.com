@@ -38,6 +38,7 @@ Igee::Application.routes.draw do
       get :cover
       get :position
       get :records
+      get :followers
     end
     resources :sayings
   end
@@ -95,6 +96,7 @@ Igee::Application.routes.draw do
     end
   end
   
+  #short_url
   match "/v/:id" => redirect("/venues/%{id}")
   match "/c/:id" => redirect("/callings/%{id}")
   match "/r/:id" => redirect("/records/%{id}")

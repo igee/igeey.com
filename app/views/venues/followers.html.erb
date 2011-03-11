@@ -1,0 +1,4 @@
+  <div class="box">
+    <%= render :partial => '/public/user',:collection => @followers%>
+    <%= will_paginate @followers ,:param_name => :page%>
+  </div>

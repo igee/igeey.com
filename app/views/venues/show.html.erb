@@ -63,7 +63,13 @@
     </div>
   </div>
   -->
-  <%= render :partial => "/public/followers" %>
+    
+  <div class="box">
+    <span style="float:right"><%= link_to "查看全部",followers_venue_path(@venue)%></h4></span>
+    <h4><%= "#{@venue.follows.size}人关注这里："%></h4>
+    <%= render :partial => "/users/user",:collection => @followers[0..7] %>
+  </div>
+
   <div class="box">
     <h4>地图：</h4>
     <div id="map_canvas" style="width:248px;height:160px;"></div>

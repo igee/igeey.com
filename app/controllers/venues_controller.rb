@@ -34,7 +34,7 @@ class VenuesController < ApplicationController
     @photos = @venue.photos
     @topics = @venue.topics
     @sayings = @venue.sayings
-    @followers = @venue.followers
+    @followers = @venue.followers.limit(8)
   end
   
   def edit
@@ -68,9 +68,14 @@ class VenuesController < ApplicationController
     respond_with(@records)
   end
   
+  def followers
+    @followers = @venue.followers.paginate(:page => params[:page], :per_page => 20)
+  end
+  
   private
   def find_venue
     @venue = Venue.find(params[:id])
+    
   end
 
 end
