@@ -1,6 +1,6 @@
 class Saying < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :venue
+  belongs_to :user,     :counter_cache => true
+  belongs_to :venue,    :counter_cache => true
 
   has_many   :comments, :as => :commentable,    :dependent => :destroy
   

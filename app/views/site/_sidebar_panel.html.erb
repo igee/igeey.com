@@ -12,25 +12,32 @@
 
     <div class="sidebar_panel" id="notices">
       
-      <%= raw "<li>#{link_to '你的消息有新回复啦，看看都有什么？',unread_comments_path}</li>" if current_user.has_unread_comment? %>
+      <%= raw "<li>#{link_to '你的消息有新回复啦，去看看?',unread_comments_path}</li>" if current_user.has_unread_comment? %>
       
       <%= raw "<li>#{link_to '有人关注你了，去看看是谁..',unread_followers_path}</li>" if current_user.has_unread_follower?%>
       
       <% if current_user.has_unread_plan? %>
-        <%= raw "<li>#{link_to '你的召集有人响应了，去看看?',unread_plans_path}</li>" %>
+        <%= raw "<li>#{link_to '你的召集有人响应了，去看看是谁..',unread_plans_path}</li>" %>
       <% elsif current_user.has_unread_child? %>
-        <%= raw "#{link_to '有人跟随你的行动了，去看看?',unread_plans_path}</li>" %>
+        <%= raw "#{link_to '有人跟随你的行动了，去看看是谁..',unread_plans_path}</li>" %>
       <% end %>
       </li>
     </div>
     
+    <% @venues = current_user.venue_followings.limit(8)%>
+    <% unless @venues.empty? %>
     <div style="padding:0 5px">
-      <p><span style="color:#999">关注的地点：</span></p>
-    <% current_user.venue_followings.limit(8).map(&:followable).each do |v|%>
-      <%= link_to image_tag(v.cover.url(:_48x48),:class => "thumb_avatar"),v,:title => v.name %>
-    <% end%>
+      <p>
+        <span style="float:right"><%= link_to "查看全部",followings_path %></span>
+        <span style="color:#999">关注了<%= "#{current_user.venue_followings.count}个地点" %>：</span>
+      </p>
+      <% @venues.map(&:followable).each do |v| %>
+        <%= link_to image_tag(v.cover.url(:_48x48),:class => "thumb_avatar"),v,:title => v.name %>
+      <% end %>
+      <p><span><%= link_to raw('&raquo; 发现更多地点'),geos_path%></span></p>
     </div>
+    <% end %>
     
     <script type="text/javascript">
-      if($('#notices').html().trim().length == 0){$('#notices').html('<span>暂时没有新鲜事，去<%= link_to "随便逛逛？",''%></span>')};
+      if($('#notices').html().trim().length == 0){$('#notices').html('<span>暂时没有新提醒。</span>')};
     </script>

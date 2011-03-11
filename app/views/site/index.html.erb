@@ -12,22 +12,28 @@
 </div>
 <% end %>
 
-<h3><%= logged_in? ? '你的' : '爱聚的' %>世界在发生...</h3>
+  <h3><%= logged_in? ? '你关注的' : '爱聚的' %>地点发生了什么？</h3>
 
   <%= render :partial => '/public/event', :collection => @timeline %>
   
   <%= link_to('查看更多..',more_timeline_path(:page => 2),:id => 'more_timeline',:class => 'timeline_footer',:onclick => 'javascript:more_timeline();return false;') if logged_in? && @timeline.size == 10 %>
   
-  <p style="margin:0;padding:6px 10px">
-    <% if logged_in? && @followings.empty? %>
-      <%= "你还没有关注过任何地点和用户。去关注你身边的地点吧。"  %>
-    <% else %>
-      <%= "你关注的地点还没有新消息。" if @timeline.empty? %>
-    <% end %>
-  </p>
+  
+  <% if logged_in? && @followings.empty? %>
+    <p>
+      Hi，你还没有关注的地点呢。<br/>
+      找到你关心的地点并关注就可以在这里看到它的新鲜事了。<br/>
+      你可以 <%= link_to '直接搜索',search_path %> 或用 <%= link_to '地图寻找' ,geos_path %>。当然你还可以先 <%= link_to '随便看看',public_path %> :)。
+    </p>
+  <% elsif @timeline.empty?%>
+    <p>
+      你关注的地点还没有新消息,你可以去你的地点报到、上传照片、发起活动等，或者去关注更多的地点。<br/>
+      <%= link_to '直接搜索',search_path %> 或用 <%= link_to '地图寻找' ,geos_path %>。当然你还可以先 <%= link_to '随便看看',public_path %> :)。
+    </p>
+  <% end %>
+
 
 <% content_for :sidebar do %>  
-
   <% if logged_in?%>
     <%= render :partial => "sidebar_panel" %>
   <% else %>
@@ -79,8 +85,7 @@
 <% end %>
 
 <% content_for :extension do %>
-  <script type="text/javascript">
-    
+  <script type="text/javascript">    
     function more_timeline(){
       var dom = $('#more_timeline');
       dom.html('读取中...');

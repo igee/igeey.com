@@ -15,19 +15,6 @@ class SiteController < ApplicationController
       @timeline = (Calling.limit(10) + Saying.limit(10) + Photo.limit(10)).sort{|x,y| y.created_at  <=> x.created_at  }[0..9]
     end
   end
-
-  def followings
-    @venue_followings = @user.venue_followings.paginate(:page => params[:venues_page], :per_page => 20)
-    @calling_followings = @user.calling_followings.paginate(:page => params[:callings_page], :per_page => 20)
-    @user_followings = @user.user_followings.paginate(:page => params[:users_page], :per_page => 20)
-  end
-  
-  def actions
-    @user = current_user
-    @my_callings = @user.callings.paginate(:page => params[:callings_page], :per_page => 20)
-    @my_plans = @user.plans.undone
-    @my_records = @user.records.paginate(:page => params[:records_page], :per_page => 20)
-  end
   
   def more_timeline
     @timeline = []
@@ -37,8 +24,16 @@ class SiteController < ApplicationController
       @timeline += v.sayings.limit(30)
       @timeline += v.photos.limit(30)
     end
-    @timeline = @timeline.uniq.sort{|x,y| y.created_at  <=> x.created_at  }[0..200].paginate(:page => params[:page], :per_page => 10)
+    @timeline = @timeline.sort{|x,y| y.created_at  <=> x.created_at}[0..200].paginate(:page => params[:page], :per_page => 10)
     render :layout => false
+  end
+  
+  def public
+    @timeline = []
+    @timeline += Calling.not_closed.limit(10)
+    @timeline += Saying.limit(10)
+    @timeline += Photo.limit(10)
+    @timeline = @timeline.sort{|x,y| y.created_at  <=> x.created_at  }[0..30]
   end
   
   def city_timeline
@@ -56,6 +51,20 @@ class SiteController < ApplicationController
     end
     render :layout => false
   end
+
+  def followings
+    @venue_followings = current_user.venue_followings.paginate(:page => params[:venues_page], :per_page => 20)
+    @calling_followings = current_user.calling_followings.paginate(:page => params[:callings_page], :per_page => 20)
+    @user_followings = current_user.user_followings.paginate(:page => params[:users_page], :per_page => 20)
+  end
+  
+  def actions
+    @user = current_user
+    @my_callings = @user.callings.paginate(:page => params[:callings_page], :per_page => 20)
+    @my_plans = @user.plans.undone
+    @my_records = @user.records.paginate(:page => params[:records_page], :per_page => 20)
+  end
+  
   
   def unread_comments
     @timeline = []

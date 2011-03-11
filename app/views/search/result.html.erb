@@ -9,11 +9,11 @@
 
 
 <% if @keywords.blank? %>
-<h4>请输入搜索关键词 </h4>
+<span>请输入搜索关键词 </span>
 <% elsif @venues.blank? && @callings.blank? && @users.blank? && @topics.blank? %>
-<h4>没有关于"<%= params[:keywords]%>"的搜索结果</h4>
+<span>没有和"<%= params[:keywords]%>"有关的地点和用户，用 <%= link_to '地图页面',geos_path %> 找找看，或创建新地点。</span>
 <% else %>
-<h4>"<%= params[:keywords]%>"的搜索结果：</h4>
+<span>"<%= params[:keywords]%>"的搜索结果：</span>
   <div id="tabContaier">
     <ul>
       <li><%= link_to "地点(#{@venues.total_entries > 50 ? '50+' : @venues.total_entries})",'#venue_results' unless @venues.blank?%></li>

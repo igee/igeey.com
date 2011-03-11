@@ -15,3 +15,10 @@
     <%= render :partial => '/public/topic',:collection => @my_topics %>
   </div>
 </div>  
+
+
+<% content_for :sidebar do %>  
+  <% if logged_in?%>
+    <%= render :partial => "/site/sidebar_panel" %>
+  <% end %>
+<% end %>

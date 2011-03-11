@@ -753,9 +753,8 @@ input.todo:hover{
 
 #footer_links{
   margin:0;
-  position:relative;
-  left:580px;
-  top:8px;
+  padding-top:5px;
+  padding-left:500px;
   }
 
 #footer_links a{color:#80a0c0;}
@@ -765,6 +764,7 @@ input.todo:hover{
   list-style:none;
   float:left;
   color:#9bc;
+  font-weight:normal;
   margin:4px 10px;
   font-weight:bold;
 }
