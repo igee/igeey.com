@@ -48,7 +48,7 @@
     };
     
     $(".upload_photo_link").click(function(){dialog($(this).attr('title'),("id:upload_photo_venue_" + $(this).attr('tag')),"570px","auto","text");  return false;});
-    
+    $(".zoom_photo").click(function(){$(this).children().first().toggle();$(this).children().last().toggle();return false});
     $(".tabContents").hide();
     $(".tabContents:first").show();
     $("#tabContaier ul li a:first").addClass("active");
@@ -62,6 +62,7 @@
     });
  
     $('pre').each(function(index){$(this).html($(this).html().replace(/(http:\/\/|https:\/\/)((\w|=|\?|\.|\/|&|-|!)+)/g, "<a href='$1$2' target='_blank' rel='nofollow'>$1$2</a>"))});
+    $('form').submit(function(){$(this).find('input:submit').attr('disabled',true)})
     
     $('.event_reply').click(function(){$(this).parent().next().toggle();return false})
     $('.reply_reply').click(function(){
@@ -69,5 +70,6 @@
         reply_field.val($(this).attr('title'));
         reply_field.focus();
         return false;
-        })   
+        })
+    
   })

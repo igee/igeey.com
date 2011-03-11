@@ -24,8 +24,8 @@
       </li>
     </div>
     
-    <div class="box">
-      <p style="color:#999">关注的地点：</p>
+    <div style="padding:0 5px">
+      <p><span style="color:#999">关注的地点：</span></p>
     <% current_user.venue_followings.limit(8).map(&:followable).each do |v|%>
       <%= link_to image_tag(v.cover.url(:_48x48),:class => "thumb_avatar"),v,:title => v.name %>
     <% end%>

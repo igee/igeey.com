@@ -1,8 +1,8 @@
 <div class="event_box">
   <%= controller_name == 'venues' ? (render :partial => "/users/avatar",:object => record.user) : (render :partial => "/venues/venue",:object => record.venue) %>
   <div class="event">
-    <span><%= link_to record.venue.name,record.venue %> 的行动记录：</span>
-    <pre><%= record.title %>  <%= link_to record_url(record),record_path(record)%></pre>
+    <span><%= '在' if controller_name == 'users'%> <%= link_to record.venue.name,record.venue %> 的行动记录：</span>
+    <pre><%= record.title %> <%= short_url(record)%></pre>
     <div class="event_info">
       <span><%= raw "by #{link_to record.user.login,record.user}" unless controller_name == 'users' %></span>
       <span class="timeago" style="float:left"><%= record.created_at %></span>

@@ -206,6 +206,7 @@ button,.button{
     font-family:sans-serif;
     background-color:#ff8f00;
     padding:3px 12px;
+    -padding:4px 12px 2px;
     -webkit-border-radius:3px;-moz-border-radius: 3px;border-radius: 3px;
     cursor:pointer;
     border:none
@@ -486,10 +487,9 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
   }
 
 .event_box.hover{background-color:#f9f9f9}
-.event_box.hover p{color:#777}
 
 .event {
-  width:520px;
+  width:518px;
   margin-left:86px;
   padding:6px 0;
   } 
@@ -522,7 +522,7 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 
 .comment .event_panel{margin:0;width:520px}
 
-.reply{font-size:12px;}
+.reply{font-size:12px;border-bottom:1px dashed #d6d6d6;}
 
 .reply_reply{float:right}
 
@@ -538,6 +538,8 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
   
 .photo{margin-bottom:2px;width:90px;height:64px}
 
+.zoomed_photo{display:none;width:360px;background:url('/images/icon/waiting.gif') no-repeat}
+
 .photo_box form{display:inline}
 
 input.todo:hover{
@@ -548,14 +550,14 @@ input.todo:hover{
 
 .avatar{
   float:left;
-  margin:10px 0 4px 15px;
-  padding:0px 0;
+  padding:10px 10px 4px 15px;
   text-align:center;
 }
 
 .venue{
   float:left;
-  margin:10px 10px;
+  margin:10px;
+  -margin-left:5px;
   padding:0px 0;
   text-align:center;
 }

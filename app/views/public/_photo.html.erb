@@ -1,11 +1,14 @@
 <div class="event_box">
   <%= controller_name == 'venues' ? (render :partial => "/users/avatar",:object => photo.user) : (render :partial => "/venues/venue",:object => photo.venue) %>
   <div class="event">
-    <span><%= raw ("#{link_to photo.venue.name,photo.venue} 的照片：")  unless controller_name == 'venues'%></span>
-    <div>
-      <%= link_to (image_tag photo.photo.url,:class => "photo"),photo,:class => "open_dialog",:title => photo.title,:style => 'float:left' %>
-      <p style="margin-left:100px;"><%= photo.title %></p>
-      <pre style="margin-left:100px;" class="explanation"><%= photo.detail %></pre>
+    <span><%= '在' if controller_name == 'users'%> <%= raw ("#{link_to photo.venue.name,photo.venue} 的照片：")  unless controller_name == 'venues'%></span>
+    <div style="padding-top:10px">
+      <%= link_to (image_tag photo.photo.url,:class => "photo") + (image_tag photo.photo.url(:max500x400),:title => photo.title,:class => "zoomed_photo"),photo,:class => "zoom_photo",:title => photo.title,:style => 'float:left' %>
+      <div style="float:left;padding:0 10px">
+        <%= photo.title %><br/>
+        <pre class="explanation"><%= photo.detail %></pre>
+      </div>
+      
     </div>  
     <div style="clear:both"></div> 
     <div class="event_info">

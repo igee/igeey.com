@@ -79,7 +79,7 @@ class UsersController < ApplicationController
     @followers = @user.followers.limit(9)
     @following_users = @user.user_followings.limit(9).map(&:followable)
     @following_venues = @user.venue_followings.limit(7).map(&:followable)
-    @photos = @user.photos.limit(13)
+    @photos = @user.photos.limit(6)
     @badges = @user.grants.limit(9).map(&:badge)
   end
   
@@ -117,7 +117,7 @@ class UsersController < ApplicationController
                    :followers => '@user.followers[8..-1]',
                    :following_users => "@user.user_followings[8..-1].map(&:followable)",
                    :following_venues => '@user.venue_followings[8..-1].map(&:followable)',
-                   :photos => "@user.photos.paginate(:page => #{params[:page]}, :per_page => 13)",
+                   :photos => "@user.photos.paginate(:page => #{params[:page]}, :per_page => 6)",
                    :callings => "@user.callings.paginate(:page => #{params[:page]}, :per_page => 6)",
                    :sayings => "@user.sayings.paginate(:page => #{params[:page]}, :per_page => 6)",
                    :records => "@user.records.paginate(:page => #{params[:page]}, :per_page => 6)",

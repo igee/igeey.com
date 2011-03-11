@@ -10,8 +10,8 @@
     <%= form.hidden_field :syncable_type %>
     <%= render :partial => '/users/user' ,:object => current_user %>
     <div class="bubble_tail"></div>
-    <div class="bubble" style="<%= 'width:380px' if params[:layout]=='false'%>">
-        <% @synclink = @sync.syncable_type == "Follow" ? eval("#{@sync.syncable.followable_type.downcase}_url(#{@syncable.followable.id})") : eval("#{@sync.syncable_type.downcase}_url(#{@syncable.id})") %>
+    <div class="bubble" style="<%= 'width:360px' if params[:layout]=='false'%>">
+        <% @synclink = (@sync.syncable_type == "Follow" ? short_url(@syncable.followable) : short_url(@syncable)) %>
         <%= form.text_area :content,:value=>"我#{@syncable.description}#{  @sync.syncable_type == "Calling" ? {:time => "，请大家踊跃报名！",:goods => "，请大家支持！"}[@syncable.for_what.to_sym] : '。'} " + @synclink,:style => "width:#{ params[:layout]=='false' ? '340px' : '440px'};height:80px"%>
         <div class="explanation">截取前140字，剩余字数：<span id="character_count"></span></div>
     </div>

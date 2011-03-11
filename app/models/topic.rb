@@ -6,7 +6,6 @@ class Topic < ActiveRecord::Base
   has_many   :comments, :as => :commentable,    :dependent => :destroy
   
   default_scope :order => 'last_replied_at DESC'
-  scope :public,where(:forumable_type => nil)
   
   validate  :title, :presence  => true
   validate  :content, :presence  => true

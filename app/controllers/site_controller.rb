@@ -12,7 +12,7 @@ class SiteController < ApplicationController
       end
       @timeline = @timeline.uniq.sort{|x,y| y.created_at  <=> x.created_at  }[0..9]
     else
-      @timeline = (Calling.limit(10) + Saying.limit(10)).sort{|x,y| y.created_at  <=> x.created_at  }[0..9]
+      @timeline = (Calling.limit(10) + Saying.limit(10) + Photo.limit(10)).sort{|x,y| y.created_at  <=> x.created_at  }[0..9]
     end
   end
 

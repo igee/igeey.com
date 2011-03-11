@@ -1,7 +1,7 @@
 <div class="event_box">
   <%= controller_name == 'venues' ? (render :partial => "/users/avatar",:object => saying.user) : (render :partial => "/venues/venue",:object => saying.venue) %>
   <div class="event">  
-      <span><%= raw "#{link_to saying.venue.name,saying.venue} 的报到：" unless controller_name == 'venues' %></span>
+      <span><%= '在' if controller_name == 'users'%> <%= raw "#{link_to saying.venue.name,saying.venue} 的报到：" unless controller_name == 'venues' %></span>
       <pre><%= saying.content %></pre>
     
     <div class="event_info">
