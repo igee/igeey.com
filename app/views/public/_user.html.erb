@@ -2,7 +2,7 @@
     <%= render :partial => '/users/avatar', :object => user%>
     <div class="event">
       <h4><%= link_to user.login ,user%> <span><%= user.geo.full_name unless user.geo.nil? %></span></h4>
-      <pre><%=raw "#{link_to user.latest_update.description,user.latest_update}" if user.latest_update.present?%></pre>
+      <pre><%= raw "#{user.latest_update.description} #{link_to short_url(user.latest_update),user.latest_update}" if user.latest_update.present?%></pre>
       <div class="event_info">
         <span style="float:left"><%= "#{user.records_count}个行动记录，#{user.callings_count}个召集行动，#{user.follows_count}个关注者"%></span>
       </div>

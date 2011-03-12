@@ -39,6 +39,7 @@ Igee::Application.routes.draw do
       get :position
       get :records
       get :followers
+      get :more_items
     end
     resources :sayings
   end
