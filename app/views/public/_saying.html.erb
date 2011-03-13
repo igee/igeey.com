@@ -12,7 +12,7 @@
       <% if current_user && current_user.id == saying.user_id %>
         <%= link_to "删除","#{saying_path(saying)}?back_path=#{request.path}",:method => :delete,:confirm => '你确定要删除这条报到么？'%> |
       <% end %>
-      <%= link_to "回复#{'(' + saying.comments.size.to_s + ')' if saying.comments.first}",'',:class => "event_reply"%>　
+      <%= link_to "回复#{'(' + saying.comments_count.to_s + ')' if saying.comments_count > 0}",'',:class => "event_reply"%>　
     </div>
     <%= render :partial => "/public/reply_form",:locals =>  {:object => saying}%>
   </div>

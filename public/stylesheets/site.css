@@ -454,6 +454,14 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
   zoom:1;
 }
 
+.reply_bubble{
+  padding:10px 15px;
+  background-color:#fff6d9;
+  overflow:hidden;
+  border:1px solid #ecb;
+  -webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;
+  }
+
 .submit{display:none}
 
 .impact{
@@ -525,6 +533,8 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 .reply{font-size:12px;border-bottom:1px dashed #d6d6d6;}
 
 .reply_reply{float:right}
+
+.replies{margin-bottom:8px;}
 
 .timeline_footer{text-align:center;clear:both;display:block;margin:8px 0;}
 

@@ -11,7 +11,7 @@
         <%= link_to "修改","#{edit_calling_plan_path(plan.calling,plan)}?back_path=#{request.path}"%> |
         <%= link_to "取消",calling_plan_path(plan.calling,plan),:method => :delete,:confirm => '确定要取消你的计划么?' %> |
       <% end %>
-      <%= link_to "回复#{'(' + plan.calling.comments.size.to_s + ')' if plan.calling.comments.first}",'',:class => "event_reply"%>　
+      <%= link_to "回复#{'(' + plan.calling.comments_count.to_s + ')' if plan.calling.comments_count > 0}",'',:class => "event_reply"%>　
     </div>
     <%= render :partial => "/public/reply_form",:locals =>  {:object => plan.calling}%>
   </div>

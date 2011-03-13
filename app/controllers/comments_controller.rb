@@ -1,9 +1,13 @@
 class CommentsController < ApplicationController
   before_filter :login_required
+  respond_to :html, :js, :xml  
   def create
     @comment = current_user.comments.new(params[:comment])
     @comment.content = @comment.content
     @comment.save
-    redirect_to :back
+    respond_to do |format|
+      format.html {redirect_to :back}
+      format.js {respond_with @comment}
+    end
   end
 end

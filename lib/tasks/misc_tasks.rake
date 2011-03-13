@@ -68,4 +68,13 @@ namespace :misc do
       p.update_attributes(:venue_id => (p.imageable_type == 'Venue' ? p.imageable.id : p.imageable.venue.id))
     end
   end
+  
+  desc "Init comments_count for models"
+  task :init_comment_count => :environment do
+    [Record,Calling,Photo,Saying,Topic].each do |model|
+      model.all.each do |item|
+        item.update_attribute(:comments_count,item.comments.size)
+      end
+    end
+  end
 end

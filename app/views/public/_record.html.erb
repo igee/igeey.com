@@ -12,7 +12,7 @@
         <%= link_to '修改',"#{edit_record_path(record)}?back_path=#{request.path}"%> |
         <%= link_to "删除","#{record_path(record)}?back_path=#{request.path}",:method => :delete,:confirm => '你确定要删除这个行动记录么' if current_user && current_user.id == record.user_id%> |
       <% end %>
-      <%= link_to "回复#{'(' + record.comments.size.to_s + ')' if record.comments.first}",'',:class => "event_reply"%>　
+      <%= link_to "回复#{'(' + record.comments_count.to_s + ')' if record.comments_count > 0}",'',:class => "event_reply"%>　
     </div>
     <%= render :partial => "/public/reply_form",:locals =>  {:object => record}%>
   </div>
