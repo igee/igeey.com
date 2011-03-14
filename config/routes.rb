@@ -88,7 +88,9 @@ Igee::Application.routes.draw do
   resources :follows
   resources :topics
   resources :sayings
-  resources :comments
+  resources :comments do
+    get :more, :on => :collection
+  end
   resources :photos
   resources :actions
   resources :projects do

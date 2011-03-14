@@ -10,4 +10,12 @@ class CommentsController < ApplicationController
       format.js {respond_with @comment}
     end
   end
+  
+  def more
+    @commentable = (params[:commentable_type]).capitalize.constantize.find(params[:commentable_id])
+    @comments = @commentable.comments
+    respond_to do |format|
+      format.js {respond_with @comments}
+    end
+  end
 end

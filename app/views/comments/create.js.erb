@@ -3,5 +3,6 @@
 $('<%= @id%>').append("<%= escape_javascript(render :partial => '/public/reply',:object=> @reply) %>"); 
 
 $(".timeago").each(function(){$(this).html('(' + jQuery.timeago($(this).html()) + ')');$(this).removeClass('timeago')});
+//some hard core here
 $('<%= @id %>').next().val("");
-$('<%= @id %>').next().next().attr('disabled',false)
+$('<%= @id %>').next().next().attr('disabled',false);

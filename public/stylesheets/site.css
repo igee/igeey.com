@@ -455,7 +455,7 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 }
 
 .reply_bubble{
-  padding:10px 15px;
+  padding:0 15px;
   background-color:#fff6d9;
   overflow:hidden;
   border:1px solid #ecb;
@@ -534,7 +534,7 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 
 .reply_reply{float:right}
 
-.replies{margin-bottom:8px;}
+.replies{}
 
 .timeline_footer{text-align:center;clear:both;display:block;margin:8px 0;}
 

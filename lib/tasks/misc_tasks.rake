@@ -70,7 +70,7 @@ namespace :misc do
   end
   
   desc "Init comments_count for models"
-  task :init_comment_count => :environment do
+  task :init_comments_count => :environment do
     [Record,Calling,Photo,Saying,Topic].each do |model|
       model.all.each do |item|
         item.update_attribute(:comments_count,item.comments.size)

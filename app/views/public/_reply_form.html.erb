@@ -1,19 +1,18 @@
   <div style="display:none;" class="replys">
     <%= image_tag '/images/reply_tail.png',:style => "position:relative;top:4px;"%>
     <div class="reply_bubble">
-      <%= form_for Comment.new,:remote => true do |form| %>
+      <%= form_for Comment.new,:disable_with => 'Submitting…',:remote => true do |form| %>
         <div id='<%= "#{object.class.to_s.downcase}_#{object.id}_replies"%>' class="replies">
-          <% replies_list = object.comments.last_five.reverse %>
-          <%= raw '<p style="text-align:center">这后最后4条回复，查看更早的回复</p>' if replies_list[-5]%>
-          <%= render :partial => "/public/reply",:collection => replies_list[1..-1] %>
+          <p style='text-align:center'><%= raw "<span>以下是最后5条回复，#{link_to '查看更早的回复',more_comments_path(:commentable_type => object.class.to_s.downcase,:commentable_id => object.id),:remote => true}<span>" if object.comments_count > 5%></p>
+          <%= render :partial => "/public/reply",:collection => object.comments.last_five.reverse %>
         </div>
         <% if logged_in?%>
-          <%= form.text_field :content, :style => "width:400px;height:18px;margin:4px 0 12px 8px",:placeholder => ""%>
+          <%= form.text_field :content, :style => "width:400px;height:18px;margin:10px 0 14px 8px",:placeholder => ""%>
           <%= submit_tag '回复' %>
-          <%= form.hidden_field :commentable_typae,:value => object.class %>
+          <%= form.hidden_field :commentable_type,:value => object.class %>
           <%= form.hidden_field :commentable_id,:value => object.id %>
         <% else %>
-          <span>请登录后即可回复</span>
+          <p style='text-align:center'><span><%= link_to "登录",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%>后即可回复,还没有<%= link_to "注册",signup_path ,:class => "open_dialog",:title => '注册',:id => "signup"%>？</span></p>
         <% end %>
       <% end %>
     </div>
