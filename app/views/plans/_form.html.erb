@@ -13,9 +13,9 @@
           <% if @action.for_what == 'money' %>
             要捐多少(元)？ <%= form.text_field :money, :size => 4 ,:placeholder => '金额'%>。
           <% elsif @action.for_what == 'goods'%>
-            要捐多少(<%= @calling.unit %>)？ <%= form.text_field :goods, :size => 3 ,:placeholder => '数量'%>
+            要捐多少(件)？ <%= form.text_field :goods, :size => 3 ,:placeholder => '数量'%>
           <% elsif @action.for_what == 'time'%>
-            要在<%=  @plan.formatted_plan_at %>去<%= "#{@calling.venue.name}#{@calling.do_what}"%>。<%= form.hidden_field :plan_at, :size => 8,:class => 'with_calendar',:placeholder => "年-月-日"%>
+            要在<%=  @plan.formatted_plan_at %>去<%= "#{@calling.venue.name}参与这个行动"%>。<%= form.hidden_field :plan_at, :size => 8,:class => 'with_calendar',:placeholder => "年-月-日"%>
           <% end %>
         </p>
     </div>

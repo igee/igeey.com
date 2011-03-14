@@ -1,4 +1,4 @@
 <% @replies = @comments %>
 <% @id = "##{@commentable.class.to_s.downcase}_#{@commentable.id}_replies"%>
 $('<%= @id%>').html("<%= escape_javascript(render :partial => '/public/reply',:object=> @replies) %>"); 
-
+$(".timeago").each(function(){$(this).html('(' + jQuery.timeago($(this).html()) + ')');$(this).removeClass('timeago')});

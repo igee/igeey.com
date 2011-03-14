@@ -27,8 +27,5 @@
 <% content_for :extension do %>
 <script type="text/javascript" charset="utf-8">
   $(document).ready(DateTimeShortcuts.init);
-  <% if @record.errors[:unit].present? %>
-    $('#defalut_unit').hide();$('#modify_unit').hide();$('#record_unit').show();
-  <% end %>
 </script>
 <% end %>  

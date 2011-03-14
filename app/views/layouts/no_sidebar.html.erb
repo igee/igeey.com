@@ -27,7 +27,6 @@
       <ul id="nav_links" style="margin-right:140px;margin-left:400px">
         <li><%= link_to '首页',root_path,:class => "#{'selected' if controller_name == 'site' && action_name == 'index'}"%></li>
         <% if logged_in? %>        
-          <li><%= link_to '我的爱聚',myigeey_path,:class => "#{'selected' if controller_name == 'site' && action_name == 'myigeey'}"%></li>
           <li><%= link_to '设置',"#{setting_path}?back_path=#{request.path unless controller_name == 'site' && action_name == 'index'}"%></li>
           <li><%= link_to "退出",logout_path %></li>
         <% else %>

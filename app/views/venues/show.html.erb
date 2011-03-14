@@ -105,28 +105,28 @@
       
       infowindow = new google.maps.InfoWindow;
       
-      $('.find_tagged_with').each(function(){
-        var tag = $(this).html()
-        var title = $(this).attr('title')
-        markers[title] = new Array();
-        $.getJSON(('<%= records_venue_path(@venue,:format => :json)%>?marker=true' ) , function(data){
-          $.each(data, function(i,item){
-              markers[title][i] = new google.maps.Marker({
-                icon: "/images/marker/" + item.record.slug + ".png",
-                position: new google.maps.LatLng(parseFloat(item.record.latitude), parseFloat(item.record.longitude)),
-                title: item.record.name,
-                map: map
-              });
-              google.maps.event.addListener(markers[title][i], "click", function(){
-                $.ajax({
-                  url:"/records/" + item.record.id + ".xml",
-                  success:function(data, textStatus, XMLHttpRequest){infowindow.close();infowindow = new google.maps.InfoWindow({content:XMLHttpRequest.responseText});infowindow.open(map,markers[title][i]);},
-                  dataType:'xml'
-                })
-              })
-            });
-        });
-      });      
+      //$('.find_tagged_with').each(function(){
+      //  var tag = $(this).html()
+      //  var title = $(this).attr('title')
+      //  markers[title] = new Array();
+      //  $.getJSON(('<%= records_venue_path(@venue,:format => :json)%>?marker=true' ) , function(data){
+      //    $.each(data, function(i,item){
+      //        markers[title][i] = new google.maps.Marker({
+      //          icon: "/images/marker/" + item.record.slug + ".png",
+      //          position: new google.maps.LatLng(parseFloat(item.record.latitude), parseFloat(item.record.longitude)),
+      //          title: item.record.name,
+      //          map: map
+      //        });
+      //        google.maps.event.addListener(markers[title][i], "click", function(){
+      //          $.ajax({
+      //            url:"/records/" + item.record.id + ".xml",
+      //            success:function(data, textStatus, XMLHttpRequest){infowindow.close();infowindow = new google.maps.InfoWindow({content:XMLHttpRequest.responseText});infowindow.open(map,markers[title][i]);},
+      //            dataType:'xml'
+      //          })
+      //        })
+      //      });
+      //  });
+      //});      
     }; //initialize_end()
 
     $(document).ready(function(){

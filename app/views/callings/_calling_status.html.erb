@@ -14,7 +14,7 @@
         <br/>
         <span>
           <%= "目标#{@calling.total_number_tag}，"%>
-          <%= {:goods=>"已捐#{@calling.complete_number}#{@calling.unit}",:time => "已有#{@calling.complete_number}人要去"}[@calling.for_what.to_sym]%>
+          <%= {:goods=>"已捐#{@calling.complete_number}件",:time => "已有#{@calling.complete_number}人要去"}[@calling.for_what.to_sym]%>
           </span>
       </div>
       <h4>完成度</h4>

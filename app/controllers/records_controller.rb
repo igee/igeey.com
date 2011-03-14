@@ -13,7 +13,7 @@ class RecordsController < ApplicationController
       @actions = Action.callable
       render :select_action, :layout =>  !(params[:layout] == 'false')
     elsif @record.plan.present?
-      @record = Record.new(:action => @record.plan.action,:venue => @record.plan.venue,:calling => @record.plan.calling,:plan => @record.plan,:unit => @record.plan.calling.unit)
+      @record = Record.new(:action => @record.plan.action,:venue => @record.plan.venue,:calling => @record.plan.calling,:plan => @record.plan)
     end    
   end
   

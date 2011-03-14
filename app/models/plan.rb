@@ -44,15 +44,4 @@ class Plan < ActiveRecord::Base
   def can_edit_by?(current_user)
     self.user == current_user
   end
-  
-  def name
-    if self.action.slug == 'money_donation'
-      "#{self.user.login}要为#{self.venue.name}捐款"
-    elsif self.action.slug == 'goods_donation'
-      "#{self.user.login}要为#{self.venue.name}捐赠#{self.calling.goods_is}"
-    elsif self.action.slug == 'volunteer_service'
-      "#{self.user.login}要去#{self.venue.name}#{self.calling.do_what}"
-    end
-  end
-  
 end

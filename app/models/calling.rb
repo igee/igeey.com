@@ -25,17 +25,13 @@ class Calling < ActiveRecord::Base
     errors["total_#{for_what == 'time' ? 'people' : for_what }"] << '数量必须为大于0的整数' unless total_number && (total_number > 0)
     errors[:do_at] = '请填写集合日期' if (for_what == 'time') && do_at.blank?
   end
-  
-  def content
-    {'time' => do_what,'money' => donate_for,'goods' => goods_is}[for_what]
-  end
     
   def users_count
     self.plans.map(&:user).uniq.size
   end
   
   def total_number_tag
-    {'money' => "#{total_money}元",'goods' => "#{total_goods}#{unit}",'time' => "#{total_people}人" }[for_what]
+    {'money' => "#{total_money}元",'goods' => "#{total_goods}",'time' => "#{total_people}人" }[for_what]
   end
   
   def total_number
@@ -87,16 +83,6 @@ class Calling < ActiveRecord::Base
     "为#{self.venue.name}发起行动：#{self.title}"
   end
   
-  def name
-    if self.action.slug == 'money_donation'
-      "#{self.user.login}为#{self.venue.name}募捐"
-    elsif self.action.slug == 'goods_donation'
-      "#{self.user.login}为#{self.venue.name}募捐#{self.goods_is}"
-    elsif self.action.slug == 'volunteer_service'
-      "#{self.user.login}为#{self.venue.name}召集人#{self.do_what}"
-    end
-  end
-  
   def stamped_at
     last_bumped_at
   end
@@ -106,10 +92,10 @@ class Calling < ActiveRecord::Base
   end
       
   define_index do
-    indexes do_what
-    indexes goods_is
+    indexes title
     indexes detail
-    indexes info
+    indexes address
+    indexes contact
     indexes venue.name ,:as => :venue
     indexes venue.geo.name ,:as => :city
     has venue_id

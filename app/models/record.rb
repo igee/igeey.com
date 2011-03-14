@@ -28,10 +28,6 @@ class Record < ActiveRecord::Base
     errors[for_what] << '数量必须为大于0的整数' unless number > 0
   end
   
-  def content
-    {'time' => do_what,'money' => donate_for,'goods' => goods_is,'online' => title }[for_what]
-  end
-  
   def number
     {'money'=> money,'goods'=> goods,'time'=> time,'online' => online}[for_what] || 0
   end
@@ -53,16 +49,5 @@ class Record < ActiveRecord::Base
     true
   end
   
-  def name
-    if self.action.slug == 'volunteer_service'
-      "#{self.user.login}去#{self.venue.name}#{self.do_what}"
-    elsif self.action.slug == 'goods_donation'
-      "#{self.user.login}为#{self.venue.name}捐赠#{self.goods_is}"
-    elsif self.action.slug == 'mark_map' 
-      "#{self.user.login}为#{self.venue.name}标记地图"
-    elsif self.action.slug == 'money_donation'
-      "#{self.user.login}为#{self.venue.name}捐款"
-    end
-  end
     
 end
