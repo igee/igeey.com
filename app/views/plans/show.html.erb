@@ -58,10 +58,6 @@
     </div>
     
     <div class="box">
-      <h4><%= {'goods' => '捐赠信息','time' => '集合信息','money' => '捐赠信息'}[@plan.for_what]%>：</h4>
-      <p style="padding:5px 10px">
-        <%= @calling.info%>
-      </p>
       <h4>行动流程：</h4>
       <p style="padding:5px 10px">
         <%= raw @plan.action.step_by_step%>
