@@ -206,7 +206,7 @@ ActiveRecord::Schema.define() do
     t.string  :contact
     t.string  :cover_file_name
     t.integer :follows_count,:default => 0
-    t.integer :photos_count,:default => 0
+    t.integer :photos_count, :default => 0
     t.integer :sayings_count,:default => 0
     t.integer :records_count,:default => 0
     t.timestamps
@@ -251,7 +251,7 @@ ActiveRecord::Schema.define() do
     t.integer  :venue_id
     t.text     :content
     t.integer  :comments_count,   :default => 0
-    t.boolean  :has_new_comment,  :default => 0
+    t.boolean  :has_new_comment,  :default => false
     t.datetime :last_replied_at
     t.integer  :last_replied_user_id
     t.timestamps
