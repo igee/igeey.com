@@ -30,9 +30,9 @@ class SiteController < ApplicationController
   
   def public
     @timeline = []
-    @timeline += Calling.not_closed.limit(10)
-    @timeline += Saying.limit(10)
-    @timeline += Photo.limit(10)
+    @timeline += Calling.not_closed.limit(30)
+    @timeline += Saying.limit(30)
+    @timeline += Photo.limit(30)
     @timeline = @timeline.sort{|x,y| y.created_at  <=> x.created_at  }[0..30]
   end
   
