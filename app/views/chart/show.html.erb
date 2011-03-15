@@ -9,6 +9,7 @@
   <h4>历史总量</h4>
   <ul>
     <li>用户： <%= @users_total%></li>
+    <li>报到： <%= @sayings_total%></li>
     <li>地点： <%= @venues_total%></li>
     <li>召集： <%= @callings_total%></li>
     <li>计划： <%= @plans_total%></li>
@@ -78,6 +79,9 @@ $(document).ready(function() {
       },{
          name: '照片',
          data: [<%= @photos_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
+      },{
+         name: '报到',
+         data: [<%= @sayings_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
       },{
          name: '留言',
          data: [<%= @comments_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
