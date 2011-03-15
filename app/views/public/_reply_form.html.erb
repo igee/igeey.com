@@ -3,8 +3,9 @@
     <div class="reply_bubble">
       <%= form_for Comment.new,:disable_with => 'Submitting…',:remote => true do |form| %>
         <div id='<%= "#{object.class.to_s.downcase}_#{object.id}_replies"%>' class="replies">
-          <p style='text-align:center'><%= raw "<span>以下是最后5条回复，#{link_to '查看更早的回复',more_comments_path(:commentable_type => object.class.to_s.downcase,:commentable_id => object.id),:remote => true}<span>" if object.comments_count > 5%></p>
-          <%= render :partial => "/public/reply",:collection => object.comments.last_five.reverse %>
+          <%= render :partial => "/public/reply",:object => object.comments.first if object.comments_count > 3  %>
+          <%= raw "<p style='text-align:center;padding:6px 0;margin:0' class='reply'><span>#{link_to "- 显示中间的#{object.comments_count - 4}条回复 -",more_comments_path(:commentable_type => object.class.to_s.downcase,:commentable_id => object.id),:remote => true}<span></p>" if object.comments_count > 4 %>
+          <%= render :partial => "/public/reply",:collection => object.comments.last_three.reverse %>
         </div>
         <% if logged_in?%>
           <%= form.text_field :content, :style => "width:400px;height:18px;margin:10px 0 14px 8px",:placeholder => ""%>
