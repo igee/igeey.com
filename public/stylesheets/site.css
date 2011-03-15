@@ -737,7 +737,7 @@ input.todo:hover{
 }
 
 #nav_links{
-  margin-left:320px;
+  margin-left:290px;
   margin-right:280px;
   padding:4px 26px;
   background-color:#e4f3fb;
@@ -764,7 +764,7 @@ input.todo:hover{
 #footer_links{
   margin:0;
   padding-top:5px;
-  padding-left:500px;
+  padding-left:480px;
   }
 
 #footer_links a{color:#80a0c0;}
@@ -858,7 +858,24 @@ input.todo:hover{
   border-left:1px solid #bbb;
   border-right:1px solid #bbb;
   border-bottom:1px solid #fff;
-  background:#fff;
-  
+  background:#fff;  
   color:#555;
 }
+
+#search_box{
+  margin-top:10px;
+  position:absolute;
+  margin-left:740px;
+  }
+#keywords{padding:4px;height:14px;width:180px;font-size:13px;}
+#magnifier{
+  display:block;
+  border:0;
+  width:16px;
+  height:16px;
+  position:relative;
+  top:-20px;
+  left:168px;
+  cursor:pointer;
+  background:url('/images/icon/search.png');
+  }

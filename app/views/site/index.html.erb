@@ -4,7 +4,6 @@
 <%= image_tag '/images/title.png',:style=> "border:1px solid #ddd"%>
 <%= link_to raw('&raquo; 了解更多'),guide_path ,:style=>"position:relative;top:-60px;left:490px"%>
 <% end %>
-
   <h3><%= logged_in? ? '你关注的' : '爱聚的' %>地点发生了什么？</h3>
 
   <%= render :partial => '/public/event', :collection => @timeline %>
