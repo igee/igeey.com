@@ -117,9 +117,10 @@ namespace :misc do
         w = r["Placemark"][0]["AddressDetails"]["Country"]["AdministrativeArea"]["Locality"]["LocalityName"]
         g = Geo.find_by_name(w.mb_chars.slice(0..-2).to_s)
         puts "into #{g.nil? ? 'unknow' : g.name} "
-        v.update_attribute(:geo_id,(g.nil? ? 1 : g.id ))
+        v.update_attribute(:geo_id,(g.nil? ? 0 : g.id ))
         sleep(1)
       rescue
+        puts " error."
         v.update_attribute(:geo_id,0)
       end  
     end
