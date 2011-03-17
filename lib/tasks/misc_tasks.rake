@@ -112,8 +112,10 @@ namespace :misc do
     require 'open-uri'
     Venue.where(:id=>190..1792).each do |v|
       r = JSON.parse(open("http://maps.google.com/maps/geo?q=#{URI.escape(v.name)}").read)["Placemark"][0]["AddressDetails"]["Country"]["AdministrativeArea"]["Locality"]["LocalityName"].mb_chars.slice(0..-2).to_s
-      puts r
-      v.update_attribute(Geo.find_by_name(r) || 1)
+      g = Geo.find_by_name(r)
+      puts g
+      v.update_attribute(:geo_id,(g.nil? ? 1 : g.id ))
+      sleep(0.5) 
     end
   end
 end
