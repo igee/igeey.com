@@ -80,7 +80,7 @@ namespace :misc do
   
   desc "Import 1kg schools data as venues"
   task :import_1kg_schools => :environment do
-    puts "start at id:#{Venue.first.id +1 }"
+    puts("start at id:#{Venue.first.id + 1 }")
     YAML.load(open('1kg_schools.yaml')).each do |s|
       v = Venue.new(s)
       if Venue.where(:name => v.name).empty?
@@ -89,12 +89,12 @@ namespace :misc do
         v.save(false)
       end      
     end
-    puts "end at id:#{Venue.first.id}"
+    puts("end at id:#{Venue.first.id}")
   end
   
   desc "Import university data as venues"
   task :import_university => :environment do
-    puts "start at id:#{Venue.first.id +1 }"
+    p("start at id:#{Venue.first.id + 1 }")
     File.open('university.txt').readlines.each do |s|
       v = Venue.new(eval(s))
       if Venue.where(:name => v.name).empty?
@@ -104,6 +104,6 @@ namespace :misc do
         v.save(false)
       end  
     end
-    puts "end at id:#{Venue.first.id}"
+    puts("end at id:#{Venue.first.id}")
   end
 end
