@@ -199,6 +199,7 @@ ActiveRecord::Schema.define() do
     t.string  :custom_category,     :limit => 40
     t.integer :geo_id
     t.integer :creator_id
+    t.integer :old_id
     t.string  :latitude,     :limit => 40
     t.string  :longitude,    :limit => 40
     t.integer :zoom_level,   :default => 13

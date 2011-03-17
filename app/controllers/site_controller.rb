@@ -1,5 +1,5 @@
 class SiteController < ApplicationController
-  before_filter :login_required, :except=> [:index,:faq,:guide,:about,:report]
+  before_filter :login_required, :except=> [:index,:faq,:guide,:about,:report,:public]
   
   def index
     if logged_in?
