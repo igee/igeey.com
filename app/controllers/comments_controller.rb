@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_filter :login_required
+  before_filter :login_required, :except => [:more]
   respond_to :html, :js, :xml  
   def create
     @comment = current_user.comments.new(params[:comment])
