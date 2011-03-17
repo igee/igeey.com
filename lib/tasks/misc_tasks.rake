@@ -110,11 +110,16 @@ namespace :misc do
   desc "Update venue geo information"
   task :update_geo_id => :environment do
     require 'open-uri'
-    Venue.where(:id=>190..1792).each do |v|
+    Venue.where(:id=>190..1616).each do |v|
+      print "updating venue id:#{v.id} geo_city"
       r = JSON.parse(open("http://maps.google.com/maps/geo?q=#{URI.escape(v.name)}").read)
-      w = r["Placemark"][0]["AddressDetails"]["Country"]["AdministrativeArea"]["Locality"]["LocalityName"].mb_chars.slice(0..-2).to_s
-      g = Geo.find_by_name(w)
-      puts "updating venue id:#{v.id} geo into #{g.nil? ? 'unknow' : g.name} "
+      begin
+        w = r["Placemark"][0]["AddressDetails"]["Country"]["AdministrativeArea"]["Locality"]["LocalityName"]
+      rescue
+        w = r["Placemark"][0]["AddressDetails"]["Country"]["AdministrativeArea"]["AdministrativeAreaName"]
+      end
+      g = Geo.find_by_name(w.mb_chars.slice(0..-2).to_s)
+      puts "into #{g.nil? ? 'unknow' : g.name} "
       v.update_attribute(:geo_id,(g.nil? ? 1 : g.id ))
       sleep(1) 
     end
