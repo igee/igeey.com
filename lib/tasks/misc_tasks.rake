@@ -100,6 +100,7 @@ namespace :misc do
       if Venue.where(:name => v.name).empty?
         v.creator_id = 1
         v.category = 4
+        v.geo_id = 1
         v.save(false)
       end  
     end
