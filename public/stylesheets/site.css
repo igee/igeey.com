@@ -873,7 +873,9 @@ input.todo:hover{
   margin-top:10px;
   position:absolute;
   margin-left:740px;
+  -margin-left:740px;
   }
+  
 #keywords{padding:4px;height:14px;width:180px;font-size:13px;}
 #magnifier{
   display:block;
