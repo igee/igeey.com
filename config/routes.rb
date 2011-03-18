@@ -35,11 +35,12 @@ Igee::Application.routes.draw do
   
   resources :venues do
     member do
-      get :cover
-      get :position
-      get :records
-      get :followers
-      get :more_items
+      get  :cover
+      get  :position
+      get  :records
+      get  :followers
+      get  :more_items
+      post :watching
     end
     resources :sayings
   end

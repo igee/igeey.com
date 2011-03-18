@@ -210,6 +210,7 @@ ActiveRecord::Schema.define() do
     t.integer :photos_count, :default => 0
     t.integer :sayings_count,:default => 0
     t.integer :records_count,:default => 0
+    t.integer :watch_count,  :default => 0
     t.timestamps
   end
   

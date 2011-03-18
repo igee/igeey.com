@@ -146,6 +146,7 @@
           }          
         });
       initialize();
+      setTimeout(function(){$.post('<%= watching_venue_path(@venue)%>')},5000)
     });  
   </script>
 <% end %>

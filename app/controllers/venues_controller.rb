@@ -1,6 +1,6 @@
 class VenuesController < ApplicationController
   respond_to :html,:json
-  before_filter :login_required, :except => [:index, :show,:records]
+  before_filter :login_required, :except => [:index, :show,:records,:followers,:more_items,:position,:watching]
   before_filter :find_venue, :except => [:index,:new,:create]
   
   def index
@@ -80,10 +80,14 @@ class VenuesController < ApplicationController
     render :layout => false
   end
   
+  def watching
+    @venue.update_attribute(:watch_count,(@venue.watch_count + 1))
+    render :text => 'OK'
+  end
+  
   private
   def find_venue
     @venue = Venue.find(params[:id])
-    
   end
 
 end
