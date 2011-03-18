@@ -30,4 +30,5 @@ gem 'thinking-sphinx', '2.0.0', :require => 'thinking_sphinx'
 group :development, :test do
   #gem 'webrat'
   gem 'ruby-debug'
+  gem 'request-log-analyzer'
  end
