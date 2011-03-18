@@ -28,8 +28,8 @@ class User < ActiveRecord::Base
                             :default_style=> :_48x48,
                             :url=>"/media/:attachment/:id/:style.:extension"
   
-  scope :popular,order('follows_count DESC')
-
+  default_scope :order => 'follows_count DESC'
+  
   validates :login, :uniqueness => true,
                     :length     => { :within => 1..40,:message => '用户名字数在1至40之间'},
                     :format     => { :with => Authentication.login_regex, :message => '用户名请使用中文和常见的字符' }
