@@ -22,5 +22,8 @@ Igee::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+  
+  # Auto rotate log files, keep 2 of 5MB each
+  config.logger = Logger.new(config.paths.log.first, 1, 5.megabytes)
 end
 
