@@ -18,7 +18,7 @@ class Venue < ActiveRecord::Base
                             :default_style=> :_100x100,
                             :default_url=>"/defaults/:attachment/venue/:style.png"
 
-  default_scope :order => 'follows_count DESC'
+  #default_scope :order => 'follows_count DESC'
   
   validates :name,:latitude,:longitude, :presence   => true
   #validates :intro,:length     => { :within => 1..100,:message => '填请写100字以内的简介' }
@@ -78,6 +78,7 @@ class Venue < ActiveRecord::Base
   end
   
   define_index do
+    indexes follows_count,:sortable => true
     indexes name
     indexes intro
     indexes geo.name,:as => :city
