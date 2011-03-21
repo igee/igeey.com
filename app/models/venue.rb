@@ -1,5 +1,4 @@
 class Venue < ActiveRecord::Base
-  
   CATEGORIES_HASH = {'1' => '自然景观','2' => '居住区','3' => '公共设施','4' => '教育场所','5' => '服务场所','6' => '商业场所','7'=>'其他','8'=>'乡村小学'}
     
   belongs_to :creator, :class_name => "User", :foreign_key => "creator_id"
@@ -50,6 +49,16 @@ class Venue < ActiveRecord::Base
     self.records.size
   end
     
+  def init_geocodding
+    begin
+      response = Net::HTTP.get_response(URI.parse("http://maps.googleapis.com/maps/api/geocode/json?address=#{URI.escape(self.address)},#{URI.escape(self.geo.name)}&sensor=false"))
+      json = ActiveSupport::JSON.decode(response.body)
+      self.latitude, self.longitude = json["results"][0]["geometry"]["location"]["lat"], json["results"][0]["geometry"]["location"]["lng"]
+    rescue
+      self.latitude, self.longitude = self.geo.latitude,self.geo.longitude
+    end
+  end
+  
   def self.generate_json
     require 'json'
     venues = Venue.all

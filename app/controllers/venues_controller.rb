@@ -19,7 +19,7 @@ class VenuesController < ApplicationController
   def create
     @venue = Venue.new(params[:venue])
     @venue.creator = current_user
-    auto_geocodding(@venue)
+    @venue.init_geocodding
     flash[:notice] = 'Venue was successfully created.' if @venue.save
     respond_with(@venue)
   end
@@ -85,17 +85,5 @@ class VenuesController < ApplicationController
   private
   def find_venue
     @venue = Venue.find(params[:id])
-  end
-
-  def auto_geocodding(venue)
-    include Geokit::Geocoders
-    if venue.address.blank?
-      lat,lng = nil,nil
-    else
-      res = MultiGeocoder.geocode("#{venue.address},#{venue.geo.name}")
-      lat,lng = res.lat,res.lng
-    end
-    @venue.latitude = lat.nil? ?  @venue.geo.latitude : lat
-    @venue.longitude = lng.nil? ?  @venue.geo.longitude : lng
   end
 end
