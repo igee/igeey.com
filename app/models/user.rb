@@ -241,8 +241,9 @@ class User < ActiveRecord::Base
     
   define_index do
     indexes login
+    indexes signature
     indexes geo.name,:as => :city
-    
+    has follows_count
     has geo_id
   end
 
