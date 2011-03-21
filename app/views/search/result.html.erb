@@ -23,7 +23,7 @@
     <div id="results">  
       <div id="venue_results" class="tabContents">
         <%= render :partial => "/public/venue",:collection => @venues%>
-        <%= link_to raw("更多结果 &#8744;"),more_search_path(:keywords => params[:keywords],:items => 'venues'),:class => "more_results" if @venues[9].present?%>
+        <%= link_to raw("更多结果 &#8744;"),more_search_path(:keywords => params[:keywords],:items => 'venues',:page => 2),:class => "more_results" if @venues[9].present?%>
       </div>
       
       <div id="user_results" class="tabContents">
@@ -46,4 +46,4 @@
     </script>
   <% end %>
 <% end %>
-<p style="border-top:1px dashed #ccc;padding:10px 0;margin-top:10px;">没有你要找的地点？ 没关系，立即 <%= link_to '添加地点',new_venue_path%> 吧。</p>
+<p style="padding:10px 0;">没有你要找的地点？ 没关系，立即 <%= link_to '添加地点',new_venue_path%> 吧。</p>
