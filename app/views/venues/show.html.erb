@@ -73,8 +73,9 @@
   </div>
 
   <div class="box">
+    <span style="float:right"><%= link_to "查看大图",position_venue_path(@venue),:class => 'open_dialog',:title => '地点地图'%></h4></span>
     <h4>地图：</h4>
-    <div id="map_canvas" style="width:248px;height:160px;"></div>
+    <div id="sidebar_map_canvas" style="width:248px;height:160px;"></div>
   </div>
 <% end %>
 
@@ -93,13 +94,13 @@
         scaleControl: false,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
-      map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+      small_map = new google.maps.Map(document.getElementById("sidebar_map_canvas"), myOptions);
       
       markers = new Array();
       markers['position'] = new Array();
       markers['position'][0] = new google.maps.Marker({
-        map: map,
-        position: map.getCenter(),
+        map: small_map,
+        position: small_map.getCenter(),
         title: '<%= @venue.name %>'
       });
       

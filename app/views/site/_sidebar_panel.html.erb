@@ -34,7 +34,6 @@
       <% @venues.map(&:followable).each do |v| %>
         <%= link_to image_tag(v.cover.url(:_48x48),:class => "thumb_avatar"),v,:title => v.name %>
       <% end %>
-      <p><span><%= link_to raw('&raquo; 发现更多地点'),geos_path%></span></p>
     </div>
     <% end %>
     

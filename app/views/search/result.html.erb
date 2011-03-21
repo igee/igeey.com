@@ -8,16 +8,16 @@
 <% end %>
 
 
-<% if @keywords.blank? %>
-<span>请输入搜索关键词 </span>
-<% elsif @venues.blank? && @callings.blank? && @users.blank? && @topics.blank? %>
-<span>没有和"<%= params[:keywords]%>"有关的地点和用户，用 <%= link_to '地图页面',geos_path %> 找找看，或创建新地点。</span>
-<% else %>
-<span>"<%= params[:keywords]%>"的搜索结果：</span>
-  <div id="tabContaier">
+  <% if @keywords.blank? %>
+  <span>请输入搜索关键词 </span>
+  <% elsif @venues.blank? && @callings.blank? && @users.blank? && @topics.blank? %>
+  <% else %>
+  <span>"<%= params[:keywords]%>"的搜索结果：</span>
+  
+  <div id="tabContaier" class="box">
     <ul>
-      <li><%= link_to "地点(#{@venues.total_entries > 50 ? '50+' : @venues.total_entries})",'#venue_results' unless @venues.blank?%></li>
-      <li><%= link_to "用户(#{@users.total_entries > 50 ? '50+' : @users.total_entries})",'#user_results' unless @users.blank?%></li>
+      <li><%= link_to "地点(#{@venues.total_entries > 50 ? '50+' : @venues.total_entries})",'#venue_results'%></li>
+      <li><%= link_to "用户(#{@users.total_entries > 50 ? '50+' : @users.total_entries})",'#user_results'%></li>
     </ul>
     <div id="results">  
       <div id="venue_results" class="tabContents">
@@ -29,10 +29,10 @@
         <%= render :partial => "/public/user",:collection => @users%>
         <%= link_to raw("更多结果 &#8744;"),more_search_path(:keywords => params[:keywords],:items => 'users',:page => 2),:class => "more_results" if  @users[9].present?%>
       </div>
-    
     </div>
   </div>
   
+  <p>没有你要找的地点？ 没关系，立即 <%= link_to '添加地点',new_venue_path%> 吧。</p>
   <% content_for :extension do %>
     <script type="text/javascript">
     $(document).ready(function(){
@@ -43,7 +43,6 @@
         $.get(container.attr('href'),function(data){container.replaceWith(data)})
         return false;
         });
-      $('#tabContaier ul li a').first().click();
     })
     </script>
   <% end %>

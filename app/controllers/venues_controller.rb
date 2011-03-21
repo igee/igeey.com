@@ -13,16 +13,13 @@ class VenuesController < ApplicationController
   end
   
   def new
-    if params[:latitude].blank? || params[:longitude].blank?
-      redirect_to geos_path
-    else
-      @venue = Venue.new(:latitude => params[:latitude],:longitude => params[:longitude],:geo_id => params[:geo_id],:zoom_level => params[:zoom_level])
-    end
+    @venue = Venue.new
   end
 
   def create
     @venue = Venue.new(params[:venue])
     @venue.creator = current_user
+    auto_geocodding(@venue)
     flash[:notice] = 'Venue was successfully created.' if @venue.save
     respond_with(@venue)
   end
@@ -90,4 +87,15 @@ class VenuesController < ApplicationController
     @venue = Venue.find(params[:id])
   end
 
+  def auto_geocodding(venue)
+    include Geokit::Geocoders
+    if venue.address.blank?
+      lat,lng = nil,nil
+    else
+      res = MultiGeocoder.geocode("#{venue.address},#{venue.geo.name}")
+      lat,lng = res.lat,res.lng
+    end
+    @venue.latitude = lat.nil? ?  @venue.geo.latitude : lat
+    @venue.longitude = lng.nil? ?  @venue.geo.longitude : lng
+  end
 end

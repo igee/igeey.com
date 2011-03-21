@@ -4,47 +4,70 @@
   <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false"></script>
 <% end %>
 
-<div class="box">
+<div>
   <h4>地点位置</h4>
   <div id="map_canvas" style="height:360px;clear:both;margin:10px 0"></div>
 </div>
 
+<div style="float:left">
+  <%= form_tag geos_path,:id =>'locate',:remote => true do %>
+    <%= text_field_tag 'address', @address,:size => 12,:placeholder => '城市,地址...'%>
+    <%= submit_tag '定位',:class => 'button'%>
+  <% end %>
+</div>
+
 <div style="text-align:right">
-  <%= form_for @venue do |form|%>
+  <%= link_to '修改位置','',:class => 'button',:onclick => "javascript:$(this).hide();$(this).next().show();marker.setDraggable(true);marker.setIcon('http://maps.gstatic.cn/intl/zh-CN_cn/mapfiles/marker_green.png');return false;" if @venue.creator == current_user%>
+  <%= form_for @venue,:html => {:style => 'display:none'} do |form|%>
     <%= form.hidden_field :latitude %>
     <%= form.hidden_field :longitude %>
     拖动绿色标记修改地点位置
-    <%= form.submit '确定',:id => "update_position",:class => 'button' %>
-    <%= button_to_function '取消',"javascript:cancel_edit()",:class => 'button' %>
+    <%= form.submit '完成',:id => "update_position",:class => 'button' %>
+    <%= button_to_function '取消',"javascript:$('#floatBox #close_dialog').click();#{'window.history.back()' unless params[:layout] == 'false'}",:class => "button"%>
   <% end %>
-
 </div>
-  <script type="text/javascript">
-    function initialize() {
-      var latlng = new google.maps.LatLng(<%= "#{@venue.latitude || 35.0},#{@venue.longitude || 105.0}"%>)
-      var myOptions = {
-        zoom: 16,
-        center: latlng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      };
-      map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-      
-      marker = new google.maps.Marker({
-        icon: "http://maps.gstatic.cn/intl/zh-CN_cn/mapfiles/marker_green.png",
-        map: map,
-        position: map.getCenter(),
-        title: '<%= @venue.name %>',
-        draggable: true
-      });
-    }; //initialize_end()
+
+<script type="text/javascript">
+  function initialize() {
+    var latlng = new google.maps.LatLng(<%= "#{@venue.latitude || 35.0},#{@venue.longitude || 105.0}"%>)
+    var myOptions = {
+      zoom: 16,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
     
-    
-    $(document).ready(function(){
-      //use javascript to check whether there are news for performance
-      $('#update_position').click(function(){
-        $('#venue_latitude').val(marker.getPosition().lat());
-        $('#venue_longitude').val(marker.getPosition().lng());
-        })
-      initialize();
-    });  
-  </script>
+    marker = new google.maps.Marker({
+      map: map,
+      position: map.getCenter(),
+      title: '<%= @venue.name %>',
+      draggable: false
+    });
+  }; //initialize_end()
+  
+  function geocoding(address){
+    geocoder = new google.maps.Geocoder();
+    geocoder.geocode( {'address': address }, function(results, status) {
+      if(status == google.maps.GeocoderStatus.OK){
+          $.map(results, function(item) {
+            map.setCenter(new google.maps.LatLng(item.geometry.location.lat(),item.geometry.location.lng()));
+            map.setZoom(item.address_components.length * 2 + 4);
+            marker.setPosition(map.getCenter())
+          })
+      }
+      else{
+        alert('没有找到'+ address);
+      };      
+    });
+  }
+  
+  $(document).ready(function(){
+    //use javascript to check whether there are news for performance
+    $('#update_position').click(function(){
+      $('#venue_latitude').val(marker.getPosition().lat());
+      $('#venue_longitude').val(marker.getPosition().lng());
+      })
+    $('#locate').submit(function(){geocoding($('#address').attr('value'))})
+    initialize();
+  });  
+</script>

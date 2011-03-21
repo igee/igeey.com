@@ -4,30 +4,10 @@
   <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false"></script>
 <% end %>
 
-<div style="float:right">
-  <%= form_tag geos_path,:id =>'locate',:remote => true do %>
-    <%= text_field_tag 'address', @address,:size => 12,:placeholder => '城市,地址...'%>
-    <%= submit_tag '定位',:class => 'button'%>
-  <% end %>
-</div>
-
+<div style="float:right;padding:2px 0"><%= link_to '添加地点',new_venue_path%></div>
 <h2 style="display:inline"><%= @geo.name%></h2> <%= link_to '切换地区',list_geos_path,:class => 'open_dialog',:title => '切换地区'%>
 
 <div id="map_canvas" style="height:360px;clear:both;margin-top:6px"></div>
-
-<div class="box">
-  <p id="create_venue_box" style="text-align:center;">
-    没有找到你要的地点？
-    <%= link_to "添加地点",new_venue_path,:id => "create_venue" %> 吧。
-  </p>
-  <div id="mark_guide" style="display:none;text-align:center;background:#ddd;padding:4px">
-    <p>拖动 <span style="color:#c52;font-size:14px">红色标记 </span>确定要添加的地点位置。<br/> (使用地图右上方的定位功能可以帮助你)</p>
-    <p>
-      <%= link_to "找到了，下一步",new_venue_path,:id => "next_step",:class => 'button' %>
-      <%= link_to "取消",'#',:id => "cancel_mark",:class => 'button' %>
-    </p>
-  </div>
-</div>
 
 <div class="box">
   <h4>最新被提交的地点</h4>
@@ -39,9 +19,7 @@
 </div>
 
 <% content_for :sidebar do %>
-
   <%= render '/venues/what_is_venue'%>
-
 <% end %>
 
 <% content_for :extension do %>
@@ -82,48 +60,10 @@
         zindex: 100
       });
       
-      
     }; //initialize_end()
-    
-    function mark_latlng(){
-      marker.setPosition(map.getCenter())
-      marker.setMap(map);
-      $('#create_venue_box').toggle();
-      $('#mark_guide').toggle(); 
-      return false;
-    };
-    
-    function cancel_mark(){
-      marker.setMap();
-      $('#create_venue_box').toggle();
-      $('#mark_guide').toggle(); 
-      return false;
-    };
-    
-    
-    function geocoding(address){
-      geocoder.geocode( {'address': address }, function(results, status) {
-        if(status == google.maps.GeocoderStatus.OK){
-            $.map(results, function(item) {
-              map.setCenter(new google.maps.LatLng(item.geometry.location.lat(),item.geometry.location.lng()));
-              map.setZoom(item.address_components.length * 2 + 3);
-              marker.setPosition(map.getCenter())
-            })
-        }
-        else{
-          alert('没有找到'+ address);
-        };      
-      });
-    }
     
     $(document).ready(function(){
         initialize();
-        $('#next_step').click(function(){$(this).attr(
-           'href',
-           '<%= "#{new_venue_path}" %>?latitude=' + marker.getPosition().lat() + '&longitude=' + marker.getPosition().lng() + "&geo_id=<%=@geo.id%>" + "&zoom_level=" + map.getZoom()
-        );})
-        $('#create_venue').click(mark_latlng);
-        $('#cancel_mark').click(cancel_mark);
         $('#locate').submit(function(){geocoding($('#address').attr('value'))})
       });  
   </script>

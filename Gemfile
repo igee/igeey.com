@@ -15,6 +15,7 @@ gem 'date_validator'
 gem 'capistrano'
 gem 'will_paginate', '~> 3.0.beta'
 gem 'thinking-sphinx', '2.0.0', :require => 'thinking_sphinx'
+gem 'geokit'
 
 # Use unicorn as the web server
 # gem 'unicorn'
