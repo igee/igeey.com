@@ -8,11 +8,11 @@
 <% end %>
 
 
-  <% if @keywords.blank? %>
+<% if @keywords.blank? %>
   <span>请输入搜索关键词 </span>
-  <% elsif @venues.blank? && @callings.blank? && @users.blank? && @topics.blank? %>
+<% elsif @venues.blank? && @callings.blank? && @users.blank? && @topics.blank? %>
   <span>很遗憾，没有关于"<%= params[:keywords]%>"搜索结果。<span>
-  <% else %>
+<% else %>
   <span>"<%= params[:keywords]%>"的搜索结果：</span>
   
   <div id="tabContaier" class="box">
@@ -45,5 +45,5 @@
     })
     </script>
   <% end %>
-  <p>没有你要找的地点？ 没关系，立即 <%= link_to '添加地点',new_venue_path%> 吧。</p>
 <% end %>
+<p>没有你要找的地点？ 没关系，立即 <%= link_to '添加地点',new_venue_path%> 吧。</p>
