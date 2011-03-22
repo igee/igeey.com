@@ -107,6 +107,19 @@ namespace :misc do
     puts("end at id:#{Venue.first.id}")
   end
   
+  desc "Update empty 1kg schools intro"
+  task :update_1kg_schools_intro => :environment do
+    require 'open-uri'
+    Venue.where(:category => 8).each do |v|
+      if v.intro.blank?
+        intro = open("http://www.1kg.org/schools/#{v.old_id}/intro").read
+        v.update_attribute(:intro,intro)
+        sleep(1)
+      end
+    end
+  end
+  
+  
   desc "Update venue geo information"
   task :update_geo_id => :environment do
     require 'open-uri'
