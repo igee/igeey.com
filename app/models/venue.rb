@@ -17,8 +17,6 @@ class Venue < ActiveRecord::Base
                             :url=>"/media/:attachment/venues/:id/:style.jpg",
                             :default_style=> :_100x100,
                             :default_url=>"/defaults/:attachment/venue/:style.png"
-
-  default_scope :order => 'follows_count DESC'
   
   validates :name,:latitude,:longitude, :presence   => true
   #validates :intro,:length     => { :within => 1..100,:message => '填请写100字以内的简介' }

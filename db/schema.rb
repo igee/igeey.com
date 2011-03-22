@@ -106,16 +106,6 @@ ActiveRecord::Schema.define() do
     t.timestamps
   end
   
-  #create_table "projects", :force => true do |t|
-  #  t.integer  :user_id
-  #  t.string   :name,       :limit => 40
-  #  t.text     :intro
-  #  t.string   :website
-  #  t.string   :tag,        :limit => 40
-  #  t.string   :cover_file_name
-  #  t.integer  :follows_count,             :default => 0
-  #end
-  
   create_table "records", :force => true do |t|
     t.integer  :user_id
     t.integer  :venue_id
