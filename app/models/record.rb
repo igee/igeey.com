@@ -11,8 +11,7 @@ class Record < ActiveRecord::Base
   has_many   :syncs,    :as => :syncable,       :dependent => :destroy
   has_many   :photos,   :as => :imageable,     :dependent => :destroy
   
-  default_scope :order => 'created_at DESC'
-  scope :markers,where(:action_id => 4)
+  default_scope :order => 'created_at DESC',:include => [:user]
   
   delegate  :for_what, :to => :action
   

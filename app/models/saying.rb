@@ -4,7 +4,7 @@ class Saying < ActiveRecord::Base
 
   has_many   :comments, :as => :commentable,    :dependent => :destroy
   
-  default_scope :order => 'created_at DESC'
+  default_scope :order => 'created_at DESC',:include => [:user]
   
   validates :content,:length => { :within => 1..140,:message => '限制字数在140字以内' }
 

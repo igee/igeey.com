@@ -5,7 +5,7 @@ class Photo < ActiveRecord::Base
   
   has_many   :comments, :as => :commentable, :dependent => :destroy
   
-  default_scope :order => 'created_at DESC'
+  default_scope :order => 'created_at DESC',:include => [:user]
   
   has_attached_file :photo, :styles => {:_90x64 => ["90x64#"],:max500x400 => ["500x400>"]},
                             :url=>"/media/:attachment/:id/:style.:extension",

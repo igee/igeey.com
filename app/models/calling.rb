@@ -10,7 +10,7 @@ class Calling < ActiveRecord::Base
   has_many   :follows,  :as => :followable,  :dependent => :destroy
   has_many   :followers,:through => :follows,:source => :user
   
-  default_scope :order => 'created_at DESC'
+  default_scope :order => 'created_at DESC',:include => [:user]
   
   scope :not_closed,where(:close => false) 
   scope :timing,where(:action_id => [1]) # timeing action list 
