@@ -4,12 +4,10 @@ class VenuesController < ApplicationController
   before_filter :find_venue, :except => [:index,:new,:create]
   
   def index
-    if params[:user_id].present?
-      @venues = User.find(params[:user_id]).records.map(&:venue)
-    else
-      @venues = Venue.all
+    @venues_hash = {}
+    Venue::SHORT_CATEGORIES_HASH.each do |k,v|
+      @venues_hash[v.to_sym] = Venue.where(:category => k).limit(6)
     end
-    respond_with(@venues)
   end
   
   def new

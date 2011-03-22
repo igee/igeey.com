@@ -1,10 +1,13 @@
-  <div class="event_box">
-    <%= render :partial => "/venues/venue",:object => venue %>
-    <div class="event">
-      <h4><%= link_to venue.name ,venue%> <span><%= venue.geo.full_name %></span></h4>
-      <div class="explanation" style="margin-top:-4px"><%= venue.intro%></div>
+<div class="event_box">
+  <%= render :partial => "/venues/venue",:object => venue %>
+  <div class="event">
+    <h4><%= link_to venue.name ,venue%> <span><%= venue.geo.full_name %></span></h4>
+    <div class="explanation"><%= venue.intro%></div>
+    <div class="event_info">
+      <span><%= "#{venue.follows_count}个关注者，#{venue.sayings_count}次报到，#{venue.follows_count}张照片,#{venue.records_count}个行动"%></span>
     </div>
     <div class="event_action">
       <%= raw(follow_status(venue))%>
     </div>
   </div>
+</div>

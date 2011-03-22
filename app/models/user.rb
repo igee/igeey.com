@@ -48,7 +48,8 @@ class User < ActiveRecord::Base
   
   attr_accessible :login, :email, :name, :password, :password_confirmation,:avatar,:avatar_file_name,:geo_id,:signature,:use_local_geo
 
-
+  default_scope :order => 'follows_count desc'
+  
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #
   # uff.  this is really an authorization, not authentication routine.  

@@ -244,8 +244,10 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 }
 
 .explanation{
-  color:#888;
+  color:#777;
+  margin-bottom:4px;
   font-size:12px;
+  line-height:18px;
   font-weight:normal;
   }
 
