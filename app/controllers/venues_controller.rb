@@ -71,6 +71,7 @@ class VenuesController < ApplicationController
     @items = eval({:followers => '@venue.followers[8..-1]',
                    :photos => "@venue.photos.paginate(:page => #{params[:page]}, :per_page => 6)",
                    :sayings => "@venue.sayings.paginate(:page => #{params[:page]}, :per_page => 6)",
+                   :topics => "@venue.topics.paginate(:page => #{params[:page]}, :per_page => 6)",
                    }[params[:items].to_sym])
     render :layout => false
   end

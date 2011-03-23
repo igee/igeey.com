@@ -22,6 +22,7 @@
   <ul>
     <li><%= link_to '报到','#checkin_timeline'%></li>
     <li><%= link_to '照片','#photo_timeline'%></li>
+    <li><%= link_to '故事','#topic_timeline'%></li>
     <li><%= link_to '行动','#record_timeline'%></li>
   </ul>
   <div id="checkin_timeline" class="tabContents">
@@ -44,6 +45,13 @@
     </div>
     <%= render :partial => "/public/photo",:collection => @photos %>
     <%= link_to raw("查看更多 &#8744;"),more_items_venue_path(@venue,:items => 'photos',:page => 2),:class => "more_items" if @photos[6].present?%>
+  </div>
+  <div id="topic_timeline" class="tabContents">
+    <div style="text-align:right;margin:16px 0 8px;" >
+      <%= link_to '写新故事',(logged_in? ? "#{new_topic_path}?venue_id=#{@venue.id}" : login_path),:class => "gary_button open_dialog",:title => '写新故事',:style=>'font-size:13px'%>
+    </div>
+    <%= render :partial => "/public/topic",:collection => @topics %>
+    <%= link_to raw("查看更多 &#8744;"),more_items_venue_path(@venue,:items => 'topics',:page => 2),:class => "more_items" if @topics[6].present?%>
   </div>
   <div id="record_timeline" class="tabContents">      
     <div style="text-align:right;margin:16px 0 8px;" >
