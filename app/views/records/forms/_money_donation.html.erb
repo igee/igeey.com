@@ -10,6 +10,3 @@
         <h5>行动详情：</h5>
         <%= form.text_area :detail, :style => "width:460px;height:80px"%>
         <br/>
-        <%= form.fields_for :photos do |photo|%>
-          <h5>行动照片：<%= photo.file_field :photo,:style => "background:none;border:none;font-size:13px" %></h5>
-        <% end %>
