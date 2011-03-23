@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'calendar.js' %>
+<% end %>
+
 <%= form_for @calling do |form| %>
   <%= raw error_explanation_for(@calling) if @calling.errors.present?%>
   <%= form.hidden_field :action_id %>

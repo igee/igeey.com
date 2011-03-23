@@ -1,4 +1,3 @@
-
 <%= form_for [:calling,@plan] do |form| %>
   <%= raw error_explanation_for(@plan) if @plan.errors.present?%>  
   <% @venue = @calling.venue %>
@@ -15,7 +14,7 @@
           <% elsif @action.for_what == 'goods'%>
             要捐多少(件)？ <%= form.text_field :goods, :size => 3 ,:placeholder => '数量'%>
           <% elsif @action.for_what == 'time'%>
-            要在<%=  @plan.formatted_plan_at %>去<%= "#{@calling.venue.name}参与这个行动"%>。<%= form.hidden_field :plan_at, :size => 8,:class => 'with_calendar',:placeholder => "年-月-日"%>
+            要在<%=  @plan.formatted_plan_at %>去<%= "#{@calling.venue.name}参与这个行动"%>。<%= form.hidden_field :plan_at%>
           <% end %>
         </p>
     </div>

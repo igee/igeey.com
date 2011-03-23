@@ -5,16 +5,15 @@
   <title>爱聚-<%= @title%></title>
   <link href="/favicon.ico" rel="shortcut icon"/>
   <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag 'jquery-1.4.2.min' %>
-  <%= javascript_include_tag 'rails' %>
-  <%= javascript_include_tag 'dialog' %>
-  <%= javascript_include_tag 'calendar' %>
+  <%= javascript_include_tag 'jquery-1.4.2.min.js' %>
+  <%= javascript_include_tag 'rails.js' %>
+  <%= javascript_include_tag 'dialog.js' %>
   <%= javascript_include_tag 'jquery.poshytip.min.js' %>
   <%= javascript_include_tag 'jquery.hint.js' %>
-  <%= javascript_include_tag "jquery.timeago" %>
-  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag "jquery.timeago.js" %>
+  <%= javascript_include_tag 'application.js' %>
   <%= csrf_meta_tag %>
-  <%= yield :head %>  
+  <%= yield :head %>
 </head>
 
 <body>

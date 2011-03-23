@@ -48,5 +48,5 @@ Igee::Application.configure do
   config.active_support.deprecation = :notify
 
   # Auto rotate log files, keep 2 of 5MB each
-  config.logger = Logger.new(config.paths.log.first, 1,5242880)
+  #config.logger = Logger.new(config.paths.log.first, 1,5242880)
 end

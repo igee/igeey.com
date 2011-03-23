@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'calendar.js' %>
+<% end %>
+
 <% @calling = @record.calling %>
 <% @venue = @record.venue %>
 <% @action = @record.action %>
