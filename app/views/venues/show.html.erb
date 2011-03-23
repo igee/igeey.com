@@ -54,22 +54,28 @@
   </div>
 </div>  
 
+<% if [@venue.follows_count,@venue.sayings_count,@venue.records_count,@venue.photos_count].sum %>
+<div id="freshman" style="display:none">
+  <div>
+    <h2>欢迎拓荒者到来！</h2>
+    <p>Hi，你是第一个来到这里的人。</p>
+    <p>你很熟悉<%= @venue.name%>？</p>
+    <p>去用"报到"功能去吼一下吧，给后来者打个招呼。</p>
+    <p style="padding:4px 10px;">
+    </p>
+    <br/>
+    <p style="text-align:right">
+      <%= link_to '知道了', "#",:class => 'button',:onclick => "javascript:$('#floatBox #close_dialog').click();return false"%>
+    </p>
+  </div>
+</div>
+
+<script type="text/javascript">
+dialog('欢迎',("id:freshman"),"570px","auto","text")
+</script>
+<% end %>
 
 <% content_for :sidebar do %>
-  <!--
-  <div class="box">
-    <h4>获得服务统计：</h4>
-    <div id="record_counters">
-      <% [[@venue.time_count,'志愿小时'],[@venue.goods_count,'物资捐赠'],[@venue.online_count,'线上行动']].each do |counter_list|%>
-        <div class="record_counter_wrapper">
-          <h4><%= counter_list[1] %></h4>
-          <h2 class="record_counter"><%= counter_list[0] %></h2>
-        </div>
-      <%end%>
-    </div>
-  </div>
-  -->
-    
   <div class="box">
     <span style="float:right"><%= link_to "查看全部",followers_venue_path(@venue)%></h4></span>
     <h4><%= "#{@venue.follows.size}人关注这里："%></h4>
@@ -106,32 +112,8 @@
         map: small_map,
         position: small_map.getCenter(),
         title: '<%= @venue.name %>'
-      });
-      
-      infowindow = new google.maps.InfoWindow;
-      
-      //$('.find_tagged_with').each(function(){
-      //  var tag = $(this).html()
-      //  var title = $(this).attr('title')
-      //  markers[title] = new Array();
-      //  $.getJSON(('<%= records_venue_path(@venue,:format => :json)%>?marker=true' ) , function(data){
-      //    $.each(data, function(i,item){
-      //        markers[title][i] = new google.maps.Marker({
-      //          icon: "/images/marker/" + item.record.slug + ".png",
-      //          position: new google.maps.LatLng(parseFloat(item.record.latitude), parseFloat(item.record.longitude)),
-      //          title: item.record.name,
-      //          map: map
-      //        });
-      //        google.maps.event.addListener(markers[title][i], "click", function(){
-      //          $.ajax({
-      //            url:"/records/" + item.record.id + ".xml",
-      //            success:function(data, textStatus, XMLHttpRequest){infowindow.close();infowindow = new google.maps.InfoWindow({content:XMLHttpRequest.responseText});infowindow.open(map,markers[title][i]);},
-      //            dataType:'xml'
-      //          })
-      //        })
-      //      });
-      //  });
-      //});      
+      });    
+      infowindow = new google.maps.InfoWindow;     
     }; //initialize_end()
 
     $(document).ready(function(){
