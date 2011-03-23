@@ -112,15 +112,15 @@ img{border:none;}
 
 .gary_button{
     text-align:center;
-    margin:0 5px;
+    margin:0 6px;
     color:white;
-    font-size:15px;
+    font-size:14px;
     line-height:14px;
     font-weight:bold;
     font-family:sans-serif;
     background-color:#aaa;
     border:1px solid #888;
-    padding:4px 12px;
+    padding:4px 14px;
     -webkit-border-radius:3px;-moz-border-radius: 3px;border-radius: 3px;
     cursor:pointer;
 }
@@ -582,6 +582,7 @@ input.todo:hover{
 }
 
 .venue img{
+  background-color:#fff;
   border:1px solid #ccc;
   padding:1px;
   height:52px;
@@ -600,11 +601,6 @@ input.todo:hover{
   }
 
 .venue_thumb_box,.project_thumb_box{float:left;padding:4px 0 10px}
-
-.project_thumb_cover{
-  width:80px;
-  height:80px;
-  }
 
 .setting_box,.profile_box,.intro_box{
   padding:15px 20px 10px;
@@ -878,7 +874,13 @@ input.todo:hover{
   *margin-left:370px;
   }
   
-#keywords{padding:4px;height:14px;width:180px;font-size:13px;}
+#keywords{
+  padding:4px;
+  height:14px;
+  width:180px;
+  font-size:13px;
+  }
+
 #magnifier{
   display:block;
   border:0;

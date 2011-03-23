@@ -39,7 +39,7 @@ Igee::Application.routes.draw do
       get  :position
       get  :records
       get  :followers
-      get  :more_items
+      get  :more_timeline
       post :watching
     end
     resources :sayings

@@ -1,0 +1,47 @@
+
+.venue_form{
+  background-color:#e0e0e0;
+  padding:10px;
+  line-height:26px;
+  -webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;
+  }
+
+#venue_head{
+  background-color:#f3f3f3;
+  padding:4px 4px 0;
+  -webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;
+  }
+
+#formContaier form{display:none}
+
+#formContaier textarea{
+  margin:4px 0;
+  width:490px;
+  height:64px;
+  }
+
+#formContaier ul{
+  padding:0 6px;
+  position:relative;
+  top:-35px
+}
+
+#formContaier li{
+  float:left;
+  display:block;
+  list-style:none;
+  margin:0 3px;
+}
+
+#formContaier li a{
+  padding:4px 8px;
+  color:#888;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px
+}
+
+#formContaier li a.active{
+  background:#ddd;
+  border-color:#bbb;
+}
+
