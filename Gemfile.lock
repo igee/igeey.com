@@ -34,8 +34,8 @@ GEM
     capistrano (2.5.20)
       highline
       highline
-      net-scp (>= 1.0.0)
       net-scp
+      net-scp (>= 1.0.0)
       net-sftp
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
@@ -47,7 +47,7 @@ GEM
       activemodel (~> 3.0.0)
     erubis (2.6.6)
       abstract (>= 1.0.0)
-    exception_notification (2.4.0)
+    exception_notification_rails3 (1.2.0)
     highline (1.6.1)
     i18n (0.4.2)
     json (1.5.1)
@@ -116,7 +116,7 @@ PLATFORMS
 DEPENDENCIES
   capistrano
   date_validator
-  exception_notification
+  exception_notification_rails3
   json
   mysql (= 2.8.1)
   oauth
