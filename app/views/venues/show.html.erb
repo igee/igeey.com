@@ -17,7 +17,7 @@
         <div class='venue_form'>
           <h3>在<%= @venue.name%>报到：</h3>
           <%= form.hidden_field :venue_id,:value => @venue.id %>
-          <%= form.text_area  :content,:placeholder => "今天你想和#{@venue.name}的朋友们说什么？"%>
+          <%= form.text_area  :content,:style => 'height:48px',:placeholder => "今天你想和#{@venue.name}的朋友们说什么？"%>
         </div>  
         <p style="text-align:right">
           <%= form.submit '确 定',:class => "gary_button"%>
@@ -42,7 +42,7 @@
             <%= raw error_explanation_for(@topic) if @topic.errors.present?%>  
             <%= form.label :title,'标题：'%> <%= form.text_field :title,:size => 20%>
             <br/>
-            <%= form.text_area :content,:style => "height:128px",:placeholder => '故事的正文，不限字数'%>
+            <%= form.text_area :content,:style => "height:96px",:placeholder => '故事的正文，不限字数'%>
             <%= form.hidden_field :venue_id ,:value => @venue.id %>
           </div>
           <p style="text-align:right">
@@ -105,7 +105,7 @@
 
 <% content_for :sidebar do %>
   <div class="box">
-    <h4>关于这里：</h4>
+    <h4>关于<%= @venue.name%>：</h4>
     <pre style="font-size:13px"><%= @venue.intro%></pre>
     <span>
       <%= "地址： #{@venue.address}" unless @venue.blank?%><br/>

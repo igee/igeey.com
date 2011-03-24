@@ -100,5 +100,5 @@ Igee::Application.routes.draw do
   match "/c/:id" => redirect("/callings/%{id}")
   match "/r/:id" => redirect("/records/%{id}")
   match "/p/:id" => redirect("/plan/%{id}")
-  match "/t/:id" => redirect("/topic/%{id}")
+  match "/t/:id" => redirect("/topics/%{id}")
 end

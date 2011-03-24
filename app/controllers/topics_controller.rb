@@ -16,7 +16,7 @@ class TopicsController < ApplicationController
     @topic = current_user.topics.build(params[:topic])
     @topic.last_replied_at = Time.now
     @topic.save
-    respond_with @topic
+    redirect_to :back
   end
   
   def edit

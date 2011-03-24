@@ -12,7 +12,7 @@
     <div class="event_action">
       <% if current_user && current_user.id == topic.user_id %>
         <%= link_to "删除","#{topic_path(topic)}?back_path=#{request.path}",:method => :delete,:confirm => '你确定要删除这条报到么？'%> |
-        <%= link_to "修改","#{edit_topic_path(topic)}?back_path=#{request.path}"%> |
+        <%= link_to "编辑","#{edit_topic_path(topic)}?back_path=#{request.path}"%> |
       <% end %>
       <%= link_to "回复#{'(' + topic.comments_count.to_s + ')' if topic.comments_count > 0}",'',:class => "event_reply"%>　
     </div>
