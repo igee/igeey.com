@@ -94,15 +94,11 @@ Igee::Application.routes.draw do
   end
   resources :photos
   resources :actions
-  resources :projects do
-    member do
-      get :records
-    end
-  end
   
   #short_url
   match "/v/:id" => redirect("/venues/%{id}")
   match "/c/:id" => redirect("/callings/%{id}")
   match "/r/:id" => redirect("/records/%{id}")
   match "/p/:id" => redirect("/plan/%{id}")
+  match "/t/:id" => redirect("/topic/%{id}")
 end

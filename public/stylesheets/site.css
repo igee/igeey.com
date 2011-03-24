@@ -410,7 +410,7 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 
 .bubble{
   float:left;
-  width:470px;
+  width:490px;
   background-color:#e6e6f0;
   color:#505050;
   -webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;
@@ -600,7 +600,7 @@ input.todo:hover{
   height:48px;
   }
 
-.venue_thumb_box,.project_thumb_box{float:left;padding:4px 0 10px}
+.venue_thumb_box{float:left;padding:4px 0 10px}
 
 .setting_box,.profile_box,.intro_box{
   padding:15px 20px 10px;
@@ -616,6 +616,8 @@ input.todo:hover{
   background-color:#eef;
   border-color:#ddf;
   }
+
+.topic_title{padding-top:5px;}
 
 .intro_box{
   background-color:#dfd;

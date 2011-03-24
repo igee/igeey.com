@@ -8,11 +8,10 @@ class User < ActiveRecord::Base
   add_oauth  # add dynamic method for confirmation of oauth status
   
   belongs_to  :geo
-  has_many    :projects                            
+  has_many :venues,         :foreign_key => :creator_id,:dependent => :destroy
   has_many :records,        :dependent => :destroy
   has_many :plans,          :dependent => :destroy
   has_many :callings,       :dependent => :destroy
-  has_many :venues,         :foreign_key => :creator_id,:dependent => :destroy
   has_many :comments,       :dependent => :destroy
   has_many :topics,         :dependent => :destroy
   has_many :photos,         :dependent => :destroy

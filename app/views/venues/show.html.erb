@@ -42,9 +42,8 @@
             <%= raw error_explanation_for(@topic) if @topic.errors.present?%>  
             <%= form.label :title,'标题：'%> <%= form.text_field :title,:size => 20%>
             <br/>
-            <%= form.text_area :content,:placeholder => '故事的正文，不限字数'%>
-            <%= form.hidden_field :forumable_id ,:value => @venue.id %>
-            <%= form.hidden_field :forumable_type,:value => @venue.class.to_s %>
+            <%= form.text_area :content,:style => "height:128px",:placeholder => '故事的正文，不限字数'%>
+            <%= form.hidden_field :venue_id ,:value => @venue.id %>
           </div>
           <p style="text-align:right">
           <%= form.submit '确 定',:class => "gary_button"%>
@@ -57,7 +56,7 @@
           <%= form.hidden_field :action_id,:value => 1%>
           <%= form.hidden_field :venue_id,:value => @venue.id %>
           <%= form.label 'title','行动标题：'%> <%= form.text_field :title, :size => 20, :placeholder => "" %><br/>
-          <%= form.label 'total_people','需要人数：'%> <%= form.text_field :total_people, :size => 3, :placeholder => "" %>
+          <%= form.label 'total_people','需要人数：'%> <%= form.text_field :total_people, :size => 3, :placeholder => "" %>　
           <%= form.label 'total_people','行动时间：'%><%= form.text_field :do_at, :size => 8,:class => 'with_calendar',:placeholder => ""%><br/>
           <%= form.label 'address','集合地址：'%> <%= form.text_field :address, :size => 24, :placeholder => '',:style => "text-align:left" %><br/>
           <%= form.label 'contact','联系方式：'%> <%= form.text_field :contact, :size => 24, :placeholder => '',:style => "text-align:left" %><br/>

@@ -7,6 +7,7 @@ class SiteController < ApplicationController
       @followings = current_user.followings.where(:followable_type => 'Venue' ).map(&:followable)
       @followings.each do |v|
         @timeline += v.callings.not_closed.limit(10)
+        @timeline += v.topics.limit(10)
         @timeline += v.sayings.limit(10)
         @timeline += v.photos.limit(10)
       end

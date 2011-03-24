@@ -4,7 +4,6 @@ class Record < ActiveRecord::Base
   belongs_to :action
   belongs_to :calling
   belongs_to :plan
-  belongs_to :project
   belongs_to :parent,   :class_name => :record,:foreign_key => :parent_id
   has_many   :comments, :as => :commentable,    :dependent => :destroy
   has_many   :follows,  :as => :followable,     :dependent => :destroy
