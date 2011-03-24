@@ -148,6 +148,7 @@ ActiveRecord::Schema.define() do
     t.integer  :records_count,             :default => 0
     t.integer  :photos_count,              :default => 0
     t.integer  :sayings_count,             :default => 0
+    t.integer  :topics_count,            :default => 0
     t.string   :remember_token,            :limit => 40
     t.datetime :remember_token_expires_at
     t.string   :signature
@@ -200,6 +201,7 @@ ActiveRecord::Schema.define() do
     t.integer :photos_count, :default => 0
     t.integer :sayings_count,:default => 0
     t.integer :records_count,:default => 0
+    t.integer :topics_count, :default => 0
     t.integer :watch_count,  :default => 0
     t.timestamps
   end
@@ -249,7 +251,7 @@ ActiveRecord::Schema.define() do
     t.timestamps
   end
   
-create_table :tags do |t|
+  create_table :tags do |t|
     t.column :name, :string
   end
   

@@ -119,6 +119,12 @@ namespace :misc do
     end
   end
   
+  desc "Init venue_id fot Topic"
+  task :topic_venue_id => :environment do
+    Topic.where(:forumable_type => "Venue",:venue_id => nil).each do |t|
+      t.update_attribute(:venue_id,t.forumable_id)
+    end
+  end
   
   desc "Update venue geo information"
   task :update_geo_id => :environment do
