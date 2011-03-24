@@ -35,6 +35,7 @@ class SiteController < ApplicationController
     @timeline += Calling.not_closed.limit(30)
     @timeline += Saying.limit(30)
     @timeline += Photo.limit(30)
+    @timeline += Topic.limit(30)
     @timeline = @timeline.sort{|x,y| y.created_at  <=> x.created_at  }[0..30]
   end
   
