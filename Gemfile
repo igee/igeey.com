@@ -15,7 +15,7 @@ gem 'date_validator'
 gem 'capistrano'
 gem 'will_paginate', '~> 3.0.beta'
 gem 'thinking-sphinx', '2.0.0', :require => 'thinking_sphinx'
-gem 'rails-geocoder'
+gem 'exception_notification_rails3', :require => 'exception_notifier'
 
 #gem 'geokit'
 #gem 'geokit-rails'
