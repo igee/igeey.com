@@ -64,10 +64,10 @@ input[type="text_field"],input[type="text"],input[type="password"]{
     text-decoration:none;
     border:1px solid #bbb;
     margin:0px;
-    padding:1px 4px;
+    padding:2px 4px;
     background-color:white;
     -webkit-border-radius:3px;-moz-border-radius:3px;border-radius: 3px;
-    font-size:15px;
+    font-size:14px;
     }
     
 input[type="checkbox"]{position:relative;top:2px;}
@@ -787,15 +787,6 @@ input.todo:hover{
 }
 
 #record_counters{float:right;height:74px;margin-right:4px}
-
-.upload_photo{
-  background-color:#f0f0f0;
-  padding:8px 8px 0;
-  margin:6px 0;
-  display:none;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-}
 
 #dialog_flash{display:none}
 

@@ -1,9 +1,4 @@
 // application function define
-  function set_title(photo_id){
-      $('#photo_set_title_' + photo_id).show();
-      $('#set_title_' + photo_id).hide();
-      $('#delete_link_' + photo_id).hide();$('#sumbit_link_' + photo_id).show();
-      };    
 
 // bindings
   $(document).ready(function(){
@@ -47,7 +42,6 @@
       $('input[placeholder!=""]').hint();
     };
     
-    $(".upload_photo_link").click(function(){dialog($(this).attr('title'),("id:upload_photo_venue_" + $(this).attr('tag')),"570px","auto","text");  return false;});
     $(".zoom_photo").click(function(){$(this).children().first().toggle();$(this).children().last().toggle();return false});
     $(".tabContents").hide();
     $(".tabContents:first").show();

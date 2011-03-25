@@ -17,13 +17,8 @@
     </div>
     <div class="event_action">
       <% if logged_in? && photo.user.id == current_user.id %>
-        <%= form_for photo,:html => {:style=>"display:inline"} do |form|%>
-          <%= form.text_field :title,:size => 10,:style => "display:none;font-size:12px;height:12px",:id => "photo_set_title_#{photo.id}"%>
-          <%= raw "#{link_to '添加标题','#',:id => "set_title_#{photo.id}",:onclick => "javascript:set_title(#{photo.id});return false;";} |" if photo.title.blank?%>
-          <%= link_to "删除",photo,:method => :delete ,:confirm => "确定要删除这张照片么？",:id=>"delete_link_#{photo.id}"%>
-          <%= link_to raw('确认'),"#",:onclick => "javasciprt:$('#edit_photo_#{photo.id}').submit();return false",:style =>'display:none',:id=>"sumbit_link_#{photo.id}"%>
-          | 
-        <% end %>
+          <%= link_to "删除",photo_path(photo),:method => :delete ,:confirm => "确定要删除这张照片么？",:id=>"delete_link_#{photo.id}"%> |
+          <%= link_to "修改",edit_photo_path(photo)%> |
       <% end %>
       <%= link_to "回复#{'(' + photo.comments_count.to_s + ')' if photo.comments_count > 0}",'',:class => "event_reply"%>　
     </div>

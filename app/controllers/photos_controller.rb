@@ -1,7 +1,13 @@
 class PhotosController < ApplicationController
   before_filter :login_required,   :except => [:show]
-  before_filter :find_photo,       :except => [:create]
+  before_filter :find_photo,       :except => [:create,:new]
   before_filter :check_permission, :only => [:destroy,:update]
+  
+  
+  def new
+    @venue = Venue.find(params[:venue_id])
+    @photo = @venue.photos.build()
+  end
   
   def create
     @photo = Photo.new(params[:photo])
@@ -19,7 +25,10 @@ class PhotosController < ApplicationController
     @photo.destroy if @photo.user_id == current_user.id
     redirect_to :back
   end
-
+  
+  def edit
+  end
+  
   def show
     @comments = @photo.comments
     render :layout => false if params[:layout] == 'false'

@@ -1,20 +1,19 @@
-<%@photo = Photo.new%>
+<% @venue = @photo.venue %>
 <%= render :partial => '/users/user' ,:object => current_user %>
 <div class="bubble_tail"></div>
 <div class="bubble" style="<%= 'width:380px'%>">
   <%= form_for @photo,:html => { :multipart => true } do |form| %>
     <%= form.hidden_field :venue_id,:value => @venue.id %>
-    <p>
-       <%= form.label :title,'图片文件：'%> <%= form.file_field :photo,:style => "background:none;border:none;font-size:13px" %>
-    </p>
-    <p>
-      <%= form.label :title,'标题：'%> <%= form.text_field :title ,:size=> 10%>
-    </p>
+    <% if @photo.new_record? %>
+      <%= form.label :title,'图片文件：'%> <%= form.file_field :photo,:style => "background:none;border:none;font-size:13px" %>
+    <% else %>
+      <%= image_tag @photo.photo.url(:max500x400) %>
+    <% end %>  
     <p><%= form.label :detail,'照片说明：'%><br/>
     <%= form.text_area :detail, :style => "width:340px;height:80px" ,:placeholder => '关于这个照片有什么故事么？'%>
     </p>
     <p>
-      <%= submit_tag '上传',:class => 'button' %>
+      <%= submit_tag '确定',:class => 'button' %>
       <%= button_to_function '取消',"javascript:$('#floatBox #close_dialog').click()",:class => "button"%>
     </p>
   <% end %>

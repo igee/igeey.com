@@ -9,13 +9,14 @@
 <% end %>
 
 <div class="box" id="venue_head">
+  <h3 style="margin-left:10px;margin-top:5px;">欢迎来到<%= @venue.name%>　<span><%= @venue.geo.full_name %></span></h3>
     <%= render :partial => "/venues/venue",:object => @venue %>
     <div style="position:absolute;margin-top:76px;margin-left:3px"><%= raw(follow_to(@venue)) %></div>
   <div style="width:520px;_width:510px;;margin:10px 0 10px 80px">
     <div id="formContaier">
       <%= form_for [@venue,@saying] do |form| %>
         <div class='venue_form'>
-          <h3>在<%= @venue.name%>报到：</h3>
+          <div class='venue_form_title'>我要在这里报到：</div>
           <%= form.hidden_field :venue_id,:value => @venue.id %>
           <%= form.text_area  :content,:style => 'height:48px',:placeholder => "今天你想和#{@venue.name}的朋友们说什么？"%>
         </div>  
@@ -27,9 +28,9 @@
       <%= form_for @photo,:html => { :multipart => true } do |form| %>
         <%= form.hidden_field :venue_id,:value => @venue.id %>
         <div class='venue_form'>
-          <h3>在<%= @venue.name%>上传照片：</h3>
+          <div class='venue_form_title'>我要为这里上传照片：</div>
           <%= form.label :title,'选择文件：'%> <%= form.file_field :photo,:style => "background:none;border:none;font-size:13px" %>
-          <%= form.text_area :detail,:placeholder => '关于这个照片有什么需要说明的么？'%>
+          <%= form.text_area :detail,:placeholder => '说说这张照片的背后的故事吧？'%>
         </div>
         <p style="text-align:right">
           <%= form.submit '确 定',:class => "gary_button"%>
@@ -38,11 +39,11 @@
       
       <%= form_for @topic do |form| %>
           <div class='venue_form'>
-          <h3>在<%= @venue.name%>提交故事：</h3>
+          <div class='venue_form_title'>我要在提交这里的故事：</div>
             <%= raw error_explanation_for(@topic) if @topic.errors.present?%>  
-            <%= form.label :title,'标题：'%> <%= form.text_field :title,:size => 20%>
+            <%= form.label :title,'标题：'%> <%= form.text_field :title,:size => 20,:placeholder => '来个简洁响亮的题目吧'%>
             <br/>
-            <%= form.text_area :content,:style => "height:96px",:placeholder => '故事的正文，不限字数'%>
+            <%= form.text_area :content,:style => "height:96px",:placeholder => '故事的正文，不限字数!'%>
             <%= form.hidden_field :venue_id ,:value => @venue.id %>
           </div>
           <p style="text-align:right">
@@ -51,11 +52,11 @@
       <% end %>
       <%= form_for @calling do |form| %>
         <div class='venue_form'>
-          <h3>在<%= @venue.name%>召集行动：</h3>
+          <div class='venue_form_title'>我要在这里召集行动：</div>
           <%= raw error_explanation_for(@calling) if @calling.errors.present?%>
           <%= form.hidden_field :action_id,:value => 1%>
           <%= form.hidden_field :venue_id,:value => @venue.id %>
-          <%= form.label 'title','行动标题：'%> <%= form.text_field :title, :size => 20, :placeholder => "" %><br/>
+          <%= form.label 'title','行动标题：'%> <%= form.text_field :title, :size => 20, :placeholder => "题目要简洁有号召力" %><br/>
           <%= form.label 'total_people','需要人数：'%> <%= form.text_field :total_people, :size => 3, :placeholder => "" %>　
           <%= form.label 'total_people','行动时间：'%><%= form.text_field :do_at, :size => 8,:class => 'with_calendar',:placeholder => ""%><br/>
           <%= form.label 'address','集合地址：'%> <%= form.text_field :address, :size => 24, :placeholder => '',:style => "text-align:left" %><br/>
@@ -191,7 +192,7 @@
       setTimeout(updateCount, 400);
        }
       updateCount();
-      initialize()
+      initialize();
       setTimeout(function(){$.post('<%= watching_venue_path(@venue)%>')},5000)
       
     });  
