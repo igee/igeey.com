@@ -63,13 +63,7 @@ class VenuesController < ApplicationController
   end
   
   def records
-    if params[:tag].present?
-      @records = @venue.records.find_tagged_with(params[:tag])
-    elsif params[:marker] == 'true'
-      @records = @venue.records.markers
-    else
-      @record = @venue.records
-    end
+    @records = @venue.records
     respond_with(@records)
   end
   
