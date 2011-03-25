@@ -7,7 +7,6 @@
 </div>
 <% end %>
 
-
 <% if @keywords.blank? %>
   <span>请输入搜索关键词 </span>
 <% elsif @venues.blank? && @callings.blank? && @users.blank? && @topics.blank? %>
@@ -21,7 +20,7 @@
       <li><%= link_to "用户(#{@users.total_entries > 50 ? '50+' : @users.total_entries})",'#user_results'%></li>
     </ul>
     <div id="results">  
-      <div id="venue_results" class="tabContents">
+      <div id="venue_results" class="tabContents" style="display:block">
         <%= render :partial => "/public/venue",:collection => @venues%>
         <%= link_to raw("更多结果 &#8744;"),more_search_path(:keywords => params[:keywords],:items => 'venues',:page => 2),:class => "more_results" if @venues[9].present?%>
       </div>
@@ -32,13 +31,14 @@
       </div>
     </div>
   </div>
+      
   <% content_for :extension do %>
     <script type="text/javascript">
     $(document).ready(function(){
       $('#results').html($('#results').html().replace(<%= "/(#{@keywords})/g"%>, "<strong class='keyword'>$1</strong>"))
       $('.more_results').click(function(){
         var container = $(this);
-        container.html('读取中...')
+        container.html('读取中...');
         $.get(container.attr('href'),function(data){container.replaceWith(data)})
         return false;
         });
