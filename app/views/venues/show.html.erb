@@ -11,7 +11,7 @@
 <div class="box" id="venue_head">
   <h3 style="margin-left:10px;margin-top:5px;">欢迎来到<%= @venue.name%>　<span><%= @venue.geo.full_name %></span></h3>
     <%= render :partial => "/venues/venue",:object => @venue %>
-    <div style="position:absolute;margin-top:76px;margin-left:3px"><%= raw(follow_to(@venue)) %></div>
+    <div style="position:absolute;margin-top:84px;margin-left:3px"><%= raw(follow_to(@venue)) %></div>
   <div style="width:520px;_width:510px;;margin:10px 0 10px 80px">
     <div id="formContaier">
       <%= form_for [@venue,@saying] do |form| %>
