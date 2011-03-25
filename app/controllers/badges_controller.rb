@@ -2,8 +2,9 @@ class BadgesController < ApplicationController
   respond_to :html
     
   before_filter :login_required
-  after_filter  :clean_unread,:only => [:get_badges]
   before_filter :admin_required,:only => [:index,:edit,:update]
+  after_filter  :clean_unread,:only => [:get_badges]
+  
   
   def get_badges
     @badges = current_user.grants.where(:unread => true).map(&:badge)
@@ -28,7 +29,7 @@ class BadgesController < ApplicationController
   private
   
   def clean_unread
-    current_user.grants.where(:unread => true).map{|g| g.update_attribute(:unread,false)}
+    current_user.grants.where(:unread => true).map{|g| g.update_attribute(:unread,false)} if logged_in?
   end
   
   def admin_required
