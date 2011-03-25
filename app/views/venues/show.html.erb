@@ -69,7 +69,7 @@
           <%= raw error_explanation_for(@calling) if @calling.errors.present?%>
           <%= form.hidden_field :action_id,:value => 1%>
           <%= form.hidden_field :venue_id,:value => @venue.id %>
-          <%= form.label 'title','行动标题：'%> <%= form.text_field :title, :size => 20, :placeholder => "题目要简洁有号召力" %><br/>
+          <%= form.label 'title','行动标题：'%> <%= form.text_field :title, :size => 20, :placeholder => "" %><br/>
           <%= form.label 'total_people','需要人数：'%> <%= form.text_field :total_people, :size => 3, :placeholder => "" %>　
           <%= form.label 'total_people','行动时间：'%><%= form.text_field :do_at, :size => 8,:class => 'with_calendar',:placeholder => ""%><br/>
           <%= form.label 'address','集合地址：'%> <%= form.text_field :address, :size => 24, :placeholder => '',:style => "text-align:left" %><br/>
@@ -162,6 +162,7 @@
     $(document).ready(function(){
       $("#formContaier form:first").show();
       $("#formContaier ul li a:first").addClass("active");
+    <% if logged_in? %>  
       $("#formContaier ul li a").click(function(){ 
         var activeTab = $(this).attr("href"); 
         $("#formContaier ul li a").removeClass("active"); 
@@ -170,7 +171,13 @@
         $(activeTab).show();
         return false;
       });
-      
+    <% else %>
+      $("#formContaier ul li a").click(function(){$('#login').click();return false;})
+    <% end %>
+      $('#toggle_info').toggle(
+        function(){$('#more_info').show()},
+        function(){$('#more_info').hide()}
+      )
       $('.new_comment').submit(function(){
         var size = $(this).find('input[type=text]').val().length
         if ( size >= 140){

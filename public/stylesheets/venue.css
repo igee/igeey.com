@@ -1,4 +1,3 @@
-
 .venue_form{
   background-color:#e0e0e0;
   padding:5px 15px 10px;
@@ -8,6 +7,8 @@
   }
 
 .venue_form_title{padding:2px 0;font-size:15px}
+
+#more_info{padding:0 10px;display:none}
 
 #venue_head{
   background-color:#f3f3f3;
