@@ -76,6 +76,7 @@ class UsersController < ApplicationController
     @callings = @user.callings.limit(7)
     @sayings = @user.sayings.limit(7)
     @plans = @user.plans.undone.limit(7)
+    @topics = @user.topics.limit(7)
     @followers = @user.followers.limit(9)
     @following_users = @user.user_followings.limit(9).map(&:followable)
     @following_venues = @user.venue_followings.limit(7).map(&:followable)
@@ -120,6 +121,7 @@ class UsersController < ApplicationController
                    :photos => "@user.photos.paginate(:page => #{params[:page]}, :per_page => 6)",
                    :callings => "@user.callings.paginate(:page => #{params[:page]}, :per_page => 6)",
                    :sayings => "@user.sayings.paginate(:page => #{params[:page]}, :per_page => 6)",
+                   :topics => "@user.topics.paginate(:page => #{params[:page]}, :per_page => 6)",
                    :records => "@user.records.paginate(:page => #{params[:page]}, :per_page => 6)",
                    :plans => "@user.plans.paginate(:page => #{params[:page]}, :per_page => 6)",
                    }[params[:items].to_sym])
