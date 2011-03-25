@@ -9,9 +9,9 @@ class Venue < ActiveRecord::Base
   has_many   :plans,      :dependent => :destroy
   has_many   :records,    :dependent => :destroy
   has_many   :photos
+  has_many   :topics,     :dependent => :destroy
   has_many   :follows,    :as => :followable,  :dependent => :destroy
   has_many   :followers,  :through => :follows,:source => :user,:dependent => :destroy
-  has_many   :topics,     :as => :forumable,:dependent => :destroy
   has_many   :sayings,   :dependent => :destroy  
 
   has_attached_file :cover, :styles => {:_48x48 => ["48x48#",:jpg],:_100x100 => ["100x100#",:jpg]},

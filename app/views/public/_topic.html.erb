@@ -1,16 +1,21 @@
 <div class="event_box">
-  <%= render :partial => '/users/user', :object => topic.user %>
-  <div class="event">
-    <p>
-      <%= link_to topic.title ,topic,:class => 'event_link'%> 
-    </p>
+  <%= controller_name == 'venues' ? (render :partial => "/users/avatar",:object => topic.user) : (render :partial => "/venues/venue",:object => topic.venue) %>
+  <div class="event">  
+      <span><%= '在' if controller_name == 'users'%> <%= raw "#{link_to topic.venue.name,topic.venue} 的故事：" unless controller_name == 'venues' %></span>
+      <pre><%= topic.title %> <%= short_url(topic) %></pre>
+      <pre class="explanation"><%= short_text(topic.content,72)%></pre>
+    
     <div class="event_info">
-      <div class="explanation"><%= short_text(topic.content,24)%></div>
-      <br/>
-      <span>
-        回复数 <%=topic.comments_count%>
-        <%= "最后回复 #{topic.last_replied_user.login}" if topic.last_replied_user_id %>
-      </span>
+      <span><%= raw "by #{link_to topic.user.login,topic.user}" unless controller_name == 'users' %></span>
+      <span class="timeago"><%= topic.created_at %></span>
     </div>
+    <div class="event_action">
+      <% if current_user && current_user.id == topic.user_id %>
+        <%= link_to "删除","#{topic_path(topic)}?back_path=#{request.path}",:method => :delete,:confirm => '你确定要删除这条报到么？'%> |
+        <%= link_to "编辑","#{edit_topic_path(topic)}?back_path=#{request.path}"%> |
+      <% end %>
+      <%= link_to "回复#{'(' + topic.comments_count.to_s + ')' if topic.comments_count > 0}",'',:class => "event_reply"%>　
+    </div>
+    <%= render :partial => "/public/reply_form",:locals =>  {:object => topic}%>
   </div>
 </div>

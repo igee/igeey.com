@@ -30,8 +30,7 @@ module Igee
                                       :venue_observer,
                                       :sync_observer,
                                       :oauth_token_observer,
-                                      :follow_observer,
-                                      :topic_observer,
+                                      :follow_observer
                                       ]
     
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
