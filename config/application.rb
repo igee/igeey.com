@@ -51,9 +51,9 @@ module Igee
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
-    
-    config.generators do |g|
-      g.migration = false
-    end
+    config.middleware.use ExceptionNotifier,
+      :email_prefix => "[Error] ",
+      :sender_address => %{"notifier" <notifier@igeey.com>},
+      :exception_recipients => %w{makestory@1kg.org}
   end
 end
