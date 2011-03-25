@@ -23,6 +23,8 @@ class TopicsController < ApplicationController
   end
   
   def update
+    @topic.update_attributes(params[:topic]) if @topic.user_id == current_user.id
+    redirect_to :back
   end
   
   def show
