@@ -5,7 +5,6 @@
     <div style="padding-top:10px">
       <%= link_to (image_tag photo.photo.url,:class => "photo") + (image_tag photo.photo.url(:max500x400),:title => photo.title,:class => "zoomed_photo"),photo,:class => "zoom_photo",:title => photo.title,:style => 'float:left' %>
       <div style="float:left;padding:0 10px">
-        <%= photo.title %><br/>
         <pre class="photo_detail"><%= photo.detail %></pre>
       </div>
     </div>  

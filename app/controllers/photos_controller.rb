@@ -3,7 +3,6 @@ class PhotosController < ApplicationController
   before_filter :find_photo,       :except => [:create,:new]
   before_filter :check_permission, :only => [:destroy,:update]
   
-  
   def new
     @venue = Venue.find(params[:venue_id])
     @photo = @venue.photos.build()
