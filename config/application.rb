@@ -53,7 +53,7 @@ module Igee
     config.filter_parameters += [:password]
     config.middleware.use ExceptionNotifier,
       :email_prefix => "[Error] ",
-      :sender_address => %{"notifier" <notifier@igeey.com>},
-      :exception_recipients => %w{makestory@1kg.org}
+      :sender_address => %{"notifier" <mail@igeey.com>},
+      :exception_recipients => %w{YAML.load_file("#{Rails.root}/config/config.yml")[Rails.env]['developer_mail']}
   end
 end

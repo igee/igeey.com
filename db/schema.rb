@@ -148,7 +148,7 @@ ActiveRecord::Schema.define() do
     t.integer  :records_count,             :default => 0
     t.integer  :photos_count,              :default => 0
     t.integer  :sayings_count,             :default => 0
-    t.integer  :topics_count,            :default => 0
+    t.integer  :topics_count,              :default => 0
     t.string   :remember_token,            :limit => 40
     t.datetime :remember_token_expires_at
     t.string   :signature

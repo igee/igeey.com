@@ -7,7 +7,8 @@
     <pre class="explanation"><%= @topic.content %></pre>
     <% if current_user && current_user.id == @topic.user_id %>
     <div style="text-align:right">
-      <%= link_to "删除","#{topic_path(@topic)}?back_path=#{request.path}",:method => :delete,:confirm => '你确定要删除这条报到么？'%> |
+      <%= link_to "删除","#{topic_path(@topic)}",:method => :delete,:confirm => '你确定要删除这篇故事么？'%> |
+
       <%= link_to "编辑","#{edit_topic_path(@topic)}?back_path=#{request.path}"%>
     </div>
     <% end %>

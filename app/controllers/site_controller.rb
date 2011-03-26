@@ -10,10 +10,11 @@ class SiteController < ApplicationController
         @timeline += v.topics.limit(10)
         @timeline += v.sayings.limit(10)
         @timeline += v.photos.limit(10)
+        @timeline += v.topics.limit(10)
       end
       @timeline = @timeline.uniq.sort{|x,y| y.created_at  <=> x.created_at  }[0..9]
     else
-      @timeline = (Calling.limit(10) + Saying.limit(10) + Photo.limit(10)).sort{|x,y| y.created_at  <=> x.created_at  }[0..9]
+      @timeline = (Calling.limit(10) + Saying.limit(10) + Photo.limit(10) + Topic.limit(10)).sort{|x,y| y.created_at  <=> x.created_at  }[0..9]
     end
   end
   

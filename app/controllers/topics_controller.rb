@@ -16,7 +16,17 @@ class TopicsController < ApplicationController
     @topic = current_user.topics.build(params[:topic])
     @topic.last_replied_at = Time.now
     @topic.save
-    redirect_to :back
+    redirect_to @topic.venue
+  end
+  
+  def destroy
+    @venue = @topic.venue
+    @topic.destroy if @topic.user_id == current_user.id
+    if params[:back_path].present?
+      redirect_to params[:back_path]
+    else
+      redirect_to @venue
+    end
   end
   
   def edit
@@ -24,7 +34,11 @@ class TopicsController < ApplicationController
   
   def update
     @topic.update_attributes(params[:topic]) if @topic.user_id == current_user.id
-    redirect_to :back
+    if params[:back_path].present?
+      redirect_to params[:back_path]
+    else
+      respond_with @topic
+    end
   end
   
   def show

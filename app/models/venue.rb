@@ -13,7 +13,7 @@ class Venue < ActiveRecord::Base
   has_many   :photos,     :dependent => :destroy
   has_many   :follows,    :as => :followable,  :dependent => :destroy
   has_many   :followers,  :through => :follows,:source => :user,:dependent => :destroy
-  
+
 
   has_attached_file :cover, :styles => {:_48x48 => ["48x48#",:jpg],:_100x100 => ["100x100#",:jpg]},
                             :url=>"/media/:attachment/venues/:id/:style.jpg",
