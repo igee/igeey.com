@@ -137,4 +137,18 @@ namespace :misc do
       end  
     end
   end
+  
+  desc "Update venue geo city"
+  task :create_geo_city => :environment do
+    p("start at id:#{Venue.unscoped.order("id asc").last.id + 1 }")
+    Geo.all.each do |g|
+      if Venue.where(:name => g.name).empty?
+        v = Venue.new(:name => g.name, :geo_id => g.id, :zoom_level => g.zoom_level, 
+                    :latitude => g.latitude, :longitude => g.longitude, :category => '9',
+                    :creator_id => 1)
+        v.save
+      end
+    end
+    puts("end at id:#{Venue.unscoped.order("id asc").last.id }")
+  end
 end
