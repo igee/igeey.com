@@ -150,5 +150,6 @@ namespace :misc do
       end
     end
     puts("end at id:#{Venue.unscoped.order("id asc").last.id }")
+    Follow.where(:user_id=>1).map(&:destroy)
   end
 end
