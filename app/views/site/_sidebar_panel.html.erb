@@ -3,7 +3,7 @@
         <h4><%= link_to current_user.login,current_user%></h4>
           <div class="actions_counter"><%= link_to raw("#{current_user.callings_count}个召集"),actions_path(:start_at => 'my_callings') %></div>
           <div class="actions_counter"><%= link_to raw("#{current_user.records_count}个记录"),actions_path(:start_at => 'my_records') %></div>
-          <div class="actions_counter" style="width:140px"><%= link_to raw("#{current_user.undone_plans_count}个未完成计划"),actions_path(:start_at => 'my_plans') %></div>
+          <div class="actions_counter" style="width:140px"><%= link_to raw("#{current_user.undone_plans_count}个行动计划"),actions_path(:start_at => 'my_plans') %></div>
       </div>
       <div style="padding:10px 5px;">
         <%= image_tag current_user.avatar.url(:_48x48) %>
