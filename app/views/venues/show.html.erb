@@ -10,19 +10,6 @@
 
 <div class="box" id="venue_head">
   <h3 style="margin-left:10px;margin-top:5px;">欢迎来到<%= @venue.name%>　<span><%= @venue.geo.full_name %></span></h3>
-  <div id="more_info">
-    <pre style="font-size:13px"><%= @venue.intro%></pre>
-    <span>
-      <%= "地址： #{@venue.address}" unless @venue.blank?%><br/>
-      <%= "联系方式： #{@venue.contact}" unless @venue.contact.blank?%>
-    </span>
-    <br/>
-    <span>
-    <%= link_to "#{@venue.cover_file_name ? '更新' : '上传'}主题图",cover_venue_path(@venue),:class => "open_dialog",:title => "#{@venue.cover_file_name ? '更新' : '上传'}主题图" if logged_in? && @venue.creator == current_user%>
-    <%= link_to '更新信息',edit_venue_path(@venue),:id => 'update_info' if logged_in? && @venue.creator == current_user %>
-    </span>
-  </div>
-  
     <%= render :partial => "/venues/venue",:object => @venue %>
     <div style="position:absolute;margin-top:84px;margin-left:3px"><%= raw(follow_to(@venue)) %></div>
   <div style="width:520px;_width:510px;;margin:10px 0 10px 80px">
@@ -118,16 +105,31 @@
 <% end %>
 
 <% content_for :sidebar do %>
-  <div class="box">
-    <span style="float:right"><%= link_to "查看全部",followers_venue_path(@venue)%></h4></span>
-    <h4><%= "#{@venue.follows.size}人关注这里："%></h4>
-    <%= render :partial => "/users/user",:collection => @followers[0..7] %>
-  </div>
 
+  <div id="more_info">
+    <h4>关于<%= @venue.name %>..</h4>
+    <pre style="font-size:13px"><%= @venue.intro%></pre>
+    <span>
+      <%= "地址： #{@venue.address}" unless @venue.blank?%><br/>
+      <%= "联系方式： #{@venue.contact}" unless @venue.contact.blank?%>
+    </span>
+    <br/>
+    <span>
+    <%= link_to "#{@venue.cover_file_name ? '更新' : '上传'}主题图",cover_venue_path(@venue),:class => "open_dialog",:title => "#{@venue.cover_file_name ? '更新' : '上传'}主题图" if logged_in? && @venue.creator == current_user%>
+    <%= link_to '更新信息',edit_venue_path(@venue),:id => 'update_info' if logged_in? && @venue.creator == current_user %>
+    </span>
+  </div>
+  
   <div class="box">
     <span style="float:right"><%= link_to "查看大图",position_venue_path(@venue),:class => 'open_dialog',:title => '地点地图'%></h4></span>
     <h4>地图：</h4>
     <div id="sidebar_map_canvas" style="width:248px;height:160px;"></div>
+  </div>
+  
+  <div class="box">
+    <span style="float:right"><%= link_to "查看全部",followers_venue_path(@venue)%></h4></span>
+    <h4><%= "#{@venue.follows.size}人关注这里："%></h4>
+    <%= render :partial => "/users/user",:collection => @followers[0..7] %>
   </div>
 
 <% end %>
