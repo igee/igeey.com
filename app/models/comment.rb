@@ -5,5 +5,5 @@ class Comment < ActiveRecord::Base
   default_scope :order => 'created_at asc'
   scope :last_three,:order=> 'created_at desc',:limit => 3
   
-  validates :content,:length => {:within => 1..1000}
+  validates :content,:length => {:minimum => 1}
 end

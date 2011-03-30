@@ -8,11 +8,7 @@
             <%= form.label :title,'标题：'%> <%= form.text_field :title,:size => 20 ,:style => "text-align:left"%>
             <br/>
             <%= form.label :content,'正文：',:style => 'float:left'%>
-<<<<<<< HEAD
-            <%= form.text_area :content,:style => "#{ params[:layout]=='false' ? 'width:330px' : 'width:420px'};height:100px;margin-left:46px"%>
-=======
-            <%= form.text_area :content,:style => "#{ params[:layout]=='false' ? 'width:320px' : 'width:410px'};height:100px;margin-left:46px",:placeholder => "故事正文，不限字数。"%>
->>>>>>> 1d546014e7c28918422f3694286f76fa3f6a18b9
+            <%= form.text_area :content,:style => "#{ params[:layout]=='false' ? 'width:330px' : 'width:410px'};height:100px;margin-left:46px"%>
             <%= form.hidden_field :venue_id %>
           </p>
       </div>

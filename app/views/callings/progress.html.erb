@@ -8,7 +8,7 @@
   <div class="box">
     <div class="sidebar_bubble">
       <p><%= link_to "#{@calling.description}",@calling %></p>
-      <pre class="explanation" style="display:block;"><%= @calling.detail.strip %></pre>
+      <pre class="explanation" style="display:block;"><%= @calling.detail %></pre>
     </div>
     <div class="sidebar_bubble_tail"></div>
     <%= render :partial => '/users/user' ,:object => @calling.user %>

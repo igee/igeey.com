@@ -12,9 +12,20 @@
     <p><%= form.label :detail,'照片说明：'%><br/>
     <%= form.text_area :detail, :style => "width:340px;height:80px" ,:placeholder => '关于这个照片有什么故事么？'%>
     </p>
+    <p><%= form.label :tag_list,'标签：'%> <%= form.text_field :tag_list ,:size=> 14,:class=>"tag_list" %> <span>(用空格来分隔不同的标签)</span></p>
     <p>
       <%= submit_tag '确定',:class => 'button' %>
       <%= button_to_function '取消',"javascript:$('#floatBox #close_dialog').click()",:class => "button"%>
     </p>
   <% end %>
 </div>
+
+<script type="text/javascript">
+  $(".tag_list").tagEditor({
+                items: ["First", "Second"],
+                confirmRemoval: true,
+                separator: ' ',
+                completeOnSeparator: true,
+                completeOnBlur: true
+            });
+</script>
