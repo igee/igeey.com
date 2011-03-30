@@ -1,6 +1,7 @@
 <% @title = @venue.name %>
 <% content_for :head do %>
   <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false"></script>
+  <%= javascript_include_tag 'jquery.tag.editor-min.js' %>
 <% end %>
 
 <div class="box">
