@@ -4,6 +4,7 @@ class Photo < ActiveRecord::Base
   belongs_to :imageable, :polymorphic => true
   
   has_many   :comments, :as => :commentable, :dependent => :destroy
+  has_many   :votes,    :as => :voteable,    :dependent => :destroy
   
   default_scope :order => 'created_at DESC',:include => [:user]
   

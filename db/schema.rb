@@ -45,6 +45,13 @@ ActiveRecord::Schema.define() do
     t.boolean  :has_new_comment,  :default => false
     t.timestamps
   end
+  
+  create_table "votes", :force => true do |t|
+    t.integer  :user_id,    :null => false
+    t.integer  :voteable_id
+    t.string   :voteable_type, :limit => 40
+    t.timestamps
+  end
 
   create_table "follows", :force => true do |t|
     t.integer  :user_id,    :null => false
@@ -100,6 +107,7 @@ ActiveRecord::Schema.define() do
     t.text     :detail
     t.string   :photo_file_name
     t.integer  :comments_count,   :default => 0
+    t.integer  :votes_count,      :default => 0
     t.boolean  :has_new_comment,  :default => false
     t.datetime :last_replied_at
     t.integer  :last_replied_user_id
