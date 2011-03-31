@@ -10,6 +10,21 @@
     $(".open_dialog").click(function(){dialog($(this).attr('title'),("url:"+$(this).attr('href')),"570px","auto","text");  return false;})
     $('#dialog_flash a').click();
     $(".timeago").each(function(){$(this).html('(' + jQuery.timeago($(this).html()) + ')');$(this).removeClass('timeago')});
+	$(".vote").click(function(){
+		var t=$(this);
+		$.post('/votes',
+		    {voteable_id: $(this).attr('date-voteable_id'),voteable_type: $(this).attr('date-voteable_type')},
+			function(data){
+				if(data=='done'){
+					alert('您已经顶过了!')
+				}
+				else{
+					{t.html(data)}
+				}
+			}	
+		 ); 
+		return false
+	});
     $('.more_items').click(function(){
       var container = $(this);
       container.html('读取中...')

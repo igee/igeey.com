@@ -237,6 +237,10 @@ class User < ActiveRecord::Base
     self.password = nil
     Mailer.reset_password(self,self.password_confirmation).deliver if self.save
   end
+  
+  def has_voted_to?(voteable)
+    Vote.where(:user_id => self.id, :voteable_id => voteable.id).present?
+  end
     
   define_index do
     indexes login

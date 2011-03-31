@@ -25,6 +25,8 @@
           | 
         <% end %>
       <% end %>
+	  <%= link_to "喜欢#{'(' + photo.votes_count.to_s + ')' if photo.votes_count > 0 }", '', 'date-voteable_id' => photo.id, 'date-voteable_type' => photo.class.to_s, :class => "vote" %>
+		  |
       <%= link_to "回复#{'(' + photo.comments_count.to_s + ')' if photo.comments_count > 0}",'',:class => "event_reply"%>　
     </div>
     <%= render :partial => "/public/reply_form",:locals =>  {:object => photo}%>
