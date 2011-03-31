@@ -642,7 +642,7 @@ input.todo:hover{
 
 .tagEditor li{
   display: inline;
-  background-color: #eef;
+  background-color: #ccc;
   background-position: right center;
   background-repeat: no-repeat;
   list-style-type: none;
@@ -658,7 +658,7 @@ input.todo:hover{
   }
   
 .tagEditor li:hover{
-  background-color: #eee;
+  background-color: #cca;
   }
 
 #category_list ul{overflow:hidden}

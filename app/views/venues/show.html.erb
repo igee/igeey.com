@@ -10,12 +10,11 @@
 <% end %>
 
 
-<div class="box" id="venue_head">
+<div id="venue_head">
   <%= render :partial => "/venues/venue",:object => @venue %>
   <h2 style="margin:10px 0 10px 84px"><%= @venue.name%> <span><%= @venue.geo.full_name %></span></h2>
   <div style="margin-left:84px;"><%= raw(follow_to(@venue)) %></div>
-  <br/>
-  <div style="margin:10px">
+</div>
     <div id="formContaier">
       <%= form_for [@venue,@saying],:html=>{:class=>'venue_form'}  do |form| %>    
         <h4>我要报到：</h4>
@@ -71,8 +70,8 @@
         <li><%= link_to raw("#{image_tag('/images/icon/calling.png',:class => 'icon')} 召集"),'#new_calling'%></li>
       </ul>
     </div>
-  </div>
-</div>
+  
+
 
 <div class="box">
   <h4>这里的新鲜事..</h4>
