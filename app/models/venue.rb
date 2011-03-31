@@ -1,5 +1,15 @@
 class Venue < ActiveRecord::Base
-  CATEGORIES_HASH = {'1' => '自然景观','2' => '居住区','3' => '公共设施','4' => '教育场所','5' => '服务场所','6' => '商业场所','7'=>'其他','8'=>'乡村小学'}
+  
+  CATEGORIES_HASH = { '1' => '自然景观',
+                      '2' => '居住区',
+                      '3' => '公共设施',
+                      '4' => '教育场所',
+                      '5' => '服务场所',
+                      '6' => '商业场所',
+                      '7' => '其他',
+                      '8' => '乡村小学',
+                      '9' => '城市'}
+                      
   SHORT_CATEGORIES_HASH = {'2' => '居住区','3' => '公共设施','4' => '教育场所','8'=>'乡村小学'}
 
   belongs_to :creator, :class_name => "User", :foreign_key => "creator_id"
@@ -20,7 +30,7 @@ class Venue < ActiveRecord::Base
                             :default_style=> :_100x100,
                             :default_url=>"/defaults/:attachment/venue/:style.png"
   
-  validates :name,:latitude,:longitude, :presence   => true
+  validates :name,:latitude,:longitude,:creator_id, :presence   => true
   #validates :intro,:length     => { :within => 1..100,:message => '填请写100字以内的简介' }
   validates :category,:inclusion => { :in => CATEGORIES_HASH.keys}
   validates :cover_file_name,:format => { :with => /([\w-]+\.(gif|png|jpg))|/ }

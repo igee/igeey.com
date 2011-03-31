@@ -6,6 +6,7 @@ class Photo < ActiveRecord::Base
   acts_as_taggable
   
   has_many   :comments, :as => :commentable, :dependent => :destroy
+  has_many   :votes,    :as => :voteable,    :dependent => :destroy
   
   default_scope :order => 'created_at DESC',:include => [:user]
   
