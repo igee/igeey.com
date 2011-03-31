@@ -75,7 +75,7 @@ Joost Elfering
                 item.text(tag);
                 item.attr('title', 'Remove tag');
                 if (options.imageTag) {
-                    item.append('<img src="' + options.imageTagUrl + '">');
+                    item.append(' <img src="' + options.imageTagUrl + '">');
                 }
 
                 item.click(function() {

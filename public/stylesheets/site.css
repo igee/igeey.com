@@ -198,7 +198,7 @@ a.record_embed_number{
 
 button,.button{
     text-align:center;
-    margin:0 5px;
+    margin-right:6px;
     color:white;
     font-size:14px;
     line-height:14px;
@@ -630,25 +630,33 @@ input.todo:hover{
 
 .with_calendar{width:77px}
 
+.tag_list{display:inline}
+
+.tag_field{width:86px}
+
 .tagEditor{
   margin: 4px 0;
   padding: 0;
+  display:inline;
   }
 
 .tagEditor li{
   display: inline;
-  background-image: url(minus_small.png);
   background-color: #eef;
   background-position: right center;
   background-repeat: no-repeat;
   list-style-type: none;
-  padding: 0 18px 0 6px;
-  margin: 0 4px;	
-  cursor: pointer;
+  padding: 2px 6px;
+  margin: 2px 8px 2px 0;	
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   }
-
+  
+.tagEditor li img{
+  margin-bottom:-1px;
+  cursor: pointer;
+  }
+  
 .tagEditor li:hover{
   background-color: #eee;
   }

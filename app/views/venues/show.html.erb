@@ -5,72 +5,66 @@
 <% @topic = Topic.new %>
 <% content_for :head do %>
   <%= javascript_include_tag 'calendar.js' %>
-  <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false"></script>
   <%= javascript_include_tag 'jquery.tag.editor-min.js' %>
 <% end %>
 
+
 <div class="box" id="venue_head">
-  <h3 style="margin-left:10px;margin-top:5px;">欢迎来到<%= @venue.name%>　<span><%= @venue.geo.full_name %></span></h3>
-    <%= render :partial => "/venues/venue",:object => @venue %>
-    <div style="position:absolute;margin-top:84px;margin-left:3px"><%= raw(follow_to(@venue)) %></div>
-  <div style="width:520px;_width:510px;;margin:10px 0 10px 80px">
+  <%= render :partial => "/venues/venue",:object => @venue %>
+  <h2 style="margin:10px 0 10px 84px"><%= @venue.name%> <span><%= @venue.geo.full_name %></span></h2>
+  <div style="margin-left:84px;"><%= raw(follow_to(@venue)) %></div>
+  <br/>
+  <div style="margin:10px">
     <div id="formContaier">
-      <%= form_for [@venue,@saying] do |form| %>
-        <div class='venue_form'>
-          <div class='venue_form_title'>我要在这里报到：</div>
-          <%= form.hidden_field :venue_id,:value => @venue.id %>
-          <%= form.text_area  :content,:style => 'height:48px',:placeholder => "今天你想和#{@venue.name}的朋友们说什么？"%>
-        </div>  
-        <p style="text-align:right">
-          <%= form.submit '确 定',:class => "gary_button"%>
-        </p>
-      <% end %>
-      
-      <%= form_for @photo,:html => { :multipart => true } do |form| %>
+      <%= form_for [@venue,@saying],:html=>{:class=>'venue_form'}  do |form| %>    
+        <h4>我要报到：</h4>
         <%= form.hidden_field :venue_id,:value => @venue.id %>
-        <div class='venue_form'>
-          <div class='venue_form_title'>我要为这里上传照片：</div>
-          <%= form.label :title,'选择文件：'%> <%= form.file_field :photo,:style => "background:none;border:none;font-size:13px" %>
-          <%= form.text_area :detail,:placeholder => '说说这张照片的背后的故事吧？'%>
-        </div>
-        <p style="text-align:right">
-          <%= form.submit '确 定',:class => "gary_button"%>
-        </p>
+        <%= form.text_area  :content,:style => 'height:48px',:placeholder => "今天你想和#{@venue.name}的朋友们说什么？"%>
+        <%= form.submit '确 定',:class => "gary_button"%>
       <% end %>
       
-      <%= form_for @topic do |form| %>
-          <div class='venue_form'>
-          <div class='venue_form_title'>我要在提交这里的故事：</div>
-            <%= raw error_explanation_for(@topic) if @topic.errors.present?%>  
-            <%= form.label :title,'标题：'%> <%= form.text_field :title,:size => 20,:placeholder => '来个简洁响亮的题目吧'%>
-            <br/>
-            <%= form.text_area :content,:style => "height:96px",:placeholder => '故事的正文，不限字数!'%>
-            <%= form.hidden_field :venue_id ,:value => @venue.id %>
-          </div>
-          <p style="text-align:right">
-          <%= form.submit '确 定',:class => "gary_button"%>
-          </p>
+      <%= form_for @photo,:html => { :multipart => true,:class => "venue_form" } do |form| %>       
+        <h4>我要上传照片：</h4>
+        <%= form.hidden_field :venue_id,:value => @venue.id %>
+        <%= form.label :title,'选择文件：'%> <%= form.file_field :photo,:style => "background:none;border:none;font-size:13px" %>
+        <%= form.text_area :detail,:placeholder => '说说这张照片的背后的故事吧？'%>
+        <%= form.label :tag_list,'添加标签：'%>
+        <%= form.hidden_field :tag_list,:class => 'tag_list' %>
+        <%= text_field_tag 'photo_tag_field','',:class => "tag_field" %>
+        <br/><%= form.submit '确 定',:class => "gary_button"%>
       <% end %>
-      <%= form_for @calling do |form| %>
-        <div class='venue_form'>
-          <div class='venue_form_title'>我要在这里召集行动：</div>
-          <%= raw error_explanation_for(@calling) if @calling.errors.present?%>
-          <%= form.hidden_field :action_id,:value => 1%>
-          <%= form.hidden_field :venue_id,:value => @venue.id %>
-          <%= form.label 'title','行动标题：'%> <%= form.text_field :title, :size => 20, :placeholder => "" %><br/>
-          <%= form.label 'total_people','需要人数：'%> <%= form.text_field :total_people, :size => 3, :placeholder => "" %>　
-          <%= form.label 'total_people','行动时间：'%><%= form.text_field :do_at, :size => 8,:class => 'with_calendar',:placeholder => ""%><br/>
-          <%= form.label 'address','集合地址：'%> <%= form.text_field :address, :size => 24, :placeholder => '',:style => "text-align:left" %><br/>
-          <%= form.label 'contact','联系方式：'%> <%= form.text_field :contact, :size => 24, :placeholder => '',:style => "text-align:left" %><br/>
-          <%= form.label 'detail','详细信息：'%>(字数要求：50-1000字)　目前字数：<span id="character_count"></span>
-          <%= form.text_area :detail,:placeholder => '请说明你发起召集的原因、响应你的召集需要做什么。'%>
-        </div>
-        <p style="text-align:right">
-          <%= form.submit '确 定',:class => "gary_button"%>
-        </p>
+      
+      <%= form_for @topic,:html=>{:class=>'venue_form'}  do |form| %>
+        <h4>我要在提交这里的故事：</h4>
+        <%= form.hidden_field :venue_id ,:value => @venue.id %>
+        <%= form.label :title,'标题：'%> <%= form.text_field :title,:size => 20,:placeholder => '来个简洁响亮的题目吧'%><br/>
+        <%= form.text_area :content,:style => "height:96px",:placeholder => '故事的正文，不限字数!'%>
+        <%= form.label :tag_list,'添加标签：'%>
+        <%= form.hidden_field :tag_list,:class => 'tag_list' %>
+        <%= text_field_tag 'topic_tag_field','',:class => "tag_field" %>
+        <br/><%= form.submit '确 定',:class => "gary_button"%>
+      <% end %>
+      
+      <%= form_for @calling,:html=>{:class=>'venue_form'} do |form| %>    
+        <h4>我要召集行动：</h4>
+        <%= raw error_explanation_for(@calling) if @calling.errors.present?%>
+        <%= form.hidden_field :action_id,:value => 1%>
+        <%= form.hidden_field :venue_id,:value => @venue.id %>
+        <%= form.label 'title','行动标题：'%> <%= form.text_field :title, :size => 20, :placeholder => "" %><br/>
+        <%= form.label 'total_people','需要人数：'%> <%= form.text_field :total_people, :size => 3, :placeholder => "" %>　
+        <%= form.label 'total_people','行动时间：'%><%= form.text_field :do_at, :size => 8,:class => 'with_calendar',:placeholder => ""%><br/>
+        <%= form.label 'address','集合地址：'%> <%= form.text_field :address, :size => 24, :placeholder => '',:style => "text-align:left" %><br/>
+        <%= form.label 'contact','联系方式：'%> <%= form.text_field :contact, :size => 24, :placeholder => '',:style => "text-align:left" %><br/>
+        <%= form.label 'detail','详细信息：'%>(字数要求：50-1000字)　目前字数：<span id="character_count"></span>
+        <%= form.text_area :detail,:placeholder => '请说明你发起召集的原因、响应你的召集需要做什么。'%>          
+        <%= form.label :tag_list,'添加标签：'%>
+        <%= form.hidden_field :tag_list,:class => 'tag_list' %>
+        <%= text_field_tag 'calling_tag_field','',:class => "tag_field" %>
+        <br/><%= form.submit '确 定',:class => "gary_button"%>
       <% end %>
 
-      <ul>
+      <ul id="formTabs">
         <li><%= link_to raw("#{image_tag('/images/icon/saying.gif',:class => 'icon')} 报到"),'#new_saying'%></li>
         <li><%= link_to raw("#{image_tag('/images/icon/photo.gif',:class => 'icon')} 照片"),'#new_photo'%></li>
         <li><%= link_to raw("#{image_tag('/images/icon/topic.png',:class => 'icon')} 故事"),'#new_topic'%></li>
@@ -90,7 +84,7 @@
   <div>
     <h2>欢迎拓荒者到来！</h2>
     <p>Hi，你是第一个来到这里的人。</p>
-    <p>你很熟悉<%= @venue.name%>吧？或者在这里留下了珍贵的回忆。</p>
+    <p>你很熟悉<%= @venue.name%>吧？或者留下了珍贵的回忆。</p>
     <p>去用"报到"功能去吼一下吧，向后来者打个招呼。</p>
     <p style="padding:4px 10px;">
     </p>
@@ -164,19 +158,21 @@
     
     $(document).ready(function(){
       $("#formContaier form:first").show();
-      $("#formContaier ul li a:first").addClass("active");
-    <% if logged_in? %>  
-      $("#formContaier ul li a").click(function(){ 
-        var activeTab = $(this).attr("href"); 
-        $("#formContaier ul li a").removeClass("active"); 
-        $(this).addClass("active");
-        $("#formContaier form").hide();
-        $(activeTab).show();
-        return false;
-      });
-    <% else %>
-      $("#formContaier ul li a").click(function(){$('#login').click();return false;})
-    <% end %>
+      $("#formTabs li a:first").addClass("active");
+      
+      <% if logged_in? %>  
+        $("#formTabs li a").click(function(){ 
+          var activeTab = $(this).attr("href"); 
+          $("#formContaier ul li a").removeClass("active"); 
+          $(this).addClass("active");
+          $("#formContaier form").hide();
+          $(activeTab).show();
+          return false;
+        });
+      <% else %>
+        $("#formTabs li a").click(function(){$('#login').click();return false;})
+      <% end %>
+      
       $('#toggle_info').toggle(
         function(){$('#more_info').show()},
         function(){$('#more_info').hide()}
@@ -185,7 +181,7 @@
         var size = $(this).find('input[type=text]').val().length
         if ( size >= 140){
           alert('回复不能超过140字,你写了' + size + '个');
-          return false
+          return false;
           }
         })      
       $('#new_saying').submit(function(){
@@ -201,6 +197,13 @@
       setTimeout(updateCount, 400);
        }
       updateCount();
+      
+      $(".tag_field").each(function(index,element){jQuery(element).tagEditor();})
+      
+      $("#formContaier form").submit(function(){
+          $(this).find('.tag_list').attr('value',$(this).find('.tag_field').tagEditorGetTags())
+        });
+      
       initialize();
       setTimeout(function(){$.post('<%= watching_venue_path(@venue)%>')},5000)
       
