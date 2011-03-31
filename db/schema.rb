@@ -185,6 +185,7 @@ ActiveRecord::Schema.define() do
     t.string   :last_bumped_type, :limit => 40
     t.boolean  :has_new_plan,     :default => false
     t.integer  :comments_count,   :default => 0
+    t.integer  :votes_count,      :default => 0
     t.boolean  :has_new_comment,  :default => false
     t.datetime :last_replied_at
     t.integer  :last_replied_user_id
@@ -243,6 +244,7 @@ ActiveRecord::Schema.define() do
     t.text     :content
     t.boolean  :has_new_comment,  :default => false
     t.integer  :comments_count,   :default => 0
+    t.integer  :votes_count,      :default => 0
     t.datetime :last_replied_at
     t.integer  :last_replied_user_id
     t.timestamps
@@ -253,6 +255,7 @@ ActiveRecord::Schema.define() do
     t.integer  :venue_id
     t.text     :content
     t.integer  :comments_count,   :default => 0
+    t.integer  :votes_count,      :default => 0
     t.boolean  :has_new_comment,  :default => false
     t.datetime :last_replied_at
     t.integer  :last_replied_user_id

@@ -3,6 +3,7 @@ class Saying < ActiveRecord::Base
   belongs_to :venue,    :counter_cache => true
 
   has_many   :comments, :as => :commentable,    :dependent => :destroy
+  has_many   :votes,    :as => :voteable,       :dependent => :destroy
   
   default_scope :order => 'created_at DESC',:include => [:user]
   

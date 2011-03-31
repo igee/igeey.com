@@ -13,7 +13,9 @@
         <%= link_to "修改","#{edit_calling_path(calling)}?back_path=#{request.path}"%> |
         <%= link_to "关闭","#{close_calling_path(calling)}?back_path=#{request.path}",:method => :put,:confirm => '你确定要关闭这个召集行动么，一旦关闭其他人将不能参与' %> |
       <% end %>
-        <%= link_to "回复#{'(' + calling.comments_count.to_s + ')' if calling.comments_count > 0}",'',:class => "event_reply"%>　
+	  <%= link_to "喜欢#{'(' + calling.votes_count.to_s + ')' if calling.votes_count > 0 }", '', 'date-voteable_id' => calling.id, 'date-voteable_type' => calling.class.to_s, :class => "vote" %>
+	 	|
+      <%= link_to "回复#{'(' + calling.comments_count.to_s + ')' if calling.comments_count > 0}",'',:class => "event_reply"%>　
     </div>
     <%= render :partial => "/public/reply_form",:locals =>  {:object => calling}%>
   </div>
