@@ -78,34 +78,14 @@
   <%= render :partial => '/public/event', :collection => @timeline %>
 </div>  
 
-<% if [@venue.follows_count,@venue.sayings_count,@venue.records_count,@venue.photos_count].sum.zero? %>
-<div id="freshman" style="display:none">
-  <div>
-    <h2>欢迎拓荒者到来！</h2>
-    <p>Hi，你是第一个来到这里的人。</p>
-    <p>你很熟悉<%= @venue.name%>吧？或者留下了珍贵的回忆。</p>
-    <p>去用"报到"功能去吼一下吧，向后来者打个招呼。</p>
-    <p style="padding:4px 10px;">
-    </p>
-    <br/>
-    <p style="text-align:right">
-      <%= link_to '知道了', "#",:class => 'button',:onclick => "javascript:$('#floatBox #close_dialog').click();return false"%>
-    </p>
-  </div>
-</div>
-<script type="text/javascript">
-  dialog('欢迎',("id:freshman"),"570px","auto","text")
-</script>
-<% end %>
-
 <% content_for :sidebar do %>
-
-  <div id="more_info">
-    <h4>关于<%= @venue.name %>..</h4>
-    <pre style="font-size:13px"><%= @venue.intro%></pre>
+  <div id="venue_intro">
+    <%= image_tag(@venue.cover.url(:_100x100),:alt => @venue.name)%>
+    <h4>关于这里:</h4>
+    <pre style="font-size:12px"><%= @venue.intro%></pre>
     <span>
-      <%= "地址： #{@venue.address}" unless @venue.blank?%><br/>
-      <%= "联系方式： #{@venue.contact}" unless @venue.contact.blank?%>
+      <%= "地址： #{@venue.address}" unless @venue.address.blank?%>
+      <%= "<br/>联系方式： #{@venue.contact}" unless @venue.contact.blank?%>
     </span>
     <br/>
     <span>
@@ -127,7 +107,6 @@
   </div>
 
 <% end %>
-
 
 <% content_for :extension do %>
   <script type="text/javascript">

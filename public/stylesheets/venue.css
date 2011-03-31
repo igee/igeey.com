@@ -14,7 +14,12 @@
   left:15px;
   }
 
-#more_info{padding:0 5px;}
+#venue_intro{
+  padding:15px;
+  background-color:#f9ffff;
+  border:1px solid #cdd;
+  margin-bottom:24px;
+  }
 
 #venue_head{
   background:url('/images/background/buildings.jpg') #e9eded no-repeat right top;
