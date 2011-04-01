@@ -5,7 +5,8 @@ class VenuesController < ApplicationController
   
   def index
     @venues_hash = {}
-    Venue::SHORT_CATEGORIES_HASH.each do |k,v|
+    @categories = Venue::CATEGORIES_HASH.to_a[0..5]
+    @categories.each do |k,v|
       @venues_hash[v.to_sym] = Venue.where(:category => k).limit(6)
     end
   end

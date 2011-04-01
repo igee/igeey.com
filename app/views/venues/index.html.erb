@@ -1,10 +1,10 @@
 <div id="tabContaier">
   <ul>
-    <% Venue::SHORT_CATEGORIES_HASH.each do |k,v|%>
+    <% @categories.each do |k,v|%>
       <li><%= link_to v,"#venues_category_#{k}"%></li>
     <% end %>
   </ul>
-  <% Venue::SHORT_CATEGORIES_HASH.each do |k,v|%>
+  <% @categories.each do |k,v|%>
     <div id='<%= "venues_category_#{k}"%>' class="tabContents">      
       <%= render :partial => '/public/event', :collection => @venues_hash[v.to_sym] %>
     </div>

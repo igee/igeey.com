@@ -138,6 +138,14 @@ namespace :misc do
     end
   end
   
+  desc "Rename venue category name"
+  task :rename_venue_category => :environment do
+    category_hash = {'1'=>'nature','2'=>'living','3'=>'public','4'=>'edu','5'=>'service','6'=>'business','8'=>'school','9'=>'city','7'=>'others'}
+    Venue.all.each do |v|
+      v.update_attribute(:category,category_hash[v.category])
+    end
+  end
+  
   desc "Update venue geo city"
   task :create_geo_city => :environment do
     p("start at id:#{Venue.unscoped.order("id asc").last.id + 1 }")

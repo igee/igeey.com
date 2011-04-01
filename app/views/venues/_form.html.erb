@@ -1,17 +1,16 @@
   <%= form_for @venue do |form| %>
     <%= raw error_explanation_for(@venue) if @venue.errors.present?%>
     <p>
-      <%= form.label :name,'地点名称：'%> <%= form.text_field :name, :size => 18, :class => "title", :placeholder => "例如：XX社区，XX村"%>
+      <%= form.label :name,'地点名称(必填)：'%> <%= form.text_field :name, :size => 18, :class => "title", :placeholder => "例如：XX社区，XX村"%>
     </p>
     <p>
-      <%= form.label :intro,'类型：'%><%= form.select :category ,Venue::CATEGORIES_HASH.invert.to_a.sort_by{|value| value[1]}%>
-      <% category_example_list = ['河流、山川、自然保护区','村庄、街道及居民小区','运动场、博物馆、公园等','城乡大/中/小学及幼儿园','福利院、养老院、动物收容所等','公司、商店等',form.text_field(:custom_category,:size => 8,:placeholder => '请手工填写')]%>
-      <% category_example_list.each_with_index do |e,c|%>
-        <span class="category_example" id="category_example_<%= c+1%>"><%= e%> <%= image_tag "/images/marker/#{c+1}.png",:class=>"icon"%></span>
+      <%= form.label :intro,'类型(必选)：'%><%= form.select :category ,Venue::CATEGORIES_HASH.invert%>
+      <% Venue::CATEGORIES_HASH.keys.each do |k|%>
+        <span class="category_example" id="category_example_<%=k%>"><%= image_tag "/images/venue/#{k}.png",:class=>"icon"%></span>
       <% end %>
     </p>
     <p>
-      <%= form.label :intro,'所在城市：'%> <%= (geo_selector("venue", "geo",nil,@venue.geo)) %>
+      <%= form.label :intro,'所在城市(必选)：'%> <%= (geo_selector("venue", "geo",nil,@venue.geo)) %>
     </p>
     <p>
       <%= form.label :address,'具体地址：'%> <%= form.text_field :address,:size => 18%>
@@ -20,7 +19,7 @@
       <%= form.label :contact,'联系方式：'%> <%= form.text_field :contact,:size => 18%>
     </p>
     <p>
-      <%= form.label :intro,'简介：'%><span>100字以内</span>
+      <%= form.label :intro,'简介(必填)：'%><span>100字以内</span>
       <br/>
       <%= form.text_area :intro, :style => "width:320px;height:100px",:placeholder => "为地点写篇100字以内的简介吧"%>
       <div class="explanation">剩余字数：<span id="character_count"></span></div>

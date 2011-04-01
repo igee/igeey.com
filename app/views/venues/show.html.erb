@@ -111,6 +111,7 @@
       markers = new Array();
       markers['position'] = new Array();
       markers['position'][0] = new google.maps.Marker({
+        //icon: '/images/venue/<%= @venue.category %>.png',
         map: small_map,
         position: small_map.getCenter(),
         title: '<%= @venue.name %>'
