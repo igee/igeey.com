@@ -7,7 +7,7 @@ class Venue < ActiveRecord::Base
                       'service','服务场所',
                       'business','商业场所',
                       'school','乡村小学',
-                      'city','省市',
+                      'city','城市',
                       'others','其他'
                     ]
 
