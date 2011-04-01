@@ -630,6 +630,8 @@ input.todo:hover{
   border-color:#fea;
   }
 
+.timeago{display:none}
+
 .with_calendar{width:77px}
 
 #category_list ul{overflow:hidden}
