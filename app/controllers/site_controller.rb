@@ -64,8 +64,8 @@ class SiteController < ApplicationController
   
   def actions
     @user = current_user
-    @my_callings = @user.callings.paginate(:page => params[:callings_page], :per_page => 20)
-    @my_plans = @user.plans.undone
+    @callings_timeline = @user.callings.paginate(:page => params[:callings_page], :per_page => 20)
+    @plans_timeline = @user.plans.undone
     @my_records = @user.records.paginate(:page => params[:records_page], :per_page => 20)
   end
   

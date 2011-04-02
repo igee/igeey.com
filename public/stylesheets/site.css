@@ -641,14 +641,14 @@ input.todo:hover{
 .tagEditor li{
   display: inline;
   background-color: #ccc;
-  background-position: right center;
-  background-repeat: no-repeat;
   list-style-type: none;
   padding: 2px 6px;
   margin: 2px 8px 2px 0;	
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   }
+
+.tagEditor li a{color:#666}
   
 .tagEditor li img{
   margin-bottom:-1px;

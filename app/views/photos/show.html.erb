@@ -1,11 +1,14 @@
   <% @title = '照片'%>
-  <div style="margin:0 auto;">
+  <div class="box">
   <%= link_to (image_tag @photo.photo.url(:max500x400)),@photo,:class => "open_dialog",:title => @photo.title %>
     <p>
       上传在 <%= link_to @photo.venue.name ,@photo.venue%><br/>
       <%= link_to @photo.user.login ,@photo.user%> <%=  format_date(@photo.created_at) %>
     </p>
+    标签： <%= raw tag_list_for(@photo)%>
+    <br/>
   </div>
+  
   <% unless params[:layout] == 'false'%>
   <div class="box">
     <h4>留言板：</h4>

@@ -23,25 +23,25 @@
 <div class="box">
   <div id="tabContaier">
     <ul>
-      <li><%= link_to '报到','#my_sayings'%></li>
-      <li><%= link_to '照片','#my_photos'%></li>
-      <li><%= link_to '故事','#my_topics'%></li>
-      <li><%= link_to '行动记录','#my_records'%></li>
-      <li><%= link_to '召集行动','#my_callings'%></li>
-      <li><%= link_to '行动计划','#my_plans'%></li>
+      <li><%= link_to '报到','#sayings_timeline'%></li>
+      <li><%= link_to '照片','#photos_timeline'%></li>
+      <li><%= link_to '故事','#topics_timeline'%></li>
+      <li><%= link_to '行动记录','#records_timeline'%></li>
+      <li><%= link_to '召集行动','#callings_timeline'%></li>
+      <li><%= link_to '行动计划','#plans_timeline'%></li>
     </ul>
     
-    <div id="my_sayings" class="tabContents">
+    <div id="sayings_timeline" class="tabContents">
       <%= render :partial => '/public/saying',:collection => @sayings[0..5]%>
       <%= link_to raw("查看更多 &#8744;"),more_items_user_path(@user,:items => 'sayings',:page => 2),:class => "more_items" if @sayings[6].present?%>
     </div>
     
-    <div id="my_photos" class="tabContents">
+    <div id="photos_timeline" class="tabContents">
       <%= render :partial => '/public/photo',:collection => @photos[0..5]%>
       <%= link_to raw("查看更多 &#8744;"),more_items_user_path(@user,:items => 'photos',:page => 2),:class => "more_items" if @photos[6].present?%>
     </div>
     
-    <div id="my_topics" class="tabContents">
+    <div id="topics_timeline" class="tabContents">
       <%= render :partial => '/public/topic',:collection => @topics[0..5]%>
       <%= link_to raw("查看更多 &#8744;"),more_items_user_path(@user,:items => 'topics',:page => 2),:class => "more_items" if @topics[6].present?%>
     </div>
@@ -51,12 +51,12 @@
       <%= link_to raw("查看更多 &#8744;"),more_items_user_path(@user,:items => 'records',:page => 2),:class => "more_items" if @records[6].present?%>
     </div>
     
-    <div id="my_callings" class="tabContents">
+    <div id="callings_timeline" class="tabContents">
       <%= render :partial => '/public/calling',:collection => @callings[0..5]%>
       <%= link_to raw("查看更多 &#8744;"),more_items_user_path(@user,:items => 'callings',:page => 2),:class => "more_items" if @callings[6].present?%>
     </div>
       
-    <div id="my_plans" class="tabContents">
+    <div id="plans_timeline" class="tabContents">
       <%= render :partial => '/public/plan',:collection => @plans[0..5]%>
       <%= link_to raw("查看更多 &#8744;"),more_items_user_path(@user,:items => 'plans',:page => 2),:class => "more_items" if @plans[6].present?%>
     </div>  

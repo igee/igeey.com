@@ -1,0 +1,14 @@
+<% @title = "标签：#{@tag.name}"%>
+<div class="box">
+  <h1 style="background-color: #ccc;margin:5px 0;padding:2px 16px;-moz-border-radius:5px;-webkit-border-radius:5px;display:inline;line-height:38px;}"><%= @tag.name%></h1>
+</div>
+
+<div class="box">
+  <div id="tabContaier">
+    <ul>
+      <li><%= link_to '召集','#sayings_timeline'%></li>
+      <li><%= link_to '照片','#photos_timeline'%></li>
+      <li><%= link_to '故事','#topics_timeline'%></li>
+    </ul>
+  </div>
+</div>

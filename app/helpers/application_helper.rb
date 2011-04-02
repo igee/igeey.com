@@ -32,4 +32,10 @@ module ApplicationHelper
     "http://#{request.host_with_port}/#{object.class.name.first.downcase}/#{object.id}"
   end
   
+  def tag_list_for(object)
+    html = '<ul class="tagEditor">'
+    html += object.tag_list.map{|tag| "  <li>#{link_to(tag,name_tags_path(:name => tag))}</li>\n"}.to_s
+    html += '</ul>'
+  end
+  
 end
