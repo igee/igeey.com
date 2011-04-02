@@ -6,6 +6,8 @@
     <div class="bubble">
       <span><%= link_to @calling.user.login,@calling.user %> 为 <%= link_to @calling.venue.name,@calling.venue %> 召集行动：</span>
       <%=  render :partial => "/callings/shows/#{@action.slug}"%>
+      标签： <%= raw tag_list_for(@calling)%>
+    <br/>
     </div>
     <div style="clear:both;text-align:right">
       <% if @calling.can_edit_by?(current_user)%>
