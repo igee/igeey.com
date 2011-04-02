@@ -630,9 +630,7 @@ input.todo:hover{
 
 .with_calendar{width:77px}
 
-.tag_list{display:inline}
-
-.tag_field{width:86px}
+.tag_list{display:inline;width:86px}
 
 .tagEditor{
   margin: 4px 0;
