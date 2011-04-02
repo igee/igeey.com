@@ -19,8 +19,10 @@ class User < ActiveRecord::Base
   has_many :followings,     :class_name => "Follow",:foreign_key => :user_id
   has_many :follows,        :as => :followable, :dependent => :destroy
   has_many :followers,      :through => :follows, :source => :user
-  has_many :sayings,       :dependent => :destroy
+  has_many :sayings,        :dependent => :destroy
   has_many :syncs,          :dependent => :destroy
+  
+  acts_as_tagger
   
   has_attached_file :avatar,:styles => {:_48x48 => ["48x48#",:png],:_72x72 => ["72x72#",:png]},
                             :default_url=>"/defaults/:attachment/:style.png",
