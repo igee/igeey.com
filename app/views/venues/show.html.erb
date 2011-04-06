@@ -76,19 +76,21 @@
 </div>  
 
 <% content_for :sidebar do %>
-  <div id="venue_intro">
-    <%= image_tag(@venue.cover.url(:_100x100),:alt => @venue.name,:style => "float:left;width:100px;height:100px;margin-right:10px")%>
-    <pre style="font-size:12px"><%= @venue.intro%></pre>
-    <span>
-      <%= "地址： #{@venue.address}" unless @venue.address.blank?%>
-      <%= "<br/>联系方式： #{@venue.contact}" unless @venue.contact.blank?%>
-    </span>
-    <br/>
-    <span>
-    <%= link_to "#{@venue.cover_file_name ? '更新' : '上传'}主题图",cover_venue_path(@venue),:class => "open_dialog",:title => "#{@venue.cover_file_name ? '更新' : '上传'}主题图" if logged_in? && @venue.creator == current_user%>
-    <%= link_to '更新信息',edit_venue_path(@venue),:id => 'update_info' if logged_in? && @venue.creator == current_user %>
-    </span>
-  </div>
+  <% unless @venue.intro.blank?%>
+    <div id="venue_intro">
+      <%= image_tag(@venue.cover.url(:_100x100),:alt => @venue.name,:style => "float:left;width:100px;height:100px;margin-right:10px") if @venue.cover_file_name%>
+      <pre style="font-size:12px"><%= @venue.intro%></pre>
+      <span>
+        <%= "地址： #{@venue.address}" unless @venue.address.blank?%>
+        <%= "<br/>联系方式： #{@venue.contact}" unless @venue.contact.blank?%>
+      </span>
+      <br/>
+      <span>
+      <%= link_to "#{@venue.cover_file_name ? '更新' : '上传'}主题图",cover_venue_path(@venue),:class => "open_dialog",:title => "#{@venue.cover_file_name ? '更新' : '上传'}主题图" if logged_in? && @venue.creator == current_user%>
+      <%= link_to '更新信息',edit_venue_path(@venue),:id => 'update_info' if logged_in? && @venue.creator == current_user %>
+      </span>
+    </div>
+  <% end %>
   
   <div class="box">
     <span style="float:right"><%= link_to "查看大图",position_venue_path(@venue),:class => 'open_dialog',:title => '地点地图'%></h4></span>
@@ -137,7 +139,8 @@
           $("#formTabs li a").removeClass("active"); 
           $(this).addClass("active");
           $("#formContaier form").hide();
-          $(activeTab).show();
+          $(activeTab).fadeIn();
+          $("#formContaier").slideDown();
           return false;
         });
       <% else %>
