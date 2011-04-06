@@ -46,7 +46,7 @@
       <%= link_to raw("查看更多 &#8744;"),more_items_user_path(@user,:items => 'topics',:page => 2),:class => "more_items" if @topics[6].present?%>
     </div>
     
-    <div id="my_records" class="tabContents">
+    <div id="records_timeline" class="tabContents">
       <%= render :partial => '/public/record',:collection => @records[0..5]%>
       <%= link_to raw("查看更多 &#8744;"),more_items_user_path(@user,:items => 'records',:page => 2),:class => "more_items" if @records[6].present?%>
     </div>

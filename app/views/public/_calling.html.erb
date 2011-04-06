@@ -1,12 +1,16 @@
 <div class="event_box">
   <%= controller_name == 'venues' ? (render :partial => "/users/avatar",:object => calling.user) : (render :partial => "/venues/venue",:object => calling.venue) %>
   <div class="event">
-    <span><%= '在' if controller_name == 'users'%> <%= raw "#{link_to calling.venue.name,calling.venue} 的行动召集：" unless controller_name == 'venues' %></span>
+    <span>
+      <%= link_to calling.user.login,calling.user if controller_name == 'venues'%>
+      <%= raw("在#{link_to calling.venue.name,calling.venue}") if controller_name == 'users'%>
+      <%= raw(controller_name == 'sites' ?  "#{link_to calling.venue.name,calling.venue} 有了新行动：" : '发布了行动：') %>
+    </span>
     <pre><%= calling.title %> <%= short_url(calling) %></pre>
     <div class="event_info">
-        <span><%= raw "by #{link_to calling.user.login,calling.user}" unless controller_name == 'users' %></span>
-        <span><%= "#{calling.status}"%></span>
-        <span class="timeago"><%= calling.created_at %></span>
+      <span><%= raw "by #{link_to calling.user.login,calling.user}" if controller_name == 'site' %></span>
+      <span><%= "#{calling.status}"%></span>
+      <span class="timeago"><%= calling.created_at %></span>
     </div>    
     <div class="event_action">
       <% if calling.user == current_user %>

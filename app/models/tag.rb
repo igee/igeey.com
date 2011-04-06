@@ -54,7 +54,7 @@
 
       existing_tags + created_tags
     end
-
+    
     ### INSTANCE METHODS:
 
     def ==(object)

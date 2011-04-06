@@ -1,14 +1,29 @@
 <% @title = "标签：#{@tag.name}"%>
 <div class="box">
-  <h1 style="background-color: #ccc;margin:5px 0;padding:2px 16px;-moz-border-radius:5px;-webkit-border-radius:5px;display:inline;line-height:38px;}"><%= @tag.name%></h1>
+  <h2 style="background-color: #ccc;margin:5px 0;padding:3px 12px;-moz-border-radius:5px;-webkit-border-radius:5px;display:inline;line-height:38px;}"><%= @tag.name%></h2><span></span>
 </div>
 
 <div class="box">
   <div id="tabContaier">
     <ul>
-      <li><%= link_to '召集','#sayings_timeline'%></li>
+      <li><%= link_to '召集','#callings_timeline'%></li>
       <li><%= link_to '照片','#photos_timeline'%></li>
       <li><%= link_to '故事','#topics_timeline'%></li>
     </ul>
   </div>
+  
+    <div id="callings_timeline" class="tabContents">
+      <%= render :partial => '/public/calling',:collection => @callings[0..5]%>
+    </div>
+    
+    <div id="photos_timeline" class="tabContents">
+      <%= render :partial => '/public/photo',:collection => @photos[0..5]%>
+    </div>
+    
+    <div id="topics_timeline" class="tabContents">
+      <%= render :partial => '/public/topic',:collection => @topics[0..5]%>
+    </div> 
 </div>
+
+<% content_for :sidebar do %>
+<% end %>

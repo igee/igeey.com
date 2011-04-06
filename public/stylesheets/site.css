@@ -636,6 +636,7 @@ input.todo:hover{
   margin: 4px 0;
   padding: 0;
   display:inline;
+  word-wrap:keep-all
   }
 
 .tagEditor li{
@@ -648,7 +649,7 @@ input.todo:hover{
   -webkit-border-radius: 5px;
   }
 
-.tagEditor li a{color:#666}
+.tagEditor li a{color:#666;}
   
 .tagEditor li img{
   margin-bottom:-1px;

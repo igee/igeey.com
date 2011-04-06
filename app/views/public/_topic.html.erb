@@ -1,12 +1,16 @@
 <div class="event_box">
   <%= controller_name == 'venues' ? (render :partial => "/users/avatar",:object => topic.user) : (render :partial => "/venues/venue",:object => topic.venue) %>
   <div class="event">  
-      <span><%= '在' if controller_name == 'users'%> <%= raw "#{link_to topic.venue.name,topic.venue} 的故事：" unless controller_name == 'venues' %></span>
-      <pre><%= topic.title %> <%= short_url(topic) %></pre>
-      <pre class="explanation"><%= short_text(topic.content,72)%></pre>
+    <span>
+      <%= link_to topic.user.login,topic.user if controller_name == 'venues'%>
+      <%= raw("在#{link_to topic.venue.name,topic.venue}") if controller_name == 'users'%>
+      <%= raw(controller_name == 'sites' ?  "#{link_to topic.venue.name,topic.venue} 有了新故事：" : '写了故事：') %>
+    </span>
+    <pre><%= topic.title %> <%= short_url(topic) %></pre>
+    <pre class="explanation"><%= short_text(topic.content,72)%></pre>
     
     <div class="event_info">
-      <span><%= raw "by #{link_to topic.user.login,topic.user}" unless controller_name == 'users' %></span>
+      <span><%= raw "by #{link_to topic.user.login,topic.user}" if controller_name == 'site' %></span>
       <span class="timeago"><%= topic.created_at %></span>
     </div>
     <div class="event_action">

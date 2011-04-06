@@ -34,7 +34,7 @@ module ApplicationHelper
   
   def tag_list_for(object)
     html = '<ul class="tagEditor">'
-    html += object.tag_list.map{|tag| "  <li>#{link_to(tag,name_tags_path(:name => tag))}</li>\n"}.to_s
+    html += object.tag_list.map{|tag| "  <li>#{link_to(tag,name_tags_path(:name => tag,:filter => object.class))}</li>\n"}.to_s
     html += '</ul>'
   end
   
