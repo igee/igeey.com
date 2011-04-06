@@ -4,7 +4,7 @@
     <span>
       <%= link_to calling.user.login,calling.user if controller_name == 'venues'%>
       <%= raw("在#{link_to calling.venue.name,calling.venue}") if controller_name == 'users'%>
-      <%= raw(controller_name == 'sites' ?  "#{link_to calling.venue.name,calling.venue} 有了新行动：" : '发布了行动：') %>
+      <%= raw(controller_name == 'site'?  "#{link_to calling.venue.name,calling.venue} 有了新行动：" : '发布了行动：') %>
     </span>
     <pre><%= calling.title %> <%= short_url(calling) %></pre>
     <div class="event_info">

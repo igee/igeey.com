@@ -4,7 +4,7 @@
     <span>
       <%= link_to saying.user.login,saying.user if controller_name == 'venues'%>
       <%= raw("在#{link_to saying.venue.name,saying.venue}") if controller_name == 'users'%>
-      <%= raw(controller_name == 'sites' ?  "#{link_to saying.venue.name,saying.venue} 有了新报到：" : '的报到：') %>
+      <%= raw(controller_name == 'site' ?  "#{link_to saying.venue.name,saying.venue} 有了新报到：" : '的报到：') %>
     </span>
     <pre><%= saying.content %></pre>
     

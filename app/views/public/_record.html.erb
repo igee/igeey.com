@@ -4,7 +4,7 @@
     <span>
       <%= link_to record.user.login,record.user if controller_name == 'venues'%>
       <%= raw("在#{link_to record.venue.name,record.venue}") if controller_name == 'users'%>
-      <%= raw(controller_name == 'sites' ?  "#{link_to record.venue.name,record.venue} 有了新行动：" : '完成了行动：') %>
+      <%= raw(controller_name == 'site'?  "#{link_to record.venue.name,record.venue} 有了新行动：" : '完成了行动：') %>
     </span>
     <pre><%= record.title %> <%= short_url(record)%></pre>
     <div class="event_info">

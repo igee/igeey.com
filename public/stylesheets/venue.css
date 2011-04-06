@@ -33,12 +33,7 @@
   }
   
 #venue_forms{
-  background:url('/images/background/buildings.jpg') #e9eded no-repeat right top;
-  padding:4px 4px 0;
-  }
-  
-#formContaier{
-  padding:15px;
+  padding:8px 15px;
   background-color:#f3f3f3;
   border-top: 1px solid #ddd;
   border-bottom-left-radius: 6px;
@@ -47,6 +42,7 @@
   -webkit-border-radius:0 0 6px 6px;}
   }
   
+#formContaier {display:none;}
 #formContaier form{display:none}
 
 #formContaier textarea{
@@ -70,7 +66,7 @@
 }
 
 #formTabs li a{
-  padding:5px 8px;
+  padding:6px 8px;
   color:#888;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px
@@ -80,4 +76,3 @@
   background:#e0e0e0;
   border-color:#bbb;
 }
-

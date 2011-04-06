@@ -4,7 +4,7 @@
     <span>
       <%= link_to photo.user.login,photo.user if controller_name == 'venues'%>
       <%= raw("在#{link_to photo.venue.name,photo.venue}") if controller_name == 'users'%>
-      <%= raw(controller_name == 'sites' ?  "#{link_to photo.venue.name,photo.venue} 有了新照片：" : '上传了照片：') %>
+      <%= raw(controller_name == 'site'?  "#{link_to photo.venue.name,photo.venue} 有了新照片：" : '上传了照片：') %>
     </span>
     <div style="padding-top:10px">
       <%= link_to (image_tag photo.photo.url,:class => "photo") + (image_tag photo.photo.url(:max500x400),:title => photo.title,:class => "zoomed_photo"),photo,:class => "zoom_photo",:title => photo.title,:style => 'float:left' %>
