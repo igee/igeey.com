@@ -38,6 +38,10 @@ Igee::Application.routes.draw do
       get  :cover
       get  :position
       get  :records
+      get  :photos
+      get  :sayings
+      get  :topics
+      get  :callings
       get  :followers
       get  :more_timeline
       post :watching

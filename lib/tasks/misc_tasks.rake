@@ -137,7 +137,7 @@ namespace :misc do
       end  
     end
   end
-  
+    
   desc "Update venue geo city"
   task :create_geo_city => :environment do
     p("start at id:#{Venue.unscoped.order("id asc").last.id + 1 }")

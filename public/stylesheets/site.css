@@ -398,7 +398,7 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
   }
 
 .sidebar_panel{
-  padding:6px 10px;
+  padding:10px;
   background-color:#fff;
   margin:0px 5px 15px;
   font-size:12px;
@@ -540,8 +540,8 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 .comment .event_panel{margin:0;width:520px}
 
 .reply{font-size:12px;border-bottom:1px dashed #d6d6d6;}
-
 .reply_reply{float:right}
+.reply_tail{position:relative;top:5px;}
 
 .replies{}
 
@@ -628,6 +628,8 @@ input.todo:hover{
   border-color:#fea;
   }
 
+.timeago{display:none}
+
 .with_calendar{width:77px}
 
 .tag_list{display:inline;width:86px}
@@ -659,6 +661,8 @@ input.todo:hover{
 .tagEditor li:hover{
   background-color: #cca;
   }
+
+.filter{color:#6AD;}
 
 #category_list ul{overflow:hidden}
 #cutline_list li{font-size:13px;}

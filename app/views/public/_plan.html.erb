@@ -4,7 +4,8 @@
     <span>
       <%= link_to plan.user.login,plan.user if controller_name == 'venues'%>
       <%= raw("在#{link_to plan.venue.name,plan.venue}") if controller_name == 'users'%>
-      <%= raw(controller_name == 'site'?  "#{link_to plan.venue.name,plan.venue} 有了新行动参与：" : '参与了行动：') %></span>
+      <%= raw(['users','venues'].include?(controller_name) ? '参与了行动：' : "#{link_to plan.venue.name,plan.venue} 有了新行动参与：" ) %>
+    </span>
     <pre><%= plan.calling.title %> <%= short_url(plan) %></pre>    <div class="event_action">
       <span>by <%= link_to plan.user.login,plan.user unless controller_name == 'users' %></span>
       <span  style="float:left"><%= "#{plan.status}"%></span>

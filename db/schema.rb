@@ -205,12 +205,13 @@ ActiveRecord::Schema.define() do
     t.string  :address
     t.string  :contact
     t.string  :cover_file_name
-    t.integer :follows_count,:default => 0
-    t.integer :photos_count, :default => 0
-    t.integer :sayings_count,:default => 0
-    t.integer :records_count,:default => 0
-    t.integer :topics_count, :default => 0
-    t.integer :watch_count,  :default => 0
+    t.integer :follows_count, :default => 0
+    t.integer :photos_count,  :default => 0
+    t.integer :sayings_count, :default => 0
+    t.integer :records_count, :default => 0
+    t.integer :callings_count,:default => 0
+    t.integer :topics_count,  :default => 0
+    t.integer :watch_count,   :default => 0
     t.timestamps
   end
   

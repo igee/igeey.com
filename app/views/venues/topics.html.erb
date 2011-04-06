@@ -1,0 +1,8 @@
+<div class="box">
+  <h3><%= @venue.name %>的全部照片</h3>
+  <%= render :partial => '/public/topic',:collection => @topics%>
+</div>
+
+<% content_for :sidebar do %>
+  <%= render :partial => 'intro' %>
+<% end %>

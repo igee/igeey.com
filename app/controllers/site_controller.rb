@@ -1,6 +1,5 @@
 class SiteController < ApplicationController
-  before_filter :login_required, :except=> [:index,:faq,:guide,:about,:report,:public]
-  
+  before_filter :login_required, :except=> [:index,:faq,:guide,:about,:report,:public]  
   def index
     if logged_in?
       @timeline = []
@@ -66,7 +65,7 @@ class SiteController < ApplicationController
     @user = current_user
     @callings_timeline = @user.callings.paginate(:page => params[:callings_page], :per_page => 20)
     @plans_timeline = @user.plans.undone
-    @my_records = @user.records.paginate(:page => params[:records_page], :per_page => 20)
+    @records_timeline = @user.records.paginate(:page => params[:records_page], :per_page => 20)
   end
   
   

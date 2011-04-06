@@ -1,0 +1,8 @@
+<div class="box">
+  <h3><%= @venue.name %>的全部行动召集</h3>
+  <%= render :partial => '/public/calling',:collection => @callings%>
+</div>
+
+<% content_for :sidebar do %>
+  <%= render :partial => 'intro' %>
+<% end %>

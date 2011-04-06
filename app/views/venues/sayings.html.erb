@@ -1,0 +1,9 @@
+<div class="box">
+  <h3><%= @venue.name %>的全部报到</h3>
+  <%= render :partial => '/public/saying',:collection => @sayings%>
+</div>
+
+
+<% content_for :sidebar do %>
+  <%= render :partial => 'intro' %>
+<% end %>

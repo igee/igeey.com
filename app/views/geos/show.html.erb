@@ -38,7 +38,7 @@
       $.getJSON("/json/venues.json?<%= Venue.first.id unless Venue.first.nil? %>", function(data){
         $.each(data, function(i,item){
             markers[i] = new google.maps.Marker({
-              icon: "/images/marker/" + item.venue.category + ".png",
+              icon: "/images/venue/" + item.venue.category + ".png",
               position: new google.maps.LatLng(parseFloat(item.venue.latitude), parseFloat(item.venue.longitude)),
               title: item.venue.name,
               map: map

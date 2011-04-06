@@ -4,11 +4,11 @@
     <span>
       <%= link_to calling.user.login,calling.user if controller_name == 'venues'%>
       <%= raw("在#{link_to calling.venue.name,calling.venue}") if controller_name == 'users'%>
-      <%= raw(controller_name == 'site'?  "#{link_to calling.venue.name,calling.venue} 有了新行动：" : '发布了行动：') %>
+      <%= raw(['users','venues'].include?(controller_name) ?  "#{link_to calling.venue.name,calling.venue} 有了新行动：" : '发布了行动：') %>
     </span>
     <pre><%= calling.title %> <%= short_url(calling) %></pre>
     <div class="event_info">
-      <span><%= raw "by #{link_to calling.user.login,calling.user}" if controller_name == 'site' %></span>
+      <span><%= raw "by #{link_to calling.user.login,calling.user}" unless ['users','venues'].include?(controller_name) %></span>
       <span><%= "#{calling.status}"%></span>
       <span class="timeago"><%= calling.created_at %></span>
     </div>    

@@ -4,13 +4,13 @@
     <span>
       <%= link_to topic.user.login,topic.user if controller_name == 'venues'%>
       <%= raw("在#{link_to topic.venue.name,topic.venue}") if controller_name == 'users'%>
-      <%= raw(controller_name == 'site'?  "#{link_to topic.venue.name,topic.venue} 有了新故事：" : '写了故事：') %>
+      <%= raw(['users','venues'].include?(controller_name) ? '写了故事：' : "#{link_to topic.venue.name,topic.venue} 有了新故事：" ) %>
     </span>
     <pre><%= topic.title %> <%= short_url(topic) %></pre>
     <pre class="explanation"><%= short_text(topic.content,72)%></pre>
     
     <div class="event_info">
-      <span><%= raw "by #{link_to topic.user.login,topic.user}" if controller_name == 'site' %></span>
+      <span><%= raw "by #{link_to topic.user.login,topic.user}" unless ['users','venues'].include?(controller_name) %></span>
       <span class="timeago"><%= topic.created_at %></span>
     </div>
     <div class="event_action">

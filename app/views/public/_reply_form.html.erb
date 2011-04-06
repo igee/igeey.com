@@ -1,5 +1,5 @@
   <div style="display:none;" class="replys">
-    <%= image_tag '/images/reply_tail.png',:style => "position:relative;top:4px;"%>
+    <%= image_tag '/images/reply_tail.png',:class => "reply_tail"%>
     <div class="reply_bubble">
       <%= form_for Comment.new,:disable_with => 'Submitting…',:remote => true do |form| %>
         <div id='<%= "#{object.class.to_s.downcase}_#{object.id}_replies"%>' class="replies">

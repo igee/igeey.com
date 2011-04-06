@@ -3,7 +3,7 @@
 <div id="tabContaier">
   <ul>
     <li><%= link_to '召集行动','#callings_timeline',:id => "callings_timeline_link"%></li>
-    <li><%= link_to '行动记录','#my_records',:id => "my_records_link"%></li>
+    <li><%= link_to '行动记录','#records_timeline',:id => "records_timeline_link"%></li>
     <li><%= link_to '行动计划','#plans_timeline',:id => "plans_timeline_link"%></li>
   </ul>
 
@@ -12,9 +12,9 @@
     <%= will_paginate @callings_timeline ,:param_name => :callings_page,:params => {:start_at => 'callings_timeline'}%>
   </div>
   
-  <div id="my_records" class="tabContents">
-    <%= render :partial => '/public/record',:collection => @my_records%>
-    <%= will_paginate @my_records ,:param_name => :records_page,:params => {:start_at => 'my_records'}%>
+  <div id="records_timeline" class="tabContents">
+    <%= render :partial => '/public/record',:collection => @records_timeline%>
+    <%= will_paginate @records_timeline ,:param_name => :records_page,:params => {:start_at => 'records_timeline'}%>
   </div>
     
   <div id="plans_timeline" class="tabContents">

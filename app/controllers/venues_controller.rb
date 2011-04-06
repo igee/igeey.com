@@ -5,7 +5,8 @@ class VenuesController < ApplicationController
   
   def index
     @venues_hash = {}
-    Venue::SHORT_CATEGORIES_HASH.each do |k,v|
+    @categories = Venue::CATEGORIES_HASH.to_a[0..5]
+    @categories.each do |k,v|
       @venues_hash[v.to_sym] = Venue.where(:category => k).limit(6)
     end
   end
@@ -23,11 +24,11 @@ class VenuesController < ApplicationController
   end
   
   def show
-    @timeline = @venue.callings.limit(10)
-    @timeline += @venue.records.where(:calling_id => nil).limit(10)
-    @timeline += @venue.photos.limit(10)
-    @timeline += @venue.sayings.limit(10)
-    @timeline += @venue.topics.limit(10)
+    @callings = @venue.callings.limit(10)
+    @photos = @venue.photos.limit(10)
+    @sayings = @venue.sayings.limit(10)
+    @topics = @venue.topics.limit(10)
+    @timeline = @topics + @callings + @photos + @sayings
     @timeline = @timeline.sort{|x,y| y.created_at <=> x.created_at }[0..9]
     @followers = @venue.followers.limit(8)
   end
@@ -65,6 +66,26 @@ class VenuesController < ApplicationController
   def records
     @records = @venue.records
     respond_with(@records)
+  end
+  
+  def callings
+    @callings = @venue.callings
+    respond_with(@callings)
+  end
+  
+  def topics
+    @topics = @venue.topics
+    respond_with(@topics)
+  end
+  
+  def sayings
+    @sayings = @venue.sayings
+    respond_with(@sayings)
+  end
+  
+  def photos
+    @photos = @venue.photos
+    respond_with(@photos)
   end
   
   def followers

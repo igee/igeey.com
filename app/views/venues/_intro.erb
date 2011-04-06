@@ -1,0 +1,17 @@
+<% unless @venue.intro.blank?%>
+    <div class="sidebar_panel">
+      <%= image_tag(@venue.cover.url(:_100x100),:alt => @venue.name,:style => "float:left;width:100px;height:100px;margin-right:10px") if @venue.cover_file_name%>
+      <h4><%= link_to @venue.name,venue_path(@venue)%> </h4>
+      <pre><%= @venue.intro%></pre>
+      <span>
+        <%= "地址： #{@venue.address}" unless @venue.address.blank?%>
+        <%= "<br/>联系方式： #{@venue.contact}" unless @venue.contact.blank?%>
+      </span>
+      <br/>
+      <span>
+      <%= link_to "#{@venue.cover_file_name ? '更新' : '上传'}主题图",cover_venue_path(@venue),:class => "open_dialog",:title => "#{@venue.cover_file_name ? '更新' : '上传'}主题图" if logged_in? && @venue.creator == current_user%>
+      <%= link_to '更新信息',edit_venue_path(@venue),:id => 'update_info' if logged_in? && @venue.creator == current_user %>
+      </span>
+    </div>
+  <% end %>
+  

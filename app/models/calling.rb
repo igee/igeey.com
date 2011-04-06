@@ -1,6 +1,6 @@
 class Calling < ActiveRecord::Base
   belongs_to :user,     :counter_cache => true
-  belongs_to :venue
+  belongs_to :venue,    :counter_cache => true
   belongs_to :action
   has_many   :records
   has_many   :plans

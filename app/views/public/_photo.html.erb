@@ -4,7 +4,7 @@
     <span>
       <%= link_to photo.user.login,photo.user if controller_name == 'venues'%>
       <%= raw("在#{link_to photo.venue.name,photo.venue}") if controller_name == 'users'%>
-      <%= raw(controller_name == 'site'?  "#{link_to photo.venue.name,photo.venue} 有了新照片：" : '上传了照片：') %>
+      <%= raw(['users','venues'].include?(controller_name) ? '上传了照片：' : "#{link_to photo.venue.name,photo.venue} 有了新照片：") %>
     </span>
     <div style="padding-top:10px">
       <%= link_to (image_tag photo.photo.url,:class => "photo") + (image_tag photo.photo.url(:max500x400),:title => photo.title,:class => "zoomed_photo"),photo,:class => "zoom_photo",:title => photo.title,:style => 'float:left' %>
@@ -14,7 +14,7 @@
     </div>  
     <div style="clear:both"></div> 
     <div class="event_info">
-      <span><%= raw "by #{link_to photo.user.login,photo.user}" if controller_name == 'site' %></span>
+      <span><%= raw "by #{link_to photo.user.login,photo.user}" unless ['users','venues'].include?(controller_name) %></span>
       <span class="timeago"><%= photo.created_at %></span>
     </div>
     <div class="event_action">
@@ -22,6 +22,7 @@
           <%= link_to "删除",photo_path(photo),:method => :delete ,:confirm => "确定要删除这张照片么？",:id=>"delete_link_#{photo.id}"%> |
           <%= link_to "修改",edit_photo_path(photo)%> |
       <% end %>
+      <%= link_to "查看原图",photo.photo.url(:original),:target => "_blank" %> |
       <%= link_to "回复#{'(' + photo.comments_count.to_s + ')' if photo.comments_count > 0}",'',:class => "event_reply"%>　
     </div>
     <%= render :partial => "/public/reply_form",:locals =>  {:object => photo}%>

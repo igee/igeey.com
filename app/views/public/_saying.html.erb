@@ -4,12 +4,12 @@
     <span>
       <%= link_to saying.user.login,saying.user if controller_name == 'venues'%>
       <%= raw("在#{link_to saying.venue.name,saying.venue}") if controller_name == 'users'%>
-      <%= raw(controller_name == 'site' ?  "#{link_to saying.venue.name,saying.venue} 有了新报到：" : '的报到：') %>
+      <%= raw(['users','venues'].include?(controller_name) ? '来报到了：' : "#{link_to photo.venue.name,photo.venue} 有了新报到：") %>
     </span>
     <pre><%= saying.content %></pre>
     
     <div class="event_info">
-      <span><%= raw "by #{link_to saying.user.login,saying.user}" if controller_name == 'site' %></span>
+      <span><%= raw "by #{link_to saying.user.login,saying.user}" unless ['users','venues'].include?(controller_name) %></span>
       <span class="timeago"><%= saying.created_at %></span>
     </div>
     <div class="event_action">

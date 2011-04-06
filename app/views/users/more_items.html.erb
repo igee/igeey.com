@@ -3,17 +3,17 @@
   <% @template_folder =  ['user','venue','badge'].include?(@model) ? "#{@model}s" : 'public' %>
   
   <%= render :partial => "/#{@template_folder}/#{@model}",:collection => @items%>
-  
-  
   <%= link_to raw("查看更多 &#8744"),more_items_user_path(@user,:items => params[:items],:page => params[:page].to_i + 1),:class => "more_items" if params[:page]%>
   
   
   <script type="text/javascript">
-  $('.more_items').click(function(){
+    $('.more_items').click(function(){
         var container = $(this);
         container.html('读取中...')
         $.get(container.attr('href'),function(data){container.replaceWith(data)})
         return false;
         });
+    $(".zoom_photo").click(function(){$(this).children().first().toggle();$(this).children().last().toggle();return false});
+    $(".timeago").each(function(){$(this).html('(' + jQuery.timeago($(this).html()) + ')');$(this).removeClass('timeago')});
   </script>
 <% end %>

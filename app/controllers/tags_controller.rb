@@ -1,10 +1,12 @@
 class TagsController < ApplicationController
   def show
     @tag = Tag.find(params[:id])
-    @photos = Photo.tagged_with(@tag.name)
-    @topics = Topic.tagged_with(@tag.name)
-    @callings = Calling.tagged_with(@tag.name)
-    @tags = Tag.limit(10)
+    if ['Topic','Photo','Calling','Saying'].include?(params[:filter])
+      @timeline = params[:filter].constantize.tagged_with(@tag.name)
+      @filter_name = {'Topic'=>'故事','Photo'=>'照片','Calling'=>'召集','Saying'=>'报到'}[params[:filter]]
+    else
+      
+    end
   end
   
   def name
