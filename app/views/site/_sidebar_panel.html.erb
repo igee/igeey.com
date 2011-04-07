@@ -37,6 +37,13 @@
     </div>
     <% end %>
     
+    <div style="padding:0 5px">
+      <p>
+        <span style="color:#999">常用的标签：</span>
+      </p>
+      <%= raw tag_list_for(current_user) %>
+    </div>
+    
     <script type="text/javascript">
       if($('#notices').html().trim().length == 0){$('#notices').html('<span>暂时没有新提醒。</span>')};
     </script>

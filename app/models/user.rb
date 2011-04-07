@@ -146,7 +146,10 @@ class User < ActiveRecord::Base
   def calling_followings
     self.followings.where(:followable_type => 'Calling')
   end
-
+  
+  def tag_list
+    self.tags.limit(10)
+  end
   
   #need refactory. use dynamic methods
   
