@@ -3,9 +3,18 @@
     <%= render :partial => '/users/user' ,:object => @calling.user %>
     <div class="bubble_tail"></div>
     <div class="bubble">
+      <div style="float:right;text-align:right">
+        完成度：<span style="font-size:28px;font-family:Ariel;font-weight:bold;color:#004d68;line-height:30px"><%="#{@calling.percentage}%"%></span>
+        <br/>
+        <span>
+          <%= {:goods=>"已捐#{@calling.complete_number}件",:time => "已有#{@calling.complete_number}人要去"}[@calling.for_what.to_sym]%>
+          <%= link_to '查看',progress_calling_path(@calling) unless @calling.complete_number.zero?%>
+        </span>
+      </div>
+      
       <span><%= link_to @calling.user.login,@calling.user %> 为 <%= link_to @calling.venue.name,@calling.venue %> 召集行动：</span>
       <%=  render :partial => "/callings/shows/#{@action.slug}"%>
-      <p>标签： <%= raw tag_list_for(@calling)%></p>
+      <%= raw tag_list_for(@calling)%>
     <br/>
     </div>
     <div style="clear:both;text-align:right">
