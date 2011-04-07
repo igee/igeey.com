@@ -29,9 +29,7 @@
   </div>
   <%= render :partial => '/comments/form' ,:locals => {:commentable => @record}%>
 
+
 <% content_for :sidebar do %>
-  <div class="box">
-    <h4>受益地点</h4>
-    <%= render :partial => '/venues/venue',:object => @venue%>
-  </div>
-<%end%>        
+  <%= render :partial => '/venues/intro' %>
+<% end %>

@@ -35,7 +35,6 @@ class CallingsController < ApplicationController
     @followers = @calling.followers
     @comments = @calling.comments
     @photos = @calling.photos
-    render :layout => "no_sidebar"
   end
   
   def edit

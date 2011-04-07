@@ -1,6 +1,14 @@
 <% @title = "标签：#{@tag.name}"%>
 <div class="box">
-  <h2 style="background-color: #ccc;margin:5px 0;padding:3px 12px;-moz-border-radius:5px;-webkit-border-radius:5px;display:inline;line-height:38px;}"><%= @tag.name%></h2><span></span>
-  带有“<%= @tag.name%>”标签的<%= @filter_name%>
+  <h2 style="background-color: #ccc;margin:5px 0;padding:3px 12px;-moz-border-radius:5px;-webkit-border-radius:5px;display:inline;line-height:38px;}"><%= @tag.name%></h2>
+  <br/>
+  <span>带有“<%= @tag.name%>”标签的内容：<span>
 </div>
 <%= render :partial => '/public/event',:collection => @timeline%>
+
+<% content_for :sidebar do %>
+  <div class="box" style="width:240px;word-wrap:break-word;word-break:normal;overflow:hidden;">
+    <h4>热门标签</h4>
+    <%= raw tag_list_for(@tag) %>
+  </div>  
+<% end %>

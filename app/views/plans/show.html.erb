@@ -6,6 +6,7 @@
         <div class="bubble">
           <span><%= link_to @plan.user.login,@plan.user %> 要参与 <%= link_to @plan.venue.name,@plan.venue %> 的活动：</span>
           <%= render :partial => "/plans/shows/#{@plan.action.slug}"%>
+          <p>标签： <%= raw tag_list_for(@calling)%></p>
         </div>
         <div style="clear:both;text-align:right">
           <% if @plan.can_edit_by?(current_user)%>
@@ -28,18 +29,11 @@
               召集行动已经关闭  
             </div>
           <% else %>
-            <% @link_title = "我也要#{{'time' => '去','money' => '捐','goods' => '捐'}[@calling.for_what]}"%>
+            <% @link_title = "我也要#{{'time' => '参加','money' => '捐','goods' => '捐'}[@calling.for_what]}"%>
             <%= link_to @link_title,(logged_in? ? "#{duplicate_calling_plan_path(@calling,@plan,:parent_id => @plan.id)}" : signup_path ),:class => "big_button open_dialog",:id => 'plan_to' ,:title =>(logged_in? ? @link_title : '注册' )%>
           <% end %>
         <% end %>
       </div>
-        <p style="text-align:center">
-          <% if logged_in? && current_user.is_following?(@calling) %>
-            已关注 <%= link_to raw("<span>取消关注?</span>"),follow_path(@calling.follows.find_by_user_id(current_user.id)),:method => :delete%>
-          <% else %>
-            <%= link_to "关注进展",(logged_in? ? "#{follows_path}?followable_type=#{@calling.class}&followable_id=#{@calling.id}" : signup_path),:method => :post,:title =>(logged_in? ? "" : '注册' ),:method => :post %>
-          <% end%>
-        </p>
     </div>
   </div>
   

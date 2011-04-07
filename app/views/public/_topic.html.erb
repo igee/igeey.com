@@ -12,6 +12,7 @@
     <div class="event_info">
       <span><%= raw "by #{link_to topic.user.login,topic.user}" unless ['users','venues'].include?(controller_name) %></span>
       <span class="timeago"><%= topic.created_at %></span>
+      <%= raw tag_links_for(topic)%>
     </div>
     <div class="event_action">
       <% if current_user && current_user.id == topic.user_id %>

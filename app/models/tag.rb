@@ -1,11 +1,10 @@
   class Tag < ::ActiveRecord::Base
-    include ActsAsTaggableOn::ActiveRecord::Backports if ::ActiveRecord::VERSION::MAJOR < 3
-  
+    
+    acts_as_taggable
     attr_accessible :name
-
     ### ASSOCIATIONS:
 
-    has_many :taggings, :dependent => :destroy, :class_name => 'ActsAsTaggableOn::Tagging'
+    has_many :taggings, :dependent => :destroy
 
     ### VALIDATIONS:
 

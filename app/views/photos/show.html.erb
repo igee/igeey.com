@@ -1,18 +1,23 @@
-  <% @title = '照片'%>
+<% @title = '照片'%>
+<% @venue = @photo.venue%>
   <div class="box">
-  <%= link_to (image_tag @photo.photo.url(:max500x400)),@photo,:class => "open_dialog",:title => @photo.title %>
+  <%= image_tag @photo.photo.url(:max500x400),:alt => @photo.title %>
     <p>
-      上传在 <%= link_to @photo.venue.name ,@photo.venue%><br/>
+      上传在 <%= link_to @photo.venue.name ,@photo.venue%> ｜ <%= link_to "查看原图",@photo.photo.url(:original),:target => "_blank" %> <br/>
       <%= link_to @photo.user.login ,@photo.user%> <%=  format_date(@photo.created_at) %>
     </p>
-    标签： <%= raw tag_list_for(@photo)%>
+    <div style="float:left">标签： </div><%= raw tag_list_for(@photo)%>
     <br/>
   </div>
   
-  <% unless params[:layout] == 'false'%>
+<% unless params[:layout] == 'false'%>
   <div class="box">
     <h4>留言板：</h4>
     <%= render :partial => '/public/comment' ,:collection => @comments %>
   </div>
   <%= render :partial => '/comments/form' ,:locals => {:commentable => @photo}%>
-  <%end%>
+<%end%>
+
+<% content_for :sidebar do %>
+  <%= render :partial => '/venues/intro' %>
+<% end %>

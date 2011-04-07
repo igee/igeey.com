@@ -33,9 +33,24 @@ module ApplicationHelper
   end
   
   def tag_list_for(object)
-    html = '<ul class="tagEditor">'
-    html += object.tag_list.map{|tag| "  <li>#{link_to(tag,name_tags_path(:name => tag,:filter => object.class))}</li>\n"}.to_s
-    html += '</ul>'
+    if object.tag_list.empty?
+      html = '没有标签'
+    else  
+      html = '<ul class="tagEditor">'
+      html += object.tag_list.map{|tag| "  <li>#{link_to(tag,name_tags_path(:name => tag,:filter => object.class))}</li>\n"}.to_s
+      html += '</ul>'
+    end
+  end
+  
+  def tag_links_for(object)
+    if object.tag_list.empty?
+      return ' '
+    else
+      html = '<span>标签： '
+      html += object.tag_list[0..2].map{|tag| "#{link_to(tag,name_tags_path(:name => tag,:filter => object.class))}\n"}.to_s
+      html += '...' if object.tag_list[3]
+      html += '</span>'
+    end
   end
   
 end

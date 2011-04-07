@@ -16,6 +16,7 @@
     <div class="event_info">
       <span><%= raw "by #{link_to photo.user.login,photo.user}" unless ['users','venues'].include?(controller_name) %></span>
       <span class="timeago"><%= photo.created_at %></span>
+      <%= raw tag_links_for(photo)%>
     </div>
     <div class="event_action">
       <% if logged_in? && photo.user.id == current_user.id %>

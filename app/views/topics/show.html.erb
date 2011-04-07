@@ -12,7 +12,7 @@
     </div>
     <% end %>
   </div>
-  标签： <%= raw tag_list_for(@topic)%>
+  <div style="float:left">标签： </div><%= raw tag_list_for(@topic)%>
   <br/>
 </div>
 
@@ -20,5 +20,5 @@
 <%= render :partial => '/comments/form' ,:locals => {:commentable => @topic}%>
 
 <% content_for :sidebar do %>
- <%= link_to("返回#{@topic.venue.name}",@topic.venue) %>
+ <%= render :partial => 'intro' %>
 <% end %>

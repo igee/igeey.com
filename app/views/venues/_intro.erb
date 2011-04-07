@@ -1,11 +1,11 @@
-<% unless @venue.intro.blank?%>
+  <% unless @venue.intro.blank?%>
     <div class="sidebar_panel">
       <%= image_tag(@venue.cover.url(:_100x100),:alt => @venue.name,:style => "float:left;width:100px;height:100px;margin-right:10px") if @venue.cover_file_name%>
       <h4><%= link_to @venue.name,venue_path(@venue)%> </h4>
       <pre><%= @venue.intro%></pre>
       <span>
         <%= "地址： #{@venue.address}" unless @venue.address.blank?%>
-        <%= "<br/>联系方式： #{@venue.contact}" unless @venue.contact.blank?%>
+        <%= raw("<br/>联系方式： #{@venue.contact}") unless @venue.contact.blank?%>
       </span>
       <br/>
       <span>

@@ -497,7 +497,7 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 }
 
 .event_box{
-  padding:6px;
+  padding:8px 6px;
   border-bottom:1px dashed #ccc;
   overflow:hidden;
   zoom:1;
@@ -520,8 +520,8 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 .event_action{
   text-align:right;
   font-size:12px;
-  margin-top:10px;
   color:#aaa;
+  margin-top:1px;
 }
 
 .event_panel{
@@ -638,11 +638,10 @@ input.todo:hover{
   margin: 4px 0;
   padding: 0;
   display:inline;
-  word-wrap:keep-all
   }
 
 .tagEditor li{
-  display: inline;
+  float:left;
   background-color: #ccc;
   list-style-type: none;
   padding: 2px 6px;

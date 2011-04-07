@@ -29,7 +29,7 @@
         <%= form.hidden_field :venue_id,:value => @venue.id %>
         <%= form.label :title,'选择文件：'%> <%= form.file_field :photo,:style => "background:none;border:none;font-size:13px" %>
         <%= form.text_area :detail,:placeholder => '说说这张照片的背后的故事吧？'%>
-        <%= form.label :tag_list,'添加标签：'%>
+        <%= form.label :tag_list,'添加标签：',:style=>"float:left"%>
         <%= form.text_field :tag_list,:class => 'tag_list' %>
         <br/><%= form.submit '确 定',:class => "gary_button"%>
       <% end %>
@@ -39,7 +39,7 @@
         <%= form.hidden_field :venue_id ,:value => @venue.id %>
         <%= form.label :title,'标题：'%> <%= form.text_field :title,:size => 20,:placeholder => '来个简洁响亮的题目吧'%><br/>
         <%= form.text_area :content,:style => "height:96px",:placeholder => '故事的正文，不限字数!'%>
-        <%= form.label :tag_list,'添加标签：'%>
+        <%= form.label :tag_list,'添加标签：',:style=>"float:left"%>
         <%= form.text_field :tag_list,:class => 'tag_list' %>
         <br/><%= form.submit '确 定',:class => "gary_button"%>
       <% end %>
@@ -56,7 +56,7 @@
         <%= form.label 'contact','联系方式：'%> <%= form.text_field :contact, :size => 24, :placeholder => '',:style => "text-align:left" %><br/>
         <%= form.label 'detail','详细信息：'%>(字数要求：50-1000字)　目前字数：<span id="character_count"></span>
         <%= form.text_area :detail,:placeholder => '请说明你发起召集的原因、响应你的召集需要做什么。'%>          
-        <%= form.label :tag_list,'添加标签：'%>
+        <%= form.label :tag_list,'添加标签：',:style=>"float:left"%>
         <%= form.text_field :tag_list,:class => 'tag_list' %>
         <br/><%= form.submit '确 定',:class => "gary_button"%>
       <% end %>
