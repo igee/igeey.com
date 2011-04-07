@@ -14,6 +14,8 @@
         <%= link_to "删除","#{topic_path(topic)}?back_path=#{request.path}",:method => :delete,:confirm => '你确定要删除这条报到么？'%> |
         <%= link_to "编辑","#{edit_topic_path(topic)}?back_path=#{request.path}"%> |
       <% end %>
+	  <%= link_to "喜欢#{'(' + topic.votes_count.to_s + ')' if topic.votes_count > 0 }", '', 'date-voteable_id' => topic.id, 'date-voteable_type' => topic.class.to_s, :class => "vote" %>
+		  |
       <%= link_to "回复#{'(' + topic.comments_count.to_s + ')' if topic.comments_count > 0}",'',:class => "event_reply"%>　
     </div>
     <%= render :partial => "/public/reply_form",:locals =>  {:object => topic}%>
