@@ -25,6 +25,7 @@
   background:url('/images/background/buildings.jpg') #e9eded no-repeat right top;
   padding:4px 4px 0;
   clear:both;
+  height:80px;
   overflow:hidden;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
