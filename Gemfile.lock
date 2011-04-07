@@ -28,7 +28,6 @@ GEM
       activemodel (= 3.0.0)
       activesupport (= 3.0.0)
     activesupport (3.0.0)
-    acts-as-taggable-on (2.0.6)
     arel (1.0.1)
       activesupport (~> 3.0.0)
     builder (2.1.2)
@@ -96,7 +95,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  acts-as-taggable-on
   date_validator
   exception_notification_rails3
   json

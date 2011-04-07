@@ -21,7 +21,7 @@
     <div class="event_action">
       <% if logged_in? && photo.user.id == current_user.id %>
           <%= link_to "删除",photo_path(photo),:method => :delete ,:confirm => "确定要删除这张照片么？",:id=>"delete_link_#{photo.id}"%> |
-          <%= link_to "修改",edit_photo_path(photo)%> |
+          <%= link_to "修改",edit_photo_path(photo,:back_path =>request.path)%> |
       <% end %>
       <%= link_to "查看原图",photo.photo.url(:original),:target => "_blank" %> |
       <%= link_to "回复#{'(' + photo.comments_count.to_s + ')' if photo.comments_count > 0}",'',:class => "event_reply"%>　

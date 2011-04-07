@@ -410,11 +410,11 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 
 .bubble{
   float:left;
-  width:490px;
+  width:510px;
   background-color:#e6e6f0;
   color:#505050;
   -webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;
-  padding:15px 30px 15px;
+  padding:15px 20px 15px;
   list-style:none;    
   margin-bottom:8px;
   overflow:hidden;
@@ -638,22 +638,23 @@ input.todo:hover{
   margin: 4px 0;
   padding: 0;
   display:inline;
+  font-size:13px;
   }
 
 .tagEditor li{
   float:left;
-  background-color: #ccc;
+  background-color: #9ae;
   list-style-type: none;
-  padding: 2px 6px;
+  padding: 0px 6px;
   margin: 2px 8px 2px 0;	
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   }
 
-.tagEditor li a{color:#666;}
+.tagEditor li a{color:#fff;}
   
 .tagEditor li img{
-  margin-bottom:-1px;
+  margin-bottom:-2px;
   cursor: pointer;
   }
   

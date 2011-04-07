@@ -17,7 +17,11 @@ class PhotosController < ApplicationController
 
   def update
     @photo.update_attributes(params[:photo]) if @photo.user_id == current_user.id
-    redirect_to :back
+    if params[:back_path].present?
+      redirect_to params[:back_path]
+    else
+      respond_with @photo
+    end
   end
 
   def destroy

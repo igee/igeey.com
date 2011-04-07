@@ -1,5 +1,6 @@
 <% content_for :head do %>
   <%= javascript_include_tag 'calendar.js' %>
+  <%= javascript_include_tag 'jquery.tag.editor-min.js' %>
 <% end %>
 
 <%= form_for @calling do |form| %>
@@ -19,7 +20,9 @@
     <%= form.submit '确定',:class => 'button'%>
     <%= button_to_function '取消',"javascript:window.history.back()",:class => 'button'%>
   </div>
+<% end %>
 
+<% content_for :extension do %>
   <script type="text/javascript">
   $(document).ready(function(){
       DateTimeShortcuts.init()
@@ -28,6 +31,7 @@
       setTimeout(updateCount, 400);
        }
       updateCount();
+      $(".tag_list").each(function(index,element){jQuery(element).tagEditor();})
     })
   </script>
 <% end %>

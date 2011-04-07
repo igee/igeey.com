@@ -1,24 +1,34 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'jquery.tag.editor-min.js' %>
+<% end %>
+
 <% @venue = @photo.venue %>
 <%= render :partial => '/users/user' ,:object => current_user %>
 <div class="bubble_tail"></div>
-<div class="bubble" style="<%= 'width:380px'%>">
+<div class="bubble">
   <%= form_for @photo,:html => { :multipart => true } do |form| %>
     <%= form.hidden_field :venue_id,:value => @venue.id %>
+    <%= hidden_field_tag :back_path,params[:back_path]%>
     <% if @photo.new_record? %>
       <%= form.label :title,'图片文件：'%> <%= form.file_field :photo,:style => "background:none;border:none;font-size:13px" %>
     <% else %>
       <%= image_tag @photo.photo.url(:max500x400) %>
-    <% end %>  
+    <% end %> 
     <p><%= form.label :detail,'照片说明：'%><br/>
     <%= form.text_area :detail, :style => "width:340px;height:80px" ,:placeholder => '关于这个照片有什么故事么？'%>
     </p>
-    <p><%= form.label :tag_list,'标签：'%> <%= form.text_field :tag_list ,:size=> 8,:class=>"tag_list" %> <span>(用空格来分隔不同的标签)</span></p>
+    <p><%= form.label :tag_list,'标签：',:style=>'float:left'%> <%= form.text_field :tag_list ,:size=> 8,:class=>"tag_list" %></p>
     <p>
       <%= submit_tag '确定',:class => 'button' %>
-      <%= button_to_function '取消',"javascript:$('#floatBox #close_dialog').click()",:class => "button"%>
+      <%= button_to_function '取消',"javascript:$('#floatBox #close_dialog').click();#{'window.history.back()' unless params[:layout] == 'false'}",:class => "button"%>
     </p>
   <% end %>
 </div>
 
-<script type="text/javascript">
-</script>
+<% content_for :extension do %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $(".tag_list").each(function(index,element){jQuery(element).tagEditor();})
+    })
+  </script>
+<%end%>

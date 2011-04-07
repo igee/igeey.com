@@ -14,3 +14,4 @@
   <span class="explanation">请说明你发起召集的原因、响应你的召集需要做什么。</span>
   <%= form.text_area :detail, :style => "width:440px;height:90px"%>
 <p class="explanation">目前字数：<span id="character_count"></span></p>
+<p><%= form.label :tag_list,'标签：',:style=>'float:left'%> <%= form.text_field :tag_list ,:size=> 8,:class=>"tag_list" %></p>

@@ -1,4 +1,5 @@
 <% @title = @topic.title %>
+<% @venue = @topic.venue %>
 <div class="box">  
   <%= render :partial => '/users/user' ,:object => @topic.user %>
   <div class="bubble_tail"></div>
@@ -11,8 +12,8 @@
       <%= link_to "编辑","#{edit_topic_path(@topic)}?back_path=#{request.path}"%>
     </div>
     <% end %>
+    <%= raw tag_list_for(@topic)%>
   </div>
-  <%= raw tag_list_for(@topic)%>
   <br/>
 </div>
 

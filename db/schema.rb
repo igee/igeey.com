@@ -269,11 +269,10 @@ ActiveRecord::Schema.define() do
   create_table "taggings" do |t|
     t.references :tag
     t.references :taggable, :polymorphic => true
-    t.references :tagger, :polymorphic => true
-    t.string :context
+    t.integer    :user_id
     t.timestamps
   end
 
   # add_index :taggings, :tag_id
-  # add_index :taggings, [:taggable_id, :taggable_type, :context]  
+  # add_index :taggings, [:taggable_id, :taggable_type]  
 end
