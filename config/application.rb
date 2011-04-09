@@ -53,6 +53,9 @@ module Igee
     config.middleware.use ExceptionNotifier,
       :email_prefix => "[Error] ",
       :sender_address => %{"notifier" <mail@igeey.com>},
-      :exception_recipients => %w{YAML.load_file("#{Rails.root}/config/config.yml")[Rails.env]['developer_mail']}
+      :exception_recipients => YAML.load_file("#{Rails.root}/config/config.yml")[Rails.env]['developer_mail'].to_a
+      
+    # Custom directories with classes and modules you want to be autoloadable.
+    config.autoload_paths += %W(#{Rails.root}/lib/autoload)
   end
 end
