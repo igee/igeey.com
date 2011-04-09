@@ -273,6 +273,14 @@ ActiveRecord::Schema.define() do
     t.timestamps
   end
 
+  create_table "events" do |t|
+    t.references :eventable, :polymorphic => true
+    t.integer    :user_id
+    t.integer    :venue_id
+    t.timestamps
+  end
+
+
   # add_index :taggings, :tag_id
   # add_index :taggings, [:taggable_id, :taggable_type]  
 end

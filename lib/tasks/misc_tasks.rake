@@ -152,4 +152,13 @@ namespace :misc do
     puts("end at id:#{Venue.unscoped.order("id asc").last.id }")
     Follow.where(:user_id=>1).map(&:destroy)
   end
+  
+  desc "Init Event list"
+  task :init_event => :environment do
+    timeline = (Saying.all + Calling.all + Photo.all + Topic.all + Plan.all + Record.all).sort{|x,y| y.created_at  <=> x.created_at  }
+    timeline.each do |item|
+      Event.create(:user=>item.user,:eventable => item,:venue => item.venue) if item.event.nil?
+      print '.'
+    end
+  end
 end

@@ -8,6 +8,7 @@ class Plan < ActiveRecord::Base
   has_many   :syncs,    :as => :syncable,    :dependent => :destroy
   has_many   :plans
   has_many   :children, :class_name => 'Plan' ,:foreign_key => :parent_id
+  has_one    :event,    :as => :eventable,   :dependent => :destroy
   
   delegate :for_what, :to => :action
   

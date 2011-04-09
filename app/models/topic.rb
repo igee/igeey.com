@@ -5,8 +5,9 @@ class Topic < ActiveRecord::Base
   
   acts_as_taggable
   
-  has_many   :follows,:as => :followable,:dependent => :destroy  
-  has_many   :comments, :as => :commentable,    :dependent => :destroy
+  has_many   :follows,:as => :followable,     :dependent => :destroy  
+  has_many   :comments, :as => :commentable,  :dependent => :destroy
+  has_one    :event,    :as => :eventable,    :dependent => :destroy
   
   default_scope :order => 'last_replied_at DESC'
   

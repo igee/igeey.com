@@ -2,18 +2,10 @@ class SiteController < ApplicationController
   before_filter :login_required, :except=> [:index,:faq,:guide,:about,:report,:public]  
   def index
     if logged_in?
-      @timeline = []
-      @followings = current_user.followings.where(:followable_type => 'Venue' ).map(&:followable)
-      @followings.each do |v|
-        @timeline += v.callings.not_closed.limit(10)
-        @timeline += v.topics.limit(10)
-        @timeline += v.sayings.limit(10)
-        @timeline += v.photos.limit(10)
-        @timeline += v.topics.limit(10)
-      end
-      @timeline = @timeline.uniq.sort{|x,y| y.created_at  <=> x.created_at  }[0..9]
+      @followed_venue_id = current_user.followings.where(:followable_type => 'Venue' ).map(&:followable_id)
+      @timeline = Event.where(:venue_id => @followed_venue_id).includes([:user,:venue])
     else
-      @timeline = (Calling.limit(10) + Saying.limit(10) + Photo.limit(10) + Topic.limit(10)).sort{|x,y| y.created_at  <=> x.created_at  }[0..9]
+      @timeline = Event.limit(20).includes([:user,:venue])
     end
   end
   
