@@ -9,7 +9,7 @@ class Photo < ActiveRecord::Base
   has_many   :votes,    :as => :voteable,    :dependent => :destroy
   has_one    :event,    :as => :eventable,    :dependent => :destroy
   
-  default_scope :order => 'created_at DESC',:include => [:user]
+  default_scope :order => 'created_at DESC'
   
   has_attached_file :photo, :styles => {:_90x64 => ["90x64#"],:max500x400 => ["500x400>"]},
                             :url=>"/media/:attachment/:id/:style.:extension",

@@ -13,7 +13,7 @@ class Calling < ActiveRecord::Base
   
   acts_as_taggable
   
-  default_scope :order => 'created_at DESC',:include => [:user]
+  default_scope :order => 'created_at DESC'
   
   scope :not_closed,where(:close => false) 
   scope :timing,where(:action_id => [1]) # timeing action list 

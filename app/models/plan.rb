@@ -12,7 +12,7 @@ class Plan < ActiveRecord::Base
   
   delegate :for_what, :to => :action
   
-  default_scope :order => 'created_at DESC',:include => [:user]
+  default_scope :order => 'created_at DESC'
   
   scope :undone ,where(:is_done => false)
   

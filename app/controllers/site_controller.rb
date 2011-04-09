@@ -3,7 +3,7 @@ class SiteController < ApplicationController
   def index
     if logged_in?
       @followed_venue_id = current_user.followings.where(:followable_type => 'Venue' ).map(&:followable_id)
-      @timeline = Event.where(:venue_id => @followed_venue_id).includes([:user,:venue])
+      @timeline = Event.where(:venue_id => @followed_venue_id)
     else
       @timeline = Event.limit(20).includes([:user,:venue])
     end

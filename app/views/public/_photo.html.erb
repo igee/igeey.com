@@ -1,8 +1,11 @@
+<% venue = venue || photo.venue %>
+<% user = user || photo.user %>
+
 <div class="event_box">
-  <%= controller_name == 'venues' ? (render :partial => "/users/avatar",:object => photo.user) : (render :partial => "/venues/venue",:object => photo.venue) %>
+  <%= controller_name == 'venues' ? (render :partial => "/users/avatar",:object => user) : (render :partial => "/venues/venue",:object => photo.venue) %>
   <div class="event">
     <span>
-      <%= link_to photo.user.login,photo.user if controller_name == 'venues'%>
+      <%= link_to user.login,user if controller_name == 'venues'%>
       <%= raw("在#{link_to photo.venue.name,photo.venue}") if controller_name == 'users'%>
       <%= raw(['users','venues'].include?(controller_name) ? '上传了照片：' : "#{link_to photo.venue.name,photo.venue} 有了新照片：") %>
     </span>
@@ -19,7 +22,7 @@
       <%= raw tag_links_for(photo)%>
     </div>
     <div class="event_action">
-      <% if logged_in? && photo.user.id == current_user.id %>
+      <% if logged_in? && user.id == current_user.id %>
           <%= link_to "删除",photo_path(photo),:method => :delete ,:confirm => "确定要删除这张照片么？",:id=>"delete_link_#{photo.id}"%> |
           <%= link_to "修改",edit_photo_path(photo,:back_path =>request.path)%> |
       <% end %>

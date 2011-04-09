@@ -10,7 +10,7 @@ class Record < ActiveRecord::Base
   has_many   :syncs,    :as => :syncable,       :dependent => :destroy
   has_many   :photos,   :as => :imageable,      :dependent => :destroy
   has_one    :event,    :as => :eventable,      :dependent => :destroy
-  default_scope :order => 'created_at DESC',:include => [:user]
+  default_scope :order => 'created_at DESC'
   
   delegate  :for_what, :to => :action
   
