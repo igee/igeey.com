@@ -13,7 +13,6 @@ class UsersController < ApplicationController
   end
   
   def connect_account
-    
     @token = OauthToken.find_by_user_id_and_request_key((current_user ? current_user.id : nil), params[:oauth_token])
     @unique_id = @token.get_site_unique_id
     @exist_tokens = OauthToken.where(:unique_id => @unique_id,:site => @token.site)
@@ -24,13 +23,10 @@ class UsersController < ApplicationController
       @exist_tokens.map(&:delete)
       @token.update_attributes(:user_id => @user.id,:unique_id => @unique_id)
       self.current_user = @user
+      # auto login 
       new_cookie_flag = (params[:remember_me] == "1")
       handle_remember_cookie! new_cookie_flag
-      if session[:controller]
-        render_component :controller => session[:controller],:action => session[:action],:params => session[:params] || {}
-      else
-        redirect_back_or_default('/', :notice => "Logged in successfully")
-      end
+      redirect_to((session[:oauth_refers]||{})[@token.site] || '/' )
     end
   end
   

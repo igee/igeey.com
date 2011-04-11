@@ -5,18 +5,18 @@ class OauthController < ApplicationController
   end
     
   def accept
-    record = OauthToken.find_by_user_id_and_request_key((current_user ? current_user.id : nil), params[:oauth_token])
-    access = record.authorize params[:oauth_verifier]
-    if record.user_id.nil?
+    token = OauthToken.find_by_user_id_and_request_key((current_user ? current_user.id : nil), params[:oauth_token])
+    access = token.authorize params[:oauth_verifier]
+    if token.user_id.nil?
       redirect_to connect_account_path(:oauth_token => params[:oauth_token])
     else
-      redirect_to((session[:oauth_refers]||{})[record.site] || '/' )
+      redirect_to((session[:oauth_refers]||{})[token.site] || '/' )
     end
   end
 
   def cancel
-    record = OauthToken.where(:user_id => current_user.id, :site => params[:site]).first
-    if record.destroy
+    token = OauthToken.where(:user_id => current_user.id, :site => params[:site]).first
+    if token.destroy
       redirect_to :back  
     else
       render :text => 'fail', :status => 500
