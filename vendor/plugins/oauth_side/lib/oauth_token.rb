@@ -1,7 +1,7 @@
 class OauthToken < ActiveRecord::Base
 
   attr_accessor :site_config
-
+  
   def self.request_by user_id, site
     record = find_by_user_id_and_site(user_id,site) || self.create(:user_id => user_id, :site => site)
     raise "用户已经开通" unless record.access_token.nil? || record.user_id.nil?
@@ -34,7 +34,7 @@ class OauthToken < ActiveRecord::Base
     update_attributes :access_key => @access.token, :access_secret => @access.secret
     @access
   end
-
+  
   # 获取 concumer
   def consumer
     @consumer ||= lambda{|config|
@@ -45,5 +45,23 @@ class OauthToken < ActiveRecord::Base
       )
     }.call(Rails.oauth[site.to_sym])
   end
-
+  
+  # 获取连接网站的唯一用户标识
+  def get_site_unique_id
+    case self.site
+    when 'sina'
+      get_sina_unique_id
+    when 'douban'
+      get_douban_unique_id
+    end
+  end
+  
+  def get_douban_unique_id
+    /<db:uid>(.*)<\/db:uid>/.match(self.access_token.get('http://api.douban.com/people/%40me').body)[1]
+  end  
+  
+  def get_sina_unique_id
+    /<id>(.*)<\/id>/.match(self.access_token.get('http://api.t.sina.com.cn/account/verify_credentials.xml').body)[1]
+  end
+  
 end

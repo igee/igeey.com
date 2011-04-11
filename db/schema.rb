@@ -216,6 +216,7 @@ ActiveRecord::Schema.define() do
   
   create_table "oauth_tokens",:force => true do |t|
     t.integer :user_id
+    t.string  :unique_id
     t.string  :request_key
     t.string  :request_secret
     t.string  :access_key

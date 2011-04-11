@@ -212,19 +212,7 @@ class User < ActiveRecord::Base
     self.send_to_sina_miniblog(message) if (options[:to_sina] && sina?)
   end
   
-  #Get userdata before signup
-  def get_douban_userdata
-    #entry = token.access_token.get('http://api.douban.com/people/%40me')
-    #self.login = /<title>(.*)<\/title>/.match(entry.body)[1]
-    self.login = 'test'
-  end
-  
-  def get_sina_userdata
-  end
-  
-  
-  
-  def init_userdata_from (token)
+  def init_userdata_from(token)
     self.send_to_douban_miniblog(token) if token.site == 'douban'
     self.send_to_sina_miniblog(token) if token.site == 'sina'
   end
