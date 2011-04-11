@@ -3,7 +3,7 @@ class GeosController < ApplicationController
   before_filter :find_geo, :except => [:index,:new,:list,:selector]
     
   def index
-    @venues = Venue.limit(20)
+    @venues = Venue.limit(20).order('created_at desc')
     @geo = Geo.new(:name => '全国')
     render :show
   end

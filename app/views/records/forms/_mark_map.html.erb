@@ -1,0 +1,110 @@
+<% @venues =  current_user.venue_followings.map(&:followable) %>
+
+<% content_for :head do %>
+  <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false"></script>
+<% end %>
+
+  <%= form.hidden_field :latitude %>
+  <%= form.hidden_field :longitude %>
+  <%= form.hidden_field :venue_id %>
+  <%= form.hidden_field :slug %>
+  <%= form.hidden_field :tag_list %>
+  <%= form.hidden_field :online,:value => 1 %>
+  <%= form.hidden_field :done_at,:value => Date.today %>
+  
+  <div class="box">
+    <h5>位置： <span>拖动红色标记，放到合适的位置上。</span></h5>
+    <div id="map_canvas" style="height:280px;clear:both;margin:10px 0"></div>
+    
+    <h5>名称： <%= form.text_field :title, :size => 20,:style => 'text-align:left'%></h5>
+    <br/>
+    
+    <h5>标记类别：</h5>
+    <div id="selected_category" class="cutline"><%= image_tag("/images/marker/#{@record.slug}.png") unless @record.slug.blank? %></div>
+    <%= button_to_function '选择类别','javascript:choose_category()'%>
+    <br/>
+    <br/>
+  
+    <h5>信息描述：</h5>
+    <%= form.text_area :detail, :style => "width:460px;height:60px"%>
+    <%= form.fields_for :photos do |photo|%>
+      <h5>相关照片：<%= photo.file_field :photo,:style => "background:none;border:none;font-size:13px" %></h5>
+    <% end %>
+  </div>  
+  
+  <div id="dialog_box" style="display:none">
+    <div id="category_list" >
+      <% category_hash = {
+        '环境' => [['河流','water'],['绿化带','green'],['山峰','montain'],['花园','garden'],['景点','viewpoint']],
+        '交通' => [['绿道','road'],['自行车道','bike'],['盲道','blind'],['残障设施','disable']],
+        '设施' => [['图书馆','library'],['学校','school'],['幼儿园','children'],['游乐场/康体设施','playground'],['卫生所/医院','hospital'],['社区中心','community'],['古迹','history']],
+        '商业' => [['银行','bank'],['书店','book'],['咖啡馆','cafe'],['餐厅','restaurant']]
+      }%>
+      <% category_hash.each do |category|%>
+        <h4><%= category[0] %></h4>
+        <ul>
+          <% category[1].each do |item| %>
+            <li><%= link_to raw("<span>#{item[0]}</span> " + image_tag("/images/marker/#{item[1]}.png")),'',:class => 'cutline',:title => item[1] %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    function initialize() {
+      var latlng = new google.maps.LatLng(<%= "#{@record.latitude || @venue.latitude},#{@record.longitude || @venue.longitude}"%>)
+      var myOptions = {
+        zoom: 16,
+        center: latlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+      
+      marker = new google.maps.Marker({
+        map: map,
+        position: map.getCenter(),
+        title: '标记位置',
+        draggable: true
+      });
+    }; //initialize_end()
+    
+    
+    function choose_category(){
+      dialog("选择标记类别",("id:dialog_box"),"570px","auto","text");
+      $('#category_list a').click(function(){
+        $('#selected_category').html($(this).html());
+        $('#record_slug').val($(this).attr('title'));
+        $('#record_tag_list').val(
+          //use html structure analysis tags
+          $(this).children("span").html() + $(this).parent().parent().prev().html()
+          );
+        $('#close_dialog').click();
+        return false;
+      });
+    return false;
+    }
+    
+    
+    $(document).ready(function(){
+      //use javascript to check whether there are news for performance
+      venue_LatLng_hash = new Array();
+      
+      <% @venues.each do |v|%>
+        venue_LatLng_hash['<%= v.id %>'] = [<%= "#{v.latitude},#{v.longitude}" %>]
+      <% end %>
+        
+      $('#record_venue_id').change(function(){
+        map.setCenter(new google.maps.LatLng(venue_LatLng_hash[$(this).val()][0],venue_LatLng_hash[$(this).val()][1]));
+        marker.setPosition(map.getCenter())
+        })
+      
+      $('#record_submit').click(function(){
+        $('#record_latitude').val(marker.getPosition().lat());
+        $('#record_longitude').val(marker.getPosition().lng());
+        })
+      
+      initialize();
+    });  
+  </script>
+  

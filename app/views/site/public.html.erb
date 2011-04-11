@@ -1,0 +1,9 @@
+<% @title = '探索'%>
+<h3>爱聚的世界在发生什么？</h3>
+<%= render :partial => '/public/event', :collection => @timeline %>
+
+<% content_for :sidebar do %>  
+  <% if logged_in?%>
+    <%= render :partial => "sidebar_panel" %>
+  <% end %>
+<% end %>

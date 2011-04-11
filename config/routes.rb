@@ -13,21 +13,22 @@ Igee::Application.routes.draw do
   match 'guide' => 'site#guide'
   match 'faq' => 'site#faq'
   
-  match 'myigeey' => 'site#myigeey'
+  match 'public'  => 'site#public'
   match 'followings' => 'site#followings'
   match 'actions' => 'site#actions'
   match 'unread_comments' => 'site#unread_comments'
   match 'unread_plans' => 'site#unread_plans'
-
   match 'unread_followers' => 'site#unread_followers'
-  match 'unread_venues' => 'site#unread_venues'
   
-  match 'my_timeline' => 'site#my_timeline'
+  match 'more_timeline' => 'site#more_timeline'
   match 'city_timeline' => 'site#city_timeline'
   
   match 'oauth(/:action)' => 'oauth#(/:action)'
   match 'plan(/:id)' => 'plans#redirect', :as => :plan
   match 'setting' => 'users#setting'
+  
+  match 'search' => 'search#result'
+  match 'search/more' => 'search#more',:as => :more_search
   
   resource :session, :only => [:new, :create, :destroy,:show]
   resource :sync, :only => [:new, :create]
@@ -35,9 +36,14 @@ Igee::Application.routes.draw do
   
   resources :venues do
     member do
-      get :cover
-      get :position
+      get  :cover
+      get  :position
+      get  :records
+      get  :followers
+      get  :more_items
+      post :watching
     end
+    resources :sayings
   end
   
   resources :badges do
@@ -55,6 +61,7 @@ Igee::Application.routes.draw do
   resources :records do
     get   :select_venue ,:on => :collection
     get   :select_action ,:on => :collection
+    get   :find_by_tag ,:on => :collection
   end
   
   resources :geos do
@@ -82,65 +89,22 @@ Igee::Application.routes.draw do
   
   resources :follows
   resources :topics
-  resources :comments
+  resources :sayings
+  resources :comments do
+    get :more, :on => :collection
+  end
   resources :photos
   resources :actions
+  resources :projects do
+    member do
+      get :records
+    end
+  end
   
-  
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
-
-  # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
-  # Keep in mind you can assign values other than :controller and :action
-
-  # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-  # This route can be invoked with purchase_url(:id => product.id)
-
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Sample resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Sample resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Sample resource route with more complex sub-resources
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', :on => :collection
-  #     end
-  #   end
-
-  # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
-
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  # root :to => "welcome#index"
-
-  # See how all your routes lay out with "rake routes"
-
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id(.:format)))'
+  #short_url
+  match "/v/:id" => redirect("/venues/%{id}")
+  match "/c/:id" => redirect("/callings/%{id}")
+  match "/r/:id" => redirect("/records/%{id}")
+  match "/p/:id" => redirect("/plan/%{id}")
+  match "/t/:id" => redirect("/topics/%{id}")
 end

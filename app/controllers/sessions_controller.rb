@@ -26,7 +26,11 @@ class SessionsController < ApplicationController
       self.current_user = user
       new_cookie_flag = (params[:remember_me] == "1")
       handle_remember_cookie! new_cookie_flag
-      redirect_back_or_default('/', :notice => "Logged in successfully")
+      if session[:controller]
+        render_component :controller => session[:controller],:action => session[:action],:params => session[:params] || {}
+      else
+        redirect_back_or_default('/', :notice => "Logged in successfully")
+      end
     else
       note_failed_signin
       @login       = params[:login]

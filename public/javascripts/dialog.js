@@ -27,7 +27,7 @@ switch(contentType){
   case "url":
   var content_array=content.split("?");
   $("#floatBox .dialog_content").ajaxStart(function(){
-    $(this).html("loading...");
+    $(this).html("读取中..请稍后");
   });
   $.ajax({
     url:content_array[0]+"?layout=false&" + content_array[1],

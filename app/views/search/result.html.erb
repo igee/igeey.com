@@ -1,0 +1,49 @@
+<% title = '搜索结果' %>
+
+<%= form_tag search_path,:method => :get do%>
+<div style="padding:10px 0">
+  <%= text_field_tag 'keywords', @keywords,:size => 20,:style => "padding:2px" %>
+  <%= submit_tag '搜索',:class => 'button'%>
+</div>
+<% end %>
+
+<% if @keywords.blank? %>
+  <span>请输入搜索关键词 </span>
+<% elsif @venues.blank? && @callings.blank? && @users.blank? && @topics.blank? %>
+  <span>很遗憾，没有关于"<%= params[:keywords]%>"搜索结果。</span>
+<% else %>
+  <span>"<%= params[:keywords]%>"的搜索结果：</span>
+  
+  <div id="tabContaier" class="box">
+    <ul>
+      <li><%= link_to "地点(#{@venues.total_entries > 50 ? '50+' : @venues.total_entries})",'#venue_results'%></li>
+      <li><%= link_to "用户(#{@users.total_entries > 50 ? '50+' : @users.total_entries})",'#user_results'%></li>
+    </ul>
+    <div id="results">  
+      <div id="venue_results" class="tabContents" style="display:block">
+        <%= render :partial => "/public/venue",:collection => @venues%>
+        <%= link_to raw("更多结果 &#8744;"),more_search_path(:keywords => params[:keywords],:items => 'venues',:page => 2),:class => "more_results" if @venues[9].present?%>
+      </div>
+      
+      <div id="user_results" class="tabContents">
+        <%= render :partial => "/public/user",:collection => @users%>
+        <%= link_to raw("更多结果 &#8744;"),more_search_path(:keywords => params[:keywords],:items => 'users',:page => 2),:class => "more_results" if  @users[9].present?%>
+      </div>
+    </div>
+  </div>
+      
+  <% content_for :extension do %>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $('#results').html($('#results').html().replace(<%= "/(#{@keywords})/g"%>, "<strong class='keyword'>$1</strong>"))
+      $('.more_results').click(function(){
+        var container = $(this);
+        container.html('读取中...');
+        $.get(container.attr('href'),function(data){container.replaceWith(data)})
+        return false;
+        });
+    })
+    </script>
+  <% end %>
+<% end %>
+<p style="padding:10px 0;">没有你要找的地点？ 没关系，立即 <%= link_to '添加地点',new_venue_path%> 吧。</p>

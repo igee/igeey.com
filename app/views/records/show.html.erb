@@ -1,20 +1,15 @@
-<% @title = @record.name%>
+<% @title = @record.title%>
 <div class="box">
     <%= render :partial => '/users/user' ,:object => @record.user %>
-      <div class="saying">
-        <p class="impact">
-          <%="#{@record.user.login}#{@record.description}"%>
-        </p>
-        <pre class="explanation"><%= @record.detail %></pre>
-        <%= render :partial => "/photos/photo",:collection => @photos %>   
+      <div class="bubble_tail"></div>
+      <div class="bubble">
+        <span>完成了为 <%= link_to @record.venue.name,@record.venue %> 的行动：</span>
+        <%=  render :partial => "/records/shows/#{@action.slug}"%>
       </div>
-      <div class="saying_tail"></div>
-      
       <div style="clear:both;text-align:right">
         <% if @record.can_edit_by?(current_user)%>
         <span>
           <%= link_to "修改信息",edit_record_path(@record)%> |
-          <%= render :partial => "/photos/uploader",:locals => {:imageable => @record}%> |
           <%= link_to "删除","#{record_path(@record)}?",:method => :delete,:confirm => '你确定要删除这个行动记录么' %>
         </span>
         <% end %>
@@ -36,7 +31,7 @@
 
 <% content_for :sidebar do %>
   <div class="box">
-    <h4>受益聚点</h4>
+    <h4>受益地点</h4>
     <%= render :partial => '/venues/venue',:object => @venue%>
   </div>
 <%end%>        

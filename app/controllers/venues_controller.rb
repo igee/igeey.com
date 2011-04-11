@@ -1,41 +1,36 @@
 class VenuesController < ApplicationController
   respond_to :html,:json
-  before_filter :login_required, :except => [:index, :show,:position]
-  after_filter  :clean_unread,:only => [:show]
+  before_filter :login_required, :except => [:index, :show,:records,:followers,:more_items,:position,:watching]
   before_filter :find_venue, :except => [:index,:new,:create]
   
   def index
-    if params[:user_id].present?
-      @venues = User.find(params[:user_id]).records.map(&:venue)
-    else
-      @venues = Venue.all
+    @venues_hash = {}
+    @categories = Venue::CATEGORIES_HASH.to_a[0..5]
+    @categories.each do |k,v|
+      @venues_hash[v.to_sym] = Venue.where(:category => k).limit(6)
     end
-    respond_with(@venues)
   end
   
   def new
-    if params[:latitude].blank? || params[:longitude].blank?
-      redirect_to geos_path
-    else
-      @venue = Venue.new(:latitude => params[:latitude],:longitude => params[:longitude],:geo_id => params[:geo_id])
-    end
+    @venue = Venue.new
   end
 
   def create
     @venue = Venue.new(params[:venue])
     @venue.creator = current_user
+    @venue.init_geocodding
     flash[:notice] = 'Venue was successfully created.' if @venue.save
     respond_with(@venue)
   end
   
   def show
     @timeline = @venue.callings
-    @timeline += @venue.plans.undone
-    @timeline += @venue.records
+    @timeline += @venue.records.where(:calling_id => nil)
     @timeline = @timeline.sort{|x,y| y.created_at <=> x.created_at }
-    @photos = @venue.photos
-    @topics = @venue.topics
-    @followers = @venue.followers
+    @photos = @venue.photos.limit(7)
+    @topics = @venue.topics.limit(7)
+    @sayings = @venue.sayings.limit(7)
+    @followers = @venue.followers.limit(8)
   end
   
   def edit
@@ -58,13 +53,31 @@ class VenuesController < ApplicationController
     render :layout => false if params[:layout] == 'false'
   end
   
+  def records
+    @records = @venue.records
+    respond_with(@records)
+  end
+  
+  def followers
+    @followers = @venue.followers.paginate(:page => params[:page], :per_page => 20)
+  end
+  
+  def more_items
+    @items = eval({:followers => '@venue.followers[8..-1]',
+                   :photos => "@venue.photos.paginate(:page => #{params[:page]}, :per_page => 7)",
+                   :sayings => "@venue.sayings.paginate(:page => #{params[:page]}, :per_page => 7)",
+                   :topics => "@venue.topics.paginate(:page => #{params[:page]}, :per_page => 7)",
+                   }[params[:items].to_sym])
+    render :layout => false
+  end
+  
+  def watching
+    @venue.update_attribute(:watch_count,(@venue.watch_count + 1))
+    render :text => 'OK'
+  end
+  
   private
   def find_venue
     @venue = Venue.find(params[:id])
   end
-  
-  def clean_unread
-    @venue.follows.where(:user_id => current_user.id).map{|g| g.update_attributes(:has_new_calling => false,:has_new_topic => false)} if logged_in?
-  end
-
 end

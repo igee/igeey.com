@@ -16,6 +16,7 @@ ActiveRecord::Schema.define() do
     t.string  :name,        :limit => 40
     t.string  :slug,        :limit => 40
     t.string  :for_what,    :limit => 40
+    t.boolean :is_callable, :default => true
     t.text    :intro
     t.text    :step_by_step
   end
@@ -30,27 +31,31 @@ ActiveRecord::Schema.define() do
   end
   
   create_table "grants", :force => true do |t|
-    t.integer  :user_id,    :null => false
+    t.integer  :user_id
     t.integer  :badge_id
     t.boolean  :unread,     :default => true
     t.timestamps
   end
   
   create_table "comments", :force => true do |t|
-    t.integer  :user_id,    :null => false
+    t.integer  :user_id
     t.text     :content
     t.integer  :commentable_id
     t.string   :commentable_type, :limit => 40
     t.boolean  :has_new_comment,  :default => false
     t.timestamps
   end
+  
+  create_table "votes", :force => true do |t|
+    t.integer  :user_id
+    t.integer  :voteable_id
+    t.string   :voteable_type, :limit => 40
+    t.timestamps
+  end
 
   create_table "follows", :force => true do |t|
-    t.integer  :user_id,    :null => false
-    t.boolean  :has_new_comment,  :default => false
+    t.integer  :user_id
     t.boolean  :unread,           :default => true
-    t.boolean  :has_new_calling,  :default => false
-    t.boolean  :has_new_topic,    :default => false
     t.integer  :followable_id
     t.string   :followable_type, :limit => 40
     t.timestamps
@@ -88,15 +93,24 @@ ActiveRecord::Schema.define() do
     t.boolean  :has_new_child,    :default => false
     t.boolean  :has_new_comment,  :default => false
     t.boolean  :is_done,  :default => false
+    t.datetime :last_replied_at
+    t.integer  :last_replied_user_id
     t.timestamps
   end
 
   create_table "photos", :force => true do |t|
     t.integer  :user_id
+    t.integer  :venue_id
     t.integer  :imageable_id
     t.string   :imageable_type
     t.string   :title,       :limit => 40
+    t.text     :detail
     t.string   :photo_file_name
+    t.integer  :comments_count,   :default => 0
+    t.integer  :votes_count,      :default => 0
+    t.boolean  :has_new_comment,  :default => false
+    t.datetime :last_replied_at
+    t.integer  :last_replied_user_id
     t.timestamps
   end
   
@@ -107,18 +121,21 @@ ActiveRecord::Schema.define() do
     t.integer  :plan_id
     t.integer  :calling_id
     t.integer  :parent_id
+    
     t.integer  :money
-    t.string   :donate_for,  :limit => 40
     t.integer  :goods
-    t.string   :goods_is,    :limit => 40
     t.integer  :time
-    t.string   :do_what,     :limit => 40
-    t.string   :unit,        :limit => 40
+    t.integer  :online
+    t.string   :title,       :limit => 40
+    t.string   :latitude,    :limit => 40
+    t.string   :longitude,   :limit => 40
+        
     t.datetime :done_at
     t.text     :detail
     t.integer  :comments_count,   :default => 0
     t.boolean  :has_new_comment,  :default => false
-    t.boolean  :has_photo,  :default => false
+    t.datetime :last_replied_at
+    t.integer  :last_replied_user_id
     t.timestamps
   end
 
@@ -134,14 +151,17 @@ ActiveRecord::Schema.define() do
     t.datetime :updated_at
     t.integer  :follows_count,             :default => 0
     t.integer  :comments_count,            :default => 0
-    t.integer  :records_count,             :default => 0
-    t.integer  :plans_count,               :default => 0
     t.integer  :callings_count,            :default => 0
+    t.integer  :plans_count,               :default => 0
+    t.integer  :records_count,             :default => 0
+    t.integer  :photos_count,              :default => 0
+    t.integer  :sayings_count,             :default => 0
+    t.integer  :topics_count,              :default => 0
     t.string   :remember_token,            :limit => 40
     t.datetime :remember_token_expires_at
     t.string   :signature
     t.boolean  :is_admin,                  :default => false
-    t.boolean  :use_local_geo,         :default => false
+    t.boolean  :use_local_geo,             :default => false
   end
   
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
@@ -149,23 +169,25 @@ ActiveRecord::Schema.define() do
   create_table "callings", :force => true do |t|
     t.integer  :venue_id
     t.integer  :action_id
-    t.integer  :user_id
+    t.integer  :user_id    
     t.integer  :total_money
-    t.string   :donate_for,  :limit => 40
-    t.integer  :total_goods
-    t.string   :goods_is,    :limit => 40
+    t.integer  :total_online
     t.integer  :total_people
-    t.string   :do_what,     :limit => 40
-    t.string   :info,        :limit => 80
+    t.integer  :total_goods
+    t.string   :title,       :limit => 40   
+    t.string   :address
+    t.string   :contact
     t.text     :detail
     t.datetime :do_at
-    t.string   :unit,        :limit => 40
     t.boolean  :close,            :default => false
-    t.integer  :comments_count,   :default => 0
     t.integer  :follows_count,    :default => 0
-    t.boolean  :has_new_comment,  :default => false
+    t.datetime :last_bumped_at
+    t.string   :last_bumped_type, :limit => 40
     t.boolean  :has_new_plan,     :default => false
-    t.boolean  :has_photo,        :default => false
+    t.integer  :comments_count,   :default => 0
+    t.boolean  :has_new_comment,  :default => false
+    t.datetime :last_replied_at
+    t.integer  :last_replied_user_id
     t.timestamps
   end  
 
@@ -176,13 +198,19 @@ ActiveRecord::Schema.define() do
     t.string  :custom_category,     :limit => 40
     t.integer :geo_id
     t.integer :creator_id
+    t.integer :old_id
     t.string  :latitude,     :limit => 40
     t.string  :longitude,    :limit => 40
+    t.integer :zoom_level,   :default => 13
     t.string  :address
     t.string  :contact
     t.string  :cover_file_name
-    t.boolean :has_photo,    :default => false
     t.integer :follows_count,:default => 0
+    t.integer :photos_count, :default => 0
+    t.integer :sayings_count,:default => 0
+    t.integer :records_count,:default => 0
+    t.integer :topics_count, :default => 0
+    t.integer :watch_count,  :default => 0
     t.timestamps
   end
   
@@ -209,12 +237,40 @@ ActiveRecord::Schema.define() do
   create_table "topics",:force => true do |t|
     t.integer  :user_id
     t.integer  :venue_id
+    t.string   :forumable_type
+    t.integer  :forumable_id
     t.string   :title
     t.text     :content
-    t.datetime :last_replied_at
-    t.integer  :last_replied_user_id
     t.boolean  :has_new_comment,  :default => false
     t.integer  :comments_count,   :default => 0
+    t.datetime :last_replied_at
+    t.integer  :last_replied_user_id
     t.timestamps
   end
+  
+  create_table "sayings",:force => true do |t|
+    t.integer  :user_id
+    t.integer  :venue_id
+    t.text     :content
+    t.integer  :comments_count,   :default => 0
+    t.boolean  :has_new_comment,  :default => false
+    t.datetime :last_replied_at
+    t.integer  :last_replied_user_id
+    t.timestamps
+  end
+  
+create_table :tags do |t|
+    t.column :name, :string
+  end
+  
+  create_table :taggings do |t|
+    t.column :tag_id, :integer
+    t.column :taggable_id, :integer
+    
+    # You should make sure that the column created is
+    # long enough to store the required class names.
+    t.column :taggable_type, :string
+    t.column :created_at, :datetime
+  end
+  
 end

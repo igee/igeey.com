@@ -1,0 +1,19 @@
+<% unless @items.empty? %>
+  <% @model = @items.first.class.to_s.downcase %>
+  
+  <%= render :partial => "/public/#{@model}",:collection => @items%>
+  
+  <%= link_to raw("更多结果 &#8744"),more_search_path(:keywords => params[:keywords],:items => params[:items],:page => params[:page].to_i + 1),:class => "more_results" if params[:page]%>
+  
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('#results').html($('#results').html().replace(<%= "/(#{@keywords})/g"%>, "<strong class='keyword'>$1</strong>"));
+    $('.more_results').click(function(){
+        var container = $(this);
+        container.html('读取中...')
+        $.get(container.attr('href'),function(data){container.replaceWith(data)})
+        return false;
+        });
+  })
+  </script>
+<% end %>

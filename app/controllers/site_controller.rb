@@ -1,48 +1,42 @@
 class SiteController < ApplicationController
-  before_filter :login_required, :except=> [:index,:faq,:guide,:about,:report]
+  before_filter :login_required, :except=> [:index,:faq,:guide,:about,:report,:public]
   
   def index
-    @calling_timeline = Calling.not_closed.limit(logged_in? ? 15 : 5)
-    @plan_timeline = Plan.limit(logged_in? ? 15 : 5)
-    @record_timeline = Record.limit(logged_in? ? 15 : 5)
-  end
-  
-  def myigeey
-    @user = current_user
-    @my_actions = @user.callings + @user.plans.undone + @user.records
-    @my_actions = @my_actions.sort{|x,y| y.created_at <=> x.created_at }
-    @my_followings = @user.followings.map(&:followable)
-    @geo = Geo.new(:name => '全国')
-    @my_plans = current_user.plans.undone if logged_in?
-  end
-
-  def followings
-    @user = current_user
-    @venue_followings = @user.venue_followings.paginate(:page => params[:venues_page], :per_page => 20)
-    @calling_followings = @user.calling_followings.paginate(:page => params[:callings_page], :per_page => 20)
-    @user_followings = @user.user_followings.paginate(:page => params[:users_page], :per_page => 20)
-  end
-  
-  def actions
-    @user = current_user
-    @my_callings = @user.callings.paginate(:page => params[:callings_page], :per_page => 20)
-    @my_plans = @user.plans.undone
-    @my_records = @user.records.paginate(:page => params[:records_page], :per_page => 20)
-  end
-  
-  def my_timeline
-    # group callings,plans and records to list
     if logged_in?
-      @my_followings = current_user.followings
-      @my_timeline = current_user.calling_followings.map(&:followable)
-      @my_followings.where("followable_type != ?",'Calling' ).map(&:followable).each do |object|
-        @my_timeline += object.records.limit(5) 
-        @my_timeline += object.callings.not_closed.limit(5)
-        @my_timeline += object.plans.limit(5)
+      @timeline = []
+      @followings = current_user.followings.where(:followable_type => 'Venue' ).map(&:followable)
+      @followings.each do |v|
+        @timeline += v.callings.not_closed.limit(10)
+        @timeline += v.sayings.limit(10)
+        @timeline += v.photos.limit(10)
+        @timeline += v.topics.limit(10)
       end
-      @my_timeline = @my_timeline.uniq.sort{|x,y| y.created_at  <=> x.created_at  }[0..15]
+      @timeline = @timeline.uniq.sort{|x,y| y.created_at  <=> x.created_at  }[0..9]
+    else
+      @timeline = (Calling.limit(10) + Saying.limit(10) + Photo.limit(10) + Topic.limit(10)).sort{|x,y| y.created_at  <=> x.created_at  }[0..9]
     end
+  end
+  
+  def more_timeline
+    @timeline = []
+    @followings = current_user.followings.where(:followable_type => 'Venue' ).map(&:followable)
+    @followings.each do |v|
+      @timeline += v.callings.not_closed.limit(30)
+      @timeline += v.sayings.limit(30)
+      @timeline += v.photos.limit(30)
+      @timeline += v.topics.limit(10)
+    end
+    @timeline = @timeline.sort{|x,y| y.created_at  <=> x.created_at}[0..200].paginate(:page => params[:page], :per_page => 10)
     render :layout => false
+  end
+  
+  def public
+    @timeline = []
+    @timeline += Calling.not_closed.limit(30)
+    @timeline += Saying.limit(30)
+    @timeline += Photo.limit(30)
+    @timeline += Topic.limit(30)
+    @timeline = @timeline.sort{|x,y| y.created_at  <=> x.created_at  }[0..30]
   end
   
   def city_timeline
@@ -60,11 +54,34 @@ class SiteController < ApplicationController
     end
     render :layout => false
   end
+
+  def followings
+    @venue_followings = current_user.venue_followings.paginate(:page => params[:venues_page], :per_page => 20)
+    @calling_followings = current_user.calling_followings.paginate(:page => params[:callings_page], :per_page => 20)
+    @user_followings = current_user.user_followings.paginate(:page => params[:users_page], :per_page => 20)
+  end
+  
+  def actions
+    @user = current_user
+    @my_callings = @user.callings.paginate(:page => params[:callings_page], :per_page => 20)
+    @my_plans = @user.plans.undone
+    @my_records = @user.records.paginate(:page => params[:records_page], :per_page => 20)
+  end
+  
   
   def unread_comments
-    @topics = current_user.topics.where(:has_new_comment => true) | current_user.comments.where(:has_new_comment => true,:commentable_type => "Topic").map(&:commentable)
-    @records = current_user.records.where(:has_new_comment => true) | current_user.comments.where(:has_new_comment => true,:commentable_type => "Record").map(&:commentable)
-    @callings = current_user.callings.where(:has_new_comment => true) | current_user.followings.where(:has_new_comment => true,:followable_type => "Calling").map(&:followable) | current_user.comments.where(:has_new_comment => true,:commentable_type => "Calling").map(&:commentable)
+    @timeline = []
+    @timeline += current_user.sayings.where(:has_new_comment => true)
+    @timeline += current_user.photos.where(:has_new_comment => true)
+    @timeline += current_user.topics.where(:has_new_comment => true)
+    @timeline += current_user.callings.where(:has_new_comment => true)
+    @timeline += current_user.records.where(:has_new_comment => true)
+    @timeline += current_user.comments.where(:has_new_comment => true).map(&:commentable)
+    @timeline = @timeline.uniq.sort{|x,y| y.last_replied_at <=> x.last_replied_at}
+    @timeline.each do |i|
+      i.update_attribute(:has_new_comment,false)
+      i.comments.where(:user_id => current_user.id).map{|c| c.update_attribute(:has_new_comment,false)}
+    end
   end
   
   def unread_plans
@@ -77,10 +94,5 @@ class SiteController < ApplicationController
     @followers = @follows.map(&:user)
     @follows.map{|f| f.update_attribute(:unread,false)}
   end
-  
-  def unread_venues
-    @unread_calling_venues = current_user.followings.where(:has_new_calling => true,:followable_type => "Venue").map(&:followable)
-    @unread_topic_venues = current_user.followings.where(:has_new_topic => true,:followable_type => "Venue").map(&:followable)
-  end
-  
+
 end

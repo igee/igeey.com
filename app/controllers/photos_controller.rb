@@ -21,6 +21,7 @@ class PhotosController < ApplicationController
   end
 
   def show
+    @comments = @photo.comments
     render :layout => false if params[:layout] == 'false'
   end
   

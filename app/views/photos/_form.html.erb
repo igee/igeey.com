@@ -1,23 +1,21 @@
-<div id=<%= "upload_photo_#{imageable.class}#{imageable.id}"%> class="upload_photo">
-  <% @photo = Photo.new%>
-  <% if logged_in?%>
-    <div>
-      <%= form_for @photo,:html => { :multipart => true } do |form| %>
-        <%= form.hidden_field :imageable_type,:value => imageable.class %>
-        <%= form.hidden_field :imageable_id,:value => imageable.id %>
-        <p>
-          <%= form.file_field :photo,:style => "background:none;border:none;font-size:13px" %>
-        </p>
-        <p>
-          <%= form.label :title,'标题：'%> <%= form.text_field :title ,:size=> 10%>
-        </p>
-        <br/>
-        <p>
-          <%= submit_tag '上传',:class => 'button' %>
-          <%= button_to_function '取消',"javascript:$('#floatBox #close_dialog').click()",:class => "button"%>
-        </p>
-      <% end %>
-    </div>
-    
+<%@photo = Photo.new%>
+<%= render :partial => '/users/user' ,:object => current_user %>
+<div class="bubble_tail"></div>
+<div class="bubble" style="<%= 'width:380px'%>">
+  <%= form_for @photo,:html => { :multipart => true } do |form| %>
+    <%= form.hidden_field :venue_id,:value => @venue.id %>
+    <p>
+       <%= form.label :title,'图片文件：'%> <%= form.file_field :photo,:style => "background:none;border:none;font-size:13px" %>
+    </p>
+    <p>
+      <%= form.label :title,'标题：'%> <%= form.text_field :title ,:size=> 10%>
+    </p>
+    <p><%= form.label :detail,'照片说明：'%><br/>
+    <%= form.text_area :detail, :style => "width:340px;height:80px" ,:placeholder => '关于这个照片有什么故事么？'%>
+    </p>
+    <p>
+      <%= submit_tag '上传',:class => 'button' %>
+      <%= button_to_function '取消',"javascript:$('#floatBox #close_dialog').click()",:class => "button"%>
+    </p>
   <% end %>
 </div>

@@ -1,19 +1,22 @@
 <% @title = @topic.title %>
 <div class="box">  
   <%= render :partial => '/users/user' ,:object => @topic.user %>
-  <div class="saying">
-    
+  <div class="bubble_tail"></div>
+  <div class="bubble">
     <p class="impact"><%= @topic.title %></p>
-    <pre class="explanation"><%= @topic.content %><pre>
-    
+    <pre class="explanation"><%= @topic.content %></pre>
+    <% if current_user && current_user.id == @topic.user_id %>
+    <div style="text-align:right">
+      <%= link_to "删除","#{topic_path(@topic)}",:method => :delete,:confirm => '你确定要删除这条报到么？'%> |
+      <%= link_to "编辑","#{edit_topic_path(@topic)}?back_path=#{request.path}"%>
+    </div>
+    <% end %>
   </div>
-  <div class="saying_tail"></div>
-  
 </div>
 
 <%= render :partial => '/comments/board'%>    
 <%= render :partial => '/comments/form' ,:locals => {:commentable => @topic}%>
 
 <% content_for :sidebar do %>
- <%= @topic.venue_id.present? ? link_to('返回聚点',venue_path(@topic.venue)) : link_to('返回论坛',topics_path)%>
+ <%= link_to("返回#{@topic.venue.name}",@topic.venue) %>
 <% end %>

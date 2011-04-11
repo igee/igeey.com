@@ -3,10 +3,10 @@ igeey.com - plan,record and spread your good action.
 powered by Ruby on Rails 3
 
 Step 1: clone repository
-  git clone git://github.com/igee/igee.git
+  git clone git://github.com/igee/igeey.com.git
 
 Setp 2: install dependent gems
-  cd igee
+  cd project_path
   bundle install
 
 Step 3: edit your database configuration file
@@ -25,5 +25,5 @@ Step 6: db migration & load fixtures
   rake db:auto:migrate
   rake db:fixtures:load FIXTURES_PATH=db/fixtures
   
-Step 7: Go!launch igee!
+Step 7: Go!launch!
   rails s  

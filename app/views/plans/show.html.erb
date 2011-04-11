@@ -1,13 +1,12 @@
-<% @title = @plan.name%>
+<% @title = @plan.calling.title%>
   <div style="background-color:#fff;padding:10px 20px;border-radius:8px;-moz-border-radius:8px;-webkit-border-radius:8px;margin-bottom:20px;">        
     <div class="box">
       <%= render :partial => '/users/user' ,:object => @plan.user %>
-        <div class="saying">
-          <p class="impact" style="font-size:18px">
-            <%="#{@plan.user.login}#{@plan.description}。"%>
-          </p>
+        <div class="bubble_tail"></div>      
+        <div class="bubble">
+          <span><%= link_to @plan.user.login,@plan.user %> 要参与 <%= link_to @plan.venue.name,@plan.venue %> 的活动：</span>
+          <%= render :partial => "/plans/shows/#{@plan.action.slug}"%>
         </div>
-        <div class="saying_tail"></div>      
         <div style="clear:both;text-align:right">
           <% if @plan.can_edit_by?(current_user)%>
           <span><%= link_to("修改",edit_calling_plan_path(@plan.calling,@plan))%> | <%= link_to "取消",calling_plan_path(@calling,@plan),:method => :delete,:confirm => '确定要取消你的计划么?' %></span>
@@ -35,7 +34,7 @@
         <% end %>
       </div>
         <p style="text-align:center">
-          <% if logged_in? && current_user.following?(@calling) %>
+          <% if logged_in? && current_user.is_following?(@calling) %>
             已关注 <%= link_to raw("<span>取消关注?</span>"),follow_path(@calling.follows.find_by_user_id(current_user.id)),:method => :delete%>
           <% else %>
             <%= link_to "关注进展",(logged_in? ? "#{follows_path}?followable_type=#{@calling.class}&followable_id=#{@calling.id}" : signup_path),:method => :post,:title =>(logged_in? ? "" : '注册' ),:method => :post %>
@@ -50,19 +49,15 @@
   <%= render :partial => '/callings/calling_status'%>
   
     <div class="box">
-      <h4>发起人说：</h4>
+      <h4>行动发起人说：</h4>
         <%= render :partial => '/users/user' ,:object => @calling.user %>
-        <div class="saying">
-          <pre><%= @calling.detail %></pre>
+        <div class="bubble_tail"></div>
+        <div class="bubble">
+          <pre class="explanation"><%= @calling.detail %></pre>
         </div>
-        <div class="saying_tail"></div>
     </div>
     
     <div class="box">
-      <h4><%= {'goods' => '捐赠信息','time' => '集合信息','money' => '捐赠信息'}[@plan.for_what]%>：</h4>
-      <p style="padding:5px 10px">
-        <%= @calling.info%>
-      </p>
       <h4>行动流程：</h4>
       <p style="padding:5px 10px">
         <%= raw @plan.action.step_by_step%>

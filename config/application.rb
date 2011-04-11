@@ -30,8 +30,7 @@ module Igee
                                       :venue_observer,
                                       :sync_observer,
                                       :oauth_token_observer,
-                                      :follow_observer,
-                                      :topic_observer,
+                                      :follow_observer
                                       ]
     
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
@@ -51,9 +50,12 @@ module Igee
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
-    
-    config.generators do |g|
-      g.migration = false
-    end
+    config.middleware.use ExceptionNotifier,
+      :email_prefix => "[Error] ",
+      :sender_address => %{"notifier" <mail@igeey.com>},
+      :exception_recipients => YAML.load_file("#{Rails.root}/config/config.yml")[Rails.env]['developer_mail'].to_a
+      
+    # Custom directories with classes and modules you want to be autoloadable.
+    config.autoload_paths += %W(#{Rails.root}/lib/autoload)
   end
 end

@@ -14,6 +14,11 @@ gem 'json'
 gem 'date_validator'
 gem 'capistrano'
 gem 'will_paginate', '~> 3.0.beta'
+gem 'thinking-sphinx', '2.0.0', :require => 'thinking_sphinx'
+gem 'exception_notification_rails3', :require => 'exception_notifier'
+
+#gem 'geokit'
+#gem 'geokit-rails'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -29,4 +34,5 @@ gem 'will_paginate', '~> 3.0.beta'
 group :development, :test do
   #gem 'webrat'
   gem 'ruby-debug'
+  gem 'request-log-analyzer'
  end

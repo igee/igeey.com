@@ -1,0 +1,5 @@
+    <p class="impact">
+      <%="#{@record.user.login}#{@record.description}"%>
+    </p>
+    <pre class="explanation"><%= @record.detail %></pre>
+    <%= render :partial => "/photos/photo",:collection => @photos %>

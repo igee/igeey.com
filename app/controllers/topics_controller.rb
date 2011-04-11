@@ -2,10 +2,9 @@ class TopicsController < ApplicationController
   respond_to :html
   before_filter :login_required, :except => [:index, :show]
   before_filter :find_topic, :except => [:index,:new,:create]
-  after_filter  :clean_unread, :only => [:show]
   
   def index
-    @topics = Topic.where(:venue_id => nil).paginate(:page => params[:topics_page], :per_page => 20)
+    @topics = Topic.where(:forumable_type => nil).paginate(:page => params[:topics_page], :per_page => 20)
     @my_topics = (current_user.comments.where(:commentable_type => 'Topic').map(&:commentable) | current_user.topics).uniq.sort{|x,y| y.created_at <=> x.created_at} if current_user
   end
   
@@ -18,28 +17,38 @@ class TopicsController < ApplicationController
     @topic = current_user.topics.build(params[:topic])
     @topic.last_replied_at = Time.now
     @topic.save
-    respond_with @topic
+    redirect_to @topic.venue
+  end
+  
+  def destroy
+    @venue = @topic.venue
+    @topic.destroy if @topic.user_id == current_user.id
+    if params[:back_path].present?
+      redirect_to params[:back_path]
+    else
+      redirect_to @venue
+    end
   end
   
   def edit
   end
   
   def update
+    @topic.update_attributes(params[:topic]) if @topic.user_id == current_user.id
+    if params[:back_path].present?
+      redirect_to params[:back_path]
+    else
+      respond_with @topic
+    end
   end
   
   def show
     @comments = @topic.comments
-    @comment = Comment.new
   end
   
   private
   def find_topic
     @topic = Topic.find(params[:id])
-  end
-  
-  def clean_unread
-    @topic.update_attribute(:has_new_comment,false) if @topic.user == current_user && @topic.has_new_comment
-    @topic.comments.where(:user_id => current_user.id).map{|a| a.update_attribute(:has_new_comment,false)} if logged_in? == @topic.comments.where(:user_id => current_user.id).first.present?
   end
 
 end

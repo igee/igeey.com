@@ -8,12 +8,7 @@ class User < ActiveRecord::Base
   add_oauth  # add dynamic method for confirmation of oauth status
   
   belongs_to  :geo
-  belongs_to  :user,   :class_name => :user,:foreign_key => :user_id
-  has_attached_file :avatar,:styles => {:_48x48 => ["48x48#",:png],:_72x72 => ["72x72#",:png]},
-                            :default_url=>"/defaults/:attachment/:style.png",
-                            :default_style=> :_48x48,
-                            :url=>"/media/:attachment/:id/:style.:extension"
-                            
+  has_many    :projects                            
   has_many :records,        :dependent => :destroy
   has_many :plans,          :dependent => :destroy
   has_many :callings,       :dependent => :destroy
@@ -22,15 +17,17 @@ class User < ActiveRecord::Base
   has_many :topics,         :dependent => :destroy
   has_many :photos,         :dependent => :destroy
   has_many :grants,         :dependent => :destroy
-  #followings are user self`s follow,follows are follows that follow to user 
   has_many :followings,     :class_name => "Follow",:foreign_key => :user_id
   has_many :follows,        :as => :followable, :dependent => :destroy
   has_many :followers,      :through => :follows, :source => :user
+  has_many :sayings,       :dependent => :destroy
   has_many :syncs,          :dependent => :destroy
   
+  has_attached_file :avatar,:styles => {:_48x48 => ["48x48#",:png],:_72x72 => ["72x72#",:png]},
+                            :default_url=>"/defaults/:attachment/:style.png",
+                            :default_style=> :_48x48,
+                            :url=>"/media/:attachment/:id/:style.:extension"
   
-  scope :popular,order('follows_count DESC')
-
   validates :login, :uniqueness => true,
                     :length     => { :within => 1..40,:message => '用户名字数在1至40之间'},
                     :format     => { :with => Authentication.login_regex, :message => '用户名请使用中文和常见的字符' }
@@ -51,7 +48,8 @@ class User < ActiveRecord::Base
   
   attr_accessible :login, :email, :name, :password, :password_confirmation,:avatar,:avatar_file_name,:geo_id,:signature,:use_local_geo
 
-
+  default_scope :order => 'follows_count desc'
+  
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #
   # uff.  this is really an authorization, not authentication routine.  
@@ -88,6 +86,10 @@ class User < ActiveRecord::Base
     self.records.map(&:money).compact.sum
   end
 
+  def online_count
+    self.records.map(&:online).compact.sum
+  end
+  
   def goods_count
     self.records.map(&:goods).compact.sum
   end
@@ -128,7 +130,7 @@ class User < ActiveRecord::Base
     self.callings.count
   end
   
-  def following?(followable)
+  def is_following?(followable)
     !self.followings.where(:followable_id => followable.id,:followable_type => followable.class).limit(1).blank?
   end
 
@@ -144,6 +146,9 @@ class User < ActiveRecord::Base
     self.followings.where(:followable_type => 'Calling')
   end
 
+  
+  #need refactory. use dynamic methods
+  
   def has_unread_record_comment?
     self.records.where(:has_new_comment => true).first.present?
   end
@@ -160,20 +165,16 @@ class User < ActiveRecord::Base
     self.topics.where(:has_new_comment => true).first.present?
   end
   
-  def has_unread_follow_comment?
-    self.followings.where(:has_new_comment => true).first.present?
+  def has_unread_saying_comment?
+    self.sayings.where(:has_new_comment => true).first.present?
   end
-  
-  def has_unread_follow_calling?
-    self.followings.where(:has_new_calling => true).first.present?
+    
+  def has_unread_photo_comment?
+    self.photos.where(:has_new_comment => true).first.present?
   end
-  
-  def has_unread_follow_topic?
-    self.followings.where(:has_new_topic => true).first.present?
-  end
-  
+      
   def has_unread_comment?
-    has_unread_calling_comment? || has_unread_record_comment? || has_unread_topic_comment?
+    has_unread_comment_comment? || has_unread_saying_comment? || has_unread_photo_comment? || has_unread_comment_comment? || has_unread_record_comment? || has_unread_topic_comment? || has_unread_calling_comment?
   end
   
   def has_unread_plan?
@@ -199,7 +200,7 @@ class User < ActiveRecord::Base
   # Use OAuth::AccessToken to access oauth api. powered by oauth_side 
   def send_to_douban_miniblog(message)
     content = "<?xml version='1.0' encoding='UTF-8'?><entry xmlns:ns0='http://www.w3.org/2005/Atom' xmlns:db='http://www.douban.com/xmlns/'><content>#{message}</content></entry>"
-    self.douban.post('http://api.douban.com/miniblog/saying',content, {"Content-Type" =>  "application/atom+xml"}  )
+    self.douban.post('http://api.douban.com/miniblog/bubble',content, {"Content-Type" =>  "application/atom+xml"}  )
   end
   
   def send_to_sina_miniblog(message)
@@ -253,7 +254,15 @@ class User < ActiveRecord::Base
     self.password = nil
     Mailer.reset_password(self,self.password_confirmation).deliver if self.save
   end
-  
+    
+  define_index do
+    indexes login
+    indexes signature
+    indexes geo.name,:as => :city
+    has follows_count
+    has geo_id
+  end
+
   protected
   
 end

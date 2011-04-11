@@ -2,7 +2,14 @@
   <div style="margin:0 auto;">
   <%= link_to (image_tag @photo.photo.url(:max500x400)),@photo,:class => "open_dialog",:title => @photo.title %>
     <p>
-      上传在 <%= link_to @photo.imageable.name ,@photo.imageable%><br/>
+      上传在 <%= link_to @photo.venue.name ,@photo.venue%><br/>
       <%= link_to @photo.user.login ,@photo.user%> <%=  format_date(@photo.created_at) %>
     </p>
   </div>
+  <% unless params[:layout] == 'false'%>
+  <div class="box">
+    <h4>留言板：</h4>
+    <%= render :partial => '/public/comment' ,:collection => @comments %>
+  </div>
+  <%= render :partial => '/comments/form' ,:locals => {:commentable => @photo}%>
+  <%end%>

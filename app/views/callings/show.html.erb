@@ -1,13 +1,12 @@
-<% @title = @calling.name%>
+<% @title = @calling.title%>
 <div style="background-color:#fff;padding:10px 20px;border-radius:8px;-moz-border-radius:8px;-webkit-border-radius:8px;margin-bottom:20px;">        
   <div class="box">  
-    <%= render :partial => '/users/user' ,:object => @calling.user %>
-    <div class="saying">
-      <p class="impact"><%= "#{@calling.user.login}#{@calling.description}" %></p>      
-      <pre class="explanation" style="display:block;"><%= @calling.detail.strip %></pre>
-      <br/>
+    <%= render :partial => '/users/avatar' ,:object => @calling.user %>
+    <div class="bubble_tail"></div>
+    <div class="bubble">
+      <span><%= link_to @calling.user.login,@calling.user %> 为 <%= link_to @calling.venue.name,@calling.venue %> 召集行动：</span>
+      <%=  render :partial => "/callings/shows/#{@action.slug}"%>
     </div>
-    <div class="saying_tail"></div>
     <div style="clear:both;text-align:right">
       <% if @calling.can_edit_by?(current_user)%>
         <span>
@@ -36,7 +35,7 @@
     <% end %>
     
     <p style="text-align:center">
-      <% if logged_in? && current_user.following?(@calling) %>
+      <% if logged_in? && current_user.is_following?(@calling) %>
         已关注 <%= link_to raw("<span>取消关注?</span>"),follow_path(@calling.follows.find_by_user_id(current_user.id)),:method => :delete%>
       <% else %>
         <%= link_to "关注进展",(logged_in? ? "#{follows_path}?followable_type=#{@calling.class}&followable_id=#{@calling.id}" : signup_path),:method => :post,:title =>(logged_in? ? "" : '注册' ),:method => :post %>
@@ -48,13 +47,6 @@
 <div style="background-color:#fff;padding:6px 20px;width:70px;-moz-border-radius:8px 8px 0 0;-webkit-border-radius:8px 8px 0 0;text-align:center"><h4 style="margin:0">行动详情</h4></div>
 <div style="background-color:#fff;padding:20px;-moz-border-radius:0 8px 8px 8px;-webkit-border-radius:0 8px 8px 8px;margin-bottom:10px;">            
   <%= render :partial => '/callings/calling_status'%>
-    
-  <div class="box">
-    <h4><%= {'goods' => '捐赠信息','time' => '集合信息','money' => '捐赠信息'}[@calling.for_what]%>：</h4>
-    <p style="padding:5px 10px">
-      <%= @calling.info%>
-    </p>
-  </div>
   
   <div class="box">
     <h4>行动流程：</h4>
@@ -75,7 +67,6 @@
     <% end %>
   </div>
   
-  <%= render :partial => '/photos/gallery' ,:locals => {:imageable => @calling}%>
   <%= render :partial => "/public/followers" %>
   
   <%= render :partial => '/comments/board'%>    
