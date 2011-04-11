@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   # include AuthenticatedSystem
   respond_to :html
   before_filter :login_required, :only=> [:edit,:setting]
-  before_filter :find_user, :except => [:new,:create,:edit,:setting,:welcome,:index,:reset_password,:reset_completed]
+  before_filter :find_user, :except => [:new,:create,:edit,:setting,:welcome,:index,:reset_password,:reset_completed,:connect_account]
 
   # render new.rhtml
   def new
@@ -11,7 +11,15 @@ class UsersController < ApplicationController
     @user = User.new
     render :layout => false if params[:layout] == 'false'
   end
- 
+  
+  def connect_account
+    @user = User.new
+    @token = OauthToken.find_by_user_id_and_request_key((current_user ? current_user.id : nil), params[:oauth_token])
+    debugger
+    @user.init_userdata_from(@token)
+    
+  end
+  
   def create
     logout_keeping_session!
     @user = User.new(params[:user])
