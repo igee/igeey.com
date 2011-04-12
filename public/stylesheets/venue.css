@@ -51,7 +51,7 @@
 #formTabs{
   width:480px;
   padding:0 8px;
-  margin:0;
+  margin-top:-4px;
   height:30px;
 }
 
@@ -59,15 +59,19 @@
   float:left;
   display:block;
   list-style:none;
+  line-height:36px;
   margin:0 3px;
+  font-size:14px;
 }
 
 #formTabs li a{
-  padding:6px 8px;
+  padding:8px;
   color:#888;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px
 }
+
+#formTabs li a img{position:relative;top:6px;}
 
 #formTabs li a.active{
   background:#e0e0e0;
