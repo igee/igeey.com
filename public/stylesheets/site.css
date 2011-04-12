@@ -849,7 +849,7 @@ input.todo:hover{
 .tabContents{display:none}
 
 #tabContaier ul{
-  border-bottom:1px solid #888;
+  border-bottom:1px solid #999;
   height:28px;
   display:block;
   margin:0;
@@ -883,7 +883,7 @@ input.todo:hover{
 }
 
 #tabContaier li a.active{
-  border:1px solid #888;
+  border:1px solid #999;
   border-bottom:1px solid #fff;
   background:#fff;  
   color:#555;

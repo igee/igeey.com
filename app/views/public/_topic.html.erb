@@ -2,6 +2,7 @@
   <%= controller_name == 'venues' ? (render :partial => "/users/avatar",:object => topic.user) : (render :partial => "/venues/venue",:object => topic.venue) %>
   <div class="event">  
     <span>
+      <%= image_tag('/images/icon/topic.png',:class => 'icon')%>
       <%= link_to topic.user.login,topic.user if controller_name == 'venues'%>
       <%= raw("在#{link_to topic.venue.name,topic.venue}") if controller_name == 'users'%>
       <%= raw(['users','venues'].include?(controller_name) ? '写了故事：' : "#{link_to topic.venue.name,topic.venue} 有了新故事：" ) %>
