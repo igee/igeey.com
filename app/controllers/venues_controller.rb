@@ -24,22 +24,27 @@ class VenuesController < ApplicationController
   end
   
   def show
-    @callings = @venue.callings.limit(10)
-    @photos = @venue.photos.limit(10)
-    @sayings = @venue.sayings.limit(10)
-    @topics = @venue.topics.limit(10)
+    @callings = @venue.callings.limit(11)
+    @photos = @venue.photos.limit(11)
+    @sayings = @venue.sayings.limit(11)
+    @topics = @venue.topics.limit(11)
     @timeline = @topics + @callings + @photos + @sayings
-    @timeline = @timeline.sort{|x,y| y.created_at <=> x.created_at }[0..9]
+    @timeline = @timeline.sort{|x,y| y.created_at <=> x.created_at }[0..10]
     @followers = @venue.followers.limit(8)
   end
   
   def more_timeline
-    @timeline = []
-    @timeline += @venue.callings.not_closed.limit(30)
-    @timeline += @venue.sayings.limit(30)
-    @timeline += @venue.photos.limit(30)
-    @timeline += @venue.topics.limit(30)
-    @timeline = @timeline.sort{|x,y| y.created_at  <=> x.created_at}[0..200].paginate(:page => params[:page], :per_page => 10)
+    if ['photos','sayings','topics','callings'].include?(params[:filter])
+      @timeline = eval "@venue.#{params[:filter]}.paginate(:page => params[:page], :per_page => 10)"
+      @filter = params[:filter]
+    else
+      @timeline = []
+      @timeline += @venue.callings.not_closed.limit(30)
+      @timeline += @venue.sayings.limit(30)
+      @timeline += @venue.photos.limit(30)
+      @timeline += @venue.topics.limit(30)
+      @timeline = @timeline.sort{|x,y| y.created_at  <=> x.created_at}[0..200].paginate(:page => params[:page], :per_page => 10)
+    end
     render :layout => false
   end
   

@@ -113,7 +113,7 @@ class UsersController < ApplicationController
     render :layout => false if params[:layout] == 'false'
   end
   
-  def more_items
+  def more_timeline
     @items = eval({:badges => '@user.grants[8..-1].map(&:badge)',
                    :followers => '@user.followers[8..-1]',
                    :following_users => "@user.user_followings[8..-1].map(&:followable)",
@@ -124,7 +124,7 @@ class UsersController < ApplicationController
                    :topics => "@user.topics.paginate(:page => #{params[:page]}, :per_page => 6)",
                    :records => "@user.records.paginate(:page => #{params[:page]}, :per_page => 6)",
                    :plans => "@user.plans.paginate(:page => #{params[:page]}, :per_page => 6)",
-                   }[params[:items].to_sym])
+                   }[params[:filter].to_sym])
     render :layout => false
   end
   

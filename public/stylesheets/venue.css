@@ -22,10 +22,8 @@
   }
 
 #venue_head{
-  background:url('/images/background/buildings.jpg') #e9eded no-repeat right top;
-  padding:4px 4px 0;
+  padding:4px 4px 14px;
   clear:both;
-  height:80px;
   overflow:hidden;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
@@ -35,8 +33,6 @@
   
 #venue_forms{
   padding:8px 15px 3px;
-  background-color:#f3f3f3;
-  border-top: 1px solid #ddd;
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
   -moz-border-radius: 0 0 6px 6px;
@@ -55,7 +51,7 @@
 #formTabs{
   width:480px;
   padding:0 8px;
-  margin:0;
+  margin-top:-4px;
   height:30px;
 }
 
@@ -63,15 +59,19 @@
   float:left;
   display:block;
   list-style:none;
+  line-height:36px;
   margin:0 3px;
+  font-size:14px;
 }
 
 #formTabs li a{
-  padding:6px 8px;
+  padding:8px;
   color:#888;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px
 }
+
+#formTabs li a img{position:relative;top:6px;}
 
 #formTabs li a.active{
   background:#e0e0e0;
