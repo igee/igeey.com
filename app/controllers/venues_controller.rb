@@ -34,12 +34,17 @@ class VenuesController < ApplicationController
   end
   
   def more_timeline
-    @timeline = []
-    @timeline += @venue.callings.not_closed.limit(30)
-    @timeline += @venue.sayings.limit(30)
-    @timeline += @venue.photos.limit(30)
-    @timeline += @venue.topics.limit(30)
-    @timeline = @timeline.sort{|x,y| y.created_at  <=> x.created_at}[0..200].paginate(:page => params[:page], :per_page => 10)
+    if ['photos','sayings','topics','callings'].include?(params[:filter])
+      @timeline = eval "@venue.#{params[:filter]}.paginate(:page => params[:page], :per_page => 10)"
+      @filter = params[:filter]
+    else
+      @timeline = []
+      @timeline += @venue.callings.not_closed.limit(30)
+      @timeline += @venue.sayings.limit(30)
+      @timeline += @venue.photos.limit(30)
+      @timeline += @venue.topics.limit(30)
+      @timeline = @timeline.sort{|x,y| y.created_at  <=> x.created_at}[0..200].paginate(:page => params[:page], :per_page => 10)
+    end
     render :layout => false
   end
   

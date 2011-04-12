@@ -8,7 +8,7 @@
 
   <%= render :partial => '/public/event', :collection => @timeline %>
   
-  <%= link_to('查看更多..',more_timeline_path(:page => 2),:id => 'more_timeline',:class => 'timeline_footer',:onclick => 'javascript:more_timeline();return false;') if logged_in? && @timeline.size == 10 %>
+  <%= link_to('查看更多..',more_timeline_path(:page => 2),:id => 'more_timeline',:class => 'more_timeline',:onclick => 'javascript:more_timeline();return false;') if logged_in? && @timeline.size == 10 %>
   
   
   <% if logged_in? && @followings.empty? %>

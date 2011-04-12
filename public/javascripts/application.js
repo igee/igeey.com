@@ -5,7 +5,7 @@
     $(".open_dialog").click(function(){dialog($(this).attr('title'),("url:"+$(this).attr('href')),"570px","auto","text");  return false;})
     $('#dialog_flash a').click();
     $(".timeago").each(function(){$(this).html('(' + jQuery.timeago($(this).html()) + ')');$(this).removeClass('timeago')});
-    $('.more_items').click(function(){
+    $('.more_timeline').click(function(){
       var container = $(this);
       container.html('读取中...')
       $.get(container.attr('href'),function(data){container.replaceWith(data)})
