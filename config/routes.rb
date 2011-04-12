@@ -2,6 +2,10 @@ Igee::Application.routes.draw do
   root :to => 'site#index'
     
   match 'signup' => 'users#new', :as => :signup
+  match 'oauth_signup' => 'users#oauth_signup', :as => :oauth_signup
+  match 'oauth_user_create' => 'users#oauth_user_create', :as => :oauth_user_create
+  match 'oauth_login' => 'sessions#oauth_login', :as => :oauth_login
+  match 'oauth_session_create' => 'session#oauth_session_create', :as => :oauth_session_create
   match 'connect_account' => 'users#connect_account', :as => :connect_account
   match 'register' => 'users#create', :as => :register
   match 'login' => 'sessions#new', :as => :login

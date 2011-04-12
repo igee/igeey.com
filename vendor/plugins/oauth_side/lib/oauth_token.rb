@@ -30,9 +30,13 @@ class OauthToken < ActiveRecord::Base
 
   # 获取访问授权信息，从这里开始系统就可以提供对用户的服务了
   def authorize oauth_verifier = nil
-    @access = request_token.get_access_token :oauth_verifier => oauth_verifier
-    update_attributes :access_key => @access.token, :access_secret => @access.secret
-    @access
+    begin
+      @access = request_token.get_access_token :oauth_verifier => oauth_verifier
+      update_attributes :access_key => @access.token, :access_secret => @access.secret
+      @access
+    rescue OAuth::Unauthorized
+      false
+    end
   end
   
   # 获取 concumer
@@ -44,6 +48,24 @@ class OauthToken < ActiveRecord::Base
         config.only(:site,:request_token_path,:access_token_path,:authorize_path,:signature_method,:scheme,:realm)
       )
     }.call(Rails.oauth[site.to_sym])
+  end
+  
+  # 获取连接网站的user_name
+  def get_site_user_name
+    case self.site
+    when 'sina'
+      get_sina_user_name
+    when 'douban'
+      get_douban_user_name
+    end
+  end
+  
+  def get_sina_user_name
+    /<screen_name>(.*)<\/screen_name>/.match(self.access_token.get('http://api.t.sina.com.cn/account/verify_credentials.xml').body)[1]
+  end
+  
+  def get_douban_user_name
+    /<title>(.*)<\/title>/.match(self.access_token.get('http://api.douban.com/people/%40me').body)[1]
   end
   
   # 获取连接网站的唯一用户标识

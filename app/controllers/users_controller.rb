@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   # include AuthenticatedSystem
   respond_to :html
   before_filter :login_required, :only=> [:edit,:setting]
-  before_filter :find_user, :except => [:new,:create,:edit,:setting,:welcome,:index,:reset_password,:reset_completed,:connect_account]
+  before_filter :find_user, :except => [:new,:create,:edit,:setting,:welcome,:index,:reset_password,
+                                        :reset_completed,:connect_account,:oauth_signup,:oauth_user_create]
 
   # render new.rhtml
   def new
@@ -12,16 +13,44 @@ class UsersController < ApplicationController
     render :layout => false if params[:layout] == 'false'
   end
   
+  def oauth_signup
+    redirect_to :root if logged_in?
+    @user = User.new
+    @site = session[:site]
+    @user_name = OauthToken.find_by_unique_id_and_site(session[:unique_id],@site).get_site_user_name
+  end
+  
+  def oauth_user_create
+    logout_keeping_session!
+    @user = User.new(params[:user])
+    success = @user && @user.save
+    if success && @user.errors.empty?
+      # Protects against session fixation attacks, causes request forgery
+      # protection if visitor resubmits an earlier form using back
+      # button. Uncomment if you understand the tradeoffs.
+      # reset session
+      self.current_user = @user # !! now logged in
+      OauthToken.find_by_unique_id_and_site(session[:unique_id],session[:site]).update_attributes(:user_id => @user.id)
+      flash[:dialog] = "<a href=#{welcome_users_path} class='open_dialog' title='欢迎'>欢迎</a>"
+      redirect_to :back
+    else
+      render :action => 'oauth_signup' 
+    end
+  end
+  
   def connect_account
     @token = OauthToken.find_by_user_id_and_request_key((current_user ? current_user.id : nil), params[:oauth_token])
     @unique_id = @token.get_site_unique_id
-    @exist_tokens = OauthToken.where(:unique_id => @unique_id,:site => @token.site)
+    @exist_tokens = OauthToken.where(:unique_id => @unique_id,:site => @token.site).where('user_id is not null')
     if @exist_tokens.empty?
-      redirect_to public_path
+      @token.update_attributes(:unique_id => @unique_id)
+      session[:unique_id] = @unique_id
+      session[:site] = @token.site
+      redirect_to oauth_signup_path
     else
       @user = User.find @exist_tokens.first.user_id
       @exist_tokens.map(&:delete)
-      @token.update_attributes(:user_id => @user.id,:unique_id => @unique_id)
+      @token.update_attributes(:user_id => @user.id, :unique_id => @unique_id)
       self.current_user = @user
       # auto login 
       new_cookie_flag = (params[:remember_me] == "1")

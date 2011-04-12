@@ -6,7 +6,7 @@ class OauthController < ApplicationController
     
   def accept
     token = OauthToken.find_by_user_id_and_request_key((current_user ? current_user.id : nil), params[:oauth_token])
-    access = token.authorize params[:oauth_verifier] unless params[:oauth_verifier].nil?
+    access = token.authorize params[:oauth_verifier]
     if token.user_id.nil?
       redirect_to connect_account_path(:oauth_token => params[:oauth_token])
     else
