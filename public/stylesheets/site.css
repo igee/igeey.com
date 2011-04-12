@@ -268,7 +268,6 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 .keyword{color:#c53}
 
 .more_timeline{
-  text-align:right;
   display:block;
   clear:both;
   font-size:13px;
@@ -278,6 +277,8 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
   clear:both;
   margin:8px 0;
   }
+
+#sidebar .more_timeline{text-align:right;font-size:12px;}
 
 .more_results{
   text-align:center;
@@ -848,7 +849,7 @@ input.todo:hover{
 .tabContents{display:none}
 
 #tabContaier ul{
-  border-bottom:1px solid #666;
+  border-bottom:1px solid #888;
   height:28px;
   display:block;
   margin:0;
@@ -875,14 +876,14 @@ input.todo:hover{
   border-left:1px solid #ccc;
 }
 
+#tabContaier li a:first{border-left-color:#fff}
+
 #tabContaier li a:hover{
   background:#f3f3f3;
 }
 
 #tabContaier li a.active{
-  border-top:1px solid #666;
-  border-left:1px solid #666;
-  border-right:1px solid #666;
+  border:1px solid #888;
   border-bottom:1px solid #fff;
   background:#fff;  
   color:#555;

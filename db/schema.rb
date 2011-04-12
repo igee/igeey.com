@@ -270,6 +270,7 @@ ActiveRecord::Schema.define() do
     t.references :tag
     t.references :taggable, :polymorphic => true
     t.integer    :user_id
+    t.integer    :venue_id
     t.timestamps
   end
 

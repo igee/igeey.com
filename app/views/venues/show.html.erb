@@ -5,7 +5,7 @@
 <% @topic = Topic.new %>
 <% content_for :head do %>
   <%= javascript_include_tag 'calendar.js' %>
-    <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false"></script>
+  <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false"></script>
   <%= javascript_include_tag 'jquery.tag.editor-min.js' %>
 <% end %>
 
@@ -22,6 +22,7 @@
       </span>
     </div>
   </div>
+
   <div id="venue_forms">
     <div id="formContaier">
       <%= form_for [@venue,@saying],:html=>{:class=>'venue_form'}  do |form| %>    
@@ -90,27 +91,28 @@
     </ul>
     
     <div id="all_timeline" class="tabContents">
-      <%= render :partial => '/public/event', :collection => @timeline %>
+      <%= render :partial => '/public/event', :collection => @timeline[0..9] %>
+      <%= link_to raw("查看更多 &#8744;"),more_timeline_venue_path(@venue,:page => 2),:class => "more_timeline" if @timeline[10].present?%>
     </div>
     
     <div id="sayings_timeline" class="tabContents">
-      <%= render :partial => '/public/saying',:collection => @sayings[0..5]%>
-      <%= link_to raw("查看更多 &#8744;"),more_timeline_venue_path(@venue,:items => 'sayings',:page => 2),:class => "more_timeline" if @sayings[2].present?%>
+      <%= render :partial => '/public/saying',:collection => @sayings[0..9]%>
+      <%= link_to raw("查看更多 &#8744;"),more_timeline_venue_path(@venue,:items => 'sayings',:page => 2),:class => "more_timeline" if @sayings[10].present?%>
     </div>
     
     <div id="photos_timeline" class="tabContents">
-      <%= render :partial => '/public/photo',:collection => @photos[0..5]%>
-      <%= link_to raw("查看更多 &#8744;"),more_timeline_venue_path(@venue,:items => 'photos',:page => 2),:class => "more_timeline" if @photos[8].present?%>
+      <%= render :partial => '/public/photo',:collection => @photos[0..9]%>
+      <%= link_to raw("查看更多 &#8744;"),more_timeline_venue_path(@venue,:items => 'photos',:page => 2),:class => "more_timeline" if @photos[10].present?%>
     </div>
     
     <div id="topics_timeline" class="tabContents">
-      <%= render :partial => '/public/topic',:collection => @topics[0..5]%>
-      <%= link_to raw("查看更多 &#8744;"),more_timeline_venue_path(@venue,:items => 'topics',:page => 2),:class => "more_timeline" if @topics[8].present?%>
+      <%= render :partial => '/public/topic',:collection => @topics[0..9]%>
+      <%= link_to raw("查看更多 &#8744;"),more_timeline_venue_path(@venue,:items => 'topics',:page => 2),:class => "more_timeline" if @topics[10].present?%>
     </div>
     
     <div id="callings_timeline" class="tabContents">
-      <%= render :partial => '/public/calling',:collection => @callings[0..5]%>
-      <%= link_to raw("查看更多 &#8744;"),more_timeline_venue_path(@venue,:items => 'callings',:page => 2),:class => "more_timeline" if @callings[8].present?%>
+      <%= render :partial => '/public/calling',:collection => @callings[0..9]%>
+      <%= link_to raw("查看更多 &#8744;"),more_timeline_venue_path(@venue,:items => 'callings',:page => 2),:class => "more_timeline" if @callings[10].present?%>
     </div>
   </div>
 </div>  
@@ -127,7 +129,11 @@
     <h4><%= "#{@venue.follows.size}人关注这里："%></h4>
     <%= render :partial => "/users/user",:collection => @followers[0..7] %>
   </div>
-
+  
+  <div class="box">
+    <h4>相关标签：</h4>
+    <%= raw tag_list_for(@venue)%>
+  </div>
 <% end %>
 
 <% content_for :extension do %>

@@ -24,12 +24,12 @@ class VenuesController < ApplicationController
   end
   
   def show
-    @callings = @venue.callings.limit(10)
-    @photos = @venue.photos.limit(10)
-    @sayings = @venue.sayings.limit(10)
-    @topics = @venue.topics.limit(10)
+    @callings = @venue.callings.limit(11)
+    @photos = @venue.photos.limit(11)
+    @sayings = @venue.sayings.limit(11)
+    @topics = @venue.topics.limit(11)
     @timeline = @topics + @callings + @photos + @sayings
-    @timeline = @timeline.sort{|x,y| y.created_at <=> x.created_at }[0..9]
+    @timeline = @timeline.sort{|x,y| y.created_at <=> x.created_at }[0..10]
     @followers = @venue.followers.limit(8)
   end
   

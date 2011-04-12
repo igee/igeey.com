@@ -10,7 +10,6 @@
   
   <%= link_to('查看更多..',more_timeline_path(:page => 2),:id => 'more_timeline',:class => 'more_timeline',:onclick => 'javascript:more_timeline();return false;') if logged_in? && @timeline.size == 10 %>
   
-  
   <% if logged_in? && @followings.empty? %>
     <p>
       Hi，你还没有关注的地点呢。<br/>

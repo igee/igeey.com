@@ -1,7 +1,10 @@
 <% unless @timeline.empty? %>
-  <% @model = @timeline.first.class.to_s.downcase %>
-  <% @template_folder =  ['user','venue','badge'].include?(@model) ? "#{@model}s" : 'public' %>
-  <%= render :partial => "/#{@template_folder}/#{@model}",:collection => @timeline%>
+  <% if @filter.nil? %>
+  <%= render :partial => "/public/event",:collection => @timeline%>
+  <% else %>
+    <% @model = @filter[0..-2] %>
+    <%= render :partial => "/public/#{@model}",:collection => @timeline%>
+  <% end %>
   <%= link_to raw("查看更多 &#8744"),more_timeline_venue_path(@venue,:timeline => params[:timeline],:page => params[:page].to_i + 1),:class => "more_timeline" if params[:page]%>
   
   <script type="text/javascript">
