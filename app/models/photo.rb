@@ -5,6 +5,7 @@ class Photo < ActiveRecord::Base
   
   acts_as_eventable
   acts_as_taggable
+  acts_as_ownable
   
   has_many   :comments, :as => :commentable, :dependent => :destroy
   has_many   :votes,    :as => :voteable,    :dependent => :destroy
@@ -18,9 +19,5 @@ class Photo < ActiveRecord::Base
                             
   validates :photo_file_name, :presence   => true,:format => { :with => /([\w-]+\.(gif|png|jpg))|/ }
   validates :venue_id, :presence   => true
-  
-  def can_edit_by?(current_user)
-    self.user == current_user
-  end
-  
+
 end

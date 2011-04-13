@@ -10,6 +10,7 @@ class Calling < ActiveRecord::Base
   has_many   :follows,  :as => :followable,  :dependent => :destroy
   has_many   :followers,:through => :follows,:source => :user
   
+  acts_as_ownable
   acts_as_taggable
   acts_as_eventable  
   
@@ -84,10 +85,6 @@ class Calling < ActiveRecord::Base
   
   def description
     "为#{self.venue.name}发起行动：#{self.title}"
-  end
-  
-  def can_edit_by?(current_user)
-    self.user == current_user
   end
       
   define_index do

@@ -14,6 +14,7 @@ class Record < ActiveRecord::Base
   
   delegate  :for_what, :to => :action
   
+  acts_as_ownable
   acts_as_taggable
   
   accepts_nested_attributes_for :photos
@@ -28,10 +29,6 @@ class Record < ActiveRecord::Base
   
   def number
     {'money'=> money,'goods'=> goods,'time'=> time,'online' => online}[for_what] || 0
-  end
-  
-  def can_edit_by?(current_user)
-    self.user == current_user
   end
     
   def formatted_done_at

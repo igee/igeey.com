@@ -59,7 +59,7 @@ class CallingsController < ApplicationController
   end
   
   def close
-    @calling.update_attributes(:close => true) if @calling.user == current_user
+    @calling.update_attributes(:close => true) if @calling.owned_by?(current_user)
     respond_with @calling
   end
   

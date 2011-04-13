@@ -9,6 +9,8 @@ class Plan < ActiveRecord::Base
   has_many   :plans
   has_many   :children, :class_name => 'Plan' ,:foreign_key => :parent_id
   
+  acts_as_ownable
+  
   delegate :for_what, :to => :action
   
   default_scope :order => 'created_at DESC'
@@ -40,8 +42,5 @@ class Plan < ActiveRecord::Base
   def description
     "要参加#{calling.venue.name}的行动：#{self.calling.title}"
   end
-  
-  def can_edit_by?(current_user)
-    self.user == current_user
-  end
+
 end

@@ -61,7 +61,7 @@
   </p>
 </div>
   
-<% if @plan.user == current_user %>
+<% if @plan.owned_by?(current_user) %>
 <div class="box">
   <h4><%= @plan.user.login%>的跟随者：</h4>
   <%= render :partial => '/users/user',:collection => @plan.children.map(&:user)%>
