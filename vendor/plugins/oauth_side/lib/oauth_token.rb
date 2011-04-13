@@ -61,11 +61,21 @@ class OauthToken < ActiveRecord::Base
   end
   
   def get_sina_user_name
-    /<screen_name>(.*)<\/screen_name>/.match(self.access_token.get('http://api.t.sina.com.cn/account/verify_credentials.xml').body)[1]
+    r = self.access_token.get('http://api.t.sina.com.cn/account/verify_credentials.xml')
+    if r.is_a? Net::HTTPOK
+      /<screen_name>(.*)<\/screen_name>/.match(r.body)[1]
+    else
+      nil
+    end
   end
   
   def get_douban_user_name
-    /<title>(.*)<\/title>/.match(self.access_token.get('http://api.douban.com/people/%40me').body)[1]
+    r = self.access_token.get('http://api.douban.com/people/%40me')
+    if r.is_a? Net::HTTPOK
+      /<title>(.*)<\/title>/.match(r.body)[1]
+    else
+      nil
+    end
   end
   
   # 获取连接网站的唯一用户标识
@@ -79,11 +89,21 @@ class OauthToken < ActiveRecord::Base
   end
   
   def get_douban_unique_id
-    /<db:uid>(.*)<\/db:uid>/.match(self.access_token.get('http://api.douban.com/people/%40me').body)[1]
+    r = self.access_token.get('http://api.douban.com/people/%40me')
+    if r.is_a? Net::HTTPOK
+      /<db:uid>(.*)<\/db:uid>/.match(r.body)[1]
+    else
+      nil
+    end
   end  
   
   def get_sina_unique_id
-    /<id>(.*)<\/id>/.match(self.access_token.get('http://api.t.sina.com.cn/account/verify_credentials.xml').body)[1]
+    r = self.access_token.get('http://api.t.sina.com.cn/account/verify_credentials.xml')
+    if r.is_a? Net::HTTPOK
+      /<id>(.*)<\/id>/.match(r.body)[1]
+    else
+      nil
+    end
   end
   
 end
