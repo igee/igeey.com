@@ -1,3 +1,5 @@
+<% @title = '登录'%>
+
 <div style="width:510px;height:200px;">
   <h3><%= "下一步需要登录了，" if session[:return_to] && params[:layout] != 'false'%>请登录</h3>
   <div class="dialog_leftbar">
@@ -6,32 +8,30 @@
       <%= label_tag 'login','用户名：' %>
       <%= text_field_tag 'login', @login,:size => 14 ,:class=> 'with_tip',:title => "注册邮箱也可以"%>
     </p>
-    
     <p>
       <%= label_tag 'password','　密码：' %>
       <%= password_field_tag 'password', nil,:size => 14 ,:class=> 'with_tip',:title => "注意大小写"%>
-    </p>    
-    
-    <p style="text-align:center">
-      <span>忘记密码了？<%= link_to '找回密码',reset_password_path,:class => "open_dialog",:title => '找回密码' %></span>
     </p>
-    <p style="text-align:center">
-      <%= label_tag 'remember_me', '记住我?' %>
+	<p style="text-align:center">
+	  <span>忘记密码了？<%= link_to '找回密码',reset_password_path,:class => "open_dialog",:title => '找回密码' %></span>
+    </p>
+	<p style="text-align:center">
       <%= check_box_tag 'remember_me', '1', @remember_me %>
+      <%= label_tag 'remember_me', '记住我?' %>
       <%= submit_tag '登录',:class => 'button'%>
     </p>
     <% end -%>
+	<p>
+	  <span style="color:#555;">更多帐号登录：
+	  <%= image_tag "/images/icon/douban.gif",:class=> 'icon'%>
+	  <%= link_to('豆瓣',:controller => 'oauth', :action => 'douban')%>
+	  <%= image_tag "/images/icon/sina.gif",:class=> 'icon'%>	
+	  <%= link_to('新浪微博',:controller => 'oauth', :action => 'sina')%></span>
+	</p>
   </div>
   
   <div class="dialog_rightbar">
-	<p>
-	用更多帐号登录:<br/>
-	<%= image_tag "/images/icon/douban.gif",:class=> 'icon'%>
-	<%= link_to('豆瓣',:controller => 'oauth', :action => 'douban')%>
-	<%= image_tag "/images/icon/sina.gif",:class=> 'icon'%>	
-	<%= link_to('新浪微博',:controller => 'oauth', :action => 'sina')%>
-    </p><br/><br/>
-	<p>
+	<p style="padding:30px">
       还没有加入爱聚？<br/>
       <%= link_to '立即加入吧',signup_path,:onclick => (params[:layout] == 'false' ? "javascript:$('#signup').click();return false" : '') %>
     </p>
