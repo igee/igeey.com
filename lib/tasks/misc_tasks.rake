@@ -152,4 +152,12 @@ namespace :misc do
     puts("end at id:#{Venue.unscoped.order("id asc").last.id }")
     Follow.where(:user_id=>1).map(&:destroy)
   end
+  
+  desc "Update OauthToken unique_id"
+  task :update_oauth_unique_id => :environment do
+    OauthToken.where(:unique_id => nil).each do |o|
+      o.update_attribute(:unique_id, o.get_site_unique_id)
+    end
+  end
+  
 end
