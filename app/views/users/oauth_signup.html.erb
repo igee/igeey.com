@@ -10,7 +10,7 @@
     <%= form_for :user, :url => oauth_user_create_path do |f| -%>
     <p>
       <%= f.label 'login','用户名：' %>
-      <%= f.text_field :login,:size => 14, :value => "#{@user_name}@#{@site}" %>
+      <%= f.text_field :login,:size => 14, :value => "#{@user_name}" %>
     </p>
     
     <p>
