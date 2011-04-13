@@ -106,6 +106,7 @@ ActiveRecord::Schema.define() do
     t.string   :title,       :limit => 40
     t.text     :detail
     t.string   :photo_file_name
+    t.string   :cached_tag_list,  :default => ''
     t.integer  :comments_count,   :default => 0
     t.integer  :votes_count,      :default => 0
     t.boolean  :has_new_comment,  :default => false
@@ -181,8 +182,7 @@ ActiveRecord::Schema.define() do
     t.datetime :do_at
     t.boolean  :close,            :default => false
     t.integer  :follows_count,    :default => 0
-    t.datetime :last_bumped_at
-    t.string   :last_bumped_type, :limit => 40
+    t.string   :cached_tag_list,  :default => ''
     t.boolean  :has_new_plan,     :default => false
     t.integer  :comments_count,   :default => 0
     t.boolean  :has_new_comment,  :default => false
@@ -242,6 +242,7 @@ ActiveRecord::Schema.define() do
     t.integer  :forumable_id
     t.string   :title
     t.text     :content
+    t.string   :cached_tag_list,  :default => ''
     t.boolean  :has_new_comment,  :default => false
     t.integer  :comments_count,   :default => 0
     t.datetime :last_replied_at
@@ -253,6 +254,7 @@ ActiveRecord::Schema.define() do
     t.integer  :user_id
     t.integer  :venue_id
     t.text     :content
+    t.string   :cached_tag_list,  :default => ''
     t.integer  :comments_count,   :default => 0
     t.boolean  :has_new_comment,  :default => false
     t.datetime :last_replied_at

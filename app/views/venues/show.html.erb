@@ -81,40 +81,8 @@
 
 <div class="box">
   <h3>正在发生.. </h3>
-  <div id="tabContaier">
-    <ul>
-      <li><%= link_to '全部','#all_timeline'%></li>
-      <li><%= link_to '报到','#sayings_timeline'%></li>
-      <li><%= link_to '照片','#photos_timeline'%></li>
-      <li><%= link_to '故事','#topics_timeline'%></li>
-      <li><%= link_to '活动','#callings_timeline'%></li>
-    </ul>
-    
-    <div id="all_timeline" class="tabContents">
-      <%= render :partial => '/public/event', :collection => @timeline[0..9] %>
-      <%= link_to raw("查看更多 &#8744;"),more_timeline_venue_path(@venue,:page => 2),:class => "more_timeline" if @timeline[10].present?%>
-    </div>
-    
-    <div id="sayings_timeline" class="tabContents">
-      <%= render :partial => '/public/saying',:collection => @sayings[0..9]%>
-      <%= link_to raw("查看更多 &#8744;"),more_timeline_venue_path(@venue,:items => 'sayings',:page => 2),:class => "more_timeline" if @sayings[10].present?%>
-    </div>
-    
-    <div id="photos_timeline" class="tabContents">
-      <%= render :partial => '/public/photo',:collection => @photos[0..9]%>
-      <%= link_to raw("查看更多 &#8744;"),more_timeline_venue_path(@venue,:items => 'photos',:page => 2),:class => "more_timeline" if @photos[10].present?%>
-    </div>
-    
-    <div id="topics_timeline" class="tabContents">
-      <%= render :partial => '/public/topic',:collection => @topics[0..9]%>
-      <%= link_to raw("查看更多 &#8744;"),more_timeline_venue_path(@venue,:items => 'topics',:page => 2),:class => "more_timeline" if @topics[10].present?%>
-    </div>
-    
-    <div id="callings_timeline" class="tabContents">
-      <%= render :partial => '/public/calling',:collection => @callings[0..9]%>
-      <%= link_to raw("查看更多 &#8744;"),more_timeline_venue_path(@venue,:items => 'callings',:page => 2),:class => "more_timeline" if @callings[10].present?%>
-    </div>
-  </div>
+  <%= render :partial => '/public/event', :collection => @timeline[0..9] %>
+  <%= link_to raw("查看更多 &#8744;"),more_timeline_venue_path(@venue,:page => 2),:class => "more_timeline" if @timeline[10].present?%>
 </div>  
 
 <% content_for :sidebar do %>
