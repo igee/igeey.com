@@ -2,9 +2,20 @@
 <div class="box">
   <h2 style="background-color: #ccc;margin:5px 0;padding:3px 12px;-moz-border-radius:5px;-webkit-border-radius:5px;display:inline;line-height:38px;}"><%= @tag.name%></h2>
   <br/>
-  <span>带有“<%= @tag.name%>”标签的内容：<span>
+  <%= link_to '编辑标签',edit_tag_path(@tag) if logged_in? & current_user.is_admin?%>
 </div>
-<%= render :partial => '/public/event',:collection => @timeline%>
+
+<% unless @tag.intro.blank?%>
+<div class="box">
+  <h4>标签简介：</h4>
+</div>
+<% end %>
+
+
+<div class="box">
+  <h4>带有“<%= @tag.name%>”标签的内容：</h4>
+  <%= render :partial => '/public/event',:collection => @timeline%>
+</div>
 
 <% content_for :sidebar do %>
   <div class="box" style="width:240px;word-wrap:break-word;word-break:normal;overflow:hidden;">

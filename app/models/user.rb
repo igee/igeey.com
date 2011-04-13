@@ -150,7 +150,7 @@ class User < ActiveRecord::Base
   end
   
   def tag_list
-    self.tags.limit(10)
+    self.tags.limit(10).map(&:name)
   end
   
   #need refactory. use dynamic methods

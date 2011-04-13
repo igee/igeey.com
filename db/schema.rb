@@ -263,7 +263,8 @@ ActiveRecord::Schema.define() do
   end
   
   create_table "tags" do |t|
-    t.string :name
+    t.string   :name
+    t.text     :intro
     t.integer  :taggings_count,   :default => 0
     t.timestamps
   end

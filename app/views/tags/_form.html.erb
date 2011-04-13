@@ -1,0 +1,24 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'jquery.tag.editor-min.js' %>
+<% end %>
+
+<div class="box">
+  <%= form_for @tag do |form| %>
+    <p><%= form.label :name,'名称：'%> <%= form.text_field :name,:size => 20 ,:style => "text-align:left"%></p>
+    <p><%= form.label :intro,'标签说明：'%><br/>
+    <%= form.text_area :intro, :style => "width:340px;height:80px" ,:placeholder => '这个标签的背景和如何使用的说明'%>
+    </p>
+    <p>
+      <%= submit_tag '确定',:class => 'button' %>
+      <%= button_to_function '取消',"javascript:$('#floatBox #close_dialog').click();#{'window.history.back()' unless params[:layout] == 'false'}",:class => "button"%>
+    </p>
+  <% end %>
+</div>
+
+<% content_for :extension do %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $(".tag_list").each(function(index,element){jQuery(element).tagEditor();})
+    })
+  </script>
+<%end%>

@@ -1,10 +1,8 @@
 class Tag < ::ActiveRecord::Base
-  acts_as_taggable
-  
-  has_many :taggings, :dependent => :destroy
-  
+  has_many :with_taggings, :class_name => 'Tagging', :dependent => :destroy
   default_scope :order => 'taggings_count DESC'
   
+  acts_as_taggable
   validates_presence_of :name
   validates_uniqueness_of :name
   
@@ -26,6 +24,14 @@ class Tag < ::ActiveRecord::Base
   
   def count
     read_attribute(:count).to_i
+  end
+  
+  def user_id
+    nil
+  end
+  
+  def venue_id
+    nil
   end
   
   class << self
