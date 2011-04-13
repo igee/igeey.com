@@ -15,6 +15,32 @@ class SessionsController < ApplicationController
     end  
   end
   
+  def oauth_login
+    redirect_to :root if logged_in?
+    render :layout => false if params[:layout] == 'false'
+  end
+  
+  def oauth_session_create
+    logout_keeping_session!
+    user = User.authenticate(params[:login], params[:password])
+    if user
+      self.current_user = user
+      new_cookie_flag = (params[:remember_me] == "1")
+      handle_remember_cookie! new_cookie_flag
+      OauthToken.find_by_unique_id_and_site(session[:unique_id],session[:site]).update_attributes(:user_id => user.id)
+      if session[:controller]
+        render_component :controller => session[:controller],:action => session[:action],:params => session[:params] || {}
+      else
+        redirect_back_or_default('/', :notice => "Logged in successfully")
+      end
+    else
+      note_failed_signin
+      @login       = params[:login]
+      @remember_me = params[:remember_me]
+      render :action => 'oauth_login'
+    end
+  end
+  
   def create
     logout_keeping_session!
     user = User.authenticate(params[:login], params[:password])

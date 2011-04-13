@@ -29,11 +29,12 @@
   <% if logged_in?%>
     <%= render :partial => "sidebar_panel" %>
   <% else %>
-    <div class="box" style="text-align:center;height:220px">
+    <div class="box" style="text-align:center;height:265px">
       <div style="padding:20px 0;border-bottom:1px solid #ccc;margin-bottom:20px">  
         <%= link_to "立即注册爱聚",signup_path ,:class => "big_button open_dialog",:title => '注册',:title=>'注册'%>
       </div>
       
+	  <div style="padding-bottom:10px;border-bottom:1px solid #ccc;margin-bottom:15px">
       <%= form_tag session_path do -%>
         <p>
           <%= label_tag 'login','用户名：' %>
@@ -44,14 +45,25 @@
           <%= label_tag 'password','　密码：' %>
           <%= password_field_tag 'password', nil,:size => 12 ,:class=> 'with_tip',:title => "注意大小写"%>
         </p>    
-        
-        <p>
-          <%= label_tag 'remember_me', '记住我?' %>
-          <%= check_box_tag 'remember_me', '1', @remember_me %>
-          <%= submit_tag '登录',:class => 'button'%>
+    
+		<p>
+          <span>忘记密码了？<%= link_to '找回密码',reset_password_path,:class => "open_dialog",:title => '找回密码' %></span>
         </p>
+
+        <p>
+          <%= check_box_tag 'remember_me', '1', @remember_me %>
+          <%= label_tag 'remember_me', '记住我?' %>
+		  <%= submit_tag '登录',:class => 'button'%>
+		</p>
       <% end -%>
-        
+	  </div>
+		<p>
+		  <span style="color:#555;">更多帐号登录：
+		  <%= image_tag "/images/icon/douban.gif",:class=> 'icon'%>
+		  <%= link_to('豆瓣',:controller => 'oauth', :action => 'douban')%>
+		  <%= image_tag "/images/icon/sina.gif",:class=> 'icon'%>	
+		  <%= link_to('新浪微博',:controller => 'oauth', :action => 'sina')%></span>
+		</p>
     </div>
     
     <h4 class="ribbon">在爱聚你可以做什么？</h4>

@@ -1,10 +1,10 @@
 class OauthToken < ActiveRecord::Base
 
   attr_accessor :site_config
-
+  
   def self.request_by user_id, site
     record = find_by_user_id_and_site(user_id,site) || self.create(:user_id => user_id, :site => site)
-    raise "用户已经开通" unless record.access_token.nil?
+    raise "用户已经开通" unless record.access_token.nil? || record.user_id.nil?
     record.request_key = nil
     token = record.request_token
     token.authorize_url 
@@ -30,11 +30,15 @@ class OauthToken < ActiveRecord::Base
 
   # 获取访问授权信息，从这里开始系统就可以提供对用户的服务了
   def authorize oauth_verifier = nil
-    @access = request_token.get_access_token :oauth_verifier => oauth_verifier
-    update_attributes :access_key => @access.token, :access_secret => @access.secret
-    @access
+    begin
+      @access = request_token.get_access_token :oauth_verifier => oauth_verifier
+      update_attributes :access_key => @access.token, :access_secret => @access.secret
+      @access
+    rescue OAuth::Unauthorized
+      false
+    end
   end
-
+  
   # 获取 concumer
   def consumer
     @consumer ||= lambda{|config|
@@ -45,5 +49,41 @@ class OauthToken < ActiveRecord::Base
       )
     }.call(Rails.oauth[site.to_sym])
   end
-
+  
+  # 获取连接网站的user_name
+  def get_site_user_name
+    case self.site
+    when 'sina'
+      get_sina_user_name
+    when 'douban'
+      get_douban_user_name
+    end
+  end
+  
+  def get_sina_user_name
+    /<screen_name>(.*)<\/screen_name>/.match(self.access_token.get('http://api.t.sina.com.cn/account/verify_credentials.xml').body)[1]
+  end
+  
+  def get_douban_user_name
+    /<title>(.*)<\/title>/.match(self.access_token.get('http://api.douban.com/people/%40me').body)[1]
+  end
+  
+  # 获取连接网站的唯一用户标识
+  def get_site_unique_id
+    case self.site
+    when 'sina'
+      get_sina_unique_id
+    when 'douban'
+      get_douban_unique_id
+    end
+  end
+  
+  def get_douban_unique_id
+    /<db:uid>(.*)<\/db:uid>/.match(self.access_token.get('http://api.douban.com/people/%40me').body)[1]
+  end  
+  
+  def get_sina_unique_id
+    /<id>(.*)<\/id>/.match(self.access_token.get('http://api.t.sina.com.cn/account/verify_credentials.xml').body)[1]
+  end
+  
 end
