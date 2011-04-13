@@ -28,8 +28,7 @@ class VenuesController < ApplicationController
     @photos = @venue.photos.limit(11)
     @sayings = @venue.sayings.limit(11)
     @topics = @venue.topics.limit(11)
-    @timeline = @topics + @callings + @photos + @sayings
-    @timeline = @timeline.sort{|x,y| y.created_at <=> x.created_at }[0..10]
+    @timeline = @venue.events.limit(11)
     @followers = @venue.followers.limit(8)
   end
   
@@ -38,12 +37,7 @@ class VenuesController < ApplicationController
       @timeline = eval "@venue.#{params[:filter]}.paginate(:page => params[:page], :per_page => 10)"
       @filter = params[:filter]
     else
-      @timeline = []
-      @timeline += @venue.callings.not_closed.limit(30)
-      @timeline += @venue.sayings.limit(30)
-      @timeline += @venue.photos.limit(30)
-      @timeline += @venue.topics.limit(30)
-      @timeline = @timeline.sort{|x,y| y.created_at  <=> x.created_at}[0..200].paginate(:page => params[:page], :per_page => 10)
+      @timeline = @venue.events.paginate(:page => params[:page], :per_page => 10)
     end
     render :layout => false
   end

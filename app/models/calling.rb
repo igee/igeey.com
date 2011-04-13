@@ -9,9 +9,9 @@ class Calling < ActiveRecord::Base
   has_many   :photos,   :as => :imageable,   :dependent => :destroy
   has_many   :follows,  :as => :followable,  :dependent => :destroy
   has_many   :followers,:through => :follows,:source => :user
-  has_one    :event,    :as => :eventable,    :dependent => :destroy
   
   acts_as_taggable
+  acts_as_eventable  
   
   default_scope :order => 'created_at DESC'
   
@@ -84,10 +84,6 @@ class Calling < ActiveRecord::Base
   
   def description
     "为#{self.venue.name}发起行动：#{self.title}"
-  end
-  
-  def stamped_at
-    last_bumped_at
   end
   
   def can_edit_by?(current_user)

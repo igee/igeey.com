@@ -24,6 +24,7 @@ class Venue < ActiveRecord::Base
   has_many   :followers,  :through => :follows,:source => :user
   has_many   :taggings,   :dependent => :destroy
   has_many   :tags,       :through => :taggings,:source => :tag
+  has_many   :events,     :dependent => :destroy
 
   has_attached_file :cover, :styles => {:_48x48 => ["48x48#",:jpg],:_100x100 => ["100x100#",:jpg]},
                             :url=>"/media/:attachment/venues/:id/:style.jpg",

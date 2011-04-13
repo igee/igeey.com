@@ -2,49 +2,21 @@ class SiteController < ApplicationController
   before_filter :login_required, :except=> [:index,:faq,:guide,:about,:report,:public]  
   def index
     if logged_in?
-      @followed_venue_id = current_user.followings.where(:followable_type => 'Venue' ).map(&:followable_id)
-      @timeline = Event.where(:venue_id => @followed_venue_id)
+      @followed_venue_id_list = current_user.followings.where(:followable_type => 'Venue' ).map(&:followable_id)
+      @timeline = Event.where(:venue_id => @followed_venue_id_list).limit(10)
     else
-      @timeline = Event.limit(20).includes([:user,:venue])
+      @timeline = Event.limit(10)
     end
   end
   
   def more_timeline
-    @timeline = []
-    @followings = current_user.followings.where(:followable_type => 'Venue' ).map(&:followable)
-    @followings.each do |v|
-      @timeline += v.callings.not_closed.limit(30)
-      @timeline += v.sayings.limit(30)
-      @timeline += v.photos.limit(30)
-      @timeline += v.topics.limit(30)
-    end
-    @timeline = @timeline.sort{|x,y| y.created_at  <=> x.created_at}[0..200].paginate(:page => params[:page], :per_page => 10)
+    @followed_venue_id_list = current_user.followings.where(:followable_type => 'Venue' ).map(&:followable_id)
+    @timeline = Event.where(:venue_id => @followed_venue_id_list).paginate(:page => params[:page], :per_page => 10)
     render :layout => false
   end
   
   def public
-    @timeline = []
-    @timeline += Calling.not_closed.limit(30)
-    @timeline += Saying.limit(30)
-    @timeline += Photo.limit(30)
-    @timeline += Topic.limit(30)
-    @timeline = @timeline.sort{|x,y| y.created_at  <=> x.created_at  }[0..30]
-  end
-  
-  def city_timeline
-    if logged_in?
-      @city_timeline = []
-      @geo = current_user.geo
-      if @geo
-        @geo.venues.each do |venue|
-          @city_timeline += venue.records.limit(5) 
-          @city_timeline += venue.callings.not_closed.limit(5)
-          @city_timeline += venue.plans.limit(5)
-        end
-        @city_timeline = @city_timeline.sort{|x,y| y.created_at <=> x.created_at }[0..15]
-      end
-    end
-    render :layout => false
+    @timeline = Event.limit(20)
   end
 
   def followings

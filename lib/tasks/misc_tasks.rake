@@ -155,7 +155,7 @@ namespace :misc do
   
   desc "Init Event list"
   task :init_event => :environment do
-    timeline = (Saying.all + Calling.all + Photo.all + Topic.all + Plan.all + Record.all).sort{|x,y| y.created_at  <=> x.created_at  }
+    timeline = (Saying.all + Calling.all + Photo.all + Topic.all).sort{|x,y| x.created_at <=> y.created_at}
     timeline.each do |item|
       Event.create(:user=>item.user,:eventable => item,:venue => item.venue) if item.event.nil?
       print '.'
