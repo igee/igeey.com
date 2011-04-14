@@ -2,7 +2,7 @@
   <ul class="tag_cloud">
     <li><%= link_to(tag.name,name_tags_path(:name => tag.name))%></li>
   </ul>
-  <pre class="explanation" style="clear:both;"><%= short_text(tag.intro,20) %></pre>  
+  <pre class="explanation" style="clear:both;"><%= short_text(tag.intro,70) %></pre>  
   <div class="event_info">
     <span>使用次数 <%= tag.taggings_count%></span>
   </div>
