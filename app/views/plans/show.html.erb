@@ -17,7 +17,7 @@
       <%= raw tag_list_for(@calling)%>
     </div>
     <div style="clear:both;text-align:right">
-      <% if @plan.can_edit_by?(current_user)%>
+      <% if @plan.owned_by?(current_user)%>
       <span><%= link_to("修改",edit_calling_plan_path(@plan.calling,@plan))%> | <%= link_to "取消",calling_plan_path(@calling,@plan),:method => :delete,:confirm => '确定要取消你的计划么?' %></span>
       <% end %>
     </div>
@@ -28,7 +28,7 @@
     <% if @plan.is_done%>
         计划已完成 <%= link_to '立即查看',record_path(@plan.record) %>
     <% else %>
-      <% if @plan.can_edit_by?(current_user) %>
+      <% if @plan.owned_by?(current_user) %>
         <%= link_to "已经完成?","#{new_record_path}?plan_id=#{@plan.id}",:class => "big_button" %>
       <% elsif @my_plan %>
         你已参与： <%= link_to '查看我的计划',calling_plan_path(@calling,@my_plan)%>
@@ -85,7 +85,7 @@
     <% if @plan.is_done%>
         计划已完成 <%= link_to '立即查看',record_path(@plan.record) %>
     <% else %>
-      <% if @plan.can_edit_by?(current_user) %>
+      <% if @plan.owned_by?(current_user) %>
         <%= link_to "已经完成?","#{new_record_path}?plan_id=#{@plan.id}",:class => "big_button" %>
       <% elsif @my_plan %>
         你已参与： <%= link_to '查看我的计划',calling_plan_path(@calling,@my_plan)%>
