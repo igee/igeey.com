@@ -1,7 +1,7 @@
 module ApplicationHelper
   
   def short_text(text,length=20)
-    text.mb_chars.slice(0..length).to_s.lstrip + (text.mb_chars[length].nil?? "" : "...")
+    text.mb_chars.slice(0..length).to_s.lstrip + (text.mb_chars[length].nil?? "" : "...") if text
   end
   
   def error_explanation_for(object)

@@ -4,6 +4,7 @@ class TagsController < ApplicationController
   before_filter :find_tag, :except => [:index, :new, :create,:name]
   
   def index
+    @tags = Tag.limit(10)
   end
   
   def new
