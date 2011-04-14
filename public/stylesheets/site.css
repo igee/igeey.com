@@ -635,14 +635,14 @@ input.todo:hover{
 
 .tag_list{display:inline;width:86px}
 
-.tagEditor{
+.tag_cloud{
   margin: 4px 0;
   padding: 0;
   display:inline;
   font-size:13px;
   }
 
-.tagEditor li{
+.tag_cloud li{
   float:left;
   background-color: #9ae;
   list-style-type: none;
@@ -652,14 +652,14 @@ input.todo:hover{
   -webkit-border-radius: 5px;
   }
 
-.tagEditor li a{color:#fff;}
+.tag_cloud li a{color:#fff;}
   
-.tagEditor li img{
+.tag_cloud li img{
   margin-bottom:-2px;
   cursor: pointer;
   }
   
-.tagEditor li:hover{
+.tag_cloud li:hover{
   background-color: #f30;
   }
 

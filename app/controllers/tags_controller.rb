@@ -1,16 +1,28 @@
 class TagsController < ApplicationController
   respond_to :html
-  before_filter :login_required, :except => [:show,:name]
+  before_filter :login_required, :only => [:new,:create,:destroy,:edit,:update]
   before_filter :find_tag, :except => [:index, :new, :create,:name]
   
+  def index
+  end
+  
+  def new
+    @tag = Tag.new
+  end
+  
+  def create
+    @tag = Tag.new(params[:tag])
+    @tag.save if current_user.is_admin?
+    respond_with @tag
+  end
+  
   def show
-    @tag.tag_list = Tag.limit(10).map(&:name)
     #if ['Topic','Photo','Calling','Saying'].include?(params[:filter])
     #  @timeline = params[:filter].constantize.find_tagged_with(@tag.name)
     #  @filter_name = {'Topic'=>'故事','Photo'=>'照片','Calling'=>'召集','Saying'=>'报到'}[params[:filter]]
     #else 
     #end
-    @timeline = @tag.with_taggings.limit(10).map(&:taggedable).map(&:event)
+    @timeline = @tag.owned_taggings.limit(10).map(&:taggable).map(&:event)
   end
   
   def edit

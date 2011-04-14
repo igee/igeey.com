@@ -105,10 +105,12 @@
     <%= render :partial => "/users/user",:collection => @followers[0..7] %>
   </div>
   
+  <% unless @venue.tag_list.empty? %>
   <div class="box">
     <h4>相关标签：</h4>
     <%= raw tag_list_for(@venue)%>
   </div>
+  <% end %>
 <% end %>
 
 <% content_for :extension do %>
@@ -174,7 +176,7 @@
       setTimeout(updateCount, 400);
        }
       updateCount();
-      $(".tag_list").each(function(index,element){jQuery(element).tagEditor();})
+      $(".tag_list").each(function(index,element){jQuery(element).tag_cloud();})
       initialize();
       setTimeout(function(){$.post('<%= watching_venue_path(@venue)%>')},5000)
     });  

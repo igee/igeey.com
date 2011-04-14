@@ -16,13 +16,13 @@ Karl-Johan Sjögren
 -Added a minified version of the script to the package using http://base2.googlecode.com/svn/trunk/src/apps/packer/packer.html
 Joost Elfering
 -Major change in extension of the object
--Moved getTags to tagEditorGetTags for naming convention
--Changed tagEditor so that it can be called without arguments
--Changed call for getTags to $(object).tagEditorGetTags()
+-Moved getTags to tag_cloudGetTags for naming convention
+-Changed tag_cloud so that it can be called without arguments
+-Changed call for getTags to $(object).tag_cloudGetTags()
 -Changed addTag to return a true or false value as a success indicator
 -Added resetTags method to clear the input and set the default given tags as start
--Added tagEditorResetTags as API for resetTags: $(object).tagEditorResetTags()
--Added tagEditorAddTag as API for addTag: $(object).tagEditorAddTag('string')
+-Added tag_cloudResetTags as API for resetTags: $(object).tag_cloudResetTags()
+-Added tag_cloudAddTag as API for addTag: $(object).tag_cloudAddTag('string')
 -Added continuousOutputBuild option to allow continuous building for dynamic forms
 -Added tagsBeforeField option to switch places between tags added and the input field
 -Added imageTag option to add and image to the list for styling purposes
@@ -41,11 +41,11 @@ Joost Elfering
 -Added the completeOnSeparator and completeOnBlur options
 */
 (function(jQuery) {
-    jQuery.fn.tagEditor = function(options) {
+    jQuery.fn.tag_cloud = function(options) {
         var defaults = {
             separator: ',',
             items: [],
-            className: 'tagEditor',
+            className: 'tag_cloud',
             confirmRemoval: false,
             confirmRemovalText: 'Do you really want to remove the tag?',
             completeOnSeparator: false,
@@ -154,13 +154,13 @@ Joost Elfering
             }
 
             jQuery.fn.extend({
-                tagEditorGetTags: function() {
+                tag_cloudGetTags: function() {
                     return itemBase.join(options.separator);
                 },
-                tagEditorResetTags: function() {
+                tag_cloudResetTags: function() {
                     resetTags();
                 },
-                tagEditorAddTag: function(tag) {
+                tag_cloudAddTag: function(tag) {
                     return addTag(tag);
                 }
             });

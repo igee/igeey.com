@@ -6,7 +6,9 @@
                     :taggable_id,
                     :user_id,
                     :user
-
+    
+    default_scope where(['taggable_type != ?','Tag'])
+    
     belongs_to :tag, :counter_cache => true
     belongs_to :taggable, :polymorphic => true
     belongs_to :user

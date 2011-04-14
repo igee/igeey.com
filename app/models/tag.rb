@@ -1,5 +1,5 @@
 class Tag < ::ActiveRecord::Base
-  has_many :with_taggings, :class_name => 'Tagging', :dependent => :destroy
+  has_many :owned_taggings, :class_name => 'Tagging', :dependent => :destroy
   default_scope :order => 'taggings_count DESC'
   
   acts_as_taggable
@@ -32,6 +32,10 @@ class Tag < ::ActiveRecord::Base
   
   def venue_id
     nil
+  end
+  
+  def self.tag_list
+    Tag.all.map(&:name)
   end
   
   class << self

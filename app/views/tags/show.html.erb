@@ -1,13 +1,14 @@
 <% @title = "标签：#{@tag.name}"%>
 <div class="box">
-  <h2 style="background-color: #ccc;margin:5px 0;padding:3px 12px;-moz-border-radius:5px;-webkit-border-radius:5px;display:inline;line-height:38px;}"><%= @tag.name%></h2>
+  <h2 style="background-color:#89d;color:#fff;margin:5px 0;padding:4px 16px;-moz-border-radius:5px;-webkit-border-radius:5px;display:inline;line-height:38px;}"><%= @tag.name%></h2>
   <br/>
-  <%= link_to '编辑标签',edit_tag_path(@tag) if logged_in? & current_user.is_admin?%>
+  <%= link_to '编辑标签',edit_tag_path(@tag) if logged_in? && current_user.is_admin?%>
 </div>
 
 <% unless @tag.intro.blank?%>
 <div class="box">
   <h4>标签简介：</h4>
+  <pre><%= @tag.intro %></pre>
 </div>
 <% end %>
 
@@ -18,8 +19,17 @@
 </div>
 
 <% content_for :sidebar do %>
-  <div class="box" style="width:240px;word-wrap:break-word;word-break:normal;overflow:hidden;">
-    <h4>热门标签</h4>
+  
+<% unless @tag.tag_list.blank? %>
+  <div class="box">
+    <h4>相关标签</h4>
     <%= raw tag_list_for(@tag) %>
-  </div>  
+  </div>
+<% end %>
+
+  <div class="box">
+    <h4>热门标签</h4>
+    <%= raw tag_list_for(Tag) %>
+  </div>
+
 <% end %>
