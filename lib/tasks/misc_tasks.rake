@@ -161,4 +161,16 @@ namespace :misc do
     end
   end
   
+  desc "Checking Counters for User and Venue"
+  task :check_counters => :environment do
+    User.all.each do |u|
+      u.update_attributes(:photos_count=>u.photos.count,:sayings_count=>u.sayings.count,:callings_count=>u.callings.count,:sayings_count=>u.sayings.count)
+      print(u.save ? '.' : 'x')
+    end
+    
+    Veune.all.each do |v|
+      u.update_attributes(:photos_count=>u.photos.count,:sayings_count=>u.sayings.count,:callings_count=>u.callings.count,:sayings_count=>u.sayings.count)
+      print(u.save ? '.' : 'x')
+    end
+  end
 end
