@@ -11,8 +11,7 @@ class SiteController < ApplicationController
   
   def more_timeline
     @following_venues_id_list = current_user.venue_followings.map(&:followable_id)
-    @timeline = Event.where(:venue_id => @following_venues_id_list)..paginate(:page => params[:page], :per_page => 10)
-    @timeline = Event.paginate(:page => params[:page], :per_page => 10)
+    @timeline = Event.where(:venue_id => @following_venues_id_list).paginate(:page => params[:page], :per_page => 10)
     render '/public/more_timeline',:layout => false
   end
   
