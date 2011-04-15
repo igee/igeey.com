@@ -17,7 +17,6 @@
     <p><%= form.label :detail,'照片说明：'%><br/>
     <%= form.text_area :detail, :style => "width:340px;height:80px" ,:placeholder => '关于这个照片有什么故事么？'%>
     </p>
-    <p><%= form.label :tag_list,'标签：',:style=>'float:left'%> <%= form.text_field :tag_list ,:size=> 8,:class=>"tag_list" %></p>
     <p>
       <%= submit_tag '确定',:class => 'button' %>
       <%= button_to_function '取消',"javascript:$('#floatBox #close_dialog').click();#{'window.history.back()' unless params[:layout] == 'false'}",:class => "button"%>
