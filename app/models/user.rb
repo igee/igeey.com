@@ -219,6 +219,11 @@ class User < ActiveRecord::Base
     self.send_to_sina_miniblog(message) if (options[:to_sina] && sina?)
   end
   
+  def init_userdata_from(token)
+    self.send_to_douban_miniblog(token) if token.site == 'douban'
+    self.send_to_sina_miniblog(token) if token.site == 'sina'
+  end
+  
   def check_badge_condition_on(*args)
     args.each do |condition_factor|
       Badge.where(:condition_factor => condition_factor).each do |badge|
