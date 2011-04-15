@@ -28,7 +28,6 @@ class RecordsController < ApplicationController
     @venue = @record.venue
     @action = @record.action
     @calling = @record.calling
-    @project = @record.project
     @comments = @record.comments
     @photos = @record.photos
   end

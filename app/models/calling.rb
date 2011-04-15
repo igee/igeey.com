@@ -1,6 +1,6 @@
 class Calling < ActiveRecord::Base
   belongs_to :user,     :counter_cache => true
-  belongs_to :venue
+  belongs_to :venue,    :counter_cache => true
   belongs_to :action
   has_many   :records
   has_many   :plans
@@ -10,7 +10,11 @@ class Calling < ActiveRecord::Base
   has_many   :follows,  :as => :followable,  :dependent => :destroy
   has_many   :followers,:through => :follows,:source => :user
   
-  default_scope :order => 'created_at DESC',:include => [:user]
+  acts_as_ownable
+  acts_as_taggable
+  acts_as_eventable  
+  
+  default_scope :order => 'created_at DESC'
   
   scope :not_closed,where(:close => false) 
   scope :timing,where(:action_id => [1]) # timeing action list 
@@ -81,14 +85,6 @@ class Calling < ActiveRecord::Base
   
   def description
     "为#{self.venue.name}发起行动：#{self.title}"
-  end
-  
-  def stamped_at
-    last_bumped_at
-  end
-  
-  def can_edit_by?(current_user)
-    self.user == current_user
   end
       
   define_index do

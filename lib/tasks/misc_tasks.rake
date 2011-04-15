@@ -153,6 +153,15 @@ namespace :misc do
     Follow.where(:user_id=>1).map(&:destroy)
   end
   
+  desc "Init Event list"
+  task :init_event => :environment do
+    timeline = (Saying.all + Calling.all + Photo.all + Topic.all).sort{|x,y| x.created_at <=> y.created_at}
+    timeline.each do |item|
+      Event.create(:user=>item.user,:eventable => item,:venue => item.venue) if item.event.nil?
+      print '.'
+    end
+  end
+
   desc "Update OauthToken unique_id"
   task :update_oauth_unique_id => :environment do
     OauthToken.where(:unique_id => nil).each do |o|
