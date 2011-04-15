@@ -39,7 +39,7 @@ class VenuesController < ApplicationController
     else
       @timeline = @venue.events.paginate(:page => params[:page], :per_page => 10)
     end
-    render :layout => false
+    render '/public/more_timeline',:layout => false
   end
   
   def edit
@@ -63,32 +63,39 @@ class VenuesController < ApplicationController
   end
   
   def records
-    @records = @venue.records
-    respond_with(@records)
+    @items = @venue.records.paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@venue.name}的行动记录"
+    render 'see_all'
   end
   
   def callings
-    @callings = @venue.callings
-    respond_with(@callings)
+    @items = @venue.callings.paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@venue.name}的行动召集"
+    render 'see_all'
   end
   
   def topics
-    @topics = @venue.topics
-    respond_with(@topics)
+    @items = @venue.topics.paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@venue.name}的故事"
+    render 'see_all'
   end
   
   def sayings
-    @sayings = @venue.sayings
-    respond_with(@sayings)
+    @items = @venue.sayings.paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@venue.name}的报到"
+    render 'see_all'
   end
   
   def photos
-    @photos = @venue.photos
-    respond_with(@photos)
+    @items = @venue.photos.paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@venue.name}的照片"
+    render 'see_all'
   end
   
   def followers
-    @followers = @venue.followers.paginate(:page => params[:page], :per_page => 20)
+    @items = @venue.followers.paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@venue.name}的关注者"
+    render 'see_all'
   end
   
   def watching

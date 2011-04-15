@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   has_many :topics,         :dependent => :destroy
   has_many :photos,         :dependent => :destroy
   has_many :grants,         :dependent => :destroy
+  has_many :badges,         :through => :grants, :source => :badge
   has_many :followings,     :class_name => "Follow",:foreign_key => :user_id
   has_many :follows,        :as => :followable, :dependent => :destroy
   has_many :followers,      :through => :follows, :source => :user

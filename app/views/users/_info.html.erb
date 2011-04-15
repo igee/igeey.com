@@ -1,0 +1,7 @@
+    <div class="sidebar_panel">
+      <%= image_tag(@user.avatar.url(:_72x72),:alt => @user.login,:style => "float:left;width:72px;height:72px;margin-right:10px") if @user.avatar_file_name%>
+      <h4><%= link_to @user.login,user_path(@user)%></h4>
+        <span><%= @user.geo.full_name%></span>
+        <br/>
+      <pre><%= @user.signature%></pre>
+    </div>

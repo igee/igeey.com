@@ -72,28 +72,65 @@ class UsersController < ApplicationController
   end
   
   def show
-    @records = @user.records.limit(7)
-    @callings = @user.callings.limit(7)
-    @sayings = @user.sayings.limit(7)
-    @plans = @user.plans.undone.limit(7)
-    @topics = @user.topics.limit(7)
+    @timeline = @user.events.limit(11)
     @followers = @user.followers.limit(9)
     @following_users = @user.user_followings.limit(9).map(&:followable)
-    @following_venues = @user.venue_followings.limit(7).map(&:followable)
-    @photos = @user.photos.limit(6)
+    @following_venues = @user.venue_followings.limit(11).map(&:followable)
     @badges = @user.grants.limit(9).map(&:badge)
   end
   
+  def badges
+    @items = @user.badges.paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@user.login}获得的徽章"
+    render 'see_all'
+  end
+  
+  def callings
+    @items = @user.callings.paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@user.login}的行动召集"
+    render 'see_all'
+  end
+  
+  def topics
+    @items = @user.topics.paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@user.login}的故事"
+    render 'see_all'
+  end
+  
+  def sayings
+    @items = @user.sayings.paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@user.login}的报到"
+    render 'see_all'
+  end
+  
+  def photos
+    @items = @user.photos.paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@user.login}的照片"
+    render 'see_all'
+  end
+  
   def following_venues
-    @following_venues = @user.venue_followings.map(&:followable)
+    @items = @user.venue_followings.map(&:followable).paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@user.login}关注的地点"
+    render 'see_all'
   end
   
   def following_users
-    @following_users = @user.user_followings.map(&:followable)
+    @items = @user.user_followings.map(&:followable).paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@user.login}关注的用户"
+    render 'see_all'
   end
 
+  def followers
+    @items = @user.followers.paginate(:page => params[:page], :per_page => 10)
+    @title = "关注#{@user.login}的用户"
+    render 'see_all'
+  end
+  
   def following_callings
-    @following_callings = @user.calling_followings.map(&:followable)
+    @items = @user.calling_followings.map(&:followable).paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@user.login}关注的活动"
+    render 'see_all'
   end
 
   def reset_password
@@ -114,18 +151,8 @@ class UsersController < ApplicationController
   end
   
   def more_timeline
-    @items = eval({:badges => '@user.grants[8..-1].map(&:badge)',
-                   :followers => '@user.followers[8..-1]',
-                   :following_users => "@user.user_followings[8..-1].map(&:followable)",
-                   :following_venues => '@user.venue_followings[8..-1].map(&:followable)',
-                   :photos => "@user.photos.paginate(:page => #{params[:page]}, :per_page => 6)",
-                   :callings => "@user.callings.paginate(:page => #{params[:page]}, :per_page => 6)",
-                   :sayings => "@user.sayings.paginate(:page => #{params[:page]}, :per_page => 6)",
-                   :topics => "@user.topics.paginate(:page => #{params[:page]}, :per_page => 6)",
-                   :records => "@user.records.paginate(:page => #{params[:page]}, :per_page => 6)",
-                   :plans => "@user.plans.paginate(:page => #{params[:page]}, :per_page => 6)",
-                   }[params[:filter].to_sym])
-    render :layout => false
+    @timeline = @user.events.paginate(:page => params[:page], :per_page => 10)
+    render '/public/more_timeline',:layout => false
   end
   
   private

@@ -80,6 +80,13 @@ Igee::Application.routes.draw do
     member do
       post  :update_account
       get   :more_timeline
+      get   :callings
+      get   :records
+      get   :sayings
+      get   :topics
+      get   :photos
+      get   :badges
+      get   :followers
       get   :following_venues
       get   :following_users
       get   :following_callings
@@ -100,6 +107,7 @@ Igee::Application.routes.draw do
   
   resources :tags do
     get :name, :on => :collection
+    get :more, :on => :collection
   end
   
   #short_url

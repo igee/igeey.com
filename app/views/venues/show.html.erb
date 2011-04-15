@@ -28,7 +28,7 @@
   <h4>在这里发布..</h4>
   <div id="venue_forms">
     <div id="formContaier">
-      <%= form_for [@venue,@saying],:html=>{:class=>'venue_form'}  do |form| %>    
+      <%= form_for [@venue,@saying],:html=>{:class=>'venue_form',:style => "display:block"}  do |form| %>    
         <%= form.hidden_field :venue_id,:value => @venue.id %>
         <%= form.text_area  :content,:style => 'height:19px;font-size:14px;line-height:19px',:placeholder => "今天你想和#{@venue.name}的朋友们说什么？"%>
         <%= form.submit '确 定',:class => "gary_button"%>
@@ -45,7 +45,7 @@
       
       <%= form_for @topic,:html=> {:class=>'venue_form'}  do |form| %>
         <%= form.hidden_field :venue_id ,:value => @venue.id %>
-        <%= form.label :title,'标题：'%> <%= form.text_field :title,:size => 20,:placeholder => '来个简洁响亮的题目吧'%><br/>
+        <%= form.label :title,'标题：'%> <%= form.text_field :title,:size => 30,:placeholder => ''%><br/>
         <%= form.text_area :content,:style => "height:96px",:placeholder => '故事的正文，不限字数!'%>
         <%= form.label :tag_list,'添加标签：',:style=>"float:left"%>
         <%= form.text_field :tag_list,:class => 'tag_list' %>
@@ -69,7 +69,7 @@
       <% end %>
     </div>
     <ul id="formTabs">
-      <li><%= link_to raw("#{image_tag('/images/icon/saying.png',:class => 'icon')} 报到"),'#new_saying'%></li>
+      <li><%= link_to raw("#{image_tag('/images/icon/saying.png',:class => 'icon')} 报到"),'#new_saying',:class=> "active"%></li>
       <li><%= link_to raw("#{image_tag('/images/icon/photo.png',:class => 'icon')} 上传照片"),'#new_photo'%></li>
       <li><%= link_to raw("#{image_tag('/images/icon/text.png',:class => 'icon')} 写故事"),'#new_topic'%></li>
       <li><%= link_to raw("#{image_tag('/images/icon/speaker.png',:class => 'icon')} 召集行动"),'#new_calling'%></li>
@@ -81,15 +81,15 @@
   <div style="float:right">
     <span>
       全部的：
-    <%= link_to_unless(@venue.sayings_count.zero?,"报到[#{@venue.sayings_count}]",sayings_venue_path(@venue)) %>
-    <%= link_to_unless(@venue.photos_count.zero?,"照片[#{@venue.photos_count}]",photos_venue_path(@venue)) %>
-    <%= link_to_unless(@venue.topics_count.zero?,"故事[#{@venue.topics_count}]",topics_venue_path(@venue)) %>
-    <%= link_to_unless(@venue.callings_count.zero?,"召集[#{@venue.callings_count}]",callings_venue_path(@venue)) %>
+      <%= link_to_unless(@venue.sayings_count.zero?,"报到[#{@venue.sayings_count}]",sayings_venue_path(@venue)) %>
+      <%= link_to_unless(@venue.photos_count.zero?,"照片[#{@venue.photos_count}]",photos_venue_path(@venue)) %>
+      <%= link_to_unless(@venue.topics_count.zero?,"故事[#{@venue.topics_count}]",topics_venue_path(@venue)) %>
+      <%= link_to_unless(@venue.callings_count.zero?,"召集[#{@venue.callings_count}]",callings_venue_path(@venue)) %>
     </span>
   </div>
   <h4>这里正在发生.. </h4>
   <%= render :partial => '/public/event', :collection => @timeline[0..9] %>
-  <%= link_to raw("查看更多 &#8744;"),more_timeline_venue_path(@venue,:page => 2),:class => "more_timeline" if @timeline[10].present?%>
+  <%= link_to raw("查看更多..."),more_timeline_venue_path(@venue,:page => 2),:class => "timeline_footer",:onclick=>"javscript:more_timeline($(this));return false" if @timeline[10].present?%>
 </div>  
 
 <% content_for :sidebar do %>
@@ -154,7 +154,6 @@
       <% else %>
         $("#formTabs li a").click(function(){$('#login').click();return false;})
       <% end %>
-      $("#formTabs li a:first").click()
       
       $('.new_comment').submit(function(){
         var size = $(this).find('input[type=text]').val().length

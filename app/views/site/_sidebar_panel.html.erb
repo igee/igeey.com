@@ -24,14 +24,14 @@
       </li>
     </div>
     
-    <% @venues = current_user.venue_followings.limit(12)%>
+    <% @venues = current_user.venue_followings.limit(12).map(&:followable)%>
     <% unless @venues.empty? %>
     <div style="padding:0 5px">
       <p>
         <span style="float:right"><%= link_to "查看全部",followings_path %></span>
         <span style="color:#999">关注了<%= "#{current_user.venue_followings.count}个地点" %>：</span>
       </p>
-      <% @venues.map(&:followable).each do |v| %>
+      <% @venues.each do |v| %>
         <%= link_to image_tag(v.cover.url(:_48x48),:class => "thumb_avatar"),v,:title => v.name %>
       <% end %>
     </div>

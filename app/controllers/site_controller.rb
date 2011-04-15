@@ -1,22 +1,28 @@
 class SiteController < ApplicationController
-  before_filter :login_required, :except=> [:index,:faq,:guide,:about,:report,:public]  
+  before_filter :login_required, :except=> [:index,:faq,:guide,:about,:report,:public,:more_public_timeline]  
   def index
     if logged_in?
-      @followed_venue_id_list = current_user.followings.where(:followable_type => 'Venue' ).map(&:followable_id)
-      @timeline = Event.where(:venue_id => @followed_venue_id_list).limit(10)
+      @following_venues_id_list = current_user.venue_followings.map(&:followable_id)
+      @timeline = Event.where(:venue_id => @following_venues_id_list).limit(10)
     else
       @timeline = Event.limit(10)
     end
   end
   
   def more_timeline
-    @followed_venue_id_list = current_user.followings.where(:followable_type => 'Venue' ).map(&:followable_id)
-    @timeline = Event.where(:venue_id => @followed_venue_id_list).paginate(:page => params[:page], :per_page => 10)
-    render :layout => false
+    @following_venues_id_list = current_user.venue_followings.map(&:followable_id)
+    @timeline = Event.where(:venue_id => @following_venues_id_list)..paginate(:page => params[:page], :per_page => 10)
+    @timeline = Event.paginate(:page => params[:page], :per_page => 10)
+    render '/public/more_timeline',:layout => false
   end
   
   def public
     @timeline = Event.limit(20)
+  end
+  
+  def more_public_timeline
+    @timeline = Event.paginate(:page => params[:page], :per_page => 20)
+    render '/public/more_timeline',:layout => false
   end
 
   def followings

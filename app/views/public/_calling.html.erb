@@ -4,7 +4,7 @@
     <span>
       <%= image_tag('/images/icon/calling.gif',:class => 'icon')%>
       <%= link_to calling.user.login,calling.user if controller_name == 'venues'%>
-      <%= raw("在#{link_to calling.venue.name,calling.venue}") if controller_name == 'users'%>
+      <%= raw("在 #{link_to calling.venue.name,calling.venue}") if controller_name == 'users'%>
       <%= raw(['users','venues'].include?(controller_name) ?  '发布了行动召集：' : "#{link_to calling.venue.name,calling.venue} 有了新行动召集：") %>
     </span>
     <pre><%= calling.title %> <%= short_url(calling) %></pre>
