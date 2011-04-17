@@ -45,10 +45,6 @@
   
   <div id="content">
     <div class="container">
-      <div id="sidebar">
-        <%= yield :sidebar %>
-      </div>
-      
       <div id="main">
       <% if flash[:dialog] -%>
         <div id="dialog_flash"><%= raw flash[:dialog] %></div>
@@ -58,6 +54,11 @@
       <% end -%>
         <%= yield %>
       </div>
+      
+      <div id="sidebar">
+        <%= yield :sidebar %>
+      </div>
+      
       <div class="clear"></div>
     </div>
   </div>
