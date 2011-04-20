@@ -260,7 +260,16 @@ ActiveRecord::Schema.define() do
     t.timestamps
   end
   
-create_table :tags do |t|
+  create_table "notifications", :force => true do |t|
+    t.integer     :user_id
+    t.references  :notifiable,   :polymorphic => true
+    t.boolean     :unread,       :default => true
+    t.timestamps
+  end
+  
+  add_index "notification", ["user_id"], :name => "index_notification_on_user_id"
+  
+  create_table :tags do |t|
     t.column :name, :string
   end
   

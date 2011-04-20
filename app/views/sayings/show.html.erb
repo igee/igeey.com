@@ -1,0 +1,12 @@
+<% @title = '报到'%>
+
+<div class="box">  
+  <%= render :partial => '/users/user' ,:object => @saying.user %>
+  <div class="bubble_tail"></div>
+  <div class="bubble">
+    <pre class="explanation"><%= @saying.content %></pre>
+  </div>
+</div>
+
+<%= render :partial => '/comments/board'%>  
+<%= render :partial => '/comments/form' ,:locals => {:commentable => @saying}%>

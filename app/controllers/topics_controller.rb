@@ -43,6 +43,7 @@ class TopicsController < ApplicationController
   end
   
   def show
+    Notification.delete(current_user.id, @topic) if logged_in?
     @comments = @topic.comments
   end
   
