@@ -16,25 +16,7 @@
   <%= yield :head %>
 </head>
 
-<body>
-  <!--[if lt IE 7]>
-  <div style='background: #282927; text-align: center; clear: both; height: 52px; position:absolute;width:100%;padding-top:2px'>
-    <div class="container">
-      <a href='#' onclick='javascript:this.parentNode.parentNode.style.display="none"; return false;' style="color:#ddd;float:right;font-size:12px">关闭</a>
-      <img src='/images/killie6.gif' style="float:left;position:relative;left:240px"/>
-      <p style='font-size: 14px; font-weight: bold;color:#fff;margin:5px 0 0'>Hi,你正在使用的浏览器IE6已经过时了！</p>
-      <div style='font-size: 12px; line-height: 12px;color:#ccc'>
-        为了能顺利浏览本网站，选择使用更好的浏览器吧：
-        <a href='http://www.google.com/chrome' target='_blank' ><img src="/images/icon/chrome.png" class="icon"></a>
-        <a href='http://www.firefox.com' target='_blank'><img src="/images/icon/firefox.png" class="icon"></a>
-        <a href='http://www.browserforthebetter.com/download.html' target='_blank'><img src="/images/icon/ie8.png" class="icon"></a>
-        <a href='http://www.apple.com/safari/download/' target='_blank'><img src="/images/icon/safari.png" class="icon"></a>
-        <a href='http://www.oprea.com' target='_blank' ><img src="/images/icon/opera.png" class="icon"></a>
-      </div>
-    </div>
-  </div>
-  <![endif]-->
-  
+<body>  
   <%= link_to raw('反<br/>馈'),new_feedback_path,:class=> "open_dialog",:title => "反馈",:id => 'feedback'%>
   <div id="get_badges"></div>
   <div id="header">
@@ -48,7 +30,7 @@
       
       <%= link_to image_tag('/images/logo.png'), root_path,:id => 'logo' %>
       <ul id="nav_links">
-        <li><%= link_to '首页',root_path,:class => "#{'selected' if controller_name == 'site' && action_name == 'index'}"%></li>
+        <li><%= link_to '首页',root_path,:class => "#{'selected' unless ['users','venues'].include?(controller_name) && action_name == 'index'}"%></li>
         <li><%= link_to "探索",public_path,:title => '探索',:id => "public"%></li>
         <% if logged_in? %>        
           <li><%= link_to '设置',"#{setting_path}?back_path=#{request.path unless controller_name == 'site' && action_name == 'index'}"%></li>

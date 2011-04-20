@@ -37,7 +37,6 @@ class PlansController < ApplicationController
     @records = @calling.records
     @plans = @calling.plans.undone
     @my_plan = @calling.plans.select{|p| p.user_id == current_user.id}.first if logged_in?
-    render :layout => "no_sidebar"
   end
   
   def edit

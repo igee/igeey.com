@@ -4,8 +4,7 @@ class TopicsController < ApplicationController
   before_filter :find_topic, :except => [:index,:new,:create]
   
   def index
-    @topics = Topic.where(:forumable_type => nil).paginate(:page => params[:topics_page], :per_page => 20)
-    @my_topics = (current_user.comments.where(:commentable_type => 'Topic').map(&:commentable) | current_user.topics).uniq.sort{|x,y| y.created_at <=> x.created_at} if current_user
+    
   end
   
   def new

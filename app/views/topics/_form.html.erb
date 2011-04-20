@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'jquery.tag.editor-min.js' %>
+<% end %>
+
 <%= form_for @topic do |form| %>
   <%= raw error_explanation_for(@topic) if @topic.errors.present?%>  
   <div style="clear:both">
@@ -5,11 +9,11 @@
       <div class="bubble_tail"></div>
       <div class="bubble" style="<%= 'width:380px' if params[:layout]=='false'%>">
           <p>
+            <%= form.hidden_field :venue_id %>
             <%= form.label :title,'标题：'%> <%= form.text_field :title,:size => 20 ,:style => "text-align:left"%>
             <br/>
             <%= form.label :content,'正文：',:style => 'float:left'%>
-            <%= form.text_area :content,:style => "#{ params[:layout]=='false' ? 'width:320px' : 'width:410px'};height:100px;margin-left:46px",:placeholder => "故事正文，不限字数。"%>
-            <%= form.hidden_field :venue_id %>
+            <%= form.text_area :content,:style => "#{ params[:layout]=='false' ? 'width:330px' : 'width:410px'};height:100px;margin-left:46px"%>
           </p>
       </div>
   </div>
@@ -20,3 +24,10 @@
   </div>
 <% end %>
 
+<% content_for :extension do %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $(".tag_list").each(function(index,element){jQuery(element).tag_cloud();})
+    })
+  </script>
+<%end%>

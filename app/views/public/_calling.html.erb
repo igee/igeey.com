@@ -1,15 +1,20 @@
 <div class="event_box">
   <%= controller_name == 'venues' ? (render :partial => "/users/avatar",:object => calling.user) : (render :partial => "/venues/venue",:object => calling.venue) %>
   <div class="event">
-    <span><%= '在' if controller_name == 'users'%> <%= raw "#{link_to calling.venue.name,calling.venue} 的行动召集：" unless controller_name == 'venues' %></span>
+    <span>
+      <%= image_tag('/images/icon/calling.gif',:class => 'icon')%>
+      <%= link_to calling.user.login,calling.user if controller_name == 'venues'%>
+      <%= raw("在 #{link_to calling.venue.name,calling.venue}") if controller_name == 'users'%>
+      <%= raw(['users','venues'].include?(controller_name) ?  '发布了行动召集：' : "#{link_to calling.venue.name,calling.venue} 有了新行动召集：") %>
+    </span>
     <pre><%= calling.title %> <%= short_url(calling) %></pre>
     <div class="event_info">
-        <span><%= raw "by #{link_to calling.user.login,calling.user}" unless controller_name == 'users' %></span>
-        <span><%= "#{calling.status}"%></span>
-        <span class="timeago"><%= calling.created_at %></span>
+      <span><%= raw "by #{link_to calling.user.login,calling.user}" unless ['users','venues'].include?(controller_name) %></span>
+      <span><%= "#{calling.status}"%></span>
+      <span class="timeago"><%= calling.created_at %></span>
     </div>    
     <div class="event_action">
-      <% if calling.user == current_user %>
+      <% if calling.owned_by?(current_user) %>
         <%= link_to "修改","#{edit_calling_path(calling)}?back_path=#{request.path}"%> |
         <%= link_to "关闭","#{close_calling_path(calling)}?back_path=#{request.path}",:method => :put,:confirm => '你确定要关闭这个召集行动么，一旦关闭其他人将不能参与' %> |
       <% end %>  

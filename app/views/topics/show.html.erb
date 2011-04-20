@@ -1,4 +1,5 @@
 <% @title = @topic.title %>
+<% @venue = @topic.venue %>
 <div class="box">  
   <%= render :partial => '/users/user' ,:object => @topic.user %>
   <div class="bubble_tail"></div>
@@ -7,16 +8,18 @@
     <pre class="explanation"><%= @topic.content %></pre>
     <% if current_user && current_user.id == @topic.user_id %>
     <div style="text-align:right">
-      <%= link_to "删除","#{topic_path(@topic)}",:method => :delete,:confirm => '你确定要删除这条报到么？'%> |
+      <%= link_to "删除","#{topic_path(@topic)}",:method => :delete,:confirm => '你确定要删除这篇故事么？'%> |
       <%= link_to "编辑","#{edit_topic_path(@topic)}?back_path=#{request.path}"%>
     </div>
     <% end %>
+    <%= raw tag_list_for(@topic)%>
   </div>
+  <br/>
 </div>
 
 <%= render :partial => '/comments/board'%>    
 <%= render :partial => '/comments/form' ,:locals => {:commentable => @topic}%>
 
 <% content_for :sidebar do %>
- <%= link_to("返回#{@topic.venue.name}",@topic.venue) %>
+ <%= render :partial => '/venues/intro' %>
 <% end %>
