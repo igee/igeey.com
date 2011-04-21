@@ -27,7 +27,9 @@ class TagsController < ApplicationController
     #  @filter_name = {'Topic'=>'故事','Photo'=>'照片','Calling'=>'召集','Saying'=>'报到'}[params[:filter]]
     #else 
     #end
-    @timeline = @tag.owned_taggings.limit(10).map(&:taggable).map(&:event)
+    @timeline = @tag.owned_taggings.where(['taggable_type != ?','Question']).limit(10).map(&:taggable).map(&:event)
+    @questions = Question.find_tagged_with(@tag.name)
+    @question = Question.new
   end
   
   def edit

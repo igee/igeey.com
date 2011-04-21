@@ -105,6 +105,10 @@ Igee::Application.routes.draw do
   resources :follows
   resources :topics
   resources :sayings
+  resources :questions do
+    resources :answers
+  end
+  
   resources :comments do
     get :more, :on => :collection
   end

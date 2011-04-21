@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
   has_many :taggings,       :dependent => :destroy
   has_many :tags,           :through => :taggings, :source => :tag
   has_many :events,         :dependent => :destroy
+  has_many :questions,      :dependent => :destroy
   
   
   has_attached_file :avatar,:styles => {:_48x48 => ["48x48#",:png],:_72x72 => ["72x72#",:png]},

@@ -1,0 +1,18 @@
+<div class="event_box">
+  <p style="font-size:15px;width:500px"><%= link_to question.title,question_path(question)%></p>
+  <p>
+    <% if question.answers_count.zero? %>
+      <span>目前还没有人回答这个问题，你能帮助解答吗？</span>
+    <% else%>
+      <span>备选答案：<%= question.answers.first.content %></span> <span style="font-size:12px"><%= link_to "(还有另外#{question.answers_count}个答案)",question if question.answers_count >1%></span>
+    <% end %>
+  </p>
+  <div class="event_info">
+    <span>来自 <%= link_to question.user.login,question.user %> 的提问 </span>
+    <span class="timeago"><%= question.created_at %></span>
+  </div>
+  
+  <div class="event_action">
+    
+  </div>
+</div>

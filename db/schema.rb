@@ -285,7 +285,24 @@ ActiveRecord::Schema.define() do
     t.timestamps
   end
 
+  create_table "questions" do |t|
+    t.integer    :user_id
+    t.string     :title
+    t.text       :detail
+    t.integer    :answers_count,    :default => 0
+    t.timestamps
+  end
 
+  create_table "answers" do |t|
+    t.integer    :user_id
+    t.integer    :question_id
+    t.text       :content
+    t.integer    :last_replied_user_id
+    t.datetime   :last_replied_at
+    t.integer    :comments_count,   :default => 0
+    t.timestamps
+  end
+    
   # add_index :taggings, :tag_id
   # add_index :taggings, [:taggable_id, :taggable_type]  
 end
