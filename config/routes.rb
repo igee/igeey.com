@@ -26,6 +26,7 @@ Igee::Application.routes.draw do
   
   resources :notifications do
     put :clear, :on => :member
+    get :clear_all, :on => :collection
   end
   
   match 'more_timeline' => 'site#more_timeline'

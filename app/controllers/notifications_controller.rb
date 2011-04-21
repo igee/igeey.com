@@ -18,5 +18,11 @@ class NotificationsController < ApplicationController
     render :text=>'true'
   end
   
+  def clear_all
+    Notification.where(:user_id=>current_user.id).each do |n|
+      n.read
+    end
+    redirect_to :root
+  end
 end
 
