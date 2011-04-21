@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  before_filter :login_required, :except => [:index, :show]
   def show
     @question = Question.find(params[:id])
     @answer = Answer.new

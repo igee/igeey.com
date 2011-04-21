@@ -1,5 +1,5 @@
 <div class="event_box">
-  <p style="font-size:15px;width:500px"><%= link_to question.title,question_path(question)%></p>
+  <%= link_to question.title,question_path(question),:style => "font-size:15px;"%>
   <p>
     <% if question.answers_count.zero? %>
       <span>目前还没有人回答这个问题，你能帮助解答吗？</span>

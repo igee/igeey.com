@@ -9,11 +9,17 @@
 
   
 <div class="box">
-  <%= form_for @question do |form|%>
-    提问： <%= form.text_field :title,:style => "width:480px;",:placeholder => "关于“#{@tag.name}”,你有什么问题么？" %> <%= form.submit '添加问题'%>
-    <%= form.hidden_field :tag_list,:value => @tag.name %>
-  <% end %>
+  <h4>有关问题：</h4>
   <%= render :partial => '/public/question',:collection => @questions%>
+  <br/>
+  <% if logged_in? %>
+    <%= form_for @question do |form|%>
+      提问： <%= form.text_field :title,:style => "width:480px;",:placeholder => "关于“#{@tag.name}”,你有什么问题么？" %> <%= form.submit '添加问题'%>
+      <%= form.hidden_field :tag_list,:value => @tag.name %>
+    <% end %>
+  <% else %>
+    <p><%= link_to "立即登录",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%> 即可提问</p>。
+  <% end %>
 </div>
 
 
