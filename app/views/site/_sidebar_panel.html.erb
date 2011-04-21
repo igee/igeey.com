@@ -1,9 +1,9 @@
     <div class="sidebar_panel">
       <div style="padding:5px 5px;float:right;width:150px">
         <h4><%= link_to current_user.login,current_user%></h4>
-          <div class="actions_counter"><%= link_to raw("#{current_user.callings_count}个召集"),actions_path(:start_at => 'my_callings') %></div>
+          <div class="actions_counter"><%= link_to raw("#{current_user.callings_count}个召集"),actions_path(:start_at => 'callings_timeline') %></div>
           <div class="actions_counter"><%= link_to raw("#{current_user.records_count}个记录"),actions_path(:start_at => 'my_records') %></div>
-          <div class="actions_counter" style="width:140px"><%= link_to raw("#{current_user.undone_plans_count}个行动计划"),actions_path(:start_at => 'my_plans') %></div>
+          <div class="actions_counter" style="width:140px"><%= link_to raw("#{current_user.undone_plans_count}个行动计划"),actions_path(:start_at => 'plans_timeline') %></div>
       </div>
       <div style="padding:10px 5px;">
         <%= image_tag current_user.avatar.url(:_48x48) %>
@@ -14,14 +14,14 @@
       <%= link_to ("您有#{current_user.notifications_count}个新提醒，去看看?",'/notifications') if current_user.notifications_count>0 %>
     </div>
     
-    <% @venues = current_user.venue_followings.limit(12)%>
+    <% @venues = current_user.venue_followings.limit(12).map(&:followable)%>
     <% unless @venues.empty? %>
     <div style="padding:0 5px">
       <p>
         <span style="float:right"><%= link_to "查看全部",followings_path %></span>
         <span style="color:#999">关注了<%= "#{current_user.venue_followings.count}个地点" %>：</span>
       </p>
-      <% @venues.map(&:followable).each do |v| %>
+      <% @venues.each do |v| %>
         <%= link_to image_tag(v.cover.url(:_48x48),:class => "thumb_avatar"),v,:title => v.name %>
       <% end %>
     </div>

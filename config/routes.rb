@@ -49,8 +49,12 @@ Igee::Application.routes.draw do
       get  :cover
       get  :position
       get  :records
+      get  :photos
+      get  :sayings
+      get  :topics
+      get  :callings
       get  :followers
-      get  :more_items
+      get  :more_timeline
       post :watching
     end
     resources :sayings
@@ -86,7 +90,14 @@ Igee::Application.routes.draw do
     end
     member do
       post  :update_account
-      get   :more_items
+      get   :more_timeline
+      get   :callings
+      get   :records
+      get   :sayings
+      get   :topics
+      get   :photos
+      get   :badges
+      get   :followers
       get   :following_venues
       get   :following_users
       get   :following_callings
@@ -104,11 +115,10 @@ Igee::Application.routes.draw do
     get :more, :on => :collection
   end
   resources :photos
-  resources :actions
-  resources :projects do
-    member do
-      get :records
-    end
+  
+  resources :tags do
+    get :name, :on => :collection
+    get :more, :on => :collection
   end
   
   #short_url
@@ -118,4 +128,5 @@ Igee::Application.routes.draw do
   match "/p/:id" => redirect("/plan/%{id}")
   match "/t/:id" => redirect("/topics/%{id}")
   match "/s/:id" => redirect("/sayings/%{id}")
+
 end

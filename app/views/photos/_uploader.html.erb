@@ -1,8 +1,0 @@
-<% if logged_in?%>
-  <%= link_to "上传照片","#",:class => 'upload_photo_link gary_button',:title => '上传图片',:tag => "#{venue.id}"%>
-  <div id=<%= "upload_photo_venue_#{venue.id}"%> class="upload_photo">
-    <%= render :partial => "/photos/form" %>
-  </div>
-<% else %>
-  <%= link_to "上传照片",login_path,:class => 'open_dialog gary_button',:title => '登录',:tag => "#{venue.id}"%>
-<% end %>

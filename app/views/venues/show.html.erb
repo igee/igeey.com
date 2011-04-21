@@ -1,100 +1,115 @@
 <% @title = @venue.name %>
+<% @saying = Saying.new %>
+<% @photo = Photo.new %>
+<% @calling = Calling.new %>
+<% @topic = Topic.new %>
 <% content_for :head do %>
+  <%= javascript_include_tag 'calendar.js' %>
   <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false"></script>
+  <%= javascript_include_tag 'jquery.tag.editor-min.js' %>
 <% end %>
 
 <div class="box">
-    <%= image_tag(@venue.cover.url,:class => "venue_cover") %>    
-  <div style="width:488px;_width:478px;;margin-left:120px;margin-bottom:10px">
-    <div style="float:right;padding:2px 0"><%= raw(follow_to(@venue)) %></div>
-    <h3><%= @venue.name%> <span><%= @venue.geo.full_name %></span></h3>
-    <pre style="font-size:13px"><%= @venue.intro%></pre>
-    <span><%= "地址： #{@venue.address}" unless @venue.address.blank?%>　　<%= "联系方式： #{@venue.contact}" unless @venue.contact.blank?%></span>
-    <br/>
-    <span>
-    <%= link_to "#{@venue.cover_file_name ? '更新' : '上传'}主题图",cover_venue_path(@venue),:class => "open_dialog",:title => "#{@venue.cover_file_name ? '更新' : '上传'}主题图" if logged_in? && @venue.creator == current_user%>
-    <%= link_to '更新信息',edit_venue_path(@venue),:id => 'update_info' if logged_in? && @venue.creator == current_user %>
-    </span>
+  <div id="venue_head">
+    <%= image_tag(@venue.cover.url(:_100x100),:alt => @venue.name,:style => "float:left;width:100px;height:100px;margin-right:10px") if @venue.cover_file_name%>
+    <div style="margin-left:124px">
+      <div style="float:right"><%= raw(follow_to(@venue)) %></div>
+      <h2 style="margin:4px 0"><%= @venue.name%> <span><%= @venue.geo.full_name %></span></h2>
+      <pre><%= @venue.intro%></pre>
+      <span>
+        <%= "地址： #{@venue.address}" unless @venue.address.blank?%>
+        <%= raw("　联系方式： #{@venue.contact}") unless @venue.contact.blank?%>
+      </span>
+    </div>
+  </div>
+</div>
+      
+<div class="box">
+  <h4>在这里发布..</h4>
+  <div id="venue_forms">
+    <div id="formContaier">
+      <%= form_for [@venue,@saying],:html=>{:class=>'venue_form',:style => "display:block"}  do |form| %>    
+        <%= form.hidden_field :venue_id,:value => @venue.id %>
+        <%= form.text_area  :content,:style => 'height:18px;font-size:14px;line-height:18px',:placeholder => "今天你想和#{@venue.name}的朋友们说什么？"%>
+        <%= form.submit '确 定',:class => "gary_button"%>
+      <% end %>
+      
+      <%= form_for @photo,:html => { :multipart => true,:class => "venue_form" } do |form| %>       
+        <%= form.hidden_field :venue_id,:value => @venue.id %>
+        <%= form.label :title,'选择文件：'%> <%= form.file_field :photo,:style => "background:none;border:none;font-size:13px" %>
+        <%= form.text_area :detail,:placeholder => '说说这张照片的背后的故事吧？'%>
+        <%= form.submit '确 定',:class => "gary_button"%>
+      <% end %>
+      
+      <%= form_for @topic,:html=> {:class=>'venue_form'}  do |form| %>
+        <%= form.hidden_field :venue_id ,:value => @venue.id %>
+        <%= form.label :title,'标题：'%> <%= form.text_field :title,:size => 30,:placeholder => ''%><br/>
+        <%= form.text_area :content,:style => "height:96px",:placeholder => '故事的正文，不限字数!'%>
+        <%= form.submit '确 定',:class => "gary_button"%>
+      <% end %>
+      
+      <%= form_for @calling,:html=>{:class=>'venue_form'} do |form| %>    
+        <%= raw error_explanation_for(@calling) if @calling.errors.present?%>
+        <%= form.hidden_field :action_id,:value => 1%>
+        <%= form.hidden_field :venue_id,:value => @venue.id %>
+        <%= form.label 'title','行动标题：'%> <%= form.text_field :title, :size => 20, :placeholder => "" %><br/>
+        <%= form.label 'total_people','需要人数：'%> <%= form.text_field :total_people, :size => 3, :placeholder => "" %>　
+        <%= form.label 'total_people','行动时间：'%><%= form.text_field :do_at, :size => 8,:class => 'with_calendar',:placeholder => ""%><br/>
+        <%= form.label 'address','集合地址：'%> <%= form.text_field :address, :size => 24, :placeholder => '',:style => "text-align:left" %><br/>
+        <%= form.label 'contact','联系方式：'%> <%= form.text_field :contact, :size => 24, :placeholder => '',:style => "text-align:left" %><br/>
+        <%= form.label 'detail','详细信息：'%>(字数要求：50-1000字)　目前字数：<span id="character_count"></span>
+        <%= form.text_area :detail,:placeholder => '请说明你发起召集的原因、响应你的召集需要做什么。'%>          
+        <%= form.submit '确 定',:class => "gary_button"%>
+      <% end %>
+    </div>
+    <ul id="formTabs">
+      <li><%= link_to raw("#{image_tag('/images/icon/saying.png',:class => 'icon')} 报到"),'#new_saying',:class=> "active"%></li>
+      <li><%= link_to raw("#{image_tag('/images/icon/photo.png',:class => 'icon')} 上传照片"),'#new_photo'%></li>
+      <li><%= link_to raw("#{image_tag('/images/icon/text.png',:class => 'icon')} 写故事"),'#new_topic'%></li>
+      <li><%= link_to raw("#{image_tag('/images/icon/speaker.png',:class => 'icon')} 召集行动"),'#new_calling'%></li>
+    </ul>
   </div>
 </div>
 
-<div id="tabContaier">
-  <ul>
-    <li><%= link_to '报到','#checkin_timeline'%></li>
-    <li><%= link_to '照片','#photo_timeline'%></li>
-    <li><%= link_to '故事','#topic_timeline'%></li>
-    <li><%= link_to '行动','#record_timeline'%></li>
-  </ul>
-  <div id="checkin_timeline" class="tabContents">
-    <div style="padding:15px;">
-      <% @checkin = Saying.new %>
-      <%= form_for [@venue,@checkin] do |form| %>
-        <%= form.hidden_field :venue_id,:value => @venue.id %>
-        <%= form.text_area  :content,:style=> "margin:0;width:576px;height:64px" ,:placeholder => "今天你想和#{@venue.name}的朋友们说什么？"%>
-        <p style="text-align:right">
-          <%= form.submit '发 布',:class => "gary_button"%>
-        </p>
-      <% end %>
-    </div>
-    <%= render :partial => 'public/saying',:collection => @sayings %>
-    <%= link_to raw("查看更多 &#8744;"),more_items_venue_path(@venue,:items => 'sayings',:page => 2),:class => "more_items" if @sayings[6].present?%>
+<div class="box">
+  <div style="float:right">
+    <span>
+      全部的：
+      <%= link_to_unless(@venue.sayings_count.zero?,"报到[#{@venue.sayings_count}]",sayings_venue_path(@venue)) %>
+      <%= link_to_unless(@venue.photos_count.zero?,"照片[#{@venue.photos_count}]",photos_venue_path(@venue)) %>
+      <%= link_to_unless(@venue.topics_count.zero?,"故事[#{@venue.topics_count}]",topics_venue_path(@venue)) %>
+      <%= link_to_unless(@venue.callings_count.zero?,"召集[#{@venue.callings_count}]",callings_venue_path(@venue)) %>
+    </span>
   </div>
-  <div id="photo_timeline" class="tabContents">
-    <div style="text-align:right;margin:16px 0 8px;" >
-      <%= render :partial => "/photos/uploader",:locals => {:venue => @venue}%>
-    </div>
-    <%= render :partial => "/public/photo",:collection => @photos %>
-    <%= link_to raw("查看更多 &#8744;"),more_items_venue_path(@venue,:items => 'photos',:page => 2),:class => "more_items" if @photos[6].present?%>
-  </div>
-  <div id="topic_timeline" class="tabContents">
-    <div style="text-align:right;margin:16px 0 8px;" >
-      <%= link_to '写新故事',(logged_in? ? "#{new_topic_path}?venue_id=#{@venue.id}" : login_path),:class => "gary_button open_dialog",:title => '写新故事',:style=>'font-size:13px'%>
-    </div>
-    <%= render :partial => "/public/topic",:collection => @topics %>
-    <%= link_to raw("查看更多 &#8744;"),more_items_venue_path(@venue,:items => 'topics',:page => 2),:class => "more_items" if @topics[6].present?%>
-  </div>
-  <div id="record_timeline" class="tabContents">      
-    <div style="text-align:right;margin:16px 0 8px;" >
-      <%= link_to '召集行动',(logged_in? ? "#{new_calling_path}?venue_id=#{@venue.id}" : login_path),:class => "gary_button open_dialog",:title => '召集行动',:style=>'font-size:13px'%>
-      <%= link_to '记录行动',(logged_in? ? "#{new_record_path}?venue_id=#{@venue.id}" : login_path),:class => "gary_button open_dialog",:title => '记录行动',:style=>'font-size:13px'%>
-    </div>
-    <%= render :partial => '/public/event', :collection => @timeline %>
-  </div>
+  <h4>这里正在发生.. </h4>
+  <%= render :partial => '/public/event', :collection => @timeline[0..9] %>
+  <%= link_to raw("查看更多..."),more_timeline_venue_path(@venue,:page => 2),:class => "timeline_footer",:onclick=>"javscript:more_timeline($(this));return false" if @timeline[10].present?%>
 </div>  
 
-
 <% content_for :sidebar do %>
-  <!--
-  <div class="box">
-    <h4>获得服务统计：</h4>
-    <div id="record_counters">
-      <% [[@venue.time_count,'志愿小时'],[@venue.goods_count,'物资捐赠'],[@venue.online_count,'线上行动']].each do |counter_list|%>
-        <div class="record_counter_wrapper">
-          <h4><%= counter_list[1] %></h4>
-          <h2 class="record_counter"><%= counter_list[0] %></h2>
-        </div>
-      <%end%>
-    </div>
-  </div>
-  -->
-    
-  <div class="box">
-    <span style="float:right"><%= link_to "查看全部",followers_venue_path(@venue)%></h4></span>
-    <h4><%= "#{@venue.follows.size}人关注这里："%></h4>
-    <%= render :partial => "/users/user",:collection => @followers[0..7] %>
-  </div>
-
   <div class="box">
     <span style="float:right"><%= link_to "查看大图",position_venue_path(@venue),:class => 'open_dialog',:title => '地点地图'%></h4></span>
     <h4>地图：</h4>
     <div id="sidebar_map_canvas" style="width:248px;height:160px;"></div>
   </div>
+  
+  <div class="box">
+    <span style="float:right"><%= link_to "查看全部",followers_venue_path(@venue)%></h4></span>
+    <h4><%= "#{@venue.follows.size}人关注这里："%></h4>
+    <%= render :partial => "/users/user",:collection => @followers[0..7] %>
+  </div>
+  
+  <% unless @venue.tag_list.empty? %>
+  <div class="box">
+    <h4>相关标签：</h4>
+    <%= raw tag_list_for(@venue)%>
+  </div>
+  <% end %>
 <% end %>
-
 
 <% content_for :extension do %>
   <script type="text/javascript">
-    function initialize() {
+      function initialize() {
       var latlng = new google.maps.LatLng(<%= "#{@venue.latitude || 35.0},#{@venue.longitude || 105.0}"%>)
       var myOptions = {
         zoom: 14 ,
@@ -115,41 +130,30 @@
         map: small_map,
         position: small_map.getCenter(),
         title: '<%= @venue.name %>'
-      });
-      
-      infowindow = new google.maps.InfoWindow;
-      
-      //$('.find_tagged_with').each(function(){
-      //  var tag = $(this).html()
-      //  var title = $(this).attr('title')
-      //  markers[title] = new Array();
-      //  $.getJSON(('<%= records_venue_path(@venue,:format => :json)%>?marker=true' ) , function(data){
-      //    $.each(data, function(i,item){
-      //        markers[title][i] = new google.maps.Marker({
-      //          icon: "/images/marker/" + item.record.slug + ".png",
-      //          position: new google.maps.LatLng(parseFloat(item.record.latitude), parseFloat(item.record.longitude)),
-      //          title: item.record.name,
-      //          map: map
-      //        });
-      //        google.maps.event.addListener(markers[title][i], "click", function(){
-      //          $.ajax({
-      //            url:"/records/" + item.record.id + ".xml",
-      //            success:function(data, textStatus, XMLHttpRequest){infowindow.close();infowindow = new google.maps.InfoWindow({content:XMLHttpRequest.responseText});infowindow.open(map,markers[title][i]);},
-      //            dataType:'xml'
-      //          })
-      //        })
-      //      });
-      //  });
-      //});      
-    }; //initialize_end()
-
+      });    
+      infowindow = new google.maps.InfoWindow;     
+    }; //initialize_end
+    
     $(document).ready(function(){
-      initialize();
+      <% if logged_in? %>  
+        $("#formTabs li a").click(function(){ 
+          var activeTab = $(this).attr("href"); 
+          $("#formTabs li a").removeClass("active"); 
+          $(this).addClass("active");
+          $("#formContaier form").hide();
+          $(activeTab).fadeIn();
+          $("#formContaier").slideDown();
+          return false;
+        });
+      <% else %>
+        $("#formTabs li a").click(function(){$('#login').click();return false;})
+      <% end %>
+      
       $('.new_comment').submit(function(){
         var size = $(this).find('input[type=text]').val().length
         if ( size >= 140){
           alert('回复不能超过140字,你写了' + size + '个');
-          return false
+          return false;
           }
         })      
       $('#new_saying').submit(function(){
@@ -159,6 +163,15 @@
           return false
           }          
         });
+      DateTimeShortcuts.init()
+      function updateCount() {
+      document.getElementById("character_count").innerHTML = document.getElementById("calling_detail").value.length;
+      setTimeout(updateCount, 400);
+       }
+      updateCount();
+      $('#saying_content').focus(function(){$(this).attr('style','height:36px')});
+      $('#saying_content').blur(function(){$(this).attr('style','height:18px')});
+      $(".tag_list").each(function(index,element){jQuery(element).tag_cloud();})
       initialize();
       setTimeout(function(){$.post('<%= watching_venue_path(@venue)%>')},5000)
     });  

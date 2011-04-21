@@ -31,7 +31,8 @@ module Igee
                                       :sync_observer,
                                       :oauth_token_observer,
                                       :follow_observer,
-                                      :notification_observer
+                                      :notification_observer,
+                                      :tagging_observer,
                                       ]
     
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
@@ -57,6 +58,6 @@ module Igee
       :exception_recipients => YAML.load_file("#{Rails.root}/config/config.yml")[Rails.env]['developer_mail'].to_a
       
     # Custom directories with classes and modules you want to be autoloadable.
-    config.autoload_paths += %W(#{Rails.root}/lib/autoload)
+    config.autoload_paths += Dir["#{config.root}/lib/autoload/"]
   end
 end

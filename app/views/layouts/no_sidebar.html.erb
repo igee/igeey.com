@@ -27,7 +27,7 @@
     <div class="container" id="nav" style="background:none">
       <%= link_to image_tag('/images/logo.png'), root_path,:id => 'logo',:style=>"margin-left:140px" %>
       <ul id="nav_links">
-        <li><%= link_to '首页',root_path,:class => "#{'selected' if controller_name == 'site' && action_name == 'index'}"%></li>
+        <li><%= link_to '首页',root_path,:class => "#{'selected' unless ['users','venues'].include?(controller_name) && action_name == 'index'}"%></li>
         <li><%= link_to "探索",public_path,:title => '探索',:id => "public"%></li>
         <% if logged_in? %>        
           <li><%= link_to '设置',"#{setting_path}?back_path=#{request.path unless controller_name == 'site' && action_name == 'index'}"%></li>

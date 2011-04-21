@@ -18,7 +18,6 @@
   name:      '物资捐赠'
   for_what:  'goods'
   slug:      'goods_donation'
-  is_for_project: false
   step_by_step: '1、点击“我要捐赠”，填写捐赠信息，并邀请您的好友一起参与；<br/>2、在七日内将捐赠物资邮寄、快递或自行运输到捐赠地址；<br/>3、完成捐赠行动记录,补充详情、上传照片。'
 
 4th:
@@ -26,7 +25,6 @@
   name:      '地图标记'
   for_what:  'online'
   slug:      'mark_map'
-  is_for_project: true
   step_by_step: '1、点击“我要标记”，选择你要标记的地点；<br/>2、在地图上找到地点附近需要标记的点，填写信息并上传照片；<br/>3、把你的标记成果告诉你的朋友，让他们也参与进来。'
 
 5th:

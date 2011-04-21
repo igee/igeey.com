@@ -106,6 +106,7 @@ ActiveRecord::Schema.define() do
     t.string   :title,       :limit => 40
     t.text     :detail
     t.string   :photo_file_name
+    t.string   :cached_tag_list,  :default => ''
     t.integer  :comments_count,   :default => 0
     t.integer  :votes_count,      :default => 0
     t.boolean  :has_new_comment,  :default => false
@@ -182,8 +183,7 @@ ActiveRecord::Schema.define() do
     t.datetime :do_at
     t.boolean  :close,            :default => false
     t.integer  :follows_count,    :default => 0
-    t.datetime :last_bumped_at
-    t.string   :last_bumped_type, :limit => 40
+    t.string   :cached_tag_list,  :default => ''
     t.boolean  :has_new_plan,     :default => false
     t.integer  :comments_count,   :default => 0
     t.boolean  :has_new_comment,  :default => false
@@ -206,12 +206,13 @@ ActiveRecord::Schema.define() do
     t.string  :address
     t.string  :contact
     t.string  :cover_file_name
-    t.integer :follows_count,:default => 0
-    t.integer :photos_count, :default => 0
-    t.integer :sayings_count,:default => 0
-    t.integer :records_count,:default => 0
-    t.integer :topics_count, :default => 0
-    t.integer :watch_count,  :default => 0
+    t.integer :follows_count, :default => 0
+    t.integer :photos_count,  :default => 0
+    t.integer :sayings_count, :default => 0
+    t.integer :records_count, :default => 0
+    t.integer :callings_count,:default => 0
+    t.integer :topics_count,  :default => 0
+    t.integer :watch_count,   :default => 0
     t.timestamps
   end
   
@@ -243,6 +244,7 @@ ActiveRecord::Schema.define() do
     t.integer  :forumable_id
     t.string   :title
     t.text     :content
+    t.string   :cached_tag_list,  :default => ''
     t.boolean  :has_new_comment,  :default => false
     t.integer  :comments_count,   :default => 0
     t.datetime :last_replied_at
@@ -254,13 +256,14 @@ ActiveRecord::Schema.define() do
     t.integer  :user_id
     t.integer  :venue_id
     t.text     :content
+    t.string   :cached_tag_list,  :default => ''
     t.integer  :comments_count,   :default => 0
     t.boolean  :has_new_comment,  :default => false
     t.datetime :last_replied_at
     t.integer  :last_replied_user_id
     t.timestamps
   end
-  
+
   create_table "notifications", :force => true do |t|
     t.integer     :user_id
     t.references  :notifiable,   :polymorphic => true
@@ -272,16 +275,30 @@ ActiveRecord::Schema.define() do
   
   create_table :tags do |t|
     t.column :name, :string
+
+  create_table "tags" do |t|
+    t.string   :name
+    t.text     :intro
+    t.integer  :taggings_count,   :default => 0
+    t.timestamps
   end
-  
-  create_table :taggings do |t|
-    t.column :tag_id, :integer
-    t.column :taggable_id, :integer
-    
-    # You should make sure that the column created is
-    # long enough to store the required class names.
-    t.column :taggable_type, :string
-    t.column :created_at, :datetime
+
+  create_table "taggings" do |t|
+    t.references :tag
+    t.references :taggable, :polymorphic => true
+    t.integer    :user_id
+    t.integer    :venue_id
+    t.timestamps
   end
-  
+
+  create_table "events" do |t|
+    t.references :eventable, :polymorphic => true
+    t.integer    :user_id
+    t.integer    :venue_id
+    t.timestamps
+  end
+
+
+  # add_index :taggings, :tag_id
+  # add_index :taggings, [:taggable_id, :taggable_type]  
 end
