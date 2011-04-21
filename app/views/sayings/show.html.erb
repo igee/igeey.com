@@ -11,6 +11,8 @@
 <%= render :partial => '/comments/board'%>  
 <%= render :partial => '/comments/form' ,:locals => {:commentable => @saying}%>
 
+
+<% if current_user.login? && current_user.notifications_count>0%>
 <% content_for :extension do %>
 	<script type="text/javascript" charset="utf-8">
 	 	<% @notifiable = @saying%>
@@ -18,4 +20,5 @@
 			setTimeout(function(){redirect_clear(<%= @notifiable.id %>, '<%= @notifiable.class.to_s%>')},5000);
 		})
 	</script>
+<% end %>
 <% end %>

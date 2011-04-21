@@ -11,10 +11,10 @@
 			您在<%= nn.venue.name%>的照片 <%= link_to nn.title, n, :method=>'delete'%>有了新的回复
 		<% elsif nn.class.to_s == "Saying"%>
 			您在<%= nn.venue.name%>的报到 <%= link_to short_text(nn.content,15), n, :method=>'delete'%>有了新的回复
-		<% elsif nn.class.to_s == "Follow"%>
-			<%= link_to nn.user.login, n, :method=>'delete', :class=>'delete_notification', 'data-id'=>nn.id, 'data-type'=>nn.class.to_s%>关注您了
 		<% elsif nn.class.to_s == "Calling"%>
 			您在<%= nn.venue.name%>的召集 <%= link_to nn.title, n, :method=>'delete'%>有了新的回复
+		<% elsif nn.class.to_s == "User"%>
+			<%= link_to nn.login, n, :method=>'delete', :class=>'delete_notification', 'data-id'=>nn.id, 'data-type'=>nn.class.to_s%>关注您了
 		<%end%>
 		<%= link_to 'x', clear_notification_path(n), :remote=>true, :onclick=>"javascript:$(this).parent().slideUp();"%>
 		</p>
