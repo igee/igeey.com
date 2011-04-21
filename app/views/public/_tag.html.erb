@@ -1,9 +1,9 @@
 <div class="event_box">
   <ul class="tag_cloud">
     <li><%= link_to(tag.name,name_tags_path(:name => tag.name))%></li>
+    <span style="position:relative;top:4px">被使用 <%= tag.taggings_count%> 次</span>
   </ul>
-  <pre class="explanation" style="clear:both;"><%= short_text(tag.intro,80) %></pre>  
-  <div class="event_info">
-    <span>使用次数 <%= tag.taggings_count%></span>
-  </div>
+  <p>
+    <pre class="explanation" style="clear:both;"><%= short_text(tag.intro,80) %></pre>
+  </p>
 </div>

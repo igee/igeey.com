@@ -1,0 +1,8 @@
+
+  <%= form_for @question do |form|%>
+    <p>问题：<%= form.text_field :title,:style => "width:480px;" %></p>
+    <p>补充说明：</p>
+    <%= form.text_area :detail,:style => "width:520px;height:100px" %>
+    <%= form.submit '修改问题',:class => 'button'%>
+    <%= button_to_function '取消',"javascript:$('#floatBox #close_dialog').click();#{'window.history.back()' unless params[:layout] == 'false'}",:class => "button"%>
+  <% end %>

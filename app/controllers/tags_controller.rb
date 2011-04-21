@@ -4,10 +4,6 @@ class TagsController < ApplicationController
   before_filter :find_tag, :except => [:index, :new, :create,:name,:more]
   
   def index
-    @tags = Tag.limit(11)
-  end
-  
-  def more
     @tags = Tag.paginate(:page => params[:page], :per_page => 10)
   end
   

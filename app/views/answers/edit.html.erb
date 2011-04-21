@@ -1,1 +1,4 @@
-  <%= render "form" %>
+<h4>修改我的回答</h4>
+<% @question = @answer.question%>
+<p>问题：<%= @question.title%></p>
+<%= render "form" %>

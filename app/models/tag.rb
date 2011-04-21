@@ -35,7 +35,7 @@ class Tag < ::ActiveRecord::Base
   end
   
   def self.tag_list
-    Tag.all.map(&:name)
+    Tag.limit(20).map(&:name)
   end
   
   class << self

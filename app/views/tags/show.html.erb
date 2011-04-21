@@ -9,7 +9,7 @@
 
   
 <div class="box">
-  <h4>有关问题：</h4>
+  <h4>和“<%= @tag.name%>”有关的问题：</h4>
   <%= render :partial => '/public/question',:collection => @questions%>
   <br/>
   <% if logged_in? %>
@@ -31,7 +31,6 @@
 <% end %>
 
 <% content_for :sidebar do %>
-  
   <% unless @tag.tag_list.blank? %>
     <div class="box">
       <%= link_to "全部标签",tags_path,:class => "see_all_link"%>
@@ -39,5 +38,4 @@
       <%= raw tag_list_for(@tag) %>
     </div>
   <% end %>
-
 <% end %>
