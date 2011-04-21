@@ -33,6 +33,7 @@ gem 'exception_notification_rails3', :require => 'exception_notifier'
 
 group :development, :test do
   #gem 'webrat'
+  gem 'metric_fu'
   gem 'ruby-debug'
   gem 'request-log-analyzer'
  end
