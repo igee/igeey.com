@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   has_many :followers,      :through => :follows, :source => :user
   has_many :sayings,       :dependent => :destroy
   has_many :syncs,          :dependent => :destroy
+  has_many :notifications,  :dependent => :destroy
   
   has_attached_file :avatar,:styles => {:_48x48 => ["48x48#",:png],:_72x72 => ["72x72#",:png]},
                             :default_url=>"/defaults/:attachment/:style.png",
@@ -73,6 +74,10 @@ class User < ActiveRecord::Base
   #def id_count  #hack for top 100 earlier user badge
     #200 - self.id
   #end
+  
+  def update_notifications_count
+    self.update_attribute(:notifications_count, self.notifications.where(:unread => true).size)
+  end
   
   def undone_plans_count
     self.plans.undone.size

@@ -25,8 +25,9 @@ Igee::Application.routes.draw do
   match 'unread_followers' => 'site#unread_followers'
   
   resources :notifications do
-    put :clear, :on => :member
+    get :clear, :on => :member
     get :clear_all, :on => :collection
+    post :redirect_clear, :on => :collection  
   end
   
   match 'more_timeline' => 'site#more_timeline'

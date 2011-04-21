@@ -25,7 +25,7 @@
           | 
         <% end %>
       <% end %>
-      <%= link_to "回复#{'(' + photo.comments_count.to_s + ')' if photo.comments_count > 0}",'',:class => "event_reply"%>　
+      <%= link_to "回复#{'(' + photo.comments_count.to_s + ')' if photo.comments_count > 0}",'',:class => "event_reply", :onclick=>"javascript:redirect_clear(#{photo.id},'Photo')"%>　
     </div>
     <%= render :partial => "/public/reply_form",:locals =>  {:object => photo}%>
   </div>

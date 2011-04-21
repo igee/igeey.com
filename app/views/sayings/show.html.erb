@@ -10,3 +10,12 @@
 
 <%= render :partial => '/comments/board'%>  
 <%= render :partial => '/comments/form' ,:locals => {:commentable => @saying}%>
+
+<% content_for :extension do %>
+	<script type="text/javascript" charset="utf-8">
+	 	<% @notifiable = @saying%>
+  	$(document).ready(function(){
+			setTimeout(function(){redirect_clear(<%= @notifiable.id %>, '<%= @notifiable.class.to_s%>')},5000);
+		})
+	</script>
+<% end %>

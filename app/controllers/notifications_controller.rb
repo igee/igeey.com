@@ -24,5 +24,16 @@ class NotificationsController < ApplicationController
     end
     redirect_to :root
   end
+  
+  def redirect_clear
+    @notification = Notification.where(:user_id=>current_user.id, :notifiable_id=>params[:id], 
+                                        :notifiable_type=>params[:type]).first
+    unless @notification.nil?
+      redirect_to clear_notification_path(@notification)
+    else
+      render :text=>'false'
+    end
+  end
+  
 end
 

@@ -149,6 +149,7 @@ ActiveRecord::Schema.define() do
     t.integer  :geo_id
     t.datetime :created_at
     t.datetime :updated_at
+    t.integer  :notifications_count,       :default => 0
     t.integer  :follows_count,             :default => 0
     t.integer  :comments_count,            :default => 0
     t.integer  :callings_count,            :default => 0
@@ -267,7 +268,7 @@ ActiveRecord::Schema.define() do
     t.timestamps
   end
   
-  add_index "notification", ["user_id"], :name => "index_notification_on_user_id"
+  add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
   
   create_table :tags do |t|
     t.column :name, :string

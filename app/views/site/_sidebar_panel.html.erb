@@ -11,10 +11,7 @@
     </div>    
 
     <div class="sidebar_panel" id="notices">
-      <% n = Notification.get_unread_by_user_id(current_user.id)%>
-      <%= link_to ("您有#{n.size}个新提醒，去看看?",'/notifications') unless n.empty? %>
-
-      </li>
+      <%= link_to ("您有#{current_user.notifications_count}个新提醒，去看看?",'/notifications') if current_user.notifications_count>0 %>
     </div>
     
     <% @venues = current_user.venue_followings.limit(12)%>

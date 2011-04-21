@@ -20,3 +20,12 @@
 <% content_for :sidebar do %>
  <%= link_to("返回#{@topic.venue.name}",@topic.venue) %>
 <% end %>
+
+<% content_for :extension do %>
+	<script type="text/javascript" charset="utf-8">
+	 	<% @notifiable = @topic%>
+  	$(document).ready(function(){
+			setTimeout(function(){redirect_clear(<%= @notifiable.id %>, '<%= @notifiable.class.to_s%>')},5000);
+		})
+	</script>
+<% end %>

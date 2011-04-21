@@ -9,6 +9,7 @@ class Calling < ActiveRecord::Base
   has_many   :photos,   :as => :imageable,   :dependent => :destroy
   has_many   :follows,  :as => :followable,  :dependent => :destroy
   has_many   :followers,:through => :follows,:source => :user
+  has_many   :notifications, :as => :notifiable, :dependent => :destroy
   
   default_scope :order => 'created_at DESC',:include => [:user]
   
