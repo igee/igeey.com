@@ -4,7 +4,7 @@
       $('#set_title_' + photo_id).hide();
       $('#delete_link_' + photo_id).hide();$('#sumbit_link_' + photo_id).show();
       };    
-
+			
 // bindings
   $(document).ready(function(){
     $(".open_dialog").click(function(){dialog($(this).attr('title'),("url:"+$(this).attr('href')),"570px","auto","text");  return false;})
@@ -64,7 +64,10 @@
     $('pre').each(function(index){$(this).html($(this).html().replace(/(http:\/\/|https:\/\/)((\w|=|\?|\.|\/|&|-|!)+)/g, "<a href='$1$2' target='_blank' rel='nofollow'>$1$2</a>"))});
     $('form').submit(function(){$(this).find('input:submit').attr('disabled',true)})
     
-    $('.event_reply').click(function(){$(this).parent().next().toggle();return false});
+    $('.event_reply').click(function(){
+			$(this).parent().next().toggle();;
+			return false;
+		});
     
     $('.reply_reply').click(function(){
         var reply_field = $(this).parent().parent().parent().parent().find('input[type=text]')

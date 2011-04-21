@@ -12,7 +12,7 @@
 
     <div class="sidebar_panel" id="notices">
       <% n = Notification.get_unread_by_user_id(current_user.id)%>
-      <%= link_to ("您有#{n.size}个新提醒，去看看?",'/notification') unless n.empty? %>
+      <%= link_to ("您有#{n.size}个新提醒，去看看?",'/notifications') unless n.empty? %>
 
       </li>
     </div>

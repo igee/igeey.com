@@ -23,8 +23,10 @@ Igee::Application.routes.draw do
   match 'unread_comments' => 'site#unread_comments'
   match 'unread_plans' => 'site#unread_plans'
   match 'unread_followers' => 'site#unread_followers'
-  match 'notification' => 'notifications#show'
-  match 'notification/read' => 'notifications#read'
+  
+  resources :notifications do
+    put :clear, :on => :member
+  end
   
   match 'more_timeline' => 'site#more_timeline'
   match 'city_timeline' => 'site#city_timeline'

@@ -20,7 +20,6 @@ class SayingsController < ApplicationController
   
   def show
     @saying = Saying.find(params[:id])
-    Notification.delete(current_user.id, @saying) if logged_in?
     @comments = @saying.comments
   end
 

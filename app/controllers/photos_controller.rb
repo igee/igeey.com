@@ -21,7 +21,6 @@ class PhotosController < ApplicationController
   end
 
   def show
-    Notification.delete(current_user.id, @photo) if logged_in?
     @comments = @photo.comments
     render :layout => false if params[:layout] == 'false'
   end

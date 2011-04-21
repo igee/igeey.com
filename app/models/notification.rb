@@ -31,4 +31,9 @@ class Notification < ActiveRecord::Base
   def self.get_unread_by_user_id(user_id)
     self.where(:user_id => user_id, :unread => true).order("updated_at desc")
   end
+  
+  def read
+    self.update_attribute(:unread, false)
+  end
+  
 end
