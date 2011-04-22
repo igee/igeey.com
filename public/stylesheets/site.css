@@ -532,20 +532,7 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
   top:2px
 }
 
-.event_panel{
-  margin:58px 10px 0;
-  width:500px;
-  text-align:right;
-  display:none;
-  position:absolute;
-  z-index:1
-}
-
-.event_panel a{margin:0 4px}
-
-.event_box.hover .event_panel{display:block}
-
-.comment .event_panel{margin:0;width:520px}
+.comment{margin:0;width:520px}
 
 .reply{font-size:12px;border-bottom:1px dashed #d6d6d6;}
 .reply_reply{float:right}
