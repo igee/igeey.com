@@ -6,7 +6,7 @@
   </ul>
   <% @categories.each do |k,v|%>
     <div id='<%= "venues_category_#{k}"%>' class="tabContents">      
-      <%= render :partial => '/public/event', :collection => @venues_hash[v.to_sym] %>
+      <%= render :partial => '/public/item', :collection => @venues_hash[v.to_sym] %>
     </div>
   <% end %>
 </div>

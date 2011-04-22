@@ -1,6 +1,6 @@
 <% user = answer.user%>
 <div class="event_box">
-  <pre style="font-size:15px;"><%= short_text(answer.content,200) %></pre>
+  <pre><%= short_text(answer.content,200) %></pre>
   <div class="event_info">
     <span><%= link_to user.login,user %> 的回答：</span>
     <span class="timeago"><%= answer.created_at %></span>
