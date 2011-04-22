@@ -1,4 +1,4 @@
-Igee::Application.routes.draw do
+Igeey::Application.routes.draw do
   root :to => 'site#index'
     
   match 'signup' => 'users#new', :as => :signup
@@ -25,7 +25,7 @@ Igee::Application.routes.draw do
   match 'unread_followers' => 'site#unread_followers'
   
   match 'more_timeline' => 'site#more_timeline'
-  match 'city_timeline' => 'site#city_timeline'
+  match 'more_public_timeline' => 'site#more_public_timeline'
   
   match 'oauth(/:action)' => 'oauth#(/:action)'
   match 'plan(/:id)' => 'plans#redirect', :as => :plan

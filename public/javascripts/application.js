@@ -9,7 +9,7 @@ function load_bindngs(){
         reply_field.focus();
         return false;
         });
-    $('pre').each(function(index){$(this).html($(this).html().replace(/(http:\/\/|https:\/\/)((\w|=|\?|\.|\/|&|-|!)+)/g, "<a href='$1$2' target='_blank' rel='nofollow'>$1$2</a>"))});
+    $('pre').each(function(index){$(this).html($(this).html().replace(/(http:\/\/|https:\/\/)((\w|=|\?|\.|\/|&|-|!|#|%)+)/g, "<a href='$1$2' target='_blank' rel='nofollow'>$1$2</a>"))});
     $('form').submit(function(){$(this).find('input:submit').attr('disabled',true)});
     $(".zoom_photo").click(function(){$(this).children().first().toggle();$(this).children().last().toggle();return false});
     $(".event_box").hover(
