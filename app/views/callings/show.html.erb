@@ -66,8 +66,17 @@
   </div>
   
   <%= render :partial => '/comments/board'%>    
-  <%= render :partial => '/comments/form' ,:locals => {:commentable => @calling}%>
-  
+  <%= render :partial => '/comments/form' ,:locals => {:commentable => @calling}%> 
+
 <% content_for :sidebar do %>
   <%= render :partial => '/venues/intro' %>
+<% end %>
+
+<% content_for :extension do %>
+	<script type="text/javascript" charset="utf-8">
+	 	<% @notifiable = @calling%>
+  	$(document).ready(function(){
+			setTimeout(function(){redirect_clear(<%= @notifiable.id %>, '<%= @notifiable.class.to_s%>')},5000);
+		})
+	</script>
 <% end %>

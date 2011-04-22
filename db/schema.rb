@@ -150,6 +150,7 @@ ActiveRecord::Schema.define() do
     t.integer  :geo_id
     t.datetime :created_at
     t.datetime :updated_at
+    t.integer  :notifications_count,       :default => 0
     t.integer  :follows_count,             :default => 0
     t.integer  :comments_count,            :default => 0
     t.integer  :callings_count,            :default => 0
@@ -262,7 +263,20 @@ ActiveRecord::Schema.define() do
     t.integer  :last_replied_user_id
     t.timestamps
   end
+
+  create_table "notifications", :force => true do |t|
+    t.integer     :user_id
+    t.references  :notifiable,   :polymorphic => true
+    t.boolean     :unread,       :default => true
+    t.timestamps
+  end
   
+  add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
+  
+  create_table :tags do |t|
+    t.column :name, :string
+  end
+
   create_table "tags" do |t|
     t.string   :name
     t.text     :intro

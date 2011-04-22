@@ -1,5 +1,11 @@
 // application function define
 
+  function set_title(photo_id){
+      $('#photo_set_title_' + photo_id).show();
+      $('#set_title_' + photo_id).hide();
+      $('#delete_link_' + photo_id).hide();$('#sumbit_link_' + photo_id).show();
+  };
+
 function load_bindngs(){
     $(".timeago").each(function(){$(this).html('(' + jQuery.timeago($(this).html()) + ')');$(this).removeClass('timeago')});
     $('.event_reply').click(function(){$(this).parent().next().toggle();return false});
@@ -27,6 +33,10 @@ function more_timeline(dom){
   return false;
 };
 
+	function redirect_clear(id, type){
+		$.post('/notifications/redirect_clear',{'id':id,'type':type});
+	};
+			
 // bindings
   $(document).ready(function(){
     load_bindngs()

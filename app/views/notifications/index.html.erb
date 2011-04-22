@@ -1,0 +1,22 @@
+<% @title="提醒"%>
+<% if @notifications%>
+	<%= link_to '忽略全部', '/notifications/clear_all', :style=>"float:right;"%>
+	<h3>所有提醒</h3>
+	<% @notifications.each do |n|%>
+		<% nn = n.notifiable%>
+		<p>
+		<% if nn.class.to_s == "Topic"%>
+			您在<%= nn.venue.name%>的故事 <%= link_to nn.title, n, :method=>'delete'%> 有了新的回复
+		<% elsif nn.class.to_s == "Photo"%>
+			您在<%= nn.venue.name%>的<%= raw "#{'照片' unless nn.title.nil?} #{link_to((nn.title || '照片'),n,:method=>'delete')}"%> 有了新的回复
+		<% elsif nn.class.to_s == "Saying"%>
+			您在<%= nn.venue.name%>的报到 <%= link_to short_text(nn.content,15), n, :method=>'delete'%> 有了新的回复
+		<% elsif nn.class.to_s == "Calling"%>
+			您在<%= nn.venue.name%>的召集 <%= link_to nn.title, n, :method=>'delete'%> 有了新的回复
+		<% elsif nn.class.to_s == "User"%>
+			<%= link_to nn.login, n, :method=>'delete', :class=>'delete_notification', 'data-id'=>nn.id, 'data-type'=>nn.class.to_s%> 关注您了
+		<%end%>
+		<%= link_to 'x', clear_notification_path(n), :remote=>true, :onclick=>"javascript:$(this).parent().slideUp();"%>
+		</p>
+	<%end%>
+<%end%>

@@ -1,0 +1,24 @@
+<% @title = '报到'%>
+
+<div class="box">  
+  <%= render :partial => '/users/user' ,:object => @saying.user %>
+  <div class="bubble_tail"></div>
+  <div class="bubble">
+    <pre class="explanation"><%= @saying.content %></pre>
+  </div>
+</div>
+
+<%= render :partial => '/comments/board'%>  
+<%= render :partial => '/comments/form' ,:locals => {:commentable => @saying}%>
+
+
+<% if current_user.login? && current_user.notifications_count>0%>
+<% content_for :extension do %>
+	<script type="text/javascript" charset="utf-8">
+	 	<% @notifiable = @saying%>
+  	$(document).ready(function(){
+			setTimeout(function(){redirect_clear(<%= @notifiable.id %>, '<%= @notifiable.class.to_s%>')},5000);
+		})
+	</script>
+<% end %>
+<% end %>
