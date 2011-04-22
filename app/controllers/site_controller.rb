@@ -36,32 +36,5 @@ class SiteController < ApplicationController
     @plans_timeline = @user.plans.undone
     @records_timeline = @user.records.paginate(:page => params[:records_page], :per_page => 20)
   end
-  
-  
-  def unread_comments
-    @timeline = []
-    @timeline += current_user.sayings.where(:has_new_comment => true)
-    @timeline += current_user.photos.where(:has_new_comment => true)
-    @timeline += current_user.topics.where(:has_new_comment => true)
-    @timeline += current_user.callings.where(:has_new_comment => true)
-    @timeline += current_user.records.where(:has_new_comment => true)
-    @timeline += current_user.comments.where(:has_new_comment => true).map(&:commentable)
-    @timeline = @timeline.uniq.sort{|x,y| y.last_replied_at <=> x.last_replied_at}
-    @timeline.each do |i|
-      i.update_attribute(:has_new_comment,false)
-      i.comments.where(:user_id => current_user.id).map{|c| c.update_attribute(:has_new_comment,false)}
-    end
-  end
-  
-  def unread_plans
-    @callings = current_user.callings.where(:has_new_plan => true)
-    @plans = current_user.plans.where(:has_new_child => true)
-  end
-  
-  def unread_followers
-    @follows = current_user.follows.where(:unread => true)
-    @followers = @follows.map(&:user)
-    @follows.map{|f| f.update_attribute(:unread,false)}
-  end
 
 end
