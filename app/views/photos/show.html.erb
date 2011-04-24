@@ -22,7 +22,7 @@
   <%= render :partial => '/venues/intro' %>
 <% end %>
 
-<% if current_user.login? && current_user.notifications_count>0%>
+<% if logged_in? && current_user.notifications_count>0%>
 <% content_for :extension do %>
 	<script type="text/javascript" charset="utf-8">
 	 	<% @notifiable = @photo%>
