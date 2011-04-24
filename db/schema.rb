@@ -42,7 +42,6 @@ ActiveRecord::Schema.define() do
     t.text     :content
     t.integer  :commentable_id
     t.string   :commentable_type, :limit => 40
-    t.boolean  :has_new_comment,  :default => false
     t.timestamps
   end
   
@@ -91,7 +90,6 @@ ActiveRecord::Schema.define() do
     t.datetime :plan_at
     t.integer  :comments_count,   :default => 0
     t.boolean  :has_new_child,    :default => false
-    t.boolean  :has_new_comment,  :default => false
     t.boolean  :is_done,  :default => false
     t.datetime :last_replied_at
     t.integer  :last_replied_user_id
@@ -109,7 +107,6 @@ ActiveRecord::Schema.define() do
     t.string   :cached_tag_list,  :default => ''
     t.integer  :comments_count,   :default => 0
     t.integer  :votes_count,      :default => 0
-    t.boolean  :has_new_comment,  :default => false
     t.datetime :last_replied_at
     t.integer  :last_replied_user_id
     t.timestamps
@@ -134,7 +131,6 @@ ActiveRecord::Schema.define() do
     t.datetime :done_at
     t.text     :detail
     t.integer  :comments_count,   :default => 0
-    t.boolean  :has_new_comment,  :default => false
     t.datetime :last_replied_at
     t.integer  :last_replied_user_id
     t.timestamps
@@ -150,6 +146,7 @@ ActiveRecord::Schema.define() do
     t.integer  :geo_id
     t.datetime :created_at
     t.datetime :updated_at
+    t.integer  :notifications_count,       :default => 0
     t.integer  :follows_count,             :default => 0
     t.integer  :comments_count,            :default => 0
     t.integer  :callings_count,            :default => 0
@@ -185,7 +182,6 @@ ActiveRecord::Schema.define() do
     t.string   :cached_tag_list,  :default => ''
     t.boolean  :has_new_plan,     :default => false
     t.integer  :comments_count,   :default => 0
-    t.boolean  :has_new_comment,  :default => false
     t.datetime :last_replied_at
     t.integer  :last_replied_user_id
     t.timestamps
@@ -244,7 +240,6 @@ ActiveRecord::Schema.define() do
     t.string   :title
     t.text     :content
     t.string   :cached_tag_list,  :default => ''
-    t.boolean  :has_new_comment,  :default => false
     t.integer  :comments_count,   :default => 0
     t.datetime :last_replied_at
     t.integer  :last_replied_user_id
@@ -257,12 +252,24 @@ ActiveRecord::Schema.define() do
     t.text     :content
     t.string   :cached_tag_list,  :default => ''
     t.integer  :comments_count,   :default => 0
-    t.boolean  :has_new_comment,  :default => false
     t.datetime :last_replied_at
     t.integer  :last_replied_user_id
     t.timestamps
   end
+
+  create_table "notifications", :force => true do |t|
+    t.integer     :user_id
+    t.references  :notifiable,   :polymorphic => true
+    t.boolean     :unread,       :default => true
+    t.timestamps
+  end
   
+  add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
+  
+  create_table :tags do |t|
+    t.column :name, :string
+  end
+
   create_table "tags" do |t|
     t.string   :name
     t.text     :intro

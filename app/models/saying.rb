@@ -6,7 +6,8 @@ class Saying < ActiveRecord::Base
   acts_as_taggable
   acts_as_eventable
 
-  has_many   :comments, :as => :commentable,    :dependent => :destroy  
+  has_many   :comments, :as => :commentable,    :dependent => :destroy
+  has_many   :notifications, :as => :notifiable, :dependent => :destroy
   
   default_scope :order => 'created_at DESC'
   
