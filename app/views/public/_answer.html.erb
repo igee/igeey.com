@@ -1,6 +1,6 @@
 <% user = answer.user%>
 <div class="event_box">
-  <pre><%= short_text(answer.content,200) %></pre>
+  <pre class="explanation"><%= short_text(answer.content,200) %></pre>
   <div class="event_info">
     <span><%= link_to user.login,user %> 的回答：</span>
     <span class="timeago"><%= answer.created_at %></span>
@@ -12,7 +12,7 @@
         <%= link_to "删除","#{question_answer_path(@question,answer)}?back_path=#{request.path}",:method => :delete,:confirm => '你确定要删除这条报到么？'%> |
       <% end %>
       <%= link_to "回复#{'(' + answer.comments_count.to_s + ')' if answer.comments_count > 0}",'',:class => "event_reply"%>　
-    </div>    
+    </div>
     <%= render :partial => "/public/reply_form",:locals =>  {:object => answer}%>
   </div>
 </div>

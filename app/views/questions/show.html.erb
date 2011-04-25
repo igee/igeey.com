@@ -9,7 +9,7 @@
     <% end %>
   </span>
   </h3>
-  <pre class="explanation"><%= @question.detail %></pre>
+  <pre><%= @question.detail %></pre>
   <p>
   <span>来自 <%= link_to @question.user.login,@question.user %> 的提问 </span>
   <span class="timeago"><%= @question.created_at %></span>
