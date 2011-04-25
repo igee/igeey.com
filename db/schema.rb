@@ -265,10 +265,6 @@ ActiveRecord::Schema.define() do
   end
   
   add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
-  
-  create_table :tags do |t|
-    t.column :name, :string
-  end
 
   create_table "tags" do |t|
     t.string   :name
