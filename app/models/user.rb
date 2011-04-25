@@ -22,11 +22,11 @@ class User < ActiveRecord::Base
   has_many :followers,      :through => :follows, :source => :user
   has_many :sayings,        :dependent => :destroy
   has_many :syncs,          :dependent => :destroy
+  has_many :notifications,  :dependent => :destroy
   has_many :taggings,       :dependent => :destroy
   has_many :tags,           :through => :taggings, :source => :tag
   has_many :events,         :dependent => :destroy
   has_many :questions,      :dependent => :destroy
-  
   
   has_attached_file :avatar,:styles => {:_48x48 => ["48x48#",:png],:_72x72 => ["72x72#",:png]},
                             :default_url=>"/defaults/:attachment/:style.png",
@@ -78,6 +78,10 @@ class User < ActiveRecord::Base
   #def id_count  #hack for top 100 earlier user badge
     #200 - self.id
   #end
+  
+  def update_notifications_count
+    self.update_attribute(:notifications_count, self.notifications.where(:unread => true).size)
+  end
   
   def undone_plans_count
     self.plans.undone.size
@@ -155,50 +159,8 @@ class User < ActiveRecord::Base
     self.tags.limit(10).map(&:name)
   end
   
-  #need refactory. use dynamic methods
-  
-  def has_unread_record_comment?
-    self.records.where(:has_new_comment => true).first.present?
-  end
-  
-  def has_unread_calling_comment?
-    self.callings.where(:has_new_comment => true).first.present?
-  end
-  
-  def has_unread_comment_comment?
-    self.comments.where(:has_new_comment => true).first.present?
-  end
-  
-  def has_unread_topic_comment?
-    self.topics.where(:has_new_comment => true).first.present?
-  end
-  
-  def has_unread_saying_comment?
-    self.sayings.where(:has_new_comment => true).first.present?
-  end
-    
-  def has_unread_photo_comment?
-    self.photos.where(:has_new_comment => true).first.present?
-  end
-      
-  def has_unread_comment?
-    has_unread_comment_comment? || has_unread_saying_comment? || has_unread_photo_comment? || has_unread_comment_comment? || has_unread_record_comment? || has_unread_topic_comment? || has_unread_calling_comment?
-  end
-  
-  def has_unread_plan?
-    self.callings.where(:has_new_plan => true).first.present?
-  end
-  
-  def has_unread_child?
-    self.plans.where(:has_new_child => true).first.present?
-  end
-  
   def has_new_badge?
     self.grants.where(:unread => true).first.present?
-  end
-  
-  def has_unread_follower?
-    self.follows.where(:unread => true).first.present?
   end
     
   def latest_update

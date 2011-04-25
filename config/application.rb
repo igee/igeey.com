@@ -31,6 +31,7 @@ module Igeey
                                       :sync_observer,
                                       :oauth_token_observer,
                                       :follow_observer,
+                                      :notification_observer,
                                       :tagging_observer,
                                       ]
     

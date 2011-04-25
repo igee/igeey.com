@@ -2,6 +2,8 @@ class Follow < ActiveRecord::Base
   belongs_to :user
   belongs_to :followable, :polymorphic => true,:counter_cache => true
   
+  has_many   :notifications, :as => :notifiable, :dependent => :destroy
+  
   validates :user_id,          :presence   => true,:uniqueness => {:scope => [:followable_type,:followable_id]}
   validates :followable_type,  :presence   => true
   validates :followable_id,    :presence   => true

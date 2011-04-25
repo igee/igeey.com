@@ -16,3 +16,4 @@ public/json/
 
 *.kpf
 *.project
+*.DS_Store

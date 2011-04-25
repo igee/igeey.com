@@ -24,6 +24,12 @@ Igeey::Application.routes.draw do
   match 'unread_plans' => 'site#unread_plans'
   match 'unread_followers' => 'site#unread_followers'
   
+  resources :notifications do
+    get :clear, :on => :member
+    get :clear_all, :on => :collection
+    post :redirect_clear, :on => :collection  
+  end
+  
   match 'more_timeline' => 'site#more_timeline'
   match 'more_public_timeline' => 'site#more_public_timeline'
   
@@ -125,5 +131,6 @@ Igeey::Application.routes.draw do
   match "/r/:id" => redirect("/records/%{id}")
   match "/p/:id" => redirect("/plan/%{id}")
   match "/t/:id" => redirect("/topics/%{id}")
-  match "/v/:id" => redirect("/venues/%{id}")
+  match "/s/:id" => redirect("/sayings/%{id}")
+
 end

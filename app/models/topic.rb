@@ -9,6 +9,7 @@ class Topic < ActiveRecord::Base
   
   has_many   :follows,:as => :followable,     :dependent => :destroy  
   has_many   :comments, :as => :commentable,  :dependent => :destroy
+  has_many   :notifications, :as => :notifiable, :dependent => :destroy
   
   default_scope :order => 'last_replied_at DESC'
   
