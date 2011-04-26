@@ -12,15 +12,6 @@
 
 ActiveRecord::Schema.define() do
 
-  create_table "actions", :force => true do |t|
-    t.string  :name,        :limit => 40
-    t.string  :slug,        :limit => 40
-    t.string  :for_what,    :limit => 40
-    t.boolean :is_callable, :default => true
-    t.text    :intro
-    t.text    :step_by_step
-  end
-
   create_table "badges", :force => true do |t|
     t.string  :name,             :limit => 40
     t.string  :slug,             :limit => 40
@@ -173,6 +164,7 @@ ActiveRecord::Schema.define() do
     t.integer  :total_people
     t.integer  :total_goods
     t.string   :title,       :limit => 40   
+    t.string   :for_what,    :limit => 40
     t.string   :address
     t.string   :contact
     t.text     :detail

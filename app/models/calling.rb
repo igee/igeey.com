@@ -1,7 +1,6 @@
 class Calling < ActiveRecord::Base
   belongs_to :user,     :counter_cache => true
   belongs_to :venue,    :counter_cache => true
-  belongs_to :action
   has_many   :records
   has_many   :plans
   has_many   :comments, :as => :commentable, :dependent => :destroy
@@ -18,12 +17,9 @@ class Calling < ActiveRecord::Base
   default_scope :order => 'created_at DESC'
   
   scope :not_closed,where(:close => false) 
-  scope :timing,where(:action_id => [1]) # timeing action list 
-  
-  delegate :for_what, :to => :action
   
   validates :detail,:length => {:minimum => 1 ,:message => '详细信息不能少于50字'}
-  validates :user_id,:action_id,:venue_id,:title,:address,:contact,  :presence => true
+  validates :user_id,:venue_id,:title,:address,:contact,  :presence => true
   validates :do_at,:date => {:after_or_equal_to => 1.day.ago ,:allow_nil => true,:on => :create}
   
   def validate

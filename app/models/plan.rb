@@ -1,6 +1,5 @@
 class Plan < ActiveRecord::Base
   belongs_to :venue
-  belongs_to :action
   belongs_to :calling
   belongs_to :user,     :counter_cache => true
   belongs_to :parent,   :class_name => 'Plan',:foreign_key => :parent_id
@@ -11,13 +10,13 @@ class Plan < ActiveRecord::Base
   
   acts_as_ownable
   
-  delegate :for_what, :to => :action
+  delegate :for_what, :to => :calling
   
   default_scope :order => 'created_at DESC'
   
   scope :undone ,where(:is_done => false)
   
-  validates :action_id,:calling_id,:venue_id,:presence => true
+  validates :calling_id,:venue_id,:presence => true
   validates :plan_at,:date => {:after_or_equal_to => 1.day.ago,:allow_nil => true}
   validates :user_id,    :presence   => true,:uniqueness => {:scope => :calling_id}
   
