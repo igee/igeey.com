@@ -4,17 +4,8 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one:
-  id:        1
-  name:      '志愿服务'
-  for_what:  'time'
-
-two:
-  id:        2
-  name:      '捐款'
-  for_what:  'money'
-
-three:
-  id:        3
-  name:      '捐物'
-  for_what:  'goods'
+one: {}
+# column: value
+#
+two: {}
+#  column: value
