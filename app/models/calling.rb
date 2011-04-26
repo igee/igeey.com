@@ -87,7 +87,11 @@ class Calling < ActiveRecord::Base
   def description
     "为#{self.venue.name}发起行动：#{self.title}"
   end
-      
+  
+  def self.tag_list
+    Tagging.where(:taggable_type => self.class).limit(5)
+  end
+  
   define_index do
     indexes title
     indexes detail

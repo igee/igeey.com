@@ -20,5 +20,9 @@ class Photo < ActiveRecord::Base
                             
   validates :photo_file_name, :presence   => true,:format => { :with => /([\w-]+\.(gif|png|jpg))|/ }
   validates :venue_id, :presence   => true
+      
+  def self.tag_list
+    Tagging.where(:taggable_type => self.to_s).limit(5).map(&:tag).map(&:name)
+  end
 
 end

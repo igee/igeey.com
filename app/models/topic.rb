@@ -15,7 +15,11 @@ class Topic < ActiveRecord::Base
   
   validate  :title, :presence  => true
   validate  :content, :presence  => true
-
+  
+  def self.tag_list
+    Tagging.where(:taggable_type => self.class).limit(5)
+  end
+  
   define_index do
     indexes title
     indexes content
