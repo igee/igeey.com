@@ -6,10 +6,12 @@
     <%= will_paginate @tags %>
   </div>
   
-<% content_for :sidebar do %>  
-  <div class="box">
-    <h4>热门标签</h4>
-    <%= raw tag_list_for(Tag) %>
-  </div>
-
+  <% content_for :sidebar do %>  
+    <div class="box">
+      <h4>随机标签</h4>
+      <%= raw tag_list_for(Tag) %>
+    </div>
+      
+      
+      
 <% end %>

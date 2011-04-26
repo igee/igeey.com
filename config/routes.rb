@@ -121,8 +121,9 @@ Igeey::Application.routes.draw do
   resources :photos
   
   resources :tags do
-    get :name, :on => :collection
-    get :more, :on => :collection
+    get :name,  :on => :collection
+    get :cloud, :on => :collection
+    get :more,  :on => :collection
   end
   
   #short_url

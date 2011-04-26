@@ -1,7 +1,7 @@
 class TagsController < ApplicationController
   respond_to :html
   before_filter :login_required, :only => [:new,:create,:destroy,:edit,:update]
-  before_filter :find_tag, :except => [:index, :new, :create,:name,:more]
+  before_filter :find_tag, :only => [:show,:edit,:update,:destroy]
   
   def index
     @tags = Tag.paginate(:page => params[:page], :per_page => 10)
@@ -18,16 +18,11 @@ class TagsController < ApplicationController
   end
   
   def show
-    #if ['Topic','Photo','Calling','Saying'].include?(params[:filter])
-    #  @timeline = params[:filter].constantize.find_tagged_with(@tag.name)
-    #  @filter_name = {'Topic'=>'故事','Photo'=>'照片','Calling'=>'召集','Saying'=>'报到'}[params[:filter]]
-    #else 
-    #end
     @timeline = @tag.owned_taggings.where(['taggable_type != ?','Question']).limit(10).map(&:taggable).map(&:event)
     @questions = Question.find_tagged_with(@tag.name)
     @question = Question.new
   end
-  
+    
   def edit
   end
   
@@ -45,6 +40,9 @@ class TagsController < ApplicationController
     end  
   end
   
+  def cloud
+    
+  end
   
   private
   def find_tag
