@@ -1,4 +1,4 @@
-  <%= form_for @venue do |form| %>
+  <%= form_for @venue ,:html => { :multipart => true } do |form| %>
     <%= raw error_explanation_for(@venue) if @venue.errors.present?%>
     <p>
       <%= form.label :name,'地点名称(必填)：'%> <%= form.text_field :name, :size => 18, :class => "title", :placeholder => "例如：XX社区，XX村"%>
@@ -16,7 +16,10 @@
       <%= form.label :address,'具体地址：'%> <%= form.text_field :address,:size => 18%>
     </p>
     <p>
-      <%= form.label :contact,'联系方式：'%> <%= form.text_field :contact,:size => 18%>
+      <%= form.label :contact,'联系方式(可选)：'%> <%= form.text_field :contact,:size => 18%>
+    </p>
+    <p>
+      <%= form.label :cover,'一张这里的照片：'%> <%= form.file_field :cover,:size => 18%>
     </p>
     <p>
       <%= form.label :intro,'简介(必填)：'%><span>100字以内</span>

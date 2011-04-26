@@ -20,6 +20,13 @@
         <%= "地址： #{@venue.address}" unless @venue.address.blank?%>
         <%= raw("　联系方式： #{@venue.contact}") unless @venue.contact.blank?%>
       </span>
+      <% if @venue.creator == current_user%>
+        <br/>
+        <span>
+          <%= link_to '更新主题图',cover_venue_path(@venue)%>
+          <%= link_to '更新信息',edit_venue_path(@venue)%>
+        </span>
+      <% end %>
     </div>
   </div>
 </div>
