@@ -16,11 +16,11 @@ class SiteController < ApplicationController
   end
   
   def public
-    @timeline = Event.where(:eventable_type=>'Calling').limit(20)
+    @timeline = Event.where(:eventable_type=>'Calling').limit(10)
   end
   
   def more_public_timeline
-    @timeline = Event.where(:eventable_type=>'Calling').paginate(:page => params[:page], :per_page => 20)
+    @timeline = Event.where(:eventable_type=>'Calling').paginate(:page => params[:page], :per_page => 10)
     render '/public/more_timeline',:layout => false
   end
 
