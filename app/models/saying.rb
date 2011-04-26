@@ -14,6 +14,6 @@ class Saying < ActiveRecord::Base
   validates :content,:length => { :within => 1..140,:message => '限制字数在140字以内' }
 
   def self.tag_list
-    Tagging.where(:taggable_type => self.class).limit(5)
+    Tagging.where(:taggable_type => self.to_s).limit(5)
   end
 end
