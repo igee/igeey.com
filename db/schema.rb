@@ -13,8 +13,10 @@
 ActiveRecord::Schema.define() do
   
   create_table "actions", :force => true do |t|
-    t.string  :name,        :limit => 40
-    t.text    :intro
+    t.integer   :user_id
+    t.string    :name,        :limit => 40
+    t.text      :intro
+    t.string    :cover_file_name
   end
 
   create_table "answers" do |t|

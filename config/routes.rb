@@ -108,7 +108,7 @@ Igeey::Application.routes.draw do
     get :thanks, :on => :collection
   end
   
-  resources :follows,:photos,:topics,:sayings
+  resources :follows,:photos,:topics,:sayings,:actions
   
   resources :questions do
     resources :answers
