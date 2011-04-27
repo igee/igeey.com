@@ -13,11 +13,17 @@
 ActiveRecord::Schema.define() do
   
   create_table "actions", :force => true do |t|
+<<<<<<< HEAD
     t.integer   :user_id
     t.string    :name,        :limit => 40
     t.text      :intro
     t.text      :method
     t.string    :cover_file_name
+=======
+    t.string  :name,        :limit => 40
+    t.text    :intro
+    t.integer :tag_id
+>>>>>>> 721eca65476e117d9d12df2bbe114e75d85890c4
   end
 
   create_table "answers" do |t|

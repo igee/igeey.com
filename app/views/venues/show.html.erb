@@ -35,7 +35,7 @@
   <h4>在这里发布..</h4>
   <div id="venue_forms">
     <div id="formContaier">
-      <%= form_for [@venue,@saying],:html=>{:class=>'venue_form',:style => "display:block"}  do |form| %>    
+      <%= form_for @saying,:html=>{:class=>'venue_form',:style => "display:block"}  do |form| %>    
         <%= form.hidden_field :venue_id,:value => @venue.id %>
         <%= form.text_area  :content,:style => 'height:18px;font-size:14px;line-height:18px',:placeholder => "今天你想和#{@venue.name}的朋友们说什么？"%>
         <%= form.submit '确 定',:class => "gary_button"%>
