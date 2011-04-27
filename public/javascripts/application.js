@@ -40,6 +40,7 @@ function more_timeline(dom){
 // bindings
   $(document).ready(function(){
     load_bindngs()
+    $(".open_dialog").click(function(){dialog($(this).attr('title'),("url:"+$(this).attr('href')),"570px","auto","text");  return false;})
     $(".answer").click(function(){dialog($(this).attr('title'),("id:"+$(this).attr('href')),"570px","auto","text");  return false;})
     $('#dialog_flash a').click();
     $('.with_tip').poshytip({
