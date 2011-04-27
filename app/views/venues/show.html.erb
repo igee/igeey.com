@@ -174,7 +174,7 @@
         });
       DateTimeShortcuts.init()
       function updateCount() {
-      document.getElementById("character_count").innerHTML = document.getElementById("calling_detail").value.length;
+      $("#character_count").html(($("#calling_detail").attr('value') || '').length);
       setTimeout(updateCount, 400);
        }
       updateCount();
