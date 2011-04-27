@@ -1,8 +1,7 @@
 class Tag < ::ActiveRecord::Base
-  has_many :owned_taggings, :class_name => 'Tagging', :dependent => :destroy
+  has_many :taggings, :dependent => :destroy
   default_scope :order => 'taggings_count DESC'
   
-  acts_as_taggable
   validates_presence_of :name
   validates_uniqueness_of :name
   
