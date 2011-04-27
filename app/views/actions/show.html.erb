@@ -7,12 +7,19 @@
 </div>
 
 <div class="box">
-  
+  <h4>介绍：</h4>
+  <pre class="explanation"><%=@action.intro%></pre>
 </div>
 
 <div class="box">
-  <%= image_tag(@action.cover.url,:style=>'float:left;margin:5px')%>
-  <div style="margin-left:80px;">
-  <h2><%= @action.name%></h2>
-  </div>
+  <h4>做法：</h4>
+  <pre class="explanation"><%=@action.method%></pre>
 </div>
+
+<% content_for :sidebar do %>
+  <% if logged_in? && current_user.is_following?(@action)%>
+    <%= link_to("不收藏了",follow_path(@action.follows.find_by_user_id(current_user.id)),:method => :delete,:class => 'button')%>
+  <% else %>
+    <%= link_to("我要收藏","#{follows_path}?followable_type=#{@action.class.to_s}&followable_id=#{@action.id}",:method => :post,:class => 'button')%>
+  <% end %>
+<% end %>

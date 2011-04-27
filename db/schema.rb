@@ -15,10 +15,11 @@ ActiveRecord::Schema.define() do
   create_table "actions", :force => true do |t|
     t.integer   :user_id
     t.string    :name,        :limit => 40
+    t.integer   :tag_id
     t.text      :intro
     t.text      :method
     t.string    :cover_file_name
-    t.integer   :tag_id
+    t.integer  :follows_count,    :default => 0
   end
 
   create_table "answers" do |t|
@@ -71,6 +72,14 @@ ActiveRecord::Schema.define() do
     t.integer  :last_replied_user_id
     t.timestamps
   end  
+
+  create_table "doings" do |t|
+    t.integer    :user_id
+    t.integer    :venue_id
+    t.text       :detail
+    t.timestamps
+  end
+
 
   create_table "events" do |t|
     t.references :eventable, :polymorphic => true
@@ -181,7 +190,6 @@ ActiveRecord::Schema.define() do
     t.integer  :plan_id
     t.integer  :calling_id
     t.integer  :parent_id
-    
     t.integer  :money
     t.integer  :goods
     t.integer  :time
