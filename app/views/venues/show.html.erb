@@ -65,7 +65,7 @@
       
       <%= form_for @calling,:html=>{:class=>'venue_form'} do |form| %>    
         <%= raw error_explanation_for(@calling) if @calling.errors.present?%>
-        <%= form.hidden_field :action_id,:value => 1%>
+        <%= form.hidden_field :for_what,:value => 'time'%>
         <%= form.hidden_field :venue_id,:value => @venue.id %>
         <%= form.label 'title','行动标题：'%> <%= form.text_field :title, :size => 20, :placeholder => "" %><br/>
         <%= form.label 'total_people','需要人数：'%> <%= form.text_field :total_people, :size => 3, :placeholder => "" %>　

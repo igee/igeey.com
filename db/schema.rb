@@ -26,7 +26,7 @@ ActiveRecord::Schema.define() do
     t.integer    :comments_count,   :default => 0
     t.timestamps
   end
-  
+
   create_table "badges", :force => true do |t|
     t.string  :name,             :limit => 40
     t.string  :slug,             :limit => 40
@@ -52,7 +52,8 @@ ActiveRecord::Schema.define() do
     t.integer  :total_online
     t.integer  :total_people
     t.integer  :total_goods
-    t.string   :title,       :limit => 40   
+    t.string   :title,       :limit => 40
+    t.string   :for_what,    :limit => 40
     t.string   :address
     t.string   :contact
     t.text     :detail
