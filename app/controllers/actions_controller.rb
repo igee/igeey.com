@@ -17,12 +17,12 @@ class ActionsController < ApplicationController
   end
 
   def update
-    @action.update_attributes(params[:action])
+    @action.update_attributes(params[:_action])
     respond_with @action
   end
 
   def create
-    @action = Action.build(params[:action])
+    @action = Action.new(params[:_action])
     @action.user = current_user
     @action.save
     respond_with @action

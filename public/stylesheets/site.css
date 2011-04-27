@@ -7,10 +7,11 @@ body{
 
 body,h1{margin:0}
 
-h3{font-size:17px}
+h2{font-size:23px}
+h3{font-size:18px}
 h4{font-size:15px}
 
-h3,h4,h5,h6{
+h2,h3,h4,h5,h6{
     margin:0.2em 0 0.5em;
     color:#666;
     }

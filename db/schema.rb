@@ -16,6 +16,7 @@ ActiveRecord::Schema.define() do
     t.integer   :user_id
     t.string    :name,        :limit => 40
     t.text      :intro
+    t.text      :method
     t.string    :cover_file_name
   end
 

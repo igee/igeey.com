@@ -19,7 +19,6 @@ Igeey::Application.routes.draw do
   
   match 'public'  => 'site#public'
   match 'followings' => 'site#followings'
-  match 'actions' => 'site#actions'
   match 'unread_comments' => 'site#unread_comments'
   match 'unread_plans' => 'site#unread_plans'
   match 'unread_followers' => 'site#unread_followers'
