@@ -57,7 +57,6 @@ Igeey::Application.routes.draw do
       get  :more_timeline
       post :watching
     end
-    resources :sayings
   end
   
   resources :badges do
@@ -82,6 +81,7 @@ Igeey::Application.routes.draw do
     get   :list     ,:on => :collection
     get   :selector ,:on => :collection
   end
+  
   resources :users do
     collection do
       get   :welcome
@@ -108,9 +108,8 @@ Igeey::Application.routes.draw do
     get :thanks, :on => :collection
   end
   
-  resources :follows
-  resources :topics
-  resources :sayings
+  resources :follows,:photos,:topics,:sayings
+  
   resources :questions do
     resources :answers
   end
@@ -118,7 +117,6 @@ Igeey::Application.routes.draw do
   resources :comments do
     get :more, :on => :collection
   end
-  resources :photos
   
   resources :tags do
     get :name,  :on => :collection
