@@ -1,5 +1,5 @@
 <% @title = '探索'%>
-<h3>爱聚的世界在发生什么？</h3>
+<h3>正在发生...</h3>
 <%= render :partial => '/public/event', :collection => @timeline %>
 <%= link_to('查看更多...',more_public_timeline_path(:page => 2),:class => "timeline_footer",:onclick => 'javascript:more_timeline($(this));return false') %>
 

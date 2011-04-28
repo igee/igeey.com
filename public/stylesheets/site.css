@@ -96,21 +96,12 @@ input:focus{
 
 img{border:none;}
 
-.action_button{
-  display:block;
-  float:left;
-  text-align:center;
-  color:#fff;
-  font-size:16px;
-  width:80px;
-  padding:26px 0;
-  height:22px;
-  margin:8px;
-  background-color:#d75;
-  -webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;
+.action{}
+.action_cover{
+  padding:3px;
+  -webkit-border-radius:3px;-moz-border-radius: 3px;border-radius: 3px;
+  background-color:#bbb;
   }
-
-.action_button:hover{color:#fff;background-color:#e86;}
 
 .gary_button{
     text-align:center;

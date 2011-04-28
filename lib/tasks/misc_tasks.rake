@@ -177,9 +177,9 @@ namespace :misc do
       print(u.save ? '.' : 'x')
     end
     
-    Veune.all.each do |v|
-      u.update_attributes(:photos_count=>u.photos.count,:sayings_count=>u.sayings.count,:callings_count=>u.callings.count,:sayings_count=>u.sayings.count)
-      print(u.save ? '.' : 'x')
+    Venue.all.each do |v|
+      v.update_attributes(:photos_count=>v.photos.count,:sayings_count=>v.sayings.count,:callings_count=>v.callings.count,:sayings_count=>v.sayings.count)
+      print(v.save ? '.' : 'x')
     end
   end
   
