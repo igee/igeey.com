@@ -29,13 +29,3 @@
     <%= render :partial => '/public/event',:collection => @timeline%>
   </div>
 <% end %>
-
-<% content_for :sidebar do %>
-  <% unless @tag.tag_list.blank? %>
-    <div class="box">
-      <%= link_to "全部标签",tags_path,:class => "see_all_link"%>
-      <h4>关联标签</h4>
-      <%= raw tag_list_for(@tag) %>
-    </div>
-  <% end %>
-<% end %>
