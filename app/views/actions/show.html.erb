@@ -6,6 +6,14 @@
   </div>
 </div>
 
+<div style="float:right;margin-top:-50px;">
+<% if logged_in? && current_user.is_following?(@action)%>
+  <%= link_to("不收藏了",follow_path(@action.follows.find_by_user_id(current_user.id)),:method => :delete,:class => 'button')%>
+<% else %>
+  <%= link_to("我要收藏","#{follows_path}?followable_type=#{@action.class.to_s}&followable_id=#{@action.id}",:method => :post,:class => 'button')%>
+<% end %>
+</div>
+
 <div class="box">
   <h4>介绍：</h4>
   <pre class="explanation"><%=@action.intro%></pre>
@@ -17,9 +25,18 @@
 </div>
 
 <% content_for :sidebar do %>
-  <% if logged_in? && current_user.is_following?(@action)%>
-    <%= link_to("不收藏了",follow_path(@action.follows.find_by_user_id(current_user.id)),:method => :delete,:class => 'button')%>
+
+<div class="box">
+	<%= link_to "查看全部",questions_action_path(@action),:class => "see_all_link" if @action.questions[5]%>
+  <h4>实用问答</h4>
+	<%= render :partial => '/public/question',:collection => @action.questions[0..4]%>
+	<% if logged_in? %>
+    <%= form_for @question do |form|%>
+      提问： <%= form.text_field :title,:style => "width:180px;" %> <%= form.submit '添加问题',:style=>"float:right;"%>
+      <%= form.hidden_field :tag_list,:value => @action.tag.name %>
+    <% end %>
   <% else %>
-    <%= link_to("我要收藏","#{follows_path}?followable_type=#{@action.class.to_s}&followable_id=#{@action.id}",:method => :post,:class => 'button')%>
+    <p><%= link_to "立即登录",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%> 即可提问</p>。
   <% end %>
+</div>
 <% end %>

@@ -11,6 +11,7 @@ class ActionsController < ApplicationController
   end
   
   def show
+    @question = Question.new
   end
   
   def edit
@@ -26,6 +27,12 @@ class ActionsController < ApplicationController
     @action.user = current_user
     @action.save
     respond_with @action
+  end
+  
+  def questions
+    @question = Question.new
+    @items = @action.questions.paginate(:page => params[:page], :per_page => 10)
+    render 'see_all'
   end
   
   private
