@@ -12,7 +12,7 @@ h3{font-size:18px}
 h4{font-size:15px}
 
 h2,h3,h4,h5,h6{
-    margin:0.2em 0 0.5em;
+    margin:0.2em 0 0.4em;
     color:#666;
     }
     
@@ -100,7 +100,7 @@ img{border:none;}
 .action_cover{
   padding:3px;
   -webkit-border-radius:3px;-moz-border-radius: 3px;border-radius: 3px;
-  background-color:#bbb;
+  background-color:#ccc;
   }
 
 .gary_button{
@@ -118,21 +118,6 @@ img{border:none;}
     cursor:pointer;
 }
 .gary_button:hover{color:#fff;background-color:#ff8f00;border:1px solid #ee7f00}
-
-.big_button{
-    text-align:center;
-    margin:5px;
-    color:white;
-    font-size:17px;
-    font-family:sans-serif;
-    font-weight:bold;
-    background-color:#ff8f00;
-    padding:8px 24px;
-    border:none;
-    -webkit-border-radius:6px;-moz-border-radius:6px;border-radius: 6px;
-    cursor:pointer;
-    line-height:42px
-}
 
 .calling_status{
   float:left;
@@ -212,7 +197,7 @@ button,.button{
     font-size:17px;
     font-family:sans-serif;
     font-weight:bold;
-    background-color:#ff8f00;
+    background-color:#ffbf44;
     padding:8px 24px;
     border:none;
     -webkit-border-radius:6px;-moz-border-radius:6px;border-radius: 6px;

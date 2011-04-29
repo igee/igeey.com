@@ -12,6 +12,7 @@ class ActionsController < ApplicationController
   
   def show
     @question = Question.new
+    @timeline = @action.taggings.where(['taggable_type != ?','Question']).map(&:taggable)
   end
   
   def edit

@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   has_many :follows,        :as => :followable, :dependent => :destroy
   has_many :followers,      :through => :follows, :source => :user
   has_many :sayings,        :dependent => :destroy
+  has_many :doings,         :dependent => :destroy
   has_many :syncs,          :dependent => :destroy
   has_many :notifications,  :dependent => :destroy
   has_many :taggings,       :dependent => :destroy

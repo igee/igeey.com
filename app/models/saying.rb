@@ -12,7 +12,8 @@ class Saying < ActiveRecord::Base
   default_scope :order => 'created_at DESC'
   
   validates :content,:length => { :within => 1..140,:message => '限制字数在140字以内' }
-
+  validates :user_id,:venue_id,:action_id, :presence   => true
+  
   def self.tag_list
     Tagging.where(:taggable_type => self.to_s).limit(5)
   end

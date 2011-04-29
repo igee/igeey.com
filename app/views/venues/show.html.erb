@@ -55,14 +55,17 @@
         <% end %>
         
         <%= form_for @doing,:html => {:class => "venue_form" } do |form| %>
+          <%= form.hidden_field :venue_id ,:value => @venue.id %>
+          <%= form.hidden_field :action_id  %>
+          <%= form.hidden_field :tag_list %>
           <p id="action_descript">
             从你收藏的行动里选择：
           </p>
           <p>
-          <% current_user.followings.where(:followable_type => 'Action').map(&:followable).each do |a|%>
-            <%= link_to(image_tag(a.cover.url(),:title => a.name,:class=>"action_cover"),'',:alt => a.name,:class => "action")%>
+          <% current_user.followings.where(:followable_type => 'Action').map(&:followable).each do |action|%>
+            <%= link_to(image_tag(action.cover.url(),:title => action.name,:class=>"action_cover"),action_path(action),:alt => action.name,:class => "action",'data-action-id' => action.id)%>
           <% end %>
-            <%= form.text_area :detail,:placeholder => '你怎么做的？',:style=>'display:none'%>
+            <%= form.text_area :detail,:placeholder => '你要怎么做？',:style=>'display:none'%>
           </p>
           <%= form.submit '确 定',:class => "gary_button"%>
         <% end %>
@@ -214,7 +217,9 @@
         $('.action').hide();
         $(this).show();
         $('#doing_detail').show();
-        $('#action_descript').html('我在<%=@venue.name%>完成了 <a href="' + $(this).attr('href') + '">' + $(this).attr('alt') + '</a> :');
+        $('#action_descript').html('我要为<%= @venue.name %>做 <a href="' + $(this).attr('href') + '">' + $(this).attr('alt') + '</a> :');
+        $('#doing_tag_list').attr('value',$(this).attr('alt'));
+        $('#doing_action_id').attr('value',$(this).attr('data-action-id'));
         return false;
         })
       $(".tag_list").each(function(index,element){jQuery(element).tag_cloud();})

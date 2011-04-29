@@ -76,7 +76,11 @@ ActiveRecord::Schema.define() do
   create_table "doings" do |t|
     t.integer    :user_id
     t.integer    :venue_id
+    t.integer    :action_id
     t.text       :detail
+    t.integer    :comments_count,   :default => 0
+    t.datetime   :last_replied_at
+    t.integer    :last_replied_user_id
     t.timestamps
   end
 
@@ -223,6 +227,7 @@ ActiveRecord::Schema.define() do
     t.integer  :plans_count,               :default => 0
     t.integer  :records_count,             :default => 0
     t.integer  :photos_count,              :default => 0
+    t.integer  :doings_count,              :default => 0
     t.integer  :sayings_count,             :default => 0
     t.integer  :topics_count,              :default => 0
     t.string   :remember_token,            :limit => 40
@@ -242,10 +247,10 @@ ActiveRecord::Schema.define() do
   end
   
   create_table "venues", :force => true do |t|
-    t.string  :name,         :limit => 40
+    t.string  :name,           :limit => 40
     t.text    :intro
-    t.string  :category,     :limit => 40
-    t.string  :custom_category,     :limit => 40
+    t.string  :category,       :limit => 40
+    t.string  :custom_category,:limit => 40
     t.integer :geo_id
     t.integer :creator_id
     t.integer :old_id
@@ -255,6 +260,7 @@ ActiveRecord::Schema.define() do
     t.string  :address
     t.string  :contact
     t.string  :cover_file_name
+    t.integer :doings_count,  :default => 0
     t.integer :follows_count, :default => 0
     t.integer :photos_count,  :default => 0
     t.integer :sayings_count, :default => 0
