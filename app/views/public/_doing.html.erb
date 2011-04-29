@@ -11,7 +11,7 @@
       <%= raw(['users','venues'].include?(controller_name) ? '的行动：' : "#{link_to venue.name,venue} 有了新行动：") %>
 
     </span>
-    <pre>要做 <%= link_to doing.action.name,action_path(doing.action)%> ：<%= doing.detail %></pre>
+    <pre>我要为 <%= link_to(venue.name,venue_path(venue))%> 做 <%= link_to doing.action.name,action_path(doing.action)%> ：<%= doing.detail %></pre>
     
     <div class="event_info">
       <span><%= raw "by #{link_to user.login,user}" unless ['users','venues'].include?(controller_name) %></span>

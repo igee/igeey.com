@@ -33,7 +33,8 @@
           <%= text_field_tag 'keywords', @keywords,:placeholder => '搜索爱聚的地点、用户' %><%= submit_tag '',:id => "magnifier"%>
         <% end %>
         <% if logged_in? %>
-          <%= link_to current_user.login,user_path(current_user)%> | 
+          <%= link_to current_user.login,user_path(current_user)%> |
+          <%= link_to raw("提醒(#{current_user.notifications_count})"),notifications_path,:style => (current_user.notifications_count.zero? ? 'color:#fff' : "color:#fd7") %></span> |
           <%= link_to '设置',"#{setting_path}?back_path=#{request.path unless controller_name == 'site' && action_name == 'index'}"%> | 
           <%= link_to "退出",logout_path %>
         <% else %>

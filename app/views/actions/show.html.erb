@@ -1,5 +1,5 @@
 <% @title = @action.name%>
-<div class="box">
+<div class="box" style="padding-bottom:10px">
   <%= image_tag(@action.cover.url,:style=>'float:left;margin:5px',:class => 'action_cover')%>
   <div style="margin-left:90px;">
     <div style="float:right">
@@ -11,10 +11,13 @@
   </div>
 </div>
 
-<div class="box">
-  <h4>行动方法： </h4>
+<div style="border:1px solid #ddd;border-top-color:#eee;padding:5px 25px 10px;margin:0 60px 0;">
+  <h4 style="text-align:center;border-bottom:1px solid #eee;padding:5px;color:#bbb;font-size:13px "><%= image_tag "/images/icon/idea.gif",:class => 'icon' %> 行动方法</h4>
   <pre class="explanation"><%=@action.method%></pre>
 </div>
+<div style="background:url('/images/shadow.png') no-repeat;height:10px;margin:0 60px 20px">
+</div>
+
 
 <div class="box">
   <h4>大家的行动：</h4>

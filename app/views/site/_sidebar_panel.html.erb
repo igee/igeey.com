@@ -8,10 +8,6 @@
       <div style="padding:10px 5px;">
         <%= image_tag current_user.avatar.url(:_48x48) %>
       </div>      
-    </div>    
-
-    <div class="sidebar_panel" id="notices">
-      <%= link_to ("您有#{current_user.notifications_count}个新提醒，去看看?",'/notifications') if current_user.notifications_count>0 %>
     </div>
     
     <% @venues = current_user.venue_followings.limit(12).map(&:followable)%>
