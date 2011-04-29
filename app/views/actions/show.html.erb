@@ -16,24 +16,6 @@
   <pre class="explanation"><%=@action.method%></pre>
 </div>
 
-
-<div class="box">
-  <%= link_to "查看全部",questions_action_path(@action),:class => "see_all_link" if @action.questions[5]%>
-  <h4>行动问答：</h4>
-  <%= render :partial => '/public/question',:collection => @action.questions[0..4]%>
-  <% if logged_in? %>
-    <%= form_for @question do |form|%>
-      <p>
-      <%= form.text_field :title,:style => "width:520px;",:placeholder => "我要提问..." %>
-      <%= form.submit '添加问题'%>
-      <%= form.hidden_field :tag_list,:value => @action.tag.name %>
-      </p>
-    <% end %>
-  <% else %>
-    <p><%= link_to "立即登录",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%> 即可提问。</p>
-  <% end %>
-</div>
-
 <div class="box">
   <h4>大家的行动：</h4>
   <span><%= "暂时还没有关于#{@action.name}的行动" if @timeline.empty?%></span>
@@ -49,4 +31,22 @@
   <% end %>
     <p class="explanation" style="padding:5px;text-align:left">收藏行动之后，你就可以在你关注的地点上直接使用你收藏的行动。</p>
   </div>
+
+  <div class="box">
+    <%= link_to "查看全部",questions_action_path(@action),:class => "see_all_link" if @action.questions[5]%>
+    <h4>行动问答：</h4>
+    <%= render :partial => 'question',:collection => @action.questions[0..4]%>
+    <% if logged_in? %>
+      <%= form_for @question do |form|%>
+        <p>
+        <%= form.text_field :title,:style => "width:240px;",:placeholder => "我要提问..." %>
+        <%= form.submit '添加问题', :style => "float:right;margin-top:5px;"%>
+        <%= form.hidden_field :tag_list,:value => @action.tag.name %>
+        </p>
+      <% end %>
+    <% else %>
+      <p><%= link_to "立即登录",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%> 即可提问。</p>
+    <% end %>
+  </div>
+
 <% end %>
