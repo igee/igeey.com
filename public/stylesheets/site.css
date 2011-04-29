@@ -243,13 +243,13 @@ img{border:none;}
 
 
 /* Elements Setting */
+.action_box{width:280px;margin:5px 20px 5px 5px;float:left}
 
 .action_cover{
   padding:3px;
   -webkit-border-radius:3px;-moz-border-radius: 3px;border-radius: 3px;
   background-color:#ccc;
   }
-
 
 .clear{clear:both}
 
