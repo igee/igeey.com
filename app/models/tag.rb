@@ -1,5 +1,6 @@
 class Tag < ::ActiveRecord::Base
   has_many :taggings, :dependent => :destroy
+  has_one  :action
   default_scope :order => 'taggings_count DESC'
   
   validates_presence_of :name

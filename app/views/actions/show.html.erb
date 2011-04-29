@@ -12,7 +12,7 @@
 </div>
 
 <div class="box">
-  <h4>如何行动： </h4>
+  <h4>行动方法： </h4>
   <pre class="explanation"><%=@action.method%></pre>
 </div>
 
@@ -36,6 +36,7 @@
 
 <div class="box">
   <h4>大家的行动：</h4>
+  <span><%= "暂时还没有关于#{@action.name}的行动" if @timeline.empty?%></span>
   <%= render :partial => "/public/item",:collection => @timeline%>
 </div>
 
@@ -48,5 +49,4 @@
   <% end %>
     <p class="explanation" style="padding:5px;text-align:left">收藏行动之后，你就可以在你关注的地点上直接使用你收藏的行动。</p>
   </div>
-
 <% end %>

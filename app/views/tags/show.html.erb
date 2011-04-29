@@ -1,27 +1,7 @@
 <% @title = "标签：#{@tag.name}"%>
 <div class="box">
   <h2 style="background-color:#89d;color:#fff;margin:5px 0;padding:4px 16px;-moz-border-radius:5px;-webkit-border-radius:5px;display:inline;line-height:38px;}"><%= @tag.name%></h2>
-  <%= link_to '编辑标签',edit_tag_path(@tag) if logged_in? && current_user.is_admin?%>
-  <% unless @tag.intro.blank?%>
-    <pre class="explanation"><%= @tag.intro %></pre>
-  <% end %>
 </div>
-
-  
-<div class="box">
-  <h4>和“<%= @tag.name%>”有关的问题：</h4>
-  <%= render :partial => '/public/question',:collection => @questions%>
-  <br/>
-  <% if logged_in? %>
-    <%= form_for @question do |form|%>
-      提问： <%= form.text_field :title,:style => "width:480px;",:placeholder => "关于“#{@tag.name}”,你有什么问题么？" %> <%= form.submit '添加问题'%>
-      <%= form.hidden_field :tag_list,:value => @tag.name %>
-    <% end %>
-  <% else %>
-    <p><%= link_to "立即登录",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%> 即可提问。</p>
-  <% end %>
-</div>
-
 
 <% unless @timeline.blank?%>
   <div class="box">
