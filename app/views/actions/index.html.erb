@@ -1,3 +1,4 @@
+<h3>所有行动：</h3>
 <% @actions.each do |action|%>
   <div class="action_box">
     <%= link_to(image_tag(action.cover.url(),:title => action.name,:class=>"action_cover"),action_path(action),:alt => action.name,:class => "action",'data-action-id' => action.id)%>

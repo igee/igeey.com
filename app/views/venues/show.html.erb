@@ -55,14 +55,15 @@
         <% end %>
         
         <%= form_for @doing,:html => {:class => "venue_form" } do |form| %>
+          <% @actions = current_user.followings.where(:followable_type => 'Action').map(&:followable)%>
           <%= form.hidden_field :venue_id ,:value => @venue.id %>
           <%= form.hidden_field :action_id  %>
           <%= form.hidden_field :tag_list %>
           <p id="action_descript">
-            从你收藏的行动里选择：
+            <%= @actions.empty? ? raw("你还没有收藏任何行动，先去 #{link_to('找找看',actions_path)}？") :  "从你收藏的行动里选择：" %>
           </p>
           <p>
-          <% current_user.followings.where(:followable_type => 'Action').map(&:followable).each do |action|%>
+          <% @actions.each do |action|%>
             <%= link_to(image_tag(action.cover.url(),:title => action.name,:class=>"action_cover"),action_path(action),:alt => action.name,:class => "action",'data-action-id' => action.id)%>
           <% end %>
             <%= form.text_area :detail,:placeholder => '你要怎么做？',:style=>'display:none'%>
@@ -106,7 +107,6 @@
       <li><%= link_to raw("#{image_tag('/images/icon/photo.png',:class => 'icon')} 上传照片"),'#new_photo'%></li>
       <li><%= link_to raw("#{image_tag('/images/icon/text.png',:class => 'icon')} 写故事"),'#new_topic'%></li>
       <li><%= link_to raw("#{image_tag('/images/icon/speaker.png',:class => 'icon')} 发起召集"),'#new_calling'%></li>
-      
     </ul>
   </div>
 </div>
@@ -174,6 +174,15 @@
       infowindow = new google.maps.InfoWindow;     
     }; //initialize_end
     
+    function reset_action(){
+        $('#doing_detail').hide();
+        $('.action').show();
+        $('#action_descript').html('从你收藏的行动里选择：');
+        $('#doing_tag_list').attr('value','');
+        $('#doing_action_id').attr('value','');
+        return false;
+        };
+    
     $(document).ready(function(){
       <% if logged_in? %>  
         $("#formTabs li a").click(function(){ 
@@ -217,11 +226,11 @@
         $('.action').hide();
         $(this).show();
         $('#doing_detail').show();
-        $('#action_descript').html('我要为<%= @venue.name %>做 <a href="' + $(this).attr('href') + '">' + $(this).attr('alt') + '</a> :');
+        $('#action_descript').html('我要为<%= @venue.name %>做 <a href="' + $(this).attr('href') + '">' + $(this).attr('alt') + '</a> :  <a href="" onclick="javascript:reset_action();return false" style="float:right">重新选择？</a>');
         $('#doing_tag_list').attr('value',$(this).attr('alt'));
         $('#doing_action_id').attr('value',$(this).attr('data-action-id'));
         return false;
-        })
+        });
       $(".tag_list").each(function(index,element){jQuery(element).tag_cloud();})
       $('.suggested_tags a').click(function(){
         var dom =$(this).parent().prevAll(".tag_list");
