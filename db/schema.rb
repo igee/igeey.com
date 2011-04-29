@@ -68,6 +68,7 @@ ActiveRecord::Schema.define() do
     t.string   :cached_tag_list,  :default => ''
     t.boolean  :has_new_plan,     :default => false
     t.integer  :comments_count,   :default => 0
+    t.integer  :votes_count,      :default => 0
     t.datetime :last_replied_at
     t.integer  :last_replied_user_id
     t.timestamps
@@ -81,6 +82,7 @@ ActiveRecord::Schema.define() do
     t.integer    :comments_count,   :default => 0
     t.datetime   :last_replied_at
     t.integer    :last_replied_user_id
+    t.integer    :votes_count,      :default => 0
     t.timestamps
   end
 
@@ -176,6 +178,7 @@ ActiveRecord::Schema.define() do
     t.integer  :votes_count,      :default => 0
     t.datetime :last_replied_at
     t.integer  :last_replied_user_id
+    t.integer  :votes_count,      :default => 0
     t.timestamps
   end
   
@@ -254,20 +257,20 @@ ActiveRecord::Schema.define() do
     t.integer :geo_id
     t.integer :creator_id
     t.integer :old_id
-    t.string  :latitude,     :limit => 40
-    t.string  :longitude,    :limit => 40
-    t.integer :zoom_level,   :default => 13
+    t.string  :latitude,       :limit => 40
+    t.string  :longitude,      :limit => 40
+    t.integer :zoom_level,     :default => 13
     t.string  :address
     t.string  :contact
     t.string  :cover_file_name
-    t.integer :doings_count,  :default => 0
-    t.integer :follows_count, :default => 0
-    t.integer :photos_count,  :default => 0
-    t.integer :sayings_count, :default => 0
-    t.integer :records_count, :default => 0
-    t.integer :callings_count,:default => 0
-    t.integer :topics_count,  :default => 0
-    t.integer :watch_count,   :default => 0
+    t.integer :doings_count,   :default => 0
+    t.integer :follows_count,  :default => 0
+    t.integer :photos_count,   :default => 0
+    t.integer :sayings_count,  :default => 0
+    t.integer :records_count,  :default => 0
+    t.integer :callings_count, :default => 0
+    t.integer :topics_count,   :default => 0
+    t.integer :watch_count,    :default => 0
     t.timestamps
   end
   
@@ -287,6 +290,7 @@ ActiveRecord::Schema.define() do
     t.text     :content
     t.string   :cached_tag_list,  :default => ''
     t.integer  :comments_count,   :default => 0
+    t.integer  :votes_count,      :default => 0
     t.datetime :last_replied_at
     t.integer  :last_replied_user_id
     t.timestamps
@@ -318,6 +322,7 @@ ActiveRecord::Schema.define() do
     t.integer  :comments_count,   :default => 0
     t.datetime :last_replied_at
     t.integer  :last_replied_user_id
+    t.integer  :votes_count,      :default => 0
     t.timestamps
   end
   
