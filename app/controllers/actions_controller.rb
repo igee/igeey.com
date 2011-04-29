@@ -4,6 +4,7 @@ class ActionsController < ApplicationController
   respond_to :html,:json
   
   def index
+    @actions = Action.all
   end
   
   def new
