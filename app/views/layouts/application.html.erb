@@ -23,24 +23,26 @@
     <div class="container">
       <%= image_tag '/images/logo.png',:id => "logo"%>
       <div id="nav">
-      <ul id="nav_links" style="float:left">
-        <li><%= link_to '首页',root_path,:class => "#{'selected' unless ['users','venues'].include?(controller_name) && action_name == 'index'}"%></li>
-        <li><%= link_to "行动",actions_path,:title => '行动' %></li>
-        <li><%= link_to "探索",public_path,:title => '探索',:id => "public"%></li>
-      </ul>
-      
-        <%= form_tag search_path,:id => 'search_box',:method => :get do%>
-          <%= text_field_tag 'keywords', @keywords,:placeholder => '搜索爱聚的地点、用户' %><%= submit_tag '',:id => "magnifier"%>
-        <% end %>
-        <% if logged_in? %>
-          <%= link_to current_user.login,user_path(current_user)%> |
-          <%= link_to raw("提醒(#{current_user.notifications_count})"),notifications_path,:style => (current_user.notifications_count.zero? ? 'color:#fff' : "color:#fd7") %></span> |
-          <%= link_to '设置',"#{setting_path}?back_path=#{request.path unless controller_name == 'site' && action_name == 'index'}"%> | 
-          <%= link_to "退出",logout_path %>
-        <% else %>
-          <%= link_to "登录",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%> |
-          <%= link_to "注册",signup_path ,:class => "open_dialog",:title => '注册',:id => "signup"%>
-        <% end %>
+        <ul id="nav_links" style="float:left">
+          <li><%= link_to '首页',root_path,:class => "#{'selected' if request.path == '/'}"%></li>
+          <li><%= link_to "行动",actions_path,:title => '行动' ,:class => "#{'selected' if controller_name == 'actions'}"%></li>
+          <li><%= link_to "探索",public_path,:title => '探索',:class => "#{'selected' if request.path == '/public'}"%></li>
+        </ul>
+        
+          <%= form_tag search_path,:id => 'search_box',:method => :get do%>
+            <%= text_field_tag 'keywords', @keywords,:placeholder => '搜索爱聚的地点、用户' %><%= submit_tag '',:id => "magnifier"%>
+          <% end %>
+        <div id="status">
+          <% if logged_in? %>
+            <%= link_to current_user.login,user_path(current_user)%> |
+            <%= link_to raw("提醒(#{current_user.notifications_count})"),notifications_path,:style => (current_user.notifications_count.zero? ? 'color:#fff' : "color:#fd7") %></span> |
+            <%= link_to '设置',"#{setting_path}?back_path=#{request.path unless controller_name == 'site' && action_name == 'index'}"%> | 
+            <%= link_to "退出",logout_path %>
+          <% else %>
+            <%= link_to "登录",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%> |
+            <%= link_to "注册",signup_path ,:class => "open_dialog",:title => '注册',:id => "signup"%>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
@@ -102,7 +104,6 @@
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script>
-<script src="http://exp.jiankongbao.com/loadtrace.php?host_id=6336&style=1" type="text/javascript"></script>
 <% end %>
 </body>
 </html>
