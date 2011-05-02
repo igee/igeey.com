@@ -94,11 +94,15 @@ input:focus{
   background-color:#ffffe0;
   outline:none;
   border:1px solid #fb9;
-  color:#666
+  color:#666;
   }
 
 img{border:none;}
 
+table{
+  border-collapse:separate;
+  border-spacing:0;
+}
 
 /* Layout Setting */
 
@@ -126,10 +130,9 @@ img{border:none;}
   }
     
 #main{
-  display:table-cell;
   background-color:#fff;
   vertical-align:top;
-  width:618px;
+  width:619px;
   padding:15px 20px;
   border:1px solid #f3f0e6;
   border-right:none;
@@ -140,7 +143,6 @@ img{border:none;}
 }
 
 #sidebar{
-  display:table-cell;
   vertical-align:top;
   background-color:#e4f3fb;
   width:248px;
@@ -154,13 +156,11 @@ img{border:none;}
 
 
 #logo{
-  padding:0px 5px 10px;
   color:#fff;
   position:absolute;
   display:inline;
   font-size:24px;
   font-weight:bold;
-  margin-top:4px;
   border:none;
   }
 

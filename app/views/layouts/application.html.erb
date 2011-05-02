@@ -21,7 +21,7 @@
   <div id="get_badges"></div>
   <div id="header">
     <div class="container">
-      <%= image_tag '/images/logo.png'%>
+      <%= image_tag '/images/logo.png',:id => "logo"%>
       <div id="nav">
       <ul id="nav_links" style="float:left">
         <li><%= link_to '首页',root_path,:class => "#{'selected' unless ['users','venues'].include?(controller_name) && action_name == 'index'}"%></li>
@@ -46,8 +46,9 @@
   </div>
   
   <div id="content">
-    <div class="container">
-      <div id="main">
+    <table class="container">
+    <tr>
+      <td id="main">
       <% if flash[:dialog] -%>
         <div id="dialog_flash"><%= raw flash[:dialog] %></div>
       <% end -%>
@@ -55,14 +56,12 @@
         <p class="error"><%= flash[:error] %></p>
       <% end -%>
         <%= yield %>
-      </div>
-      
-      <div id="sidebar">
+      </td>
+      <td id="sidebar">
         <%= yield :sidebar %>
-      </div>
-      
-      <div class="clear"></div>
-    </div>
+      </td>
+    </tr>
+    </table>
   </div>
 
   <div id="footer">
