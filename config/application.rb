@@ -34,6 +34,8 @@ module Igeey
                                       :notification_observer,
                                       :tagging_observer,
                                       :action_observer,
+                                      :answer_observer,
+                                      :question_observer,
                                       ]
     
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.

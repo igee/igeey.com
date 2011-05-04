@@ -9,3 +9,19 @@
     <%= render :partial => '/public/event',:collection => @timeline%>
   </div>
 <% end %>
+
+<div class="box">
+  <h4>行动问答：</h4>
+  <%= render :partial => '/public/question',:collection => @questions%>
+  <% if logged_in? %>
+    <%= form_for @question do |form|%>
+      <p>
+      <%= form.text_field :title,:style => "width:480px;",:placeholder => "我要提问..." %>
+      <%= form.submit '添加问题', :style => "float:right;margin-top:5px;"%>
+      <%= form.hidden_field :tag_list,:value => @tag.name %>
+      </p>
+    <% end %>
+  <% else %>
+    <p><%= link_to "立即登录",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%> 即可提问。</p>
+  <% end %>
+</div>

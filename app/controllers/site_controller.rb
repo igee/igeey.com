@@ -1,13 +1,5 @@
 class SiteController < ApplicationController
-  before_filter :login_required, :except=> [:index,:faq,:guide,:about,:report,:public,:more_public_timeline]  
-  def index
-    if logged_in?
-      @following_venues_id_list = current_user.venue_followings.map(&:followable_id)
-      @timeline = Event.where(:venue_id => @following_venues_id_list).limit(10)
-    else
-      @timeline = Event.limit(10)
-    end
-  end
+  before_filter :login_required, :except=> [:faq,:guide,:about,:report,:public,:more_public_timeline]  
   
   def more_timeline
     @following_venues_id_list = current_user.venue_followings.map(&:followable_id)

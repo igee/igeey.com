@@ -187,6 +187,7 @@ ActiveRecord::Schema.define() do
     t.string     :title
     t.text       :detail
     t.integer    :answers_count,    :default => 0
+    t.datetime   :last_answered_at
     t.timestamps
   end
   
