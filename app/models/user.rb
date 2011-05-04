@@ -157,7 +157,7 @@ class User < ActiveRecord::Base
   end
   
   def tag_list
-    self.tags.limit(10).map(&:name)
+    self.followings.where(:followable_type => 'Tag').map(&:followable).map(&:name)
   end
   
   def has_new_badge?
