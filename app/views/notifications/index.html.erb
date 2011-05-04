@@ -15,7 +15,7 @@
 		<% when "Calling"%>
 			您在<%= nn.venue.name%>的召集 <%= link_to nn.title, n, :method=>'delete'%> 有了新的回复
 		<% when "User"%>
-			<%= link_to nn.login, n, :method=>'delete', :class=>'delete_notification', 'data-id'=>nn.id, 'data-type'=>nn.class.to_s%> 关注您了
+			<%= link_to nn.login, n, :method=>'delete', :class=>'delete_notification', :'data-id'=>nn.id, :'data-type'=>nn.class.to_s%> 关注您了
 		<% when "Question"%>
 			问题 <%= link_to nn.title, n, :method=>'delete'%> 有了新的回答
 		<%end%>
