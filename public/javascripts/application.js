@@ -34,8 +34,8 @@ function more_timeline(dom){
 };
 
 function redirect_clear(id, type){
-    $.post('/notifications/redirect_clear',{'id':id,'type':type});
-    };
+  $.post('/notifications/redirect_clear',{'id':id,'type':type});
+  };
 
 // bindings
 $(document).ready(function(){
