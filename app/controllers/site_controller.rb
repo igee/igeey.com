@@ -5,6 +5,7 @@ class SiteController < ApplicationController
     if logged_in?
       @questions = Question.limit(10)
       @callings = Calling.limit(6)
+      @tags = Tag.limit(6)
     else
       render :welcome
     end

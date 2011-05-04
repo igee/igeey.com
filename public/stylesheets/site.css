@@ -708,18 +708,21 @@ input.todo:hover{
 
 .with_calendar{width:77px}
 
-a.tag{
-  font-size:11px;
-  background-color:#7be;
-  color:#fff;
-  padding:1px 5px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius:3px;
+.tag_info{
+  float:left;
+  width:196px;
+  height:108px;
+  margin:6px 10px 6px 0;
   }
-.tag:hover{
-  background-color:#8cf;
+
+a.tag_name{
+  background-color:#8ad;
+  padding: 2px 6px;
+  margin: 2px 8px 2px 0;	
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
   color:#fff;
+  font-size:13px;
   }
 
 .tag_list{display:inline;width:86px}
@@ -728,28 +731,29 @@ a.tag{
   margin: 4px 0;
   padding: 0;
   display:inline;
-  font-size:13px;
   }
 
 .tag_cloud li{
   float:left;
-  background-color:#7be;
+  background-color:#8ad;
   list-style-type: none;
   padding: 0px 6px;
   margin: 2px 8px 2px 0;	
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  color:#fff;
+  font-size:13px;
   }
 
 .tag_cloud li a{color:#fff;}
   
 .tag_cloud li img{
-  margin-bottom:-2px;
+  margin-bottom:-1px;
   cursor: pointer;
   }
   
-.tag_cloud li:hover{
-  background-color: #f30;
+.tag_cloud li:hover,a.tag_name:hover{
+  background-color: #9be;
   }
 
 .filter{color:#6ad;}

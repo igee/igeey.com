@@ -95,7 +95,7 @@
           <%= form.text_area :detail,:placeholder => '请说明你发起召集的原因、响应你的召集需要做什么。'%>
           <%= form.label :tag_list,'添加标签：',:style=>"float:left"%>
           <%= form.text_field :tag_list,:class => 'tag_list' %><br/>
-          <span class="suggested_tags">常用标签：<%= raw(tag_links_for(Calling))%></span>
+          <span class="suggested_tags">常用标签：<%= raw(tag_links_for(Calling.tag_list))%></span>
           <br/>
           <%= form.submit '确 定',:class => "gary_button"%>
         <% end %>

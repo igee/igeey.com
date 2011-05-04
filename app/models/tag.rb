@@ -37,7 +37,7 @@ class Tag < ::ActiveRecord::Base
   end
   
   def self.tag_list
-    Tag.limit(40).shuffle[0..19].map(&:name)
+    Tag.limit(30).map(&:name)
   end
   
   class << self

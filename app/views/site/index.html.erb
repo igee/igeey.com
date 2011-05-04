@@ -1,4 +1,24 @@
 <% @title = '首页'%>
+<div class="box">
+  <h4>热门话题：</h4>
+  <% @tags.each do |tag|%>
+    <div class="tag_info">
+      <div style="float:right;">
+        <span><%= tag.taggings_count %>次使用</span>
+      </div>
+      <%= link_to tag.name,tag_path(tag.name),:class=>'tag_name'%>
+      <p>
+      <% if tagging = tag.taggings.where(:taggable_type => 'Question').first%>
+        <span>问题 | <%= link_to tagging.taggable.title,question_path(tagging.taggable)%></span>
+      <% end %>
+      <% if tagging = tag.taggings.where(:taggable_type => 'Calling').first%>
+        <br/>
+        <span>行动 | <%= link_to tagging.taggable.title,calling_path(tagging.taggable)%></span></span>
+      <% end %>
+      </p>
+    </div>
+  <% end %>
+  </div>
 <h3>爱聚的世界在发生..</h3>
 <div id="tabContaier">
   <ul>
@@ -24,4 +44,5 @@
     <h4>热门话题：</h4>
     <%= raw tag_list_for(Tag)%>
   </div>
+</div>
 <% end %>
