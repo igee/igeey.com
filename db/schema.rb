@@ -301,6 +301,7 @@ ActiveRecord::Schema.define() do
     t.string   :name
     t.text     :intro
     t.integer  :taggings_count,   :default => 0
+    t.integer  :follows_count,    :default => 0
     t.timestamps
   end
 

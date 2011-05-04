@@ -11,9 +11,9 @@
   </h3>
   <pre><%= @question.detail %></pre>
   <p>
-    <%= raw tag_links_for(@question.tag_list)%>
     <span>来自 <%= link_to @question.user.login,@question.user %> 的提问 </span>
     <span class="timeago"><%= @question.created_at %></span>
+    <span>标签：<%= raw tag_links_for(@question.tag_list)%></span>
   </p>
   
 </div>
@@ -39,3 +39,7 @@
       <p><%= link_to "立即登录",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%> 即可回答。</p>
   <% end %>
 </div>
+
+<% content_for :sidebar do %>
+
+<% end %>
