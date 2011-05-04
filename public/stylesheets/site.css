@@ -710,9 +710,9 @@ input.todo:hover{
 
 .tag_info{
   float:left;
-  width:196px;
+  width:290px;
   height:108px;
-  margin:6px 10px 6px 0;
+  margin:6px 14px 6px 2px;
   }
 
 a.tag_name{

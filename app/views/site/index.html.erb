@@ -1,10 +1,10 @@
 <% @title = '首页'%>
 <div class="box">
-  <h4>热门话题：</h4>
+  <h3>热门话题：</h3>
   <% @tags.each do |tag|%>
     <div class="tag_info">
       <div style="float:right;">
-        <span><%= tag.taggings_count %>次使用</span>
+        <span><%= tag.taggings_count %>次使用 | <%= tag.follows_count %>次收藏</span>
       </div>
       <%= link_to tag.name,tag_path(tag.name),:class=>'tag_name'%>
       <p>
@@ -37,12 +37,8 @@
 
 <% content_for :sidebar do %>
 <div class="box">
-    <h4>我关注的话题：</h4>
+  <h4>我关注的话题：</h4>
     <%= raw tag_list_for(current_user)%>
-  </div>
-  <div class="box">
-    <h4>热门话题：</h4>
-    <%= raw tag_list_for(Tag)%>
   </div>
 </div>
 <% end %>
