@@ -25,8 +25,7 @@
       <div id="nav">
         <ul id="nav_links" style="float:left">
           <li><%= link_to '首页',root_path,:class => "#{'selected' if request.path == '/'}"%></li>
-          <li><%= link_to "行动",actions_path,:title => '行动' ,:class => "#{'selected' if controller_name == 'actions'}"%></li>
-					<li><%= link_to "地点",venues_path,:title => '地点', :class => "#{'selected' if request.path == '/venues'}"%></li>
+          <li><%= link_to "地点",venues_path,:title => '地点', :class => "#{'selected' if request.path == '/venues'}"%></li>
           <li><%= link_to "探索",public_path,:title => '探索',:class => "#{'selected' if request.path == '/public'}"%></li>
         </ul>
         
