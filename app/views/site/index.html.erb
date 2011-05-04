@@ -1,0 +1,14 @@
+<% @title = '首页'%>
+<h3>爱聚的世界在发生..</h3>
+<div id="tabContaier">
+  <ul>
+    <li><%= link_to '正在解决..','#questions',:style=>"width:72px"%></li>
+    <li><%= link_to '正在行动..','#callings',:style=>"width:72px"%></li>
+  </ul>
+  <div id="questions" class="tabContents">
+    <%= render :partial => '/public/question',:collection => @questions %>
+  </div>
+  <div id="callings" class="tabContents">
+    <%= render :partial => '/public/calling',:collection => @callings %>
+  </div>
+</div>

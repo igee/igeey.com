@@ -1,5 +1,10 @@
 class SiteController < ApplicationController
-  before_filter :login_required, :except=> [:faq,:guide,:about,:report,:public,:more_public_timeline]  
+  before_filter :login_required, :except=> [:index,:faq,:guide,:about,:report,:public,:more_public_timeline]  
+  
+  def index
+    @questions = Question.limit(6)
+    @callings = Calling.limit(6)
+  end
   
   def more_timeline
     @following_venues_id_list = current_user.venue_followings.map(&:followable_id)

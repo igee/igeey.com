@@ -1,6 +1,6 @@
 <div class="event_box">
   <p>
-    <%= link_to question.title,question_path(question)%>
+    <b><%= link_to question.title,question_path(question)%></b>
     <span>
     <% if question.answers_count.zero? %>
       还没有人回答。
