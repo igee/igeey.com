@@ -2,8 +2,12 @@ class SiteController < ApplicationController
   before_filter :login_required, :except=> [:index,:faq,:guide,:about,:report,:public,:more_public_timeline]  
   
   def index
-    @questions = Question.limit(6)
-    @callings = Calling.limit(6)
+    if logged_in?
+      @questions = Question.limit(10)
+      @callings = Calling.limit(6)
+    else
+      render :welcome
+    end
   end
   
   def more_timeline

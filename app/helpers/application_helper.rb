@@ -30,9 +30,9 @@ module ApplicationHelper
     html += '</ul>'
   end
   
-  def tag_links_for(tag_list)
-    html = tag_list[0..2].map{|tag| "#{link_to(tag,tag_path(tag),:class=> 'tag')}\n"}.to_s
-    html += '...' if tag_list[3]
+  def tag_links_for(tag_list,limit=2)
+    html = tag_list[0..limit].map{|tag| "#{link_to(tag,tag_path(tag),:class=> 'tag')}\n"}.to_s
+    html += '...' if tag_list[limit+1]
     html
   end
   

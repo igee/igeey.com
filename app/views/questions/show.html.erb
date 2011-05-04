@@ -11,10 +11,11 @@
   </h3>
   <pre><%= @question.detail %></pre>
   <p>
-  <span>来自 <%= link_to @question.user.login,@question.user %> 的提问 </span>
-  <span class="timeago"><%= @question.created_at %></span>
+    <%= raw tag_links_for(@question.tag_list)%>
+    <span>来自 <%= link_to @question.user.login,@question.user %> 的提问 </span>
+    <span class="timeago"><%= @question.created_at %></span>
   </p>
-  <p><%= raw tag_list_for(@question)%></p>
+  
 </div>
 
 <div class="box">

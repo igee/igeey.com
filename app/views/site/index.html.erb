@@ -12,3 +12,10 @@
     <%= render :partial => '/public/calling',:collection => @callings %>
   </div>
 </div>
+
+<% content_for :sidebar do %>
+  <div class="box">
+    <h4>热门话题：</h4>
+    <%= raw tag_list_for(Tag)%>
+  </div>
+<% end %>
