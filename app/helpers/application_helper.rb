@@ -31,7 +31,7 @@ module ApplicationHelper
   end
   
   def tag_links_for(tag_list)
-    html = tag_list[0..2].map{|tag| "#{link_to(tag,tag_path(tag))}\n"}.to_s
+    html = tag_list[0..2].map{|tag| "#{link_to(tag,tag_path(tag),:class=> 'tag')}\n"}.to_s
     html += '...' if tag_list[3]
     html
   end

@@ -709,6 +709,20 @@ input.todo:hover{
 
 .with_calendar{width:77px}
 
+.tag{
+  font-size:11px;
+  background-color:#7be;
+  color:#fff;
+  padding:1px 5px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius:3px;
+  }
+.tag:hover{
+  background-color:#8cf;
+  color:#fff;
+  }
+
 .tag_list{display:inline;width:86px}
 
 .tag_cloud{
@@ -739,7 +753,7 @@ input.todo:hover{
   background-color: #f30;
   }
 
-.filter{color:#6AD;}
+.filter{color:#6ad;}
 
 #category_list ul{overflow:hidden}
 #cutline_list li{font-size:13px;}
