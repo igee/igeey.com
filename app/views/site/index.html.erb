@@ -3,17 +3,15 @@
   <h3>热门话题：</h3>
   <% @tags.each do |tag|%>
     <div class="tag_info">
-      <div style="float:right;">
-        <span><%= tag.taggings_count %>次使用 | <%= tag.follows_count %>次收藏</span>
-      </div>
       <%= link_to tag.name,tag_path(tag.name),:class=>'tag_name'%>
+      <span><%= tag.taggings_count %>次使用 | <%= tag.follows_count %>次收藏</span>
       <p>
       <% if tagging = tag.taggings.where(:taggable_type => 'Question').first%>
-        <span>问题 | <%= link_to tagging.taggable.title,question_path(tagging.taggable)%></span>
+        <span>问题 | <%= link_to short_text(tagging.taggable.title,20),question_path(tagging.taggable)%></span>
       <% end %>
       <% if tagging = tag.taggings.where(:taggable_type => 'Calling').first%>
         <br/>
-        <span>行动 | <%= link_to tagging.taggable.title,calling_path(tagging.taggable)%></span></span>
+        <span>行动 | <%= link_to short_text(tagging.taggable.title,20),calling_path(tagging.taggable)%></span></span>
       <% end %>
       </p>
     </div>
