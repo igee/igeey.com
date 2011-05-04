@@ -31,22 +31,16 @@ class TagsController < ApplicationController
     respond_with @tag
   end
   
-  def name
-    begin
-      @tag = Tag.find_by_name(params[:name])
-      redirect_to tag_path(@tag,:filter => params[:filter])
-    rescue ActiveRecord::RecordNotFound
-      redirect_to tags_path
-    end  
-  end
-  
   def cloud
-    
   end
   
   private
   def find_tag
-    @tag = Tag.find(params[:id])
+    if /\d/.match(params[:id])
+      @tag = Tag.find(params[:id])
+    else
+      @tag = Tag.find_by_name(params[:id])
+    end
   end
   
 end

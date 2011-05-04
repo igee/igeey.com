@@ -49,7 +49,7 @@
           <%= form.text_area :detail,:placeholder => '说说这张照片的背后的故事吧？'%>
           <%= form.label :tag_list,'添加标签：',:style=>"float:left"%>
           <%= form.text_field :tag_list,:class => 'tag_list' %><br/>
-          <span class="suggested_tags">常用<%= raw(tag_links_for(Photo))%></span>
+          <span class="suggested_tags">常用标签： <%= raw(tag_links_for(Photo.tag_list))%></span>
           <br/>
           <%= form.submit '确 定',:class => "gary_button"%>
         <% end %>
@@ -77,7 +77,7 @@
           <%= form.text_area :content,:style => "height:96px",:placeholder => '故事的正文，不限字数!'%>
           <%= form.label :tag_list,'添加标签：',:style=>"float:left"%>
           <%= form.text_field :tag_list,:class => 'tag_list' %><br/>
-          <span class="suggested_tags">常用<%= raw(tag_links_for(Topic))%></span>
+          <span class="suggested_tags">常用标签：<%= raw(tag_links_for(Topic.tag_list))%></span>
           <br/>
           <%= form.submit '确 定',:class => "gary_button"%>
         <% end %>
@@ -95,7 +95,7 @@
           <%= form.text_area :detail,:placeholder => '请说明你发起召集的原因、响应你的召集需要做什么。'%>
           <%= form.label :tag_list,'添加标签：',:style=>"float:left"%>
           <%= form.text_field :tag_list,:class => 'tag_list' %><br/>
-          <span class="suggested_tags">常用<%= raw(tag_links_for(Calling))%></span>
+          <span class="suggested_tags">常用标签：<%= raw(tag_links_for(Calling))%></span>
           <br/>
           <%= form.submit '确 定',:class => "gary_button"%>
         <% end %>

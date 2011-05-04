@@ -123,7 +123,6 @@ Igeey::Application.routes.draw do
   end
   
   resources :tags do
-    get :name,  :on => :collection
     get :cloud, :on => :collection
     get :more,  :on => :collection
   end

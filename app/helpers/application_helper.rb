@@ -26,14 +26,13 @@ module ApplicationHelper
   
   def tag_list_for(object)
     html = '<ul class="tag_cloud">'
-    html += object.tag_list.map{|tag| "  <li>#{link_to(tag,name_tags_path(:name => tag,:filter => object.class))}</li>\n"}.to_s
+    html += object.tag_list.map{|tag| "  <li>#{link_to(tag,tag_path(tag))}</li>\n"}.to_s
     html += '</ul>'
   end
   
-  def tag_links_for(object)
-    html = '标签： '
-    html += object.tag_list[0..2].map{|tag| "#{link_to(tag,name_tags_path(:name => tag,:filter => object.class))}\n"}.to_s
-    html += '...' if object.tag_list[3]
+  def tag_links_for(tag_list)
+    html = tag_list[0..2].map{|tag| "#{link_to(tag,tag_path(tag))}\n"}.to_s
+    html += '...' if tag_list[3]
     html
   end
   
