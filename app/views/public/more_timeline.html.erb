@@ -1,4 +1,4 @@
-    <%= render :partial => '/public/event', :collection => @timeline %>
+  <%= render :partial => '/public/event', :collection => @timeline %>
   <%= link_to('查看更多...',"#{request.path}?page=#{(params[:page].to_i || 1) + 1}",:class=> 'timeline_footer',:onclick => 'javascript:more_timeline($(this));return false;') unless @timeline.empty?%>
-  <%= raw('<div class="more_timeline">没有更多新鲜事了</div>') if @timeline.empty? %>
+  <%= raw('<div class="timeline_footer">没有更多了</div>') if @timeline.empty? %>
   

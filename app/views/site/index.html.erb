@@ -7,9 +7,11 @@
   </ul>
   <div id="questions" class="tabContents">
     <%= render :partial => '/public/question',:collection => @questions %>
+    <%= link_to('查看更多...',more_questions_path(:page => 2),:class=> 'timeline_footer',:onclick => 'javascript:more_timeline($(this));return false;') %>
   </div>
   <div id="callings" class="tabContents">
     <%= render :partial => '/public/calling',:collection => @callings %>
+    <%= link_to('查看更多...',more_callings_path(:page => 2),:class=> 'timeline_footer',:onclick => 'javascript:more_timeline($(this));return false;') %>
   </div>
 </div>
 

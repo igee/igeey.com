@@ -42,6 +42,11 @@ class CallingsController < ApplicationController
     @records = @calling.records
   end
   
+  def more
+    @items = Calling.paginate(:page => params[:page], :per_page => 6)
+    render '/public/more_items',:layout => false
+  end
+  
   private
   def find_calling
     @calling = Calling.find(params[:id])

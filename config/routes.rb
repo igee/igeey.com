@@ -63,6 +63,7 @@ Igeey::Application.routes.draw do
   end
   
   resources :callings do
+    get   :more     ,:on => :collection
     put   :close    ,:on => :member
     get   :progress ,:on => :member
     resources :plans do
@@ -116,6 +117,7 @@ Igeey::Application.routes.draw do
   
   resources :questions do
     resources :answers
+    get :more, :on => :collection
   end
   
   resources :comments do

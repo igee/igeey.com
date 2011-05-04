@@ -1,27 +1,16 @@
 <div class="event_box" style="padding:4px 6px 12px">
   <p>
-    <div style="float:right">
+    <b><%= link_to question.title,question_path(question)%></b>
+  </p>
+  <div class="event_info">
       <span>
         <% if question.answers_count.zero? %>
           还没有回答
         <% else%>
-          有<%= question.answers_count %>个回答
+          <%= link_to "#{question.answers_count}个回答",question_path(question)%>
         <% end %>
-      </span>
-    </div>
-    <b><%= link_to question.title,question_path(question)%></b>
-  </p>
-  <div class="event_info">
-    <%= raw tag_links_for(question.tag_list)%>
-    <span>来自 <%= link_to question.user.login,question.user %> 的提问 </span>
-    <span class="timeago"><%= question.created_at %></span>
+        |
+      </span> 
+    <span>标签：<%= raw tag_links_for(question.tag_list)%></span>
   </div>
-  <% if question.owned_by?(current_user) %>
-    <div style="width:518px;margin-left:86px;_margin-left:40px;">
-      <div class="event_action">    
-        <%= link_to "补充","#{edit_question_path(question)}?back_path=#{request.path}"%> |
-        <%= link_to "删除","#{question_path(question)}?back_path=#{request.path}",:method => :delete,:confirm => '你确定要删除这条报到么？'%>
-      </div>
-    </div>
-  <% end %>
 </div>
