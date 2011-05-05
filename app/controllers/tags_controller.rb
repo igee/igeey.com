@@ -18,7 +18,7 @@ class TagsController < ApplicationController
   end
   
   def show
-    @timeline = @tag.taggings.where(['taggable_type != ?','Question']).limit(10).map(&:taggable)
+    @timeline = @tag.taggeds.where(['taggable_type != ?','Question']).limit(10).map(&:taggable)
     @questions = @tag.taggings.where(['taggable_type = ?','Question']).limit(10).map(&:taggable)
     @question = Question.new
   end

@@ -7,7 +7,6 @@
                     :user_id,
                     :user
     
-    default_scope where(['taggable_type != ?','Tag'])
     default_scope :order => 'created_at DESC'
     
     belongs_to :tag, :counter_cache => true
