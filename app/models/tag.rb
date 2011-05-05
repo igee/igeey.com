@@ -86,4 +86,8 @@ class Tag < ::ActiveRecord::Base
       }.update(options)
     end
   end
+  
+  define_index do
+    indexes name
+  end
 end
