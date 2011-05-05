@@ -1,6 +1,8 @@
 <div class="box">
   <%= form_for @tag do |form| %>
     <p><%= form.label :name,'名称：'%> <%= form.text_field :name,:size => 20 ,:style => "text-align:left"%></p>
+      <%= form.label :tag_list,'添加标签：',:style=>"float:left"%>
+      <%= form.text_field :tag_list,:class => 'tag_list' %><br/>
       <%= submit_tag '确定',:class => 'button' %>
       <%= button_to_function '取消',"javascript:$('#floatBox #close_dialog').click();#{'window.history.back()' unless params[:layout] == 'false'}",:class => "button"%>
     </p>

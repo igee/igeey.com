@@ -8,7 +8,7 @@ class Action < ActiveRecord::Base
                             :default_url=>"/defaults/:attachment/action/:style.png"
 
   def taggings
-    self.tag.taggings
+    self.tag.taggeds
   end
   
   def questions
