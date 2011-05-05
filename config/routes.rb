@@ -125,8 +125,9 @@ Igeey::Application.routes.draw do
   end
   
   resources :tags do
-    get :cloud, :on => :collection
-    get :more,  :on => :collection
+    get :questions, :on => :member
+    get :timeline,  :on => :member
+    get :more,      :on => :collection
   end
   
   #short_url

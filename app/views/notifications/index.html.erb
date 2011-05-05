@@ -1,11 +1,11 @@
 <% @title="提醒"%>
 <% if @notifications%>
-	<%= link_to '忽略全部', '/notifications/clear_all', :style=>"float:right;"%>
-	<h3>所有提醒</h3>
-	<% @notifications.each do |n|%>
-		<% nn = n.notifiable%>
-		<p>
-		<% case nn.class.to_s%>
+<%= link_to '忽略全部', '/notifications/clear_all', :style=>"float:right;"%>
+<h3>所有提醒</h3>
+<% @notifications.each do |n|%>
+  <% nn = n.notifiable%>
+  <p>
+  <% case nn.class.to_s%>
 		<% when "Topic"%>
 			您在<%= nn.venue.name%>的故事 <%= link_to nn.title, n, :method=>'delete'%> 有了新的回复
 		<% when "Photo"%>
@@ -18,8 +18,8 @@
 			<%= link_to nn.login, n, :method=>'delete', :class=>'delete_notification', :'data-id'=>nn.id, :'data-type'=>nn.class.to_s%> 关注您了
 		<% when "Question"%>
 			问题 <%= link_to nn.title, n, :method=>'delete'%> 有了新的回答
-		<%end%>
-		<%= link_to 'x', clear_notification_path(n), :remote=>true, :onclick=>"javascript:$(this).parent().slideUp();"%>
-		</p>
+	<%end%>
+	<%= link_to 'x', clear_notification_path(n), :remote=>true, :onclick=>"javascript:$(this).parent().slideUp();"%>
+	</p>
 	<%end%>
 <%end%>
