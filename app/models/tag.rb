@@ -5,7 +5,7 @@ class Tag < ::ActiveRecord::Base
   
   acts_as_taggable
     
-  default_scope :order => 'taggings_count DESC'
+  default_scope :order => 'taggeds_count DESC'
   
   validates_presence_of :name
   validates_uniqueness_of :name
