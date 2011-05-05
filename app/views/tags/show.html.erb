@@ -1,4 +1,9 @@
 <% @title = "标签：#{@tag.name}"%>
+
+<% content_for :head do %>
+  <%= javascript_include_tag 'jquery.tag.editor-min.js' %>
+<% end %>
+
 <div class="box">
   <h2 style="background-color:#7be;color:#fff;margin:5px 0;padding:4px 16px;-moz-border-radius:5px;-webkit-border-radius:5px;display:inline;line-height:38px;}"><%= @tag.name%></h2>
 </div>
@@ -9,25 +14,36 @@
     <li><%= link_to '正在发生..','#timeline',:style=>"width:72px"%></li>
   </ul>
   <div id="questions" class="tabContents">
+    <%= render :partial => '/public/question',:collection => @questions[0..9] %>
+    <%= link_to('查看更多...',more_questions_path(:page => 2),:class=> 'timeline_footer',:onclick => 'javascript:more_timeline($(this));return false;') if @questions[10]%>
+  </div>
+  <div id="timeline" class="tabContents">
+    <%= render :partial => '/public/item',:collection => @timeline[0..9] %>
+    <%= link_to('查看更多...',more_callings_path(:page => 2),:class=> 'timeline_footer',:onclick => 'javascript:more_timeline($(this));return false;') if @timeline[10]%>
+  </div>
+</div>
+
+  <div style="padding:5px 10px;margin:5px;background-color:#f3f3f3">
     <% if logged_in? %>
       <%= form_for @question do |form|%>
         <p>
-        <%= form.text_field :title,:style => "width:480px;",:placeholder => "我要提问..." %>
-        <%= form.submit '添加问题'%>
-        <%= form.hidden_field :tag_list,:value => @tag.name %>
+          <%= form.text_field :title,:style => "width:500px;",:placeholder => "要提问？在这里输入你的问题（别忘了加上最后的“？”号）" %>
+          <%= form.submit '添加问题'%>
         </p>
+        <div id="question_details" style="display:none">
+          <p>
+            <%= form.text_area :detail,:style => "width:500px;height:40px",:placeholder => "关于这个问题，有什么要补充的说明么？" %>
+          </p>
+          <p>
+            <%= form.label :tag_list,'添加标签：',:style=>"float:left"%>
+            <%= form.text_field :tag_list,:value => @tag.name ,:class => 'tag_list'%>
+          </p>
+        </div>
       <% end %>
     <% else %>
-      <p><%= link_to "立即登录",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%> 即可提问。</p>
+      <%= link_to "立即登录",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%> 即可提问。
     <% end %>
-    <%= render :partial => '/public/question',:collection => @questions %>
-    <%= link_to('查看更多...',more_questions_path(:page => 2),:class=> 'timeline_footer',:onclick => 'javascript:more_timeline($(this));return false;') %>
   </div>
-  <div id="timeline" class="tabContents">
-    <%= render :partial => '/public/item',:collection => @timeline %>
-    <%= link_to('查看更多...',more_callings_path(:page => 2),:class=> 'timeline_footer',:onclick => 'javascript:more_timeline($(this));return false;') %>
-  </div>
-</div>
 
 <% content_for :sidebar do %>
   <div class="sidebar_panel" style="text-align:center">
@@ -38,4 +54,17 @@
   <% end %>
     <p class="explanation" style="padding:5px;text-align:left">收藏话题之后，你就可以在你关注的地点上直接使用你收藏的话题作为标签。</p>
   </div>
+<% end %>
+
+
+<% content_for :extension do %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      <% if logged_in? %>  
+        $(".tag_list").each(function(index,element){jQuery(element).tag_cloud();})
+        $("#question_title").focus(function(){$('#question_details').show()});
+        $("#question_title").blur(function(){if($('#question_title').attr('value') == ''){$('#question_details').hide()}});
+      <% end %>
+    });  
+  </script>
 <% end %>
