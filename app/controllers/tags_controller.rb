@@ -18,8 +18,8 @@ class TagsController < ApplicationController
   end
   
   def show
-    @timeline = @tag.taggeds.where(['taggable_type != ?','Question']).limit(10).map(&:taggable)
-    @questions = @tag.taggings.where(['taggable_type = ?','Question']).limit(10).map(&:taggable)
+    @timeline = @tag.taggeds.where(['taggable_type not in (?)',['Question','Tag']]).limit(11).map(&:taggable)
+    @questions = @tag.taggeds.where(['taggable_type = ?','Question']).limit(11).map(&:taggable)
     @question = Question.new
   end
     
@@ -32,12 +32,12 @@ class TagsController < ApplicationController
   end
   
   def questions
-    @questions = Question.find_tagged_with(@tag.name).paginate(:page => params[:page], :per_page => 10)
+    @questions = @tag.taggeds.where(['taggable_type = ?','Question']).paginate(:page => params[:page], :per_page => 10).map(&:taggable)
     @question = Question.new
   end
   
   def timeline
-    @timeline = @tag.taggings.where(['taggable_type != ?','Question']).paginate(:page => params[:page], :per_page => 10).map(&:taggable)
+    @timeline = @tag.taggeds.where(['taggable_type != ?','Question']).paginate(:page => params[:page], :per_page => 10).map(&:taggable)
   end
   
   private

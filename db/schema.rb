@@ -300,7 +300,8 @@ ActiveRecord::Schema.define() do
   create_table "tags" do |t|
     t.string   :name
     t.text     :intro
-    t.integer  :taggings_count,   :default => 0
+    t.string   :cached_tag_list,  :default => ''
+    t.integer  :taggeds_count,   :default => 0
     t.integer  :follows_count,    :default => 0
     t.timestamps
   end
