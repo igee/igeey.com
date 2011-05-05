@@ -809,21 +809,21 @@ a.tag_name{
 
 .tabContents{display:none}
 
-#tabContaier ul{
+#tabNav{
   border-bottom:1px solid #c0c0c0;
   height:28px;
   display:block;
   margin:0;
 }
 
-#tabContaier li{
+#tabNav li{
   float:left;
   display:block;
   list-style:none;
   margin:0 3px;
 }
 
-#tabContaier li a{
+#tabNav li a{
   background:#ddd;
   color:#888;
   font-size:13px;
@@ -842,12 +842,12 @@ a.tag_name{
   -moz-border-radius: 5px 5px 0 0;
 }
 
-#tabContaier li a:hover{
+#tabNav li a:hover{
   background:#f3f3f3;
   border-color:#bbb;
 }
 
-#tabContaier li a.active{
+#tabNav li a.active{
   border-top:1px solid #bbb;
   border-left:1px solid #bbb;
   border-right:1px solid #bbb;
