@@ -39,4 +39,11 @@
     <%= raw tag_list_for(current_user.tag_list)%>
   </div>
 </div>
+
+<%= form_tag tags_search_path,:id=>'tags_search',:remote=>true,:method => :get do%>
+  <%= text_field_tag 'keywords', @keywords,:placeholder => '搜索话题' %><%= submit_tag '搜索'%>
+<% end %>
+<div id="search_result">
+</div>
+
 <% end %>
