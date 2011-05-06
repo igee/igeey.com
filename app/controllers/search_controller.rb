@@ -12,6 +12,8 @@ class SearchController < ApplicationController
     unless params[:keywords].blank?
       @keywords = params[:keywords].split.join('+')
       @tags = Tag.search(@keywords)
+    else
+      @tags = []
     end
   end
   
