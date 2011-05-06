@@ -15,6 +15,8 @@ class SearchController < ApplicationController
     else
       @tags = []
     end
+    puts 'ssssss'
+    puts @tags.class
   end
   
 
