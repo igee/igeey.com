@@ -717,12 +717,12 @@ input.todo:hover{
   }
 
 a.tag_name{
-  background-color:#ccddff;
+  background-color:#8ad;
   padding: 2px 6px;
   margin: 0px 8px 2px 0;	
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
-  color:#888;
+  color:#fff;
   font-size:13px;
   }
 
@@ -739,7 +739,7 @@ a.tag_name{
   background-color:#ccddff;
   list-style-type: none;
   padding: 2px 6px 4px;
-  margin: 0px 8px 2px 0;	
+  margin: 0px 8px;	
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   color:#888;

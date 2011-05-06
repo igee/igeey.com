@@ -10,7 +10,7 @@
       <%= raw("在 #{link_to venue.name,venue}") if controller_name == 'users'%>
       <%= raw(['users','venues'].include?(controller_name) ?  '发布了行动召集：' : "#{link_to venue.name,venue} 有了新行动召集：") %>
     </span>
-    <pre><%= link_to calling.title, calling %></pre>
+    <p><b><%= link_to calling.title, calling %></b></p>
     <div class="event_info">
       <span><%= raw "by #{link_to user.login,user}" unless ['users','venues'].include?(controller_name) %></span>
       <span><%= "#{calling.status}"%></span>
