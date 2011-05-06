@@ -1,0 +1,22 @@
+<div class="box">
+  <h4>地点分类：</h4>
+  <div id="tabContaier">
+    <ul id="tabNav">
+      <% @categories.each do |k,v|%>
+        <li><%= link_to v,"#venues_category_#{k}"%></li>
+      <% end %>
+    </ul>
+    <% @categories.each do |k,v|%>
+      <div id='<%= "venues_category_#{k}"%>' class="tabContents">      
+        <%= render :partial => '/public/item', :collection => @venues_hash[v.to_sym] %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<% content_for :sidebar do %>
+<div class="box">
+  <h4>新增地点：</h4>
+  <%= render :partial => '/venues/venue',:collection => @venues ,:locals => {:with_name => true}%>
+</div>    
+<% end %>

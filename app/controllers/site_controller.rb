@@ -5,7 +5,7 @@ class SiteController < ApplicationController
     if logged_in?
       @questions = Question.limit(10)
       @timeline = Event.limit(6)
-      @tags = Tag.limit(4)
+      @tags = Tag.limit(30)
     else
       @tags = Tag.limit(6)
       render :welcome
