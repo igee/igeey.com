@@ -17,6 +17,7 @@ class TagsController < ApplicationController
     @timeline = @tag.taggeds.where(['taggable_type not in (?)',['Question','Tag']]).limit(11).map(&:taggable)
     @questions = @tag.taggeds.where(['taggable_type = ?','Question']).limit(11).map(&:taggable)
     @question = Question.new
+    @tags = Tag.find_tagged_with(@tag.name)
   end
     
   def edit

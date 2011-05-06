@@ -24,8 +24,6 @@
       <%= form.submit '确定'%>
       <%= button_to_function '取消','javascript:$("#show_tags").show();$("#edit_tags").hide()'%>
     </div>
-    
-    
   <% end %>
 
 </div>
@@ -76,6 +74,9 @@
   <% end %>
     <p class="explanation" style="padding:5px;text-align:left">收藏话题之后，你就可以在你关注的地点上直接使用你收藏的话题作为标签。</p>
   </div>
+  
+  <h4>被引用在..</h4>
+  <%= raw tag_links_for(@tags)%>
 <% end %>
 
 
