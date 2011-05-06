@@ -33,6 +33,7 @@ module ApplicationHelper
   def tag_links_for(tag_list,limit=2)
     html = tag_list[0..limit].map{|tag| "#{link_to(tag,tag_path(tag))}\n"}.to_s
     html += '...' if tag_list[limit+1]
+    html += '无' if tag_list.blank?
     html
   end
   

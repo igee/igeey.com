@@ -27,7 +27,7 @@
 </div>
 
 <%= form_tag tags_search_path,:id=>'tags_search',:remote=>true,:method => :get do%>
-  <%= text_field_tag 'keywords', @keywords,:placeholder => '搜索话题' %><%= submit_tag '搜索'%>
+  <%= text_field_tag 'keywords', @keywords,:placeholder => '比如: 环保,节能...' %> <%= submit_tag '搜索话题'%>
 <% end %>
 <div id="search_result">
 </div>
