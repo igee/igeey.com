@@ -645,7 +645,8 @@ input.todo:hover{
 
 .avatar{
   float:left;
-  padding:10px 10px 4px 15px;
+  padding:10px 5px 0px;
+  width:70px;
   text-align:center;
 }
 

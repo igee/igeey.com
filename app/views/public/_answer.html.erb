@@ -1,12 +1,8 @@
 <% user = answer.user%>
 <div class="event_box">
-  <%= render :partial => "/users/avatar",:object => user %>
+  <%= render :partial => "/users/avatar",:object => user,:locals => {:with_name => true} %>
   <div class="event">
-    <pre><%= short_text(answer.content,200) %></pre>
-    <div class="event_info">
-      <span><%= link_to user.login,user %> 的回答：</span>
-      <span class="timeago"><%= answer.created_at %></span>
-    </div>  
+    <pre><%= short_text(answer.content,200) %> <span class="timeago"><%= answer.created_at %></span></pre>
     <div class="event_action">
       <% if current_user && current_user.id == user.id %>
         <%= link_to "修改","#{edit_question_answer_path(@question,answer)}?back_path=#{request.path}"%> |

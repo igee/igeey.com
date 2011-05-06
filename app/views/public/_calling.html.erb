@@ -1,5 +1,5 @@
-<% venue = venue || saying.venue %>
-<% user = user || saying.user %>
+<% venue = venue || calling.venue %>
+<% user = user || calling.user %>
 
 <div class="event_box">
   <%= controller_name == 'venues' ? (render :partial => "/users/avatar",:object => user) : (render :partial => "/venues/venue",:object => venue) %>
