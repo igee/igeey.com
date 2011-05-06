@@ -4,7 +4,7 @@ class TagsController < ApplicationController
   before_filter :find_tag, :except => [:index,:new,:create]
   
   def index
-    @tags = Tag.paginate(:page => params[:page], :per_page => 10)
+    @tags = Tag.paginate(:page => params[:page], :per_page => 20)
   end
   
   def create
