@@ -4,12 +4,6 @@ class VenuesController < ApplicationController
   before_filter :find_venue, :except => [:index,:new,:create]
   
   def index
-    if logged_in?
-      @following_venues_id_list = current_user.venue_followings.map(&:followable_id)
-      @timeline = Event.where(:venue_id => @following_venues_id_list).limit(10)
-    else
-      @timeline = Event.limit(10)
-    end
   end
   
   def new

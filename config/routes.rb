@@ -19,16 +19,7 @@ Igeey::Application.routes.draw do
   
   match 'public'  => 'site#public'
   match 'followings' => 'site#followings'
-  match 'unread_comments' => 'site#unread_comments'
-  match 'unread_plans' => 'site#unread_plans'
-  match 'unread_followers' => 'site#unread_followers'
-  
-  resources :notifications do
-    get :clear, :on => :member
-    get :clear_all, :on => :collection
-    post :redirect_clear, :on => :collection  
-  end
-  
+  match 'timeline' => 'site#timeline'
   match 'more_timeline' => 'site#more_timeline'
   match 'more_public_timeline' => 'site#more_public_timeline'
   
@@ -130,6 +121,13 @@ Igeey::Application.routes.draw do
     get :timeline,  :on => :member
     get :more,      :on => :collection
   end
+  
+  resources :notifications do
+    get :clear, :on => :member
+    get :clear_all, :on => :collection
+    post :redirect_clear, :on => :collection  
+  end
+  
   
   #short_url
   match "/v/:id" => redirect("/venues/%{id}")

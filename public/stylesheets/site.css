@@ -729,7 +729,7 @@ a.tag_name{
   }
 
 .tag_list{display:inline;width:86px}
-.tag_label{float:left;margin-top:3px}
+.tag_label{float:left;margin-top:4px}
 
 .tag_cloud{
   margin: 3px 0 0;
@@ -745,7 +745,7 @@ a.tag_name{
   margin: 0px 4px;	
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
-  color:#888;
+  color:#9ac;
   font-size:13px;
   line-height:13px;
   }
