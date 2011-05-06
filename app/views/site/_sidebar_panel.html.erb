@@ -17,9 +17,7 @@
         <span style="float:right"><%= link_to "查看全部",followings_path %></span>
         <span style="color:#999">关注了<%= "#{current_user.venue_followings.count}个地点" %>：</span>
       </p>
-      <% @venues.each do |v| %>
-        <%= link_to image_tag(v.cover.url(:_48x48),:class => "thumb_avatar"),v,:title => v.name %>
-      <% end %>
+      <%= render :partial => '/venues/venue',:collection => @venues ,:locals => {:with_name => true}%>
     </div>
     <% end %>
     

@@ -645,7 +645,7 @@ input.todo:hover{
 
 .avatar{
   float:left;
-  padding:10px 5px 0px;
+  padding:10px 4px 0px;
   width:70px;
   text-align:center;
 }
@@ -654,9 +654,8 @@ input.todo:hover{
 
 .venue{
   float:left;
-  margin:10px;
-  -margin-left:5px;
-  padding:0px 0;
+  width:70px;
+  padding:10px 4px 0;
   text-align:center;
 }
 
