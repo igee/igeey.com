@@ -7,10 +7,6 @@ class TagsController < ApplicationController
     @tags = Tag.paginate(:page => params[:page], :per_page => 10)
   end
   
-  def new
-    @tag = Tag.new
-  end
-  
   def create
     @tag = Tag.new(params[:tag])
     @tag.save if current_user.is_admin?
@@ -21,6 +17,7 @@ class TagsController < ApplicationController
     @timeline = @tag.taggeds.where(['taggable_type not in (?)',['Question','Tag']]).limit(11).map(&:taggable)
     @questions = @tag.taggeds.where(['taggable_type = ?','Question']).limit(11).map(&:taggable)
     @question = Question.new
+    @tags = Tag.find_tagged_with(@tag.name)
   end
     
   def edit

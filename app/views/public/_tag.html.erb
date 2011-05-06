@@ -1,6 +1,6 @@
 <div class="event_box">
   <%= link_to(tag.name,tag_path(tag.name),:class=>'tag_name')%>
-  <span style="position:relative;top:4px">被使用 <%= tag.taggings_count%> 次</span>
+  <span style="position:relative;top:4px">被使用 <%= tag.taggeds_count%> 次</span>
   <p>
     <pre class="explanation" style="clear:both;"><%= short_text(tag.intro,80) %></pre>
   </p>

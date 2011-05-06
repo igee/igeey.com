@@ -14,7 +14,7 @@
       
       <span><%= link_to @calling.user.login,@calling.user %> 为 <%= link_to @calling.venue.name,@calling.venue %> 召集行动：</span>
       <%=  render :partial => "/callings/shows/#{@calling.for_what}"%>
-      <%= raw tag_list_for(@calling)%>
+      <%= raw tag_list_for(@calling.tag_list)%>
       <br/>
     </div>
     <div style="clear:both;text-align:right">

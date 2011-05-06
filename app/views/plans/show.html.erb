@@ -14,7 +14,7 @@
       </div>
       <span><%= link_to @plan.user.login,@plan.user %> 要参与 <%= link_to @plan.venue.name,@plan.venue %> 的活动：</span>
       <%= render :partial => "/plans/shows/#{@calling.for_what}"%>
-      <%= raw tag_list_for(@calling)%>
+      <%= raw tag_list_for(@calling.tag_list)%>
     </div>
     <div style="clear:both;text-align:right">
       <% if @plan.owned_by?(current_user)%>

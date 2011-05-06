@@ -24,9 +24,9 @@ module ApplicationHelper
     "http://#{request.host_with_port}/#{object.class.name.first.downcase}/#{object.id}"
   end
   
-  def tag_list_for(object)
+  def tag_list_for(tag_list)
     html = '<ul class="tag_cloud">'
-    html += object.tag_list.map{|tag| "  <li>#{link_to(tag,tag_path(tag))}</li>\n"}.to_s
+    html += tag_list.map{|tag| "  <li>#{link_to(tag,tag_path(tag))}</li>\n"}.to_s
     html += '</ul>'
   end
   

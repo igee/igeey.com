@@ -67,10 +67,10 @@ $(document).ready(function(){
   
   $(".tabContents").hide();
   $(".tabContents:first").show();
-  $("#tabContaier ul li a:first").addClass("active");
-  $("#tabContaier ul li a").click(function(){ 
+  $("#tabNav li a:first").addClass("active");
+  $("#tabNav li a").click(function(){ 
     var activeTab = $(this).attr("href"); 
-    $("#tabContaier ul li a").removeClass("active"); 
+    $("#tabNav li a").removeClass("active"); 
     $(this).addClass("active");
     $(".tabContents").hide();
     $(activeTab).fadeIn();

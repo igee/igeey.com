@@ -4,7 +4,7 @@ class SiteController < ApplicationController
   def index
     if logged_in?
       @questions = Question.limit(10)
-      @callings = Calling.limit(6)
+      @timeline = Event.limit(6)
       @tags = Tag.limit(4)
     else
       render :welcome
@@ -22,7 +22,7 @@ class SiteController < ApplicationController
   end
   
   def more_public_timeline
-    @timeline = Event.where(:eventable_type=>'Calling').paginate(:page => params[:page], :per_page => 10)
+    @timeline = Event.where(:eventable_type=>'Calling').paginate(:page => params[:page], :per_page => 6)
     render '/public/more_timeline',:layout => false
   end
 

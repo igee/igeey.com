@@ -1,8 +1,11 @@
 <% @reply = @comment %>
 <% @id = "##{@reply.commentable.class.to_s.downcase}_#{@reply.commentable.id}_replies"%>
+<% unless @reply.content.blank?%>
 $('<%= @id%>').append("<%= escape_javascript(render :partial => '/public/reply',:object=> @reply) %>"); 
 
 $(".timeago").each(function(){$(this).html('(' + jQuery.timeago($(this).html()) + ')');$(this).removeClass('timeago')});
 //some hard core here
 $('<%= @id %>').next().val("");
+<% end %>
+
 $('<%= @id %>').next().next().attr('disabled',false);
