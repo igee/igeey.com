@@ -36,7 +36,7 @@
 <% content_for :sidebar do %>
 <div class="box">
   <h4>我关注的话题：</h4>
-    <%= raw tag_list_for(current_user)%>
+    <%= raw tag_list_for(current_user.tag_list)%>
   </div>
 </div>
 <% end %>

@@ -6,7 +6,7 @@
       上传在 <%= link_to @photo.venue.name ,@photo.venue%> ｜ <%= link_to "查看原图",@photo.photo.url(:original),:target => "_blank" %> <br/>
       <%= link_to @photo.user.login ,@photo.user%> <%=  format_date(@photo.created_at) %>
     </p>
-    <%= raw tag_list_for(@photo)%>
+    <%= raw tag_list_for(@photo.tag_list)%>
     <br/>
   </div>
   

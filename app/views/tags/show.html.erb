@@ -8,14 +8,14 @@
   <%= form_for @tag do |form| %>
     <h3 style="background-color:#7be;color:#fff;margin:5px 0;padding:4px 16px;-moz-border-radius:5px;-webkit-border-radius:5px;display:inline;line-height:38px;}"><%= @tag.name%></h3>
     <pre class="explanation" id="show_intro"><%=  @tag.intro.blank? ? '还没有简介' : @tag.intro%> <span><%= link_to_function('编辑','javascript:$("#show_intro").hide();$("#edit_intro").show()')%></span></pre>
-    <div id="edit_intro" style="display:none">
+    <div id="edit_intro" style="display:none;margin:6px 0">
       <%= form.text_area :intro,:style => 'width:500px;height:40px' %>
       <%= form.submit '确定'%>
       <%= button_to_function '取消','javascript:$("#show_intro").show();$("#edit_intro").hide()'%>
     </div>
     <div id="show_tags">
       <%= form.label :name,'标签：' ,:style=>"float:left"%>
-      <%= @tag.tag_list.empty? ? '无' : (raw(tag_list_for @tag))%>
+      <%= @tag.tag_list.empty? ? '无' : (raw(tag_list_for @tag.tag_list))%>
       <span><%= link_to_function('编辑','javascript:$("#show_tags").hide();$("#edit_tags").show()')%></span>
     </div>
     <div id="edit_tags" style="display:none">
@@ -75,8 +75,8 @@
     <p class="explanation" style="padding:5px;text-align:left">收藏话题之后，你就可以在你关注的地点上直接使用你收藏的话题作为标签。</p>
   </div>
   
-  <h4>被引用在..</h4>
-  <%= raw tag_links_for(@tags)%>
+  <h4>你可能还感兴趣..</h4>
+  <%= raw tag_list_for(@tags)%>
 <% end %>
 
 

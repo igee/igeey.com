@@ -716,12 +716,12 @@ input.todo:hover{
   }
 
 a.tag_name{
-  background-color:#8ad;
+  background-color:#ccddff;
   padding: 2px 6px;
   margin: 0px 8px 2px 0;	
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
-  color:#fff;
+  color:#888;
   font-size:13px;
   }
 
@@ -735,17 +735,18 @@ a.tag_name{
 
 .tag_cloud li{
   float:left;
-  background-color:#8ad;
+  background-color:#ccddff;
   list-style-type: none;
-  padding: 0px 6px;
+  padding: 2px 6px 4px;
   margin: 0px 8px 2px 0;	
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
-  color:#fff;
+  color:#888;
   font-size:13px;
+  line-height:13px;
   }
 
-.tag_cloud li a{color:#fff;}
+.tag_cloud li a{color:#9ac;}
   
 .tag_cloud li img{
   margin-bottom:-1px;
@@ -753,7 +754,7 @@ a.tag_name{
   }
   
 .tag_cloud li:hover,a.tag_name:hover{
-  background-color: #9be;
+  background-color: #bcf;
   }
 
 .filter{color:#6ad;}

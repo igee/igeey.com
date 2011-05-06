@@ -142,7 +142,7 @@
   <% unless @venue.tag_list.empty? %>
   <div class="box">
     <h4>关联标签：</h4>
-    <%= raw tag_list_for(@venue)%>
+    <%= raw tag_list_for(@venue.tag_list)%>
   </div>
   <% end %>
 <% end %>
