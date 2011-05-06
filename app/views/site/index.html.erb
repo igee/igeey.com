@@ -1,42 +1,28 @@
 <% @title = '首页'%>
 <div class="box">
   <h4>热门话题..</h4>
-  <% @tags.each do |tag|%>
-    <div class="tag_info">
-      <%= link_to tag.name,tag_path(tag.name),:class=>'tag_name'%>
-      <span><%= tag.taggeds_count %>次使用 | <%= tag.follows_count %>次收藏</span>
-      <p>
-      <% if tagging = tag.taggeds.where(:taggable_type => 'Question').first%>
-        <span>问题 | <%= link_to short_text(tagging.taggable.title,20),question_path(tagging.taggable)%></span>
-      <% end %>
-      <% if tagging = tag.taggeds.where(:taggable_type => 'Calling').first%>
-        <br/>
-        <span>行动 | <%= link_to short_text(tagging.taggable.title,20),calling_path(tagging.taggable)%></span></span>
-      <% end %>
-      </p>
+    <%= render :partial => '/tags/tag' ,:collection => @tags %>
+  <h4>爱聚的世界..</h4>
+  <div id="tabContaier">
+    <ul id="tabNav">
+      <li><%= link_to '正在解决..','#questions'%></li>
+      <li><%= link_to '正在发生..','#timeline'%></li>
+    </ul>
+    <div id="questions" class="tabContents">
+      <%= render :partial => '/public/question',:collection => @questions %>
+      <%= link_to('查看更多...',more_questions_path(:page => 2),:class=> 'timeline_footer',:onclick => 'javascript:more_timeline($(this));return false;') %>
     </div>
-  <% end %>
-  </div>
-<h4>爱聚的世界..</h4>
-<div id="tabContaier">
-  <ul id="tabNav">
-    <li><%= link_to '正在解决..','#questions',:style=>"width:72px"%></li>
-    <li><%= link_to '正在发生..','#timeline',:style=>"width:72px"%></li>
-  </ul>
-  <div id="questions" class="tabContents">
-    <%= render :partial => '/public/question',:collection => @questions %>
-    <%= link_to('查看更多...',more_questions_path(:page => 2),:class=> 'timeline_footer',:onclick => 'javascript:more_timeline($(this));return false;') %>
-  </div>
-  <div id="timeline" class="tabContents">
-    <%= render :partial => '/public/event',:collection => @timeline %>
-    <%= link_to('查看更多...',more_public_timeline_path(:page => 2),:class=> 'timeline_footer',:onclick => 'javascript:more_timeline($(this));return false;') %>
+    <div id="timeline" class="tabContents">
+      <%= render :partial => '/public/event',:collection => @timeline %>
+      <%= link_to('查看更多...',more_public_timeline_path(:page => 2),:class=> 'timeline_footer',:onclick => 'javascript:more_timeline($(this));return false;') %>
+    </div>
   </div>
 </div>
-
+    
 <% content_for :sidebar do %>
 <div class="box">
-  <h4>我关注的话题：</h4>
-    <%= raw tag_list_for(current_user.tag_list)%>
+  <h4>我收藏的话题：</h4>
+    <%= current_user.tag_list.empty? ? '你还没有收藏任何话题' : raw(tag_list_for(current_user.tag_list))%>
   </div>
 </div>
 

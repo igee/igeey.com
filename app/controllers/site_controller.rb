@@ -7,6 +7,7 @@ class SiteController < ApplicationController
       @timeline = Event.limit(6)
       @tags = Tag.limit(4)
     else
+      @tags = Tag.limit(6)
       render :welcome
     end
   end
