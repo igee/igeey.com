@@ -650,6 +650,8 @@ input.todo:hover{
   text-align:center;
 }
 
+.reply .avatar{width:50px;}
+
 .venue{
   float:left;
   margin:10px;
