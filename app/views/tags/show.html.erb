@@ -5,7 +5,28 @@
 <% end %>
 
 <div class="box">
-  <h2 style="background-color:#7be;color:#fff;margin:5px 0;padding:4px 16px;-moz-border-radius:5px;-webkit-border-radius:5px;display:inline;line-height:38px;}"><%= @tag.name%></h2>
+  <h3 style="background-color:#7be;color:#fff;margin:5px 0;padding:4px 16px;-moz-border-radius:5px;-webkit-border-radius:5px;display:inline;line-height:38px;}"><%= @tag.name%></h3>
+  <%= form_for @tag do |form| %>
+    <pre class="explanation" id="show_intro"><%= @tag.intro%> <span><%= link_to_function('修改','javascript:$("#show_intro").hide();$("#edit_intro").show()')%></span></pre>
+    <div id="edit_intro" style="display:none">
+      <%= form.text_area :intro,:style => 'width:500px;height:40px' %>
+      <%= form.submit '确定'%>
+      <%= button_to_function '取消','javascript:$("#show_intro").show();$("#edit_intro").hide()'%>
+    </div>
+    <br/>
+    <div id="show_tags">
+      <%= form.label :name,'标签：' ,:style=>"float:left"%>
+      <%= raw tag_list_for(@tag)%>
+      <span><%= link_to_function('修改','javascript:$("#show_tags").hide();$("#edit_tags").show()')%></span>
+    </div>
+    <div id="edit_tags" style="display:none">
+      <%= form.label :name,'标签：' ,:style=>"float:left"%>
+      <%= form.text_field :tag_list,:class => 'tag_list' %>
+      <%= form.submit '确定'%>
+      <%= button_to_function '取消','javascript:$("#show_tags").show();$("#edit_tags").hide()'%>
+    </div>
+  <% end %>
+
 </div>
 
 <div id="tabContaier">

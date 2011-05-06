@@ -11,8 +11,8 @@ body{
   }
 
 h1{margin:0}
-h2{font-size:23px}
-h3{font-size:19px}
+h2{font-size:24px}
+h3{font-size:20px}
 h4{font-size:16px}
 
 h2,h3,h4,h5,h6{
@@ -718,7 +718,7 @@ input.todo:hover{
 a.tag_name{
   background-color:#8ad;
   padding: 2px 6px;
-  margin: 2px 8px 2px 0;	
+  margin: 0px 8px 2px 0;	
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   color:#fff;
@@ -738,7 +738,7 @@ a.tag_name{
   background-color:#8ad;
   list-style-type: none;
   padding: 0px 6px;
-  margin: 2px 8px 2px 0;	
+  margin: 0px 8px 2px 0;	
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   color:#fff;
