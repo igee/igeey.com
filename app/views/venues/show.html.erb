@@ -55,19 +55,12 @@
         <% end %>
         
         <%= form_for @doing,:html => {:class => "venue_form" } do |form| %>
-          <% @actions = current_user.followings.where(:followable_type => 'Action').map(&:followable)%>
           <%= form.hidden_field :venue_id ,:value => @venue.id %>
-          <%= form.hidden_field :action_id  %>
-          <%= form.hidden_field :tag_list %>
-          <p id="action_descript">
-            <%= @actions.empty? ? raw("你还没有收藏任何行动，先去 #{link_to('找找看',actions_path)}？") :  "从你收藏的行动里选择：" %>
-          </p>
-          <p>
-          <% @actions.each do |action|%>
-            <%= link_to(image_tag(action.cover.url(),:title => action.name,:class=>"action_cover"),action_path(action),:alt => action.name,:class => "action",:'data-action-id' => action.id)%>
-          <% end %>
-            <%= form.text_area :detail,:placeholder => '你要怎么做？',:style=>'display:none'%>
-          </p>
+          <%= form.text_area  :content,:style => 'height:18px;font-size:14px;line-height:18px',:placeholder => "今天你想和#{@venue.name}的朋友们说什么？"%>
+          <%= form.label :tag_list,'添加标签：',:style=>"float:left"%>
+          <%= form.text_field :tag_list,:class => 'tag_list' %><br/>
+          <span class="suggested_tags">我收藏的标签：<%= raw(tag_links_for(current_user.tag_list,10))%></span>
+          <br/>
           <%= form.submit '确 定',:class => "gary_button"%>
         <% end %>
         

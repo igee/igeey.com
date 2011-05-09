@@ -84,6 +84,10 @@ class User < ActiveRecord::Base
     self.update_attribute(:notifications_count, self.notifications.where(:unread => true).size)
   end
   
+  def get_notifications
+    Notification.where(:user_id => self.id, :unread => true).order("updated_at desc")
+  end
+  
   def undone_plans_count
     self.plans.undone.size
   end

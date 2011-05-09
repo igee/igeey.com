@@ -24,14 +24,10 @@ class Notification < ActiveRecord::Base
     r = self.where(:user_id => user_id, :notifiable_id => notifiable.id, 
                     :notifiable_type => notifiable.class, :unread => true).first
     unless r.nil?
-      r.update_attribute(:unread, false)
+      r.read
     end
   end
-  
-  def self.get_unread_by_user_id(user_id)
-    self.where(:user_id => user_id, :unread => true).order("updated_at desc")
-  end
-  
+
   def read
     self.update_attribute(:unread, false)
   end
