@@ -1,6 +1,7 @@
 class Tag < ::ActiveRecord::Base
   has_many :taggeds, :class_name => 'Tagging', :dependent => :destroy
   has_many :follows,  :as => :followable, :dependent => :destroy
+  has_many :followers,  :through => :follows,:source => :user
   has_one  :action
   
   acts_as_taggable
