@@ -1,7 +1,6 @@
 class Doing < ActiveRecord::Base
   belongs_to :user,     :counter_cache => true
   belongs_to :venue,    :counter_cache => true
-  belongs_to :action
   
   acts_as_ownable
   acts_as_taggable
