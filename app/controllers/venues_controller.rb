@@ -4,12 +4,12 @@ class VenuesController < ApplicationController
   before_filter :find_venue, :except => [:index,:new,:create]
   
   def index
-    if logged_in?
-      @following_venues_id_list = current_user.venue_followings.map(&:followable_id)
-      @timeline = Event.where(:venue_id => @following_venues_id_list).limit(10)
-    else
-      @timeline = Event.limit(10)
+    @venues_hash = {}
+    @categories = Venue::CATEGORIES_HASH.to_a[0..5]
+    @categories.each do |k,v|
+      @venues_hash[v.to_sym] = Venue.where(:category => k).limit(6)
     end
+    @venues = Venue.limit(9).where(:created_at => 1.month.ago..Date.today)
   end
   
   def new

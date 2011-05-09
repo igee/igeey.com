@@ -14,12 +14,12 @@
       <%= button_to_function '取消','javascript:$("#show_intro").show();$("#edit_intro").hide()'%>
     </div>
     <div id="show_tags">
-      <%= form.label :name,'标签：' ,:style=>"float:left"%>
+      <%= form.label :name,'标签：' ,:class=>"tag_label"%>
       <%= @tag.tag_list.empty? ? '无' : (raw(tag_list_for @tag.tag_list))%>
       <span><%= link_to_function(raw("#{image_tag('/images/icon/edit.png',:class => 'icon')} 编辑"),'javascript:$("#show_tags").hide();$("#edit_tags").show()')%></span>
     </div>
     <div id="edit_tags" style="display:none">
-      <%= form.label :name,'标签：' ,:style=>"float:left"%>
+      <%= form.label :name,'标签：' ,:class=>"tag_label"%>
       <%= form.text_field :tag_list,:class => 'tag_list' %>
       <%= form.submit '确定'%>
       <%= button_to_function '取消','javascript:$("#show_tags").show();$("#edit_tags").hide()'%>
@@ -36,34 +36,35 @@
   <div id="questions" class="tabContents">
     <%= render :partial => '/public/question',:collection => @questions[0..9] %>
     <%= link_to('查看更多...',more_questions_path(:page => 2),:class=> 'timeline_footer',:onclick => 'javascript:more_timeline($(this));return false;') if @questions[10]%>
+    
+    <div style="padding:5px 10px;margin:5px;background-color:#f3f3f3">
+      <% if logged_in? %>
+        <%= form_for @question do |form|%>
+          <p>
+            <%= form.text_field :title,:style => "width:500px;",:placeholder => "要提问？在这里输入你的问题（别忘了加上最后的“？”号）" %>
+            <%= form.submit '添加问题'%>
+          </p>
+          <div id="question_details" style="display:none">
+            <p>
+              <%= form.text_area :detail,:style => "width:500px;height:40px",:placeholder => "关于这个问题，有什么要补充的说明么？" %>
+            </p>
+            <p>
+              <%= form.label :tag_list,'添加标签：',:style=>"float:left"%>
+              <%= form.text_field :tag_list,:value => @tag.name ,:class => 'tag_list'%>
+            </p>
+          </div>
+        <% end %>
+      <% else %>
+        <%= link_to "立即登录",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%> 即可提问。
+      <% end %>
+    </div>
+
   </div>
   <div id="timeline" class="tabContents">
     <%= render :partial => '/public/item',:collection => @timeline[0..9] %>
     <%= link_to('查看更多...',more_callings_path(:page => 2),:class=> 'timeline_footer',:onclick => 'javascript:more_timeline($(this));return false;') if @timeline[10]%>
   </div>
 </div>
-
-  <div style="padding:5px 10px;margin:5px;background-color:#f3f3f3">
-    <% if logged_in? %>
-      <%= form_for @question do |form|%>
-        <p>
-          <%= form.text_field :title,:style => "width:500px;",:placeholder => "要提问？在这里输入你的问题（别忘了加上最后的“？”号）" %>
-          <%= form.submit '添加问题'%>
-        </p>
-        <div id="question_details" style="display:none">
-          <p>
-            <%= form.text_area :detail,:style => "width:500px;height:40px",:placeholder => "关于这个问题，有什么要补充的说明么？" %>
-          </p>
-          <p>
-            <%= form.label :tag_list,'添加标签：',:style=>"float:left"%>
-            <%= form.text_field :tag_list,:value => @tag.name ,:class => 'tag_list'%>
-          </p>
-        </div>
-      <% end %>
-    <% else %>
-      <%= link_to "立即登录",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%> 即可提问。
-    <% end %>
-  </div>
 
 <% content_for :sidebar do %>
   <div class="sidebar_panel" style="text-align:center">
