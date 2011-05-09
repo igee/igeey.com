@@ -3,7 +3,7 @@ class NotificationsController < ApplicationController
   respond_to :html, :js
   
   def index
-    @notifications = Notification.get_unread_by_user_id(current_user.id)
+    @notifications = current_user.get_notifications
   end
   
   def destroy
