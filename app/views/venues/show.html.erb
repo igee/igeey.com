@@ -56,7 +56,7 @@
         
         <%= form_for @doing,:html => {:class => "venue_form" } do |form| %>
           <%= form.hidden_field :venue_id ,:value => @venue.id %>
-          <%= form.text_area  :content,:style => 'height:18px;font-size:14px;line-height:18px',:placeholder => "今天你想和#{@venue.name}的朋友们说什么？"%>
+          <%= form.text_area  :content,:style => 'height:18px;font-size:14px;line-height:18px',:placeholder => "你计划如何行动？"%>
           <%= form.label :tag_list,'添加标签：',:style=>"float:left"%>
           <%= form.text_field :tag_list,:class => 'tag_list' %><br/>
           <span class="suggested_tags">我收藏的标签：<%= raw(tag_links_for(current_user.tag_list,10))%></span>
@@ -110,6 +110,7 @@
       全部的：
       <%= link_to_unless(@venue.sayings_count.zero?,"报到[#{@venue.sayings_count}]",sayings_venue_path(@venue)) %>
       <%= link_to_unless(@venue.photos_count.zero?,"照片[#{@venue.photos_count}]",photos_venue_path(@venue)) %>
+      <%= link_to_unless(@venue.doings_count.zero?,"行动[#{@venue.doings_count}]",doings_venue_path(@venue)) %>
       <%= link_to_unless(@venue.topics_count.zero?,"故事[#{@venue.topics_count}]",topics_venue_path(@venue)) %>
       <%= link_to_unless(@venue.callings_count.zero?,"召集[#{@venue.callings_count}]",callings_venue_path(@venue)) %>
     </span>
@@ -167,15 +168,6 @@
       infowindow = new google.maps.InfoWindow;     
     }; //initialize_end
     
-    function reset_action(){
-        $('#doing_detail').hide();
-        $('.action').show();
-        $('#action_descript').html('从你收藏的行动里选择：');
-        $('#doing_tag_list').attr('value','');
-        $('#doing_action_id').attr('value','');
-        return false;
-        };
-    
     $(document).ready(function(){
       <% if logged_in? %>  
         $("#formTabs li a").click(function(){ 
@@ -207,23 +199,14 @@
         });
       DateTimeShortcuts.init()
       function updateCount() {
-      $("#character_count").html(($("#calling_detail").attr('value') || '').length);
-      setTimeout(updateCount, 400);
-       }
+        $("#character_count").html(($("#calling_detail").attr('value') || '').length);
+        setTimeout(updateCount, 400);
+        }
       updateCount();
       $('#saying_content').focus(function(){$(this).attr('style','height:36px')});
       $('#saying_content').blur(function(){$(this).attr('style','height:18px')});
       
       initialize();
-      $('.action').click(function(){
-        $('.action').hide();
-        $(this).show();
-        $('#doing_detail').show();
-        $('#action_descript').html('我要为<%= @venue.name %>做 <a href="' + $(this).attr('href') + '">' + $(this).attr('alt') + '</a> :  <a href="" onclick="javascript:reset_action();return false" style="float:right">重新选择？</a>');
-        $('#doing_tag_list').attr('value',$(this).attr('alt'));
-        $('#doing_action_id').attr('value',$(this).attr('data-action-id'));
-        return false;
-        });
       $(".tag_list").each(function(index,element){jQuery(element).tag_cloud();})
       $('.suggested_tags a').click(function(){
         var dom =$(this).parent().prevAll(".tag_list");

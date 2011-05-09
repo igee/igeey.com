@@ -92,6 +92,12 @@ class VenuesController < ApplicationController
     @title = "#{@venue.name}的照片"
     render 'see_all'
   end
+
+  def doings
+    @items = @venue.doings.paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@venue.name}的行动"
+    render 'see_all'
+  end
   
   def followers
     @items = @venue.followers.paginate(:page => params[:page], :per_page => 10)

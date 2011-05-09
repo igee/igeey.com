@@ -39,6 +39,7 @@ Igeey::Application.routes.draw do
     member do
       get  :cover
       get  :position
+      get  :doings
       get  :records
       get  :photos
       get  :sayings
