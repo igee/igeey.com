@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   include Authentication::ByPassword
   include Authentication::ByCookieToken
   
-  add_oauth  # add dynamic method for confirmation of oauth status
+  add_oauth  #dynamic method for confirmation of oauth status
   
   belongs_to  :geo
   has_many :venues,         :foreign_key => :creator_id,:dependent => :destroy
@@ -76,40 +76,12 @@ class User < ActiveRecord::Base
     write_attribute :email, (value ? value.downcase : nil)
   end
   
-  #def id_count  #hack for top 100 earlier user badge
-    #200 - self.id
-  #end
-  
   def update_notifications_count
     self.update_attribute(:notifications_count, self.notifications.where(:unread => true).size)
   end
   
   def get_notifications
     Notification.where(:user_id => self.id, :unread => true).order("updated_at desc")
-  end
-  
-  def undone_plans_count
-    self.plans.undone.size
-  end
-  
-  def time_count
-    self.records.map(&:time).compact.sum
-  end
-  
-  def money_count
-    self.records.map(&:money).compact.sum
-  end
-
-  def online_count
-    self.records.map(&:online).compact.sum
-  end
-  
-  def goods_count
-    self.records.map(&:goods).compact.sum
-  end
-  
-  def photos_count
-    self.photos.size
   end
   
   def venues_count
