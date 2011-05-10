@@ -54,16 +54,6 @@
           <%= form.submit '确 定',:class => "gary_button"%>
         <% end %>
         
-        <%= form_for @doing,:html => {:class => "venue_form" } do |form| %>
-          <%= form.hidden_field :venue_id ,:value => @venue.id %>
-          <%= form.text_area  :content,:style => 'height:18px;font-size:14px;line-height:18px',:placeholder => "你计划如何行动？"%>
-          <%= form.label :tag_list,'添加标签：',:style=>"float:left"%>
-          <%= form.text_field :tag_list,:class => 'tag_list' %><br/>
-          <span class="suggested_tags">我收藏的标签：<%= raw(tag_links_for(current_user.tag_list,10))%></span>
-          <br/>
-          <%= form.submit '确 定',:class => "gary_button"%>
-        <% end %>
-        
         <%= form_for @topic,:html=> {:class=>'venue_form'}  do |form| %>
           <%= form.hidden_field :venue_id ,:value => @venue.id %>
           <%= form.label :title,'标题：'%> <%= form.text_field :title,:size => 30,:placeholder => ''%><br/>
@@ -96,7 +86,6 @@
     </div>
     <ul id="formTabs">
       <li><%= link_to raw("#{image_tag('/images/icon/saying.png',:class => 'icon')} 报到"),'#new_saying',:class=> "active"%></li>
-      <li><%= link_to raw("#{image_tag('/images/icon/action.png',:class => 'icon')} 行动"),'#new_doing'%></li>
       <li><%= link_to raw("#{image_tag('/images/icon/photo.png',:class => 'icon')} 上传照片"),'#new_photo'%></li>
       <li><%= link_to raw("#{image_tag('/images/icon/text.png',:class => 'icon')} 写故事"),'#new_topic'%></li>
       <li><%= link_to raw("#{image_tag('/images/icon/speaker.png',:class => 'icon')} 发起召集"),'#new_calling'%></li>
