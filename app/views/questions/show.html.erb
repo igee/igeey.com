@@ -29,7 +29,9 @@
 
 <div class="box">
   <h4>我要回答：</h4>
-  <% if logged_in?%>
+  <% if logged_in? && current_user.is_answered?(@question) %>
+    <p>你已经回答了这个问题</p>
+  <% elsif logged_in?%>
     <%= form_for [@question,@answer] do |form| %>
       <%= form.hidden_field :question_id ,:value => @question.id%>
       <%= form.text_area :content,:style=>"width:540px;height:64px;"%>

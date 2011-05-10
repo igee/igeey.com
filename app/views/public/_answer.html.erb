@@ -4,6 +4,7 @@
   <% if controller_name=="users" %>
     <span>对问题 “<%= link_to @question.title, "#{question_path(@question)}##{answer.id}"%>” 的回答：</span>
   <% end %>
+  <a name="<%= answer.id%>"></a>
   <%= render :partial => "/users/avatar",:object => user,:locals => {:with_name => true} %>
   <div class="event">
     <pre><%= short_text(answer.content,100) %> <%= link_to_function('(展开)','javascript:$(this).parent().hide();$(this).parent().next().show()') if answer.content[100] %> <span class="timeago"><%= answer.created_at %></span></pre>
