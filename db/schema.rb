@@ -51,7 +51,6 @@ ActiveRecord::Schema.define() do
   
   create_table "callings", :force => true do |t|
     t.integer  :venue_id
-    t.integer  :action_id
     t.integer  :user_id    
     t.integer  :total_money
     t.integer  :total_online
