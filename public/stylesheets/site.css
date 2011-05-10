@@ -64,6 +64,8 @@ span a{color:#6ad}
 
 b{text-align:right}
 
+input {font-family:Verdana, serif;}
+
 input[type="text_field"],input[type="text"],input[type="password"]{
     text-decoration:none;
     border:1px solid #bbb;
@@ -595,8 +597,8 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 
 .event {
   width:518px;
-  margin-left:86px;
-  _margin-left:40px;
+  float:left;
+  margin-left:10px;
   padding:6px 0;
   } 
     
@@ -759,6 +761,7 @@ a.tag_name{
   
 .tag_cloud li:hover,a.tag_name:hover{
   background-color: #ff9933;
+  color:white;
   }
 
 .filter{color:#6ad;}
