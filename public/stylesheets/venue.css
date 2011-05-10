@@ -1,5 +1,5 @@
 .venue_form{
-  background-color:#e9e9e9;
+  background-color:#e6e6e6;
   padding:10px 15px;
   line-height:26px;
   font-size:13px;
@@ -67,6 +67,12 @@
 #formTabs li a img{position:relative;top:6px;}
 
 #formTabs li a.active{
-  background:#e9e9e9;
+  background:#e6e6e6;
   border-color:#bbb;
+}
+
+textarea#doing_detail{
+  width:484px;
+  display:inline;
+  margin:0 8px;
 }

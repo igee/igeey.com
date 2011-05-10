@@ -3,6 +3,7 @@
 <% @photo = Photo.new %>
 <% @calling = Calling.new %>
 <% @topic = Topic.new %>
+<% @doing = Doing.new %>
 <% content_for :head do %>
   <%= javascript_include_tag 'calendar.js' %>
   <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false"></script>
@@ -32,10 +33,10 @@
 </div>
       
 <div class="box">
-  <h4>在这里发布..</h4>
+  <h4>我要在这里..</h4>
   <div id="venue_forms">
     <div id="formContaier">
-      <%= form_for [@venue,@saying],:html=>{:class=>'venue_form',:style => "display:block"}  do |form| %>    
+      <%= form_for @saying,:html=>{:class=>'venue_form',:style => "display:block"}  do |form| %>    
         <%= form.hidden_field :venue_id,:value => @venue.id %>
         <%= form.text_area  :content,:style => 'height:18px;font-size:14px;line-height:18px',:placeholder => "今天你想和#{@venue.name}的朋友们说什么？"%>
         <%= form.submit '确 定',:class => "gary_button"%>
@@ -46,6 +47,10 @@
           <%= form.hidden_field :venue_id,:value => @venue.id %>
           <%= form.label :title,'选择文件：'%> <%= form.file_field :photo,:style => "background:none;border:none;font-size:13px" %>
           <%= form.text_area :detail,:placeholder => '说说这张照片的背后的故事吧？'%>
+          <%= form.label :tag_list,'添加标签：',:style=>"float:left"%>
+          <%= form.text_field :tag_list,:class => 'tag_list' %><br/>
+          <span class="suggested_tags">我收藏的标签：<%= raw(tag_links_for(current_user.tag_list,10))%></span>
+          <br/>
           <%= form.submit '确 定',:class => "gary_button"%>
         <% end %>
         
@@ -53,12 +58,16 @@
           <%= form.hidden_field :venue_id ,:value => @venue.id %>
           <%= form.label :title,'标题：'%> <%= form.text_field :title,:size => 30,:placeholder => ''%><br/>
           <%= form.text_area :content,:style => "height:96px",:placeholder => '故事的正文，不限字数!'%>
+          <%= form.label :tag_list,'添加标签：',:style=>"float:left"%>
+          <%= form.text_field :tag_list,:class => 'tag_list' %><br/>
+          <span class="suggested_tags">我收藏的标签：<%= raw(tag_links_for(current_user.tag_list,10))%></span>
+          <br/>
           <%= form.submit '确 定',:class => "gary_button"%>
         <% end %>
         
         <%= form_for @calling,:html=>{:class=>'venue_form'} do |form| %>    
           <%= raw error_explanation_for(@calling) if @calling.errors.present?%>
-          <%= form.hidden_field :action_id,:value => 1%>
+          <%= form.hidden_field :for_what,:value => 'time'%>
           <%= form.hidden_field :venue_id,:value => @venue.id %>
           <%= form.label 'title','行动标题：'%> <%= form.text_field :title, :size => 20, :placeholder => "" %><br/>
           <%= form.label 'total_people','需要人数：'%> <%= form.text_field :total_people, :size => 3, :placeholder => "" %>　
@@ -66,7 +75,11 @@
           <%= form.label 'address','集合地址：'%> <%= form.text_field :address, :size => 24, :placeholder => '',:style => "text-align:left" %><br/>
           <%= form.label 'contact','联系方式：'%> <%= form.text_field :contact, :size => 24, :placeholder => '',:style => "text-align:left" %><br/>
           <%= form.label 'detail','详细信息：'%>(字数要求：50-1000字)　目前字数：<span id="character_count"></span>
-          <%= form.text_area :detail,:placeholder => '请说明你发起召集的原因、响应你的召集需要做什么。'%>          
+          <%= form.text_area :detail,:placeholder => '请说明你发起召集的原因、响应你的召集需要做什么。'%>
+          <%= form.label :tag_list,'添加标签：',:style=>"float:left"%>
+          <%= form.text_field :tag_list,:class => 'tag_list' %><br/>
+          <span class="suggested_tags">我收藏的标签：<%= raw(tag_links_for(current_user.tag_list,10))%></span>
+          <br/>
           <%= form.submit '确 定',:class => "gary_button"%>
         <% end %>
       <% end %>
@@ -75,7 +88,7 @@
       <li><%= link_to raw("#{image_tag('/images/icon/saying.png',:class => 'icon')} 报到"),'#new_saying',:class=> "active"%></li>
       <li><%= link_to raw("#{image_tag('/images/icon/photo.png',:class => 'icon')} 上传照片"),'#new_photo'%></li>
       <li><%= link_to raw("#{image_tag('/images/icon/text.png',:class => 'icon')} 写故事"),'#new_topic'%></li>
-      <li><%= link_to raw("#{image_tag('/images/icon/speaker.png',:class => 'icon')} 召集行动"),'#new_calling'%></li>
+      <li><%= link_to raw("#{image_tag('/images/icon/speaker.png',:class => 'icon')} 发起召集"),'#new_calling'%></li>
     </ul>
   </div>
 </div>
@@ -86,6 +99,7 @@
       全部的：
       <%= link_to_unless(@venue.sayings_count.zero?,"报到[#{@venue.sayings_count}]",sayings_venue_path(@venue)) %>
       <%= link_to_unless(@venue.photos_count.zero?,"照片[#{@venue.photos_count}]",photos_venue_path(@venue)) %>
+      <%= link_to_unless(@venue.doings_count.zero?,"行动[#{@venue.doings_count}]",doings_venue_path(@venue)) %>
       <%= link_to_unless(@venue.topics_count.zero?,"故事[#{@venue.topics_count}]",topics_venue_path(@venue)) %>
       <%= link_to_unless(@venue.callings_count.zero?,"召集[#{@venue.callings_count}]",callings_venue_path(@venue)) %>
     </span>
@@ -111,14 +125,14 @@
   <% unless @venue.tag_list.empty? %>
   <div class="box">
     <h4>关联标签：</h4>
-    <%= raw tag_list_for(@venue)%>
+    <%= raw tag_list_for(@venue.tag_list)%>
   </div>
   <% end %>
 <% end %>
 
 <% content_for :extension do %>
   <script type="text/javascript">
-      function initialize() {
+    function initialize() {
       var latlng = new google.maps.LatLng(<%= "#{@venue.latitude || 35.0},#{@venue.longitude || 105.0}"%>)
       var myOptions = {
         zoom: 14 ,
@@ -174,14 +188,21 @@
         });
       DateTimeShortcuts.init()
       function updateCount() {
-      $("#character_count").html(($("#calling_detail").attr('value') || '').length);
-      setTimeout(updateCount, 400);
-       }
+        $("#character_count").html(($("#calling_detail").attr('value') || '').length);
+        setTimeout(updateCount, 400);
+        }
       updateCount();
       $('#saying_content').focus(function(){$(this).attr('style','height:36px')});
       $('#saying_content').blur(function(){$(this).attr('style','height:18px')});
-      $(".tag_list").each(function(index,element){jQuery(element).tag_cloud();})
+      
       initialize();
+      $(".tag_list").each(function(index,element){jQuery(element).tag_cloud();})
+      $('.suggested_tags a').click(function(){
+        var dom =$(this).parent().prevAll(".tag_list");
+        dom.attr('value',$(this).html());
+        dom.blur();
+        return false;
+        });
       setTimeout(function(){$.post('<%= watching_venue_path(@venue)%>')},5000)
     });  
   </script>

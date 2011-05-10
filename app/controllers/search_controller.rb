@@ -7,6 +7,18 @@ class SearchController < ApplicationController
       end
     end
   end
+  
+  def tags
+    unless params[:keywords].blank?
+      @keywords = params[:keywords].split.join('+')
+      @tags = Tag.search(@keywords)
+    else
+      @tags = []
+    end
+    puts 'ssssss'
+    puts @tags.class
+  end
+  
 
   def more
     @keywords = params[:keywords].split.join('+')

@@ -9,6 +9,7 @@ class VenuesController < ApplicationController
     @categories.each do |k,v|
       @venues_hash[v.to_sym] = Venue.where(:category => k).limit(6)
     end
+    @venues = Venue.limit(9).where(:created_at => 1.month.ago..Date.today)
   end
   
   def new
@@ -89,6 +90,12 @@ class VenuesController < ApplicationController
   def photos
     @items = @venue.photos.paginate(:page => params[:page], :per_page => 10)
     @title = "#{@venue.name}的照片"
+    render 'see_all'
+  end
+
+  def doings
+    @items = @venue.doings.paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@venue.name}的行动"
     render 'see_all'
   end
   

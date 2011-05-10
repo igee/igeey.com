@@ -156,6 +156,19 @@ class UsersController < ApplicationController
     render 'see_all'
   end
   
+  def questions
+    @items = @user.questions.paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@user.login}的问题"
+    render 'see_all'
+  end
+  
+  def answers
+    @items = @user.answers.paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@user.login}的回答"
+    render 'see_all'
+  end
+  
+  
   def following_venues
     @items = @user.venue_followings.map(&:followable).paginate(:page => params[:page], :per_page => 10)
     @title = "#{@user.login}关注的地点"

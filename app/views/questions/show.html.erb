@@ -11,10 +11,11 @@
   </h3>
   <pre><%= @question.detail %></pre>
   <p>
-  <span>来自 <%= link_to @question.user.login,@question.user %> 的提问 </span>
-  <span class="timeago"><%= @question.created_at %></span>
+    <span>来自 <%= link_to @question.user.login,@question.user %> 的提问 </span>
+    <span class="timeago"><%= @question.created_at %></span>
+    <span>标签：<%= raw tag_links_for(@question.tag_list)%></span>
   </p>
-  <p><%= raw tag_list_for(@question)%></p>
+  
 </div>
 
 <div class="box">
@@ -28,7 +29,9 @@
 
 <div class="box">
   <h4>我要回答：</h4>
-  <% if logged_in?%>
+  <% if logged_in? && current_user.is_answered?(@question) %>
+    <p>你已经回答了这个问题</p>
+  <% elsif logged_in?%>
     <%= form_for [@question,@answer] do |form| %>
       <%= form.hidden_field :question_id ,:value => @question.id%>
       <%= form.text_area :content,:style=>"width:540px;height:64px;"%>
@@ -38,3 +41,7 @@
       <p><%= link_to "立即登录",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%> 即可回答。</p>
   <% end %>
 </div>
+
+<% content_for :sidebar do %>
+
+<% end %>

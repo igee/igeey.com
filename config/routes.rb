@@ -19,26 +19,18 @@ Igeey::Application.routes.draw do
   
   match 'public'  => 'site#public'
   match 'followings' => 'site#followings'
-  match 'actions' => 'site#actions'
-  match 'unread_comments' => 'site#unread_comments'
-  match 'unread_plans' => 'site#unread_plans'
-  match 'unread_followers' => 'site#unread_followers'
-  
-  resources :notifications do
-    get :clear, :on => :member
-    get :clear_all, :on => :collection
-    post :redirect_clear, :on => :collection  
-  end
-  
+  match 'timeline' => 'site#timeline'
   match 'more_timeline' => 'site#more_timeline'
   match 'more_public_timeline' => 'site#more_public_timeline'
   
   match 'oauth(/:action)' => 'oauth#(/:action)'
   match 'plan(/:id)' => 'plans#redirect', :as => :plan
+  match 'answer(/:id)' => 'answers#redirect', :as => :answer
   match 'setting' => 'users#setting'
   
   match 'search' => 'search#result'
   match 'search/more' => 'search#more',:as => :more_search
+  match 'search/tags' => 'search#tags',:as => :tags_search
   
   resource :session, :only => [:new, :create, :destroy,:show]
   resource :sync, :only => [:new, :create]
@@ -48,6 +40,7 @@ Igeey::Application.routes.draw do
     member do
       get  :cover
       get  :position
+      get  :doings
       get  :records
       get  :photos
       get  :sayings
@@ -57,7 +50,6 @@ Igeey::Application.routes.draw do
       get  :more_timeline
       post :watching
     end
-    resources :sayings
   end
   
   resources :badges do
@@ -65,6 +57,7 @@ Igeey::Application.routes.draw do
   end
   
   resources :callings do
+    get   :more     ,:on => :collection
     put   :close    ,:on => :member
     get   :progress ,:on => :member
     resources :plans do
@@ -82,6 +75,7 @@ Igeey::Application.routes.draw do
     get   :list     ,:on => :collection
     get   :selector ,:on => :collection
   end
+  
   resources :users do
     collection do
       get   :welcome
@@ -97,6 +91,8 @@ Igeey::Application.routes.draw do
       get   :topics
       get   :photos
       get   :badges
+      get   :questions
+      get   :answers
       get   :followers
       get   :following_venues
       get   :following_users
@@ -108,22 +104,29 @@ Igeey::Application.routes.draw do
     get :thanks, :on => :collection
   end
   
-  resources :follows
-  resources :topics
-  resources :sayings
+  resources :follows,:photos,:topics,:sayings,:doings
+  
   resources :questions do
     resources :answers
+    get :more, :on => :collection
   end
   
   resources :comments do
     get :more, :on => :collection
   end
-  resources :photos
   
   resources :tags do
-    get :name, :on => :collection
-    get :more, :on => :collection
+    get :questions, :on => :member
+    get :timeline,  :on => :member
+    get :more,      :on => :collection
   end
+  
+  resources :notifications do
+    get :clear, :on => :member
+    get :clear_all, :on => :collection
+    post :redirect_clear, :on => :collection  
+  end
+  
   
   #short_url
   match "/v/:id" => redirect("/venues/%{id}")

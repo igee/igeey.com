@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_filter :login_required, :except => [:index, :show]
-  before_filter :find_question, :except => [:index, :new, :create]
+  before_filter :find_question, :except => [:index, :new, :create,:more]
   respond_to :html,:json
   
   def show
@@ -19,6 +19,11 @@ class QuestionsController < ApplicationController
     @question = current_user.questions.build(params[:question])
     @question.save
     redirect_to :back
+  end
+  
+  def more
+    @items = Question.paginate(:page => params[:page], :per_page => 10)
+    render '/public/more_items',:layout => false
   end
   
   private

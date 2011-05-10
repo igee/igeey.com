@@ -43,7 +43,7 @@ Joost Elfering
 (function(jQuery) {
     jQuery.fn.tag_cloud = function(options) {
         var defaults = {
-            separator: ',',
+            separator: ' ',
             items: [],
             className: 'tag_cloud',
             confirmRemoval: false,

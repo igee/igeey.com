@@ -1,7 +1,6 @@
 class Record < ActiveRecord::Base
   belongs_to :user,     :counter_cache => true
   belongs_to :venue,    :counter_cache => true
-  belongs_to :action
   belongs_to :calling
   belongs_to :plan
   belongs_to :parent,   :class_name => :record,:foreign_key => :parent_id
@@ -12,7 +11,7 @@ class Record < ActiveRecord::Base
   
   default_scope :order => 'created_at DESC'
   
-  delegate  :for_what, :to => :action
+  delegate  :for_what, :to => :calling
   
   acts_as_ownable
   acts_as_taggable
@@ -20,7 +19,7 @@ class Record < ActiveRecord::Base
   accepts_nested_attributes_for :photos
   
   validate  :user_id, :presence  => true,:uniqueness => {:scope => [:plan_id]}
-  validates :action_id,:venue_id,:title,:presence  => true
+  validates :venue_id,:title,:presence  => true
   validates :done_at,:date => {:before_or_equal_to => Date.today.to_date}
   
   def validate

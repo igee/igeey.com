@@ -1,7 +1,0 @@
-<h3>你要召集大家为<%= @venue.name %>做什么？</h3>
-<p>
-  <% @actions.each do |a| %>
-    <%= link_to(a.name,"#{new_calling_path()}?venue_id=#{@venue.id}&action_id=#{a.id}",:class => "action_button") %>
-  <% end %>
-</p>
-

@@ -1,8 +1,13 @@
 class Tag < ::ActiveRecord::Base
-  has_many :owned_taggings, :class_name => 'Tagging', :dependent => :destroy
-  default_scope :order => 'taggings_count DESC'
+  has_many :taggeds, :class_name => 'Tagging', :dependent => :destroy
+  has_many :follows,  :as => :followable, :dependent => :destroy
+  has_many :followers,  :through => :follows,:source => :user
+  has_one  :action
   
   acts_as_taggable
+    
+  default_scope :order => 'taggeds_count DESC'
+  
   validates_presence_of :name
   validates_uniqueness_of :name
   
@@ -35,7 +40,7 @@ class Tag < ::ActiveRecord::Base
   end
   
   def self.tag_list
-    Tag.limit(20).map(&:name)
+    Tag.limit(30).map(&:name)
   end
   
   class << self
@@ -81,5 +86,9 @@ class Tag < ::ActiveRecord::Base
         :group      => group_by
       }.update(options)
     end
+  end
+  
+  define_index do
+    indexes name
   end
 end

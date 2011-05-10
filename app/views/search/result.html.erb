@@ -15,7 +15,7 @@
   <span>"<%= params[:keywords]%>"的搜索结果：</span>
   
   <div id="tabContaier" class="box">
-    <ul>
+    <ul id="tabNav">
       <li><%= link_to "地点(#{@venues.total_entries > 50 ? '50+' : @venues.total_entries})",'#venue_results'%></li>
       <li><%= link_to "用户(#{@users.total_entries > 50 ? '50+' : @users.total_entries})",'#user_results'%></li>
     </ul>

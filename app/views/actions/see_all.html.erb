@@ -1,0 +1,18 @@
+<% @title = @action.name%>
+<div class="box">
+  <h3>和 <%= link_to @action.name, action_path(@action) %> 有关的问题</h3>
+  <%= render :partial => "/public/item",:collection => @items%>
+  <%= will_paginate @items %>
+	<% if logged_in? %>
+    <%= form_for @question do |form|%>
+      <p>提问： <%= form.text_field :title,:style => "width:480px;" %> <%= form.submit '添加问题',:style=>"float:right;"%>
+      <%= form.hidden_field :tag_list,:value => @action.tag.name %></p>
+    <% end %>
+  <% else %>
+    <p><%= link_to "立即登录",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%> 即可提问。</p>
+  <% end %>
+</div>
+
+<% content_for :sidebar do %>  
+
+<% end %>

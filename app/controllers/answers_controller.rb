@@ -1,6 +1,7 @@
 class AnswersController < ApplicationController
-  before_filter :login_required, :except => [:index, :show]
+  before_filter :login_required, :except => [:index, :show,:redirect]
   respond_to :html, :js, :xml
+  before_filter :find_answer,:only => [:edit,:update,:destroy,:show,:redirect]
   before_filter :check_permission, :only => [:destroy,:update]
   def new
     @question = Question.find(params[:question_id])
@@ -15,26 +16,30 @@ class AnswersController < ApplicationController
     redirect_to question_path(@question)
   end
   
-  def edit
-    @answer = Answer.find(params[:id])
+  def show
   end
 
-  def update
-    @answer = Answer.find(params[:id])
-    @answer.update_attributes(params[:answer])
+  def edit
+  end
+  
+  def destroy
+    @answer.destroy
     redirect_to question_path(@question)
   end
   
   def update
-    @answer = Answer.find(params[:id])
     @answer.update_attributes(params[:answer])
     redirect_to question_path(@question)
   end
   
+  def redirect
+    redirect_to "#{question_path(@answer.question)}##{@answer.id}"
+  end
   private
   
-  def find_photo
+  def find_answer
     @answer = Answer.find(params[:id])
+    @question = @answer.question
   end
   
   def check_permission

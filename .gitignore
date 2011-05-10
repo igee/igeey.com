@@ -13,7 +13,7 @@ tmp
 REVISION
 public/media/
 public/json/
-
+*.swp
 *.kpf
 *.project
 *.DS_Store

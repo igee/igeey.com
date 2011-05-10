@@ -13,8 +13,8 @@
         </span>
       </div>
       <span><%= link_to @plan.user.login,@plan.user %> 要参与 <%= link_to @plan.venue.name,@plan.venue %> 的活动：</span>
-      <%= render :partial => "/plans/shows/#{@plan.action.slug}"%>
-      <%= raw tag_list_for(@calling)%>
+      <%= render :partial => "/plans/shows/#{@calling.for_what}"%>
+      <%= raw tag_list_for(@calling.tag_list)%>
     </div>
     <div style="clear:both;text-align:right">
       <% if @plan.owned_by?(current_user)%>
@@ -52,13 +52,6 @@
     <div class="bubble">
       <pre class="explanation"><%= @calling.detail %></pre>
     </div>
-</div>
-
-<div class="box">
-  <h4>行动流程：</h4>
-  <p style="padding:5px 10px">
-    <%= raw @plan.action.step_by_step%>
-  </p>
 </div>
   
 <% if @plan.owned_by?(current_user) %>

@@ -9,7 +9,6 @@
       <%= link_to user.login,user if controller_name == 'venues'%>
       <%= raw("在 #{link_to venue.name,saying.venue}") if controller_name == 'users'%>
       <%= raw(['users','venues'].include?(controller_name) ? '报到：' : "#{link_to venue.name,venue} 有了新报到：") %>
-
     </span>
     <pre><%= saying.content %></pre>
     

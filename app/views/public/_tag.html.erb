@@ -1,9 +1,13 @@
 <div class="event_box">
-  <ul class="tag_cloud">
-    <li><%= link_to(tag.name,name_tags_path(:name => tag.name))%></li>
-    <span style="position:relative;top:4px">被使用 <%= tag.taggings_count%> 次</span>
-  </ul>
+  <%= link_to(tag.name,tag_path(tag.name),:class=>'tag_name')%>
+  <span><%= tag.taggeds_count %>次使用 | <%= tag.follows_count %>次收藏</span>
   <p>
-    <pre class="explanation" style="clear:both;"><%= short_text(tag.intro,80) %></pre>
+  <% if tagging = tag.taggeds.where(:taggable_type => 'Question').first%>
+    <span>问题 | <%= link_to short_text(tagging.taggable.title,20),question_path(tagging.taggable)%></span>
+  <% end %>
+  <% if tagging = tag.taggeds.where(:taggable_type => 'Calling').first%>
+    <br/>
+    <span>行动 | <%= link_to short_text(tagging.taggable.title,20),calling_path(tagging.taggable)%></span></span>
+  <% end %>
   </p>
 </div>

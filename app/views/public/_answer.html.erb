@@ -1,11 +1,14 @@
 <% user = answer.user%>
+<% @question = answer.question%>
 <div class="event_box">
-  <pre class="explanation"><%= short_text(answer.content,200) %></pre>
-  <div class="event_info">
-    <span><%= link_to user.login,user %> 的回答：</span>
-    <span class="timeago"><%= answer.created_at %></span>
-  </div>
-  <div class="event" style="margin-top:-6px">
+  <% if controller_name=="users" %>
+    <span>对问题 “<%= link_to @question.title, "#{question_path(@question)}##{answer.id}"%>” 的回答：</span>
+  <% end %>
+  <a name="<%= answer.id%>"></a>
+  <%= render :partial => "/users/avatar",:object => user,:locals => {:with_name => true} %>
+  <div class="event">
+    <pre><%= short_text(answer.content,100) %> <%= link_to_function('(展开)','javascript:$(this).parent().hide();$(this).parent().next().show()') if answer.content.mb_chars[100] %> <span class="timeago"><%= answer.created_at %></span></pre>
+    <pre style="display:none"><%= answer.content %> <%= link_to_function('(收起)','javascript:$(this).parent().hide();$(this).parent().prev().show()') %> <span class="timeago"><%= answer.created_at %></span></pre>
     <div class="event_action">
       <% if current_user && current_user.id == user.id %>
         <%= link_to "修改","#{edit_question_answer_path(@question,answer)}?back_path=#{request.path}"%> |

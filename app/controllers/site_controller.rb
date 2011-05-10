@@ -1,6 +1,18 @@
 class SiteController < ApplicationController
-  before_filter :login_required, :except=> [:index,:faq,:guide,:about,:report,:public,:more_public_timeline]  
+  before_filter :login_required, :except=> [:index,:faq,:guide,:about,:report,:public,:more_public_timeline,:timeline]  
+  
   def index
+    if logged_in?
+      @questions = Question.limit(10)
+      @timeline = Event.limit(6)
+      @tags = Tag.limit(20)
+    else
+      @tags = Tag.limit(6)
+      render :welcome
+    end
+  end
+  
+  def timeline
     if logged_in?
       @following_venues_id_list = current_user.venue_followings.map(&:followable_id)
       @timeline = Event.where(:venue_id => @following_venues_id_list).limit(10)
@@ -20,7 +32,7 @@ class SiteController < ApplicationController
   end
   
   def more_public_timeline
-    @timeline = Event.where(:eventable_type=>'Calling').paginate(:page => params[:page], :per_page => 10)
+    @timeline = Event.where(:eventable_type=>'Calling').paginate(:page => params[:page], :per_page => 6)
     render '/public/more_timeline',:layout => false
   end
 

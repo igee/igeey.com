@@ -13,8 +13,8 @@
       </div>
       
       <span><%= link_to @calling.user.login,@calling.user %> 为 <%= link_to @calling.venue.name,@calling.venue %> 召集行动：</span>
-      <%=  render :partial => "/callings/shows/#{@action.slug}"%>
-      <%= raw tag_list_for(@calling)%>
+      <%=  render :partial => "/callings/shows/#{@calling.for_what}"%>
+      <%= raw tag_list_for(@calling.tag_list)%>
       <br/>
     </div>
     <div style="clear:both;text-align:right">
@@ -40,18 +40,11 @@
       </div>
     <% else %>
       <div style="clear:both;text-align:center">
-        <%= link_to "我要#{{'time' => '参加','money' => '捐赠','goods' => '捐赠'}[@calling.action.for_what]}",(logged_in? ? new_calling_plan_path(@calling) : signup_path ),:class => "big_button open_dialog",:id => 'plan_to' ,:title =>(logged_in? ? '我要参与' : '注册' )%>
+        <%= link_to "我要#{{'time' => '参加','money' => '捐赠','goods' => '捐赠'}[@calling.for_what]}",(logged_in? ? new_calling_plan_path(@calling) : signup_path ),:class => "big_button open_dialog",:id => 'plan_to' ,:title =>(logged_in? ? '我要参与' : '注册' )%>
       </div>
     <% end %>
     
   </div>  
-  
-  <div class="box">
-    <h4>行动流程：</h4>
-    <p style="padding:5px 10px">
-      <%= raw @calling.action.step_by_step %>
-    </p>
-  </div>
 
   <div class="box">
     <h4>所有参与者： <span>(绿色＝完成，红色＝未完成)</span></h4>

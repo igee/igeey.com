@@ -24,21 +24,17 @@ module ApplicationHelper
     "http://#{request.host_with_port}/#{object.class.name.first.downcase}/#{object.id}"
   end
   
-  def tag_list_for(object)
+  def tag_list_for(tag_list)
     html = '<ul class="tag_cloud">'
-    html += object.tag_list.map{|tag| "  <li>#{link_to(tag,name_tags_path(:name => tag,:filter => object.class))}</li>\n"}.to_s
+    html += tag_list.map{|tag| "  <li>#{link_to(tag,tag_path(tag))}</li>\n"}.to_s
     html += '</ul>'
   end
   
-  def tag_links_for(object)
-    if object.tag_list.empty?
-      return ' '
-    else
-      html = '<span>标签: '
-      html += object.tag_list[0..2].map{|tag| "#{link_to(tag,name_tags_path(:name => tag,:filter => object.class))}\n"}.to_s
-      html += '...' if object.tag_list[3]
-      html += '</span>'
-    end
+  def tag_links_for(tag_list,limit=2)
+    html = tag_list[0..limit].map{|tag| "#{link_to(tag,tag_path(tag))}\n"}.to_s
+    html += '...' if tag_list[limit+1]
+    html += '无' if tag_list.blank?
+    html
   end
   
 end

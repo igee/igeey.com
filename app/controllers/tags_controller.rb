@@ -1,14 +1,10 @@
 class TagsController < ApplicationController
   respond_to :html
   before_filter :login_required, :only => [:new,:create,:destroy,:edit,:update]
-  before_filter :find_tag, :except => [:index, :new, :create,:name,:more]
+  before_filter :find_tag, :except => [:index,:new,:create]
   
   def index
-    @tags = Tag.paginate(:page => params[:page], :per_page => 10)
-  end
-  
-  def new
-    @tag = Tag.new
+    @tags = Tag.paginate(:page => params[:page], :per_page => 20)
   end
   
   def create
@@ -18,16 +14,12 @@ class TagsController < ApplicationController
   end
   
   def show
-    #if ['Topic','Photo','Calling','Saying'].include?(params[:filter])
-    #  @timeline = params[:filter].constantize.find_tagged_with(@tag.name)
-    #  @filter_name = {'Topic'=>'故事','Photo'=>'照片','Calling'=>'召集','Saying'=>'报到'}[params[:filter]]
-    #else 
-    #end
-    @timeline = @tag.owned_taggings.where(['taggable_type != ?','Question']).limit(10).map(&:taggable).map(&:event)
-    @questions = Question.find_tagged_with(@tag.name)
+    @timeline = @tag.taggeds.where(['taggable_type not in (?)',['Question','Tag']]).limit(11).map(&:taggable)
+    @questions = @tag.taggeds.where(['taggable_type = ?','Question']).limit(11).map(&:taggable)
     @question = Question.new
+    @tags = Tag.find_tagged_with(@tag.name)
   end
-  
+    
   def edit
   end
   
@@ -36,19 +28,22 @@ class TagsController < ApplicationController
     respond_with @tag
   end
   
-  def name
-    begin
-      @tag = Tag.find_by_name(params[:name])
-      redirect_to tag_path(@tag,:filter => params[:filter])
-    rescue ActiveRecord::RecordNotFound
-      redirect_to tags_path
-    end  
+  def questions
+    @questions = @tag.taggeds.where(['taggable_type = ?','Question']).paginate(:page => params[:page], :per_page => 10).map(&:taggable)
+    @question = Question.new
   end
   
+  def timeline
+    @timeline = @tag.taggeds.where(['taggable_type != ?','Question']).paginate(:page => params[:page], :per_page => 10).map(&:taggable)
+  end
   
   private
   def find_tag
-    @tag = Tag.find(params[:id])
+    if /\d/.match(params[:id])
+      @tag = Tag.find(params[:id])
+    else
+      @tag = Tag.find_by_name(params[:id])
+    end
   end
   
 end

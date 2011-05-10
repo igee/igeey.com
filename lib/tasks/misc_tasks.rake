@@ -188,19 +188,23 @@ namespace :misc do
     Comment.where(:has_new_comment => true).each do |c|
       print '.' if Notification.new(:user_id=>c.user_id, :notifiable_id=>c.commentable_id, :notifiable_type=>c.commentable_type).save
     end
-    
     photos = Photo.where(:has_new_comment => true)
     sayings = Saying.where(:has_new_comment => true)
     topics = Topic.where(:has_new_comment => true)
     callings = Calling.where(:has_new_comment => true)
     all = photos + sayings + topics + callings
-    
     all.each do |a|
       print '.' if Notification.new(:user_id=>a.user_id, :notifiable_id=>a.id, :notifiable_type=>a.class.to_s).save
     end
-    
     Follow.where(:followable_type=>'User', :unread=>true).each do |f|
       print '.' if Notification.new(:user_id=>f.followable_id, :notifiable_id=>f.user_id, :notifiable_type=>f.followable_type).save
+    end
+  end
+  
+  desc "Update Calling for what from Action"
+  task :update_callling_for_what_from_action => :environment do
+    Calling.all.each do |c|
+      print '.' if c.update_attribute(:for_what,c.action.for_what)
     end
   end
 end

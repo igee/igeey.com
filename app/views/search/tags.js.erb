@@ -1,0 +1,6 @@
+$('#tags_search').find("input[type='submit']").attr('disabled',false);
+<% if @tags.empty?%>
+$('#search_result').html("<p><span>对不起，没有相关话题</span></p>")
+<% else %>
+$('#search_result').html("<p>搜索结果：</br><%=raw escape_javascript(tag_list_for(@tags))%></p>");
+<% end %>
