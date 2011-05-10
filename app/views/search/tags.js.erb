@@ -1,6 +1,10 @@
 $('#tags_search').find("input[type='submit']").attr('disabled',false);
 <% if @tags.empty?%>
-$('#search_result').html("<p><span>对不起，没有相关话题</span></p>")
+	<% if @keywords.nil?%>
+		$('#search_result').html("<p><span style='color:red'>请输入搜索关键字</span></p>")
+	<% else %>
+		$('#search_result').html("<p><span>对不起，没有相关话题<br/>您可以<%= escape_javascript(link_to '将“'+@keywords+'”添加为话题',tags_path(:tag=> {:name => @keywords}),:method=>:post)%></span></p>")
+	<% end %>
 <% else %>
 $('#search_result').html("<p>搜索结果：</br><%=raw escape_javascript(tag_list_for(@tags))%></p>");
 <% end %>
