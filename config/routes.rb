@@ -91,6 +91,8 @@ Igeey::Application.routes.draw do
       get   :topics
       get   :photos
       get   :badges
+      get   :questions
+      get   :answers
       get   :followers
       get   :following_venues
       get   :following_users
