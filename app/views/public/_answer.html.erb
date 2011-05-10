@@ -1,5 +1,6 @@
 <% user = answer.user%>
 <div class="event_box">
+  <a name="<%= answer.id%>"></a>
   <%= render :partial => "/users/avatar",:object => user,:locals => {:with_name => true} %>
   <div class="event">
     <pre><%= short_text(answer.content,100) %> <%= link_to_function('(展开)','javascript:$(this).parent().hide();$(this).parent().next().show()') if answer.content[100] %> <span class="timeago"><%= answer.created_at %></span></pre>
