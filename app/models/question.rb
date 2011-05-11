@@ -15,4 +15,8 @@ class Question < ActiveRecord::Base
     nil
   end
   
+  def validate
+    errors[:tag_list] = '请至少填写一个标签' if self.tag_list.empty?
+  end
+  
 end

@@ -13,7 +13,7 @@ module ActiveRecord
       
       module InstanceMethods
         def owned_by?(user)
-          self.user == user
+          self.user == user || (user && user.is_admin)
         end
       end
     end

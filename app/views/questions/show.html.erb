@@ -5,7 +5,7 @@
   <span>
     <% if @question.owned_by?(current_user) %>
       <%= link_to "补充","#{edit_question_path(@question)}?back_path=#{request.path}"%> |
-      <%= link_to "删除","#{question_path(@question)}?back_path=#{request.path}",:method => :delete,:confirm => '你确定要删除这个问题么？'%>
+      <%= link_to "删除","#{question_path(@question)}",:method => :delete,:confirm => '你确定要删除这个问题么？'%>
     <% end %>
   </span>
   </h3>

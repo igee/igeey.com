@@ -25,7 +25,7 @@ class PhotosController < ApplicationController
   end
 
   def destroy
-    @photo.destroy if @photo.user_id == current_user.id
+    @photo.destroy
     redirect_to :back
   end
   
