@@ -1,48 +1,66 @@
 <% @title = @user.login %>
 <div class="box">
-  <div style="float:left;text-align:center;padding-top:16px;width:100px">
+  <div style="float:left;text-align:center;width:100px">
     <%= image_tag @user.avatar.url(:_72x72),:class => "avatar" %>
   </div>
-  <div style="float:left;width:500px;text-align:left;padding:16px 0px 0 10px">
+  <div style="float:left;width:500px;text-align:left;padding:0px">
     <div style="float:right">
       <%= raw(follow_to(@user)) unless @user == current_user%>
     </div>
-    <h3><%= @user.login %></h3>
-    <span><%= "#{@user.geo.full_name}" unless @user.geo.nil? %></span>
+    <h3><%= @user.login %> <span><%= "#{@user.geo.full_name}" unless @user.geo.nil? %></span></h3> 
+    <%= @user.signature%>
+    <p style="border-top:1px solid #eee">
+      <span>
+        <%= link_to_unless(@user.sayings_count.zero?,"报到[#{@user.sayings_count}]",sayings_user_path(@user)) %>
+        <%= link_to_unless(@user.photos_count.zero?,"照片[#{@user.photos_count}]",photos_user_path(@user)) %>
+        <%= link_to_unless(@user.topics_count.zero?,"故事[#{@user.topics_count}]",topics_user_path(@user)) %>
+        <%= link_to_unless(@user.callings_count.zero?,"召集[#{@user.callings_count}]",callings_user_path(@user)) %>
+        <%= link_to_unless(@user.questions_count.zero?,"问题[#{@user.questions_count}]",questions_user_path(@user)) %>
+        <%= link_to_unless(@user.answers_count.zero?,"回答[#{@user.answers_count}]",answers_user_path(@user)) %>
+      </span>
+    </p>
   </div>
 </div>
-<br/>
     
 <div class="box">  
-  <div style="float:right">
-    <span>
-      全部的：
-      <%= link_to_unless(@user.sayings_count.zero?,"报到[#{@user.sayings_count}]",sayings_user_path(@user)) %>
-      <%= link_to_unless(@user.photos_count.zero?,"照片[#{@user.photos_count}]",photos_user_path(@user)) %>
-      <%= link_to_unless(@user.topics_count.zero?,"故事[#{@user.topics_count}]",topics_user_path(@user)) %>
-      <%= link_to_unless(@user.callings_count.zero?,"召集[#{@user.callings_count}]",callings_user_path(@user)) %>
-      <%= link_to_unless(@user.questions_count.zero?,"问题[#{@user.questions_count}]",questions_user_path(@user)) %>
-      <%= link_to_unless(@user.answers_count.zero?,"回答[#{@user.answers_count}]",answers_user_path(@user)) %>
-    </span>
+   <div id="tabContaier">
+    <ul id="tabNav">
+      <li><%= link_to 'Ta的动态..','#timeline'%></li>
+      <li><%= link_to 'Ta的提问..','#questions' unless @questions.empty?%></li>
+      <li><%= link_to 'Ta的回答..','#answers' unless @answers.empty?%></li>
+    </ul>
+
+    <div id="timeline" class="tabContents" >
+      <%= render :partial => '/public/event',:collection => @timeline[0..9]%>
+      <%= link_to raw("查看更多..."),more_timeline_user_path(@user,:page => 2),:class => "timeline_footer",:onclick => "javascript:more_timeline($(this));return false" if @timeline[10].present?%>
+    </div>
+
+    <div id="questions" class="tabContents" >
+      <%= render :partial => '/public/item',:collection => @questions%>
+    </div>
+
+    <div id="answers" class="tabContents" >
+      <%= render :partial => '/public/item',:collection => @answers%>
+    </div>
   </div>
-  <h4>Ta做了什么...</h4>
-  <%= render :partial => '/public/event',:collection => @timeline%>
-  <%= link_to raw("查看更多..."),more_timeline_user_path(@user,:page => 2),:class => "timeline_footer",:onclick => "javascript:more_timeline($(this));return false" if @timeline[10].present?%>
 </div>
 
 <% content_for :sidebar do %>
-  <div class="box">
+  <div class="box" >
     <%= link_to "查看全部",badges_user_path(@user),:class => "see_all_link" if @badges[8]%>
     <h4><%= "获得#{@user.grants.size}个徽章："%></h4>
     <%= render :partial => '/badges/badge' ,:collection => @badges[0..7] %>
   </div>
   
-  <div class="box">
+  <div class="box" >
+    <h4><%= "关注#{@user.tag_followings.size}个话题："%></h4>
+    <%= raw(tag_list_for(@user.tag_list))%>
+  </div>
+    
+  <div class="box" >
     <%= link_to "查看全部",following_venues_user_path(@user),:class => "see_all_link" if @following_venues[10]%>
     <h4><%= "关注#{@user.venue_followings.size}个地点："%></h4>
-      <% @following_venues.each do |v| %>
-        <%= link_to image_tag(v.cover.url(:_48x48),:class => "thumb_avatar"),v,:title => v.name %>
-      <% end %>
+    <%= render :partial => '/venues/venue',:collection => @user.venue_followings.limit(6).map{|f| f.followable},:locals => {:with_name => true}%>
   </div>
     
   <div class="box">
