@@ -21,6 +21,12 @@ class QuestionsController < ApplicationController
     redirect_to :back
   end
   
+  def destroy
+    redirect_path = tag_path(@question.tag_list[0])
+    @question.destroy
+    redirect_to redirect_path
+  end
+  
   def more
     @items = Question.paginate(:page => params[:page], :per_page => 10)
     render '/public/more_items',:layout => false
