@@ -7,9 +7,13 @@ class TagsController < ApplicationController
     @tags = Tag.paginate(:page => params[:page], :per_page => 20)
   end
   
+  def new
+    @tag = Tag.new
+  end
+  
   def create
     @tag = Tag.new(params[:tag])
-    @tag.save if current_user.is_admin?
+    @tag.save
     respond_with @tag
   end
   

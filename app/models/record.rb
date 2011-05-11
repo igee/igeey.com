@@ -43,5 +43,8 @@ class Record < ActiveRecord::Base
     true
   end
   
-    
+  def for_what
+    {1=>'time', 3=>'goods'}[action_id]
+  end
+  
 end
