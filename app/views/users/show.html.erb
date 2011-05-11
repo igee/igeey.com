@@ -3,7 +3,7 @@
   <div style="float:left;text-align:center;width:100px">
     <%= image_tag @user.avatar.url(:_72x72),:class => "avatar" %>
   </div>
-  <div style="float:left;width:500px;text-align:left;padding:0px">
+  <div style="float:left;width:500px;text-align:left;padding:5px">
     <div style="float:right">
       <%= raw(follow_to(@user)) unless @user == current_user%>
     </div>
