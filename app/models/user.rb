@@ -141,6 +141,10 @@ class User < ActiveRecord::Base
     self.followings.where(:followable_type => 'Venue')
   end
   
+  def tag_followings
+    self.followings.where(:followable_type => 'Tag')
+  end
+  
   def calling_followings
     self.followings.where(:followable_type => 'Calling')
   end
