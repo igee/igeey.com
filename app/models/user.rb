@@ -5,23 +5,30 @@ class User < ActiveRecord::Base
   include Authentication::ByPassword
   include Authentication::ByCookieToken
   
-  add_oauth  # add dynamic method for confirmation of oauth status
+  add_oauth  #dynamic method for confirmation of oauth status
   
   belongs_to  :geo
-  has_many    :projects                            
+  has_many :venues,         :foreign_key => :creator_id,:dependent => :destroy
   has_many :records,        :dependent => :destroy
   has_many :plans,          :dependent => :destroy
   has_many :callings,       :dependent => :destroy
-  has_many :venues,         :foreign_key => :creator_id,:dependent => :destroy
   has_many :comments,       :dependent => :destroy
   has_many :topics,         :dependent => :destroy
   has_many :photos,         :dependent => :destroy
   has_many :grants,         :dependent => :destroy
+  has_many :badges,         :through => :grants, :source => :badge
   has_many :followings,     :class_name => "Follow",:foreign_key => :user_id
   has_many :follows,        :as => :followable, :dependent => :destroy
   has_many :followers,      :through => :follows, :source => :user
-  has_many :sayings,       :dependent => :destroy
+  has_many :sayings,        :dependent => :destroy
+  has_many :doings,         :dependent => :destroy
   has_many :syncs,          :dependent => :destroy
+  has_many :notifications,  :dependent => :destroy
+  has_many :taggings,       :dependent => :destroy
+  has_many :tags,           :through => :taggings, :source => :tag
+  has_many :events,         :dependent => :destroy
+  has_many :questions,      :dependent => :destroy
+  has_many :answers,        :dependent => :destroy
   
   has_attached_file :avatar,:styles => {:_48x48 => ["48x48#",:png],:_72x72 => ["72x72#",:png]},
                             :default_url=>"/defaults/:attachment/:style.png",
@@ -70,32 +77,12 @@ class User < ActiveRecord::Base
     write_attribute :email, (value ? value.downcase : nil)
   end
   
-  #def id_count  #hack for top 100 earlier user badge
-    #200 - self.id
-  #end
-  
-  def undone_plans_count
-    self.plans.undone.size
+  def update_notifications_count
+    self.update_attribute(:notifications_count, self.notifications.where(:unread => true).size)
   end
   
-  def time_count
-    self.records.map(&:time).compact.sum
-  end
-  
-  def money_count
-    self.records.map(&:money).compact.sum
-  end
-
-  def online_count
-    self.records.map(&:online).compact.sum
-  end
-  
-  def goods_count
-    self.records.map(&:goods).compact.sum
-  end
-  
-  def photos_count
-    self.photos.size
+  def get_notifications
+    Notification.where(:user_id => self.id, :unread => true).order("updated_at desc")
   end
   
   def venues_count
@@ -130,8 +117,20 @@ class User < ActiveRecord::Base
     self.callings.count
   end
   
+  def questions_count
+    self.questions.count
+  end
+  
+  def answers_count
+    self.answers.count
+  end
+  
   def is_following?(followable)
-    !self.followings.where(:followable_id => followable.id,:followable_type => followable.class).limit(1).blank?
+    self.followings.where(:followable_id => followable.id,:followable_type => followable.class).first.present?
+  end
+
+  def is_answered?(question)
+    self.answers.where(:question_id => question.id).first.present?
   end
 
   def user_followings
@@ -142,55 +141,20 @@ class User < ActiveRecord::Base
     self.followings.where(:followable_type => 'Venue')
   end
   
+  def tag_followings
+    self.followings.where(:followable_type => 'Tag')
+  end
+  
   def calling_followings
     self.followings.where(:followable_type => 'Calling')
   end
-
   
-  #need refactory. use dynamic methods
-  
-  def has_unread_record_comment?
-    self.records.where(:has_new_comment => true).first.present?
-  end
-  
-  def has_unread_calling_comment?
-    self.callings.where(:has_new_comment => true).first.present?
-  end
-  
-  def has_unread_comment_comment?
-    self.comments.where(:has_new_comment => true).first.present?
-  end
-  
-  def has_unread_topic_comment?
-    self.topics.where(:has_new_comment => true).first.present?
-  end
-  
-  def has_unread_saying_comment?
-    self.sayings.where(:has_new_comment => true).first.present?
-  end
-    
-  def has_unread_photo_comment?
-    self.photos.where(:has_new_comment => true).first.present?
-  end
-      
-  def has_unread_comment?
-    has_unread_comment_comment? || has_unread_saying_comment? || has_unread_photo_comment? || has_unread_comment_comment? || has_unread_record_comment? || has_unread_topic_comment? || has_unread_calling_comment?
-  end
-  
-  def has_unread_plan?
-    self.callings.where(:has_new_plan => true).first.present?
-  end
-  
-  def has_unread_child?
-    self.plans.where(:has_new_child => true).first.present?
+  def tag_list
+    self.followings.where(:followable_type => 'Tag').map(&:followable).map(&:name)
   end
   
   def has_new_badge?
     self.grants.where(:unread => true).first.present?
-  end
-  
-  def has_unread_follower?
-    self.follows.where(:unread => true).first.present?
   end
     
   def latest_update
@@ -210,6 +174,11 @@ class User < ActiveRecord::Base
   def send_to_miniblogs(message,options={})
     self.send_to_douban_miniblog(message) if (options[:to_douban] && douban?)
     self.send_to_sina_miniblog(message) if (options[:to_sina] && sina?)
+  end
+  
+  def init_userdata_from(token)
+    self.send_to_douban_miniblog(token) if token.site == 'douban'
+    self.send_to_sina_miniblog(token) if token.site == 'sina'
   end
   
   def check_badge_condition_on(*args)

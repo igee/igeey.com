@@ -7,10 +7,10 @@ class Tagging < ActiveRecord::Base #:nodoc:
   private
   
   def destroy_tag_if_unused
-    if Tag.destroy_unused
-      if tag.taggings.count.zero?
-        tag.destroy
-      end
-    end
+    #if Tag.destroy_unused
+    #  if tag.taggings.count.zero?
+    #    tag.destroy
+    #  end
+    #end
   end
 end

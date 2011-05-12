@@ -152,4 +152,59 @@ namespace :misc do
     puts("end at id:#{Venue.unscoped.order("id asc").last.id }")
     Follow.where(:user_id=>1).map(&:destroy)
   end
+  
+  desc "Init Event list"
+  task :init_event => :environment do
+    timeline = (Saying.all + Calling.all + Photo.all + Topic.all).sort{|x,y| x.created_at <=> y.created_at}
+    timeline.each do |item|
+      Event.create(:user=>item.user,:eventable => item,:venue => item.venue) if item.event.nil?
+      print '.'
+    end
+  end
+
+  desc "Update OauthToken unique_id"
+  task :update_oauth_unique_id => :environment do
+    OauthToken.where(:unique_id => nil).each do |o|
+      puts o.id
+      o.update_attribute(:unique_id, o.get_site_unique_id)
+    end
+  end
+  
+  desc "Checking Counters for User and Venue"
+  task :check_counters => :environment do
+    User.all.each do |u|
+      u.update_attributes(:photos_count=>u.photos.count,:sayings_count=>u.sayings.count,:callings_count=>u.callings.count,:sayings_count=>u.sayings.count)
+      print(u.save ? '.' : 'x')
+    end
+    
+    Venue.all.each do |v|
+      v.update_attributes(:photos_count=>v.photos.count,:sayings_count=>v.sayings.count,:callings_count=>v.callings.count,:sayings_count=>v.sayings.count)
+      print(v.save ? '.' : 'x')
+    end
+  end
+  
+  desc "Update notifications"
+  task :update_notifications => :environment do
+    Comment.where(:has_new_comment => true).each do |c|
+      print '.' if Notification.new(:user_id=>c.user_id, :notifiable_id=>c.commentable_id, :notifiable_type=>c.commentable_type).save
+    end
+    photos = Photo.where(:has_new_comment => true)
+    sayings = Saying.where(:has_new_comment => true)
+    topics = Topic.where(:has_new_comment => true)
+    callings = Calling.where(:has_new_comment => true)
+    all = photos + sayings + topics + callings
+    all.each do |a|
+      print '.' if Notification.new(:user_id=>a.user_id, :notifiable_id=>a.id, :notifiable_type=>a.class.to_s).save
+    end
+    Follow.where(:followable_type=>'User', :unread=>true).each do |f|
+      print '.' if Notification.new(:user_id=>f.followable_id, :notifiable_id=>f.user_id, :notifiable_type=>f.followable_type).save
+    end
+  end
+  
+  desc "Update Calling for what from Action"
+  task :update_callling_for_what_from_action => :environment do
+    Calling.all.each do |c|
+      print '.' if c.update_attribute(:for_what,c.action.for_what)
+    end
+  end
 end

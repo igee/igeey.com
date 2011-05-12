@@ -1,0 +1,16 @@
+<div class="event_box" style="padding:4px 6px 12px">
+  <p>
+    <b><%= link_to question.title,question_path(question)%></b>
+  </p>
+  <div class="event_info">
+      <span>
+        <% if question.answers_count.zero? %>
+          还没有回答
+        <% else%>
+          <%= link_to "#{question.answers_count}个回答",question_path(question)%>
+        <% end %>
+        |
+      </span> 
+    <span>标签：<%= raw tag_links_for(question.tag_list)%></span>
+  </div>
+</div>

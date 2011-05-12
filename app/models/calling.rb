@@ -1,7 +1,6 @@
 class Calling < ActiveRecord::Base
   belongs_to :user,     :counter_cache => true
-  belongs_to :venue
-  belongs_to :action
+  belongs_to :venue,    :counter_cache => true
   has_many   :records
   has_many   :plans
   has_many   :comments, :as => :commentable, :dependent => :destroy
@@ -10,16 +9,18 @@ class Calling < ActiveRecord::Base
   has_many   :follows,  :as => :followable,  :dependent => :destroy
   has_many   :votes,    :as => :voteable,    :dependent => :destroy
   has_many   :followers,:through => :follows,:source => :user
+  has_many   :notifications, :as => :notifiable, :dependent => :destroy
   
-  default_scope :order => 'created_at DESC',:include => [:user]
+  acts_as_ownable
+  acts_as_taggable
+  acts_as_eventable  
+  
+  default_scope :order => 'created_at DESC'
   
   scope :not_closed,where(:close => false) 
-  scope :timing,where(:action_id => [1]) # timeing action list 
-  
-  delegate :for_what, :to => :action
   
   validates :detail,:length => {:minimum => 1 ,:message => '详细信息不能少于50字'}
-  validates :user_id,:action_id,:venue_id,:title,:address,:contact,  :presence => true
+  validates :user_id,:venue_id,:title,:address,:contact,  :presence => true
   validates :do_at,:date => {:after_or_equal_to => 1.day.ago ,:allow_nil => true,:on => :create}
   
   def validate
@@ -84,14 +85,10 @@ class Calling < ActiveRecord::Base
     "为#{self.venue.name}发起行动：#{self.title}"
   end
   
-  def stamped_at
-    last_bumped_at
+  def self.tag_list
+    Tagging.where(:taggable_type => self.to_s).limit(5)
   end
   
-  def can_edit_by?(current_user)
-    self.user == current_user
-  end
-      
   define_index do
     indexes title
     indexes detail

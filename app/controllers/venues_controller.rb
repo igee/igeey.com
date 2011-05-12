@@ -1,6 +1,6 @@
 class VenuesController < ApplicationController
   respond_to :html,:json
-  before_filter :login_required, :except => [:index, :show,:records,:followers,:more_items,:position,:watching]
+  before_filter :login_required, :except => [:index, :show,:records,:followers,:more_timeline,:position,:watching]
   before_filter :find_venue, :except => [:index,:new,:create]
   
   def index
@@ -9,6 +9,7 @@ class VenuesController < ApplicationController
     @categories.each do |k,v|
       @venues_hash[v.to_sym] = Venue.where(:category => k).limit(6)
     end
+    @venues = Venue.limit(9).where(:created_at => 1.month.ago..Date.today)
   end
   
   def new
@@ -24,13 +25,22 @@ class VenuesController < ApplicationController
   end
   
   def show
-    @timeline = @venue.callings
-    @timeline += @venue.records.where(:calling_id => nil)
-    @timeline = @timeline.sort{|x,y| y.created_at <=> x.created_at }
-    @photos = @venue.photos.limit(7)
-    @topics = @venue.topics.limit(7)
-    @sayings = @venue.sayings.limit(7)
+    @callings = @venue.callings.limit(11)
+    @photos = @venue.photos.limit(11)
+    @sayings = @venue.sayings.limit(11)
+    @topics = @venue.topics.limit(11)
+    @timeline = @venue.events.limit(11)
     @followers = @venue.followers.limit(8)
+  end
+  
+  def more_timeline
+    if ['photos','sayings','topics','callings'].include?(params[:filter])
+      @timeline = eval "@venue.#{params[:filter]}.paginate(:page => params[:page], :per_page => 10)"
+      @filter = params[:filter]
+    else
+      @timeline = @venue.events.paginate(:page => params[:page], :per_page => 10)
+    end
+    render '/public/more_timeline',:layout => false
   end
   
   def edit
@@ -54,21 +64,45 @@ class VenuesController < ApplicationController
   end
   
   def records
-    @records = @venue.records
-    respond_with(@records)
+    @items = @venue.records.paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@venue.name}的行动记录"
+    render 'see_all'
+  end
+  
+  def callings
+    @items = @venue.callings.paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@venue.name}的行动召集"
+    render 'see_all'
+  end
+  
+  def topics
+    @items = @venue.topics.paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@venue.name}的故事"
+    render 'see_all'
+  end
+  
+  def sayings
+    @items = @venue.sayings.paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@venue.name}的报到"
+    render 'see_all'
+  end
+  
+  def photos
+    @items = @venue.photos.paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@venue.name}的照片"
+    render 'see_all'
+  end
+
+  def doings
+    @items = @venue.doings.paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@venue.name}的行动"
+    render 'see_all'
   end
   
   def followers
-    @followers = @venue.followers.paginate(:page => params[:page], :per_page => 20)
-  end
-  
-  def more_items
-    @items = eval({:followers => '@venue.followers[8..-1]',
-                   :photos => "@venue.photos.paginate(:page => #{params[:page]}, :per_page => 7)",
-                   :sayings => "@venue.sayings.paginate(:page => #{params[:page]}, :per_page => 7)",
-                   :topics => "@venue.topics.paginate(:page => #{params[:page]}, :per_page => 7)",
-                   }[params[:items].to_sym])
-    render :layout => false
+    @items = @venue.followers.paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@venue.name}的关注者"
+    render 'see_all'
   end
   
   def watching

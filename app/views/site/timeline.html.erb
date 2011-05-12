@@ -1,0 +1,24 @@
+<% @title = '地点'%>
+
+<h3><%= logged_in? ? '你关注的' : '爱聚的' %>地点发生了什么？</h3>
+
+<%= render :partial => '/public/event', :collection => @timeline %>
+
+<%= link_to('查看更多...',more_timeline_path(:page => 2),:class => "timeline_footer",:onclick => 'javascript:more_timeline($(this));return false') if logged_in? && @timeline.size == 10 %>
+
+<% if logged_in? && @following_venues_id_list.empty? %>
+  <p>
+    Hi，你还没有关注的地点呢。<br/>
+    找到你关心的地点并关注就可以在这里看到它的新鲜事了。<br/>
+    你可以 <%= link_to '直接搜索',search_path %> 或用 <%= link_to '地图寻找' ,geos_path %>。当然你还可以先 <%= link_to '随便看看',public_path %> :)。
+  </p>
+<% elsif @timeline.empty?%>
+  <p>
+    你关注的地点还没有新消息,你可以去你的地点报到、上传照片、发起活动等，或者去关注更多的地点。<br/>
+    <%= link_to '直接搜索',search_path %> 或用 <%= link_to '地图寻找' ,geos_path %>。当然你还可以先 <%= link_to '随便看看',public_path %> :)。
+  </p>
+<% end %>
+
+<% content_for :sidebar do %>  
+  <%= render :partial => "sidebar_panel" if logged_in?%>
+<% end %>

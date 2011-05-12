@@ -1,15 +1,16 @@
 <% content_for :head do %>
   <%= javascript_include_tag 'calendar.js' %>
+  <%= javascript_include_tag 'jquery.tag.editor-min.js' %>
 <% end %>
 
 <%= form_for @calling do |form| %>
   <%= raw error_explanation_for(@calling) if @calling.errors.present?%>
-  <%= form.hidden_field :action_id %>
+  <%= form.hidden_field :for_what,:value => 'time'%>
   <%= form.hidden_field :venue_id %>
   <%= render :partial => '/users/user' ,:object => current_user %>
   <div class="bubble_tail"></div>
   <div class="bubble">
-    <%= render :partial => "/callings/forms/#{@calling.action.slug}",:locals => {:form => form}%>
+    <%= render :partial => "/callings/forms/time",:locals => {:form => form}%>
   </div>
   <div style="clear:both;text-align:right;">  
   </div>
@@ -19,7 +20,9 @@
     <%= form.submit '确定',:class => 'button'%>
     <%= button_to_function '取消',"javascript:window.history.back()",:class => 'button'%>
   </div>
+<% end %>
 
+<% content_for :extension do %>
   <script type="text/javascript">
   $(document).ready(function(){
       DateTimeShortcuts.init()
@@ -28,6 +31,7 @@
       setTimeout(updateCount, 400);
        }
       updateCount();
+      $(".tag_list").each(function(index,element){jQuery(element).tag_cloud();})
     })
   </script>
 <% end %>

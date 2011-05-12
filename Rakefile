@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-Igee::Application.load_tasks
+Igeey::Application.load_tasks

@@ -15,13 +15,16 @@ class Venue < ActiveRecord::Base
   belongs_to :geo
   
   has_many   :callings,   :dependent => :destroy
+  has_many   :topics,     :dependent => :destroy
+  has_many   :sayings,    :dependent => :destroy  
   has_many   :plans,      :dependent => :destroy
   has_many   :records,    :dependent => :destroy
-  has_many   :photos
-  has_many   :topics,     :dependent => :destroy
+  has_many   :photos,     :dependent => :destroy
   has_many   :follows,    :as => :followable,  :dependent => :destroy
-  has_many   :followers,  :through => :follows,:source => :user,:dependent => :destroy
-  has_many   :sayings,   :dependent => :destroy  
+  has_many   :followers,  :through => :follows,:source => :user
+  has_many   :taggings,   :dependent => :destroy
+  has_many   :tags,       :through => :taggings,:source => :tag
+  has_many   :events,     :dependent => :destroy
 
   has_attached_file :cover, :styles => {:_48x48 => ["48x48#",:jpg],:_100x100 => ["100x100#",:jpg]},
                             :url=>"/media/:attachment/venues/:id/:style.jpg",
@@ -67,6 +70,10 @@ class Venue < ActiveRecord::Base
     rescue
       self.latitude, self.longitude = self.geo.latitude,self.geo.longitude
     end
+  end
+  
+  def tag_list
+    self.tags.uniq.map(&:name)
   end
   
   def self.generate_json

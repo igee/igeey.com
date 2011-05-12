@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   # include AuthenticatedSystem
   respond_to :html
   before_filter :login_required, :only=> [:edit,:setting]
-  before_filter :find_user, :except => [:new,:create,:edit,:setting,:welcome,:index,:reset_password,:reset_completed]
+  before_filter :find_user, :except => [:new,:create,:edit,:setting,:welcome,:index,:reset_password,
+                                        :reset_completed,:connect_account,:oauth_signup,:oauth_user_create]
 
   # render new.rhtml
   def new
@@ -11,7 +12,53 @@ class UsersController < ApplicationController
     @user = User.new
     render :layout => false if params[:layout] == 'false'
   end
- 
+  
+  def oauth_signup
+    redirect_to :root if logged_in?
+    @user = User.new
+    @site = session[:site]
+    @user_name = OauthToken.find_by_unique_id_and_site(session[:unique_id],@site).get_site_user_name
+  end
+  
+  def oauth_user_create
+    logout_keeping_session!
+    @user = User.new(params[:user])
+    success = @user && @user.save
+    if success && @user.errors.empty?
+      # Protects against session fixation attacks, causes request forgery
+      # protection if visitor resubmits an earlier form using back
+      # button. Uncomment if you understand the tradeoffs.
+      # reset session
+      self.current_user = @user # !! now logged in
+      OauthToken.find_by_unique_id_and_site(session[:unique_id],session[:site]).update_attributes(:user_id => @user.id)
+      flash[:dialog] = "<a href=#{welcome_users_path} class='open_dialog' title='欢迎'>欢迎</a>"
+      redirect_to :back
+    else
+      render :action => 'oauth_signup' 
+    end
+  end
+  
+  def connect_account
+    @token = OauthToken.find_by_user_id_and_request_key((current_user ? current_user.id : nil), params[:oauth_token])
+    @unique_id = @token.get_site_unique_id
+    @exist_tokens = OauthToken.where(:unique_id => @unique_id,:site => @token.site).where('user_id is not null')
+    if @exist_tokens.empty?
+      @token.update_attributes(:unique_id => @unique_id)
+      session[:unique_id] = @unique_id
+      session[:site] = @token.site
+      redirect_to oauth_signup_path
+    else
+      @user = User.find @exist_tokens.first.user_id
+      @exist_tokens.map(&:delete)
+      @token.update_attributes(:user_id => @user.id, :unique_id => @unique_id)
+      self.current_user = @user
+      # auto login 
+      new_cookie_flag = (params[:remember_me] == "1")
+      handle_remember_cookie! new_cookie_flag
+      redirect_to((session[:oauth_refers]||{})[@token.site] || '/' )
+    end
+  end
+  
   def create
     logout_keeping_session!
     @user = User.new(params[:user])
@@ -72,28 +119,80 @@ class UsersController < ApplicationController
   end
   
   def show
-    @records = @user.records.limit(7)
-    @callings = @user.callings.limit(7)
-    @sayings = @user.sayings.limit(7)
-    @plans = @user.plans.undone.limit(7)
-    @topics = @user.topics.limit(7)
+    @timeline = @user.events.limit(11)
+    @questions = @user.questions.limit(11)
+    @answers = @user.answers.limit(11)
     @followers = @user.followers.limit(9)
     @following_users = @user.user_followings.limit(9).map(&:followable)
-    @following_venues = @user.venue_followings.limit(7).map(&:followable)
-    @photos = @user.photos.limit(6)
+    @following_venues = @user.venue_followings.limit(11).map(&:followable)
     @badges = @user.grants.limit(9).map(&:badge)
   end
   
+  def badges
+    @items = @user.badges.paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@user.login}获得的徽章"
+    render 'see_all'
+  end
+  
+  def callings
+    @items = @user.callings.paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@user.login}的行动召集"
+    render 'see_all'
+  end
+  
+  def topics
+    @items = @user.topics.paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@user.login}的故事"
+    render 'see_all'
+  end
+  
+  def sayings
+    @items = @user.sayings.paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@user.login}的报到"
+    render 'see_all'
+  end
+  
+  def photos
+    @items = @user.photos.paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@user.login}的照片"
+    render 'see_all'
+  end
+  
+  def questions
+    @items = @user.questions.paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@user.login}的问题"
+    render 'see_all'
+  end
+  
+  def answers
+    @items = @user.answers.paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@user.login}的回答"
+    render 'see_all'
+  end
+  
+  
   def following_venues
-    @following_venues = @user.venue_followings.map(&:followable)
+    @items = @user.venue_followings.map(&:followable).paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@user.login}关注的地点"
+    render 'see_all'
   end
   
   def following_users
-    @following_users = @user.user_followings.map(&:followable)
+    @items = @user.user_followings.map(&:followable).paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@user.login}关注的用户"
+    render 'see_all'
   end
 
+  def followers
+    @items = @user.followers.paginate(:page => params[:page], :per_page => 10)
+    @title = "关注#{@user.login}的用户"
+    render 'see_all'
+  end
+  
   def following_callings
-    @following_callings = @user.calling_followings.map(&:followable)
+    @items = @user.calling_followings.map(&:followable).paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@user.login}关注的活动"
+    render 'see_all'
   end
 
   def reset_password
@@ -113,19 +212,9 @@ class UsersController < ApplicationController
     render :layout => false if params[:layout] == 'false'
   end
   
-  def more_items
-    @items = eval({:badges => '@user.grants[8..-1].map(&:badge)',
-                   :followers => '@user.followers[8..-1]',
-                   :following_users => "@user.user_followings[8..-1].map(&:followable)",
-                   :following_venues => '@user.venue_followings[8..-1].map(&:followable)',
-                   :photos => "@user.photos.paginate(:page => #{params[:page]}, :per_page => 6)",
-                   :callings => "@user.callings.paginate(:page => #{params[:page]}, :per_page => 6)",
-                   :sayings => "@user.sayings.paginate(:page => #{params[:page]}, :per_page => 6)",
-                   :topics => "@user.topics.paginate(:page => #{params[:page]}, :per_page => 6)",
-                   :records => "@user.records.paginate(:page => #{params[:page]}, :per_page => 6)",
-                   :plans => "@user.plans.paginate(:page => #{params[:page]}, :per_page => 6)",
-                   }[params[:items].to_sym])
-    render :layout => false
+  def more_timeline
+    @timeline = @user.events.paginate(:page => params[:page], :per_page => 10)
+    render '/public/more_timeline',:layout => false
   end
   
   private

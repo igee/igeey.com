@@ -2,9 +2,9 @@
   <div class="box">
     <h4>查看全部新留言：</h4>
     <span><%= link_to '都看完了，返回首页',root_path%></span>
-    <%= render :partial => "/public/event" ,:collection => @timeline %>
+    <%= render :partial => "/public/item" ,:collection => @timeline %>
   </div>
-
+  
 <% content_for :extension do %>
 
 <script type="text/javascript">

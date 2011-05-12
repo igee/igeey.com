@@ -1,0 +1,20 @@
+<%= form_for @action,:html => { :multipart => true } do |form|%>
+<p><%= form.label :name,'行动标题：'%> <%= form.text_field :name,:size => 20,:name => '_action[name]'%></p>
+<p>
+  <%= form.label :intro,'行动介绍：',:style => 'float:left'%>
+  <%= form.text_area :intro,:style => "height:100px;width:400px;margin-left:75px",:name => '_action[intro]'%>
+</p>
+<p>
+  <%= form.label :method,'行动方法：',:style => 'float:left'%>
+  <%= form.text_area :method,:style => "height:100px;width:400px;margin-left:75px",:name => '_action[method]'%>
+</p>
+<p>
+  <%= form.label :cover,'图标文件：'%> <%= form.file_field :cover,:style => "",:name => '_action[cover]' %>
+  <br/>
+  <%= image_tag @action.cover.url(:_64x64) if @action.cover_file_name%>
+</p>
+<p style="margin-left:75px">
+  <%= submit_tag '确定',:class => 'button' %>
+  <%= button_to_function '取消',"javascript:window.history.back()",:class => "button"%>
+</p>
+<% end %>

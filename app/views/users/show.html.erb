@@ -1,90 +1,77 @@
 <% @title = @user.login %>
 <div class="box">
-  <div style="float:left;text-align:center;padding-top:16px;width:100px">
+  <div style="float:left;text-align:center;width:100px">
     <%= image_tag @user.avatar.url(:_72x72),:class => "avatar" %>
-    <div style="margin:6px;">
+  </div>
+  <div style="float:left;width:500px;text-align:left;padding:5px">
+    <div style="float:right">
       <%= raw(follow_to(@user)) unless @user == current_user%>
     </div>
-  </div>
-  <div style="float:left;width:500px;text-align:left;padding:16px 10px 0">
-    <div id="record_counters">
-      <% [[@user.records.map(&:venue).uniq.count,'服务地点'],[@user.time_count,'贡献小时'],[@user.goods_count,'捐赠物资'],[@user.online_count,'线上行动']].each do |counter_list|%>
-      <div class="record_counter_wrapper">
-        <h4><%= counter_list[1] %></h4>
-        <h2 class="record_counter"><%= counter_list[0] %></h2>
-      </div>
-      <% end %>
-    </div> 
-    <h3><%= @user.login %></h3>
-    <span><%= "#{@user.geo.full_name}" unless @user.geo.nil? %></span>
+    <h3><%= @user.login %> <span><%= "#{@user.geo.full_name}" unless @user.geo.nil? %></span></h3> 
+    <%= @user.signature%>
+    <p style="border-top:1px solid #eee">
+      <span>
+        <%= link_to_unless(@user.sayings_count.zero?,"报到[#{@user.sayings_count}]",sayings_user_path(@user)) %>
+        <%= link_to_unless(@user.photos_count.zero?,"照片[#{@user.photos_count}]",photos_user_path(@user)) %>
+        <%= link_to_unless(@user.topics_count.zero?,"故事[#{@user.topics_count}]",topics_user_path(@user)) %>
+        <%= link_to_unless(@user.callings_count.zero?,"召集[#{@user.callings_count}]",callings_user_path(@user)) %>
+        <%= link_to_unless(@user.questions_count.zero?,"问题[#{@user.questions_count}]",questions_user_path(@user)) %>
+        <%= link_to_unless(@user.answers_count.zero?,"回答[#{@user.answers_count}]",answers_user_path(@user)) %>
+      </span>
+    </p>
   </div>
 </div>
-<br/>
-<div class="box">
-  <div id="tabContaier">
-    <ul>
-      <li><%= link_to '报到','#my_sayings'%></li>
-      <li><%= link_to '照片','#my_photos'%></li>
-      <li><%= link_to '故事','#my_topics'%></li>
-      <li><%= link_to '行动记录','#my_records'%></li>
-      <li><%= link_to '召集行动','#my_callings'%></li>
-      <li><%= link_to '行动计划','#my_plans'%></li>
+    
+<div class="box">  
+   <div id="tabContaier">
+    <ul id="tabNav">
+      <li><%= link_to 'Ta的动态..','#timeline'%></li>
+      <li><%= link_to 'Ta的提问..','#questions' unless @questions.empty?%></li>
+      <li><%= link_to 'Ta的回答..','#answers' unless @answers.empty?%></li>
     </ul>
-    
-    <div id="my_sayings" class="tabContents">
-      <%= render :partial => '/public/saying',:collection => @sayings[0..5]%>
-      <%= link_to raw("查看更多 &#8744;"),more_items_user_path(@user,:items => 'sayings',:page => 2),:class => "more_items" if @sayings[6].present?%>
+
+    <div id="timeline" class="tabContents" >
+      <%= render :partial => '/public/event',:collection => @timeline[0..9]%>
+      <%= link_to raw("查看更多..."),more_timeline_user_path(@user,:page => 2),:class => "timeline_footer",:onclick => "javascript:more_timeline($(this));return false" if @timeline[10].present?%>
     </div>
-    
-    <div id="my_photos" class="tabContents">
-      <%= render :partial => '/public/photo',:collection => @photos[0..5]%>
-      <%= link_to raw("查看更多 &#8744;"),more_items_user_path(@user,:items => 'photos',:page => 2),:class => "more_items" if @photos[6].present?%>
+
+    <div id="questions" class="tabContents" >
+      <%= render :partial => '/public/item',:collection => @questions%>
     </div>
-    
-    <div id="my_topics" class="tabContents">
-      <%= render :partial => '/public/topic',:collection => @topics[0..5]%>
-      <%= link_to raw("查看更多 &#8744;"),more_items_user_path(@user,:items => 'topics',:page => 2),:class => "more_items" if @topics[6].present?%>
+
+    <div id="answers" class="tabContents" >
+      <%= render :partial => '/public/item',:collection => @answers%>
     </div>
-    
-    <div id="my_records" class="tabContents">
-      <%= render :partial => '/public/record',:collection => @records[0..5]%>
-      <%= link_to raw("查看更多 &#8744;"),more_items_user_path(@user,:items => 'records',:page => 2),:class => "more_items" if @records[6].present?%>
-    </div>
-    
-    <div id="my_callings" class="tabContents">
-      <%= render :partial => '/public/calling',:collection => @callings[0..5]%>
-      <%= link_to raw("查看更多 &#8744;"),more_items_user_path(@user,:items => 'callings',:page => 2),:class => "more_items" if @callings[6].present?%>
-    </div>
-      
-    <div id="my_plans" class="tabContents">
-      <%= render :partial => '/public/plan',:collection => @plans[0..5]%>
-      <%= link_to raw("查看更多 &#8744;"),more_items_user_path(@user,:items => 'plans',:page => 2),:class => "more_items" if @plans[6].present?%>
-    </div>  
   </div>
 </div>
 
 <% content_for :sidebar do %>
-  <div class="box">
+  <div class="box" >
+    <%= link_to "查看全部",badges_user_path(@user),:class => "see_all_link" if @badges[8]%>
     <h4><%= "获得#{@user.grants.size}个徽章："%></h4>
     <%= render :partial => '/badges/badge' ,:collection => @badges[0..7] %>
-    <%= link_to raw("查看全部 &#8744;"),more_items_user_path(@user,:items => 'badges'),:class => "more_items" if @badges[8].present?%>
   </div>
   
-  <div class="box">
+  <div class="box" >
+    <h4><%= "关注#{@user.tag_followings.size}个话题："%></h4>
+    <%= raw(tag_list_for(@user.tag_list))%>
+  </div>
+    
+  <div class="box" >
+    <%= link_to "查看全部",following_venues_user_path(@user),:class => "see_all_link" if @following_venues[10]%>
     <h4><%= "关注#{@user.venue_followings.size}个地点："%></h4>
-    <%= render :partial => '/venues/venue',:collection => @following_venues[0..5] %>
-    <%= link_to raw("查看全部 &#8744;"),more_items_user_path(@user,:items => 'following_venues'),:class => "more_items" if  @following_venues[6].present?%>
+    <%= render :partial => '/venues/venue',:collection => @user.venue_followings.limit(6).map{|f| f.followable},:locals => {:with_name => true}%>
   </div>
-  
+    
   <div class="box">
-    <h4><%= "#{@user.follows.size}个关注者："%></h4>
-    <%= render :partial => "/users/user",:collection => @followers[0..7] %>
-    <%= link_to raw("查看全部 &#8744;"),more_items_user_path(@user,:items => 'followers'),:class => "more_items" if @followers[8].present?%>
-  </div>
-  
-  <div class="box">
+    <%= link_to "查看全部",following_users_user_path(@user),:class => "see_all_link" if @following_users[8]%>
     <h4><%= "关注#{@user.user_followings.size}人："%></h4>
     <%= render :partial => '/users/user',:collection => @following_users[0..7] %>
-    <%= link_to raw("查看全部 &#8744;"),more_items_user_path(@user,:items => 'following_users'),:class => "more_items" if  @following_users[8].present?%>
+  </div>
+  
+  <div class="box">
+    <%= link_to "查看全部",followers_user_path(@user),:class => "see_all_link" if @followers[8]%>
+    <h4><%= "#{@user.follows.size}个关注者："%></h4>
+    <%= render :partial => "/users/user",:collection => @followers[0..7] %>
   </div>
 <% end %>

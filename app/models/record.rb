@@ -1,26 +1,25 @@
 class Record < ActiveRecord::Base
   belongs_to :user,     :counter_cache => true
   belongs_to :venue,    :counter_cache => true
-  belongs_to :action
   belongs_to :calling
   belongs_to :plan
-  belongs_to :project
   belongs_to :parent,   :class_name => :record,:foreign_key => :parent_id
   has_many   :comments, :as => :commentable,    :dependent => :destroy
   has_many   :follows,  :as => :followable,     :dependent => :destroy
   has_many   :syncs,    :as => :syncable,       :dependent => :destroy
-  has_many   :photos,   :as => :imageable,     :dependent => :destroy
+  has_many   :photos,   :as => :imageable,      :dependent => :destroy
   
-  default_scope :order => 'created_at DESC',:include => [:user]
+  default_scope :order => 'created_at DESC'
   
-  delegate  :for_what, :to => :action
+  delegate  :for_what, :to => :calling
   
+  acts_as_ownable
   acts_as_taggable
   
   accepts_nested_attributes_for :photos
   
   validate  :user_id, :presence  => true,:uniqueness => {:scope => [:plan_id]}
-  validates :action_id,:venue_id,:title,:presence  => true
+  validates :venue_id,:title,:presence  => true
   validates :done_at,:date => {:before_or_equal_to => Date.today.to_date}
   
   def validate
@@ -29,10 +28,6 @@ class Record < ActiveRecord::Base
   
   def number
     {'money'=> money,'goods'=> goods,'time'=> time,'online' => online}[for_what] || 0
-  end
-  
-  def can_edit_by?(current_user)
-    self.user == current_user
   end
     
   def formatted_done_at
@@ -48,5 +43,8 @@ class Record < ActiveRecord::Base
     true
   end
   
-    
+  def for_what
+    {1=>'time', 3=>'goods'}[action_id]
+  end
+  
 end

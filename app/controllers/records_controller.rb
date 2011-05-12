@@ -3,17 +3,12 @@ class RecordsController < ApplicationController
   before_filter :login_required, :except => [:index,:show]
   before_filter :find_record, :except => [:index,:new,:create,:find_by_tag]
   
-  def index
-    @actions = Action.callable
-  end
-  
   def new
-    @record = current_user.records.build(:action_id => params[:action_id],:venue_id => params[:venue_id],:plan_id => params[:plan_id])
-    if @record.action.nil? && @record.plan.nil?
-      @actions = Action.callable
+    @record = current_user.records.build(:venue_id => params[:venue_id],:plan_id => params[:plan_id])
+    if @record.plan.nil?
       render :select_action, :layout =>  !(params[:layout] == 'false')
     elsif @record.plan.present?
-      @record = Record.new(:action => @record.plan.action,:venue => @record.plan.venue,:calling => @record.plan.calling,:plan => @record.plan)
+      @record = Record.new(:venue => @record.plan.venue,:calling => @record.plan.calling,:plan => @record.plan)
     end    
   end
   
@@ -26,9 +21,7 @@ class RecordsController < ApplicationController
   
   def show
     @venue = @record.venue
-    @action = @record.action
     @calling = @record.calling
-    @project = @record.project
     @comments = @record.comments
     @photos = @record.photos
   end

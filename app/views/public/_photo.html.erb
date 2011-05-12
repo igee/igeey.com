@@ -1,34 +1,36 @@
+<% venue = venue || photo.venue %>
+<% user = user || photo.user %>
+
 <div class="event_box">
-  <%= controller_name == 'venues' ? (render :partial => "/users/avatar",:object => photo.user) : (render :partial => "/venues/venue",:object => photo.venue) %>
+  <%= controller_name == 'venues' ? (render :partial => "/users/avatar",:object => user) : (render :partial => "/venues/venue",:object => photo.venue) %>
   <div class="event">
-    <span><%= '在' if controller_name == 'users'%> <%= raw ("#{link_to photo.venue.name,photo.venue} 的照片：")  unless controller_name == 'venues'%></span>
+    <span>
+      <%= image_tag('/images/icon/photo.gif',:class => 'icon')%>
+      <%= link_to user.login,user if controller_name == 'venues'%>
+      <%= raw("在 #{link_to photo.venue.name,photo.venue}") if controller_name == 'users'%>
+      <%= raw(['users','venues'].include?(controller_name) ? '上传了照片：' : "#{link_to photo.venue.name,photo.venue} 有了新照片：") %>
+    </span>
     <div style="padding-top:10px">
       <%= link_to (image_tag photo.photo.url,:class => "photo") + (image_tag photo.photo.url(:max500x400),:title => photo.title,:class => "zoomed_photo"),photo,:class => "zoom_photo",:title => photo.title,:style => 'float:left' %>
       <div style="float:left;padding:0 10px">
-        <%= photo.title %><br/>
         <pre class="photo_detail"><%= photo.detail %></pre>
       </div>
-      
     </div>  
     <div style="clear:both"></div> 
     <div class="event_info">
-      <span><%= raw "by #{link_to photo.user.login,photo.user}" unless controller_name == 'users' %></span>
+      <span><%= raw "by #{link_to photo.user.login,photo.user}" unless ['users','venues'].include?(controller_name) %></span>
       <span class="timeago"><%= photo.created_at %></span>
+      <span>标签： <%= raw tag_links_for(photo.tag_list)%></span>
     </div>
     <div class="event_action">
-      <% if logged_in? && photo.user.id == current_user.id %>
-        <%= form_for photo,:html => {:style=>"display:inline"} do |form|%>
-          <%= form.text_field :title,:size => 10,:style => "display:none;font-size:12px;height:12px",:id => "photo_set_title_#{photo.id}"%>
-          <%= raw "#{link_to '添加标题','#',:id => "set_title_#{photo.id}",:onclick => "javascript:set_title(#{photo.id});return false;";} |" if photo.title.blank?%>
-          <%= link_to "删除",photo,:method => :delete ,:confirm => "确定要删除这张照片么？",:id=>"delete_link_#{photo.id}"%>
-          <%= link_to raw('确认'),"#",:onclick => "javasciprt:$('#edit_photo_#{photo.id}').submit();return false",:style =>'display:none',:id=>"sumbit_link_#{photo.id}"%>
-          | 
-        <% end %>
+      <% if logged_in? && user.id == current_user.id %>
+        <%= link_to "删除",photo_path(photo),:method => :delete ,:confirm => "确定要删除这张照片么？",:id=>"delete_link_#{photo.id}"%> |
+        <%= link_to "修改",edit_photo_path(photo,:back_path =>request.path)%> |
       <% end %>
-	  <%= link_to "喜欢#{'(' + photo.votes_count.to_s + ')' if photo.votes_count > 0 }", '', 'date-voteable_id' => photo.id, 'date-voteable_type' => photo.class.to_s, :class => "vote" %>
-		  |
-      <%= link_to "回复#{'(' + photo.comments_count.to_s + ')' if photo.comments_count > 0}",'',:class => "event_reply"%>　
+      <%= link_to "查看原图",photo.photo.url(:original),:target => "_blank" %> |
+      <%= link_to "回复#{'(' + photo.comments_count.to_s + ')' if photo.comments_count > 0}",'',:class => "event_reply", :onclick=>"javascript:redirect_clear(#{photo.id},'Photo')"%>　
     </div>
     <%= render :partial => "/public/reply_form",:locals =>  {:object => photo}%>
   </div>
+  <%= render :partial => "/public/reply_form",:locals =>  {:object => photo}%>
 </div>

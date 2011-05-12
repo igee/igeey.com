@@ -17,7 +17,10 @@
     <li>照片： <%= @photos_total%></li>
     <li>留言： <%= @comments_total%></li>
     <li>同步： <%= @syncs_total%></li>
-    <li>话题： <%= @topics_total%></li>
+    <li>故事： <%= @topics_total%></li>
+    <li>问题： <%= @questions_total%></li>
+    <li>回答： <%= @answers_total%></li>
+    <li>话题： <%= @tags_total%></li>
     <li>关注： <%= @follows_total%></li>
   </ul>
 </div>
@@ -25,7 +28,6 @@
   <h4>数据对比</h4>
   <ul>
     <li>新浪同步 > <%= @sina_syncs%> vs <%= @douban_syncs%> < 豆瓣同步</li>
-    <li>捐物次数 > <%= @goods_records%> vs <%= @time_records%> < 服务次数</li>
     <li>直接参与 > <%= @directly_plans%> vs <%= @follow_plans %> < 跟随行动</li>
   </ul>
 </div>
@@ -83,13 +85,22 @@ $(document).ready(function() {
          name: '报到',
          data: [<%= @sayings_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
       },{
+         name: '话题',
+         data: [<%= @tags_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
+      },{
+         name: '问题',
+         data: [<%= @questions_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
+      },{
+         name: '回答',
+         data: [<%= @answers_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
+      },{
          name: '留言',
          data: [<%= @comments_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
       },{
          name: '同步',
          data: [<%= @syncs_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
       },{
-         name: '话题',
+         name: '故事',
          data: [<%= @topics_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
       },{
          name: '关注',

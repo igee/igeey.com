@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
-module Igee
+module Igeey
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -30,7 +30,12 @@ module Igee
                                       :venue_observer,
                                       :sync_observer,
                                       :oauth_token_observer,
-                                      :follow_observer
+                                      :follow_observer,
+                                      :notification_observer,
+                                      :tagging_observer,
+                                      :action_observer,
+                                      :answer_observer,
+                                      :question_observer,
                                       ]
     
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
@@ -53,6 +58,9 @@ module Igee
     config.middleware.use ExceptionNotifier,
       :email_prefix => "[Error] ",
       :sender_address => %{"notifier" <mail@igeey.com>},
-      :exception_recipients => %w{YAML.load_file("#{Rails.root}/config/config.yml")[Rails.env]['developer_mail']}
+      :exception_recipients => YAML.load_file("#{Rails.root}/config/config.yml")[Rails.env]['developer_mail'].to_a
+      
+    # Custom directories with classes and modules you want to be autoloadable.
+    config.autoload_paths += Dir["#{config.root}/lib/autoload/"]
   end
 end

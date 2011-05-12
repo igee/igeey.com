@@ -1,0 +1,47 @@
+<% @title = @question.title%>
+
+<div class="box">
+  <h3>问题：<%= @title %>
+  <span>
+    <% if @question.owned_by?(current_user) %>
+      <%= link_to "补充","#{edit_question_path(@question)}?back_path=#{request.path}"%> |
+      <%= link_to "删除","#{question_path(@question)}",:method => :delete,:confirm => '你确定要删除这个问题么？'%>
+    <% end %>
+  </span>
+  </h3>
+  <pre><%= @question.detail %></pre>
+  <p>
+    <span>来自 <%= link_to @question.user.login,@question.user %> 的提问 </span>
+    <span class="timeago"><%= @question.created_at %></span>
+    <span>标签：<%= raw tag_links_for(@question.tag_list)%></span>
+  </p>
+  
+</div>
+
+<div class="box">
+  <% if @question.answers_count.zero? %>
+    <span>目前还没有人回答这个问题，你能帮助解答吗？</span>
+  <% else%>
+    <h4>备选答案：</h4>
+    <%= render :partial => '/public/answer',:collection => @question.answers%>
+  <% end %>
+</div>
+
+<div class="box">
+  <h4>我要回答：</h4>
+  <% if logged_in? && current_user.is_answered?(@question) %>
+    <p>你已经回答了这个问题</p>
+  <% elsif logged_in?%>
+    <%= form_for [@question,@answer] do |form| %>
+      <%= form.hidden_field :question_id ,:value => @question.id%>
+      <%= form.text_area :content,:style=>"width:540px;height:64px;"%>
+      <%= form.submit '提交',:class=>'button'%> 
+    <% end %>
+  <% else %>
+      <p><%= link_to "立即登录",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%> 即可回答。</p>
+  <% end %>
+</div>
+
+<% content_for :sidebar do %>
+
+<% end %>

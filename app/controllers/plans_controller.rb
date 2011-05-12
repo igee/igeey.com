@@ -19,7 +19,6 @@ class PlansController < ApplicationController
     @plan = current_user.plans.build(params[:plan])
     @plan.calling = Calling.find(params[:calling_id])
     @plan.venue = @plan.calling.venue
-    @plan.action = @plan.calling.action
     if @plan.save
       flash[:dialog] = "<a href='#{new_sync_path}?syncable_type=#{@plan.class}&syncable_id=#{@plan.id}' class='open_dialog' title='传播这个行动'>同步</a>" 
       respond_with [@calling,@plan]
@@ -37,7 +36,6 @@ class PlansController < ApplicationController
     @records = @calling.records
     @plans = @calling.plans.undone
     @my_plan = @calling.plans.select{|p| p.user_id == current_user.id}.first if logged_in?
-    render :layout => "no_sidebar"
   end
   
   def edit
