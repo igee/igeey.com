@@ -21,8 +21,8 @@ class Question < ActiveRecord::Base
   
   def related_questions
     @questions = []
-    self.tag_list.each do |t|
-      @questions += Tag.where(:name=>t).first.taggeds.where(['taggable_type=?','Question']).limit(10).map(&:taggable)
+    self.tags.each do |tag|
+      @questions += tag.taggeds.where(['taggable_type=?','Question']).limit(10).map(&:taggable)
     end
     (@questions - [self]).shuffle
   end
