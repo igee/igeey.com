@@ -55,9 +55,7 @@
     <h4>相关问题</h4>
     <% @questions.each do |q|%>
       <div style="padding:4px 6px 4px;border-bottom:1px dashed #ccc;">
-        <p>
-          <b><%= link_to q.title,question_path(q)%></b>
-        </p>
+        <p><%= link_to q.title,question_path(q)%></p>
       </div>
     <% end%>
   </div>
