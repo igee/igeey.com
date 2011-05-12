@@ -73,7 +73,7 @@ class Venue < ActiveRecord::Base
   end
   
   def tag_list
-    self.tags.map(&:name)
+    self.tags.uniq.map(&:name)
   end
   
   def self.generate_json
