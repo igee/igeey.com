@@ -5,6 +5,7 @@ class QuestionsController < ApplicationController
   
   def show
     @answer = Answer.new
+    @questions = @question.related_questions[0..9]
   end
   
   def edit
