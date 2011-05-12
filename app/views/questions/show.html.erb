@@ -46,19 +46,10 @@
   <div class="box">
     <h4>相关问题</h4>
     <% @questions.each do |q|%>
-      <div style="padding:4px 6px 12px;border-bottom:1px dashed #ccc;">
+      <div style="padding:4px 6px 4px;border-bottom:1px dashed #ccc;">
         <p>
           <b><%= link_to q.title,question_path(q)%></b>
         </p>
-        <span>
-          <% if q.answers_count.zero? %>
-            还没有回答
-          <% else%>
-            <%= link_to "#{q.answers_count}个回答",question_path(q)%>
-          <% end %>
-          |
-        </span> 
-        <span>标签：<%= raw tag_links_for(q.tag_list)%></span>
       </div>
     <% end%>
   </div>
