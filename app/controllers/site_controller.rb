@@ -32,7 +32,7 @@ class SiteController < ApplicationController
   end
   
   def more_public_timeline
-    @timeline = Event.where(:eventable_type=>'Calling').paginate(:page => params[:page], :per_page => 6)
+    @timeline = Event.paginate(:page => params[:page], :per_page => 6)
     render '/public/more_timeline',:layout => false
   end
 
