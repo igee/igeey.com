@@ -29,6 +29,7 @@ ActiveRecord::Schema.define() do
     t.integer    :last_replied_user_id
     t.datetime   :last_replied_at
     t.integer    :comments_count,   :default => 0
+    t.integer    :votes_count,      :default => 0
     t.timestamps
   end
 
@@ -173,7 +174,6 @@ ActiveRecord::Schema.define() do
     t.string   :photo_file_name
     t.string   :cached_tag_list,  :default => ''
     t.integer  :comments_count,   :default => 0
-    t.integer  :votes_count,      :default => 0
     t.datetime :last_replied_at
     t.integer  :last_replied_user_id
     t.integer  :votes_count,      :default => 0
