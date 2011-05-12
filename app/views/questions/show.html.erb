@@ -43,5 +43,25 @@
 </div>
 
 <% content_for :sidebar do %>
+  <div class="box">
+    <h4>相关问题</h4>
+    <% @questions.each do |q|%>
+      <div style="padding:4px 6px 4px;border-bottom:1px dashed #ccc;">
+        <p>
+          <b><%= link_to q.title,question_path(q)%></b>
+        </p>
+      </div>
+    <% end%>
+  </div>
+<% end %>
 
+<% if logged_in? && current_user.notifications_count>0%>
+<% content_for :extension do %>
+	<script type="text/javascript" charset="utf-8">
+	 	<% @notifiable = @question%>
+  	$(document).ready(function(){
+			setTimeout(function(){redirect_clear(<%= @notifiable.id %>, '<%= @notifiable.class.to_s%>')},5000);
+		})
+	</script>
+<% end %>
 <% end %>
