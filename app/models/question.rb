@@ -24,6 +24,6 @@ class Question < ActiveRecord::Base
     self.tags.each do |tag|
       @questions += tag.taggeds.where(['taggable_type=?','Question']).limit(10).map(&:taggable)
     end
-    (@questions - [self]).shuffle
+    (@questions - [self]).uniq.shuffle
   end
 end
