@@ -19,4 +19,12 @@ class Question < ActiveRecord::Base
     errors[:tag_list] = '请至少填写一个标签' if self.tag_list.empty?
   end
   
+  def related_questions
+    @questions = []
+    self.tags.each do |tag|
+      @questions += tag.taggeds.where(['taggable_type=?','Question']).limit(10).map(&:taggable)
+    end
+    (@questions - [self]).uniq.shuffle
+  end
+
 end

@@ -129,6 +129,13 @@ Igeey::Application.routes.draw do
   end
   
   
+  resources :notifications do
+    get :clear, :on => :member
+    get :clear_all, :on => :collection
+    post :redirect_clear, :on => :collection  
+  end
+  
+  
   #short_url
   match "/v/:id" => redirect("/venues/%{id}")
   match "/c/:id" => redirect("/callings/%{id}")

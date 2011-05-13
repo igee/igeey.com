@@ -6,19 +6,16 @@
   <% end %>
   <a name="<%= answer.id%>"></a>
   <%= render :partial => "/users/avatar",:object => user %>
-    <div class="event_info">
-    </div>
   <div class="event">
     <pre><%= link_to "#{answer.user.login}：",user_path(answer.user) %><%= short_text(answer.content,100) %> <%= link_to_function('(展开)','javascript:$(this).parent().hide();$(this).parent().next().show()') if answer.content.mb_chars[100] %> <span class="timeago"><%= answer.created_at %></span></pre>
     <pre style="display:none"><%= answer.content %> <%= link_to_function('(收起)','javascript:$(this).parent().hide();$(this).parent().prev().show()') %> <span class="timeago"><%= answer.created_at %></span></pre>
-
     <div class="event_action">
       <% if current_user && current_user.id == user.id %>
         <%= link_to "修改","#{edit_question_answer_path(@question,answer)}?back_path=#{request.path}"%> |
         <%= link_to "删除","#{question_answer_path(@question,answer)}?back_path=#{request.path}",:method => :delete,:confirm => '你确定要删除这条报到么？'%> |
       <% end %>
       <%= link_to(raw("#{image_tag('/images/icon/upgrey.png',:class => 'icon')} 支持(#{answer.votes_count})"),'','date-voteable_id' => answer.id, 'date-voteable_type' => answer.class.to_s, :class => "vote") %>
-      | <%= link_to "回复#{'(' + answer.comments_count.to_s + ')' if answer.comments_count > 0}",'',:class => "event_reply"%>　
+      | <%= link_to "回复#{'(' + answer.comments_count.to_s + ')' if answer.comments_count > 0}",'',:class => "event_reply",:onclick=>"javascript:redirect_clear(#{answer.id},'Answer')"%>　
     </div>
     <%= render :partial => "/public/reply_form",:locals =>  {:object => answer}%>
   </div>

@@ -38,10 +38,37 @@
       <%= form.submit '提交',:class=>'button'%> 
     <% end %>
   <% else %>
-      <p><%= link_to "立即登录",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%> 即可回答。</p>
+    <p>
+      <%= link_to "立即登录",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%> 即可回答。
+      <span>支持更多帐号登录：
+      <%= image_tag "/images/icon/douban.gif",:class=> 'icon'%>
+      <%= link_to('豆瓣',:controller => 'oauth', :action => 'douban')%>
+      <%= image_tag "/images/icon/sina.gif",:class=> 'icon'%>	
+      <%= link_to('新浪微博',:controller => 'oauth', :action => 'sina')%>
+      </span>
+    </p>
+
   <% end %>
 </div>
 
 <% content_for :sidebar do %>
+  <div class="box">
+    <h4>相关问题</h4>
+    <% @questions.each do |q|%>
+      <div style="padding:4px 6px 4px;border-bottom:1px dashed #ccc;">
+        <p><%= link_to q.title,question_path(q)%></p>
+      </div>
+    <% end%>
+  </div>
+<% end %>
 
+<% if logged_in? && current_user.notifications_count>0%>
+<% content_for :extension do %>
+  <script type="text/javascript" charset="utf-8">
+    <% @notifiable = @question%>
+    $(document).ready(function(){
+      setTimeout(function(){redirect_clear(<%= @notifiable.id %>, '<%= @notifiable.class.to_s%>')},5000);
+      })
+  </script>
+<% end %>
 <% end %>

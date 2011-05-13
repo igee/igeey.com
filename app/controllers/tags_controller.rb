@@ -28,7 +28,7 @@ class TagsController < ApplicationController
   end
   
   def update
-    @tag.update_attributes(params[:tag]) if current_user.is_admin?
+    @tag.update_attributes(params[:tag]) 
     respond_with @tag
   end
   

@@ -8,13 +8,17 @@
     <%= render :partial => '/users/user' ,:object => current_user %>
       <div class="bubble_tail"></div>
       <div class="bubble" style="<%= 'width:380px' if params[:layout]=='false'%>">
-          <p>
-            <%= form.hidden_field :venue_id %>
-            <%= form.label :title,'标题：'%> <%= form.text_field :title,:size => 20 ,:style => "text-align:left"%>
-            <br/>
-            <%= form.label :content,'正文：',:style => 'float:left'%>
-            <%= form.text_area :content,:style => "#{ params[:layout]=='false' ? 'width:330px' : 'width:410px'};height:100px;margin-left:46px"%>
-          </p>
+        <p>
+          <%= form.hidden_field :venue_id %>
+          <%= form.label :title,'标题：'%> <%= form.text_field :title,:size => 20 ,:style => "text-align:left"%>
+          <br/>
+          <%= form.label :content,'正文：',:style => 'float:left'%>
+          <%= form.text_area :content,:style => "#{ params[:layout]=='false' ? 'width:330px' : 'width:410px'};height:100px;margin-left:46px"%>
+        </p>
+        <p>
+          <%= form.label :tag_list,'添加标签：',:style=>"float:left"%>
+          <%= form.text_field :tag_list,:class => 'tag_list' %>
+        </p>
       </div>
   </div>
   <div style="clear:both;text-align:right">

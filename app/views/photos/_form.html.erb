@@ -15,7 +15,11 @@
       <%= image_tag @photo.photo.url(:max500x400) %>
     <% end %> 
     <p><%= form.label :detail,'照片说明：'%><br/>
-    <%= form.text_area :detail, :style => "width:340px;height:80px" ,:placeholder => '关于这个照片有什么故事么？'%>
+    <%= form.text_area :detail, :style => "width:340px;height:60px" ,:placeholder => '关于这个照片有什么故事么？'%>
+    </p>
+    <p>
+      <%= form.label :tag_list,'添加标签：',:style=>"float:left"%>
+      <%= form.text_field :tag_list,:class => 'tag_list' %>
     </p>
     <p>
       <%= submit_tag '确定',:class => 'button' %>
@@ -31,3 +35,4 @@
     })
   </script>
 <%end%>
+
