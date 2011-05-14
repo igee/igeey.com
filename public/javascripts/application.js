@@ -25,8 +25,8 @@ function redirect_clear(id, type){
 
 $(document).ready(function(){
   
-  $('.timeago').live('replace.time', function() { 
-      $(this).html('(' + jQuery.timeago($(this).html()) + ')').removeClass('timeago');
+  $('.timeago').live('replace.time', function() {
+    $(this).html('(' + jQuery.timeago($(this).html()) + ')').removeClass('timeago');
   }).trigger('replace.time');
   
   $('pre').live('replace.url', function() {
@@ -36,7 +36,7 @@ $(document).ready(function(){
     );
   }).trigger('replace.url');
       
-  $('.event_reply').live('click', function() {
+  $('.event_reply').live('click', function(e) {
     $(this).parent().next().toggle();
     e.preventDefault();
   });
