@@ -10,7 +10,7 @@
 
   function Dialog() {
     this.tmpl = [
-      '<div class="{{name}}">',
+      '<div id="{{name}}" class="{{name}}">',
         '<div class="dialog_title">',
           '<h4>{{title}}</h4><span title="关闭" id="close_dialog"">关闭</span>',
         '</div>',
