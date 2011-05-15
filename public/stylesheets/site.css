@@ -41,7 +41,7 @@ pre {
   white-space: -o-pre-wrap;
   word-wrap: break-word;
   line-height:1.6em;
-  margin:5px 0;
+  margin:4px 0;
   text-align:left;
   } 
 
@@ -596,9 +596,9 @@ button:hover,.button:hover{background-color:#ff9f10;color:white;}
 .event_box.hover{background-color:#f9f9f9}
 
 .event {
-  width:518px;
+  width:520px;
   float:left;
-  margin-left:10px;
+  margin-left:8px;
   padding:6px 0;
   } 
     

@@ -1,16 +1,16 @@
 class VotesController < ApplicationController
   before_filter :login_required
+  respond_to :html, :js, :xml  
   
   def create
     @vote = Vote.new(:user_id => current_user.id)
     @vote.voteable_id = params[:voteable_id]
     @vote.voteable_type = params[:voteable_type]
     @voteable = @vote.voteable
-    if current_user.has_voted_to?(@voteable)
-      render :text => "done"
-    else
-      @voteable.votes << @vote
-      render :text => "<img src='/images/icon/upgrey.png' class='icon' /> 支持(#{@voteable.class.find(@vote.voteable_id).votes_count})"
+    @voteable.votes << @vote
+    respond_to do |format|
+      format.html {redirect_to params[:back_path] || :back}
+      format.js { render 'create'} 
     end
   end
 end

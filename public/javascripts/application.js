@@ -22,21 +22,6 @@ function load_bindngs(){
 		function () {$(this).addClass("hover");},
 		function () {$(this).removeClass("hover");}
 	);
-  $(".vote").click(function(){
-		var t=$(this);
-		$.post('/votes',
-		    {voteable_id: $(this).attr('date-voteable_id'),voteable_type: $(this).attr('date-voteable_type')},
-			function(data){
-				if(data=='done'){
-					alert('您已经顶过了!')
-				}
-				else{
-					{t.html(data)}
-				}
-			}	
-		 ); 
-		return false
-	});
 }
 
 function more_timeline(dom){

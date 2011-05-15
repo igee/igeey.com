@@ -5,4 +5,8 @@ class Vote < ActiveRecord::Base
   validates :user_id,        :presence   => true,:uniqueness => {:scope => [:voteable_type,:voteable_id]}
   validates :voteable_type,  :presence   => true
   validates :voteable_id,    :presence   => true
+  
+  def validate
+    errors[:user_id] = '不能给自己支持哦'  if self.user == self.voteable.user
+  end
 end

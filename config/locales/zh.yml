@@ -37,3 +37,8 @@ zh:
               blank:  '请选择行动受益的地点'
             title:
               blank:  '请填写行动标题'
+        vote:
+           attributes:
+              user_id:
+                taken: '你已经支持过啦'
+              
