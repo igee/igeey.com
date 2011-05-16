@@ -4,7 +4,7 @@
   <h3>问题：<%= @title %>
   <span>
     <% if @question.owned_by?(current_user) %>
-      <%= link_to "补充","#{edit_question_path(@question)}?back_path=#{request.path}"%> |
+      <%= link_to (@question.detail.nil? ? "补充" : '编辑'),"#{edit_question_path(@question)}?back_path=#{request.path}"%> |
       <%= link_to "删除","#{question_path(@question)}",:method => :delete,:confirm => '你确定要删除这个问题么？'%>
     <% end %>
   </span>
