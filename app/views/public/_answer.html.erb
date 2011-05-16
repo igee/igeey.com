@@ -2,16 +2,16 @@
 <% @question = answer.question%>
 <div class="event_box">
   <a name="<%= answer.id%>"></a>
-  <div style="width:78px;text-align:center;float:left">
-    <%= render :partial => "/users/avatar",:object => user %>
-    <%= link_to(raw("#{image_tag('/images/icon/upgrey.png',:class=>'icon')} #{answer.votes_count}"),votes_path(:voteable_id => answer.id,:voteable_type => answer.class.to_s,:back_path => request.fullpath), :remote => (true if logged_in?),:method => :post,:id => "answer_vote_#{answer.id}",:class => 'vote') %>
-  </div>
+  <%= render :partial => "/users/avatar",:object => user %>
   <div class="event">
     <% if controller_name=="users" %>
       <span>对问题 “<%= link_to @question.title, "#{question_path(@question)}##{answer.id}"%>” 的回答：</span>
     <% end %>
     <pre><%= link_to "#{answer.user.login}：",user_path(answer.user) unless controller_name == 'users'%><%= short_text(answer.content,100) %> <%= link_to_function('(展开)','javascript:$(this).parent().hide();$(this).parent().next().show()') if answer.content.mb_chars[100] %> <span class="timeago"><%= answer.created_at %></span></pre>
     <pre style="display:none"><%= link_to "#{answer.user.login}：",user_path(answer.user) unless controller_name == 'users'%><%= answer.content %> <%= link_to_function('(收起)','javascript:$(this).parent().hide();$(this).parent().prev().show()') %> <span class="timeago"><%= answer.created_at %></span></pre>
+    <div class="event_info">
+      <%= link_to(raw("#{image_tag('/images/icon/upgrey.png',:class=>'icon')} #{answer.votes_count}"),votes_path(:voteable_id => answer.id,:voteable_type => answer.class.to_s,:back_path => request.fullpath), :remote => (true if logged_in?),:method => :post,:id => "answer_vote_#{answer.id}",:class => 'vote') %>
+    </div>
     <div class="event_action">
       <% if current_user && current_user.id == user.id %>
         <%= link_to "修改","#{edit_question_answer_path(@question,answer)}?back_path=#{request.path}"%> |
