@@ -43,7 +43,7 @@ class TagsController < ApplicationController
   
   private
   def find_tag
-    if /^[\d].*$/.match(params[:id])
+    if /^[\d]*$/.match(params[:id])
       @tag = Tag.find(params[:id])
     else
       @tag = Tag.find_by_name(params[:id])
