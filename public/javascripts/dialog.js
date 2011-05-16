@@ -1,57 +1,144 @@
-// Lee dialog 1.0 http://www.xij.cn/blog/?p=68
+/**
+ *  IG.dialog for igeey.com
+ *  Based on Lee dilaog 1.0 http://www.xij.cn/blog/?p=68
+ */
 
-var dialogFirst=true;
-function dialog(title,content,width,height,cssName){
+(function($) {
+  var $w = $(window), $d = $(document),
+    IE6 = !window.XMLHttpRequest,
+    toInt = function(num) { return parseInt(num, 10) };
 
-if(dialogFirst==true){
-  var temp_float=new String;
-  temp_float="<div id=\"floatBoxBg\" style=\"height:"+$(document).height()+"px;filter:alpha(opacity=0);opacity:0;\"></div>";
-  temp_float+="<div id=\"floatBox\" class=\"floatBox\">";
-  temp_float+="<div class=\"dialog_title\"><h4></h4><span id='close_dialog'>关闭</span></div>";
-  temp_float+="<div class=\"dialog_content\"></div>";
-  temp_float+="</div>";
-  $("body").append(temp_float);
-  dialogFirst=false;
-}
+  function Dialog() {
+    this.tmpl = [
+      '<div id="{{name}}" class="{{name}}">',
+        '<div class="dialog_title">',
+          '<h4>{{title}}</h4><span title="关闭" id="close_dialog"">关闭</span>',
+        '</div>',
+        '<div class="dialog_content">{{content}}</div>',
+      '</div>',
+      '<div id="{{name}}Bg"></div>'
+    ].join('');
+    
+    this.settings = {
+      name: 'floatBox',
+      title: 'title',
+      content: '<p>empty yet.</p>',
+      url: '',
+      iframe: false,
+      width: '300px',
+      top: '80px',
+      data: '',
+      heigth: ''
+    };
+  };
+  
+  Dialog.prototype = {
+    init: function(o) {
+      var opts = this.opts = $.extend({}, this.settings, o || {}),
+        $tmpl = $(substitute(this.tmpl, opts)).appendTo('body').hide();
+      
+      this.$close = $tmpl.find('#close_dialog').bind( 'click', $.proxy(this.close, this) );
+      this.$dialog = $tmpl.eq(0);
+      this.$overlay = $tmpl.eq(1).bind( 'click', $.proxy(this.close, this) );
+      this.$content = $tmpl.find('.dialog_content');
+      
+      return opts.url ? this.loadContent() : this.show();
+    },
+    
+    loadContent: function() {
+      if ( this.opts.iframe ) {
+        //TODO: insert an iframe
+      } else {
+        $.ajax({
+          url: this.opts.url,
+          data: this.opts.data,
+          beforeSend: $.proxy(this.handleAjax('waiting'),this),
+          error: $.proxy(this.handleAjax('error'),this),
+          success: $.proxy(this.handleAjax('success'),this)
+        });
+      }
+      return this.show();
+    },
+    
+    handleAjax: function( type ){
+      return function( received ){
+        this.$content.html({
+          waiting: this.opts.spinner || 'loading..',
+          error: this.opts.error || 'ooops',
+          success: received
+        }[type]);
+      };
+    },
+      
+    show: function() {
+      var opts = this.opts;
+      this.$overlay.height($d.height()).show();
+      
+      this.$dialog
+        .css({width: opts.width, height:opts.height, position: IE6 ? 'absolute' : 'fixed'})
+        .show().animate({top: (IE6 ? $d.scrollTop() + toInt(opts.top) : opts.top)}, 'fast');
+      
+      return this.bindEvent();
+    },
+    
+    bindEvent: function() {
+      $w.resize( $.proxy(function(){
+        this.$dialog.css('left', ($d.width() - toInt(this.opts.width)) / 2 + 'px');
+      }, this)).resize();
+      
+      IE6 && $w.scroll($.proxy(function() {
+        this.$dialog.css('top', $d.scrollTop() + toInt(this.opts.top));
+      }, this));
+            
+      $d.keyup($.proxy(function(e) {
+        if (e.keyCode == 27) this.close();
+      }, this));
+      
+      return this;
+    },
 
-$("#floatBox #close_dialog").click(function(){
-  $("#floatBoxBg").animate({opacity:"0"},"normal",function(){$(this).hide();});
-  $("#floatBox").animate({top:($(document).scrollTop()-(height=="auto"?300:parseInt(height)))+"px"},"normal",function(){$(this).hide();}); 
-});
-$("#floatBoxBg").click(function(){$("#floatBox #close_dialog").click()})
-
-$("#floatBox .dialog_title h4").html(title);
-contentType=content.substring(0,content.indexOf(":"));
-content=content.substring(content.indexOf(":")+1,content.length);
-switch(contentType){
-  case "url":
-  var content_array=content.split("?");
-  $("#floatBox .dialog_content").ajaxStart(function(){
-    $(this).html("读取中..请稍后");
-  });
-  $.ajax({
-    url:content_array[0]+"?layout=false&" + content_array[1],
-	error:function(){
-	  $("#floatBox .dialog_content").html("error...");
-	},
-    success:function(html){
-      $("#floatBox .dialog_content").html(html);
+    close: function() {
+      this.$dialog.animate({ top:'-500px' }, "normal", function(){
+         $(this).remove();
+      });
+      this.$overlay.fadeOut('fast',function(){
+        $(this).remove()
+      });
+      return this;
     }
-  });
-  break;
-  case "text":
-  $("#floatBox .dialog_content").html(content);
-  break;
-  case "id":
-  $("#floatBox .dialog_content").html($("#"+content+"").html());
-  break;
-  case "iframe":
-  $("#floatBox .dialog_content").html("<iframe src=\""+content+"\" width=\"100%\" height=\""+(parseInt(height)-30)+"px"+"\" scrolling=\"auto\" frameborder=\"0\" marginheight=\"0\" marginwidth=\"0\"></iframe>");
-}
+  };
+  
+  /**
+   * Inspired by Dojo.string.substitute
+   */
+  function substitute(tmpl, hash) {
+    for (var name in hash) {
+      if (hash.hasOwnProperty(name)) {
+        tmpl = tmpl.replace(RegExp("{{+" + name + "+}}", "g"), hash[name]);
+      }
+    }
+    return tmpl;
+  }
 
-$("#floatBoxBg").show();
-$("#floatBoxBg").animate({opacity:"0.6"},"normal");
-$("#floatBox").attr("class","floatBox "+cssName);
-$("#floatBox").css({display:"block",left:(($(document).width())/2-(parseInt(width)/2))+"px",top:($(document).scrollTop()-(height=="auto"?300:parseInt(height)))+"px",width:width,height:height});
-$("#floatBox").animate({top:($(document).scrollTop()+80)+"px"},"fast"); 
-}
+  /**
+   *  Defining interfaces
+   */
+  window.IG || ( window.IG = {} );
+  
+  window.IG.dialog = {
+    defaults: {
+      top:'80px',
+      width:'570px',
+      data:'layout=false',
+      spinner: '读取中..请稍后',
+      error: 'error..'
+    },
+    init: function(o) {
+      var d = new Dialog();
+      return d.init.call(d,
+        $.extend(this.defaults, o || {})
+      );
+    }
+  };
+  
+}(jQuery));

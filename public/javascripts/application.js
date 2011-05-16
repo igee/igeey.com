@@ -3,46 +3,79 @@
 function set_title(photo_id){
   $('#photo_set_title_' + photo_id).show();
   $('#set_title_' + photo_id).hide();
-  $('#delete_link_' + photo_id).hide();$('#sumbit_link_' + photo_id).show();
+  $('#delete_link_' + photo_id).hide();
+  $('#sumbit_link_' + photo_id).show();
 };
-
-function load_bindngs(){
-	$(".timeago").each(function(){$(this).html('(' + jQuery.timeago($(this).html()) + ')');$(this).removeClass('timeago')});
-	$('.event_reply').click(function(){$(this).parent().next().toggle();return false});
-	$('.reply_reply').click(function(){
-			var reply_field = $(this).parent().parent().parent().parent().find('input[type=text]')
-			reply_field.val($(this).attr('title'));
-			reply_field.focus();
-			return false;
-			});
-	$('pre').each(function(index){$(this).html($(this).html().replace(/(http:\/\/|https:\/\/)((\w|=|\?|\.|\/|&|-|!|#|%)+)/g, "<a href='$1$2' target='_blank' rel='nofollow'>$1$2</a>"))});
-	$('form').submit(function(){$(this).find('input:submit').attr('disabled',true)});
-	$(".zoom_photo").click(function(){$(this).children().first().toggle();$(this).children().last().toggle();return false});
-	$(".event_box").hover(
-		function () {$(this).addClass("hover");},
-		function () {$(this).removeClass("hover");}
-	);
-}
 
 function more_timeline(dom){
   dom.html('读取中...');
   $.get(dom.attr('href'),function(data){
     dom.replaceWith(data);
-    load_bindngs()
+    $('.timeago').trigger('replace.time');
+    $('pre').trigger('replace.url');
   });
+  
   return false;
 };
 
 function redirect_clear(id, type){
   $.post('/notifications/redirect_clear',{'id':id,'type':type});
-  };
+};
 
-// bindings
+
 $(document).ready(function(){
-  load_bindngs()
-  $(".open_dialog").click(function(){dialog($(this).attr('title'),("url:"+$(this).attr('href')),"570px","auto","text");  return false;})
-  $(".answer").click(function(){dialog($(this).attr('title'),("id:"+$(this).attr('href')),"570px","auto","text");  return false;})
+  
+  $('.timeago').live('replace.time', function() {
+    $(this).html('(' + jQuery.timeago($(this).html()) + ')').removeClass('timeago');
+  }).trigger('replace.time');
+  
+  $('pre').live('replace.url', function() {
+    var rURL = /(http:\/\/|https:\/\/)((\w|=|\?|\.|\/|&|-|!|#|%)+)/g;
+    $(this).html(
+      $(this).html().replace(rURL, "<a href='$1$2' target='_blank' rel='nofollow'>$1$2</a>")
+    );
+  }).trigger('replace.url');
+      
+  $('.event_reply').live('click', function(e) {
+    $(this).parent().next().toggle();
+    e.preventDefault();
+  });
+  
+  $('.reply_reply').live('click', function(e){
+    var reply_field = $(this).parent().parent().parent().parent().find('input[type=text]');
+    reply_field.val($(this).attr('title'));
+    reply_field.focus();
+    e.preventDefault();
+  });
+  
+  $('form').live('submit', function() {
+    $(this).find('input:submit').attr('disabled',true);
+  });
+  
+  $(".zoom_photo").live('click', function(e) {
+    var childrens = $(this).children();
+    childrens.first().toggle();
+    childrens.last().toggle();
+    e.preventDefault();
+  });
+  
+  $(".event_box")
+    .live('mouseover', function() {$(this).addClass("hover")})
+    .live('mouseout', function() {$(this).removeClass("hover")});
+  
+  $(".open_dialog").click(function(e) {
+    IG.dialog.init({title: $(this).attr('title'),url: $(this).attr('href')});
+    e.preventDefault();
+  });
+  
+  $(".answer").click(function(e) {
+    var id = $(this).attr('href');
+    IG.dialog.init({title: $(this).attr('title'),content: $(id).html()});
+    e.preventDefault();
+  });
+  
   $('#dialog_flash a').click();
+  
   $('.with_tip').poshytip({
     className: 'tip-yellowsimple',
     showOn: 'focus',
@@ -65,8 +98,7 @@ $(document).ready(function(){
     $('input[placeholder!=""]').hint();
   };
   
-  $(".tabContents").hide();
-  $(".tabContents:first").show();
+  $(".tabContents").hide().first().show();
   $("#tabNav li a:first").addClass("active");
   $("#tabNav li a").click(function(){ 
     var activeTab = $(this).attr("href"); 
@@ -76,4 +108,5 @@ $(document).ready(function(){
     $(activeTab).fadeIn();
     return false;
   });
-})
+  
+});
