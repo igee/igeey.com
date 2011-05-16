@@ -7,6 +7,6 @@ class Vote < ActiveRecord::Base
   validates :voteable_id,    :presence   => true
   
   def validate
-    errors[:user_id] = '不能给自己支持哦'  if self.user == self.voteable.user
+    errors[:user_id] = '心里支持自己就好啦'  if self.user == self.voteable.user
   end
 end
