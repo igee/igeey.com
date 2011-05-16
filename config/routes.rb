@@ -47,7 +47,7 @@ Igeey::Application.routes.draw do
       get  :topics
       get  :callings
       get  :followers
-      get  :more_timeline
+      get  :more_items
       post :watching
     end
   end

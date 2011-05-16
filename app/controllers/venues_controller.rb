@@ -33,14 +33,14 @@ class VenuesController < ApplicationController
     @followers = @venue.followers.limit(8)
   end
   
-  def more_timeline
+  def more_items
     if ['photos','sayings','topics','callings'].include?(params[:filter])
-      @timeline = eval "@venue.#{params[:filter]}.paginate(:page => params[:page], :per_page => 10)"
+      @items = @venue.send(params[:filter]).paginate(:page => params[:page], :per_page => 10)
       @filter = params[:filter]
     else
-      @timeline = @venue.events.paginate(:page => params[:page], :per_page => 10)
+      @items = @venue.events.paginate(:page => params[:page], :per_page => 10)
     end
-    render '/public/more_timeline',:layout => false
+    render '/public/more_items',:layout => false
   end
   
   def edit
