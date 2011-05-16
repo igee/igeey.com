@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   
   def connect_account
     @token = OauthToken.find_by_user_id_and_request_key((current_user ? current_user.id : nil), params[:oauth_token])
-    @unique_id = @token.get_site_unique_id
+    @unique_id = @token.unique_id
     @exist_tokens = OauthToken.where(:unique_id => @unique_id,:site => @token.site).where('user_id is not null')
     if @exist_tokens.empty?
       @token.update_attributes(:unique_id => @unique_id)
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
     else
       @user = User.find @exist_tokens.first.user_id
       @exist_tokens.map(&:delete)
-      @token.update_attributes(:user_id => @user.id, :unique_id => @unique_id)
+      @token.update_attributes(:user_id => @user.id)
       self.current_user = @user
       # auto login 
       new_cookie_flag = (params[:remember_me] == "1")
