@@ -1,12 +1,5 @@
 // application function define
 
-function set_title(photo_id){
-  $('#photo_set_title_' + photo_id).show();
-  $('#set_title_' + photo_id).hide();
-  $('#delete_link_' + photo_id).hide();
-  $('#sumbit_link_' + photo_id).show();
-};
-
 function more_timeline(dom){
   dom.html('读取中...');
   $.get(dom.attr('href'),function(data){
