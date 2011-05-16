@@ -14,6 +14,6 @@ class SyncsController < ApplicationController
     @sync = Sync.new(params[:sync])
     @sync.user = current_user
     @sync.save if @sync.syncable.owned_by?(current_user)
-    redirect_to eval("#{@sync.syncable_type.downcase}_url(#{@sync.syncable.id})")
+    redirect_to @sync.syncable
   end
 end
