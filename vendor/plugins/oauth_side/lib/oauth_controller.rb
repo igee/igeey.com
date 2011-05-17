@@ -25,9 +25,9 @@ class OauthController < ApplicationController
 
   def cancel_all
     if OauthToken.where(:user_id => current_user.id).delete_all
-	  render :text => 'ok'
-	else
-	  render :text => 'fail', :status => 500
-	end
+      render :text => 'ok'
+    else
+      render :text => 'fail', :status => 500
+    end
   end
 end

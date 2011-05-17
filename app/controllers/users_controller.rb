@@ -120,7 +120,7 @@ class UsersController < ApplicationController
   
   def show
     @timeline = @user.events.limit(11)
-  @questions = @user.questions.desc(:created_at).limit(11)
+    @questions = @user.questions.order('created_at desc').limit(11)
     @answers = @user.answers.limit(11)
     @followers = @user.followers.limit(9)
     @following_users = @user.user_followings.limit(9).map(&:followable)
