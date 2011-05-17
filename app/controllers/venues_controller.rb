@@ -37,10 +37,11 @@ class VenuesController < ApplicationController
     if ['photos','sayings','topics','callings'].include?(params[:filter])
       @items = @venue.send(params[:filter]).paginate(:page => params[:page], :per_page => 10)
       @filter = params[:filter]
+      render '/public/more_items',:layout => false
     else
-      @items = @venue.events.paginate(:page => params[:page], :per_page => 10)
+      @timeline = @venue.events.paginate(:page => params[:page], :per_page => 10)
+      render '/public/more_timeline',:layout => false
     end
-    render '/public/more_items',:layout => false
   end
   
   def edit
