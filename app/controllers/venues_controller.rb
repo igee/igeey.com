@@ -1,6 +1,6 @@
 class VenuesController < ApplicationController
   respond_to :html,:json
-  before_filter :login_required, :except => [:index, :show,:records,:followers,:more_timeline,:position,:watching]
+  before_filter :login_required, :except => [:index, :show,:records,:followers,:more_items,:position,:watching]
   before_filter :find_venue, :except => [:index,:new,:create]
   
   def index

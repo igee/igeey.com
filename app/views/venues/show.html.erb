@@ -106,7 +106,7 @@
   </div>
   <h4>这里正在发生.. </h4>
   <%= render :partial => '/public/event', :collection => @timeline[0..9] %>
-  <%= link_to raw("查看更多..."),more_timeline_venue_path(@venue,:page => 2),:class => "timeline_footer",:onclick=>"javscript:more_timeline($(this));return false" if @timeline[10].present?%>
+  <%= link_to raw("查看更多..."),more_items_venue_path(@venue,:page => 2),:class => "timeline_footer",:onclick=>"javscript:more_timeline($(this));return false" if @timeline[10].present?%>
 </div>  
 
 <% content_for :sidebar do %>
