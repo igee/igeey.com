@@ -6,7 +6,7 @@ class Question < ActiveRecord::Base
   acts_as_taggable
   acts_as_ownable
   
-  default_scope :order => 'last_answered_at desc'
+  default_scope :order => 'created_at desc'
   
   validates :title,:length => {:minimum => 1 ,:message => '问题要有起码的字数吧？'}
   validates :user_id,:title,:presence => true

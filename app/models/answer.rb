@@ -5,8 +5,6 @@ class Answer < ActiveRecord::Base
   has_many   :notifications, :as => :notifiable, :dependent => :destroy
   has_many   :votes,    :as => :voteable,    :dependent => :destroy
 
-  default_scope :order => 'votes_count desc'
-
   acts_as_ownable
   validates :content,:length => {:minimum => 1 ,:message => '回答要有起码的字数吧？'}
   validates :question_id,    :presence => true
