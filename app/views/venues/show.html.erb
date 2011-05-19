@@ -1,4 +1,4 @@
-<% @title = @venue.name %>
+<% @title = "地点：#{@venue.name}" %>
 <% @saying = Saying.new %>
 <% @photo = Photo.new %>
 <% @calling = Calling.new %>
@@ -30,6 +30,7 @@
       <% end %>
     </div>
   </div>
+  <%= render :partial => '/public/share'%>
 </div>
       
 <div class="box">
