@@ -1,4 +1,4 @@
-<% @title = @topic.title %>
+<% @title = "故事：#{@topic.title}" %>
 <% @venue = @topic.venue %>
 <div class="box">  
   <%= render :partial => '/users/user' ,:object => @topic.user %>
@@ -6,7 +6,7 @@
   <div class="bubble">
     <p class="impact"><%= @topic.title %></p>
     <pre class="explanation"><%= @topic.content %></pre>
-    <% if current_user && current_user.id == @topic.user_id %>
+    <% if @topic.owned_by?(current_user) %>
     <div style="text-align:right">
       <span>
       <%= link_to "删除","#{topic_path(@topic)}",:method => :delete,:confirm => '你确定要删除这篇故事么？'%> |
@@ -15,8 +15,9 @@
     </div>
     <% end %>
     <%= raw tag_list_for(@topic.tag_list)%>
+    <br/>
+    <%= render :partial => '/public/share'%>
   </div>
-  <br/>
 </div>
 
 <%= render :partial => '/comments/board'%>    

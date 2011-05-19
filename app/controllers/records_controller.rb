@@ -30,7 +30,7 @@ class RecordsController < ApplicationController
   end
   
   def update
-    @record.update_attributes(params[:record]) if @record.user_id == current_user.id
+    @record.update_attributes(params[:record]) if @record.owned_by?(current_user)
     if params[:back_path].present?
       redirect_to params[:back_path]
     else
@@ -39,7 +39,7 @@ class RecordsController < ApplicationController
   end
   
   def destroy
-    @record.destroy  if @record.user_id == current_user.id
+    @record.destroy  if @record.owned_by?(current_user)
     if params[:back_path].present?
       redirect_to params[:back_path]
     else

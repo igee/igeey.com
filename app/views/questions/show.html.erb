@@ -1,7 +1,7 @@
-<% @title = @question.title%>
+<% @title = "问题：#{@question.title}"%>
 
 <div class="box">
-  <h3>问题：<%= @title %>
+  <h3><%= @title %>
   <span>
     <% if @question.owned_by?(current_user) %>
       <%= link_to (@question.detail.nil? ? "补充" : '编辑'),"#{edit_question_path(@question)}?back_path=#{request.path}"%> |
@@ -15,7 +15,7 @@
     <span class="timeago"><%= @question.created_at %></span>
     <span>标签：<%= raw tag_links_for(@question.tag_list)%></span>
   </p>
-  
+  <%= render :partial => '/public/share'%>
 </div>
 
 <div class="box">
