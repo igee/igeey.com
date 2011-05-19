@@ -16,7 +16,7 @@ class PhotosController < ApplicationController
   end
 
   def update
-    @photo.update_attributes(params[:photo]) if @photo.user_id == current_user.id
+    @photo.update_attributes(params[:photo]) if @photo.owned_by?(current_user)
     if params[:back_path].present?
       redirect_to params[:back_path]
     else

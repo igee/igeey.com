@@ -35,14 +35,14 @@ class PlansController < ApplicationController
     @photos = @calling.photos
     @records = @calling.records
     @plans = @calling.plans.undone
-    @my_plan = @calling.plans.select{|p| p.user_id == current_user.id}.first if logged_in?
+    @my_plan = @calling.plans.select{|p| p..owned_by?(current_user)}.first if logged_in?
   end
   
   def edit
   end
   
   def update
-    @plan.update_attributes(params[:plan])  if @plan.user_id == current_user.id
+    @plan.update_attributes(params[:plan])  if @plan.owned_by?(current_user)
     if params[:back_path].present?
       redirect_to params[:back_path]
     else
@@ -51,7 +51,7 @@ class PlansController < ApplicationController
   end
   
   def destroy  
-    @plan.destroy if @plan.user_id == current_user.id
+    @plan.destroy if @plan.owned_by?(current_user)
     redirect_to :back
   end
     

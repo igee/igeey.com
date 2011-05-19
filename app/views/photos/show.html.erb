@@ -1,8 +1,16 @@
 <% @title = '照片'%>
 <% @venue = @photo.venue%>
   <div class="box">
-  <%= image_tag @photo.photo.url(:max500x400),:alt => @photo.title %>
-    <p>
+    <%= image_tag @photo.photo.url(:max500x400),:alt => @photo.title %>
+    <br/>
+    <% if @photo.owned_by?(current_user) %>
+      <span>
+      <%= link_to "删除","#{topic_path(@topic)}",:method => :delete,:confirm => '你确定要删除这篇故事么？'%> |
+      <%= link_to "编辑","#{edit_topic_path(@topic)}?back_path=#{request.path}"%>
+      </span>
+    <% end %>
+    <p><%= @photo.detail%></p>
+    <p class='explanation'>
       上传在 <%= link_to @photo.venue.name ,@photo.venue%> ｜ <%= link_to "查看原图",@photo.photo.url(:original),:target => "_blank" %> <br/>
       <%= link_to @photo.user.login ,@photo.user%> <%=  format_date(@photo.created_at) %>
     </p>
@@ -24,11 +32,11 @@
 
 <% if logged_in? && current_user.notifications_count>0%>
 <% content_for :extension do %>
-	<script type="text/javascript" charset="utf-8">
-	 	<% @notifiable = @photo%>
-  	$(document).ready(function(){
-			setTimeout(function(){redirect_clear(<%= @notifiable.id %>, '<%= @notifiable.class.to_s%>')},5000);
-		})
-	</script>
+  <script type="text/javascript" charset="utf-8">
+    <% @notifiable = @photo%>
+      $(document).ready(function(){
+	setTimeout(function(){redirect_clear(<%= @notifiable.id %>, '<%= @notifiable.class.to_s%>')},5000);
+      })
+  </script>
 <% end %>
 <% end %>
