@@ -5,4 +5,11 @@ class OauthTokenObserver < ActiveRecord::Observer
     end
   end
   
+  def before_save(oauth_token)
+    if oauth_token.unique_id.nil? && oauth_token.site.present? && oauth_token.access_token.present?
+      @unique_id = oauth_token.get_site_unique_id
+      (oauth_token.unique_id = @unique_id) unless @unique_id.nil?
+    end
+  end 
+  
 end

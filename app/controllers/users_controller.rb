@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   
   def connect_account
     @token = OauthToken.find_by_user_id_and_request_key((current_user ? current_user.id : nil), params[:oauth_token])
-    @unique_id = @token.get_site_unique_id
+    @unique_id = @token.unique_id
     @exist_tokens = OauthToken.where(:unique_id => @unique_id,:site => @token.site).where('user_id is not null')
     if @exist_tokens.empty?
       @token.update_attributes(:unique_id => @unique_id)
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
     else
       @user = User.find @exist_tokens.first.user_id
       @exist_tokens.map(&:delete)
-      @token.update_attributes(:user_id => @user.id, :unique_id => @unique_id)
+      @token.update_attributes(:user_id => @user.id)
       self.current_user = @user
       # auto login 
       new_cookie_flag = (params[:remember_me] == "1")
@@ -121,7 +121,7 @@ class UsersController < ApplicationController
   def show
     @timeline = @user.events.limit(11)
     @questions = @user.questions.limit(11)
-    @answers = @user.answers.limit(11)
+    @answers = @user.answers.order('created_at desc').limit(11)
     @followers = @user.followers.limit(9)
     @following_users = @user.user_followings.limit(9).map(&:followable)
     @following_venues = @user.venue_followings.limit(11).map(&:followable)
@@ -165,7 +165,7 @@ class UsersController < ApplicationController
   end
   
   def answers
-    @items = @user.answers.paginate(:page => params[:page], :per_page => 10)
+    @items = @user.answers.order('created_at desc').paginate(:page => params[:page], :per_page => 10)
     @title = "#{@user.login}的回答"
     render 'see_all'
   end

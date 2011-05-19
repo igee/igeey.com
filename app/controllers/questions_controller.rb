@@ -5,6 +5,7 @@ class QuestionsController < ApplicationController
   
   def show
     @answer = Answer.new
+    @answers = @question.answers.order('votes_count desc')
     @questions = @question.related_questions[0..9]
   end
   
@@ -29,7 +30,7 @@ class QuestionsController < ApplicationController
   end
   
   def more
-    @items = Question.paginate(:page => params[:page], :per_page => 10)
+    @items = Question.unscoped.order('last_answered_at desc').paginate(:page => params[:page], :per_page => 10)
     render '/public/more_items',:layout => false
   end
   

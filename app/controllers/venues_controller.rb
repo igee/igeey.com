@@ -1,6 +1,6 @@
 class VenuesController < ApplicationController
   respond_to :html,:json
-  before_filter :login_required, :except => [:index, :show,:records,:followers,:more_timeline,:position,:watching]
+  before_filter :login_required, :except => [:index, :show,:records,:followers,:more_items,:position,:watching]
   before_filter :find_venue, :except => [:index,:new,:create]
   
   def index
@@ -33,14 +33,15 @@ class VenuesController < ApplicationController
     @followers = @venue.followers.limit(8)
   end
   
-  def more_timeline
+  def more_items
     if ['photos','sayings','topics','callings'].include?(params[:filter])
-      @timeline = eval "@venue.#{params[:filter]}.paginate(:page => params[:page], :per_page => 10)"
+      @items = @venue.send(params[:filter]).paginate(:page => params[:page], :per_page => 10)
       @filter = params[:filter]
+      render '/public/more_items',:layout => false
     else
       @timeline = @venue.events.paginate(:page => params[:page], :per_page => 10)
+      render '/public/more_timeline',:layout => false
     end
-    render '/public/more_timeline',:layout => false
   end
   
   def edit

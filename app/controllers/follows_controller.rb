@@ -3,7 +3,7 @@ class FollowsController < ApplicationController
   
   def show
     @follow = Follow.find(params[:id])
-    redirect_to eval("#{@follow.followable.class.to_s.downcase}_path(#{@follow.followable.id})")
+    redirect_to @follow.followable
   end
   
   def create

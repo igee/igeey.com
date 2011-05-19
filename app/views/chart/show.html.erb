@@ -1,3 +1,4 @@
+<% @title = '数据统计'%>
 <% content_for :head do %>
   <%= javascript_include_tag 'highcharts' %>
 <% end %>
@@ -64,14 +65,14 @@ $(document).ready(function() {
            }
       },
       series: [{
-         name: '召集',
-         data: [<%= @callings_per_day.map{|a| "#{a},"}.to_s[0..-2] %>],
-      }, {
-         name: '计划',
-         data: [<%= @plans_per_day.map{|a| "#{a},"}.to_s[0..-2] %>],
+         name: '话题',
+         data: [<%= @tags_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
       },{
-         name: '记录',
-         data: [<%= @records_per_day.map{|a| "#{a},"}.to_s[0..-2] %>],
+         name: '问题',
+         data: [<%= @questions_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
+      },{
+         name: '回答',
+         data: [<%= @answers_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
       },{
          name: '地点',
          data: [<%= @venues_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
@@ -85,15 +86,6 @@ $(document).ready(function() {
          name: '报到',
          data: [<%= @sayings_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
       },{
-         name: '话题',
-         data: [<%= @tags_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
-      },{
-         name: '问题',
-         data: [<%= @questions_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
-      },{
-         name: '回答',
-         data: [<%= @answers_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
-      },{
          name: '留言',
          data: [<%= @comments_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
       },{
@@ -105,7 +97,16 @@ $(document).ready(function() {
       },{
          name: '关注',
          data: [<%= @follows_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
-      }]
+      },{
+         name: '召集',
+         data: [<%= @callings_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
+      }, {
+         name: '计划',
+         data: [<%= @plans_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
+      },{
+         name: '记录',
+         data: [<%= @records_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
+      },]
    });
   $('.highcharts-legend:not tspan:gt(2)').click()
 });
