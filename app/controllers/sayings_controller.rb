@@ -10,7 +10,7 @@ class SayingsController < ApplicationController
   
   def destroy
     @saying = Saying.find(params[:id])
-    @saying.destroy if @saying.user_id == current_user.id
+    @saying.destroy if @saying.owned_by?(current_user)
     if params[:back_path].present?
       redirect_to params[:back_path]
     else

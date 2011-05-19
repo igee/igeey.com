@@ -14,7 +14,7 @@
     <div class="event_info">
       <span><%= raw "by #{link_to user.login,user}" unless ['users','venues'].include?(controller_name) %></span>
       <span><%= "#{calling.status}"%></span>
-      <span class="timeago"><%= calling.created_at %></span>
+      <span class="timeago"><%= calling.created_at %></span><span>标签： <%= raw tag_links_for(topic.tag_list)%></span>
     </div>    
     <div class="event_action">
       <% if calling.owned_by?(current_user) %>
