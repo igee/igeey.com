@@ -82,7 +82,7 @@ class Calling < ActiveRecord::Base
   end
   
   def description
-    "为#{self.venue.name}发起行动：#{self.title}"
+    "为#{self.venue.name}发起行动：#{self.title}，请大家踊跃报名！"
   end
   
   def self.tag_list

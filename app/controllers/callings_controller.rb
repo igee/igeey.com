@@ -5,7 +5,6 @@ class CallingsController < ApplicationController
   
   def create
     @calling = current_user.callings.build(params[:calling])
-    puts params[:calling]
     if @calling.save
       flash[:dialog] = "<a href='#{new_sync_path}?syncable_type=#{@calling.class}&syncable_id=#{@calling.id}' class='open_dialog' title='传播这个行动'>同步</a>" 
     end
