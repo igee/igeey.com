@@ -2,6 +2,7 @@ class Question < ActiveRecord::Base
   belongs_to :user
   has_many   :answers,       :dependent => :destroy
   has_many   :notifications, :as => :notifiable, :dependent => :destroy
+  has_many   :syncs,         :as => :syncable,   :dependent => :destroy
   
   acts_as_taggable
   acts_as_ownable
@@ -25,6 +26,10 @@ class Question < ActiveRecord::Base
       @questions += tag.taggeds.where(['taggable_type=?','Question']).limit(10).map(&:taggable)
     end
     (@questions - [self]).uniq.shuffle
+  end
+  
+  def description
+    "在爱聚网提出了一个问题：#{self.title} 请大家帮忙解决！"
   end
 
 end
