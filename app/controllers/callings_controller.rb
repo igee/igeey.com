@@ -5,7 +5,6 @@ class CallingsController < ApplicationController
   
   def create
     @calling = current_user.callings.build(params[:calling])
-    puts params[:calling]
     if @calling.save
       flash[:dialog] = "<a href='#{new_sync_path}?syncable_type=#{@calling.class}&syncable_id=#{@calling.id}' class='open_dialog' title='传播这个行动'>同步</a>" 
     end
@@ -17,8 +16,8 @@ class CallingsController < ApplicationController
     @venue = @calling.venue
     @plans = @calling.plans.undone
     @records = @calling.records
-    @my_plan = @plans.select{|p| p.owned_by(current_user.id)}.first if logged_in? # user`s plan on this calling
-    @my_record = @records.select{|r| r.owned_by(current_user.id)}.first if logged_in? # user`s record on this calling
+    @my_plan = @plans.select{|p| p.owned_by?(current_user)}.first if logged_in? # user`s plan on this calling
+    @my_record = @records.select{|r| r.owned_by?(current_user)}.first if logged_in? # user`s record on this calling
     @followers = @calling.followers
     @comments = @calling.comments
     @photos = @calling.photos

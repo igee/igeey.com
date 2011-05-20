@@ -1,4 +1,4 @@
-<% @title = @topic.title %>
+<% @title = "故事：#{@topic.title}" %>
 <% @venue = @topic.venue %>
 <div class="box">  
   <%= render :partial => '/users/user' ,:object => @topic.user %>
@@ -15,8 +15,9 @@
     </div>
     <% end %>
     <%= raw tag_list_for(@topic.tag_list)%>
+    <br/>
+    <%= render :partial => '/public/share'%>
   </div>
-  <br/>
 </div>
 
 <%= render :partial => '/comments/board'%>    

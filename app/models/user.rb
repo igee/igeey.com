@@ -164,7 +164,7 @@ class User < ActiveRecord::Base
   # Use OAuth::AccessToken to access oauth api. powered by oauth_side 
   def send_to_douban_miniblog(message)
     content = "<?xml version='1.0' encoding='UTF-8'?><entry xmlns:ns0='http://www.w3.org/2005/Atom' xmlns:db='http://www.douban.com/xmlns/'><content>#{message}</content></entry>"
-    self.douban.post('http://api.douban.com/miniblog/bubble',content, {"Content-Type" =>  "application/atom+xml"}  )
+    self.douban.post('http://api.douban.com/miniblog/saying',content, {"Content-Type" =>  "application/atom+xml"}  )
   end
   
   def send_to_sina_miniblog(message)
