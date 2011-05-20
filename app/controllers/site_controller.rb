@@ -5,7 +5,8 @@ class SiteController < ApplicationController
     if logged_in?
       @questions = Question.unscoped.order('last_answered_at desc').limit(10)
       @timeline = Event.limit(6)
-      @tags = Tag.limit(20)
+      @tags = Tag.limit(24)
+      @question = Question.new
     else
       @tags = Tag.limit(6)
       render :welcome
