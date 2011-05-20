@@ -4,7 +4,7 @@ class SiteController < ApplicationController
   def index
     if logged_in?
       @questions = Question.unscoped.order('last_answered_at desc').limit(10)
-      @timeline = Event.limit(6)
+      @timeline = Calling.limit(6)
       @tags = Tag.limit(24)
       @question = Question.new
     else
