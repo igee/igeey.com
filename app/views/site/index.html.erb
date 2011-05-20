@@ -1,18 +1,49 @@
 <% @title = '首页'%>
+<% content_for :head do %>
+  <%= javascript_include_tag 'jquery.tag.editor-min.js' %>
+<% end %>
 <div class="box">
- <h4>爱聚的世界..</h4>
+  <h4>热门话题</h4>
+  <ul class="tag_cloud">
+    <% @tags.each do |tag|%>
+      <li style="background-color:hsl(<%= tag.taggeds_count*49%>,65%,65%)"><%= link_to tag.name,tag_path(tag)%></li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="box">
+  <h4>爱聚的世界..</h4>
   <div id="tabContaier">
     <ul id="tabNav">
-      <li><%= link_to '正在解决..','#questions'%></li>
-      <li><%= link_to '正在发生..','#timeline'%></li>
+      <li><%= link_to '正在提问..','#questions'%></li>
+      <li><%= link_to '正在行动..','#timeline'%></li>
     </ul>
     <div id="questions" class="tabContents">
+      <%= form_for @question do |form|%>
+        <p>
+          <%= form.text_field :title,:style => "width:500px;margin-top:10px",:placeholder => "要提问？在这里输入你的问题（别忘了加上最后的“？”号）" %>
+          <%= form.submit '添加问题',:onclick => "javascript:if ($('.new_question').find('li').length == 0) {alert('请至少填写一个标签');return false;};"%>
+        </p>
+        <div id="question_details" style="display:none;">
+          <p>
+            <%= form.text_area :detail,:style => "width:500px;height:40px",:placeholder => "关于这个问题，有什么要补充的说明么？" %>
+          </p>
+          <p>
+            <%= form.label :tag_list,'添加标签：',:style=>"float:left"%>
+            <%= form.text_field :tag_list,:class => 'tag_list'%>
+            <br/><span>清至少添加一个相关标签(话题)</span>
+          </p>
+        </div>
+      <% end %>
+      <div style="clear:both">
+      </div>
+
       <%= render :partial => '/public/question',:collection => @questions %>
       <%= link_to('查看更多...',more_questions_path(:page => 2),:class=> 'timeline_footer',:onclick => 'javascript:more_timeline($(this));return false;') %>
     </div>
     <div id="timeline" class="tabContents">
-      <%= render :partial => '/public/event',:collection => @timeline %>
-      <%= link_to('查看更多...',more_public_timeline_path(:page => 2),:class=> 'timeline_footer',:onclick => 'javascript:more_timeline($(this));return false;') %>
+      <%= render :partial => '/public/calling',:collection => @timeline %>
+      <%= link_to('查看更多...',more_callings_path(:page => 2),:class=> 'timeline_footer',:onclick => 'javascript:more_timeline($(this));return false;') %>
     </div>
   </div>
 </div>
@@ -36,18 +67,20 @@
     <%= current_user.tag_list.empty? ? '你还没有收藏任何话题' : raw(tag_list_for(current_user.tag_list))%>
   </div>
   
-  <div class="box">
-    <p>
-      <%= link_to "查看全部",tags_path(),:class => "see_all_link"%>
-      <span>更多话题..<span>
-    </p>
-    <p class="explanation"><%= raw tag_list_for(@tags)%></p>
-  </div>
-  
   <%= form_tag tags_search_path,:id=>'tags_search',:remote=>true,:method => :get do%>
     <%= text_field_tag 'keywords', @keywords,:placeholder => '环保,节能...' %> <%= submit_tag '搜索话题'%>
   <% end %>
   <div id="search_result">
   </div>
 
+<% end %>
+
+<% content_for :extension do %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $(".tag_list").each(function(index,element){jQuery(element).tag_cloud();})
+      $("#question_title").focus(function(){$('#question_details').show()});
+      $("#question_title").blur(function(){if($('#question_title').attr('value') == ''){$('#question_details').hide()}});
+    });  
+  </script>
 <% end %>

@@ -37,4 +37,7 @@ module ApplicationHelper
     html
   end
   
+  def tag_color(count)
+  end
+
 end
