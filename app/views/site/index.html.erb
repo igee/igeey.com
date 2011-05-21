@@ -3,7 +3,7 @@
   <%= javascript_include_tag 'jquery.tag.editor-min.js' %>
 <% end %>
 <div class="box">
-  <h4>热门话题</h4>
+  <h3>热门话题</h3>
   <ul class="tag_cloud">
     <% @tags.each do |tag|%>
       <li style="background-color:hsl(<%= tag.taggeds_count*49%>,65%,65%)"><%= link_to tag.name,tag_path(tag)%></li>
