@@ -750,28 +750,32 @@ a.tag_name{
   }
 
 .tag_cloud li{
-  float:left;
-  background-color:#acf;
-  list-style-type: none;
-  padding: 2px 6px 4px;
-  margin: 3px 8px 0 0;	
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  color:#fff;
+  display:inline;
   font-size:13px;
   line-height:13px;
+  word-break:keep-all;
   }
 
-.tag_cloud li a{color:#fff;}
+.tag_cloud li a {
+  float:left;
+  display:block;
+  padding: 2px 6px 4px;
+  _padding-top:4px;
+  margin: 3px 8px 0 0;
+  background-color:#acf;
+  color:#fff;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+ }
   
 .tag_cloud li img{
   margin-bottom:-1px;
   cursor: pointer;
   }
   
-.tag_cloud li:hover,a.tag_name:hover{
-  background-color: #ff9933;
-  color:white;
+.tag_cloud li a:hover,a.tag_name:hover{
+  background-color: #f93;
+  color:#fff;
   }
 
 .filter{color:#6ad;}
