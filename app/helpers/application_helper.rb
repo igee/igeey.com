@@ -38,6 +38,17 @@ module ApplicationHelper
   end
   
   def tag_color(count)
+    if count < 3
+      '#9bf'
+    elsif count < 6
+      '#ad3'
+    elsif  count < 10
+      '#c9c'
+    elsif count < 15
+      '#fa2'
+    else
+      '#f70'
+    end
   end
 
 end

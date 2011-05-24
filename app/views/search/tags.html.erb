@@ -1,0 +1,16 @@
+<% title = '搜索结果' %>
+<div class="box" style="text-algin:center">
+  <%= form_tag tags_search_path,:id=>'tags_search',:style => 'font-size:18px;padding:10px;text-align:center',:method => :get do%>
+    我关注 <%= text_field_tag 'keywords', @keywords,:placeholder => '环保,节能...',:style => 'font-size:16px;width:240px;padding:5px' %> <%= submit_tag '搜索话题'%>
+  <% end %>
+ </div>
+
+<% if @tags.empty?%>
+	<% if @keywords.nil?%>
+		<p><span style='color:red'>请输入搜索关键字</span></p>
+	<% else %>
+		<p><span>对不起，没有相关话题<br/>您可以<%= link_to '将“'+@keywords+'”添加为话题',tags_path(:tag=> {:name => @keywords}),:method=>:post%></span></p>
+	<% end %>
+<% else %>
+  <%= render :partial => '/public/tag',:collection => @tags%>
+<% end %>
