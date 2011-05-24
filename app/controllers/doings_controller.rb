@@ -8,7 +8,7 @@ class DoingsController < ApplicationController
   
   def destroy
     @doing = Saying.find(params[:id])
-    @doing.destroy if @doing.user_id == current_user.id
+    @doing.destroy if doing.owned_by?(current_user)
     if params[:back_path].present?
       redirect_to params[:back_path]
     else

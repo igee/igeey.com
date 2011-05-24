@@ -1,9 +1,9 @@
 <% @title = '站外同步'%>
 <div class='box'>
   <p class="explanation">
-    你<%= {:calling => '的召集成功发布了',:plan => '的计划已经建立',:follow =>'已关注这个行动'}[@sync.syncable_type.downcase.to_sym] %>。
+    你<%= {:question => '的问题已经发布了',:calling => '的召集成功发布了',:plan => '的计划已经建立',:follow =>'已关注这个行动'}[@sync.syncable_type.downcase.to_sym] %>。
     <br/>
-    再通过你的社交网络把这个消息告诉你的朋友吧，让更多人知道并参与这个行动。
+    再通过你的社交网络把这个消息告诉你的朋友吧。
   </p>
   <%= form_for @sync,:url => sync_path do |form| %>
     <%= form.hidden_field :syncable_id %>
@@ -12,13 +12,12 @@
     <div class="bubble_tail"></div>
     <div class="bubble" style="<%= 'width:360px' if params[:layout]=='false'%>">
         <% @synclink = (@sync.syncable_type == "Follow" ? short_url(@syncable.followable) : short_url(@syncable)) %>
-        <%= form.text_area :content,:value=>"我#{@syncable.description}#{  @sync.syncable_type == "Calling" ? {:time => "，请大家踊跃报名！",:goods => "，请大家支持！"}[@syncable.for_what.to_sym] : '。'} " + @synclink,:style => "width:#{ params[:layout]=='false' ? '340px' : '440px'};height:80px"%>
+        <%= form.text_area :content,:value=>"我#{@syncable.description} " + @synclink,:style => "width:#{ params[:layout]=='false' ? '340px' : '440px'};height:80px"%>
         <div class="explanation">截取前140字，剩余字数：<span id="character_count"></span></div>
     </div>
     <p style='text-align:right;clear:both'>
     同步到：
     <%= image_tag('/images/icon/sina.gif',:class=> 'icon')%> 新浪微博 <%= form.check_box :sina ,:disabled => (current_user.sina? ? false : true),:checked => current_user.sina? %>
-    　<%= image_tag('/images/icon/douban.gif',:class => 'icon')%> 豆瓣我说 <%= form.check_box :douban ,:disabled => (current_user.douban? ? false : true),:checked => current_user.douban? %>
     　<%= link_to '无法勾选同步？先去设置',"#{setting_path}?back_path=#{request.path}&syncable_type=calling&syncable_id=1",:class => 'with_explain',:title => '设置完了可以再回来' unless current_user.sina? && current_user.douban? %>
     <br/>
     <%= form.submit '确定',:class => 'button' %>

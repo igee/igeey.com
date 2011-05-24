@@ -1,4 +1,4 @@
-<% @title = @calling.title%>
+<% @title = "活动：#{@calling.title}"%>
   <div class="box">  
     <%= render :partial => '/users/user' ,:object => @calling.user %>
     <div class="bubble_tail"></div>
@@ -16,6 +16,7 @@
       <%=  render :partial => "/callings/shows/#{@calling.for_what}"%>
       <%= raw tag_list_for(@calling.tag_list)%>
       <br/>
+      <%= render :partial => '/public/share'%>
     </div>
     <div style="clear:both;text-align:right">
       <% if @calling.owned_by?(current_user)%>

@@ -143,5 +143,6 @@ Igeey::Application.routes.draw do
   match "/p/:id" => redirect("/plan/%{id}")
   match "/t/:id" => redirect("/topics/%{id}")
   match "/s/:id" => redirect("/sayings/%{id}")
+  match "/q/:id" => redirect("/questions/%{id}")
 
 end

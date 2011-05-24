@@ -21,7 +21,7 @@ class TopicsController < ApplicationController
   
   def destroy
     @venue = @topic.venue
-    @topic.destroy if @topic.user_id == current_user.id
+    @topic.destroy if @topic.owned_by?(current_user)
     if params[:back_path].present?
       redirect_to params[:back_path]
     else
@@ -33,7 +33,7 @@ class TopicsController < ApplicationController
   end
   
   def update
-    @topic.update_attributes(params[:topic]) if @topic.user_id == current_user.id
+    @topic.update_attributes(params[:topic]) if @topic.owned_by?(current_user)
     if params[:back_path].present?
       redirect_to params[:back_path]
     else
