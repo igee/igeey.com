@@ -16,7 +16,7 @@ class CallingsController < ApplicationController
     @venue = @calling.venue
     @plans = @calling.plans.undone
     @records = @calling.records
-    @my_plan = @plans.select{|p| p.owned_by?(current_user)}.first if logged_in? # user`s plan on this calling
+    @my_plan = current_user.plans.select{|p| p.calling_id == @calling.id}.first if logged_in? # user`s plan on this calling
     @my_record = @records.select{|r| r.owned_by?(current_user)}.first if logged_in? # user`s record on this calling
     @followers = @calling.followers
     @comments = @calling.comments
