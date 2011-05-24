@@ -2,11 +2,42 @@
 
   <%= image_tag '/images/title.png',:style=> "border:1px solid #ddd;display:block"%>
   <%= link_to raw('&raquo; 了解更多'),guide_path ,:style=>"position:relative;top:-60px;left:490px"%>
-  
-  <div class="box">
-  <h4>热门话题..</h4>
-    <%= render :partial => '/tags/tag' ,:collection => @tags %>
+
+<div class="box" style="text-align:center">
+  <%= form_tag tags_search_path,:id=>'tags_search',:style => 'font-size:18px;padding:10px;text-align:center',:method => :get do%>
+    我关注 <%= text_field_tag 'keywords', @keywords,:placeholder => '环保,节能...',:style => 'font-size:16px;width:240px;padding:5px' %> <%= submit_tag '搜索话题',:style=>'font-size:15px;line-height:22px'%>
+  <% end %>
+  <span>热门话题：</span>
+  <% @tags[0..6].each do |tag|%>
+    <%= link_to tag.name,tag_path(tag)%>
+  <% end %>
+  <br/>
+  <div style="padding:0 30px 10px">
+    <% @tags[6..-1].each do |tag|%>
+      <span><%= link_to tag.name,tag_path(tag)%></span>
+    <% end %>
+    <%= link_to '...',tags_path%>
   </div>
+</div>
+
+<div class="box" style="text-align:center">
+  <%= form_tag tags_search_path,:id=>'tags_search',:style => 'font-size:18px;padding:10px;text-align:center',:method => :get do%>
+    我关注 <%= text_field_tag 'keywords', @keywords,:placeholder => '环保,节能...',:style => 'font-size:16px;width:240px;padding:5px' %> <%= submit_tag '搜索话题',:style=>'font-size:15px;line-height:22px'%>
+  <% end %>
+  <br/>
+  <span>热门话题</span>
+  <% @tags[0..7].each do |tag|%>
+    <%= link_to tag.name,tag_path(tag)%>
+  <% end %>
+  <br/>
+  <div style="padding:0 30px 10px">
+    <% @tags[7..-1].each do |tag|%>
+      <span><%= link_to tag.name,tag_path(tag)%></span>
+    <% end %>
+    <%= link_to '...',tags_path%>
+  </div>
+</div>
+
 <% content_for :sidebar do %>  
   <div class="box" style="text-align:center;height:265px">
     <div style="padding:20px 0;border-bottom:1px solid #ccc;margin-bottom:20px">  

@@ -2,15 +2,10 @@ class SiteController < ApplicationController
   before_filter :login_required, :except=> [:index,:faq,:guide,:about,:report,:public,:more_public_timeline,:timeline]  
   
   def index
-    if logged_in?
-      @questions = Question.unscoped.order('last_answered_at desc').limit(10)
-      @timeline = Calling.limit(6)
-      @tags = Tag.limit(24)
-      @question = Question.new
-    else
-      @tags = Tag.limit(6)
-      render :welcome
-    end
+    @questions = Question.unscoped.order('last_answered_at desc').limit(10)
+    @timeline = Calling.limit(6)
+    @tags = Tag.limit(24)
+    @question = Question.new
   end
   
   def timeline
