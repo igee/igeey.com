@@ -8,11 +8,12 @@
     <div id="search_result"></div>
   <% end %>
   <br/>
+  <div style="font-weight:bold">
   <span>热门话题：</span>
-  <% @tags[0..6].each do |tag|%>
-    <%= link_to tag.name,tag_path(tag)%>
-  <% end %>
-  <br/>
+    <% @tags[0..6].each do |tag|%>
+        <%= link_to tag.name,tag_path(tag)%>
+    <% end %>
+  </div>
   <div style="padding:0 30px 10px;">
     <% @tags[6..-1].each do |tag|%>
       <span><%= link_to tag.name,tag_path(tag)%></span>
