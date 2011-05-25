@@ -4,6 +4,7 @@ class VotesController < ApplicationController
   def index
     redirect_to :back
   end 
+  
   def create
     @vote = Vote.new(:user_id => current_user.id)
     @vote.voteable_id = params[:voteable_id]
