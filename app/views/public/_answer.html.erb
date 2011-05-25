@@ -10,7 +10,10 @@
     <pre><%= link_to "#{answer.user.login}：",user_path(answer.user) unless controller_name == 'users'%><%= short_text(answer.content,140) %> <%= link_to_function('(展开)','javascript:$(this).parent().hide();$(this).parent().next().show()') if answer.content.mb_chars[140] %> <span class="timeago"><%= answer.created_at %></span></pre>
     <pre style="display:none"><%= link_to "#{answer.user.login}：",user_path(answer.user) unless controller_name == 'users'%><%= answer.content %> <%= link_to_function('(收起)','javascript:$(this).parent().hide();$(this).parent().prev().show()') %> <span class="timeago"><%= answer.created_at %></span></pre>
     <div class="event_info">
-      <%= link_to(raw("#{image_tag('/images/icon/upgrey.png',:class=>'icon')} #{answer.votes_count}"),votes_path(:voteable_id => answer.id,:voteable_type => answer.class.to_s,:back_path => request.fullpath), :remote => (true if logged_in?),:method => :post,:id => "answer_vote_#{answer.id}",:class => 'vote') %>
+      <span style='color:#555'>
+        <%= link_to(raw("#{image_tag('/images/icon/upgrey.png',:class=>'icon')}赞同 #{answer.votes_count}"),votes_path(:voteable_id => answer.id,:voteable_type => answer.class.to_s,:back_path => request.fullpath), :remote => (true if logged_in?),:method => :post,:id => "answer_vote_#{answer.id}",:class => 'vote', :title => '赞同') %>
+      </span>&nbsp;&nbsp;
+      <span><%= link_to "没有帮助?","#{veto_question_answer_path(question,answer)}", :class => "veto", :remote => (true if logged_in?), :method => :post, :confirm => '没有帮助达到一定数量后，该回答将被隐藏，是否确定该回答没有帮助？'%></span>
     </div>
     <div class="event_action">
       <% if answer.owned_by?(current_user) %>
