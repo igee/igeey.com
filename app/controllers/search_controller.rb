@@ -18,7 +18,6 @@ class SearchController < ApplicationController
     end
   end
   
-
   def more
     @result = {}
     @keywords = params[:keywords].split.join('+')
@@ -26,5 +25,4 @@ class SearchController < ApplicationController
     @items = @model.search(@keywords,:order => :follows_count,:sort_mode => :desc,:page => params[:page],:per_page => 10)
     render :layout => false
   end
-  
 end
