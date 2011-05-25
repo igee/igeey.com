@@ -9,4 +9,5 @@ class Answer < ActiveRecord::Base
   validates :content,:length => {:minimum => 1 ,:message => '回答要有起码的字数吧？'}
   validates :question_id,    :presence => true
   validates :user_id,        :presence   => true,:uniqueness => {:scope => [:question_id]}
+
 end
