@@ -24,10 +24,12 @@
   <% else%>
     <h4>备选答案：</h4>
     <%= render :partial => '/public/answer',:collection => @answers%>
-    <span><%= link_to "有#{@veto_answers.length}个答案没有帮助",'',:style => "color:#999",:onclick => "javascript:$('#vetos').toggle();return false;"%></span>
-    <div id="vetos" style="display:none">
-      <%= render :partial => '/public/answer',:collection => @veto_answers%>
-    </div>  
+    <% unless @vetoed_answers.length.zero? %>
+      <span><%= link_to "有#{@vetoed_answers.length}个答案没有帮助",'',:style => "color:#999",:onclick => "javascript:$('#vetos').toggle();return false;"%></span>
+      <div id="vetos" style="display:none">
+        <%= render :partial => '/public/answer',:collection => @vetoed_answers%>
+      </div>
+    <% end %>
   <% end %>
 </div>
 
