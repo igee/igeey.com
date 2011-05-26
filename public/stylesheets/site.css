@@ -52,7 +52,7 @@ select{padding:2px}
 
 a{
   text-decoration:none;
-  color:#48b;
+  color:#59c;
   }  
 
 a:hover{color:#f63}
@@ -765,6 +765,11 @@ a.tag_name{
   }
 
 .filter{color:#6ad;}
+
+.veto{color:#ccc;}
+.veto:hover{
+	color:#48B;
+}
 
 #category_list ul{overflow:hidden}
 #cutline_list li{font-size:13px;}

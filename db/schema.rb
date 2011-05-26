@@ -30,6 +30,8 @@ ActiveRecord::Schema.define() do
     t.datetime   :last_replied_at
     t.integer    :comments_count,   :default => 0
     t.integer    :votes_count,      :default => 0
+    t.integer    :vetos_count,      :default => 0
+    t.string     :vetos_user_ids,   :default => ''
     t.timestamps
   end
 

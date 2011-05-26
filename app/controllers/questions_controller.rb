@@ -1,11 +1,12 @@
 class QuestionsController < ApplicationController
-  before_filter :login_required, :except => [:index, :show]
+  before_filter :login_required, :except => [:index, :show,:more]
   before_filter :find_question, :except => [:index, :new, :create,:more]
   respond_to :html,:json
   
   def show
     @answer = Answer.new
-    @answers = @question.answers.order('votes_count desc')
+    @answers = @question.answers.where('vetos_count < 3').order('votes_count desc')
+    @vetoed_answers = @question.answers.where('vetos_count >= 3').order('votes_count desc')
     @questions = @question.related_questions[0..9]
   end
   

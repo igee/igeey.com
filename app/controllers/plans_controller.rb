@@ -35,7 +35,7 @@ class PlansController < ApplicationController
     @photos = @calling.photos
     @records = @calling.records
     @plans = @calling.plans.undone
-    @my_plan = @calling.plans.select{|p| p..owned_by?(current_user)}.first if logged_in?
+    @my_plan = current_user.plans.select{|p| p.calling_id == @calling.id}.first if logged_in?
   end
   
   def edit
