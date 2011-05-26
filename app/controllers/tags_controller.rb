@@ -48,7 +48,7 @@ class TagsController < ApplicationController
     else
       @tag = Tag.find_by_name(params[:id])
     end
-    render file:"public/404.html" if @tag.nil?
+    render "public/404.html",:layout => false if @tag.nil?
   end
   
 end
