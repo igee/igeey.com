@@ -111,7 +111,6 @@
         <%= image_tag current_user.avatar.url(:_48x48) %>
       </div>      
     </div>
-      
     <div class="box">
       <span>我收藏的话题..<span><br/>
       <%= current_user.tag_list.empty? ? '你还没有收藏任何话题' : raw(tag_list_for(current_user.tag_list))%>
