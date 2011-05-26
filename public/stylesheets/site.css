@@ -776,6 +776,11 @@ a.tag_name{
 
 .filter{color:#6ad;}
 
+.veto{color:#ccc;}
+.veto:hover{
+	color:#48B;
+}
+
 #category_list ul{overflow:hidden}
 #cutline_list li{font-size:13px;}
 

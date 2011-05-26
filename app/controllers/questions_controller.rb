@@ -5,7 +5,8 @@ class QuestionsController < ApplicationController
   
   def show
     @answer = Answer.new
-    @answers = @question.answers.order('votes_count desc')
+    @answers = @question.answers.where('vetos_count < 3').order('votes_count desc')
+    @vetoed_answers = @question.answers.where('vetos_count >= 3').order('votes_count desc')
     @questions = @question.related_questions[0..9]
   end
   
