@@ -1,7 +1,7 @@
 class TagsController < ApplicationController
   respond_to :html
   before_filter :login_required, :only => [:new,:create,:destroy,:edit,:update]
-  before_filter :find_tag, :except => [:index,:new,:create]
+  before_filter :find_tag, :except => [:index,:new,:create,:show]
   
   def index
     @tags = Tag.paginate(:page => params[:page], :per_page => 20)
