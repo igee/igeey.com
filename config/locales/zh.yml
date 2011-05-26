@@ -37,6 +37,8 @@ zh:
               blank:  '请选择行动受益的地点'
             title:
               blank:  '请填写行动标题'
+            time:
+              blank:  '请填写贡献时间'
         vote:
            attributes:
               user_id:
