@@ -20,6 +20,7 @@ class SayingsController < ApplicationController
   
   def show
     @saying = Saying.find(params[:id])
+    @venue = @saying.venue
     @comments = @saying.comments
   end
 
