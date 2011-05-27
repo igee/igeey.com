@@ -525,8 +525,11 @@ button:hover,.button:hover,.big_button:hover{background:#ff9f10;color:white;}
   padding:0;
   }
 
-.reply_bubble form input {
+input.reply_field {
   _vertical-align:middle;
+  width:420px;
+  height:18px;
+  margin:10px 0 14px 8px
   }
 
 .submit{display:none}
@@ -695,18 +698,8 @@ input.todo:hover{
   margin:6px 24px 6px 2px;
   }
 
-a.tag_name{
-  background-color:#8ad;
-  padding: 2px 8px;
-  margin: 0px 8px 2px 0;	
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  color:#fff;
-  font-size:14px;
-  }
-
 .tag_list{display:inline;width:86px}
-.tag_label{float:left;margin-top:4px}
+.tag_label{float:left;margin-top:2px}
 
 .tag_cloud{
   margin:0;
@@ -714,31 +707,25 @@ a.tag_name{
   float:left;
   }
 
-.tag_cloud li{
-  display:inline;
-  font-size:13px;
-  line-height:1;
-  word-break:keep-all;
-  }
 
-.tag_cloud li a {
+a.tag{
   float:left;
   display:block;
-  padding: 2px 6px 4px;
-  _padding-top:4px;
-  margin: 3px 8px 0 0;
+  padding: 2px 8px;
+  line-height:1;
+  margin: 3px 7px 1px 0;
   background-color:#acf;
   color:#fff;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
  }
   
-.tag_cloud li img{
+a.tag img{
   margin-bottom:-1px;
   cursor: pointer;
   }
   
-.tag_cloud li a:hover,a.tag_name:hover{
+a.tag:hover{
   background-color: #f93;
   color:#fff;
   }

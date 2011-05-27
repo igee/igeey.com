@@ -41,10 +41,6 @@ $(document).ready(function(){
     e.preventDefault();
   });
   
-  $('form').live('submit', function() {
-    $(this).find('input:submit').attr('disabled',true);
-  });
-  
   $(".zoom_photo").live('click', function(e) {
     var childrens = $(this).children();
     childrens.first().toggle();
