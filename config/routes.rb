@@ -107,7 +107,9 @@ Igeey::Application.routes.draw do
   resources :follows,:photos,:topics,:sayings,:doings
   
   resources :questions do
-    resources :answers
+    resources :answers do
+      post :veto, :on => :member
+    end
     get :more, :on => :collection
   end
   
