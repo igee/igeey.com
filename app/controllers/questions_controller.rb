@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_filter :login_required, :except => [:index, :show]
+  before_filter :login_required, :except => [:index, :show,:more]
   before_filter :find_question, :except => [:index, :new, :create,:more]
   respond_to :html,:json
   

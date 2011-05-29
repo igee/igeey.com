@@ -6,6 +6,7 @@ body{
   color:#555;
   word-break:break-all;
   margin:0;
+  line-height:1.4;
   }
 
 h1{margin:0}
@@ -20,24 +21,22 @@ h2,h3,h4,h5,h6{
     
 ul,dl{
   margin:6px 0;
-  line-height:1.6em;
   padding:0;
   list-style:none;
   }
 
 p{
-  line-height:1.6em;
+  line-height:1.6;
   margin:6px 0;
   }
 
 pre {
-  margin:0;
   white-space: pre-wrap;
   white-space: -moz-pre-wrap;
   white-space: -pre-wrap;
   white-space: -o-pre-wrap;
   word-wrap: break-word;
-  line-height:1.6em;
+  line-height:1.6;
   margin:4px 0;
   text-align:left;
   } 
@@ -252,14 +251,6 @@ table{
   }
 
 /* Elements Setting */
-.action_box{width:280px;margin:5px 20px 5px 5px;float:left}
-
-.action_cover{
-  padding:3px;
-  -webkit-border-radius:3px;-moz-border-radius: 3px;border-radius: 3px;
-  background-color:#ccc;
-  }
-
 .clear{clear:both}
 
 .box{
@@ -275,13 +266,10 @@ table{
   }
 
 .gary_button{
-  text-align:center;
   margin:0 6px;
   color:white;
   font-size:14px;
-  line-height:14px;
   font-weight:bold;
-  font-family:sans-serif;
   background-color:#bbb;
   border:1px solid #aaa;
   padding:3px 14px;
@@ -314,7 +302,7 @@ button,.button{
   margin-right:6px;
   color:white;
   font: bold normal 14px/14px sans-serif;
-  background-color:#ff8f00;
+  background:url('/images/button.png');
   padding:3px 12px;
   -padding:4px 12px 2px;
   -webkit-border-radius:3px;-moz-border-radius: 3px;border-radius: 3px;
@@ -336,7 +324,7 @@ button,.button{
 
 .see_all_link{float:right;font-size:12px;margin-top:4px}
 
-button:hover,.button:hover,.big_button:hover{background-color:#ff9f10;color:white;}
+button:hover,.button:hover,.big_button:hover{background:#ff9f10;color:white;}
 
 .dialog_rightbar{
   float:right;
@@ -355,7 +343,6 @@ button:hover,.button:hover,.big_button:hover{background-color:#ff9f10;color:whit
   color:#777;
   margin-bottom:4px;
   font-size:12px;
-  line-height:18px;
   font-weight:normal;
   display:block;
   }
@@ -365,13 +352,6 @@ button:hover,.button:hover,.big_button:hover{background-color:#ff9f10;color:whit
   background-color:#d64;
   color:#ffffff;
   padding:4px 10px;
-  }
-
-.photo_detail{
-  color:#888;
-  font-size:12px;
-  font-weight:normal;
-  width:400px;
   }
 
 .keyword{color:#c53}
@@ -400,7 +380,7 @@ button:hover,.button:hover,.big_button:hover{background-color:#ff9f10;color:whit
 .actions_counter{
   float:left;
   color:#999;
-  width:74px;
+  width:48px;
   margin-bottom:3px;
   }
 
@@ -457,7 +437,7 @@ button:hover,.button:hover,.big_button:hover{background-color:#ff9f10;color:whit
   margin:0 4px;
   }
 
-.info{line-height:22px;color:#aaa;font-size:13px;}
+.info{color:#aaa;font-size:13px;}
 
 #record_counters h4{color:#39c}
 
@@ -545,8 +525,11 @@ button:hover,.button:hover,.big_button:hover{background-color:#ff9f10;color:whit
   padding:0;
   }
 
-.reply_bubble form input {
+input.reply_field {
   _vertical-align:middle;
+  width:420px;
+  height:18px;
+  margin:10px 0 14px 8px
   }
 
 .submit{display:none}
@@ -555,7 +538,6 @@ button:hover,.button:hover,.big_button:hover{background-color:#ff9f10;color:whit
   margin:4px 0;
   font-weight:bold;
   font-size:16px;
-  line-height:1.8em;
   }
   
 .comment{
@@ -601,14 +583,15 @@ button:hover,.button:hover,.big_button:hover{background-color:#ff9f10;color:whit
   font-size:12px;
   color:#aaa;
   position:relative;
-  top:2px
+  top:3px
+  text-align:right;
   }
 
 .comment{margin:0;width:520px}
 
 .reply{font-size:12px;border-bottom:1px dashed #d6d6d6;text-align:left}
 .reply_reply{float:right}
-.reply_tail{position:relative;top:4px; _top:5px; right:20px;}
+.reply_tail{position:relative;top:6px;right:20px;}
 .replys{text-align:right;clear:both;}
 
 .photo_box{
@@ -672,7 +655,6 @@ input.todo:hover{
   margin-top:4px;
   padding:1px 6px;
   background-color:#ccc;
-  line-height:14px;
   -webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;
   color:#666;
   font-size:13px;
@@ -716,18 +698,8 @@ input.todo:hover{
   margin:6px 24px 6px 2px;
   }
 
-a.tag_name{
-  background-color:#8ad;
-  padding: 2px 8px;
-  margin: 0px 8px 2px 0;	
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  color:#fff;
-  font-size:14px;
-  }
-
 .tag_list{display:inline;width:86px}
-.tag_label{float:left;margin-top:4px}
+.tag_label{float:left;margin-top:2px}
 
 .tag_cloud{
   margin:0;
@@ -735,41 +707,33 @@ a.tag_name{
   float:left;
   }
 
-.tag_cloud li{
-  display:inline;
-  font-size:13px;
-  line-height:13px;
-  word-break:keep-all;
-  }
 
-.tag_cloud li a {
+a.tag{
   float:left;
   display:block;
-  padding: 2px 6px 4px;
-  _padding-top:4px;
-  margin: 3px 8px 0 0;
+  padding: 2px 8px;
+  line-height:1;
+  margin: 3px 7px 1px 0;
   background-color:#acf;
   color:#fff;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
  }
   
-.tag_cloud li img{
+a.tag img{
   margin-bottom:-1px;
   cursor: pointer;
   }
   
-.tag_cloud li a:hover,a.tag_name:hover{
+a.tag:hover{
   background-color: #f93;
   color:#fff;
   }
 
 .filter{color:#6ad;}
 
-.veto{color:#ccc;}
-.veto:hover{
-	color:#48B;
-}
+.veto{color:#bbb;}
+.veto:hover{color:#48B;}
 
 #category_list ul{overflow:hidden}
 #cutline_list li{font-size:13px;}
@@ -804,7 +768,6 @@ a.tag_name{
   background-color:#68c;
   padding:14px 2px;
   border:1px solid #57b;
-  line-height:18px;
   font-size:15px;
   position:fixed;
   _position:absolute;

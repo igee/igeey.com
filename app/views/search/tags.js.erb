@@ -1,4 +1,3 @@
-$('#tags_search').find("input[type='submit']").attr('disabled',false);
 <% if @tags.empty?%>
 	<% if @keywords.nil?%>
 		$('#search_result').html("<p><span style='color:red'>请输入搜索关键字</span></p>")

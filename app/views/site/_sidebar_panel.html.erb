@@ -1,23 +1,25 @@
-    <div class="sidebar_panel">
-      <div style="padding:5px 5px;float:right;width:150px">
-        <h4><%= link_to current_user.login,current_user%></h4>
-          <div class="actions_counter"><%= "#{current_user.sayings_count}次报到" %></div>
-          <div class="actions_counter"><%= "#{current_user.photos_count}张照片" %></div>
-          <div class="actions_counter"><%= "#{current_user.topics_count}篇故事" %></div>
-          <div class="actions_counter"><%= "#{current_user.callings_count}次召集" %></div>
-      </div>
-      <div style="padding:10px 5px;">
-        <%= image_tag current_user.avatar.url(:_48x48) %>
-      </div>      
-    </div>
-    
-    <% @venues = current_user.venue_followings.limit(6).map(&:followable)%>
-    <% unless @venues.empty? %>
-    <div style="padding:0 5px">
-      <p>
-        <span style="float:right"><%= link_to "查看全部",followings_path %></span>
-        <span>关注了<%= "#{current_user.venue_followings.count}个地点" %>：</span>
-      </p>
-      <%= render :partial => '/venues/venue',:collection => @venues ,:locals => {:with_name => true}%>
-    </div>
-    <% end %>
+<div class="sidebar_panel">
+  <div style="padding:5px 5px;float:right;width:150px">
+    <h4><%= link_to current_user.login,current_user%></h4>
+      <div class="actions_counter"><%= link_to "提问 #{current_user.questions_count}",questions_user_path(current_user)%></div>
+      <div class="actions_counter"><%= link_to "回答 #{current_user.answers_count}",answers_user_path(current_user) %></div>
+      <div class="actions_counter"><%= link_to "报到 #{current_user.sayings_count}",sayings_user_path(current_user)%></div>
+      <div class="actions_counter"><%= link_to "照片 #{current_user.photos_count}",photos_user_path(current_user) %></div>
+      <div class="actions_counter"><%= link_to "故事 #{current_user.topics_count}",topics_user_path(current_user) %></div>
+      <div class="actions_counter"><%= link_to "召集 #{current_user.callings_count}",callings_user_path(current_user) %></div>
+  </div>
+  <div style="padding:10px 5px;">
+    <%= image_tag current_user.avatar.url(:_48x48) %>
+  </div>      
+</div>
+
+<% @venues = current_user.venue_followings.limit(6).map(&:followable)%>
+<% unless @venues.empty? %>
+<div style="padding:0 5px">
+  <p>
+    <span style="float:right"><%= link_to "查看全部",followings_path %></span>
+    <span>关注了<%= "#{current_user.venue_followings.count}个地点" %>：</span>
+  </p>
+  <%= render :partial => '/venues/venue',:collection => @venues ,:locals => {:with_name => true}%>
+</div>
+<% end %>
