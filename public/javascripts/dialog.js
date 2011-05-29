@@ -35,13 +35,21 @@
   Dialog.prototype = {
     init: function(o) {
       var opts = this.opts = $.extend({}, this.settings, o || {}),
-        $tmpl = $(substitute(this.tmpl, opts)).appendTo('body').hide();
+        $tmpl = $(substitute(this.tmpl, opts));
       
-      this.$close = $tmpl.find('#close_dialog').bind( 'click', $.proxy(this.close, this) );
+      if ( this.ready ) {
+        this.$tmpl.replaceWith( $tmpl );
+      } else {
+        $tmpl.appendTo('body').hide();
+      }
+      
+      this.$tmpl = $tmpl;
       this.$dialog = $tmpl.eq(0);
       this.$overlay = $tmpl.eq(1).bind( 'click', $.proxy(this.close, this) );
+      this.$close = $tmpl.find('#close_dialog').bind( 'click', $.proxy(this.close, this) );      
       this.$content = $tmpl.find('.dialog_content');
       
+      this.ready = true;
       return opts.url ? this.loadContent() : this.show();
     },
     
@@ -104,6 +112,8 @@
       this.$overlay.fadeOut('fast',function(){
         $(this).remove()
       });
+      this.ready = false;
+      
       return this;
     }
   };
@@ -133,12 +143,11 @@
       spinner: '读取中..请稍后',
       error: 'error..'
     },
-    init: function(o) {
-      var d = new Dialog();
-      return d.init.call(d,
-        $.extend(this.defaults, o || {})
-      );
-    }
+    init: (function(dialog) {
+      return function(o) {
+        return dialog.init( $.extend(this.defaults, o) );
+      };
+    }(new Dialog))
   };
   
 }(jQuery));
