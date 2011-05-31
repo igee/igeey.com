@@ -41,7 +41,7 @@
         <%= form_for @question do |form|%>
           <p>
             <%= form.text_field :title,:style => "width:500px;",:placeholder => "要提问？在这里输入你的问题（别忘了加上最后的“？”号）" %>
-            <%= form.submit '添加问题',:onclick => "javascript:if ($('.new_question').find('li').length == 0) {alert('请至少填写一个标签');return false;};"%>
+            <%= form.submit '添加问题',:onclick => "javascript:if ($('.new_question').find('a').length == 0) {alert('请至少填写一个标签');return false;};"%>
           </p>
           <div id="question_details" style="display:none">
             <p>
