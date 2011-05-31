@@ -34,7 +34,7 @@
       <%= form_for @question,:html =>{:style => 'background-color:#f3f3f3;padding:2px 10px 10px;margin:5px 0'} do |form| %>
         <p>
           <%= form.text_field :title,:style => "width:500px;margin-top:10px",:placeholder => "要提问？在这里输入你的问题（别忘了加上最后的“？”号）" %>
-          <%= form.submit '添加问题',:onclick => "javascript:if ($('.new_question').find('li').length == 0) {alert('请至少填写一个标签');return false;};"%>
+          <%= form.submit '添加问题',:onclick => "javascript:if ($('.new_question').find('a').length == 0) {alert('请至少填写一个标签');return false;};"%>
         </p>
         <div id="question_details" style="display:none;">
           <p>
@@ -100,18 +100,7 @@
       </div>      
     </div>
   <% else %>
-    <div class="sidebar_panel">
-      <div style="padding:5px 5px;float:right;width:150px">
-        <h4><%= link_to current_user.login,current_user%></h4>
-          <div class="actions_counter"><%= "#{current_user.sayings_count}次报到" %></div>
-          <div class="actions_counter"><%= "#{current_user.photos_count}张照片" %></div>
-          <div class="actions_counter"><%= "#{current_user.topics_count}篇故事" %></div>
-          <div class="actions_counter"><%= "#{current_user.callings_count}次召集" %></div>
-      </div>
-      <div style="padding:10px 5px;">
-        <%= image_tag current_user.avatar.url(:_48x48) %>
-      </div>      
-    </div>
+    <%= render :partial => "sidebar_panel"%>
     <div class="box">
       <span>我收藏的话题..</span><br/>
       <%= current_user.tag_list.empty? ? '你还没有收藏任何话题' : raw(tag_list_for(current_user.tag_list))%>

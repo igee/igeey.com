@@ -1,7 +1,7 @@
 class CallingsController < ApplicationController
   respond_to :html
-  before_filter :login_required, :except => [:index, :show,:progress]
-  before_filter :find_calling, :except => [:index, :new, :create]
+  before_filter :login_required, :except => [:index, :show,:progress,:more]
+  before_filter :find_calling, :except => [:index, :new, :create,:more]
   
   def create
     @calling = current_user.callings.build(params[:calling])
