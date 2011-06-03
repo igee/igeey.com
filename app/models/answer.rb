@@ -6,7 +6,7 @@ class Answer < ActiveRecord::Base
   has_many   :votes,    :as => :voteable,    :dependent => :destroy
 
   acts_as_ownable
-  validates :content,:length => {:minimum => 1 ,:message => '回答要有起码的字数吧？'}
+  validates :content,:length => {:minimum => 10 ,:message => '回答要有起码的字数吧？'}
   validates :question_id,    :presence => true
   validates :user_id,        :presence   => true,:uniqueness => {:scope => [:question_id]}
 
