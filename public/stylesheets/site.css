@@ -525,12 +525,14 @@ button:hover,.button:hover,.big_button:hover{background:#ff9f10;color:white;}
   padding:0;
   }
 
-input.reply_field {
+textarea.reply_field {
   _vertical-align:middle;
   width:420px;
   height:18px;
-  margin:10px 0 14px 8px
+  margin:10px 0 14px 4px
   }
+
+input.reply_submit{float:right;margin-top:10px}
 
 .submit{display:none}
 
