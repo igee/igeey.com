@@ -8,8 +8,8 @@
           <%= render :partial => "/public/reply",:collection => object.comments.last_three.reverse if object.comments_count > 0 %>
         </div>
         <% if logged_in?%>
-          <%= form.text_field :content,:class => 'reply_field' ,:placeholder => ""%>
-          <%= submit_tag '回复',:disable_with => '稍等' %>
+          <%= submit_tag '回复',:disable_with => '稍等' ,:class => 'reply_submit'%>
+          <%= form.text_area :content,:class => 'reply_field' ,:placeholder => ""%>
           <%= form.hidden_field :commentable_type,:value => object.class %>
           <%= form.hidden_field :commentable_id,:value => object.id %>
         <% else %>
