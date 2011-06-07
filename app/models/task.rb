@@ -19,7 +19,7 @@ class Task < ActiveRecord::Base
   
   scope :not_closed,where(:close => false) 
   
-  validates :user_id,:venue_id,:title,:address,:contact,  :presence => true
+  validates :user_id,:venue_id,:title,  :presence => true
   validates :do_at,:date => {:after_or_equal_to => 1.day.ago ,:allow_nil => true,:on => :create}
   
   def users_count
