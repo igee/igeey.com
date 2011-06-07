@@ -52,7 +52,7 @@ ActiveRecord::Schema.define() do
     t.timestamps
   end
   
-  create_table "callings", :force => true do |t|
+  create_table "tasks", :force => true do |t|
     t.integer  :venue_id
     t.integer  :user_id    
     t.integer  :total_money
@@ -152,7 +152,7 @@ ActiveRecord::Schema.define() do
     t.integer  :user_id
     t.integer  :venue_id
     t.integer  :action_id
-    t.integer  :calling_id
+    t.integer  :task_id
     t.integer  :record_id
     t.integer  :parent_id
     t.integer  :money
@@ -197,7 +197,7 @@ ActiveRecord::Schema.define() do
     t.integer  :venue_id
     t.integer  :action_id
     t.integer  :plan_id
-    t.integer  :calling_id
+    t.integer  :task_id
     t.integer  :parent_id
     t.integer  :money
     t.integer  :goods
@@ -228,7 +228,7 @@ ActiveRecord::Schema.define() do
     t.integer  :notifications_count,       :default => 0
     t.integer  :follows_count,             :default => 0
     t.integer  :comments_count,            :default => 0
-    t.integer  :callings_count,            :default => 0
+    t.integer  :tasks_count,            :default => 0
     t.integer  :plans_count,               :default => 0
     t.integer  :records_count,             :default => 0
     t.integer  :photos_count,              :default => 0
@@ -270,7 +270,7 @@ ActiveRecord::Schema.define() do
     t.integer :photos_count,   :default => 0
     t.integer :sayings_count,  :default => 0
     t.integer :records_count,  :default => 0
-    t.integer :callings_count, :default => 0
+    t.integer :tasks_count, :default => 0
     t.integer :topics_count,   :default => 0
     t.integer :watch_count,    :default => 0
     t.timestamps

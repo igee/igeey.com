@@ -1,7 +1,7 @@
 class Record < ActiveRecord::Base
   belongs_to :user,     :counter_cache => true
   belongs_to :venue,    :counter_cache => true
-  belongs_to :calling
+  belongs_to :task
   belongs_to :plan
   belongs_to :parent,   :class_name => :record,:foreign_key => :parent_id
   has_many   :comments, :as => :commentable,    :dependent => :destroy
@@ -11,7 +11,7 @@ class Record < ActiveRecord::Base
   
   default_scope :order => 'created_at DESC'
   
-  delegate  :for_what, :to => :calling
+  delegate  :for_what, :to => :task
   
   acts_as_ownable
   acts_as_taggable

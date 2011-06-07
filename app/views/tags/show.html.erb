@@ -67,7 +67,7 @@
   </div>
   <div id="timeline" class="tabContents">
     <%= render :partial => '/public/item',:collection => @timeline[0..9] %>
-    <%= link_to('查看更多...',more_callings_path(:page => 2),:class=> 'timeline_footer',:onclick => 'javascript:more_timeline($(this));return false;') if @timeline[10]%>
+    <%= link_to('查看更多...',more_tasks_path(:page => 2),:class=> 'timeline_footer',:onclick => 'javascript:more_timeline($(this));return false;') if @timeline[10]%>
   </div>
 </div>
 
