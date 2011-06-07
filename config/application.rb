@@ -62,5 +62,8 @@ module Igeey
       
     # Custom directories with classes and modules you want to be autoloadable.
     config.autoload_paths += Dir["#{config.root}/lib/autoload/"]
+    config.generators do |g|
+        g.fixture_replacement :factory_girl, :dir => "spec/factories"
+    end
   end
 end
