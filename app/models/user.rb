@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :venues,         :foreign_key => :creator_id,:dependent => :destroy
   has_many :records,        :dependent => :destroy
   has_many :plans,          :dependent => :destroy
-  has_many :callings,       :dependent => :destroy
+  has_many :tasks,       :dependent => :destroy
   has_many :comments,       :dependent => :destroy
   has_many :topics,         :dependent => :destroy
   has_many :photos,         :dependent => :destroy
@@ -98,7 +98,7 @@ class User < ActiveRecord::Base
   end  
   
   def influence_count
-    [self.callings.map{|c| c.plans.where(:parent_id => nil)},self.plans.map{|p| p.children}].flatten.uniq.size
+    [self.tasks.map{|c| c.plans.where(:parent_id => nil)},self.plans.map{|p| p.children}].flatten.uniq.size
   end
   
   def douban_count
@@ -113,8 +113,8 @@ class User < ActiveRecord::Base
     self.plans.count
   end
   
-  def realtime_callings_count
-    self.callings.count
+  def realtime_tasks_count
+    self.tasks.count
   end
   
   def questions_count
@@ -145,8 +145,8 @@ class User < ActiveRecord::Base
     self.followings.where(:followable_type => 'Tag')
   end
   
-  def calling_followings
-    self.followings.where(:followable_type => 'Calling')
+  def task_followings
+    self.followings.where(:followable_type => 'Task')
   end
   
   def tag_list
@@ -158,7 +158,7 @@ class User < ActiveRecord::Base
   end
     
   def latest_update
-    [self.records.first,self.callings.first,self.plans.first].compact.sort{|x,y| y.created_at <=> x.created_at }.first
+    [self.records.first,self.tasks.first,self.plans.first].compact.sort{|x,y| y.created_at <=> x.created_at }.first
   end
   
   # Use OAuth::AccessToken to access oauth api. powered by oauth_side 

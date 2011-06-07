@@ -12,7 +12,7 @@
 			在<%= nn.venue.name%>的<%= raw "#{'照片' unless nn.title.nil?} #{link_to((nn.title || '照片'),n,:method=>'delete')}"%> 有了新的回复
 		<% when "Saying"%>
 			在<%= nn.venue.name%>的报到 <%= link_to short_text(nn.content,10), n, :method=>'delete'%> 有了新的回复
-		<% when "Calling"%>
+		<% when "Task"%>
 			在<%= nn.venue.name%>的召集 <%= link_to nn.title, n, :method=>'delete'%> 有了新的回复
 		<% when "Answer"%>
 		  问题“<%= nn.question.title%>”的回答 <%= link_to short_text(nn.content,10), n, :method=>'delete'%> 有了新的回复

@@ -23,7 +23,7 @@ module Igeey
     # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
     config.active_record.observers = [:user_observer,
                                       :comment_observer,
-                                      :calling_observer,
+                                      :task_observer,
                                       :plan_observer,
                                       :record_observer,
                                       :photo_observer,

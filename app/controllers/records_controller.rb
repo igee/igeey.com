@@ -8,7 +8,7 @@ class RecordsController < ApplicationController
     if @record.plan.nil?
       render :select_action, :layout =>  !(params[:layout] == 'false')
     elsif @record.plan.present?
-      @record = Record.new(:venue => @record.plan.venue,:calling => @record.plan.calling,:plan => @record.plan)
+      @record = Record.new(:venue => @record.plan.venue,:task => @record.plan.task,:plan => @record.plan)
     end    
   end
   
@@ -21,7 +21,7 @@ class RecordsController < ApplicationController
   
   def show
     @venue = @record.venue
-    @calling = @record.calling
+    @task = @record.task
     @comments = @record.comments
     @photos = @record.photos
   end

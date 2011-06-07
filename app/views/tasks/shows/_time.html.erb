@@ -1,0 +1,7 @@
+    <p class="impact"><%= "#{@task.title}" %></p>
+    <div class="info">
+      需要人数：<%= @task.total_people %> 　行动日期：<%= @task.do_at.to_date %><br/>
+      集合地址：<%= @task.address %><br/>
+      联系方式：<%= @task.contact %>
+    </div>
+    <pre class="explanation"><%= @task.detail %></pre>

@@ -6,17 +6,17 @@
       <%= raw("在#{link_to plan.venue.name,plan.venue}") if controller_name == 'users'%>
       <%= raw(['users','venues'].include?(controller_name) ? '参与了行动：' : "#{link_to plan.venue.name,plan.venue} 有了新行动参与：" ) %>
     </span>
-    <pre><%= plan.calling.title %> <%= short_url(plan) %></pre>    <div class="event_action">
+    <pre><%= plan.task.title %> <%= short_url(plan) %></pre>    <div class="event_action">
       <span>by <%= link_to plan.user.login,plan.user unless controller_name == 'users' %></span>
       <span  style="float:left"><%= "#{plan.status}"%></span>
       <span class="timeago" style="float:left"><%= plan.created_at %></span>
       <% if (plan.owned_by?(current_user)) %>
         <%= link_to '完成',"#{new_record_path}?plan_id=#{plan.id}"%> |
-        <%= link_to "修改","#{edit_calling_plan_path(plan.calling,plan)}?back_path=#{request.path}"%> |
-        <%= link_to "取消",calling_plan_path(plan.calling,plan),:method => :delete,:confirm => '确定要取消你的计划么?' %> |
+        <%= link_to "修改","#{edit_task_plan_path(plan.task,plan)}?back_path=#{request.path}"%> |
+        <%= link_to "取消",task_plan_path(plan.task,plan),:method => :delete,:confirm => '确定要取消你的计划么?' %> |
       <% end %>
-      <%= link_to "回复#{'(' + plan.calling.comments_count.to_s + ')' if plan.calling.comments_count > 0}",'',:class => "event_reply"%>　
+      <%= link_to "回复#{'(' + plan.task.comments_count.to_s + ')' if plan.task.comments_count > 0}",'',:class => "event_reply"%>　
     </div>
-    <%= render :partial => "/public/reply_form",:locals =>  {:object => plan.calling}%>
+    <%= render :partial => "/public/reply_form",:locals =>  {:object => plan.task}%>
   </div>
 </div>

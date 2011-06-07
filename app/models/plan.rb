@@ -1,6 +1,6 @@
 class Plan < ActiveRecord::Base
   belongs_to :venue
-  belongs_to :calling
+  belongs_to :task
   belongs_to :user,     :counter_cache => true
   belongs_to :parent,   :class_name => 'Plan',:foreign_key => :parent_id
   has_one    :record
@@ -10,15 +10,15 @@ class Plan < ActiveRecord::Base
   
   acts_as_ownable
   
-  delegate :for_what, :to => :calling
+  delegate :for_what, :to => :task
   
   default_scope :order => 'created_at DESC'
   
   scope :undone ,where(:is_done => false)
   
-  validates :calling_id,:venue_id,:presence => true
+  validates :task_id,:venue_id,:presence => true
   validates :plan_at,:date => {:after_or_equal_to => 1.day.ago,:allow_nil => true}
-  validates :user_id,    :presence   => true,:uniqueness => {:scope => :calling_id}
+  validates :user_id,    :presence   => true,:uniqueness => {:scope => :task_id}
   
   def validate
     errors[for_what] = '数量必须为大于0的整数' unless number > 0
@@ -35,11 +35,11 @@ class Plan < ActiveRecord::Base
   end
 
   def status
-    self.calling.status
+    self.task.status
   end
   
   def description
-    "要参加#{calling.venue.name}的行动：#{self.calling.title}"
+    "要参加#{task.venue.name}的行动：#{self.task.title}"
   end
 
 end

@@ -1,27 +1,27 @@
 class PlansController < ApplicationController
   respond_to :html
   before_filter :login_required, :except => [:index, :show,:redirect]
-  before_filter :find_plan_and_calling, :except => [:index,:new,:create]
+  before_filter :find_plan_and_task, :except => [:index,:new,:create]
   
   def index
-    redirect_to calling_path(@calling)
+    redirect_to task_path(@task)
   end
   
   def new
-    @calling = Calling.find(params[:calling_id])
-    @plan = @calling.plans.build(:plan_at => @calling.do_at)
+    @task = Task.find(params[:task_id])
+    @plan = @task.plans.build(:plan_at => @task.do_at)
     @plan.parent_id = params[:parent_id]
     render :layout => false if params[:layout] == 'false'
   end
   
   def create
-    @calling = Calling.find(params[:calling_id])
+    @task = Task.find(params[:task_id])
     @plan = current_user.plans.build(params[:plan])
-    @plan.calling = Calling.find(params[:calling_id])
-    @plan.venue = @plan.calling.venue
+    @plan.task = Task.find(params[:task_id])
+    @plan.venue = @plan.task.venue
     if @plan.save
       flash[:dialog] = "<a href='#{new_sync_path}?syncable_type=#{@plan.class}&syncable_id=#{@plan.id}' class='open_dialog' title='传播这个行动'>同步</a>" 
-      respond_with [@calling,@plan]
+      respond_with [@task,@plan]
     else
       render :new
     end
@@ -30,12 +30,12 @@ class PlansController < ApplicationController
   
   def show
     @venue = @plan.venue
-    @comments = @calling.comments
-    @followers = @calling.followers
-    @photos = @calling.photos
-    @records = @calling.records
-    @plans = @calling.plans.undone
-    @my_plan = current_user.plans.select{|p| p.calling_id == @calling.id}.first if logged_in?
+    @comments = @task.comments
+    @followers = @task.followers
+    @photos = @task.photos
+    @records = @task.records
+    @plans = @task.plans.undone
+    @my_plan = current_user.plans.select{|p| p.task_id == @task.id}.first if logged_in?
   end
   
   def edit
@@ -57,7 +57,7 @@ class PlansController < ApplicationController
     
   def duplicate
     @parent = Plan.find(params[:id])
-    @plan = @calling.plans.build(:parent_id => @parent.id,:plan_at => @calling.do_at)
+    @plan = @task.plans.build(:parent_id => @parent.id,:plan_at => @task.do_at)
     if params[:layout] == 'false'
       render :action => 'new',:layout => false
     else
@@ -66,17 +66,17 @@ class PlansController < ApplicationController
   end
   
   def redirect
-    redirect_to calling_plan_path(@plan.calling,@plan)
+    redirect_to task_plan_path(@plan.task,@plan)
   end
     
   private
-  def find_plan_and_calling
+  def find_plan_and_task
     begin 
       @plan = Plan.find(params[:id])
-      @calling = @plan.calling
+      @task = @plan.task
     rescue
       @plan = Plan.new
-      @calling = Calling.find(params[:calling_id])
+      @task = Task.find(params[:task_id])
       render :no_found
     end  
   end
