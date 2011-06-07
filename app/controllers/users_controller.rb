@@ -223,7 +223,7 @@ class UsersController < ApplicationController
   end
   
   def more_answers
-    @items = @user.questions.paginate(:page => params[:page], :per_page => 10)
+    @items = @user.answers.paginate(:page => params[:page], :per_page => 10)
     render '/public/more_items',:layout => false
   end
   
