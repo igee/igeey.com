@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Task do
-  
   describe '#validate' do
     it 'should can not save without user_id' do
        @task = Factory.build(:task)
