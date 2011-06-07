@@ -155,6 +155,7 @@ ActiveRecord::Schema.define() do
     t.integer  :task_id
     t.integer  :record_id
     t.integer  :parent_id
+    t.text     :content
     t.integer  :money
     t.integer  :goods
     t.datetime :plan_at

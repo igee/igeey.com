@@ -19,15 +19,9 @@ class Task < ActiveRecord::Base
   
   scope :not_closed,where(:close => false) 
   
-  validates :detail,:length => {:minimum => 1 ,:message => '详细信息不能少于50字'}
   validates :user_id,:venue_id,:title,:address,:contact,  :presence => true
   validates :do_at,:date => {:after_or_equal_to => 1.day.ago ,:allow_nil => true,:on => :create}
   
-  def validate
-    errors["total_#{for_what == 'time' ? 'people' : for_what }"] << '数量必须为大于0的整数' unless total_number && (total_number > 0)
-    errors[:do_at] = '请填写集合日期' if (for_what == 'time') && do_at.blank?
-  end
-    
   def users_count
     self.plans.map(&:user).uniq.size
   end
