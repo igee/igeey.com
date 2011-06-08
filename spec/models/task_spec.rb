@@ -25,7 +25,6 @@ describe Task do
     it 'should save with user_id venue_id title' do
        @task = Factory.build(:task)
        @task.should be_valid
-       puts @task.errors
     end
 
   end
