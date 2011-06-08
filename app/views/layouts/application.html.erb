@@ -12,6 +12,7 @@
   <%= javascript_include_tag 'jquery.hint.js' %>
   <%= javascript_include_tag "jquery.timeago.js" %>
   <%= javascript_include_tag 'application.js' %>
+  <%= javascript_include_tag 'autoresize.jquery.min.js' %>
   <%= csrf_meta_tag %>
   <%= yield :head %>
 </head>
@@ -70,9 +71,7 @@
     <div class="container">
       <ul id="footer_links">
         <li>©2008-2010</li>
-        <li><%= link_to '关于',about_path%></li>
-        <li><%= link_to '爱聚指南',guide_path%></li>
-        <li><%= link_to '常见问题',faq_path%></li>
+        <li><%= link_to '爱聚帮助',tag_path('爱聚帮助')%></li>
         <li><%= link_to '博客',"http://blog.igeey.com"%></li>
       </ul>    
     </div>
