@@ -19,11 +19,7 @@ class Record < ActiveRecord::Base
   accepts_nested_attributes_for :photos
   
   validates :user_id, :presence => true,:uniqueness => {:scope => [:plan_id]}
-  validates :venue_id,:title,:time, :presence  => true
-  validates :done_at,:date => {:before_or_equal_to => Date.today.to_date}
-  validates_numericality_of :time, :only_integer => true, :message => '贡献时间必须为大于0的整数'
-  
-
+  validates :title,:task_id,:detail,:plan_id,:venue_id, :presence  => true
   
   def number
     {'money'=> money,'goods'=> goods,'time'=> time,'online' => online}[for_what] || 0
