@@ -2,14 +2,14 @@ require 'spec_helper'
 
 describe Plan do
   before do
-    @user = makestory
-    @user_1 = mhb
+    @user = Factory(:user)
+    @user_1 = Factory(:green)
     
     @task = Factory(:task)
   end
   describe 'validation' do
     it 'should be created by task_id' do
-      @plan = Factory(:plan)
+      @plan = Factory.build(:plan)
       @plan.task_id = nil
       @plan.should_not be_valid
       
@@ -18,7 +18,7 @@ describe Plan do
     end
     
     it 'should be created by user_id' do
-      @plan = Factory(:plan)
+      @plan = Factory.build(:plan)
       @plan.user_id = nil
       @plan.should_not be_valid
       
@@ -27,7 +27,7 @@ describe Plan do
     end
     
     it 'should be created by content' do
-      @plan = Factory(:plan)
+      @plan = Factory.build(:plan)
       @plan.content = nil
       @plan.should_not be_valid
       
@@ -36,13 +36,13 @@ describe Plan do
     end
     
     it 'should only be one plan to the same user with a task' do
-      @plan = Factory(:plan)
+      @plan = Factory.build(:plan)
       @plan.task_id = @task.id
       @plan.user_id = @user.id
       @plan.should be_valid
       @plan.save
       
-      @plan_1 = Factory(:plan)
+      @plan_1 = Factory.build(:plan)
       @plan.task_id = @task.id
       @plan.user_id = @user.id
       @plan_1.should_not be_valid
