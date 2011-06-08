@@ -14,7 +14,7 @@ class Plan < ActiveRecord::Base
   
   default_scope :order => 'created_at DESC'
   
-  scope :undone ,where(:is_done => false)
+  scope :undone, where(:is_done => false)
   
   validates :task_id,:venue_id,:presence => true
   validates :plan_at,:date => {:after_or_equal_to => 1.day.ago,:allow_nil => true}
