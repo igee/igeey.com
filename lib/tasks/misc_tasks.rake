@@ -218,7 +218,7 @@ namespace :misc do
     Vote.where(:voteable_type => 'Calling').each do |c|
       c.update_attribute(:voteable_type,'Task')
     end
-    Notifiacation.where(:notifiable_type => 'Calling').each do |c|
+    Notification.where(:notifiable_type => 'Calling').each do |c|
       c.update_attribute(:notifiable_type,'Task')
     end
   end
