@@ -7,15 +7,31 @@
   <%= raw error_explanation_for(@task) if @task.errors.present?%>
   <%= form.hidden_field :for_what,:value => 'time'%>
   <%= form.hidden_field :venue_id %>
-  <%= render :partial => '/users/user' ,:object => current_user %>
-  <div class="bubble_tail"></div>
-  <div class="bubble">
-    <%= render :partial => "/tasks/forms/time",:locals => {:form => form}%>
+  <p>
+    <%= form.label 'title','目标：'%> <span>请用一句话描述你的任务目标 (20字以内)</span> 
+    <br/>
+    <%= form.text_field :title, :style => "width:400px", :placeholder => "" %>
+    <p class="explanation">目前字数：<span id="character_count"></span></p>
+  </p>
+  <p>
+    <%= form.label 'detail','任务要求：'%>
+    <span>你对参加者完成你的任务有什么要求或提示。</span>
+    <%= form.text_area :detail, :style => "width:440px;height:90px"%>
+  </p>
+  <div style="line-height:2">
+    <%= form.label 'total_people','截止时间：'%><%= form.text_field :do_at, :size => 8,:class => 'with_calendar',:placeholder => ""%>
+    <br/>
+    <%= form.label 'venue_id','地点：'%><%= form. :do_at, :size => 8,:class => 'with_calendar',:placeholder => ""%>
   </div>
+
+        
+  <p>
+    <%= form.label :tag_list,'添加标签：',:style=>"float:left"%>
+    <%= form.text_field :tag_list,:class => 'tag_list' %>
+  </p>
   <div style="clear:both;text-align:right;">  
-  </div>
   
-  <div style="clear:both;padding:0 20px;text-align:right">
+  <div style="clear:both;padding:0 20px;text-align:center">
     <%= hidden_field_tag :back_path,params[:back_path]%>
     <%= form.submit '确定',:class => 'button'%>
     <%= button_to_function '取消',"javascript:window.history.back()",:class => 'button'%>
@@ -27,7 +43,7 @@
   $(document).ready(function(){
       DateTimeShortcuts.init()
       function updateCount() {
-      document.getElementById("character_count").innerHTML = document.getElementById("task_detail").value.length;
+      document.getElementById("character_count").innerHTML = document.getElementById("task_title").value.length;
       setTimeout(updateCount, 400);
        }
       updateCount();

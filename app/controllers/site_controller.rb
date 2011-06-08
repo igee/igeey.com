@@ -3,7 +3,7 @@ class SiteController < ApplicationController
   
   def index
     @questions = Question.unscoped.order('last_answered_at desc').limit(10)
-    @timeline = Task.limit(6)
+    @tasks = Task.limit(6)
     @tags = Tag.limit(24)
     @question = Question.new
   end

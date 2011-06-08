@@ -3,6 +3,10 @@ class TasksController < ApplicationController
   before_filter :login_required, :except => [:index, :show,:progress,:more]
   before_filter :find_task, :except => [:index, :new, :create,:more]
   
+  def new
+    @task = Task.new
+  end
+
   def create
     @task = current_user.tasks.build(params[:task])
     if @task.save

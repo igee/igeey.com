@@ -2,26 +2,20 @@
 <% user = user || task.user %>
 
 <div class="event_box">
-  <%= controller_name == 'venues' ? (render :partial => "/users/avatar",:object => user) : (render :partial => "/venues/venue",:object => venue) %>
+  <%= controller_name == 'users' ?  (render :partial => "/venues/venue",:object => venue) : (render :partial => "/users/avatar",:object => user)%>
   <div class="event">
-    <span>
-      <%= image_tag('/images/icon/task.gif',:class => 'icon')%>
-      <%= link_to user.login,user if controller_name == 'venues'%>
-      <%= raw("在 #{link_to venue.name,venue}") if controller_name == 'users'%>
-      <%= raw(['users','venues'].include?(controller_name) ?  '发布了行动召集：' : "#{link_to venue.name,venue} 有了新行动召集：") %>
-    </span>
-    <p><b><%= link_to task.title, task %></b></p>
-    <div class="event_info">
-      <span><%= raw "by #{link_to user.login,user}" unless ['users','venues'].include?(controller_name) %></span>
-      <span><%= "#{task.status}"%></span>
-      <span class="timeago"><%= task.created_at %></span> <span>标签： <%= raw tag_links_for(task.tag_list)%></span>
-    </div>    
-    <div class="event_action">
-      <% if task.owned_by?(current_user) %>
-        <%= link_to "修改","#{edit_task_path(task)}?back_path=#{request.path}"%> |
-        <%= link_to "关闭","#{close_task_path(task)}?back_path=#{request.path}",:method => :put,:confirm => '你确定要关闭这个召集行动么，一旦关闭其他人将不能参与' %> |
-      <% end %>  
-      <%= link_to "回复#{'(' + task.comments_count.to_s + ')' if task.comments_count > 0}",'',:class => "event_reply",:onclick=>"javascript:redirect_clear(#{task.id},'Task')"%>　
+   <p><b><%= link_to task.title, task %></b></p>
+   <span><%= "#{task.status}"%></span>
+   <br/>
+     <div class="event_info">
+       <span class="timeago"><%= task.created_at %></span> <span>标签： <%= raw tag_links_for(task.tag_list)%></span>
+     </div>    
+     <div class="event_action">
+       <% if task.owned_by?(current_user) %>
+         <%= link_to "修改","#{edit_task_path(task)}?back_path=#{request.path}"%> |
+         <%= link_to "关闭","#{close_task_path(task)}?back_path=#{request.path}",:method => :put,:confirm => '你确定要关闭这个召集行动么，一旦关闭其他人将不能参与' %> |
+       <% end %>  
+       <%= link_to "回复#{'(' + task.comments_count.to_s + ')' if task.comments_count > 0}",'',:class => "event_reply",:onclick=>"javascript:redirect_clear(#{task.id},'Task')"%>　
     </div>
     <%= render :partial => "/public/reply_form",:locals =>  {:object => task}%>
   </div>
