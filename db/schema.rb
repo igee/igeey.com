@@ -65,6 +65,7 @@ ActiveRecord::Schema.define() do
     t.string   :contact
     t.text     :detail
     t.datetime :do_at
+    t.string   :cover_file_name
     t.boolean  :close,            :default => false
     t.integer  :follows_count,    :default => 0
     t.string   :cached_tag_list,  :default => ''
