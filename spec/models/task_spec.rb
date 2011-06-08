@@ -18,8 +18,6 @@ describe Task do
        @task = Factory.build(:task)
        @task.title = nil
        @task.should_not be_valid
-       @task.title = nil
-       @task.should_not be_valid
     end
 
     it 'should save with user_id venue_id title' do

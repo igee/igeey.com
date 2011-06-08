@@ -9,42 +9,35 @@ describe Plan do
   end
   describe 'validation' do
     it 'should be created by task_id' do
-      @plan = Factory.build(:plan)
-      @plan.task_id = nil
+      @plan = Plan.new(:user_id=>@user.id, :content=>'plan content')
       @plan.should_not be_valid
       
-      @plan.task_id = @task.id
+      @plan = Plan.new(:task_id=>@task.id, :user_id=>@user.id, :content=>'plan content')
       @plan.should be_valid
     end
     
     it 'should be created by user_id' do
-      @plan = Factory.build(:plan)
-      @plan.user_id = nil
+      @plan = Plan.new(:task_id=>@task.id, :content=>'plan content')
       @plan.should_not be_valid
       
-      @plan.user_id = @user.id
+      @plan = Plan.new(:task_id=>@task.id, :user_id=>@user.id, :content=>'plan content')
       @plan.should be_valid
     end
     
     it 'should be created by content' do
-      @plan = Factory.build(:plan)
-      @plan.content = nil
+      @plan = Plan.new(:task_id=>@task.id, :user_id=>@user.id)
       @plan.should_not be_valid
       
-      @plan.content = 'plan content'
+      @plan = Plan.new(:task_id=>@task.id, :user_id=>@user.id, :content=>'plan content')
       @plan.should be_valid
     end
     
     it 'should only be one plan to the same user with a task' do
-      @plan = Factory.build(:plan)
-      @plan.task_id = @task.id
-      @plan.user_id = @user.id
+      @plan = Plan.new(:task_id=>@task.id, :user_id=>@user.id, :content=>'plan content')
       @plan.should be_valid
       @plan.save
       
-      @plan_1 = Factory.build(:plan)
-      @plan.task_id = @task.id
-      @plan.user_id = @user.id
+      @plan_1 = Plan.new(:task_id=>@task.id, :user_id=>@user.id, :content=>'plan content 2')
       @plan_1.should_not be_valid
     end
     
@@ -53,7 +46,7 @@ describe Plan do
       @plan.should be_valid
       @plan.save
       
-      @plan_1 = Plan.new(:user_id=>user_1.id, task_id=>@task.id, :content=>'plan content 2')
+      @plan_1 = Plan.new(:user_id=>@user_1.id, :task_id=>@task.id, :content=>'plan content 2')
       @plan.should be_valid
     end
   end

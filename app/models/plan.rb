@@ -10,20 +10,12 @@ class Plan < ActiveRecord::Base
   
   acts_as_ownable
   
-  delegate :for_what, :to => :task
-  
   default_scope :order => 'created_at DESC'
   
-  scope :undone, where(:is_done => false)
+  scope :undone ,where(:is_done => false)
   
-  validates :task_id,:venue_id,:presence => true
-  validates :plan_at,:date => {:after_or_equal_to => 1.day.ago,:allow_nil => true}
+  validates :task_id, :content, :presence => true
   validates :user_id,    :presence   => true,:uniqueness => {:scope => :task_id}
-  
-  def validate
-    errors[for_what] = '数量必须为大于0的整数' unless number > 0
-    errors[:plan_at] = '请填写你计划日期' if (for_what == 'time') && plan_at.nil?
-  end
   
   def number
     {'money'=> money,'goods'=> goods,'time'=> 1}[for_what] || 0
