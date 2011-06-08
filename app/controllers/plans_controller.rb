@@ -9,16 +9,14 @@ class PlansController < ApplicationController
   
   def new
     @task = Task.find(params[:task_id])
-    @plan = @task.plans.build(:plan_at => @task.do_at)
-    @plan.parent_id = params[:parent_id]
+    @plan = @task.plans.build()
     render :layout => false if params[:layout] == 'false'
   end
   
   def create
     @task = Task.find(params[:task_id])
     @plan = current_user.plans.build(params[:plan])
-    @plan.task = Task.find(params[:task_id])
-    @plan.venue = @plan.task.venue
+    @plan.task = @task
     if @plan.save
       flash[:dialog] = "<a href='#{new_sync_path}?syncable_type=#{@plan.class}&syncable_id=#{@plan.id}' class='open_dialog' title='传播这个行动'>同步</a>" 
       respond_with [@task,@plan]

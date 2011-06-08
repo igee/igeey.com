@@ -221,6 +221,9 @@ namespace :misc do
     Notification.where(:notifiable_type => 'Calling').each do |c|
       c.update_attribute(:notifiable_type,'Task')
     end
+    Event.where(:eventable_type => 'Calling').each do |c|
+      c.update_attribute(:eventable_type, 'Task')
+    end
   end
 
   desc "Update Calling for what from Action"
