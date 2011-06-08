@@ -26,5 +26,6 @@ describe Task do
        @task = Factory.build(:task)
        @task.should be_valid
     end
+
   end
 end

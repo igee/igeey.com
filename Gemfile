@@ -39,4 +39,6 @@ group :development, :test do
   gem 'rails3-generators'  
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'watchr'
+  gem 'spork'
  end
