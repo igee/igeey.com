@@ -297,7 +297,7 @@ a.record_embed_number{
   background-color:#4c4;
   }
 
-button,.button{
+button,.button,.following{
   text-align:center;
   margin-right:6px;
   color:white;
@@ -309,6 +309,8 @@ button,.button{
   cursor:pointer;
   border:none
   }
+
+.following{background:url('/images/following.png');}
 
 .big_button{
   text-align:center;
@@ -324,7 +326,8 @@ button,.button{
 
 .see_all_link{float:right;font-size:12px;margin-top:4px}
 
-button:hover,.button:hover,.big_button:hover{background:#ff9f10;color:white;}
+button:hover,.button:hover,.big_button:hover,{background:#ff9f10;color:white;}
+.following:hover{background:#999;color:white;}
 
 .dialog_rightbar{
   float:right;
@@ -407,6 +410,13 @@ button:hover,.button:hover,.big_button:hover{background:#ff9f10;color:white;}
   width:48px;
   height:48px;
   overflow:hidden;
+  }
+
+.task{
+  float:left;
+  width:70px;
+  padding:10px 4px;
+  text-align:center;
   }
 
 .badge{
@@ -584,8 +594,7 @@ input.reply_submit{float:right;margin-top:1px}
   font-size:12px;
   color:#aaa;
   position:relative;
-  top:3px
-  text-align:right;
+  top:2px;
   }
 
 .comment{margin:0;width:520px}

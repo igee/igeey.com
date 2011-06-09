@@ -1,22 +1,10 @@
-<%= form_for [:calling,@plan] do |form| %>
+<%= form_for [:task,@plan] do |form| %>
   <%= raw error_explanation_for(@plan) if @plan.errors.present?%>  
-  <% @venue = @calling.venue %>
   <div style="clear:both">
-    <%= form.hidden_field :calling_id %>
-    <%= form.hidden_field :parent_id %>
-    <%= render :partial => '/users/user' ,:object => current_user %>
-    <div class="bubble_tail"></div>
-    <div class="bubble" style="<%= 'width:370px' if params[:layout]=='false'%>">
-        <p>
-          <% if @calling.for_what == 'money' %>
-            要捐多少(元)？ <%= form.text_field :money, :size => 4 ,:placeholder => '金额'%>。
-          <% elsif @calling.for_what == 'goods'%>
-            要捐多少(件)？ <%= form.text_field :goods, :size => 3 ,:placeholder => '数量'%>
-          <% elsif @calling.for_what == 'time'%>
-            要在<%=  @plan.formatted_plan_at %>去<%= "#{@calling.venue.name}参与这个行动"%>。<%= form.hidden_field :plan_at%>
-          <% end %>
-        </p>
-    </div>
+    <%= "我要认领任务：#{@task.title}。请简单描述你的计划。"%>
+    <%= form.hidden_field :task_id %>
+    <%= form.hidden_field :venue_id %>
+    <%= form.text_area :content, :style => "width:530px;height:60px"%>
   </div>
   
   <div style="clear:both;text-align:right">

@@ -1,0 +1,7 @@
+    <p class="impact"><%= "#{@task.title}" %></p>
+    <div class="info">
+      物资数量：<%= @task.total_goods %><br/>
+      邮寄地址：<%= @task.address %><br/>
+      联系方式：<%= @task.contact %>
+    </div>
+    <pre class="explanation"><%= @task.detail %></pre>

@@ -24,7 +24,7 @@ $(document).ready(function(){
   }).trigger('replace.time');
   
   $('pre').live('replace.url', function() {
-    var rURL = /(http:\/\/|https:\/\/)((\w|=|\?|\.|\/|&|-|!|#|%)+)/g;
+    var rURL = /(http:\/\/|https:\/\/)((\w|\;|=|\?|\.|\/|&|-|!|#|%)+)/g;
     $(this).html(
       $(this).html().replace(rURL, "<a href='$1$2' target='_blank' rel='nofollow'>$1$2</a>")
     );
@@ -53,6 +53,10 @@ $(document).ready(function(){
     .live('mouseover', function() {$(this).addClass("hover")})
     .live('mouseout', function() {$(this).removeClass("hover")});
   
+  $(".following")
+    .live('mouseover', function() {$(this).html('取消关注')})
+    .live('mouseout', function() {$(this).html("正在关注")});
+
   $(".open_dialog").click(function(e) {
     IG.dialog.init({title: $(this).attr('title'),url: $(this).attr('href')});
     e.preventDefault();
