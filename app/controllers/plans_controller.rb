@@ -9,8 +9,7 @@ class PlansController < ApplicationController
   
   def new
     @task = Task.find(params[:task_id])
-    @venue = @task.venue
-    @plan = @task.plans.build()
+    @plan = @task.plans.build(:venue_id=>@task.venue.id)
     render :layout => false if params[:layout] == 'false'
   end
   

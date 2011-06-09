@@ -42,7 +42,8 @@ describe Question do
     
     @question_3 = Question.new(:user_id=>@user.id, :title=>'quesiton3?', :tag_list=>['tag1','tag3'])
     @question_3.save
-    @question_1.related_questions.should == [@question_3]
-    @question_2.related_questions.should == [@question_3]
+    @question_1.related_questions.should include(@question_3)
+    @question_2.related_questions.should include(@question_3)
+    @question_3.related_questions.should include(@question_1, @question_2)
   end
 end

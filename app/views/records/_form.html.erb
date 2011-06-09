@@ -1,5 +1,5 @@
 <% content_for :head do %>
-  <%= javascript_include_tag 'calendar.js' %>
+  <%= javascript_include_tag 'jquery.tag.editor-min.js' %>
 <% end %>
 
 <% @task = @record.task %>
@@ -21,7 +21,7 @@
     </p>
     <p>
       <b><%= form.label 'venue_id','地点：'%></b>
-      <% @venues = [['我关注的地点',@venue.id]] + current_user.venue_followings.map{|f| [f.followable.name,f.followable_id]} %>
+      <% @venues = [[@venue.name,@venue.id]] + current_user.venue_followings.map{|f| [f.followable.name,f.followable_id]} %>
       <%= form.select :venue_id,@venues %>
     </p>
     <p>
@@ -40,7 +40,9 @@
 </div>
 
 <% content_for :extension do %>
-<script type="text/javascript" charset="utf-8">
-  $(document).ready(DateTimeShortcuts.init);
-</script>
+  <script type="text/javascript">
+  $(document).ready(function(){
+      $(".tag_list").each(function(index,element){jQuery(element).tag_cloud();})
+    })
+  </script>
 <% end %>  
