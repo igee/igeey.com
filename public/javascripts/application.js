@@ -53,6 +53,10 @@ $(document).ready(function(){
     .live('mouseover', function() {$(this).addClass("hover")})
     .live('mouseout', function() {$(this).removeClass("hover")});
   
+  $(".following")
+    .live('mouseover', function() {$(this).html('取消关注')})
+    .live('mouseout', function() {$(this).html("正在关注")});
+
   $(".open_dialog").click(function(e) {
     IG.dialog.init({title: $(this).attr('title'),url: $(this).attr('href')});
     e.preventDefault();
