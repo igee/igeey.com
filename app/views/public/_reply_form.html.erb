@@ -8,10 +8,12 @@
           <%= render :partial => "/public/reply",:collection => object.comments.last_three.reverse if object.comments_count > 0 %>
         </div>
         <% if logged_in?%>
-          <%= submit_tag '回复',:disable_with => '稍等' ,:class => 'reply_submit'%>
-          <%= form.text_area :content,:class => 'reply_field' ,:placeholder => ""%>
-          <%= form.hidden_field :commentable_type,:value => object.class %>
-          <%= form.hidden_field :commentable_id,:value => object.id %>
+          <p style="margin:10px 0">
+            <%= submit_tag '回复',:disable_with => '稍等' ,:class => 'reply_submit'%>
+            <%= form.text_area :content,:class => 'reply_field' ,:placeholder => ""%>
+            <%= form.hidden_field :commentable_type,:value => object.class %>
+            <%= form.hidden_field :commentable_id,:value => object.id %>
+          </p>
         <% else %>
           <p style='text-align:center'><span><%= link_to "登录",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%>后即可回复,还没有<%= link_to "注册",signup_path ,:class => "open_dialog",:title => '注册',:id => "signup"%>？</span></p>
         <% end %>
