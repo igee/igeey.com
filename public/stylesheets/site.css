@@ -529,10 +529,9 @@ textarea.reply_field {
   _vertical-align:middle;
   width:420px;
   height:18px;
-  margin:10px 0 14px 4px
   }
 
-input.reply_submit{float:right;margin-top:10px}
+input.reply_submit{float:right;margin-top:1px}
 
 .submit{display:none}
 
