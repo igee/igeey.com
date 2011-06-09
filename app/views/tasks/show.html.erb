@@ -63,6 +63,14 @@
     <%= render :partial => '/users/user',:collection => @followers%>
   </div>
 
+  <div class="box">
+    <h4>相关任务</h4>
+    <% @tasks.each do |t|%>
+      <div style="padding:4px 6px 4px;border-bottom:1px dashed #ccc;">
+        <p><%= link_to t.title,task_path(t)%></p>
+      </div>
+    <% end%>
+  </div>
 <% end %>
 
 <% content_for :extension do %>

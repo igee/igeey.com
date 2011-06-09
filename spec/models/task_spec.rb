@@ -20,10 +20,22 @@ describe Task do
        @task.should_not be_valid
     end
 
+    it 'should can not save with do_at expired' do
+       @task = Factory.build(:task)
+       @task.do_at = 1.days.ago
+       @task.should_not be_valid
+    end
+
+    it 'should save with do_at is today' do
+       @task = Factory.build(:task)
+       @task.do_at = Time.now 
+       @task.should be_valid
+    end
+
     it 'should save with user_id venue_id title' do
        @task = Factory.build(:task)
        @task.should be_valid
     end
-
   end
+  
 end

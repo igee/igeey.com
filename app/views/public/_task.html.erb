@@ -2,7 +2,9 @@
 <% user = user || task.user %>
 
 <div class="event_box">
-  <%= controller_name == 'users' ?  (render :partial => "/venues/venue",:object => venue) : (render :partial => "/users/avatar",:object => user)%>
+  <div class="task">
+    <%= image_tag(task.cover.url(:_56x56))%>
+  </div>
   <div class="event">
    <p><b><%= link_to task.title, task %></b></p>
    <span><%= "#{task.status}"%></span>
@@ -19,5 +21,4 @@
     </div>
     <%= render :partial => "/public/reply_form",:locals =>  {:object => task}%>
   </div>
-
 </div>

@@ -224,6 +224,9 @@ namespace :misc do
     Event.where(:eventable_type => 'Calling').each do |c|
       c.update_attribute(:eventable_type, 'Task')
     end
+    Tagging.where(:taggable_type => 'Calling').each do |c|
+      c.update_attribute(:taggable_type, 'Task')
+    end
   end
 
   desc "Update Calling for what from Action"
