@@ -205,6 +205,7 @@ ActiveRecord::Schema.define() do
     t.integer  :goods
     t.integer  :time
     t.integer  :online
+    t.string   :cover_file_name
     t.string   :title,       :limit => 40
     t.string   :latitude,    :limit => 40
     t.string   :longitude,   :limit => 40

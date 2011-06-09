@@ -9,7 +9,7 @@
 
     <div style="clear:both;text-align:right">
       <p>
-        <%= link_to "认领任务",(logged_in? ? new_task_plan_path(@task) : signup_path ),:class => "button open_dialog",:title =>(logged_in? ? '我要参与' : '注册' )%>
+        <%= link_to "认领任务",(logged_in? ? new_task_plan_path(@task) : signup_path ),:class => "button open_dialog",:title =>(logged_in? ? '我要认领' : '注册' )%>
         <%= link_to "关注",'',:title =>'关注',:class => 'button' %>
       </p>
       <%= render :partial => '/public/share'%>

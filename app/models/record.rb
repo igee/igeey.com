@@ -11,6 +11,11 @@ class Record < ActiveRecord::Base
   
   default_scope :order => 'created_at DESC'
   
+  has_attached_file :cover, :styles => {:_90x64 => ["90x64#"],:max500x400 => ["500x400>"]},
+                            :url=>"/media/:attachment/records/:id/:style.:extension",
+                            :default_style=> :_90x64,
+                            :default_url=>"/defaults/:attachment/record/:style.png"
+  
   delegate  :for_what, :to => :task
   
   acts_as_ownable

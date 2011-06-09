@@ -16,7 +16,7 @@ class RecordsController < ApplicationController
     @record = current_user.records.build(params[:record])
     @record.photos.map{|p| p.user_id = current_user.id}
     @record.save
-    respond_with(@record)
+    respond_with(@record.task)
   end
   
   def show
