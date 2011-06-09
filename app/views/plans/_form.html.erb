@@ -3,7 +3,8 @@
   <div style="clear:both">
     <%= "我要认领任务：#{@task.title}。请简单描述你的计划。"%>
     <%= form.hidden_field :task_id %>
-        <%= form.text_area :content, :style => "width:530px;height:60px"%>
+    <%= form.hidden_field :venue_id %>
+    <%= form.text_area :content, :style => "width:530px;height:60px"%>
   </div>
   
   <div style="clear:both;text-align:right">

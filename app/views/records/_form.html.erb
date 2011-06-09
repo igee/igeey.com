@@ -11,12 +11,26 @@
     <%= form.hidden_field :task_id %>
     <%= form.hidden_field :plan_id %>
     <%= form.hidden_field :venue_id %>
-    <%= render :partial => '/users/user' ,:object => current_user %>
-    <div class="bubble_tail"></div>
-    <div class="bubble">
-      <span>我完成了为 <%= link_to @venue.name,@record.venue %> 的行动：</span>
-      <%=  render :partial => "/records/forms/#{@task.for_what}",:locals => {:form => form}%>
-    </div>
+    <p>
+      <b>标题 <span>为你的成果起一个醒目的标题吧</span></b><br/>
+      <%= form.text_field :title,:style => "width:300px"%>
+    </p>
+    <p>
+      <b>正文 <span>说说任务的完成情况吧</span></b><br/>
+      <%= form.text_area :detail, :style => "width:600px;height:100px"%>
+    </p>
+    <p>
+      <b><%= form.label 'venue_id','地点：'%></b>
+      <% @venues = [['我关注的地点',@venue.id]] + current_user.venue_followings.map{|f| [f.followable.name,f.followable_id]} %>
+      <%= form.select :venue_id,@venues %>
+    </p>
+    <p>
+      <b><%= form.label :tag_list,'添加标签：',:style=>"float:left"%></b>
+      <%= form.text_field :tag_list,:class => 'tag_list' %>
+    </p>
+    <p>
+      <b><%= form.label :cover,'添加图片：'%></b> <%= form.file_field :cover,:size => 18%>
+    </p>
     <div style="clear:both;text-align:right">
       <%= hidden_field_tag :back_path,params[:back_path]%>
       <%= form.submit '确定',:class => "button"%>
