@@ -37,10 +37,12 @@
 
     <div id="questions" class="tabContents" >
       <%= render :partial => '/public/item',:collection => @questions%>
+      <%= link_to raw("查看更多..."),more_questions_user_path(@user,:page => 2),:class => "timeline_footer",:onclick => "javascript:more_timeline($(this));return false" if @questions[10].present?%>
     </div>
 
     <div id="answers" class="tabContents" >
       <%= render :partial => '/public/item',:collection => @answers%>
+      <%= link_to raw("查看更多..."),more_answers_user_path(@user,:page => 2),:class => "timeline_footer",:onclick => "javascript:more_timeline($(this));return false" if @answers[10].present?%>
     </div>
   </div>
 </div>

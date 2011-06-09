@@ -85,6 +85,8 @@ Igeey::Application.routes.draw do
     member do
       post  :update_account
       get   :more_timeline
+      get   :more_answers
+      get   :more_questions
       get   :callings
       get   :records
       get   :sayings
