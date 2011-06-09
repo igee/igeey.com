@@ -9,7 +9,15 @@
 
     <div style="clear:both;text-align:right">
       <p>
-        <%= link_to "认领任务",(logged_in? ? new_task_plan_path(@task) : signup_path ),:class => "button open_dialog",:title =>(logged_in? ? '我要认领' : '注册' )%>
+        <% unless @my_plan.nil? %>
+          <% if @my_record.nil? %>
+            <%= link_to "完成任务","#{new_record_path}?plan_id=#{@my_plan.id}", :title => '完成任务', :class => 'button' %>
+          <% else %>
+            <b>已完成 </b>
+          <% end %>
+        <% else %>
+          <%= link_to "认领任务",(logged_in? ? new_task_plan_path(@task) : signup_path ),:class => "button open_dialog",:title =>(logged_in? ? '我要认领' : '注册' )%>
+        <% end %>
         <%= link_to "关注",'',:title =>'关注',:class => 'button' %>
       </p>
       <%= render :partial => '/public/share'%>
