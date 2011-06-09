@@ -3,7 +3,7 @@
   <%= javascript_include_tag 'jquery.tag.editor-min.js' %>
 <% end %>
 
-<%= form_for @task do |form| %>
+<%= form_for @task ,:html => { :multipart => true } do |form| %>
   <%= raw error_explanation_for(@task) if @task.errors.present?%>
   <%= form.hidden_field :for_what,:value => 'time'%>
   <p>
@@ -34,6 +34,9 @@
   <p>
     <b><%= form.label :tag_list,'添加标签：',:style=>"float:left"%></b>
     <%= form.text_field :tag_list,:class => 'tag_list' %>
+  </p>
+  <p>
+    <b><%= form.label :cover,'主题图：'%></b> <%= form.file_field :cover,:size => 18%>
   </p>
   <p style="clear:both;padding:20px;">
     <%= hidden_field_tag :back_path,params[:back_path]%>

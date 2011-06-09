@@ -3,8 +3,8 @@
     <%= image_tag(@task.cover.url,:style=>'float:left;margin:5px')%>
     <div style="margin-left:148px;">
       <h3 class="impact"><%= @title %></h3>
+      <span>标签：<%= raw tag_links_for(@task.tag_list)%></span>
       <pre class="explanation"><%= @task.detail %></pre>
-      <%= raw tag_list_for(@task.tag_list)%>
     </div>
 
     <div style="clear:both;text-align:right">
@@ -16,7 +16,7 @@
       <% if @task.owned_by?(current_user)%>
         <span>
         <%= link_to "修改","#{edit_task_path(@task)}?back_path=#{request.path}"%> |
-        <%= link_to "关闭召集","#{close_task_path(@task)}?back_path=#{request.path}",:method => :put,:confirm => '你确定要关闭这个召集行动么，一旦关闭其他人将不能参与' %>
+        <%= link_to "关闭任务","#{close_task_path(@task)}?back_path=#{request.path}",:method => :put,:confirm => '你确定要关闭这个召集行动么，一旦关闭其他人将不能参与' %>
         </span>
       <% end %>
     </div>
@@ -25,19 +25,44 @@
   <div id="tabContaier">
     <ul id="tabNav">
       <li><%= link_to '讨论','#discussion'%></li>
-      <li><%= link_to '任务记录','#tasks'%></li>
+      <li><%= link_to '任务记录','#events'%></li>
     </ul>
     <div id="discussion" class="tabContents">
       <%= render :partial => '/comments/board'%>    
       <%= render :partial => '/comments/form' ,:locals => {:commentable => @task}%> 
     </div>
-    <div id="records" class="tabContents">
+    <div id="events" class="tabContents">
       <%= render :partial => '/public/item',:collection => @items%>    
     </div>
   </div>
 
 <% content_for :sidebar do %>
   <%= render :partial => '/venues/intro' %>
+  <div class="box">
+    <h4>认领 (<%= @plans.size %>)</h4>
+    <% @plans.each do |a|%>
+      <div class='user' user_id="<%=a.user.id%>">
+        <%= link_to (image_tag a.user.avatar.url,:class => "user_avatar"),a %> <br/>
+        <span><%= link_to a.user.login,a.user%></span>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="box">
+  <h4>已完成 (<%= @records.size %>)</h4>
+    <% @records.each do |a|%>
+      <div class='user' user_id="<%=a.user.id%>">
+        <%= link_to (image_tag a.user.avatar.url,:class => "user_avatar"),a %> <br/>
+        <span><%= link_to a.user.login,a.user%></span>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="box">
+    <h4>关注 (<%= @task.follows_count %>)</h4><br/>
+    <%= render :partial => '/users/user',:collection => @followers%>
+  </div>
+
 <% end %>
 
 <% content_for :extension do %>
