@@ -326,7 +326,7 @@ button,.button,.following{
 
 .see_all_link{float:right;font-size:12px;margin-top:4px}
 
-button:hover,.button:hover,.big_button:hover,{background:#ff9f10;color:white;}
+button:hover,.button:hover,.big_button:hover{background:#ff9f10;color:white;}
 .following:hover{background:#999;color:white;}
 
 .dialog_rightbar{
