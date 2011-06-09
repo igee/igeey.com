@@ -409,6 +409,13 @@ button:hover,.button:hover,.big_button:hover{background:#ff9f10;color:white;}
   overflow:hidden;
   }
 
+.task{
+  float:left;
+  width:70px;
+  padding:10px 4px;
+  text-align:center;
+  }
+
 .badge{
   float:left;
   width:62px;

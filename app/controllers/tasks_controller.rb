@@ -25,7 +25,7 @@ class TasksController < ApplicationController
     @my_record = @records.select{|r| r.owned_by?(current_user)}.first if logged_in? # user`s record on this task
     @followers = @task.followers.limit(8)
     @comments = @task.comments
-    @photos = @task.photos
+    @tasks = @task.related_tasks
   end
   
   def update
