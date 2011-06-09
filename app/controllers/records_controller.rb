@@ -16,14 +16,11 @@ class RecordsController < ApplicationController
     @record = current_user.records.build(params[:record])
     @record.photos.map{|p| p.user_id = current_user.id}
     @record.save
-    respond_with(@record.task)
+    respond_with(@record)
   end
   
   def show
-    @venue = @record.venue
-    @task = @record.task
-    @comments = @record.comments
-    @photos = @record.photos
+    redirect_to task_path(@record.task)
   end
   
   def edit

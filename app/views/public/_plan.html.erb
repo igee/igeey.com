@@ -8,9 +8,8 @@
       <% if (plan.owned_by?(current_user)) %>
         <%= link_to '完成',"#{new_record_path}?plan_id=#{plan.id}"%> |
         <%= link_to "修改","#{edit_task_plan_path(plan.task,plan)}?back_path=#{request.path}"%> |
-        <%= link_to "取消",task_plan_path(plan.task,plan),:method => :delete,:confirm => '确定要取消你的计划么?' %> |
+        <%= link_to "取消",task_plan_path(plan.task,plan),:method => :delete,:confirm => '确定要取消你的计划么?' %>　
       <% end %>
-      <%= link_to "回复#{'(' + plan.task.comments_count.to_s + ')' if plan.task.comments_count > 0}",'',:class => "event_reply"%>　
     </div>
     <%= render :partial => "/public/reply_form",:locals =>  {:object => plan.task}%>
   </div>
