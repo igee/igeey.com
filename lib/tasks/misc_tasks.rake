@@ -235,4 +235,12 @@ namespace :misc do
       print '.' if c.update_attribute(:for_what,c.action.for_what)
     end
   end
+  
+  desc "Record and plan to plan merger"
+  task :record_and_plan_to_plan_merger => :environment do
+    Record.all.each do |r|
+      r.plan.update_attributes(:result=>r.detail, :done_at=>r.done_at)
+      print(r.save ? '.' : 'x')
+    end
+  end
 end
