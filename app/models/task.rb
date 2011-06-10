@@ -15,7 +15,7 @@ class Task < ActiveRecord::Base
   acts_as_taggable
   acts_as_eventable  
   
-  has_attached_file :cover, :styles => {:_48x48 => ["48x48#",:jpg],:_128x128 => ["128x128#",:jpg]},
+  has_attached_file :cover, :styles => {:_56x56 => ["56x56#",:jpg],:_128x128 => ["128x128#",:jpg]},
                             :url=>"/media/:attachment/tasks/:id/:style.jpg",
                             :default_style=> :_128x128,
                             :default_url=>"/defaults/:attachment/task/:style.png"

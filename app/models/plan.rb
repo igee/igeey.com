@@ -9,6 +9,7 @@ class Plan < ActiveRecord::Base
   has_many   :children, :class_name => 'Plan' ,:foreign_key => :parent_id
   
   acts_as_ownable
+  acts_as_eventable
   
   default_scope :order => 'created_at DESC'
   
