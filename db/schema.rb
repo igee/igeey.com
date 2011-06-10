@@ -156,11 +156,15 @@ ActiveRecord::Schema.define() do
     t.integer  :task_id
     t.integer  :record_id
     t.integer  :parent_id
+    t.string   :title,            :limit => 40
     t.text     :content
+    t.text     :result
     t.integer  :money
     t.integer  :goods
     t.datetime :plan_at
+    t.string   :cover_file_name
     t.integer  :comments_count,   :default => 0
+    t.boolean  :has_updated_event,:default => false
     t.boolean  :has_new_child,    :default => false
     t.boolean  :is_done,  :default => false
     t.datetime :last_replied_at
