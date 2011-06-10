@@ -10,10 +10,10 @@
     <div style="clear:both;text-align:right">
       <p>
         <% unless @my_plan.nil? %>
-          <% if @my_record.nil? %>
-            <%= link_to "完成任务","#{new_record_path}?plan_id=#{@my_plan.id}", :title => '完成任务', :class => 'button' %>
+          <% unless @my_plan.is_done %>
+            <%= link_to "完成任务",done_task_plan_path(@task,@my_plan), :title => '完成任务', :class => 'button' %>
           <% else %>
-            <b>已完成 </b>
+            <span>已完成这个任务，<%= link_to '查看我的总结',task_plan_path(@task,@my_plan)%>, </span>
           <% end %>
         <% else %>
           <%= link_to "认领任务",(logged_in? ? new_task_plan_path(@task) : signup_path ),:class => "button open_dialog",:title =>(logged_in? ? '我要认领' : '注册' )%>
@@ -40,15 +40,15 @@
       <%= render :partial => '/comments/form' ,:locals => {:commentable => @task}%> 
     </div>
     <div id="events" class="tabContents">
-      <%= render :partial => '/public/item',:collection => @items%>    
+      <%= render :partial => '/public/plan',:collection => @plans%>    
     </div>
   </div>
 
 <% content_for :sidebar do %>
   <%= render :partial => '/venues/intro' %>
   <div class="box">
-    <h4>认领 (<%= @plans.size %>)</h4>
-    <% @plans.each do |a|%>
+    <h4>认领 (<%= @plans.undone.size %>)</h4>
+    <% @plans.undone.each do |a|%>
       <div class='user' user_id="<%=a.user.id%>">
         <%= link_to (image_tag a.user.avatar.url,:class => "user_avatar"),a %> <br/>
         <span><%= link_to a.user.login,a.user%></span>
@@ -57,8 +57,8 @@
   </div>
 
   <div class="box">
-  <h4>已完成 (<%= @records.size %>)</h4>
-    <% @records.each do |a|%>
+  <h4>已完成 (<%= @plans.done.size %>)</h4>
+    <% @plans.done.each do |a|%>
       <div class='user' user_id="<%=a.user.id%>">
         <%= link_to (image_tag a.user.avatar.url,:class => "user_avatar"),a %> <br/>
         <span><%= link_to a.user.login,a.user%></span>

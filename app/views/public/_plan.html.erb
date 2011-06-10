@@ -1,7 +1,7 @@
 <div class="event_box">
   <%= (render :partial => "/users/avatar",:object => plan.user) %>
   <div class="event">
-    <b><%= plan.user.login %>认领了任务</b>
+    <b><%= plan.user.login %><%= plan.is_done ? '完成了' :  '认领了'%>任务</b>
     <pre><span><%= plan.content%></span></pre>
     <span class="timeago" style="float:left"><%= plan.created_at %></span>
     <div class="event_action">

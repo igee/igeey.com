@@ -3,7 +3,6 @@ class Plan < ActiveRecord::Base
   belongs_to :task
   belongs_to :user,     :counter_cache => true
   has_many   :syncs,    :as => :syncable,    :dependent => :destroy
-  has_many   :plans
   belongs_to :parent,   :class_name => 'Plan',:foreign_key => :parent_id
   has_many   :children, :class_name => 'Plan' ,:foreign_key => :parent_id
   
