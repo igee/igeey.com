@@ -10,6 +10,7 @@ class Plan < ActiveRecord::Base
   
   acts_as_ownable
   acts_as_eventable
+  acts_as_taggable
   
   default_scope :order => 'created_at DESC'
   
