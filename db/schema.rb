@@ -162,6 +162,7 @@ ActiveRecord::Schema.define() do
     t.integer  :money
     t.integer  :goods
     t.datetime :plan_at
+    t.datetime :done_at
     t.string   :cover_file_name
     t.integer  :comments_count,   :default => 0
     t.boolean  :has_updated_event,:default => false
