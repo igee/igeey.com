@@ -1,4 +1,4 @@
   <%= render :partial => '/public/item', :collection => @items %>
-  <%= link_to('查看更多...',"#{request.path}?page=#{(params[:page].to_i || 1) + 1}",:class=> 'timeline_footer',:onclick => 'javascript:more_timeline($(this));return false;') unless @items.empty?%>
+  <%= link_to('查看更多...',"#{request.path}?page=#{(params[:page].to_i || 1) + 1}#{@param unless @param.nil?}",:class=> 'timeline_footer',:onclick => 'javascript:more_timeline($(this));return false;') unless @items.empty?%>
   <%= raw('<div class="timeline_footer">没有更多了</div>') if @items.empty? %>
   
