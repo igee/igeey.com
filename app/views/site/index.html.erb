@@ -2,12 +2,12 @@
 <% content_for :head do %>
   <%= javascript_include_tag 'jquery.tag.editor-min.js' %>
 <% end %>
-<div class="box" style="text-align:center;line-height:1.3;margin: 0 0 20px; background: #fff1ec; padding: 25px 10px 15px;">
+<div class="box" style="text-align:center;line-height:1.3;margin: 0 0 20px; background: #fff1ec; padding: 25px 10px 5px;">
   <%= form_tag tags_search_path,:id=>'tags_search',:style => 'font-size:18px;padding:10px;text-align:center',:remote=> true,:method => :get do%>
     我关注 <%= text_field_tag 'keywords', @keywords,:placeholder => '环保 or 节能 or 乡村教育...',:style => 'font-size:15px;width:280px;padding:5px'%>
     <%= submit_tag '搜索话题',:style=>'font-size:15px;line-height:22px',:disable_with => '搜索中...' %>
-    <div id="search_result"></div>
   <% end %>
+  <div id="search_result"></div>
   <br/>
   <div style="font-weight:bold">
   <span>热门话题：</span>
