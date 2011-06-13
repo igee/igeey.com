@@ -33,7 +33,13 @@ class QuestionsController < ApplicationController
   end
   
   def more
-    @items = Question.unscoped.order('last_answered_at desc').paginate(:page => params[:page], :per_page => 10)
+    @tag = Tag.find_by_name(params[:tag])
+    if @tag.nil?
+      @items = Question.unscoped.order('last_answered_at desc').paginate(:page => params[:page], :per_page => 10)
+    else
+      @items = Question.find_tagged_with(@tag.name).paginate(:page => params[:page], :per_page => 10)
+      @param = "&tag=#{@tag.name}"
+    end
     render '/public/more_items',:layout => false
   end
   
