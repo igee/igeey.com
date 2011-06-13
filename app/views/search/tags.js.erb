@@ -5,5 +5,5 @@
 		$('#search_result').html("<p><span>对不起，没有相关话题<br/>您可以<%= escape_javascript(link_to '将“'+@keywords+'”添加为话题',tags_path(:tag=> {:name => @keywords}),:method=>:post)%></span></p>")
 	<% end %>
 <% else %>
-  $('#search_result').html("<p><span>相关话题：</span><%=raw escape_javascript(@tags.map{|t| "<a class='tag_name' href='#{tag_path(t.name)}'> #{t.name}</a>"}.to_s)%></p>");
+  $('#search_result').html("<p><span>话题搜索结果：</span><%=raw escape_javascript(@tags.map{|t| "<a class='tag' href='#{tag_path(t.name)}'> #{t.name}</a>"}.to_s)%></p>");
 <% end %>
