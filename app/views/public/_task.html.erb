@@ -2,10 +2,14 @@
 <% user = user || task.user %>
 
 <div class="event_box">
-  <div class="task">
-    <%= image_tag(task.cover.url(:_56x56))%>
-  </div>
+  <%= controller_name == 'user' ? (render :partial => "/venues/venue",:object => venue) : (render :partial => "/users/avatar",:object => user)%>
   <div class="event">
+    <%= image_tag(task.cover.url(:_56x56),:style => 'float:right;width:42px;height:42px;margin:4px')%>
+    <span>
+      <%= image_tag('/images/icon/calling.png',:class => 'icon')%>
+      <%= raw("#{link_to user.login,user_path(user)}") unless controller_name == 'users'%>
+      <%= raw("在 #{link_to venue.name,venue_path(venue)} ") unless controller_name == 'venues' %>发布了任务：
+    </span>
    <p><b><%= link_to task.title, task %></b></p>
    <span><%= "#{task.status}"%></span>
   </div>
