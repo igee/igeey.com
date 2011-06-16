@@ -1,0 +1,35 @@
+<% @title="站内信"%>
+
+<div class="box" >
+  <div id="tabContaier">
+    <ul id="tabNav">
+      <li><%= link_to "收件箱",'#inbox'%></li>
+      <li><%= link_to "发件箱",'#outbox'%></li>
+    </ul>
+    <div id="inbox" class="tabContents">
+      <% @inbox.each do |m| %>
+        <div class="event_box">
+          <%= render :partial => "/users/avatar", :object => m.from_user%>
+          <div class="event">
+            From：<%= link_to m.from_user.login, m.from_user%><span style="margin-left:10px;"><%= full_date(m.created_at) %></span><br/>
+            <%= m.content %>
+          </div>
+          <div class="event_action">
+            <%= link_to("回复", "#{new_message_path}?user_id=#{m.from_user.id}", :class => 'open_dialog')%>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div id="outbox" class="tabContents">
+      <% @outbox.each do |m| %>
+        <div class="event_box">
+          <%= render :partial => "/users/avatar", :object => m.from_user%>
+          <div class="event">
+            To：<%= link_to m.to_user.login, m.to_user%><span style="margin-left:10px;"><%= full_date(m.created_at)%></span></br>
+            <%= m.content %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
