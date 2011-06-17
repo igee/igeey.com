@@ -15,7 +15,7 @@
             <%= m.content %>
           </div>
           <div class="event_action">
-            <%= link_to("回复", "#{new_message_path}?user_id=#{m.from_user.id}", :class => 'open_dialog')%>
+            <%= link_to("回复", "#{new_message_path}?user_id=#{m.from_user.id}", :class => 'open_dialog', :title => '发站内信')%>
           </div>
         </div>
       <% end %>
@@ -23,7 +23,7 @@
     <div id="outbox" class="tabContents">
       <% @outbox.each do |m| %>
         <div class="event_box">
-          <%= render :partial => "/users/avatar", :object => m.from_user%>
+          <%= render :partial => "/users/avatar", :object => m.to_user%>
           <div class="event">
             To：<%= link_to m.to_user.login, m.to_user%><span style="margin-left:10px;"><%= full_date(m.created_at)%></span></br>
             <%= m.content %>

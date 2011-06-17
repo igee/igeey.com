@@ -5,7 +5,7 @@
   </div>
   <div style="float:left;width:500px;text-align:left;padding:5px">
     <div style="float:right">
-      <%= link_to("发站内信", "#{new_message_path}?user_id=#{@user.id}", :class => 'button open_dialog') unless @user == current_user%>
+      <%= link_to("发站内信", "#{new_message_path}?user_id=#{@user.id}", :class => "button#{' open_dialog' unless current_user.nil?}", :title => '发站内信') unless @user == current_user%>
       <%= raw(follow_to(@user)) unless @user == current_user%>
     </div>
     <h3><%= @user.login %> <span><%= "#{@user.geo.full_name}" unless @user.geo.nil? %></span></h3> 

@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   before_filter :login_required
+  respond_to :html, :js, :xml
   
   def index
     @inbox = current_user.inbox
