@@ -12,6 +12,7 @@
   <%= javascript_include_tag 'jquery.hint.js' %>
   <%= javascript_include_tag "jquery.timeago.js" %>
   <%= javascript_include_tag 'application.js' %>
+  <%= javascript_include_tag 'autoresize.jquery.min.js' %>
   <%= csrf_meta_tag %>
   <%= yield :head %>
 </head>
@@ -36,6 +37,7 @@
           <% if logged_in? %>
             <%= link_to current_user.login,user_path(current_user)%> |
             <%= link_to raw("提醒(#{current_user.notifications_count})"),notifications_path,:style => (current_user.notifications_count.zero? ? 'color:#fff' : "color:#fd7") %></span> |
+            <%= link_to raw("站内信(#{current_user.unreadbox.count})"),messages_path,:style => (current_user.unreadbox.count.zero? ? 'color:#fff' : "color:#fd7") %></span> |
             <%= link_to '设置',"#{setting_path}?back_path=#{request.path unless controller_name == 'site' && action_name == 'index'}"%> | 
             <%= link_to "退出",logout_path %>
           <% else %>
@@ -70,9 +72,7 @@
     <div class="container">
       <ul id="footer_links">
         <li>©2008-2010</li>
-        <li><%= link_to '关于',about_path%></li>
-        <li><%= link_to '爱聚指南',guide_path%></li>
-        <li><%= link_to '常见问题',faq_path%></li>
+        <li><%= link_to '爱聚帮助',tag_path('爱聚帮助')%></li>
         <li><%= link_to '博客',"http://blog.igeey.com"%></li>
       </ul>    
     </div>

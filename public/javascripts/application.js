@@ -17,13 +17,14 @@ function redirect_clear(id, type){
 
 
 $(document).ready(function(){
+  $('#dialog_flash a').click();
   
   $('.timeago').live('replace.time', function() {
     $(this).html('(' + jQuery.timeago($(this).html()) + ')').removeClass('timeago');
   }).trigger('replace.time');
   
   $('pre').live('replace.url', function() {
-    var rURL = /(http:\/\/|https:\/\/)((\w|=|\?|\.|\/|&|-|!|#|%)+)/g;
+    var rURL = /(http:\/\/|https:\/\/)((\w|\;|=|\?|\.|\/|&|-|!|#|%)+)/g;
     $(this).html(
       $(this).html().replace(rURL, "<a href='$1$2' target='_blank' rel='nofollow'>$1$2</a>")
     );
@@ -41,10 +42,6 @@ $(document).ready(function(){
     e.preventDefault();
   });
   
-  $('form').live('submit', function() {
-    $(this).find('input:submit').attr('disabled',true);
-  });
-  
   $(".zoom_photo").live('click', function(e) {
     var childrens = $(this).children();
     childrens.first().toggle();
@@ -56,6 +53,10 @@ $(document).ready(function(){
     .live('mouseover', function() {$(this).addClass("hover")})
     .live('mouseout', function() {$(this).removeClass("hover")});
   
+  $(".following")
+    .live('mouseover', function() {$(this).html('取消关注')})
+    .live('mouseout', function() {$(this).html("正在关注")});
+
   $(".open_dialog").click(function(e) {
     IG.dialog.init({title: $(this).attr('title'),url: $(this).attr('href')});
     e.preventDefault();
@@ -66,8 +67,6 @@ $(document).ready(function(){
     IG.dialog.init({title: $(this).attr('title'),content: $(id).html()});
     e.preventDefault();
   });
-  
-  $('#dialog_flash a').click();
   
   $('.with_tip').poshytip({
     className: 'tip-yellowsimple',
@@ -87,6 +86,8 @@ $(document).ready(function(){
     allowTipHover: false
   });
   
+  $('textarea').autoResize()
+
   if(!('placeholder' in document.createElement('input'))){
     $('input[placeholder!=""]').hint();
   };

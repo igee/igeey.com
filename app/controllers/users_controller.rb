@@ -217,6 +217,16 @@ class UsersController < ApplicationController
     render '/public/more_timeline',:layout => false
   end
   
+  def more_questions
+    @items = @user.questions.paginate(:page => params[:page], :per_page => 10)
+    render '/public/more_items',:layout => false
+  end
+  
+  def more_answers
+    @items = @user.answers.paginate(:page => params[:page], :per_page => 10)
+    render '/public/more_items',:layout => false
+  end
+  
   private
   def find_user
     @user = User.find(params[:id])    

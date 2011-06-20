@@ -10,10 +10,10 @@
       <%= raw("在 #{link_to photo.venue.name,photo.venue}") if controller_name == 'users'%>
       <%= raw(['users','venues'].include?(controller_name) ? '上传了照片：' : "#{link_to photo.venue.name,photo.venue} 有了新照片：") %>
     </span>
-    <div style="padding-top:10px">
-      <%= link_to (image_tag photo.photo.url,:class => "photo") + (image_tag photo.photo.url(:max500x400),:title => photo.title,:class => "zoomed_photo"),photo,:class => "zoom_photo",:title => photo.title,:style => 'float:left' %>
-      <div style="float:left;padding:0 10px">
-        <pre class="photo_detail"><%= photo.detail %></pre>
+    <div style="padding-top:8px">
+      <%= link_to (image_tag photo.photo.url,:class => "photo") + (image_tag photo.photo.url(:max500x400),:title => photo.title,:class => "zoomed_photo"),photo,:class => "zoom_photo",:title => photo.title,:style => 'float:left;margin-right:10px' %>
+      <div>
+        <pre><%= photo.detail %></pre>
       </div>
     </div>  
     <div style="clear:both"></div> 
@@ -28,7 +28,7 @@
         <%= link_to "修改",edit_photo_path(photo,:back_path =>request.path)%> |
       <% end %>
       <%= link_to "查看原图",photo.photo.url(:original),:target => "_blank" %> |
-      <%= link_to "回复#{'(' + photo.comments_count.to_s + ')' if photo.comments_count > 0}",'',:class => "event_reply", :onclick=>"javascript:redirect_clear(#{photo.id},'Photo')"%>　
+      <%= link_to "回复#{'(' + photo.comments_count.to_s + ')' if photo.comments_count > 0}",'',:class => "event_reply", :onclick=>("javascript:redirect_clear(#{photo.id},'Photo')" if logged_in?)%>　
     </div>
     <%= render :partial => "/public/reply_form",:locals =>  {:object => photo}%>
   </div>

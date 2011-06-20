@@ -5,6 +5,7 @@
   </div>
   <div style="float:left;width:500px;text-align:left;padding:5px">
     <div style="float:right">
+      <%= link_to("发站内信", "#{new_message_path}?user_id=#{@user.id}", :class => "button#{' open_dialog' unless current_user.nil?}", :title => '发站内信') unless @user == current_user%>
       <%= raw(follow_to(@user)) unless @user == current_user%>
     </div>
     <h3><%= @user.login %> <span><%= "#{@user.geo.full_name}" unless @user.geo.nil? %></span></h3> 
@@ -37,10 +38,12 @@
 
     <div id="questions" class="tabContents" >
       <%= render :partial => '/public/item',:collection => @questions%>
+      <%= link_to raw("查看更多..."),more_questions_user_path(@user,:page => 2),:class => "timeline_footer",:onclick => "javascript:more_timeline($(this));return false" if @questions[10].present?%>
     </div>
 
     <div id="answers" class="tabContents" >
       <%= render :partial => '/public/item',:collection => @answers%>
+      <%= link_to raw("查看更多..."),more_answers_user_path(@user,:page => 2),:class => "timeline_footer",:onclick => "javascript:more_timeline($(this));return false" if @answers[10].present?%>
     </div>
   </div>
 </div>

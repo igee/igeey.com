@@ -12,6 +12,10 @@
 <%= render :partial => '/comments/form' ,:locals => {:commentable => @saying}%>
 
 
+<% content_for :sidebar do %>
+  <%= render :partial => '/venues/intro' %>
+<% end %>
+
 <% if logged_in? && current_user.notifications_count>0%>
 <% content_for :extension do %>
 	<script type="text/javascript" charset="utf-8">

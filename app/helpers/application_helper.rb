@@ -20,13 +20,17 @@ module ApplicationHelper
     "#{date.year == Date.today.year ? '' : "#{date.year}年"}#{date.month}月#{date.day}日"
   end
   
+  def full_date(date)
+    date.strftime("%Y-%m-%d %X")
+  end
+  
   def short_url(object)
     "http://#{request.host_with_port}/#{object.class.name.first.downcase}/#{object.id}"
   end
   
   def tag_list_for(tag_list)
     html = '<ul class="tag_cloud">'
-    html += tag_list.map{|tag| "  <li>#{link_to(tag,tag_path(tag))}</li>\n"}.to_s
+    html += tag_list.map{|tag| " #{link_to(tag,tag_path(tag),:class=>'tag')}\n"}.to_s
     html += '</ul>'
   end
   

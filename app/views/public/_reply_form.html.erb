@@ -1,17 +1,19 @@
   <div style="display:none;" class="replys">
     <%= image_tag '/images/reply_tail.png',:class => "reply_tail"%>
     <div class="reply_bubble">
-      <%= form_for Comment.new,:disable_with => 'Submitting…',:remote => true do |form| %>
+      <%= form_for Comment.new,:remote => true do |form| %>
         <div id='<%= "#{object.class.to_s.downcase}_#{object.id}_replies"%>' class="replies">
           <%= render :partial => "/public/reply",:object => object.comments.first if object.comments_count > 3  %>
           <%= raw "<p style='text-align:center;padding:6px 0;margin:0' class='reply'><span>#{link_to "- 显示中间的#{object.comments_count - 4}条回复 -",more_comments_path(:commentable_type => object.class.to_s.downcase,:commentable_id => object.id),:remote => true}<span></p>" if object.comments_count > 4 %>
           <%= render :partial => "/public/reply",:collection => object.comments.last_three.reverse if object.comments_count > 0 %>
         </div>
         <% if logged_in?%>
-          <%= form.text_field :content, :style => "width:400px;height:18px;margin:10px 0 14px 8px",:placeholder => ""%>
-          <%= submit_tag '回复' %>
-          <%= form.hidden_field :commentable_type,:value => object.class %>
-          <%= form.hidden_field :commentable_id,:value => object.id %>
+          <p style="margin:10px 0">
+            <%= submit_tag '回复',:disable_with => '稍等' ,:class => 'reply_submit'%>
+            <%= form.text_area :content,:class => 'reply_field' ,:placeholder => ""%>
+            <%= form.hidden_field :commentable_type,:value => object.class %>
+            <%= form.hidden_field :commentable_id,:value => object.id %>
+          </p>
         <% else %>
           <p style='text-align:center'><span><%= link_to "登录",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%>后即可回复,还没有<%= link_to "注册",signup_path ,:class => "open_dialog",:title => '注册',:id => "signup"%>？</span></p>
         <% end %>

@@ -297,6 +297,14 @@ ActiveRecord::Schema.define() do
     t.integer  :last_replied_user_id
     t.timestamps
   end
+  
+  create_table "messages", :force => true do |t|
+    t.integer :from_user_id
+    t.integer :to_user_id
+    t.text    :content
+    t.boolean :unread, :default => true
+    t.timestamps
+  end
 
   create_table "tags" do |t|
     t.string   :name
