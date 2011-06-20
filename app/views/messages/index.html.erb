@@ -1,5 +1,9 @@
 <% @title="站内信"%>
 
+<% content_for :head do %>
+  <%= javascript_include_tag 'jquery.color.js' %>
+<% end %>
+
 <div class="box" >
   <div id="tabContaier">
     <ul id="tabNav">
@@ -12,14 +16,14 @@
     <% unless @unreadbox.count.zero? %>
     <div id="unreadbox" class="tabContents">
       <% @unreadbox.each do |m| %>
-        <div class="event_box" style="background-color:#FFF1EC">
+        <div class="event_box" style="background-color:#F8F8FF">
           <%= render :partial => "/users/avatar", :object => m.from_user%>
           <div class="event">
             From：<%= link_to m.from_user.login, m.from_user%><span style="margin-left:10px;"><%= full_date(m.created_at) %></span><br/>
             <%= m.content %>
           </div>
           <div class="event_action">
-            <%= link_to("读过了", clear_message_path(m), :remote=>true, :onclick=>"javascript:$(this).parent().parent().slideUp();")%>
+            <%= link_to("读过了", clear_message_path(m), :remote=>true)%> | 
             <%= link_to("回复", "#{new_message_path}?user_id=#{m.from_user.id}", :class => 'open_dialog', :title => '发站内信')%>
           </div>
         </div>
@@ -28,14 +32,16 @@
     <% end %>
     <div id="inbox" class="tabContents">
       <% @inbox.each do |m| %>
-        <%= m.unread == false ? raw("<div class='event_box'>") : raw("<div class='event_box' style='background-color:#FFF1EC'>")%>
+        <%= m.unread == false ? raw("<div class='event_box'>") : raw("<div class='event_box' style='background-color:#F8F8FF'>")%>
           <%= render :partial => "/users/avatar", :object => m.from_user%>
           <div class="event">
             From：<%= link_to m.from_user.login, m.from_user%><span style="margin-left:10px;"><%= full_date(m.created_at) %></span><br/>
             <%= m.content %>
           </div>
           <div class="event_action">
-              <%= link_to("读过了", clear_message_path(m), :remote=>true, :onclick=>"javascript:$(this).hide();$(this).parent().parent().removeAttr('style');") if m.unread == true%>
+            <% if m.unread == true %>
+              <%= link_to("读过了", clear_message_path(m), :class=>'read_message', :remote=>true)%> | 
+            <% end %>
             <%= link_to("回复", "#{new_message_path}?user_id=#{m.from_user.id}", :class => 'open_dialog', :title => '发站内信')%>
           </div>
         </div>
@@ -54,3 +60,16 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function(){
+    $("#inbox .read_message").click(function(e) {
+      $(this).hide();
+      $(this).parent().parent().animate({backgroundColor:"white"}, 1000);
+    });
+    
+    $("#unreadbox .read_message").click(function(e) {
+      $(this).parent().parent().slideUp();
+    });
+  })
+</script>
