@@ -23,7 +23,7 @@
             <%= m.content %>
           </div>
           <div class="event_action">
-            <%= link_to("读过了", clear_message_path(m), :remote=>true)%> | 
+            <%= link_to("读过了", clear_message_path(m), :class=>'read_message', :remote=>true)%> | 
             <%= link_to("回复", "#{new_message_path}?user_id=#{m.from_user.id}", :class => 'open_dialog', :title => '发站内信')%>
           </div>
         </div>
@@ -64,10 +64,9 @@
 <script type="text/javascript" charset="utf-8">
   $(document).ready(function(){
     $("#inbox .read_message").click(function(e) {
-      $(this).hide();
       $(this).parent().parent().animate({backgroundColor:"white"}, 1000);
+      $(this).replaceWith('读过了');
     });
-    
     $("#unreadbox .read_message").click(function(e) {
       $(this).parent().parent().slideUp();
     });
