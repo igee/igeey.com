@@ -9,6 +9,8 @@ class MessagesController < ApplicationController
   end
   
   def new
+    @msg_id = params[:msg_id]
+    Message.find(@msg_id).read unless @msg_id.nil?
     @user = User.find(params[:user_id])
     @message = Message.new(:from_user_id => current_user.id, :to_user_id => @user.id)
     render :layout => false if params[:layout] == 'false'

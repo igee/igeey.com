@@ -24,7 +24,7 @@
           </div>
           <div class="event_action">
             <%= link_to("读过了", clear_message_path(m), :class=>'read_message', :remote=>true)%> | 
-            <%= link_to("回复", "#{new_message_path}?user_id=#{m.from_user.id}", :class => 'open_dialog', :title => '发站内信')%>
+            <%= link_to("回复", "#{new_message_path}?user_id=#{m.from_user.id}&msg_id=#{m.id}", :class => 'open_dialog', :title => '发站内信')%>
           </div>
         </div>
       <% end %>
@@ -41,8 +41,10 @@
           <div class="event_action">
             <% if m.unread == true %>
               <%= link_to("读过了", clear_message_path(m), :class=>'read_message', :remote=>true)%> | 
+              <%= link_to("回复", "#{new_message_path}?user_id=#{m.from_user.id}&msg_id=#{m.id}", :class => 'open_dialog', :title => '发站内信')%>
+            <% else %>
+              <%= link_to("回复", "#{new_message_path}?user_id=#{m.from_user.id}", :class => 'open_dialog', :title => '发站内信')%>
             <% end %>
-            <%= link_to("回复", "#{new_message_path}?user_id=#{m.from_user.id}", :class => 'open_dialog', :title => '发站内信')%>
           </div>
         </div>
       <% end %>
