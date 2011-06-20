@@ -117,8 +117,8 @@ class User < ActiveRecord::Base
     Message.where(:from_user_id => self.id).order("created_at desc")
   end
   
-  def inbox_unread_count
-    Message.where(:to_user_id => self.id, :to_user_has_seen => false).size
+  def unreadbox
+    Message.where(:to_user_id => self.id, :unread => true).order("created_at desc")
   end
   
   def realtime_plans_count

@@ -3,18 +3,39 @@
 <div class="box" >
   <div id="tabContaier">
     <ul id="tabNav">
+      <% unless @unreadbox.count.zero?%>
+        <li><%= link_to "未读",'#unreadbox'%></li>
+      <% end %>
       <li><%= link_to "收件箱",'#inbox'%></li>
       <li><%= link_to "发件箱",'#outbox'%></li>
     </ul>
-    <div id="inbox" class="tabContents">
-      <% @inbox.each do |m| %>
-        <div class="event_box">
+    <% unless @unreadbox.count.zero? %>
+    <div id="unreadbox" class="tabContents">
+      <% @unreadbox.each do |m| %>
+        <div class="event_box" style="background-color:#FFF1EC">
           <%= render :partial => "/users/avatar", :object => m.from_user%>
           <div class="event">
             From：<%= link_to m.from_user.login, m.from_user%><span style="margin-left:10px;"><%= full_date(m.created_at) %></span><br/>
             <%= m.content %>
           </div>
           <div class="event_action">
+            <%= link_to("读过了", clear_message_path(m), :remote=>true, :onclick=>"javascript:$(this).parent().parent().slideUp();")%>
+            <%= link_to("回复", "#{new_message_path}?user_id=#{m.from_user.id}", :class => 'open_dialog', :title => '发站内信')%>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <% end %>
+    <div id="inbox" class="tabContents">
+      <% @inbox.each do |m| %>
+        <%= m.unread == false ? raw("<div class='event_box'>") : raw("<div class='event_box' style='background-color:#FFF1EC'>")%>
+          <%= render :partial => "/users/avatar", :object => m.from_user%>
+          <div class="event">
+            From：<%= link_to m.from_user.login, m.from_user%><span style="margin-left:10px;"><%= full_date(m.created_at) %></span><br/>
+            <%= m.content %>
+          </div>
+          <div class="event_action">
+              <%= link_to("读过了", clear_message_path(m), :remote=>true, :onclick=>"javascript:$(this).hide();$(this).parent().parent().removeAttr('style');") if m.unread == true%>
             <%= link_to("回复", "#{new_message_path}?user_id=#{m.from_user.id}", :class => 'open_dialog', :title => '发站内信')%>
           </div>
         </div>

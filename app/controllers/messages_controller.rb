@@ -3,6 +3,7 @@ class MessagesController < ApplicationController
   respond_to :html, :js, :xml
   
   def index
+    @unreadbox = current_user.unreadbox
     @inbox = current_user.inbox
     @outbox = current_user.outbox
   end
@@ -17,5 +18,11 @@ class MessagesController < ApplicationController
     @message = Message.new(params[:message])
     @message.save
     redirect_to :back
+  end
+
+  def clear
+    @message = Message.find(params[:id])
+    @message.read
+    render :text=>'true'
   end
 end
