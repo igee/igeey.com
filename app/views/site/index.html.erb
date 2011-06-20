@@ -26,8 +26,8 @@
 <div class="box" >
   <div id="tabContaier">
     <ul id="tabNav">
-      <li><%= link_to '正在提问..','#questions'%></li>
-      <li><%= link_to '正在行动..','#timeline'%></li>
+      <li><%= link_to '问答','#questions'%></li>
+      <li><%= link_to '任务','#tasks'%></li>
     </ul>
     <div id="questions" class="tabContents">
       <% if logged_in? %>
@@ -54,9 +54,13 @@
       <%= render :partial => '/public/question',:collection => @questions %>
       <%= link_to('查看更多...',more_questions_path(:page => 2),:class=> 'timeline_footer',:onclick => 'javascript:more_timeline($(this));return false;') %>
     </div>
-    <div id="timeline" class="tabContents">
-      <%= render :partial => '/public/calling',:collection => @timeline %>
-      <%= link_to('查看更多...',more_callings_path(:page => 2),:class=> 'timeline_footer',:onclick => 'javascript:more_timeline($(this));return false;') %>
+    <div id="tasks" class="tabContents">
+      <% if logged_in? %>
+        <%= link_to '发布任务',new_task_path%>
+
+      <% end %>
+      <%= render :partial => '/public/task',:collection => @tasks %>
+      <%= link_to('查看更多...',more_tasks_path(:page => 2),:class=> 'timeline_footer',:onclick => 'javascript:more_timeline($(this));return false;') %>
     </div>
   </div>
 </div>

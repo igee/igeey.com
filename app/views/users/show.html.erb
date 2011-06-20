@@ -15,7 +15,7 @@
         <%= link_to_unless(@user.sayings_count.zero?,"报到[#{@user.sayings_count}]",sayings_user_path(@user)) %>
         <%= link_to_unless(@user.photos_count.zero?,"照片[#{@user.photos_count}]",photos_user_path(@user)) %>
         <%= link_to_unless(@user.topics_count.zero?,"故事[#{@user.topics_count}]",topics_user_path(@user)) %>
-        <%= link_to_unless(@user.callings_count.zero?,"召集[#{@user.callings_count}]",callings_user_path(@user)) %>
+        <%= link_to_unless(@user.tasks_count.zero?,"召集[#{@user.tasks_count}]",tasks_user_path(@user)) %>
         <%= link_to_unless(@user.questions_count.zero?,"问题[#{@user.questions_count}]",questions_user_path(@user)) %>
         <%= link_to_unless(@user.answers_count.zero?,"回答[#{@user.answers_count}]",answers_user_path(@user)) %>
       </span>

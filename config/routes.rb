@@ -45,7 +45,7 @@ Igeey::Application.routes.draw do
       get  :photos
       get  :sayings
       get  :topics
-      get  :callings
+      get  :tasks
       get  :followers
       get  :more_items
       post :watching
@@ -56,7 +56,7 @@ Igeey::Application.routes.draw do
     get   :get_badges ,:on => :collection
   end
   
-  resources :callings do
+  resources :tasks do
     get   :more     ,:on => :collection
     put   :close    ,:on => :member
     get   :progress ,:on => :member
@@ -87,7 +87,7 @@ Igeey::Application.routes.draw do
       get   :more_timeline
       get   :more_answers
       get   :more_questions
-      get   :callings
+      get   :tasks
       get   :records
       get   :sayings
       get   :topics
@@ -98,7 +98,7 @@ Igeey::Application.routes.draw do
       get   :followers
       get   :following_venues
       get   :following_users
-      get   :following_callings
+      get   :following_tasks
     end
   end
   
@@ -146,7 +146,7 @@ Igeey::Application.routes.draw do
   
   #short_url
   match "/v/:id" => redirect("/venues/%{id}")
-  match "/c/:id" => redirect("/callings/%{id}")
+  match "/c/:id" => redirect("/tasks/%{id}")
   match "/r/:id" => redirect("/records/%{id}")
   match "/p/:id" => redirect("/plan/%{id}")
   match "/t/:id" => redirect("/topics/%{id}")

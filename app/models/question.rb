@@ -21,11 +21,11 @@ class Question < ActiveRecord::Base
   end
   
   def related_questions
-    @questions = []
+    questions = []
     self.tags.each do |tag|
-      @questions += tag.taggeds.where(['taggable_type=?','Question']).limit(10).map(&:taggable)
+      questions += tag.taggeds.where(['taggable_type=?','Question']).limit(5).map(&:taggable)
     end
-    (@questions - [self]).uniq.shuffle
+    (questions - [self]).uniq.shuffle
   end
   
   def description

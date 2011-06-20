@@ -1,0 +1,24 @@
+<% venue = venue || task.venue %>
+<% user = user || task.user %>
+
+<div class="event_box">
+  <div class="task">
+    <%= image_tag(task.cover.url(:_56x56))%>
+  </div>
+  <div class="event">
+   <p><b><%= link_to task.title, task %></b></p>
+   <span><%= "#{task.status}"%></span>
+   <br/>
+     <div class="event_info">
+       <span class="timeago"><%= task.created_at %></span> <span>标签： <%= raw tag_links_for(task.tag_list)%></span>
+     </div>    
+     <div class="event_action">
+       <% if task.owned_by?(current_user) %>
+         <%= link_to "修改","#{edit_task_path(task)}?back_path=#{request.path}"%> |
+         <%= link_to "关闭","#{close_task_path(task)}?back_path=#{request.path}",:method => :put,:confirm => '你确定要关闭这个召集行动么，一旦关闭其他人将不能参与' %> |
+       <% end %>  
+       <%= link_to "回复#{'(' + task.comments_count.to_s + ')' if task.comments_count > 0}",'',:class => "event_reply",:onclick=>("javascript:redirect_clear(#{task.id},'Task')" if logged_in?)%>　
+    </div>
+    <%= render :partial => "/public/reply_form",:locals =>  {:object => task}%>
+  </div>
+</div>

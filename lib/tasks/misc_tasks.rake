@@ -201,6 +201,34 @@ namespace :misc do
     end
   end
   
+  desc "Trans polymorphic form Calling to Task"
+  task :calling_to_task => :environment do
+    Comment.where(:commentable_type => 'Calling').each do |c|
+      c.update_attribute(:commentable_type,'Task')
+    end
+    Photo.where(:imageable_type => 'Calling').each do |c|
+      c.update_attribute(:imageable_type,'Task')
+    end
+    Sync.where(:syncable_type => 'Calling').each do |c|
+      c.update_attribute(:syncable_type,'Task')
+    end
+    Follow.where(:followable_type => 'Calling').each do |c|
+      c.update_attribute(:followable_type,'Task')
+    end
+    Vote.where(:voteable_type => 'Calling').each do |c|
+      c.update_attribute(:voteable_type,'Task')
+    end
+    Notification.where(:notifiable_type => 'Calling').each do |c|
+      c.update_attribute(:notifiable_type,'Task')
+    end
+    Event.where(:eventable_type => 'Calling').each do |c|
+      c.update_attribute(:eventable_type, 'Task')
+    end
+    Tagging.where(:taggable_type => 'Calling').each do |c|
+      c.update_attribute(:taggable_type, 'Task')
+    end
+  end
+
   desc "Update Calling for what from Action"
   task :update_callling_for_what_from_action => :environment do
     Calling.all.each do |c|

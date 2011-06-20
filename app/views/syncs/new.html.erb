@@ -1,7 +1,7 @@
 <% @title = '站外同步'%>
 <div class='box'>
   <p class="explanation">
-    你<%= {:question => '的问题已经发布了',:calling => '的召集成功发布了',:plan => '的计划已经建立',:follow =>'已关注这个行动'}[@sync.syncable_type.downcase.to_sym] %>。
+    你<%= {:question => '的问题已经发布了',:task => '的召集成功发布了',:plan => '的计划已经建立',:follow =>'已关注这个行动'}[@sync.syncable_type.downcase.to_sym] %>。
     <br/>
     再通过你的社交网络把这个消息告诉你的朋友吧。
   </p>
@@ -18,7 +18,7 @@
     <p style='text-align:right;clear:both'>
     同步到：
     <%= image_tag('/images/icon/sina.gif',:class=> 'icon')%> 新浪微博 <%= form.check_box :sina ,:disabled => (current_user.sina? ? false : true),:checked => current_user.sina? %>
-    　<%= link_to '无法勾选同步？先去设置',"#{setting_path}?back_path=#{request.path}&syncable_type=calling&syncable_id=1",:class => 'with_explain',:title => '设置完了可以再回来' unless current_user.sina? && current_user.douban? %>
+    　<%= link_to '无法勾选同步？先去设置',"#{setting_path}?back_path=#{request.path}&syncable_type=task&syncable_id=1",:class => 'with_explain',:title => '设置完了可以再回来' unless current_user.sina? && current_user.douban? %>
     <br/>
     <%= form.submit '确定',:class => 'button' %>
     </p>

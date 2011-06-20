@@ -1,24 +1,24 @@
-<% @title = @plan.calling.title%>
+<% @title = @plan.task.title%>
 <% @venue = @plan.venue%>
 <div class="box">
   <%= render :partial => '/users/user' ,:object => @plan.user %>
     <div class="bubble_tail"></div>      
     <div class="bubble">
       <div style="float:right;text-align:right">
-        完成度：<span style="font-size:28px;font-family:Ariel;font-weight:bold;color:#004d68;line-height:30px"><%="#{@calling.percentage}%"%></span>
+        完成度：<span style="font-size:28px;font-family:Ariel;font-weight:bold;color:#004d68;line-height:30px"><%="#{@task.percentage}%"%></span>
         <br/>
         <span>
-          <%= {:goods=>"已捐#{@calling.complete_number}件",:time => "已有#{@calling.complete_number}人要去"}[@calling.for_what.to_sym]%>
-          <%= link_to '查看',progress_calling_path(@calling) unless @calling.complete_number.zero?%>
+          <%= {:goods=>"已捐#{@task.complete_number}件",:time => "已有#{@task.complete_number}人要去"}[@task.for_what.to_sym]%>
+          <%= link_to '查看',progress_task_path(@task) unless @task.complete_number.zero?%>
         </span>
       </div>
       <span><%= link_to @plan.user.login,@plan.user %> 要参与 <%= link_to @plan.venue.name,@plan.venue %> 的活动：</span>
-      <%= render :partial => "/plans/shows/#{@calling.for_what}"%>
-      <%= raw tag_list_for(@calling.tag_list)%>
+      <%= render :partial => "/plans/shows/#{@task.for_what}"%>
+      <%= raw tag_list_for(@task.tag_list)%>
     </div>
     <div style="clear:both;text-align:right">
       <% if @plan.owned_by?(current_user)%>
-      <span><%= link_to("修改",edit_calling_plan_path(@plan.calling,@plan))%> | <%= link_to "取消",calling_plan_path(@calling,@plan),:method => :delete,:confirm => '确定要取消你的计划么?' %></span>
+      <span><%= link_to("修改",edit_task_plan_path(@plan.task,@plan))%> | <%= link_to "取消",task_plan_path(@task,@plan),:method => :delete,:confirm => '确定要取消你的计划么?' %></span>
       <% end %>
     </div>
 </div>
@@ -31,14 +31,14 @@
       <% if @plan.owned_by?(current_user) %>
         <%= link_to "已经完成?","#{new_record_path}?plan_id=#{@plan.id}",:class => "big_button" %>
       <% elsif @my_plan %>
-        你已参与： <%= link_to '查看我的计划',calling_plan_path(@calling,@my_plan)%>
-      <% elsif @calling.close%>
+        你已参与： <%= link_to '查看我的计划',task_plan_path(@task,@my_plan)%>
+      <% elsif @task.close%>
         <div style="clear:both;text-align:center">
           召集行动已经关闭  
         </div>
       <% else %>
-        <% @link_title = "我也要#{{'time' => '参加','money' => '捐','goods' => '捐'}[@calling.for_what]}"%>
-        <%= link_to @link_title,(logged_in? ? "#{duplicate_calling_plan_path(@calling,@plan,:parent_id => @plan.id)}" : signup_path ),:class => "big_button open_dialog",:id => 'plan_to' ,:title =>(logged_in? ? @link_title : '注册' )%>
+        <% @link_title = "我也要#{{'time' => '参加','money' => '捐','goods' => '捐'}[@task.for_what]}"%>
+        <%= link_to @link_title,(logged_in? ? "#{duplicate_task_plan_path(@task,@plan,:parent_id => @plan.id)}" : signup_path ),:class => "big_button open_dialog",:id => 'plan_to' ,:title =>(logged_in? ? @link_title : '注册' )%>
       <% end %>
     <% end %>
   </div>
@@ -47,10 +47,10 @@
 
 <div class="box">
   <h4>行动发起人说：</h4>
-    <%= render :partial => '/users/user' ,:object => @calling.user %>
+    <%= render :partial => '/users/user' ,:object => @task.user %>
     <div class="bubble_tail"></div>
     <div class="bubble">
-      <pre class="explanation"><%= @calling.detail %></pre>
+      <pre class="explanation"><%= @task.detail %></pre>
     </div>
 </div>
   
@@ -81,21 +81,21 @@
       <% if @plan.owned_by?(current_user) %>
         <%= link_to "已经完成?","#{new_record_path}?plan_id=#{@plan.id}",:class => "big_button" %>
       <% elsif @my_plan %>
-        你已参与： <%= link_to '查看我的计划',calling_plan_path(@calling,@my_plan)%>
-      <% elsif @calling.close%>
+        你已参与： <%= link_to '查看我的计划',task_plan_path(@task,@my_plan)%>
+      <% elsif @task.close%>
         <div style="clear:both;text-align:center">
           召集行动已经关闭  
         </div>
       <% else %>
-        <% @link_title = "我也要#{{'time' => '去','money' => '捐','goods' => '捐'}[@calling.for_what]}"%>
-        <%= link_to @link_title,(logged_in? ? "#{duplicate_calling_plan_path(@calling,@plan,:parent_id => @plan.id)}" : signup_path ),:class => "big_button open_dialog",:id => 'plan_to' ,:title =>(logged_in? ? @link_title : '注册' )%>
+        <% @link_title = "我也要#{{'time' => '去','money' => '捐','goods' => '捐'}[@task.for_what]}"%>
+        <%= link_to @link_title,(logged_in? ? "#{duplicate_task_plan_path(@task,@plan,:parent_id => @plan.id)}" : signup_path ),:class => "big_button open_dialog",:id => 'plan_to' ,:title =>(logged_in? ? @link_title : '注册' )%>
       <% end %>
     <% end %>
   </div>
 </div>
 
 <%= render :partial => '/comments/board'%>    
-<%= render :partial => '/comments/form' ,:locals => {:commentable => @calling}%>
+<%= render :partial => '/comments/form' ,:locals => {:commentable => @task}%>
 
 
 <% content_for :sidebar do %>
