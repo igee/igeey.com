@@ -1,7 +1,7 @@
 class Badge < ActiveRecord::Base
   
   CONDITIONS_HASH = {'realtime_plans_count' => '参与行动次数',
-                     'realtime_tasks_count' => '召集行动次数',
+                     'realtime_tasks_count' => '任务次数',
                      'douban_count' => '连接豆瓣',
                      'sina_count' => '连接新浪',
                      'venues_count' => '添加地点数',

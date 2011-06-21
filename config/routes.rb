@@ -62,6 +62,7 @@ Igeey::Application.routes.draw do
     get   :progress ,:on => :member
     resources :plans do
       get   :duplicate ,:on => :member
+      get   :done      ,:on => :member
     end
   end
   

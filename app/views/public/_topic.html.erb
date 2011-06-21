@@ -2,13 +2,12 @@
 <% user = user || topic.user %>
 
 <div class="event_box">
-  <%= controller_name == 'venues' ? (render :partial => "/users/avatar",:object => user) : (render :partial => "/venues/venue",:object => venue) %>
+  <%= controller_name == 'user' ? (render :partial => "/venues/venue",:object => venue) : (render :partial => "/users/avatar",:object => user)%>
   <div class="event">  
     <span>
       <%= image_tag('/images/icon/topic.png',:class => 'icon')%>
-      <%= link_to user.login,user if controller_name == 'venues'%>
-      <%= raw("在 #{link_to venue.name,venue}") if controller_name == 'users'%>
-      <%= raw(['users','venues'].include?(controller_name) ? '写了故事：' : "#{link_to venue.name,venue} 有了新故事：" ) %>
+      <%= raw("#{link_to user.login,user_path(user)}") unless controller_name == 'users'%>
+      <%= raw("在 #{link_to venue.name,venue_path(venue)} ") unless controller_name == 'venues' %>写了故事：
     </span>
     <p><b><%= link_to topic.title,topic_path(topic) %></b></p>
     <pre class="explanation"><%= short_text(topic.content,72)%></pre>

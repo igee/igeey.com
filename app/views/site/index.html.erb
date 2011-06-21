@@ -56,8 +56,9 @@
     </div>
     <div id="tasks" class="tabContents">
       <% if logged_in? %>
-        <%= link_to '发布任务',new_task_path%>
-
+        <p style="text-align:right">
+          <%= link_to '发布任务',new_task_path,:class=>'gary_button'%>
+        </p>
       <% end %>
       <%= render :partial => '/public/task',:collection => @tasks %>
       <%= link_to('查看更多...',more_tasks_path(:page => 2),:class=> 'timeline_footer',:onclick => 'javascript:more_timeline($(this));return false;') %>

@@ -5,7 +5,6 @@
 
 <%= form_for @task ,:html => { :multipart => true } do |form| %>
   <%= raw error_explanation_for(@task) if @task.errors.present?%>
-  <%= form.hidden_field :for_what,:value => 'time'%>
   <p>
     <b><%= form.label 'title','目标：'%></b> <span>请用一句话描述你的任务目标 (20字以内)</span> 
     <br/>
@@ -34,6 +33,8 @@
   <p>
     <b><%= form.label :tag_list,'添加标签：',:style=>"float:left"%></b>
     <%= form.text_field :tag_list,:class => 'tag_list' %>
+    <br/>
+    <span class="suggested_tags">我收藏的标签：<%= raw(tag_links_for(current_user.tag_list,10))%></span>
   </p>
   <p>
     <b><%= form.label :cover,'主题图：'%></b> <%= form.file_field :cover,:size => 18%>
@@ -55,6 +56,12 @@
        }
       updateCount();
       $(".tag_list").each(function(index,element){jQuery(element).tag_cloud();})
+      $('.suggested_tags a').click(function(){
+        var dom =$(this).parent().prevAll(".tag_list");
+        dom.attr('value',$(this).html());
+        dom.blur();
+        return false;
+        });
     })
   </script>
 <% end %>

@@ -9,7 +9,8 @@ class PlansController < ApplicationController
   
   def new
     @task = Task.find(params[:task_id])
-    @plan = @task.plans.build(:venue_id=>@task.venue.id)
+    @venue = @task.venue
+    @plan = @task.plans.build(:tag_list => @task.tag_list.join(' '))
     render :layout => false if params[:layout] == 'false'
   end
   
@@ -22,28 +23,38 @@ class PlansController < ApplicationController
     else
       render :new
     end
-    
   end
   
   def show
     @venue = @plan.venue
     @comments = @task.comments
     @followers = @task.followers
-    @photos = @task.photos
-    @records = @task.records
-    @plans = @task.plans.undone
     @my_plan = current_user.plans.select{|p| p.task_id == @task.id}.first if logged_in?
+    @comments = @plan.comments
+    @tasks = @task.related_tasks
   end
   
   def edit
+    @venue = @plan.venue
   end
   
+  def done
+    @plan.is_done = true
+    @plan.done_at = Time.now 
+    @venue = @plan.venue
+    render :edit
+  end
+
   def update
     @plan.update_attributes(params[:plan])  if @plan.owned_by?(current_user)
     if params[:back_path].present?
       redirect_to params[:back_path]
     else
-      respond_with @plan
+      if @plan.is_done
+        respond_with @plan
+      else
+        redirect_to @task
+      end 
     end
   end
   

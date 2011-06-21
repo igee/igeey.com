@@ -34,7 +34,6 @@
 </div>
       
 <div class="box">
-  <h4>我要在这里..</h4>
   <div id="venue_forms">
     <div id="formContaier">
       <%= form_for @saying,:html=>{:class=>'venue_form',:style => "display:block"}  do |form| %>    
@@ -66,21 +65,32 @@
           <%= form.submit '确 定',:class => "gary_button"%>
         <% end %>
         
-        <%= form_for @task,:html=>{:class=>'venue_form'} do |form| %>    
+        <%= form_for @task ,:html => { :multipart => true,:class => "venue_form" } do |form| %>
           <%= raw error_explanation_for(@task) if @task.errors.present?%>
-          <%= form.hidden_field :for_what,:value => 'time'%>
           <%= form.hidden_field :venue_id,:value => @venue.id %>
-          <%= form.label 'title','行动标题：'%> <%= form.text_field :title, :size => 20, :placeholder => "" %><br/>
-          <%= form.label 'total_people','需要人数：'%> <%= form.text_field :total_people, :size => 3, :placeholder => "" %>　
-          <%= form.label 'total_people','行动时间：'%><%= form.text_field :do_at, :size => 8,:class => 'with_calendar',:placeholder => ""%><br/>
-          <%= form.label 'address','集合地址：'%> <%= form.text_field :address, :size => 24, :placeholder => '',:style => "text-align:left" %><br/>
-          <%= form.label 'contact','联系方式：'%> <%= form.text_field :contact, :size => 24, :placeholder => '',:style => "text-align:left" %><br/>
-          <%= form.label 'detail','详细信息：'%>(字数要求：50-1000字)　目前字数：<span id="character_count"></span>
-          <%= form.text_area :detail,:placeholder => '请说明你发起召集的原因、响应你的召集需要做什么。'%>
-          <%= form.label :tag_list,'添加标签：',:style=>"float:left"%>
-          <%= form.text_field :tag_list,:class => 'tag_list' %><br/>
-          <span class="suggested_tags">我收藏的标签：<%= raw(tag_links_for(current_user.tag_list,10))%></span>
-          <br/>
+          <p>
+            <%= form.label 'title','目标：'%> <span>请用一句话描述你的任务目标 (20字以内)</span> 
+            <br/>
+            <%= form.text_field :title, :style => "width:400px", :placeholder => "" %>
+            <p class="explanation">目前字数：<span id="character_count"></span></p>
+          </p>
+          <p>
+            <%= form.label 'detail','任务要求：'%>
+            <span>你对参加者完成你的任务有什么要求或提示。</span>
+            <%= form.text_area :detail, :style => "width:440px;height:90px"%>
+          </p>
+          <p>
+            <%= form.label 'total_people','截止时间：'%><%= form.text_field :do_at, :size => 8,:class => 'with_calendar',:placeholder => ""%>
+          </p>
+          <p>
+            <%= form.label :tag_list,'添加标签：',:style=>"float:left"%>
+            <%= form.text_field :tag_list,:class => 'tag_list' %>
+            <br/>
+            <span class="suggested_tags">我收藏的标签：<%= raw(tag_links_for(current_user.tag_list,10))%></span>
+          </p>
+          <p>
+            <%= form.label :cover,'主题图：'%> <%= form.file_field :cover,:size => 18%>
+          </p>
           <%= form.submit '确 定',:class => "gary_button"%>
         <% end %>
       <% end %>
@@ -89,7 +99,7 @@
       <li><%= link_to raw("#{image_tag('/images/icon/saying.png',:class => 'icon')} 报到"),'#new_saying',:class=> "active"%></li>
       <li><%= link_to raw("#{image_tag('/images/icon/photo.png',:class => 'icon')} 上传照片"),'#new_photo'%></li>
       <li><%= link_to raw("#{image_tag('/images/icon/text.png',:class => 'icon')} 写故事"),'#new_topic'%></li>
-      <li><%= link_to raw("#{image_tag('/images/icon/speaker.png',:class => 'icon')} 发起召集"),'#new_task'%></li>
+      <li><%= link_to raw("#{image_tag('/images/icon/speaker.png',:class => 'icon')} 发布任务"),'#new_task'%></li>
     </ul>
   </div>
 </div>
@@ -102,7 +112,7 @@
       <%= link_to_unless(@venue.photos_count.zero?,"照片[#{@venue.photos_count}]",photos_venue_path(@venue)) %>
       <%= link_to_unless(@venue.doings_count.zero?,"行动[#{@venue.doings_count}]",doings_venue_path(@venue)) %>
       <%= link_to_unless(@venue.topics_count.zero?,"故事[#{@venue.topics_count}]",topics_venue_path(@venue)) %>
-      <%= link_to_unless(@venue.tasks_count.zero?,"召集[#{@venue.tasks_count}]",tasks_venue_path(@venue)) %>
+      <%= link_to_unless(@venue.tasks_count.zero?,"任务[#{@venue.tasks_count}]",tasks_venue_path(@venue)) %>
     </span>
   </div>
   <h4>这里正在发生.. </h4>

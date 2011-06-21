@@ -29,8 +29,8 @@
 
 <div id="tabContaier">
   <ul id="tabNav">
-    <li><%= link_to '正在解决..','#questions',:style=>"width:72px"%></li>
-    <li><%= link_to '正在发生..','#timeline',:style=>"width:72px"%></li>
+    <li><%= link_to '问答','#questions',:style=>"width:72px"%></li>
+    <li><%= link_to '任务','#task',:style=>"width:72px"%></li>
   </ul>
   <div id="questions" class="tabContents">
     <%= render :partial => '/public/question',:collection => @questions[0..9] %>
@@ -63,9 +63,8 @@
         </span>
       <% end %>
     </div>
-
   </div>
-  <div id="timeline" class="tabContents">
+  <div id="tasks" class="tabContents">
     <%= render :partial => '/public/item',:collection => @timeline[0..9] %>
     <%= link_to('查看更多...',more_tasks_path(:page => 2),:class=> 'timeline_footer',:onclick => 'javascript:more_timeline($(this));return false;') if @timeline[10]%>
   </div>

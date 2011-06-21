@@ -18,11 +18,8 @@ class TasksController < ApplicationController
   def show
     @task = Task.find(params[:id])
     @venue = @task.venue
-    @plans = @task.plans.undone
-    @records = @task.records
-    @items = (@plans + @records).sort_by(&:created_at).reverse 
+    @plans = @task.plans
     @my_plan = current_user.plans.select{|p| p.task_id == @task.id}.first if logged_in? # user`s plan on this task
-    @my_record = @records.select{|r| r.owned_by?(current_user)}.first if logged_in? # user`s record on this task
     @followers = @task.followers.limit(8)
     @comments = @task.comments
     @tasks = @task.related_tasks
