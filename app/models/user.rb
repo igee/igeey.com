@@ -109,6 +109,18 @@ class User < ActiveRecord::Base
     self.sina? ? 1 : 0
   end
   
+  def inbox
+    Message.where(:to_user_id => self.id).order("created_at desc")
+  end
+  
+  def outbox
+    Message.where(:from_user_id => self.id).order("created_at desc")
+  end
+  
+  def unreadbox
+    Message.where(:to_user_id => self.id, :unread => true).order("created_at desc")
+  end
+  
   def realtime_plans_count
     self.plans.count
   end
