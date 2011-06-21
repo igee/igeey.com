@@ -20,7 +20,7 @@
           <%= render :partial => "/users/avatar", :object => m.from_user%>
           <div class="event">
             From：<%= link_to m.from_user.login, m.from_user%><span style="margin-left:10px;"><%= full_date(m.created_at) %></span><br/>
-            <%= m.content %>
+            <pre><%= m.content %></pre>
           </div>
           <div class="event_action">
             <%= link_to("读过了", clear_message_path(m), :class=>'read_message', :remote=>true)%> | 
@@ -36,7 +36,7 @@
           <%= render :partial => "/users/avatar", :object => m.from_user%>
           <div class="event">
             From：<%= link_to m.from_user.login, m.from_user%><span style="margin-left:10px;"><%= full_date(m.created_at) %></span><br/>
-            <%= m.content %>
+            <pre><%= m.content %></pre>
           </div>
           <div class="event_action">
             <% if m.unread == true %>
@@ -55,7 +55,7 @@
           <%= render :partial => "/users/avatar", :object => m.to_user%>
           <div class="event">
             To：<%= link_to m.to_user.login, m.to_user%><span style="margin-left:10px;"><%= full_date(m.created_at)%></span></br>
-            <%= m.content %>
+            <pre><%= m.content %></pre>
           </div>
         </div>
       <% end %>
