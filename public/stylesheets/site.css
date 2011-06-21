@@ -1,16 +1,15 @@
 /* Global Setting */
 
 body{
-  font: 14px arial;
+  font: 14px/1.2 arial;
   background:#bcdcff url('/images/bg_blue.png') repeat fixed;
   color:#555;
   word-break:break-all;
   margin:0;
-  line-height:1.4;
   }
 
 h1{margin:0}
-h2{font-size:24px}
+h2{font-size:22px}
 h3{font-size:19px}
 h4{font-size:15px}
 
@@ -221,7 +220,7 @@ table{
 
 #nav_links a.selected{background-color:#96b6e6;}
 
-#search_box{display:inline;position:relative;top:2px;*top:1px;}
+#search_box{display:inline;position:relative;top:1px;}
 
 #keywords{
   padding:4px;
@@ -246,7 +245,7 @@ table{
 #status{
   display:inline;
   position:relative;
-  top:2px;
+  top:1px;
   *top:-3px;
   }
 
