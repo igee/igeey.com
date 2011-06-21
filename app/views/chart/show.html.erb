@@ -12,7 +12,7 @@
     <li>用户： <%= @users_total%></li>
     <li>报到： <%= @sayings_total%></li>
     <li>地点： <%= @venues_total%></li>
-    <li>召集： <%= @tasks_total%></li>
+    <li>任务： <%= @tasks_total%></li>
     <li>计划： <%= @plans_total%></li>
     <li>记录： <%= @records_total%></li>
     <li>照片： <%= @photos_total%></li>
@@ -98,7 +98,7 @@ $(document).ready(function() {
          name: '关注',
          data: [<%= @follows_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
       },{
-         name: '召集',
+         name: '任务',
          data: [<%= @tasks_per_day.map{|a| "#{a},"}.to_s[0..-2] %>]
       }, {
          name: '计划',

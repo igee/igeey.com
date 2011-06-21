@@ -112,7 +112,7 @@
       <%= link_to_unless(@venue.photos_count.zero?,"照片[#{@venue.photos_count}]",photos_venue_path(@venue)) %>
       <%= link_to_unless(@venue.doings_count.zero?,"行动[#{@venue.doings_count}]",doings_venue_path(@venue)) %>
       <%= link_to_unless(@venue.topics_count.zero?,"故事[#{@venue.topics_count}]",topics_venue_path(@venue)) %>
-      <%= link_to_unless(@venue.tasks_count.zero?,"召集[#{@venue.tasks_count}]",tasks_venue_path(@venue)) %>
+      <%= link_to_unless(@venue.tasks_count.zero?,"任务[#{@venue.tasks_count}]",tasks_venue_path(@venue)) %>
     </span>
   </div>
   <h4>这里正在发生.. </h4>

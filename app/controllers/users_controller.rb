@@ -136,7 +136,7 @@ class UsersController < ApplicationController
   
   def tasks
     @items = @user.tasks.paginate(:page => params[:page], :per_page => 10)
-    @title = "#{@user.login}的行动召集"
+    @title = "#{@user.login}的任务"
     render 'see_all'
   end
   

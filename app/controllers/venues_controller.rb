@@ -72,7 +72,7 @@ class VenuesController < ApplicationController
   
   def tasks
     @items = @venue.tasks.paginate(:page => params[:page], :per_page => 10)
-    @title = "#{@venue.name}的行动召集"
+    @title = "#{@venue.name}的任务"
     render 'see_all'
   end
   

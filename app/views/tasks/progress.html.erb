@@ -1,6 +1,6 @@
 <% @title = "#{@task.title}的完成情况" %>
 <div class="box">
-  <h4>召集行动的完成情况</h4>
+  <h4>任务的完成情况</h4>
   <%= render :partial => '/tasks/record', :collection => @records %>
 </div>
 
@@ -13,7 +13,7 @@
     <div class="sidebar_bubble_tail"></div>
     <%= render :partial => '/users/user' ,:object => @task.user %>
     <div style="float:right;width:174px;padding:5px">
-    <span><%= raw "#{@task.user.records_count}个行动记录<br/>#{@task.user.tasks_count}召集行动<br/>#{@task.user.follows_count}个关注者"%><span>
+    <span><%= raw "#{@task.user.records_count}个行动记录<br/>#{@task.user.tasks_count}任务<br/>#{@task.user.follows_count}个关注者"%><span>
     </div>
   </div>
 <% end %>
