@@ -1,103 +1,59 @@
-<% @title = @plan.task.title%>
+<% @title = @plan.title%>
 <% @venue = @plan.venue%>
-<div class="box">
-  <%= render :partial => '/users/user' ,:object => @plan.user %>
-    <div class="bubble_tail"></div>      
-    <div class="bubble">
-      <div style="float:right;text-align:right">
-        完成度：<span style="font-size:28px;font-family:Ariel;font-weight:bold;color:#004d68;line-height:30px"><%="#{@task.percentage}%"%></span>
-        <br/>
-        <span>
-          <%= {:goods=>"已捐#{@task.complete_number}件",:time => "已有#{@task.complete_number}人要去"}[@task.for_what.to_sym]%>
-          <%= link_to '查看',progress_task_path(@task) unless @task.complete_number.zero?%>
-        </span>
-      </div>
-      <span><%= link_to @plan.user.login,@plan.user %> 要参与 <%= link_to @plan.venue.name,@plan.venue %> 的活动：</span>
-      <%= render :partial => "/plans/shows/#{@task.for_what}"%>
-      <%= raw tag_list_for(@task.tag_list)%>
-    </div>
-    <div style="clear:both;text-align:right">
+<% @task = @plan.task%>
+  <h2><%= @plan.title.nil? ? "#{@plan.user.login}的任务认领" :  "#{@plan.title} "%><span><%= '(计划已完成)' if @plan.title%></span>
       <% if @plan.owned_by?(current_user)%>
       <span><%= link_to("修改",edit_task_plan_path(@plan.task,@plan))%> | <%= link_to "取消",task_plan_path(@task,@plan),:method => :delete,:confirm => '确定要取消你的计划么?' %></span>
       <% end %>
-    </div>
-</div>
-
-<div class="box">
-  <div style="text-align:center;">
-    <% if @plan.is_done%>
-        计划已完成 <%= link_to '立即查看',record_path(@plan.record) %>
-    <% else %>
-      <% if @plan.owned_by?(current_user) %>
-        <%= link_to "已经完成?","#{new_record_path}?plan_id=#{@plan.id}",:class => "big_button" %>
-      <% elsif @my_plan %>
-        你已参与： <%= link_to '查看我的计划',task_plan_path(@task,@my_plan)%>
-      <% elsif @task.close%>
-        <div style="clear:both;text-align:center">
-          召集行动已经关闭  
-        </div>
-      <% else %>
-        <% @link_title = "我也要#{{'time' => '参加','money' => '捐','goods' => '捐'}[@task.for_what]}"%>
-        <%= link_to @link_title,(logged_in? ? "#{duplicate_task_plan_path(@task,@plan,:parent_id => @plan.id)}" : signup_path ),:class => "big_button open_dialog",:id => 'plan_to' ,:title =>(logged_in? ? @link_title : '注册' )%>
-      <% end %>
-    <% end %>
+  </h2>
+  <div class="box">
+    <%= image_tag(@plan.cover.url,:style=>'float:right;margin:0 5px')%>
+    <p class="explanation">
+      原任务：<%= link_to @task.title,task_path(@task)%>
+    </p>
+    <p class="explanation">
+      认领人：<%= link_to @plan.user.login,user_path(@plan.user)%>
+    </p>
+    <p class="explanation">
+      完成时间：<%= @plan.done_at%>
+    </p>
+    <pre>行动详情：<%= @plan.result %></pre>
+    <span><%= link_to '查看原计划','#plan_content',:id => 'toggle_plan_content'%></span>
+    <pre id="plan_content" style="display:none"><%= @plan.content %></pre>
   </div>
-</div>
-
-
-<div class="box">
-  <h4>行动发起人说：</h4>
-    <%= render :partial => '/users/user' ,:object => @task.user %>
-    <div class="bubble_tail"></div>
-    <div class="bubble">
-      <pre class="explanation"><%= @task.detail %></pre>
-    </div>
-</div>
   
-<% if @plan.owned_by?(current_user) %>
-<div class="box">
-  <h4><%= @plan.user.login%>的跟随者：</h4>
-  <%= render :partial => '/users/user',:collection => @plan.children.map(&:user)%>
-</div>
-<% end %>
-
-<div class="box">
-  <h4>所有参与者： <span>(绿色＝完成，红色＝未完成)</span></h4>
-  <% (@records + @plans).each do |a|%>
-    <div class='user' user_id="<%=a.user.id%>">
-      <div class="embed_number_wrapper"><%= link_to "+#{a.number}",a,:class => (a.is_done ? "record_embed_number" : "plan_embed_number")%></div>
-      <%= link_to (image_tag a.user.avatar.url,:class => "user_avatar"),a %>
-      <br/>
-    <span><%= link_to a.user.login,a.user%></span>
-    </div>
-  <% end %>
-</div>
-
-<div class="box">
-  <div style="text-align:center;">
-    <% if @plan.is_done%>
-        计划已完成 <%= link_to '立即查看',record_path(@plan.record) %>
-    <% else %>
-      <% if @plan.owned_by?(current_user) %>
-        <%= link_to "已经完成?","#{new_record_path}?plan_id=#{@plan.id}",:class => "big_button" %>
-      <% elsif @my_plan %>
-        你已参与： <%= link_to '查看我的计划',task_plan_path(@task,@my_plan)%>
-      <% elsif @task.close%>
-        <div style="clear:both;text-align:center">
-          召集行动已经关闭  
-        </div>
-      <% else %>
-        <% @link_title = "我也要#{{'time' => '去','money' => '捐','goods' => '捐'}[@task.for_what]}"%>
-        <%= link_to @link_title,(logged_in? ? "#{duplicate_task_plan_path(@task,@plan,:parent_id => @plan.id)}" : signup_path ),:class => "big_button open_dialog",:id => 'plan_to' ,:title =>(logged_in? ? @link_title : '注册' )%>
-      <% end %>
-    <% end %>
-  </div>
-</div>
-
 <%= render :partial => '/comments/board'%>    
-<%= render :partial => '/comments/form' ,:locals => {:commentable => @task}%>
-
+<%= render :partial => '/comments/form' ,:locals => {:commentable => @plan}%>
 
 <% content_for :sidebar do %>
-<%= render :partial => '/venues/intro' %>
+  <%= render :partial => '/venues/intro' %>
+
+  <div class="box">
+    <h4>相关记录</h4>
+    <% @task.plans.done.each do |p|%>
+      <div style="padding:4px 6px 4px;border-bottom:1px dashed #ccc;">
+        <p><%= link_to "#{p.user.login}：#{p.title}",plan_path(p)%></p>
+      </div>
+    <% end%>
+  </div>
+
+  <div class="box">
+    <h4>相关任务</h4>
+    <% @tasks.each do |t|%>
+      <div style="padding:4px 6px 4px;border-bottom:1px dashed #ccc;">
+        <p><%= link_to t.title,task_path(t)%></p>
+      </div>
+    <% end%>
+  </div>
+<% end %>
+
+<% content_for :extension do %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+        $('#toggle_plan_content').toggle(
+          function(){$(this).html('隐藏原计划');$('#plan_content').toggle()},
+          function(){$(this).html('查看原计划');$('#plan_content').toggle()}
+          )
+    });  
+  </script>
 <% end %>

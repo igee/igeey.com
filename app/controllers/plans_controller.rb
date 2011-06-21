@@ -29,8 +29,9 @@ class PlansController < ApplicationController
     @venue = @plan.venue
     @comments = @task.comments
     @followers = @task.followers
-    @plans = @task.plans.undone
     @my_plan = current_user.plans.select{|p| p.task_id == @task.id}.first if logged_in?
+    @comments = @task.comments
+    @tasks = @task.related_tasks
   end
   
   def edit
@@ -39,6 +40,7 @@ class PlansController < ApplicationController
   
   def done
     @plan.is_done = true
+    @plan.done_at = Time.now 
     @venue = @plan.venue
     render :edit
   end
@@ -48,7 +50,11 @@ class PlansController < ApplicationController
     if params[:back_path].present?
       redirect_to params[:back_path]
     else
-      respond_with @task
+      if @plan.is_done
+        respond_with @plan
+      else
+        redirect_to @task
+      end 
     end
   end
   
