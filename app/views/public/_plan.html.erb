@@ -11,9 +11,8 @@
     </span>
     <% if plan.is_done %>
       <p><b><%= link_to plan.title,plan_path(plan)%></b></p>
-      <pre><span><%= plan.result%></span></pre>
     <% else %>
-      <p><b><%= plan.task.title %></b></p>
+      <p><b><%= plan.task.title unless controller_name == 'tasks'%></b></p>
       <pre><span><%= plan.content%></span></pre>
     <% end %>
     <span class="timeago" style="float:left"><%= plan.created_at %></span>

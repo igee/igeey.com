@@ -30,7 +30,7 @@ class PlansController < ApplicationController
     @comments = @task.comments
     @followers = @task.followers
     @my_plan = current_user.plans.select{|p| p.task_id == @task.id}.first if logged_in?
-    @comments = @task.comments
+    @comments = @plan.comments
     @tasks = @task.related_tasks
   end
   

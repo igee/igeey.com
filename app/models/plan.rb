@@ -5,6 +5,7 @@ class Plan < ActiveRecord::Base
   has_many   :syncs,    :as => :syncable,    :dependent => :destroy
   belongs_to :parent,   :class_name => 'Plan',:foreign_key => :parent_id
   has_many   :children, :class_name => 'Plan' ,:foreign_key => :parent_id
+  has_many   :comments, :as => :commentable,    :dependent => :destroy
   
   acts_as_ownable
   acts_as_eventable
