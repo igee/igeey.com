@@ -53,6 +53,9 @@
     <table class="container">
     <tr>
       <td id="main">
+      <% if flash[:msg] -%>
+        <div id="msg_flash"><%= raw flash[:msg]%></div>
+      <% end -%>
       <% if flash[:dialog] -%>
         <div id="dialog_flash"><%= raw flash[:dialog] %></div>
       <% end -%>
