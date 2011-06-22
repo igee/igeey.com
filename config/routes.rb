@@ -110,6 +110,10 @@ Igeey::Application.routes.draw do
   
   resources :follows,:photos,:topics,:sayings,:doings
   
+  resources :messages do
+    get :clear, :on => :member  
+  end
+  
   resources :questions do
     resources :answers do
       post :veto, :on => :member

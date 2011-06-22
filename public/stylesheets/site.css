@@ -764,6 +764,17 @@ a.tag:hover{
 
 #dialog_flash{display:none}
 
+#msg_flash{
+    padding:5px;
+    margin-bottom:10px;
+    background-color:#E4F3FB;
+    color:#a0a0a0;
+    font-size:12px;
+    border:1px solid #D1EEEE;
+    border-right:none;
+    border-left:none;
+    }
+
 #feedback{
   display:block;
   background-color:#68c;
