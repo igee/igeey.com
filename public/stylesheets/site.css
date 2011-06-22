@@ -8,15 +8,13 @@ body{
   margin:0;
   }
 
+h2,h3,h4,h5,h6{margin:.2em 0 .4em;}
 h1{margin:0}
 h2{font-size:22px}
 h3{font-size:19px}
 h4{font-size:15px}
+h5{font-size:13px;color:#888}
 
-h2,h3,h4,h5,h6{
-  margin:.2em 0 .4em;
-  color:#666;
-  }
     
 ul,dl{
   margin:6px 0;
@@ -41,7 +39,7 @@ pre {
   } 
 
 span{
-  color:#a0a0a0;
+  color:#999;
   font-size:12px;
   font-weight:normal;
   }
@@ -50,10 +48,10 @@ select{padding:2px}
 
 a{
   text-decoration:none;
-  color:#59c;
+  color:#38c;
   }  
 
-a:hover{color:#f63}
+a:hover{text-decoration:underline}
 
 span a{color:#6ad}
 
@@ -342,10 +340,11 @@ button:hover,.button:hover,.big_button:hover{background:#ff9f10;color:white;}
   }
 
 .explanation{
-  color:#777;
+  color:#999;
   margin-bottom:4px;
-  font-size:12px;
+  font-size: 12px;
   font-weight:normal;
+  line-height:1.5;
   display:block;
   }
 
