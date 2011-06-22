@@ -18,7 +18,7 @@ class MessagesController < ApplicationController
   
   def create
     @message = Message.new(params[:message])
-    @message.save ? flash[:msg] = "<img src='/images/icon/right.png' class='icon'> 发送成功！" : flash[:msg] = "<img src='/images/icon/error.png' class='icon'> 发送失败！"
+    @message.save ? flash[:msg] = "<img src='/images/icon/success.png' class='icon'> 发送成功！" : flash[:msg] = "<img src='/images/icon/failed.png' class='icon'> 发送失败！"
     redirect_to :back
   end
 
