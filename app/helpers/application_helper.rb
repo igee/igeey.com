@@ -20,6 +20,10 @@ module ApplicationHelper
     "#{date.year == Date.today.year ? '' : "#{date.year}年"}#{date.month}月#{date.day}日"
   end
   
+  def full_date(date)
+    date.strftime("%Y-%m-%d %X")
+  end
+  
   def short_url(object)
     "http://#{request.host_with_port}/#{object.class.name.first.downcase}/#{object.id}"
   end

@@ -17,7 +17,6 @@ function redirect_clear(id, type){
 
 
 $(document).ready(function(){
-  $('#dialog_flash a').click();
   
   $('.timeago').live('replace.time', function() {
     $(this).html('(' + jQuery.timeago($(this).html()) + ')').removeClass('timeago');
@@ -102,5 +101,7 @@ $(document).ready(function(){
     $(activeTab).fadeIn();
     return false;
   });
+  
+  $('#dialog_flash a').click();
   
 });
