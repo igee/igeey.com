@@ -51,30 +51,30 @@
 <% content_for :sidebar do %>
   <div class="box" >
     <%= link_to "查看全部",badges_user_path(@user),:class => "see_all_link" if @badges[8]%>
-    <h4><%= "获得#{@user.grants.size}个徽章："%></h4>
+    <h5><%= "获得#{@user.grants.size}个徽章："%></h5>
     <%= render :partial => '/badges/badge' ,:collection => @badges[0..7] %>
   </div>
   
   <div class="box" >
-    <h4><%= "关注#{@user.tag_followings.size}个话题："%></h4>
+    <h5><%= "关注#{@user.tag_followings.size}个话题："%></h5>
     <%= raw(tag_list_for(@user.tag_list))%>
   </div>
     
   <div class="box" >
     <%= link_to "查看全部",following_venues_user_path(@user),:class => "see_all_link" if @following_venues[10]%>
-    <h4><%= "关注#{@user.venue_followings.size}个地点："%></h4>
+    <h5><%= "关注#{@user.venue_followings.size}个地点："%></h5>
     <%= render :partial => '/venues/venue',:collection => @user.venue_followings.limit(6).map{|f| f.followable},:locals => {:with_name => true}%>
   </div>
     
   <div class="box">
     <%= link_to "查看全部",following_users_user_path(@user),:class => "see_all_link" if @following_users[8]%>
-    <h4><%= "关注#{@user.user_followings.size}人："%></h4>
+    <h5><%= "关注#{@user.user_followings.size}人："%></h5>
     <%= render :partial => '/users/user',:collection => @following_users[0..7] %>
   </div>
   
   <div class="box">
     <%= link_to "查看全部",followers_user_path(@user),:class => "see_all_link" if @followers[8]%>
-    <h4><%= "#{@user.follows.size}个关注者："%></h4>
+    <h5><%= "#{@user.follows.size}个关注者："%></h5>
     <%= render :partial => "/users/user",:collection => @followers[0..7] %>
   </div>
 <% end %>
