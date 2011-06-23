@@ -102,7 +102,7 @@
   <% else %>
     <%= render :partial => "sidebar_panel"%>
     <div class="box">
-      <span>我收藏的话题..</span><br/>
+      <h5>我收藏的话题..</h5>
       <%= current_user.tag_list.empty? ? '你还没有收藏任何话题' : raw(tag_list_for(current_user.tag_list))%>
     </div>
   <% end %>
