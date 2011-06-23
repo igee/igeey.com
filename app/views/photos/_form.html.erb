@@ -22,7 +22,7 @@
       <%= form.text_field :tag_list,:class => 'tag_list' %>
     </p>
     <p>
-      <%= submit_tag '确定',:class => 'button' %>
+      <%= submit_tag '确定' %>
       <%= button_to_function '取消',"javascript:$('#floatBox #close_dialog').click();#{'window.history.back()' unless params[:layout] == 'false'}",:class => "button"%>
     </p>
   <% end %>

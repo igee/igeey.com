@@ -8,7 +8,7 @@
           <%= form.hidden_field :commentable_type,:value => commentable.class %>
           <%= form.hidden_field :commentable_id,:value => commentable.id %>
           <%= form.text_area :content, :style => "width:530px;height:60px",:placeholder => "有什么想说的？"%>
-          <%= submit_tag '写好了！',:class => 'button',:disable_with => '发送中..' %>
+          <%= submit_tag '写好了！',:disable_with => '发送中..' %>
         <% end %>
       </div>
       

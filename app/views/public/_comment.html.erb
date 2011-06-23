@@ -8,7 +8,7 @@
       <% end %>
       #<%= comment_counter +1%>
       <%= link_to comment.user.login,user_path(comment.user) %>:
-      <span> <%= format_date(comment.created_at) %></span>
+      <span> [<%= format_date(comment.created_at) %>]</span>
       <pre><%= comment.content %></pre>
     </div>
 </div>
