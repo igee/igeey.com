@@ -2,18 +2,18 @@
 
 <div class="box">
   <h3><%= @title %>
-  <span>
-    <% if @question.owned_by?(current_user) %>
-      <%= link_to (@question.detail.nil? ? "补充" : '编辑'),"#{edit_question_path(@question)}?back_path=#{request.path}"%> |
-      <%= link_to "删除","#{question_path(@question)}",:method => :delete,:confirm => '你确定要删除这个问题么？'%>
-    <% end %>
-  </span>
+    <span>
+      <% if @question.owned_by?(current_user) %>
+        <%= link_to (@question.detail.nil? ? "补充" : '编辑'),"#{edit_question_path(@question)}?back_path=#{request.path}"%> |
+        <%= link_to "删除","#{question_path(@question)}",:method => :delete,:confirm => '你确定要删除这个问题么？'%>
+      <% end %>
+    </span>
   </h3>
+  <%= raw tag_list_for(@question.tag_list)%>
   <pre><%= @question.detail %></pre>
   <p>
     <span>来自 <%= link_to @question.user.login,@question.user %> 的提问 </span>
     <span class="timeago"><%= @question.created_at %></span>
-    <span>标签：<%= raw tag_links_for(@question.tag_list)%></span>
   </p>
   <%= render :partial => '/public/share'%>
 </div>
@@ -59,7 +59,7 @@
 
 <% content_for :sidebar do %>
   <div class="box">
-    <h4>相关问题</h4>
+    <h5>相关问题</h5>
     <% @questions.each do |q|%>
       <div style="padding:4px 6px 4px;border-bottom:1px dashed #ccc;">
         <p><%= link_to q.title,question_path(q)%></p>

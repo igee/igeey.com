@@ -65,7 +65,7 @@
   <% unless logged_in? %>
     <div class="box" style="text-align:center;height:265px">
       <div style="padding:20px 0;border-bottom:1px solid #ccc;margin-bottom:20px">  
-        <%= link_to "立即注册爱聚",signup_path ,:class => "big_button open_dialog",:title => '注册',:title=>'注册'%>
+        <%= button_to "立即注册",signup_path ,:class => "open_dialog",:title => '注册',:style=>'padding:8px 16px;font-size:16px'%>
       </div>
       
       <div style="padding-bottom:10px;border-bottom:1px solid #ccc;margin-bottom:15px">

@@ -296,7 +296,7 @@ a.record_embed_number{
   background-color:#4c4;
   }
 
-button,input[type="submit"],.following{
+button,input[type="submit"],input[type="button"],.following{
   text-align:center;
   margin-right:4px;
   margin-left:4px;
@@ -314,7 +314,7 @@ button,input[type="submit"],.following{
 
 .see_all_link{float:right;font-size:12px;margin-top:4px}
 
-button:hover,button,input[type="submit"]:hover{background:#ff9f10;color:white;}
+button:hover,input[type="submit"]:hover,input[type="button"]:hover{background:#ff9f10;color:white;}
 .following:hover{background:#999;color:white;}
 
 .dialog_rightbar{
@@ -693,11 +693,7 @@ input.todo:hover{
 .tag_list{display:inline;width:86px}
 .tag_label{float:left;margin-top:2px}
 
-.tag_cloud{
-  margin:0;
-  padding: 0;
-  float:left;
-  }
+.tags{overflow:hidden;}
 
 
 a.tag{
