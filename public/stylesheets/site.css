@@ -296,21 +296,23 @@ a.record_embed_number{
   background-color:#4c4;
   }
 
-button,input[type="submit"],input[type="button"],.following{
+button,input[type="submit"],input[type="button"]{
   text-align:center;
   margin-right:4px;
   margin-left:4px;
   color:white;
   font: bold normal 14px/14px sans-serif;
   background:url('/images/button.png');
-  padding:3px 12px;
-  -padding:4px 12px 2px;
+  padding:3px 9px;
+  -padding:4px 9px 2px;
   -webkit-border-radius:3px;-moz-border-radius: 3px;border-radius: 3px;
   cursor:pointer;
   border:none
   }
 
-.following{background:url('/images/following.png');}
+button.selected,input[type="submit"].selected,input[type="button"].selected{
+  background:url('/images/following.png');
+}
 
 .see_all_link{float:right;font-size:12px;margin-top:4px}
 

@@ -91,7 +91,7 @@ Igeey::Application.routes.draw do
       get   :more_answers
       get   :more_questions
       get   :tasks
-      get   :records
+      get   :plans
       get   :sayings
       get   :topics
       get   :photos

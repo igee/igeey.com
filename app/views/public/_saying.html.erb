@@ -7,7 +7,7 @@
     <span>
       <%= image_tag('/images/icon/saying.gif',:class => 'icon')%>
       <%= raw("#{link_to user.login,user_path(user)}") unless controller_name == 'users'%>
-      <%= raw("在 #{link_to venue.name,venue_path(venue)} ") unless controller_name == 'venues' %>的报道：
+      <%= raw("在 #{link_to venue.name,venue_path(venue)} ") unless controller_name == 'venues' %>的报到：
     </span>
     <pre><%= saying.content %></pre>
     

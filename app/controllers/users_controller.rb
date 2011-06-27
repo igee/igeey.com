@@ -170,6 +170,11 @@ class UsersController < ApplicationController
     render 'see_all'
   end
   
+  def plans
+    @items = @user.plans.order('created_at desc').paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@user.login}的任务认领"
+    render 'see_all'
+  end
   
   def following_venues
     @items = @user.venue_followings.map(&:followable).paginate(:page => params[:page], :per_page => 10)

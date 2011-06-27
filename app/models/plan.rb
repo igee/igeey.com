@@ -22,9 +22,15 @@ class Plan < ActiveRecord::Base
   scope :done ,where(:is_done => true)
 
   validates :task_id, :content, :presence => true
-  validates :user_id,    :presence   => true,:uniqueness => {:scope => :task_id}
+  validates :user_id, :presence   => true,:uniqueness => {:scope => :task_id}
   
-  def formatted_plan_at
+  def validate
+    if is_done
+      errors[:title] = '请为自己的行动填写标题' if title.blank?
+    end
+  end
+  
+  def formatted_plan_as
     date = self.plan_at
     "#{date.year == Date.today.year ? '' : "#{date.year}年"}#{date.month}月#{date.day}日"
   end
