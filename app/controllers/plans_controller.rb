@@ -51,6 +51,7 @@ class PlansController < ApplicationController
       redirect_to params[:back_path]
     else
       if @plan.is_done
+        @venue = @plan.venue
         respond_with @plan
       else
         redirect_to @task

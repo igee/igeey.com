@@ -123,19 +123,19 @@
 <% content_for :sidebar do %>
   <div class="box">
     <span style="float:right"><%= link_to "查看大图",position_venue_path(@venue),:class => 'open_dialog',:title => '地点地图'%></h4></span>
-    <h4>地图：</h4>
+    <h5>地图：</h5>
     <div id="sidebar_map_canvas" style="width:248px;height:160px;"></div>
   </div>
   
   <div class="box">
     <span style="float:right"><%= link_to "查看全部",followers_venue_path(@venue)%></h4></span>
-    <h4><%= "#{@venue.follows.size}人关注这里："%></h4>
+    <h5><%= "#{@venue.follows.size}人关注这里："%></h5>
     <%= render :partial => "/users/user",:collection => @followers[0..7] %>
   </div>
   
   <% unless @venue.tag_list.empty? %>
   <div class="box">
-    <h4>关联标签：</h4>
+    <h5>关联标签：</h5>
     <%= raw tag_list_for(@venue.tag_list)%>
   </div>
   <% end %>

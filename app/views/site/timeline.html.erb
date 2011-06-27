@@ -22,15 +22,5 @@
 <% content_for :sidebar do %>  
   <% if logged_in? %>
     <%= render :partial => "sidebar_panel"%>
-    <% @venues = current_user.venue_followings.limit(6).map(&:followable)%>
-    <% unless @venues.empty? %>
-    <div style="padding:0 5px">
-      <p>
-        <span style="float:right"><%= link_to "查看全部",followings_path %></span>
-        <span>关注了<%= "#{current_user.venue_followings.count}个地点" %>：</span>
-      </p>
-      <%= render :partial => '/venues/venue',:collection => @venues ,:locals => {:with_name => true}%>
-    </div>
-    <% end %>
   <% end %>
 <% end %>

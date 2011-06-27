@@ -4,6 +4,8 @@ class Message < ActiveRecord::Base
   
   default_scope :order => 'created_at DESC'
   
+  validates :from_user_id, :to_user_id, :content, :presence => true
+  
   def read
     self.update_attribute(:unread, false)
   end

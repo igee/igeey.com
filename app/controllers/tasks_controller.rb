@@ -10,7 +10,7 @@ class TasksController < ApplicationController
   def create
     @task = current_user.tasks.build(params[:task])
     if @task.save
-      flash[:dialog] = "<a href='#{new_sync_path}?syncable_type=#{@task.class}&syncable_id=#{@task.id}' class='open_dialog' title='传播这个行动'>同步</a>" 
+      flash[:dialog] = "<a href='#{new_sync_path}?syncable_type=#{@task.class}&syncable_id=#{@task.id}' class='open_dialog' title='传播这个任务'>同步</a>" 
     end
     respond_with @task
   end

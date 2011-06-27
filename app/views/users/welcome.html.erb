@@ -9,7 +9,7 @@
   </p>
   <br/>
   <p style="text-align:right">
-    <%= link_to '去设置', "#{setting_url}?back_path=#{request.env['HTTP_REFERER']}",:class => 'button'%>
-    <%= link_to '继续', "#",:class => 'button',:onclick => "javascript:$('#floatBox #close_dialog').click();return false"%>
+    <%= button_to '去设置', "#{setting_url}?back_path=#{request.env['HTTP_REFERER']}"%>
+    <%= button_to '继续', "#",:onclick => "javascript:$('#floatBox #close_dialog').click();return false"%>
   </p>
 </div>

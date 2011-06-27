@@ -6,10 +6,10 @@
 <%= form_for @task ,:html => { :multipart => true } do |form| %>
   <%= raw error_explanation_for(@task) if @task.errors.present?%>
   <p>
-    <b><%= form.label 'title','目标：'%></b> <span>请用一句话描述你的任务目标 (20字以内)</span> 
+    <b><%= form.label 'title','目标：'%></b> <span>请用一句话描述你的任务目标 <span> 
+    <span style="color:#ffaa33">(剩余字数:<i id="character_count"></i> )</span>
     <br/>
     <%= form.text_field :title, :style => "width:400px", :placeholder => "" %>
-    <p class="explanation">目前字数：<span id="character_count"></span></p>
   </p>
   <p>
     <b><%= form.label 'detail','任务要求：'%></b>
@@ -51,7 +51,7 @@
   $(document).ready(function(){
       DateTimeShortcuts.init()
       function updateCount() {
-      document.getElementById("character_count").innerHTML = document.getElementById("task_title").value.length;
+      document.getElementById("character_count").innerHTML = (20 - document.getElementById("task_title").value.length);
       setTimeout(updateCount, 400);
        }
       updateCount();

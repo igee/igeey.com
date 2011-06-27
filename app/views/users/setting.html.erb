@@ -24,7 +24,7 @@
     </p>
   </div>
   <%= image_tag @user.avatar.url(:_72x72),:class => "avatar" %>
-  <%= submit_tag '修改', :class => 'button' %>
+  <%= submit_tag '修改' %>
   <% end -%>  
 </div>
 
@@ -40,7 +40,7 @@
     <p>
     <%= form.label :signature,'个性签名'%> <%= form.text_field :signature,:size => 20 %>
     </p>
-    <%= form.submit '修改', :class => 'button' %>
+    <%= form.submit '修改'%>
   <% end %>
 </div>
 

@@ -43,7 +43,7 @@ class Task < ActiveRecord::Base
   end
   
   def description
-    "为#{self.venue.name}发起行动：#{self.title}，请大家踊跃报名！"
+    "发起任务：#{self.title}，请大家踊跃报名！"
   end
   
   def self.tag_list

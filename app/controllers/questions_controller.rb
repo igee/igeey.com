@@ -21,7 +21,7 @@ class QuestionsController < ApplicationController
   def create
     @question = current_user.questions.build(params[:question])
     if @question.save
-      flash[:dialog] = "<a href='#{new_sync_path}?syncable_type=#{@question.class}&syncable_id=#{@question.id}' class='open_dialog' title='传播这个问题'>同步</a>" 
+      flash[:dialog] = "<a href='#{new_sync_path}?syncable_type=#{@question.class}&syncable_id=#{@question.id}' class='open_dialog' title='传播这个问题'>同步</a>"
     end
     redirect_to :back
   end

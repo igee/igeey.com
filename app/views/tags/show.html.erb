@@ -80,11 +80,11 @@
     <p class="explanation" style="padding:5px;text-align:left">收藏话题之后，你就可以在你关注的地点上直接使用你收藏的话题作为标签。</p>
   </div>
   <div class="box">
-    <h4><%= "已有#{@tag.follows_count}人收藏:"%></h4>
+    <h5><%= "已有#{@tag.follows_count}人收藏:"%></h5>
     <%= render :partial => "/users/user",:collection => @tag.followers[0..7] %>
   </div>
   <div class="box"> 
-    <h4>你可能还感兴趣..</h4>
+    <h5>你可能还感兴趣..</h5>
     <%= raw tag_list_for(@tags)%>
   </div>
 

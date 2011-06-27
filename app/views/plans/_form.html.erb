@@ -33,16 +33,16 @@
         <%= form.select :venue_id,@venues %>
       </p>
       <p>
-        <b><%= form.label :cover,'添加图片：'%></b> <%= form.file_field :cover,:size => 18%>
+        <b><%= form.label :cover,'照片：'%></b> <%= form.file_field :cover,:size => 18%>
       </p>
     <% end %>
   </div>
 
-  <div style="clear:both;text-align:right">
+  <p>
     <%= hidden_field_tag :back_path,params[:back_path]%>
     <%= form.submit '确定',:class => "button"%>
     <%= button_to_function '取消',"javascript:$('#floatBox #close_dialog').click();#{'window.history.back()' unless params[:layout] == 'false'}",:class => "button"%>
-  </div>
+  </p>
 <% end %>
 <% content_for :extension do %>
   <script type="text/javascript" charset="utf-8">

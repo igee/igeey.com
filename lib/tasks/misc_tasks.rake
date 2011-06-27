@@ -243,4 +243,12 @@ namespace :misc do
       print(r.save ? '.' : 'x')
     end
   end
+      
+  desc "Send message to everyone"
+  task :send_message_to_everyone => :environment do
+    content = "站内信功能上线了！\n大家觉得目前站内信功能还有什么不完善的地方可以到 http://www.igeey.com/questions/135 进行交流！"
+    User.all.each do |u|
+      print '.' if Message.new(:from_user_id => 1, :to_user_id => u.id, :content => content).save
+    end
+  end
 end

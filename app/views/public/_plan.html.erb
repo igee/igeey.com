@@ -5,23 +5,21 @@
   <%= controller_name == 'user' ? (render :partial => "/venues/venue",:object => venue) : (render :partial => "/users/avatar",:object => user)%>
   <div class="event">
     <span>
-      <%= image_tag('/images/icon/saying.gif',:class => 'icon')%>
+      <%= image_tag('/images/icon/action.gif',:class => 'icon')%>
       <%= raw("#{link_to user.login,user_path(user)}") unless controller_name == 'users'%>
       <%= raw("在 #{link_to venue.name,venue_path(venue)} ") unless controller_name == 'venues' %><%= plan.is_done ? '完成了' :  '认领了'%>任务：
+      <%= link_to plan.task.title,task_path(plan.task) unless controller_name == 'tasks'%>
     </span>
     <% if plan.is_done %>
       <p><b><%= link_to plan.title,plan_path(plan)%></b></p>
     <% else %>
-      <p><b><%= plan.task.title unless controller_name == 'tasks'%></b></p>
       <pre><span><%= plan.content%></span></pre>
     <% end %>
-    <span class="timeago" style="float:left"><%= plan.created_at %></span>
-    <div class="event_action">
       <% if (plan.owned_by?(current_user)) %>
         <%= plan.is_done ? (link_to "修改","#{edit_task_plan_path(plan.task,plan)}?back_path=#{request.path}") : (link_to '完成',"#{new_record_path}?plan_id=#{plan.id}") %> |
         <%= link_to "取消",task_plan_path(plan.task,plan),:method => :delete,:confirm => '确定要取消你的计划么?' %>　
       <% end %>
-    </div>
+    <span class="timeago" style="float:left"><%= plan.created_at %></span>
     <%= render :partial => "/public/reply_form",:locals =>  {:object => plan.task}%>
   </div>
 </div>
