@@ -11,7 +11,7 @@
     <%= form.label :tag_list,'添加标签：',:style=>"float:left"%>
     <%= form.text_field :tag_list,:class => 'tag_list' %>
   </p>
-  <%= form.submit '修改问题',:class => 'button'%>
+  <%= form.submit '修改问题'%>
   <%= button_to_function '取消',"javascript:$('#floatBox #close_dialog').click();#{'window.history.back()' unless params[:layout] == 'false'}",:class => "button"%>
 <% end %>
 

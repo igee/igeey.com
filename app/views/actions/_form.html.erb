@@ -14,7 +14,7 @@
   <%= image_tag @action.cover.url(:_64x64) if @action.cover_file_name%>
 </p>
 <p style="margin-left:75px">
-  <%= submit_tag '确定',:class => 'button' %>
+  <%= submit_tag '确定' %>
   <%= button_to_function '取消',"javascript:window.history.back()",:class => "button"%>
 </p>
 <% end %>

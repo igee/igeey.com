@@ -31,6 +31,8 @@ Igeey::Application.routes.draw do
   match 'search' => 'search#result'
   match 'search/more' => 'search#more',:as => :more_search
   match 'search/tags' => 'search#tags',:as => :tags_search
+
+  match 'standards(/:action)' => 'standards#(/:action)'
   
   resource :session, :only => [:new, :create, :destroy,:show]
   resource :sync, :only => [:new, :create]
@@ -108,6 +110,10 @@ Igeey::Application.routes.draw do
   end
   
   resources :follows,:photos,:topics,:sayings,:doings
+  
+  resources :messages do
+    get :clear, :on => :member  
+  end
   
   resources :questions do
     resources :answers do

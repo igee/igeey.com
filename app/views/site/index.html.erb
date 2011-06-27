@@ -2,12 +2,12 @@
 <% content_for :head do %>
   <%= javascript_include_tag 'jquery.tag.editor-min.js' %>
 <% end %>
-<div class="box" style="text-align:center;line-height:1.3;margin: 0 0 20px; background: #fff1ec; padding: 25px 10px 15px;">
-  <%= form_tag tags_search_path,:id=>'tags_search',:style => 'font-size:18px;padding:10px;text-align:center',:remote=> true,:method => :get do%>
+<div class="box" style="text-align:center;line-height:1.3;margin: 0 0 20px; background: #fff1ec; padding: 25px 10px 5px;">
+  <%= form_tag tags_search_path,:id=>'tags_search',:style => 'font-size:16px;padding:10px;text-align:center',:remote=> true,:method => :get do%>
     我关注 <%= text_field_tag 'keywords', @keywords,:placeholder => '环保 or 节能 or 乡村教育...',:style => 'font-size:15px;width:280px;padding:5px'%>
-    <%= submit_tag '搜索话题',:style=>'font-size:15px;line-height:22px',:disable_with => '搜索中...' %>
-    <div id="search_result"></div>
+    <%= submit_tag '搜索话题',:style=>'font-size:14px;line-height:20px',:disable_with => '搜索中...' %>
   <% end %>
+  <div id="search_result"></div>
   <br/>
   <div style="font-weight:bold">
   <span>热门话题：</span>
@@ -33,12 +33,12 @@
       <% if logged_in? %>
       <%= form_for @question,:html =>{:style => 'background-color:#f3f3f3;padding:2px 10px 10px;margin:5px 0'} do |form| %>
         <p>
-          <%= form.text_field :title,:style => "width:500px;margin-top:10px",:placeholder => "要提问？在这里输入你的问题（别忘了加上最后的“？”号）" %>
+          <%= form.text_field :title,:style => "width:480px;margin-top:10px",:placeholder => "要提问？在这里输入你的问题（别忘了加上最后的“？”号）" %>
           <%= form.submit '添加问题',:onclick => "javascript:if ($('.new_question').find('a').length == 0) {alert('请至少填写一个标签');return false;};"%>
         </p>
         <div id="question_details" style="display:none;">
           <p>
-            <%= form.text_area :detail,:style => "width:500px;height:40px",:placeholder => "关于这个问题，有什么要补充的说明么？" %>
+            <%= form.text_area :detail,:style => "width:480px;height:40px",:placeholder => "关于这个问题，有什么要补充的说明么？" %>
           </p>
           <p>
             <%= form.label :tag_list,'添加标签：',:style=>"float:left"%>
@@ -70,7 +70,7 @@
   <% unless logged_in? %>
     <div class="box" style="text-align:center;height:265px">
       <div style="padding:20px 0;border-bottom:1px solid #ccc;margin-bottom:20px">  
-        <%= link_to "立即注册爱聚",signup_path ,:class => "big_button open_dialog",:title => '注册',:title=>'注册'%>
+        <%= button_to "立即注册",signup_path ,:class => "open_dialog",:title => '注册',:style=>'padding:8px 16px;font-size:16px'%>
       </div>
       
       <div style="padding-bottom:10px;border-bottom:1px solid #ccc;margin-bottom:15px">
@@ -92,7 +92,7 @@
           <p>
             <%= check_box_tag 'remember_me', '1', @remember_me %>
             <%= label_tag 'remember_me', '记住我?' %>
-            <%= submit_tag '登录',:class => 'button'%>
+            <%= submit_tag '登录'%>
           </p>
         <% end -%>
         <p>
@@ -107,7 +107,7 @@
   <% else %>
     <%= render :partial => "sidebar_panel"%>
     <div class="box">
-      <span>我收藏的话题..</span><br/>
+      <h5>我收藏的话题..</h5>
       <%= current_user.tag_list.empty? ? '你还没有收藏任何话题' : raw(tag_list_for(current_user.tag_list))%>
     </div>
   <% end %>

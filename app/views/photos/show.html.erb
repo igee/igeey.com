@@ -2,6 +2,7 @@
 <% @venue = @photo.venue%>
   <div class="box">
     <%= image_tag @photo.photo.url(:max500x400),:alt => @photo.title %>
+    <%= raw tag_list_for(@photo.tag_list)%>
     <br/>
     <% if @photo.owned_by?(current_user) %>
       <span>
@@ -14,15 +15,11 @@
       上传在 <%= link_to @photo.venue.name ,@photo.venue%> ｜ <%= link_to "查看原图",@photo.photo.url(:original),:target => "_blank" %> <br/>
       <%= link_to @photo.user.login ,@photo.user%> <%=  format_date(@photo.created_at) %>
     </p>
-    <%= raw tag_list_for(@photo.tag_list)%>
     <br/>
   </div>
   
 <% unless params[:layout] == 'false'%>
-  <div class="box">
-    <h4>留言板：</h4>
-    <%= render :partial => '/public/comment' ,:collection => @comments %>
-  </div>
+  <%= render :partial => '/comments/board'%>    
   <%= render :partial => '/comments/form' ,:locals => {:commentable => @photo}%>
 <%end%>
 

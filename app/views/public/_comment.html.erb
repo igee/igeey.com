@@ -1,13 +1,14 @@
 <div class="event_box">
-    <%= render :partial => '/users/user',:object => comment.user %>
-    <div class="bubble_tail"></div>  
-    <div class="comment">
-      <pre><%= comment.content %></pre>
+    <%= render :partial => '/users/avatar',:object => comment.user %>
+    <div class="event">
       <% if logged_in? %>
         <div class="event_action">
           <%= link_to '回复',"#new_comment",:onclick => "javascript:reply_to('#{comment.user.login}')"%>
         </div>
       <% end %>
-      <span>#<%= comment_counter +1%> at <%= format_date(comment.created_at) %></span>
+      #<%= comment_counter +1%>
+      <%= link_to comment.user.login,user_path(comment.user) %>:
+      <span> [<%= format_date(comment.created_at) %>]</span>
+      <pre><%= comment.content %></pre>
     </div>
 </div>
