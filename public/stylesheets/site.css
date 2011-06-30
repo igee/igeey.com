@@ -592,7 +592,7 @@ input.reply_submit{float:right;margin-top:1px}
 
 .reply{font-size:12px;border-bottom:1px dashed #d6d6d6;text-align:left}
 .reply_reply{float:right}
-.reply_tail{position:relative;top:6px;right:20px;}
+.reply_tail{position:relative;top:5px;right:20px;}
 .replys{text-align:right;clear:both;}
 
 .photo_box{

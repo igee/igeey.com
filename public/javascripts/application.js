@@ -16,7 +16,7 @@ function redirect_clear(id, type){
 };
 
 
-$(document).ready(function(){
+(function($){
   
   $('.timeago').live('replace.time', function() {
     $(this).html('(' + jQuery.timeago($(this).html()) + ')').removeClass('timeago');
@@ -56,52 +56,57 @@ $(document).ready(function(){
     .live('mouseover', function() {$(this).html('取消关注')})
     .live('mouseout', function() {$(this).html("正在关注")});
 
-  $(".open_dialog").click(function(e) {
+  $(".open_dialog").live('click', function(e) {
     IG.dialog.init({title: $(this).attr('title'),url: $(this).attr('href')});
     e.preventDefault();
   });
   
-  $(".answer").click(function(e) {
+  $(".answer").live('click', function(e) {
     var id = $(this).attr('href');
     IG.dialog.init({title: $(this).attr('title'),content: $(id).html()});
     e.preventDefault();
   });
   
-  $('.with_tip').poshytip({
-    className: 'tip-yellowsimple',
-    showOn: 'focus',
-    alignTo: 'target',
-    alignX: 'right',
-    alignY: 'center',
-    offsetX: 5
-  });
+   
+  $(document).ready(function(){
   
-  $('.with_explain').poshytip({
-    className: 'tip-yellowsimple',
-    showTimeout: 1,
-    alignTo: 'target',
-    alignX: 'center',
-    offsetY: 5,
-    allowTipHover: false
-  });
+    $('.with_tip').poshytip({
+      className: 'tip-yellowsimple',
+      showOn: 'focus',
+      alignTo: 'target',
+      alignX: 'right',
+      alignY: 'center',
+      offsetX: 5
+    });
   
-  $('textarea').autoResize()
+    $('.with_explain').poshytip({
+      className: 'tip-yellowsimple',
+      showTimeout: 1,
+      alignTo: 'target',
+      alignX: 'center',
+      offsetY: 5,
+      allowTipHover: false
+    });
+  
+    $('textarea').autoResize()
 
-  if(!('placeholder' in document.createElement('input'))){
-    $('input[placeholder!=""]').hint();
-  };
+    if(!('placeholder' in document.createElement('input'))){
+      $('input[placeholder!=""]').hint();
+    };
   
-  $(".tabContents").hide().first().show();
-  $("#tabNav li a:first").addClass("active");
-  $("#tabNav li a").click(function(){ 
-    var activeTab = $(this).attr("href"); 
-    $("#tabNav li a").removeClass("active"); 
-    $(this).addClass("active");
-    $(".tabContents").hide();
-    $(activeTab).fadeIn();
-    return false;
-  });
+    $(".tabContents").hide().first().show();
+    $("#tabNav li a:first").addClass("active");
+    $("#tabNav li a").click(function(){ 
+      var activeTab = $(this).attr("href"); 
+      $("#tabNav li a").removeClass("active"); 
+      $(this).addClass("active");
+      $(".tabContents").hide();
+      $(activeTab).fadeIn();
+      return false;
+    });
   
-  $('#dialog_flash a').click();
+    $('#dialog_flash a').click();  
+    
+  });  
   
-});
+}( jQuery ));
