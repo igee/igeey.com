@@ -47,7 +47,7 @@
 <% content_for :sidebar do %>
   <%= render :partial => '/venues/intro' %>
   <div class="box">
-    <h4>认领 (<%= @plans.undone.size %>)</h4>
+    <h5>认领 (<%= @plans.undone.size %>)</h5>
     <% @plans.undone.each do |a|%>
       <div class='user' user_id="<%=a.user.id%>">
         <%= link_to (image_tag a.user.avatar.url,:class => "user_avatar"),a %> <br/>
@@ -57,7 +57,7 @@
   </div>
 
   <div class="box">
-  <h4>已完成 (<%= @plans.done.size %>)</h4>
+  <h5>已完成 (<%= @plans.done.size %>)</h5>
     <% @plans.done.each do |a|%>
       <div class='user' user_id="<%=a.user.id%>">
         <%= link_to (image_tag a.user.avatar.url,:class => "user_avatar"),a %> <br/>
@@ -67,12 +67,12 @@
   </div>
 
   <div class="box">
-    <h4>关注 (<%= @task.follows_count %>)</h4><br/>
+    <h5>关注 (<%= @task.follows_count %>)</h5><br/>
     <%= render :partial => '/users/user',:collection => @followers%>
   </div>
 
   <div class="box">
-    <h4>相关任务</h4>
+    <h5>相关任务</h5>
     <% @tasks.each do |t|%>
       <div style="padding:4px 6px 4px;border-bottom:1px dashed #ccc;">
         <p><%= link_to t.title,task_path(t)%></p>

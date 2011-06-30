@@ -29,7 +29,7 @@
   <%= render :partial => '/venues/intro' %>
 
   <div class="box">
-    <h4>相关记录</h4>
+    <h5>相关记录</h5>
     <% @task.plans.done.each do |p|%>
       <div style="padding:4px 6px 4px;border-bottom:1px dashed #ccc;">
         <p><%= link_to "#{p.user.login}：#{p.title}",plan_path(p)%></p>
@@ -38,7 +38,7 @@
   </div>
 
   <div class="box">
-    <h4>相关任务</h4>
+    <h5>相关任务</h5>
     <% @tasks.each do |t|%>
       <div style="padding:4px 6px 4px;border-bottom:1px dashed #ccc;">
         <p><%= link_to t.title,task_path(t)%></p>
