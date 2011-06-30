@@ -9,7 +9,7 @@
   <% end %>
   <div id="search_result"></div>
   <br/>
-  <div style="font-weight:bold">
+  <div>
   <span>热门话题：</span>
     <% @tags[0..6].each do |tag|%>
         <%= link_to tag.name,tag_path(tag)%>
@@ -56,9 +56,7 @@
     </div>
     <div id="tasks" class="tabContents">
       <% if logged_in? %>
-        <p style="text-align:right">
-          <%= link_to '发布任务',new_task_path,:class=>'gary_button'%>
-        </p>
+        <%= button_to '发布任务',new_task_path,:class=>'gary',:method => :get,:style=>'text-align:right'%>
       <% end %>
       <%= render :partial => '/public/task',:collection => @tasks %>
       <%= link_to('查看更多...',more_tasks_path(:page => 2),:class=> 'timeline_footer',:onclick => 'javascript:more_timeline($(this));return false;') %>
@@ -70,7 +68,7 @@
   <% unless logged_in? %>
     <div class="box" style="text-align:center;height:265px">
       <div style="padding:20px 0;border-bottom:1px solid #ccc;margin-bottom:20px">  
-        <%= button_to "立即注册",signup_path ,:class => "open_dialog",:title => '注册',:style=>'padding:8px 16px;font-size:16px'%>
+        <%= button_to "立即注册",'#',:href => signup_path ,:class => "open_dialog",:title => '注册',:style=>'padding:8px 16px;font-size:16px'%>
       </div>
       
       <div style="padding-bottom:10px;border-bottom:1px solid #ccc;margin-bottom:15px">

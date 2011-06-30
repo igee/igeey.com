@@ -193,7 +193,7 @@ table{
   }
   
 #nav a{color:#fff;}
-#nav a:hover{text-decoration:none}
+#nav a:hover{ text-decoration:none }
 
 #nav_links{
   overflow:hidden;
@@ -264,19 +264,6 @@ table{
   top:3px;
   }
 
-.gary_button{
-  margin:0 6px;
-  color:white;
-  font-size:14px;
-  font-weight:bold;
-  background-color:#bbb;
-  border:1px solid #aaa;
-  padding:3px 14px;
-  -webkit-border-radius:3px;-moz-border-radius: 3px;border-radius: 3px;
-  cursor:pointer;
-  }
-.gary_button:hvote_boxover{color:#fff;background-color:#ff8f00;border:1px solid #ee7f00}
-
 .embed_number_wrapper{
   position:absolute;
   text-align:right;
@@ -310,14 +297,17 @@ button,input[type="submit"],input[type="button"]{
   border:none
   }
 
+button.gary,input[type="submit"].gary,input[type="button"].gary{
+  background:url('/images/gary.png');
+  }
+
 button.selected,input[type="submit"].selected,input[type="button"].selected{
-  background:url('/images/following.png');
+  background:url('/images/selected.png');
 }
 
-.see_all_link{float:right;font-size:12px;margin-top:4px}
-
 button:hover,input[type="submit"]:hover,input[type="button"]:hover{background:#ff9f10;color:white;}
-.following:hover{background:#999;color:white;}
+
+.see_all_link{float:right;font-size:12px;margin-top:4px}
 
 .dialog_rightbar{
   float:right;
@@ -711,7 +701,7 @@ a.tag{
   padding: 2px 8px;
   line-height:1;
   margin: 3px 7px 1px 0;
-  background-color:#acf;
+  background-color:#9bf;
   color:#fff;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -725,6 +715,7 @@ a.tag img{
 a.tag:hover{
   background-color: #f93;
   color:#fff;
+  text-decoration:underline;
   }
 
 .filter{color:#6ad;}
@@ -824,6 +815,7 @@ a.tag:hover{
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   -moz-border-radius: 5px 5px 0 0;
+  text-decoration:none
   }
 
 #tabNav li a:hover{

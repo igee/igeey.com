@@ -14,6 +14,7 @@ REVISION
 public/media/
 public/json/
 *.swp
+*.swo
 *.kpf
 *.project
 *.DS_Store
