@@ -10,7 +10,7 @@
       <%= raw("#{link_to user.login,user_path(user)}") unless controller_name == 'users'%>
       <%= raw("在 #{link_to venue.name,venue_path(venue)} ") unless controller_name == 'venues' %>发布了任务：
     </span>
-   <p><b><%= link_to task.title, task %></b></p>
+   <p><%= link_to task.title, task %></p>
    <span><%= "#{task.status}"%></span>
   </div>
 </div>
