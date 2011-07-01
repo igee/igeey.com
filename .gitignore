@@ -19,4 +19,4 @@ public/json/
 *.project
 *.DS_Store
 *.orig
-
+config/schedule.rb

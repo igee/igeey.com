@@ -56,7 +56,9 @@
     </div>
     <div id="tasks" class="tabContents">
       <% if logged_in? %>
-        <%= button_to '发布任务',new_task_path,:class=>'gary',:method => :get,:style=>'text-align:right'%>
+        <div style="text-align:right;clear:both;padding:4px">
+          <%= button_to '发布任务',new_task_path,:class=>'gary',:method => :get%>
+        </div>
       <% end %>
       <%= render :partial => '/public/task',:collection => @tasks %>
       <%= link_to('查看更多...',more_tasks_path(:page => 2),:class=> 'timeline_footer',:onclick => 'javascript:more_timeline($(this));return false;') %>
