@@ -17,7 +17,7 @@
     <div style="clear:both;text-align:right">
         <% unless @my_plan.nil? %>
           <% unless @my_plan.is_done %>
-            <%= button_to "完成任务",done_task_plan_path(@task,@my_plan), :title => '完成任务',:method => :get %>
+            你已经认领了这个任务 <%= button_to "已经完成",done_task_plan_path(@task,@my_plan), :title => '完成任务',:method => :get %>
           <% else %>
             <span>已完成这个任务，<%= link_to '查看我的总结',task_plan_path(@task,@my_plan)%>, </span>
           <% end %>

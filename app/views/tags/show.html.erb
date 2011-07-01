@@ -78,9 +78,9 @@
 <% content_for :sidebar do %>
   <div class="sidebar_panel" style="text-align:center">
   <% if logged_in? && current_user.is_following?(@tag)%>
-    <%= link_to("已经收藏了",follow_path(@tag.follows.find_by_user_id(current_user.id)),:method => :delete,:class => 'big_button',:style=>"background:#ccc")%>
+    <%= button_to("已经收藏了",follow_path(@tag.follows.find_by_user_id(current_user.id)),:method => :delete,:class => 'selected')%>
   <% else %>
-    <%=  link_to("收藏这个话题","#{follows_path}?followable_type=#{@tag.class.to_s}&followable_id=#{@tag.id}",:method => :post,:class => 'big_button')%>
+    <%=  button_to("收藏这个话题","#{follows_path}?followable_type=#{@tag.class.to_s}&followable_id=#{@tag.id}")%>
   <% end %>
     <p class="explanation" style="padding:5px;text-align:left">收藏话题之后，你就可以在你关注的地点上直接使用你收藏的话题作为标签。</p>
   </div>
