@@ -7,7 +7,7 @@
       <% end %>
   </h2>
   <div class="box">
-    <%= image_tag(@plan.cover.url,:style=>'float:right;margin:0 5px')%>
+    <%= image_tag(@plan.cover.url,:style=>'float:right;margin:0 5px') if @plan.cover_filename%>
     <p class="explanation">
       原任务：<%= link_to @task.title,task_path(@task)%>
     </p>
