@@ -40,7 +40,7 @@
    
   $(document).ready(function(){
     
-    // Subscrible topics
+    // Subscribe topics
     
     $('.timeago').live('replace.time', function() {
       $(this).html('(' + $.timeago($(this).html()) + ')').removeClass('timeago');
