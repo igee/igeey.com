@@ -1,34 +1,7 @@
-// application function define
-
-function more_timeline(dom){
-  dom.html('读取中...');
-  $.get(dom.attr('href'),function(data){
-    dom.replaceWith(data);
-    $('.timeago').trigger('replace.time');
-    $('pre').trigger('replace.url');
-  });
+(function($) {
   
-  return false;
-};
-
-function redirect_clear(id, type){
-  $.post('/notifications/redirect_clear',{'id':id,'type':type});
-};
-
-
-(function($){
+  // Bind Events
   
-  $('.timeago').live('replace.time', function() {
-    $(this).html('(' + jQuery.timeago($(this).html()) + ')').removeClass('timeago');
-  }).trigger('replace.time');
-  
-  $('pre').live('replace.url', function() {
-    var rURL = /(http:\/\/|https:\/\/)((\w|\;|=|\?|\.|\/|&|-|!|#|%)+)/g;
-    $(this).html(
-      $(this).html().replace(rURL, "<a href='$1$2' target='_blank' rel='nofollow'>$1$2</a>")
-    );
-  }).trigger('replace.url');
-      
   $('.event_reply').live('click', function(e) {
     $(this).parent().next().toggle();
     e.preventDefault();
@@ -36,15 +9,12 @@ function redirect_clear(id, type){
   
   $('.reply_reply').live('click', function(e){
     var reply_field = $(this).parent().parent().parent().parent().find('input[type=text]');
-    reply_field.val($(this).attr('title'));
-    reply_field.focus();
+    reply_field.focus().val($(this).attr('title'));
     e.preventDefault();
   });
   
   $(".zoom_photo").live('click', function(e) {
-    var childrens = $(this).children();
-    childrens.first().toggle();
-    childrens.last().toggle();
+    $(this).children().first().toggle().end().last().toggle();
     e.preventDefault();
   });
   
@@ -69,7 +39,23 @@ function redirect_clear(id, type){
   
    
   $(document).ready(function(){
+    
+    // Subscrible topics
+    
+    $('.timeago').live('replace.time', function() {
+      $(this).html('(' + $.timeago($(this).html()) + ')').removeClass('timeago');
+    }).trigger('replace.time');
   
+    $('pre').live('replace.url', function() {
+      var rURL = /(http:\/\/|https:\/\/)((\w|\;|=|\?|\.|\/|&|-|!|#|%)+)/g;
+      $(this).html(
+        $(this).html().replace(rURL, "<a href='$1$2' target='_blank' rel='nofollow'>$1$2</a>")
+      );
+    }).trigger('replace.url');
+  
+  
+    // Use jQuery plugins
+    
     $('.with_tip').poshytip({
       className: 'tip-yellowsimple',
       showOn: 'focus',
@@ -93,7 +79,10 @@ function redirect_clear(id, type){
     if(!('placeholder' in document.createElement('input'))){
       $('input[placeholder!=""]').hint();
     };
-  
+    
+    
+    // Tabs
+    
     $(".tabContents").hide().first().show();
     $("#tabNav li a:first").addClass("active");
     $("#tabNav li a").click(function(){ 
@@ -104,9 +93,34 @@ function redirect_clear(id, type){
       $(activeTab).fadeIn();
       return false;
     });
-  
-    $('#dialog_flash a').click();  
+    
+    
+    //Others
+    
+    $('#dialog_flash a').click();
     
   });  
+  
+  
+  // Public functions
+  
+  window.more_timeline = function(dom) {
+    dom.html('读取中...');
+    $.get(dom.attr('href'), function(data) {
+    
+      dom.replaceWith(data);
+      
+      //Publish topics
+      $('.timeago').trigger('replace.time');
+      $('pre').trigger('replace.url');
+      
+    });
+    
+    return false;
+  };
+
+  window.redirect_clear = function(id, type){
+    $.post('/notifications/redirect_clear',{'id':id,'type':type});
+  };
   
 }( jQuery ));
