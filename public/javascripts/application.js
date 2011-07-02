@@ -8,8 +8,8 @@
   });
   
   $('.reply_reply').live('click', function(e){
-    var reply_field = $(this).parent().parent().parent().parent().find('input[type=text]');
-    reply_field.focus().val($(this).attr('title'));
+    $(this).parents('.event_box').find('.reply_field')
+      .focus().val($(this).attr('title'));
     e.preventDefault();
   });
   
