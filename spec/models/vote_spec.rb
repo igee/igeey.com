@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe Vote do
   before do
-    @user_1 = makestory
-    @user_2 = mhb
-    @user_3 = andrew
+    @user_1 = Factory(:user)
+    @user_2 = Factory(:green)
+    @user_3 = Factory(:lucy)
 
     @question = Question.new(:user_id=>@user_1.id, :title=>'question?', :tag_list=>'tag_1')
     @question.save

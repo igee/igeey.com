@@ -56,12 +56,12 @@ describe Answer do
     end
   end
   
-  it 'should be commented' do
+  it 'could be commented' do
     @comment = Comment.new(:user_id=>@user.id, :content=>'comment', :commentable_type=>@answer_1.class.to_s, :commentable_id=>@answer_1.id)
     @comment.should be_valid
   end
   
-  it 'should be voted' do
+  it 'could be voted' do
     @vote = Vote.new(:user_id=>@user.id, :voteable_type=>@answer_1.class.to_s, :voteable_id=>@answer_1.id)
     @vote.should be_valid
   end
