@@ -26,6 +26,10 @@
       
     </p>
     
+    <p> 
+      <%= f.label :geo_id,'　城市： '%> <%= (geo_selector("user", "geo",nil,@user.geo)) %>
+    </p>
+
     <p style="text-align:center">
       <%= submit_tag '注册' %>
     </p>
