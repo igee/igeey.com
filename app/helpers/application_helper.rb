@@ -29,9 +29,9 @@ module ApplicationHelper
   end
   
   def tag_list_for(tag_list)
-    html = '<ul class="tag_cloud">'
+    html = '<div class="tags">'
     html += tag_list.map{|tag| " #{link_to(tag,tag_path(tag),:class=>'tag')}\n"}.to_s
-    html += '</ul>'
+    html += '</div>'
   end
   
   def tag_links_for(tag_list,limit=2)

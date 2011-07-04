@@ -201,6 +201,34 @@ namespace :misc do
     end
   end
   
+  desc "Trans polymorphic form Calling to Task"
+  task :calling_to_task => :environment do
+    Comment.where(:commentable_type => 'Calling').each do |c|
+      c.update_attribute(:commentable_type,'Task')
+    end
+    Photo.where(:imageable_type => 'Calling').each do |c|
+      c.update_attribute(:imageable_type,'Task')
+    end
+    Sync.where(:syncable_type => 'Calling').each do |c|
+      c.update_attribute(:syncable_type,'Task')
+    end
+    Follow.where(:followable_type => 'Calling').each do |c|
+      c.update_attribute(:followable_type,'Task')
+    end
+    Vote.where(:voteable_type => 'Calling').each do |c|
+      c.update_attribute(:voteable_type,'Task')
+    end
+    Notification.where(:notifiable_type => 'Calling').each do |c|
+      c.update_attribute(:notifiable_type,'Task')
+    end
+    Event.where(:eventable_type => 'Calling').each do |c|
+      c.update_attribute(:eventable_type, 'Task')
+    end
+    Tagging.where(:taggable_type => 'Calling').each do |c|
+      c.update_attribute(:taggable_type, 'Task')
+    end
+  end
+
   desc "Update Calling for what from Action"
   task :update_callling_for_what_from_action => :environment do
     Calling.all.each do |c|
@@ -208,6 +236,14 @@ namespace :misc do
     end
   end
   
+  desc "Record and plan to plan merger"
+  task :record_and_plan_to_plan_merger => :environment do
+    Record.all.each do |r|
+      r.plan.update_attributes(:result=>r.detail, :done_at=>r.done_at)
+      print(r.save ? '.' : 'x')
+    end
+  end
+      
   desc "Send message to everyone"
   task :send_message_to_everyone => :environment do
     content = "站内信功能上线了！\n大家觉得目前站内信功能还有什么不完善的地方可以到 http://www.igeey.com/questions/135 进行交流！"

@@ -1,5 +1,5 @@
         <div class="impact">
-          <%= raw(@calling.present? ? "#{@calling.title} #{form.hidden_field(:title,:value => @calling.title)}" : "#{form.label :title,'行动标题：'} #{form.text_field(:title, :size => 20 ,:placeholder => '做的是什么行动？')}")%>
+          <%= raw(@task.present? ? "#{@task.title} #{form.hidden_field(:title,:value => @task.title)}" : "#{form.label :title,'行动标题：'} #{form.text_field(:title, :size => 20 ,:placeholder => '做的是什么行动？')}")%>
         </div>
         <div style="line-height:30px">
           <%= form.label :goods,'捐赠数量：'%> <%= form.text_field :goods, :size => 3 ,:placeholder => "",:value => (@record.goods || (@plan.present? && @plan.goods)) || nil%>

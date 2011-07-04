@@ -29,8 +29,9 @@
 
 <div id="tabContaier">
   <ul id="tabNav">
-    <li><%= link_to '正在解决..','#questions',:style=>"width:72px"%></li>
-    <li><%= link_to '正在发生..','#timeline',:style=>"width:72px"%></li>
+    <li><%= link_to '问答','#questions' %></li>
+    <li><%= link_to '任务','#task' %></li>
+    <li><%= link_to '动态','#timeline' %></li>
   </ul>
   <div id="questions" class="tabContents">
     <%= render :partial => '/public/question',:collection => @questions[0..9] %>
@@ -63,29 +64,32 @@
         </span>
       <% end %>
     </div>
-
+  </div>
+  <div id="task" class="tabContents">
+    <%= render :partial => '/public/task',:collection => @tasks[0..9] %>
+    <%= link_to('查看更多...',more_tasks_path(:page => 2),:class=> 'timeline_footer',:onclick => 'javascript:more_timeline($(this));return false;') if @tasks[10]%>
   </div>
   <div id="timeline" class="tabContents">
     <%= render :partial => '/public/item',:collection => @timeline[0..9] %>
-    <%= link_to('查看更多...',more_callings_path(:page => 2),:class=> 'timeline_footer',:onclick => 'javascript:more_timeline($(this));return false;') if @timeline[10]%>
+    <%= link_to('查看更多...',more_tasks_path(:page => 2),:class=> 'timeline_footer',:onclick => 'javascript:more_timeline($(this));return false;') if @timeline[10]%>
   </div>
 </div>
 
 <% content_for :sidebar do %>
   <div class="sidebar_panel" style="text-align:center">
   <% if logged_in? && current_user.is_following?(@tag)%>
-    <%= link_to("已经收藏了",follow_path(@tag.follows.find_by_user_id(current_user.id)),:method => :delete,:class => 'big_button',:style=>"background:#ccc")%>
+    <%= button_to("已经收藏了",follow_path(@tag.follows.find_by_user_id(current_user.id)),:method => :delete,:class => 'selected')%>
   <% else %>
-    <%=  link_to("收藏这个话题","#{follows_path}?followable_type=#{@tag.class.to_s}&followable_id=#{@tag.id}",:method => :post,:class => 'big_button')%>
+    <%=  button_to("收藏这个话题","#{follows_path}?followable_type=#{@tag.class.to_s}&followable_id=#{@tag.id}")%>
   <% end %>
     <p class="explanation" style="padding:5px;text-align:left">收藏话题之后，你就可以在你关注的地点上直接使用你收藏的话题作为标签。</p>
   </div>
   <div class="box">
-    <h4><%= "已有#{@tag.follows_count}人收藏:"%></h4>
+    <h5><%= "已有#{@tag.follows_count}人收藏:"%></h5>
     <%= render :partial => "/users/user",:collection => @tag.followers[0..7] %>
   </div>
   <div class="box"> 
-    <h4>你可能还感兴趣..</h4>
+    <h5>你可能还感兴趣..</h5>
     <%= raw tag_list_for(@tags)%>
   </div>
 

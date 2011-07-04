@@ -6,7 +6,7 @@
       <div class="actions_counter"><%= link_to "报到 #{current_user.sayings_count}",sayings_user_path(current_user)%></div>
       <div class="actions_counter"><%= link_to "照片 #{current_user.photos_count}",photos_user_path(current_user) %></div>
       <div class="actions_counter"><%= link_to "故事 #{current_user.topics_count}",topics_user_path(current_user) %></div>
-      <div class="actions_counter"><%= link_to "召集 #{current_user.callings_count}",callings_user_path(current_user) %></div>
+      <div class="actions_counter"><%= link_to "任务 #{current_user.tasks_count}",tasks_user_path(current_user) %></div>
   </div>
   <div style="padding:10px 5px;">
     <%= image_tag current_user.avatar.url(:_48x48) %>

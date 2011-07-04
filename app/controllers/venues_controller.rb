@@ -25,7 +25,7 @@ class VenuesController < ApplicationController
   end
   
   def show
-    @callings = @venue.callings.limit(11)
+    @tasks = @venue.tasks.limit(11)
     @photos = @venue.photos.limit(11)
     @sayings = @venue.sayings.limit(11)
     @topics = @venue.topics.limit(11)
@@ -34,7 +34,7 @@ class VenuesController < ApplicationController
   end
   
   def more_items
-    if ['photos','sayings','topics','callings'].include?(params[:filter])
+    if ['photos','sayings','topics','tasks'].include?(params[:filter])
       @items = @venue.send(params[:filter]).paginate(:page => params[:page], :per_page => 10)
       @filter = params[:filter]
       render '/public/more_items',:layout => false
@@ -70,9 +70,9 @@ class VenuesController < ApplicationController
     render 'see_all'
   end
   
-  def callings
-    @items = @venue.callings.paginate(:page => params[:page], :per_page => 10)
-    @title = "#{@venue.name}的行动召集"
+  def tasks
+    @items = @venue.tasks.paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@venue.name}的任务"
     render 'see_all'
   end
   

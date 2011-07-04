@@ -1,8 +1,8 @@
-    <p class="impact"><%= "#{@plan.calling.title}" %></p>
+    <p class="impact"><%= "#{@plan.task.title}" %></p>
     <div class="info">
-      行动日期：<%= @plan.calling.do_at.to_date %>
+      行动日期：<%= @plan.task.do_at.to_date %>
       <br/>
-      集合地址：<%= @plan.calling.address %>
+      集合地址：<%= @plan.task.address %>
       <br/>
-      联系方式：<%= @plan.calling.contact %>
+      联系方式：<%= @plan.task.contact %>
     </div>

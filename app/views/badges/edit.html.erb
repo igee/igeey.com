@@ -8,7 +8,7 @@
         <%= form.label :condition_type,'条件类型：'%> <%= form.select :condition_factor ,Badge::CONDITIONS_HASH.invert.to_a.sort_by{|value| value[1]}%>
         <%= form.label :condition_number,'条件次数：'%>  <%= form.text_field :condition_number,:size => 3%>
         <%= form.file_field :cover,:style => "background:none;border:none;font-size:13px" %>
-        <%= submit_tag '确定',:class => 'button' %>
+        <%= submit_tag '确定' %>
     </div>
   <% end %>
 </div>

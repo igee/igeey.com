@@ -1,0 +1,67 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'calendar.js' %>
+  <%= javascript_include_tag 'jquery.tag.editor-min.js' %>
+<% end %>
+
+<%= form_for @task ,:html => { :multipart => true } do |form| %>
+  <%= raw error_explanation_for(@task) if @task.errors.present?%>
+  <p>
+    <b><%= form.label 'title','目标：'%></b> <span>请用一句话描述你的任务目标 <span> 
+    <span style="color:#ffaa33">(剩余字数:<i id="character_count"></i> )</span>
+    <br/>
+    <%= form.text_field :title, :style => "width:400px", :placeholder => "" %>
+  </p>
+  <p>
+    <b><%= form.label 'detail','任务要求：'%></b>
+    <span>你对参加者完成你的任务有什么要求或提示。</span>
+    <%= form.text_area :detail, :style => "width:440px;height:90px"%>
+  </p>
+  <p>
+    <b><%= form.label 'total_people','截止时间：'%></b><%= form.text_field :do_at, :size => 8,:class => 'with_calendar',:placeholder => ""%>
+  </p>
+  <p>
+    <b><%= form.label 'venue_id','地点：'%></b>
+    <% if current_user.geo_id%>
+      <% @venue = Venue.where(:name => current_user.geo.name).first%><br/>
+      <%= @venue.name %>
+      (我所在的城市)<br/>或者,
+      <%= form.hidden_field :venue_id,:value => @venue.id %>
+    <% end %>
+    <% @venues = [['我关注的地点',@venue.id]] + current_user.venue_followings.map{|f| [f.followable.name,f.followable_id]} %>
+    选择具体的地点？ <%= form.select :venue_id,@venues %>
+  </p>
+  <p>
+    <b><%= form.label :tag_list,'添加标签：',:style=>"float:left"%></b>
+    <%= form.text_field :tag_list,:class => 'tag_list' %>
+    <br/>
+    <span class="suggested_tags">我收藏的标签：<%= raw(tag_links_for(current_user.tag_list,10))%></span>
+  </p>
+  <p>
+    <b><%= form.label :cover,'主题图：'%></b> <%= form.file_field :cover,:size => 18%>
+  </p>
+  <p style="clear:both;padding:20px;">
+    <%= hidden_field_tag :back_path,params[:back_path]%>
+    <%= form.submit '确定',:class => 'button'%>
+    <%= button_to_function '取消',"javascript:window.history.back()",:class => 'button'%>
+  </p>
+<% end %>
+
+<% content_for :extension do %>
+  <script type="text/javascript">
+  $(document).ready(function(){
+      DateTimeShortcuts.init()
+      function updateCount() {
+      document.getElementById("character_count").innerHTML = (20 - document.getElementById("task_title").value.length);
+      setTimeout(updateCount, 400);
+       }
+      updateCount();
+      $(".tag_list").each(function(index,element){jQuery(element).tag_cloud();})
+      $('.suggested_tags a').click(function(){
+        var dom =$(this).parent().prevAll(".tag_list");
+        dom.attr('value',$(this).html());
+        dom.blur();
+        return false;
+        });
+    })
+  </script>
+<% end %>

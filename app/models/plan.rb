@@ -1,45 +1,46 @@
 class Plan < ActiveRecord::Base
   belongs_to :venue
-  belongs_to :calling
+  belongs_to :task
   belongs_to :user,     :counter_cache => true
-  belongs_to :parent,   :class_name => 'Plan',:foreign_key => :parent_id
-  has_one    :record
   has_many   :syncs,    :as => :syncable,    :dependent => :destroy
-  has_many   :plans
+  belongs_to :parent,   :class_name => 'Plan',:foreign_key => :parent_id
   has_many   :children, :class_name => 'Plan' ,:foreign_key => :parent_id
+  has_many   :comments, :as => :commentable,    :dependent => :destroy
   
   acts_as_ownable
+  acts_as_eventable
+  acts_as_taggable
   
-  delegate :for_what, :to => :calling
-  
+  has_attached_file :cover, :styles => {:_90x64 => ["90x64#"],:max500x400 => ["500x400>"]},
+                            :url=>"/media/:attachment/plans/:id/:style.:extension",
+                            :default_style=> :_90x64,
+                            :default_url=>"/defaults/:attachment/plan/:style.png"
+
   default_scope :order => 'created_at DESC'
   
   scope :undone ,where(:is_done => false)
-  
-  validates :calling_id,:venue_id,:presence => true
-  validates :plan_at,:date => {:after_or_equal_to => 1.day.ago,:allow_nil => true}
-  validates :user_id,    :presence   => true,:uniqueness => {:scope => :calling_id}
+  scope :done ,where(:is_done => true)
+
+  validates :task_id, :content, :presence => true
+  validates :user_id, :presence   => true,:uniqueness => {:scope => :task_id}
   
   def validate
-    errors[for_what] = '数量必须为大于0的整数' unless number > 0
-    errors[:plan_at] = '请填写你计划日期' if (for_what == 'time') && plan_at.nil?
+    if is_done
+      errors[:title] = '请为自己的行动填写标题' if title.blank?
+    end
   end
   
-  def number
-    {'money'=> money,'goods'=> goods,'time'=> 1}[for_what] || 0
-  end
-  
-  def formatted_plan_at
+  def formatted_plan_as
     date = self.plan_at
     "#{date.year == Date.today.year ? '' : "#{date.year}年"}#{date.month}月#{date.day}日"
   end
 
   def status
-    self.calling.status
+    self.task.status
   end
   
   def description
-    "要参加#{calling.venue.name}的行动：#{self.calling.title}"
+    "要参加#{task.venue.name}的行动：#{self.task.title}"
   end
 
 end

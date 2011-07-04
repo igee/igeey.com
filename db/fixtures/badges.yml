@@ -12,7 +12,7 @@ badge_2:
   slug:      '1st_calling' 
   condition_factor: 'realtime_callings_count'
   condition_number: 1
-  intro:     '第一次发起召集行动，小喇叭徽章奖励给你，祝你的处女召集行动顺利完成！'
+  intro:     '第一次发起任务，小喇叭徽章奖励给你，祝你的处女任务顺利完成！'
   
 badge_3:
   id:        3
@@ -20,7 +20,7 @@ badge_3:
   slug:      '3rd_calling' 
   condition_factor: 'realtime_callings_count'
   condition_number: 3
-  intro:     '发起了3次的召集行动，奖励给你扩音器徽章，再接再励用你的声音影响更多人行动。'
+  intro:     '发起了3次的任务，奖励给你扩音器徽章，再接再励用你的声音影响更多人行动。'
 
 badge_4:
   id:        4
@@ -28,7 +28,7 @@ badge_4:
   slug:      '10th_calling' 
   condition_factor: 'realtime_callings_count'
   condition_number: 10
-  intro:     '发起了10次的召集行动，奖励给你广播站徽章，相信在你的号召已经有很多的公益行动产生，继续保持吧。'
+  intro:     '发起了10次的任务，奖励给你广播站徽章，相信在你的号召已经有很多的公益行动产生，继续保持吧。'
 
 badge_5:
   id:        5
@@ -36,7 +36,7 @@ badge_5:
   slug:      '20th_calling' 
   condition_factor: 'realtime_callings_count'
   condition_number: 20
-  intro:     '发起了20次的召集行动，奖励给你卫星电台徽章。Woo! 你简直就是个公益家，相信你已经能看到你的号召带来的明显改变。'
+  intro:     '发起了20次的任务，奖励给你卫星电台徽章。Woo! 你简直就是个公益家，相信你已经能看到你的号召带来的明显改变。'
   
 badge_6:
   id:        6

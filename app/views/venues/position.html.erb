@@ -12,17 +12,17 @@
 <div style="float:left">
   <%= form_tag geos_path,:id =>'locate',:remote => true do %>
     <%= text_field_tag 'address', @address,:size => 12,:placeholder => '城市,地址...'%>
-    <%= submit_tag '定位',:class => 'button'%>
+    <%= submit_tag '定位'%>
   <% end %>
 </div>
 
 <div style="text-align:right">
-  <%= link_to '修改位置','',:class => 'button',:onclick => "javascript:$(this).hide();$(this).next().show();marker.setDraggable(true);marker.setIcon('http://maps.gstatic.cn/intl/zh-CN_cn/mapfiles/marker_green.png');return false;" if @venue.creator == current_user%>
+  <%= button_to '修改位置','',:onclick => "javascript:$(this).hide();$(this).next().show();marker.setDraggable(true);marker.setIcon('http://maps.gstatic.cn/intl/zh-CN_cn/mapfiles/marker_green.png');return false;" if @venue.creator == current_user%>
   <%= form_for @venue,:html => {:style => 'display:none'} do |form|%>
     <%= form.hidden_field :latitude %>
     <%= form.hidden_field :longitude %>
     拖动绿色标记修改地点位置
-    <%= form.submit '完成',:id => "update_position",:class => 'button' %>
+    <%= form.submit '完成',:id => "update_position" %>
     <%= button_to_function '取消',"javascript:$('#floatBox #close_dialog').click();#{'window.history.back()' unless params[:layout] == 'false'}",:class => "button"%>
   <% end %>
 </div>

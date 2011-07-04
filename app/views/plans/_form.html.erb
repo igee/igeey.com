@@ -1,29 +1,48 @@
-<%= form_for [:calling,@plan] do |form| %>
+<%= form_for [@task,@plan] do |form| %>
   <%= raw error_explanation_for(@plan) if @plan.errors.present?%>  
-  <% @venue = @calling.venue %>
+  <%= form.hidden_field :task_id %>
+  <%= form.hidden_field :tag_list%>
+  <%= form.hidden_field :is_done%>
+  <%= form.hidden_field :done_at%>
+
   <div style="clear:both">
-    <%= form.hidden_field :calling_id %>
-    <%= form.hidden_field :parent_id %>
-    <%= render :partial => '/users/user' ,:object => current_user %>
-    <div class="bubble_tail"></div>
-    <div class="bubble" style="<%= 'width:370px' if params[:layout]=='false'%>">
-        <p>
-          <% if @calling.for_what == 'money' %>
-            要捐多少(元)？ <%= form.text_field :money, :size => 4 ,:placeholder => '金额'%>。
-          <% elsif @calling.for_what == 'goods'%>
-            要捐多少(件)？ <%= form.text_field :goods, :size => 3 ,:placeholder => '数量'%>
-          <% elsif @calling.for_what == 'time'%>
-            要在<%=  @plan.formatted_plan_at %>去<%= "#{@calling.venue.name}参与这个行动"%>。<%= form.hidden_field :plan_at%>
-          <% end %>
-        </p>
-    </div>
+    <% unless @plan.is_done %>
+      <h3><%= "我要认领任务：#{@task.title}。"%></h3>
+      <p> 
+        <b><%= form.label :content,'请简单描述你的计划:'%></b>
+        <%= form.text_area :content, :style => "width:530px;height:60px"%>
+      </p>
+      <p>
+        <b><%= form.label :venue_id,'地点：'%></b>
+        <% @venues = [[@venue.name,@venue.id]] + current_user.venue_followings.map{|f| [f.followable.name,f.followable_id]} %>
+        <%= form.select :venue_id,@venues %>
+      </p>
+    <% else %>
+      <h3><%= "我完成了任务：#{@task.title}。"%></h3>
+      <p>
+        <b>标题 <span>为你的成果起一个醒目的标题吧</span></b><br/>
+        <%= form.text_field :title,:style => "width:300px"%>
+      </p>
+      <p>
+        <b>正文 <span>说说任务的完成情况吧</span></b><br/>
+        <%= form.text_area :result, :style => "width:600px;height:100px"%>
+      </p>
+      <p>
+        <b><%= form.label :venue_id,'地点：'%></b>
+        <% @venues = [[@venue.name,@venue.id]] + current_user.venue_followings.map{|f| [f.followable.name,f.followable_id]} %>
+        <%= form.select :venue_id,@venues %>
+      </p>
+      <p>
+        <b><%= form.label :cover,'照片：'%></b> <%= form.file_field :cover,:size => 18%>
+      </p>
+    <% end %>
   </div>
-  
-  <div style="clear:both;text-align:right">
+
+  <p>
     <%= hidden_field_tag :back_path,params[:back_path]%>
     <%= form.submit '确定',:class => "button"%>
     <%= button_to_function '取消',"javascript:$('#floatBox #close_dialog').click();#{'window.history.back()' unless params[:layout] == 'false'}",:class => "button"%>
-  </div>
+  </p>
 <% end %>
 <% content_for :extension do %>
   <script type="text/javascript" charset="utf-8">
@@ -42,4 +61,3 @@
     });
   </script>
 <% end %>
-

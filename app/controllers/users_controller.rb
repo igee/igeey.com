@@ -134,9 +134,9 @@ class UsersController < ApplicationController
     render 'see_all'
   end
   
-  def callings
-    @items = @user.callings.paginate(:page => params[:page], :per_page => 10)
-    @title = "#{@user.login}的行动召集"
+  def tasks
+    @items = @user.tasks.paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@user.login}的任务"
     render 'see_all'
   end
   
@@ -170,6 +170,11 @@ class UsersController < ApplicationController
     render 'see_all'
   end
   
+  def plans
+    @items = @user.plans.order('created_at desc').paginate(:page => params[:page], :per_page => 10)
+    @title = "#{@user.login}的任务认领"
+    render 'see_all'
+  end
   
   def following_venues
     @items = @user.venue_followings.map(&:followable).paginate(:page => params[:page], :per_page => 10)
@@ -189,8 +194,8 @@ class UsersController < ApplicationController
     render 'see_all'
   end
   
-  def following_callings
-    @items = @user.calling_followings.map(&:followable).paginate(:page => params[:page], :per_page => 10)
+  def following_tasks
+    @items = @user.task_followings.map(&:followable).paginate(:page => params[:page], :per_page => 10)
     @title = "#{@user.login}关注的活动"
     render 'see_all'
   end
