@@ -8,7 +8,7 @@
       <%= image_tag('/images/icon/calling.gif',:class => 'icon')%>
       <%= link_to user.login,user if controller_name == 'venues'%>
       <%= raw("在 #{link_to venue.name,venue}") if controller_name == 'users'%>
-      <%= raw(['users','venues'].include?(controller_name) ?  '发布了行动召集：' : "#{link_to venue.name,venue} 有了新行动召集：") %>
+      <%= raw(['users','venues'].include?(controller_name) ?  '发布了任务：' : "#{link_to venue.name,venue} 有了新任务：") %>
     </span>
     <p><b><%= link_to calling.title, calling %></b></p>
     <div class="event_info">
@@ -19,7 +19,7 @@
     <div class="event_action">
       <% if calling.owned_by?(current_user) %>
         <%= link_to "修改","#{edit_calling_path(calling)}?back_path=#{request.path}"%> |
-        <%= link_to "关闭","#{close_calling_path(calling)}?back_path=#{request.path}",:method => :put,:confirm => '你确定要关闭这个召集行动么，一旦关闭其他人将不能参与' %> |
+        <%= link_to "关闭","#{close_calling_path(calling)}?back_path=#{request.path}",:method => :put,:confirm => '你确定要关闭这个任务么，一旦关闭其他人将不能参与' %> |
       <% end %>  
       <%= link_to "回复#{'(' + calling.comments_count.to_s + ')' if calling.comments_count > 0}",'',:class => "event_reply",:onclick=>("javascript:redirect_clear(#{calling.id},'Calling')" if logged_in?)%>　
     </div>

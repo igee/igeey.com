@@ -16,10 +16,10 @@
       </div>
   </div>
     
-  <% if @calling%>
+  <% if @task%>
   <div class="box">
-    <h4>行动来自<%= @calling.user.login%>的召集:</h4>
-    <%= render :partial => "/public/calling",:object => @calling %>
+    <h4>行动来自<%= @task.user.login%>的任务:</h4>
+    <%= render :partial => "/public/task",:object => @task %>
   </div>
   <% end %>
   

@@ -1,17 +1,23 @@
 class Record < ActiveRecord::Base
   belongs_to :user,     :counter_cache => true
   belongs_to :venue,    :counter_cache => true
-  belongs_to :calling
+  belongs_to :task
   belongs_to :plan
   belongs_to :parent,   :class_name => :record,:foreign_key => :parent_id
   has_many   :comments, :as => :commentable,    :dependent => :destroy
   has_many   :follows,  :as => :followable,     :dependent => :destroy
   has_many   :syncs,    :as => :syncable,       :dependent => :destroy
   has_many   :photos,   :as => :imageable,      :dependent => :destroy
+  has_many   :notifications, :as => :notifiable, :dependent => :destroy
   
   default_scope :order => 'created_at DESC'
   
-  delegate  :for_what, :to => :calling
+  has_attached_file :cover, :styles => {:_90x64 => ["90x64#"],:max500x400 => ["500x400>"]},
+                            :url=>"/media/:attachment/records/:id/:style.:extension",
+                            :default_style=> :_90x64,
+                            :default_url=>"/defaults/:attachment/record/:style.png"
+  
+  delegate  :for_what, :to => :task
   
   acts_as_ownable
   acts_as_taggable
@@ -19,11 +25,7 @@ class Record < ActiveRecord::Base
   accepts_nested_attributes_for :photos
   
   validates :user_id, :presence => true,:uniqueness => {:scope => [:plan_id]}
-  validates :venue_id,:title,:time, :presence  => true
-  validates :done_at,:date => {:before_or_equal_to => Date.today.to_date}
-  validates_numericality_of :time, :only_integer => true, :message => '贡献时间必须为大于0的整数'
-  
-
+  validates :title,:task_id,:detail,:plan_id,:venue_id, :presence  => true
   
   def number
     {'money'=> money,'goods'=> goods,'time'=> time,'online' => online}[for_what] || 0

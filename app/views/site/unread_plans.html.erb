@@ -1,8 +1,8 @@
 <% @title = '新参与者'%>
-<% if @callings.present? %>  
+<% if @tasks.present? %>  
   <div class="box">
-    <h4>以下召集行动有了新参与者：<h4>
-    <%= render :partial => "/public/calling" ,:collection => @callings %>
+    <h4>以下任务有了新参与者：<h4>
+    <%= render :partial => "/public/task" ,:collection => @tasks %>
   </div>
 <% end %>
 

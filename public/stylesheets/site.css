@@ -193,6 +193,7 @@ table{
   }
   
 #nav a{color:#fff;}
+#nav a:hover{ text-decoration:none }
 
 #nav_links{
   overflow:hidden;
@@ -233,11 +234,12 @@ table{
   width:16px;
   height:16px;
   position:relative;
+  padding:0;
   top:1px;
   *top:-4px;
   left:-22px;
   cursor:pointer;
-  background:url('/images/icon/search.png');
+  background:url('/images/icon/search.png') no-repeat;
   }
 
 #status{
@@ -262,19 +264,6 @@ table{
   top:3px;
   }
 
-.gary_button{
-  margin:0 6px;
-  color:white;
-  font-size:14px;
-  font-weight:bold;
-  background-color:#bbb;
-  border:1px solid #aaa;
-  padding:3px 14px;
-  -webkit-border-radius:3px;-moz-border-radius: 3px;border-radius: 3px;
-  cursor:pointer;
-  }
-.gary_button:hvote_boxover{color:#fff;background-color:#ff8f00;border:1px solid #ee7f00}
-
 .embed_number_wrapper{
   position:absolute;
   text-align:right;
@@ -294,37 +283,31 @@ a.record_embed_number{
   background-color:#4c4;
   }
 
-button,.button,.following{
+button,input[type="submit"],input[type="button"]{
   text-align:center;
-  margin-right:6px;
+  margin-right:4px;
+  margin-left:4px;
   color:white;
   font: bold normal 14px/14px sans-serif;
   background:url('/images/button.png');
-  padding:3px 12px;
-  -padding:4px 12px 2px;
+  padding:3px 9px;
+  -padding:4px 9px 2px;
   -webkit-border-radius:3px;-moz-border-radius: 3px;border-radius: 3px;
   cursor:pointer;
   border:none
   }
 
-.following{background:url('/images/following.png');}
-
-.big_button{
-  text-align:center;
-  margin:5px;
-  color:white;
-  font: bold normal 17px/42px sans-serif;
-  background-color:#ffbf44;
-  padding:8px 24px;
-  border:none;
-  -webkit-border-radius:6px;-moz-border-radius:6px;border-radius: 6px;
-  cursor:pointer;
+button.gary,input[type="submit"].gary,input[type="button"].gary{
+  background:url('/images/gary.png');
   }
 
-.see_all_link{float:right;font-size:12px;margin-top:4px}
+button.selected,input[type="submit"].selected,input[type="button"].selected{
+  background:url('/images/selected.png');
+}
 
-button:hover,.button:hover,.big_button:hover{background:#ff9f10;color:white;}
-.following:hover{background:#999;color:white;}
+button:hover,input[type="submit"]:hover,input[type="button"]:hover{background:#ff9f10;color:white;}
+
+.see_all_link{float:right;font-size:12px;margin-top:4px}
 
 .dialog_rightbar{
   float:right;
@@ -408,6 +391,13 @@ button:hover,.button:hover,.big_button:hover{background:#ff9f10;color:white;}
   width:48px;
   height:48px;
   overflow:hidden;
+  }
+
+.task{
+  float:left;
+  width:70px;
+  padding:10px 4px;
+  text-align:center;
   }
 
 .badge{
@@ -585,7 +575,7 @@ input.reply_submit{float:right;margin-top:1px}
   font-size:12px;
   color:#aaa;
   position:relative;
-  top:2px;
+  top:1px;
   }
 
 .comment{margin:0;width:520px}
@@ -702,11 +692,7 @@ input.todo:hover{
 .tag_list{display:inline;width:86px}
 .tag_label{float:left;margin-top:2px}
 
-.tag_cloud{
-  margin:0;
-  padding: 0;
-  float:left;
-  }
+.tags{overflow:hidden;}
 
 
 a.tag{
@@ -715,7 +701,7 @@ a.tag{
   padding: 2px 8px;
   line-height:1;
   margin: 3px 7px 1px 0;
-  background-color:#acf;
+  background-color:#9bf;
   color:#fff;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -729,6 +715,7 @@ a.tag img{
 a.tag:hover{
   background-color: #f93;
   color:#fff;
+  text-decoration:underline;
   }
 
 .filter{color:#6ad;}
@@ -828,6 +815,7 @@ a.tag:hover{
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   -moz-border-radius: 5px 5px 0 0;
+  text-decoration:none
   }
 
 #tabNav li a:hover{

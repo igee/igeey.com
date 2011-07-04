@@ -14,7 +14,7 @@
     <%= label_tag :password,'　新密码：'%> <%= password_field_tag :password,nil,:size => 20,:class=> 'with_tip',:title => "密码不要少于6位"  %>
     </p>
     <p>
-      <%= submit_tag '确定', :class => 'button' ,:confirm => '修改后需重新登录'%>
+      <%= submit_tag '确定',:confirm => '修改后需重新登录'%>
       <%= button_to_function '取消',"javascript:#{'window.history.back()' unless params[:layout] == 'false'}",:class => "button"%>
     </p>
   <% end %>

@@ -1,23 +1,26 @@
 <% @title = "故事：#{@topic.title}" %>
 <% @venue = @topic.venue %>
 <div class="box">  
-  <%= render :partial => '/users/user' ,:object => @topic.user %>
-  <div class="bubble_tail"></div>
-  <div class="bubble">
-    <p class="impact"><%= @topic.title %></p>
-    <pre class="explanation"><%= @topic.content %></pre>
-    <% if @topic.owned_by?(current_user) %>
-    <div style="text-align:right">
-      <span>
-      <%= link_to "删除","#{topic_path(@topic)}",:method => :delete,:confirm => '你确定要删除这篇故事么？'%> |
-      <%= link_to "编辑","#{edit_topic_path(@topic)}?back_path=#{request.path}"%>
-      </span>
-    </div>
-    <% end %>
-    <%= raw tag_list_for(@topic.tag_list)%>
-    <br/>
-    <%= render :partial => '/public/share'%>
+  <div style="float:right">
+    <%= render :partial => '/users/avatar' ,:object => @topic.user %>
   </div>
+  <h3><%= @topic.title %></h3>
+  <%= raw tag_list_for(@topic.tag_list)%>
+  <span><%= link_to @topic.user.login,user_path(@topic.user)%> </span>
+  <span><%= format_date(@topic.updated_at) %>最后编辑</span>
+  <p>
+    <pre><%= @topic.content %></pre>
+  </p>
+  <% if @topic.owned_by?(current_user) %>
+  <div style="text-align:right">
+    <span>
+    <%= link_to "删除","#{topic_path(@topic)}",:method => :delete,:confirm => '你确定要删除这篇故事么？'%> |
+    <%= link_to "编辑","#{edit_topic_path(@topic)}?back_path=#{request.path}"%>
+    </span>
+  </div>
+  <% end %>
+  <br/>
+  <%= render :partial => '/public/share'%>
 </div>
 
 <%= render :partial => '/comments/board'%>    
