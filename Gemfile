@@ -35,7 +35,7 @@ gem 'whenever', :require => false
 group :development, :test do
   #gem 'webrat'
   #gem 'metric_fu'
-  gem 'ruby-debug'
+  #gem 'ruby-debug'
   gem 'request-log-analyzer'
   gem 'rails3-generators'  
   gem 'rspec-rails'
