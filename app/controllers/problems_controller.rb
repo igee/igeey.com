@@ -19,7 +19,7 @@ class ProblemsController < ApplicationController
   def show
     @case = Case.new
     @cases = @problem.cases
-    puts @cases
+    @comments = @problem.comments
   end
   
   private

@@ -5,38 +5,8 @@
   <pre><%= @problem.intro %></pre>
 </div>
 
-<div class="box">
-  <% if @cases.empty? %>
-    <span>目前这个问题还没案例</span>
-  <% else%>
-    <h4>案例：</h4>
-      
-  <% end %>
-</div>
-
-<div class="box">
-  <h4>添加案例：</h4>
-  <% if logged_in?%>
-    <%= form_for @case do |form| %>
-      <%= form.hidden_field :problem_id ,:value => @problem.id%>
-      <%= form.hidden_field :user_id, :value => current_user.id%>
-      <%= form.label :title,'图片文件：'%> <%= form.file_field :photo,:style => "background:none;border:none;font-size:13px" %>
-      <%= form.text_area :intro,:style=>"width:540px;height:64px;"%>
-      <%= form.submit '提交'%> 
-    <% end %>
-  <% else %>
-    <p>
-      <%= link_to "立即登录",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%> 即可回答。
-      <span>支持更多帐号登录：
-      <%= image_tag "/images/icon/douban.gif",:class=> 'icon'%>
-      <%= link_to('豆瓣',:controller => 'oauth', :action => 'douban')%>
-      <%= image_tag "/images/icon/sina.gif",:class=> 'icon'%>	
-      <%= link_to('新浪微博',:controller => 'oauth', :action => 'sina')%>
-      </span>
-    </p>
-
-  <% end %>
-</div>
+<%= render :partial => '/comments/board'%>    
+<%= render :partial => '/comments/form' ,:locals => {:commentable => @problem}%>
 
 <% content_for :sidebar do %>
   <div class="box">

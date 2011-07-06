@@ -197,10 +197,12 @@ ActiveRecord::Schema.define() do
   end
   
   create_table "problems", :force => true do |t|
-    t.string  :name,           :limit => 40
-    t.text    :intro
-    t.integer :creator_id
-    t.integer :cases_count,    :default => 0
+    t.string   :name,           :limit => 40
+    t.text     :intro
+    t.integer  :user_id
+    t.integer  :comments_count, :default => 0
+    t.datetime :last_replied_at
+    t.integer  :last_replied_user_id
     t.timestamps
   end
 
