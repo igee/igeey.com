@@ -1,5 +1,6 @@
 class ProblemsController < ApplicationController
   respond_to :html
+  before_filter :login_required, :except => [:show, :index]
   before_filter :find_problem, :except => [:new,:create,:index]
   
   def index
