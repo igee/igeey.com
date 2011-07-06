@@ -47,12 +47,13 @@ ActiveRecord::Schema.define() do
   
   create_table "cases", :force => true do |t|
     t.integer :user_id
+    t.integer :problem_id
     t.text    :intro
-    t.integer :creator_id
     t.string  :photo_file_name
     t.string  :latitude,       :limit => 40
     t.string  :longitude,      :limit => 40
     t.integer :zoom_level,     :default => 13
+    t.string  :address
     t.timestamps
   end
 
@@ -199,7 +200,7 @@ ActiveRecord::Schema.define() do
     t.string  :name,           :limit => 40
     t.text    :intro
     t.integer :creator_id
-    t.string  :cover_file_name
+    t.integer :cases_count,    :default => 0
     t.timestamps
   end
 

@@ -8,7 +8,7 @@ end
 def run_spec(file)
   if File.exist?(file)
     puts "Running #{file}"
-    system("bundle exec rspec #{file}")
+    system("bundle exec rspec #{file} -fs")
     puts
   else
     puts "#{file} does not exist"
