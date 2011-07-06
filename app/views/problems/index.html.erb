@@ -1,0 +1,15 @@
+<% @title = '问题发现'%>
+
+<div class="box">
+  <% @problems.each do |p|%>
+    <p><%= link_to p.name, p%></p>
+  <% end %>
+</div>
+
+<% content_for :sidebar do %>
+  <div class="box">
+    <% if logged_in? %>
+      <%= link_to '添加问题', new_problem_path %>
+    <% end %>
+  </div>
+<% end %>

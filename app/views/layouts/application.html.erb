@@ -27,6 +27,7 @@
         <ul id="nav_links" style="float:left">
           <li><%= link_to '首页',root_path,:class => "#{'selected' if request.path == '/'}"%></li>
           <li><%= link_to "地点动态",timeline_path,:title => '动态', :class => "#{'selected' if request.path == '/timeline'}" %></li>
+          <li><%= link_to "问题发现",problems_path,:class => "#{'selected' if request.path == '/problems'}"%>
         </ul>
         
         <%= form_tag search_path,:id => 'search_box',:method => :get do%>

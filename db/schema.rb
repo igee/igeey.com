@@ -44,6 +44,18 @@ ActiveRecord::Schema.define() do
     t.string  "cover_file_name"
     t.text    "intro"
   end
+  
+  create_table "cases", :force => true do |t|
+    t.integer :user_id
+    t.integer :problem_id
+    t.text    :intro
+    t.string  :photo_file_name
+    t.string  :latitude,       :limit => 40
+    t.string  :longitude,      :limit => 40
+    t.integer :zoom_level,     :default => 13
+    t.string  :address
+    t.timestamps
+  end
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id",                        :null => false
@@ -182,6 +194,16 @@ ActiveRecord::Schema.define() do
     t.datetime "last_replied_at"
     t.integer  "votes_count",                        :default => 0
     t.string   "cached_tag_list",                    :default => ""
+  end
+  
+  create_table "problems", :force => true do |t|
+    t.string   :name,           :limit => 40
+    t.text     :intro
+    t.integer  :user_id
+    t.integer  :comments_count, :default => 0
+    t.datetime :last_replied_at
+    t.integer  :last_replied_user_id
+    t.timestamps
   end
 
   create_table "questions", :force => true do |t|

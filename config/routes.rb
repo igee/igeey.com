@@ -109,7 +109,7 @@ Igeey::Application.routes.draw do
     get :thanks, :on => :collection
   end
   
-  resources :follows,:photos,:topics,:sayings,:doings
+  resources :follows,:photos,:topics,:sayings,:doings,:problems,:cases
   
   resources :messages do
     get :clear, :on => :member  

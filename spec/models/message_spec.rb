@@ -3,8 +3,8 @@ require 'spec_helper'
 describe Message do
   
   before do
-    @user1 = makestory
-    @user2 = mhb
+    @user1 = Factory(:user)
+    @user2 = Factory(:green)
   end
   
   describe 'validation' do
