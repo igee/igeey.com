@@ -1,10 +1,10 @@
 class Problem < ActiveRecord::Base
-  belongs_to :creator, :class_name => "User", :foreign_key => "creator_id"
+  belongs_to :user
+  has_many   :cases, :dependent => :destroy
+  has_many   :comments, :as => :commentable, :dependent => :destroy
+  has_many   :notifications, :as => :notifiable, :dependent => :destroy
   
-  has_attached_file :cover, :styles => {:_48x48 => ["48x48#",:jpg],:_100x100 => ["100x100#",:jpg]},
-                            :url=>"/media/:attachment/problems/:id/:style.jpg",
-                            :default_style=> :_100x100,
-                            :default_url=>"/defaults/:attachment/problem/:style.png"
+  validates :name,:user_id, :presence => true
   
-  validates :name,:creator_id, :presence => true
+  default_scope     :order => 'created_at desc'
 end

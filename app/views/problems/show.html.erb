@@ -1,0 +1,15 @@
+<% @title = "问题：#{@problem.name}"%>
+
+<div class="box">
+  <h3><%= @title %></h3>
+  <pre><%= @problem.intro %></pre>
+</div>
+
+<%= render :partial => '/comments/board'%>    
+<%= render :partial => '/comments/form' ,:locals => {:commentable => @problem}%>
+
+<% content_for :sidebar do %>
+  <div class="box">
+    <%= link_to '添加问题', new_problem_path %>
+  </div>
+<% end %>

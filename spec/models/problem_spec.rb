@@ -6,25 +6,16 @@ describe Problem do
   end
   
   describe 'validation' do
-    it 'should be created by name' do
-      @problem = Problem.new(:creator_id=>@user.id)
-      @problem.should_not be_valid
-      
-      @problem = Problem.new(:name=>'社区小广告',:creator_id=>@user.id)
-      @problem.should be_valid
-    end
-    
-    it 'should be created by creator_id' do
-      @problem = Problem.new(:name=>'社区小广告')
-      @problem.should_not be_valid
-      
-      @problem = Problem.new(:name=>'社区小广告',:creator_id=>@user.id)
-      @problem.should be_valid
+    context 'when user create a problem' do
+      it 'should be created by name' do
+        @problem = Problem.new(:name=>'社区小广告',:user_id=>@user.id)
+        @problem.should be_valid
+      end
     end
   end
   
   it 'could be had intro' do
-    @problem = Problem.new(:name=>'社区小广告',:creator_id=>@user.id,:intro=>'大大小小的社区中到处都是乱贴乱画的小广告')
+    @problem = Problem.new(:name=>'社区小广告',:user_id=>@user.id,:intro=>'大大小小的社区中到处都是乱贴乱画的小广告')
     @problem.should be_valid
   end
   
