@@ -14,8 +14,6 @@ class ProblemsController < ApplicationController
     else
       @problems = []
     end
-    puts 'ssssssssssssss'
-    puts @problems
     @problem = Problem.new(:name=>params[:keywords])
   end
 

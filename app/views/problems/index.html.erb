@@ -22,6 +22,9 @@
 
 <% content_for :sidebar do %>
   <div class="box">
-    <%= link_to '添加问题', new_problem_path %>
+    <%= form_tag new_problem_path, :method => :get do%>
+      <%= text_field_tag 'keywords', @keywords,:style => 'font-size:15px;width:240px;padding:5px'%>
+      <%= submit_tag '添加问题',:style=>'font-size:14px;line-height:20px;float:right;' %>
+    <% end %>
   </div>
 <% end %>
