@@ -7,4 +7,8 @@ class Problem < ActiveRecord::Base
   validates :name,:user_id, :presence => true
   
   default_scope     :order => 'created_at desc'
+  
+  define_index do
+    indexes name
+  end
 end
