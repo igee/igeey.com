@@ -1,8 +1,22 @@
 <% @title = '问题发现'%>
 
+<h4>已发现的问题</h4>
 <div class="box">
   <% @problems.each do |p|%>
-    <p><%= link_to p.name, p%></p>
+    <div class="event_box" style="padding:4px 6px 12px">
+      <p>
+        <%= link_to p.name,problem_path(p)%>
+      </p>
+      <div class="event_info">
+          <span>
+            <% if p.comments_count.zero? %>
+              还没有回复
+            <% else%>
+              <%= link_to "#{p.comments_count}条回复",problem_path(p)%>
+            <% end %>
+          </span> 
+      </div>
+    </div>
   <% end %>
 </div>
 
