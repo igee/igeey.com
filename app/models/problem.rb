@@ -3,6 +3,7 @@ class Problem < ActiveRecord::Base
   has_many   :cases, :dependent => :destroy
   has_many   :comments, :as => :commentable, :dependent => :destroy
   has_many   :notifications, :as => :notifiable, :dependent => :destroy
+  has_many   :votes,    :as => :voteable,    :dependent => :destroy
   
   validates :name,:user_id, :presence => true
   
