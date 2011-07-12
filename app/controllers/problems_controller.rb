@@ -24,8 +24,8 @@ class ProblemsController < ApplicationController
   end
   
   def show
-    @case = Case.new
-    @cases = @problem.cases
+    @kase = Kase.new
+    @kases = @problem.kases
     @comments = @problem.comments
   end
   

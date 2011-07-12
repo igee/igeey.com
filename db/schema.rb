@@ -45,7 +45,7 @@ ActiveRecord::Schema.define() do
     t.text    "intro"
   end
   
-  create_table "cases", :force => true do |t|
+  create_table "kases", :force => true do |t|
     t.integer :user_id
     t.integer :problem_id
     t.text    :intro

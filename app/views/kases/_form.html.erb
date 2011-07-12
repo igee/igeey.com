@@ -1,0 +1,17 @@
+<%= form_for [@problem,@kase],:html => { :multipart => true } do |form| %>
+  <%= form.hidden_field :problem_id ,:value => @problem.id%>
+  <%= form.hidden_field :user_id, :value => current_user.id %>
+  <p>
+    <%= form.label :photo,'图片文件：'%> <%= form.file_field :photo,:style => "background:none;border:none;font-size:13px" %>
+  </p>
+  <p>
+    <%= form.label :intro,'案例介绍：'%> <%= form.text_area :intro, :style => "width:320px;height:100px"%>
+  </p>
+  <p>
+    <%= form.label :address,'地点：'%> <%= form.text_field :address,:size => 18 %>
+  </p>
+  <div style="clear:both;padding:0 20px;text-align:right">
+    <%= form.submit '确定'%>
+    <%= button_to_function '取消',"javascript:window.history.back()"%>
+  </div> 
+<% end %>
