@@ -1,5 +1,12 @@
 class KasesController < ApplicationController
   respond_to :html
+  before_filter :login_required, :except => [:index]
+  
+  def index
+    @problem = Problem.find(params[:problem_id])
+    @kases = @problem.kases
+    puts @kases
+  end
   
   def new
     @problem = Problem.find(params[:problem_id])

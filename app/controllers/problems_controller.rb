@@ -25,7 +25,7 @@ class ProblemsController < ApplicationController
   
   def show
     @kase = Kase.new
-    @kases = @problem.kases
+    @kases = @problem.kases.where("photo_file_name is not null")[0..2]
     @comments = @problem.comments
   end
   
