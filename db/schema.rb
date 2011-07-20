@@ -45,7 +45,7 @@ ActiveRecord::Schema.define() do
     t.text    "intro"
   end
   
-  create_table "cases", :force => true do |t|
+  create_table "kases", :force => true do |t|
     t.integer :user_id
     t.integer :problem_id
     t.text    :intro
@@ -201,6 +201,9 @@ ActiveRecord::Schema.define() do
     t.text     :intro
     t.integer  :user_id
     t.integer  :comments_count, :default => 0
+    t.integer  :agree_count, :default => 0
+    t.integer  :disagree_count, :default => 0
+    t.integer  :votes_count,          :default => 0
     t.datetime :last_replied_at
     t.integer  :last_replied_user_id
     t.timestamps
@@ -384,6 +387,7 @@ ActiveRecord::Schema.define() do
     t.integer  "user_id"
     t.integer  "voteable_id"
     t.string   "voteable_type", :limit => 40
+    t.boolean  "is_agree"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

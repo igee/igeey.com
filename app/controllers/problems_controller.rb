@@ -24,8 +24,8 @@ class ProblemsController < ApplicationController
   end
   
   def show
-    @case = Case.new
-    @cases = @problem.cases
+    @kase = Kase.new
+    @kases = @problem.kases.where("photo_file_name is not null")[0..2]
     @comments = @problem.comments
   end
   
