@@ -5,7 +5,6 @@ class KasesController < ApplicationController
   def index
     @problem = Problem.find(params[:problem_id])
     @kases = @problem.kases
-    puts @kases
   end
   
   def new
