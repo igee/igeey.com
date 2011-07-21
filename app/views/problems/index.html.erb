@@ -9,11 +9,7 @@
       </p>
       <div class="event_info">
           <span>
-            <% if p.comments_count.zero? %>
-              还没有回复
-            <% else%>
-              <%= link_to "#{p.comments_count}条回复",problem_path(p)%>
-            <% end %>
+            <%= p.comments_count.zero? ? "还没有回复" : "#{p.comments_count}条回复"%> | <%= p.kases.empty? ? "还没有案例" : "#{p.kases.count}个案例"%>
           </span> 
       </div>
     </div>
