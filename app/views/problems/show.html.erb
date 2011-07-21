@@ -12,14 +12,20 @@
     <% @kases.each do |k|%>
       <% unless k.photo_file_name.nil? %>
         <div class="event_box">
-          <%= link_to (image_tag k.photo.url,:class => "photo") + (image_tag k.photo.url(:max500x400),:class => "zoomed_photo"),'',:class => "zoom_photo",:style => 'float:left;margin-right:10px' %>
-          <pre>案例：<%= k.intro %></pre>
-          <span>发现者：<%= k.user.login%> | 提交于：<%= full_date(k.created_at)%> | 发现地：<%= k.address %></span>
+          <div class="event" style="width:610px;">
+            <%= link_to (image_tag k.photo.url,:class => "photo") + (image_tag k.photo.url(:max500x400),:class => "zoomed_photo"),'',:class => "zoom_photo",:style => 'float:left;margin-right:10px' %>
+            <pre>案例：<%= k.intro %></pre>
+          </div>
+          <div class="event_info">
+            <span>发现者：<%= k.user.login%> | 提交于：<%= full_date(k.created_at)%> | 发现地：<%= k.address %></span>
+          </div>
         </div>
       <% end %>
     <% end %>
   <% else %>
-    <p>该问题还没有案例，您可以 <%= link_to "添加案例", "#{problem_path(@problem)}/kases/new"%></p>
+    <p>
+      <span style="margin-left:30px;">该问题还没有案例，您可以 <%= link_to "添加案例", "#{problem_path(@problem)}/kases/new"%></span>
+    </p>
   <% end %>
 </div>
 
