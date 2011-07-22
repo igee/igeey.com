@@ -3,6 +3,13 @@
 <div class="box">
   <h3><%= @title %></h3>
   <pre><%= @problem.intro %></pre>
+  <div id='problem_vote' style='float:right;margin:10px 20px 0 0;'>
+    <% if logged_in? && (@problem.user == current_user)%>
+      <%= image_tag('/images/icon/upgrey.png',:class=>'icon')%> 赞同 <%= @problem.agree_count %>
+    <% else %>
+      <%= link_to(raw("#{image_tag('/images/icon/upgrey.png',:class=>'icon')} 赞同 #{@problem.agree_count}"),votes_path(:voteable_id => @problem.id,:voteable_type => @problem.class.to_s,:is_agree => true,:back_path => request.fullpath), :remote => (true if logged_in?),:method => :post)%>
+    <% end %>
+  </div>
 </div>
 
 <div class="box">
