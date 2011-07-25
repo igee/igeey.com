@@ -46,14 +46,17 @@ ActiveRecord::Schema.define() do
   end
   
   create_table "kases", :force => true do |t|
-    t.integer :user_id
-    t.integer :problem_id
-    t.text    :intro
-    t.string  :photo_file_name
-    t.string  :latitude,       :limit => 40
-    t.string  :longitude,      :limit => 40
-    t.integer :zoom_level,     :default => 13
-    t.string  :address
+    t.integer  :user_id
+    t.integer  :problem_id
+    t.text     :intro
+    t.string   :photo_file_name
+    t.integer  :comments_count, :default => 0
+    t.string   :latitude,       :limit => 40
+    t.string   :longitude,      :limit => 40
+    t.integer  :zoom_level,     :default => 13
+    t.string   :address
+    t.datetime :last_replied_at
+    t.integer  :last_replied_user_id
     t.timestamps
   end
 
