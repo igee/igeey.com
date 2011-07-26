@@ -1,1 +1,14 @@
 <% @title = '爱聚博客'%>
+
+<% @blogs.each do |blog|%>
+  <div style="padding:20px;">
+    <h2><%= link_to blog.title, blog_path(blog), :style=>"color:black;"%></h2>
+    <span>发表于 <%= full_date(blog.created_at)%></span>
+
+    <div class="blog-content">
+      <pre><%= blog.content %></pre>
+    </div>
+  
+    <span><%= link_to "#{blog.comments_count} 条评论", blog_path(blog), :style=>"color:#999;text-decoration:underline;"%></span>
+  </div>
+<% end %>
