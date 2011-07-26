@@ -18,4 +18,9 @@ class KasesController < ApplicationController
     @kase.save
     redirect_to problem_path(@problem)
   end
+  
+  def show
+    @kase = Kase.find(params[:id])
+    @comments = @kase.comments
+  end
 end

@@ -3,15 +3,7 @@
 <h4><%= @title %></h4>
 
 <div class="box">
-  <% @kases.each do |k|%>
-    <div class="event_box">
-      <% unless k.photo_file_name.nil? %>
-        <%= link_to (image_tag k.photo.url,:class => "photo") + (image_tag k.photo.url(:max500x400),:class => "zoomed_photo"),'',:class => "zoom_photo",:style => 'float:left;margin-right:10px' %>
-      <% end %>
-      <pre>案例：<%= k.intro %></pre>
-      <span>发现者：<%= k.user.login%> | 提交于：<%= full_date(k.created_at)%> | 发现地：<%= k.address %></span>
-    </div>
-  <% end %>
+    <%= render :partial => '/public/kase',:collection => @kases %>
 </div>
 
 <% content_for :sidebar do %>

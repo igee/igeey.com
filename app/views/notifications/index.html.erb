@@ -24,6 +24,8 @@
 			问题 <%= link_to nn.title, n, :method=>'delete'%> 有了新的回答
 		<% when "Problem"%>
 		  发现的问题 <%= link_to nn.name, n, :method=>'delete'%> 有了新的回复
+		<% when "Kase"%>
+		  发现的问题 <%= nn.problem.name %> 中的 <%= link_to "案例", n, :method=>'delete'%> 有了新的回复
 	<%end%>
 	<%= link_to 'x', clear_notification_path(n), :remote=>true, :onclick=>"javascript:$(this).parent().slideUp();"%>
 	</p>
