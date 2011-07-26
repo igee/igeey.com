@@ -3,6 +3,13 @@ class QuestionsController < ApplicationController
   before_filter :find_question, :except => [:index, :new, :create,:more]
   respond_to :html,:json
   
+  def index
+    @questions = Question.unscoped.order('last_answered_at desc').limit(10)
+    @tasks = Task.limit(6)
+    @tags = Tag.limit(24)
+    @question = Question.new
+  end
+  
   def show
     @answer = Answer.new
     @answers = @question.answers.where('vetos_count < 3').order('votes_count desc')
