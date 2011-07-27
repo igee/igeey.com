@@ -179,7 +179,7 @@ table{
 
 #nav{
   text-align:right;
-  width:680px;
+  line-height:2.4;
   float:right;
   background-color:#8ad;
   border:1px solid #7f9fcf;
@@ -693,6 +693,11 @@ input.todo:hover{
 .tag_label{float:left;margin-top:2px}
 
 .tags{overflow:hidden;}
+
+.blog-content{
+  padding:12px 0 8px 0;
+  font-size:15px;
+  }
 
 
 a.tag{
