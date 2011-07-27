@@ -21,7 +21,7 @@ class BlogsController < ApplicationController
   end
   
   def update
-    @blog.update_attributes(params[:blog]) if @blog.owned_by?(current_user)
+    @blog.update_attributes(:title=>params[:blog][:title],:user_id=>params[:blog][:user_id],:content=>params[:editor01])
     if params[:back_path].present?
       redirect_to params[:back_path]
     else

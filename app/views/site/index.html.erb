@@ -10,7 +10,7 @@
     <% end %>
 
     <div class="blog-content">
-      <pre><%= blog.content %></pre>
+      <%=raw blog.content %>
     </div>
   
     <span><%= link_to "#{blog.comments_count} 条评论", blog_path(blog), :style=>"color:#999;text-decoration:underline;"%></span>
