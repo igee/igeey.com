@@ -12,6 +12,8 @@
   <%=raw @blog.content %>
 </div>
 
+<%= render :partial => '/public/share'%>
+
 <hr style="margin:30px 0 15px 0;">
 
 <div class="box">
@@ -57,13 +59,6 @@
     </p>
   <% end %>
 </div>
-
-<style type="text/css">
-  .blog-content{
-    padding-top:12px;
-    font-size:15px;
-  }
-</style>
 
 <script type="text/javascript">
   function reply_to(username){
