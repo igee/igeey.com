@@ -44,6 +44,33 @@ ActiveRecord::Schema.define() do
     t.string  "cover_file_name"
     t.text    "intro"
   end
+  
+  create_table "blogs", :force => true do |t|
+    t.integer  :user_id
+    t.string   :title
+    t.string   :en_title
+    t.text     :content
+    t.integer  :comments_count, :default => 0
+    t.datetime :last_replied_at
+    t.integer  :last_replied_user_id
+    t.timestamps
+  end
+  
+  
+  create_table "kases", :force => true do |t|
+    t.integer  :user_id
+    t.integer  :problem_id
+    t.text     :intro
+    t.string   :photo_file_name
+    t.integer  :comments_count, :default => 0
+    t.string   :latitude,       :limit => 40
+    t.string   :longitude,      :limit => 40
+    t.integer  :zoom_level,     :default => 13
+    t.string   :address
+    t.datetime :last_replied_at
+    t.integer  :last_replied_user_id
+    t.timestamps
+  end
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id",                        :null => false
@@ -182,6 +209,19 @@ ActiveRecord::Schema.define() do
     t.datetime "last_replied_at"
     t.integer  "votes_count",                        :default => 0
     t.string   "cached_tag_list",                    :default => ""
+  end
+  
+  create_table "problems", :force => true do |t|
+    t.string   :name,           :limit => 40
+    t.text     :intro
+    t.integer  :user_id
+    t.integer  :comments_count, :default => 0
+    t.integer  :agree_count, :default => 0
+    t.integer  :disagree_count, :default => 0
+    t.integer  :votes_count,          :default => 0
+    t.datetime :last_replied_at
+    t.integer  :last_replied_user_id
+    t.timestamps
   end
 
   create_table "questions", :force => true do |t|
@@ -362,6 +402,7 @@ ActiveRecord::Schema.define() do
     t.integer  "user_id"
     t.integer  "voteable_id"
     t.string   "voteable_type", :limit => 40
+    t.boolean  "is_agree"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

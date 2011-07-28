@@ -1,0 +1,16 @@
+<% @title = '添加新问题'%>
+<div style="padding:0 20px">
+  <h2>添加新问题</h2>
+  <%= render "form" %>
+</div>
+
+<% unless @problems.empty?%>
+<h4>已发现的相关问题</h4>
+  <% @problems.each do |p|%>
+    <div class="event_box" style="padding:4px 6px 12px">
+      <p>
+        <%= link_to p.name,problem_path(p)%>
+      </p>
+    </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,26 @@
+<% @title = '问题发现'%>
+
+<h4>已发现的问题</h4>
+<div class="box">
+  <% @problems.each do |p|%>
+    <div class="event_box" style="padding:4px 6px 12px">
+      <p>
+        <%= link_to p.name,problem_path(p)%>
+      </p>
+      <div class="event_info">
+          <span>
+            <%= p.comments_count.zero? ? "还没有回复" : "#{p.comments_count}条回复"%> | <%= p.kases.empty? ? "还没有案例" : "#{p.kases.count}个案例"%>
+          </span> 
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<% content_for :sidebar do %>
+  <div class="box">
+    <%= form_tag new_problem_path, :method => :get do%>
+      <%= text_field_tag 'keywords', @keywords,:style => 'font-size:15px;width:240px;padding:5px'%>
+      <%= submit_tag '添加问题',:style=>'font-size:14px;line-height:20px;float:right;' %>
+    <% end %>
+  </div>
+<% end %>

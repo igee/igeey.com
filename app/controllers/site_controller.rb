@@ -2,10 +2,7 @@ class SiteController < ApplicationController
   before_filter :login_required, :except=> [:index,:faq,:guide,:about,:report,:public,:more_public_timeline,:timeline]  
   
   def index
-    @questions = Question.unscoped.order('last_answered_at desc').limit(10)
-    @tasks = Task.limit(6)
-    @tags = Tag.limit(24)
-    @question = Question.new
+    @blogs = Blog.all
   end
   
   def timeline

@@ -6,11 +6,20 @@ class VotesController < ApplicationController
   end 
   
   def create
-    @vote = Vote.new(:user_id => current_user.id)
-    @vote.voteable_id = params[:voteable_id]
-    @vote.voteable_type = params[:voteable_type]
-    @voteable = @vote.voteable
-    @voteable.votes << @vote
+    @vote = Vote.where(:user_id=>current_user.id,:voteable_type=>params[:voteable_type],:voteable_id=>params[:voteable_id]).first
+    if @vote.nil?
+      @vote = Vote.new(:user_id => current_user.id)
+      @vote.voteable_id = params[:voteable_id]
+      @vote.voteable_type = params[:voteable_type]
+      if @vote.voteable_type == 'Problem'
+        @vote.is_agree = params[:is_agree]
+      end
+      @voteable = @vote.voteable
+      @voteable.votes << @vote
+    else
+      @vote.update_attribute(:is_agree,params[:is_agree])
+      @vote.save
+    end
     respond_to do |format|
       format.html {redirect_to params[:back_path] || :back}
       format.js { render 'create'} 

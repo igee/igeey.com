@@ -1,0 +1,15 @@
+<div class="event_box">
+  <div class="event" style="width:610px;">
+    <% unless kase.photo_file_name.nil? %>
+      <%= link_to (image_tag kase.photo.url,:class => "photo") + (image_tag kase.photo.url(:max500x400),:class => "zoomed_photo"),'',:class => "zoom_photo",:style => 'float:left;margin-right:10px' %>
+    <% end %>
+    <pre>案例：<%= kase.intro %></pre>
+  </div>
+  <div class="event_info">
+    <span>发现者：<%= kase.user.login%> | 提交于：<%= full_date(kase.created_at)%> | 发现地：<%= kase.address %></span>
+  </div>
+  <div class="event_action">
+    <%= link_to "回复#{'(' + kase.comments_count.to_s + ')' if kase.comments_count > 0}",'',:class => "event_reply",:onclick=>("javascript:redirect_clear(#{kase.id},'kase')" if logged_in?)%>
+  </div>
+  <%= render :partial => "/public/reply_form",:locals =>  {:object => kase}%>
+</div>

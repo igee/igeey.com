@@ -26,6 +26,7 @@ Igeey::Application.routes.draw do
   match 'oauth(/:action)' => 'oauth#(/:action)'
   match 'plan(/:id)' => 'plans#redirect', :as => :plan
   match 'answer(/:id)' => 'answers#redirect', :as => :answer
+  match 'kase(/:id)' => 'kases#show', :as => :kase
   match 'setting' => 'users#setting'
   
   match 'search' => 'search#result'
@@ -109,10 +110,15 @@ Igeey::Application.routes.draw do
     get :thanks, :on => :collection
   end
   
-  resources :follows,:photos,:topics,:sayings,:doings
+  resources :follows,:photos,:topics,:sayings,:doings,:blogs
   
   resources :messages do
     get :clear, :on => :member  
+  end
+  
+  resources :problems do
+    resources :kases do
+    end
   end
   
   resources :questions do
