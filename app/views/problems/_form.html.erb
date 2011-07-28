@@ -1,5 +1,5 @@
 <%= form_for @problem do |form| %>
-  <%= form.hidden_field :user_id, :value => current_user.id %>
+  <%= form.hidden_field :user_id %>
   <p>
     <%= form.label :name,'问题：'%> <%= form.text_field :name,:size => 40,:value => @problem.name%>
   </p>

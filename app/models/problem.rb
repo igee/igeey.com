@@ -5,7 +5,7 @@ class Problem < ActiveRecord::Base
   has_many   :notifications, :as => :notifiable, :dependent => :destroy
   has_many   :votes,    :as => :voteable,    :dependent => :destroy
   
-  validates :name,:user_id, :presence => true
+  validates :name, :presence => true
   
   default_scope     :order => 'created_at desc'
   
