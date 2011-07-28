@@ -2,24 +2,24 @@
 
 <% if @blogs.count == 1%>
   <% @blog = @blogs.first%>
-  <h2><%= @blog.title %></h2>
-  <span>发表于 <%= full_date(@blog.created_at)%></span>
+  <div class="box">
+    <h2><%= @blog.title %></h2>
+    <span>发表于 <%= full_date(@blog.created_at)%></span>
 
-  <% if logged_in? && current_user.is_admin?%>
-    <%= link_to "删除","#{blog_path(@blog)}",:method => :delete,:confirm => '你确定要删除这篇文章吗？'%> |
-    <%= link_to "编辑","#{edit_blog_path(@blog)}?back_path=#{request.path}"%>
-  <% end %>
+    <% if logged_in? && current_user.is_admin?%>
+      <%= link_to "删除","#{blog_path(@blog)}",:method => :delete,:confirm => '你确定要删除这篇文章吗？'%> |
+      <%= link_to "编辑","#{edit_blog_path(@blog)}?back_path=#{request.path}"%>
+    <% end %>
 
-  <div class="blog-content">
-    <%=raw @blog.content %>
+    <div class="blog-content">
+      <%=raw @blog.content %>
+    </div>
+
+    <%= render :partial => '/public/share'%>
   </div>
 
-  <%= render :partial => '/public/share'%>
-
-  <hr style="margin:30px 0 15px 0;">
-
-  <div class="box">
-    <h4><%= @blog.comments_count.zero? ? "《#{@title}》还没有评论" : "《#{@title}》有#{@blog.comments_count}评论：" %></h4>
+  <div class="box" style="border-top:1px solid #ccc;padding:10px 0">
+    <h5><%= @blog.comments_count.zero? ? "还没有评论" : "有#{@blog.comments_count}评论：" %></h5>
     <% @blog.comments.each do |comment|%>
       <%= render :partial => '/users/avatar',:object => comment.user %>
       <div class="event" style="padding-bottom:30px;">

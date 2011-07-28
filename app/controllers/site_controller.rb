@@ -3,6 +3,7 @@ class SiteController < ApplicationController
   
   def index
     @blogs = Blog.all
+    render '/blogs/show'
   end
   
   def timeline

@@ -1,72 +1,105 @@
-<% @title = @blog.title%>
+<% @title = '爱聚博客'%>
 
-<h2><%= @title %></h2>
-<span>发表于 <%= full_date(@blog.created_at)%></span>
+<% if @blogs.count == 1%>
+  <% @blog = @blogs.first%>
+  <div class="box">
+    <h2><%= @blog.title %></h2>
+    <span>发表于 <%= full_date(@blog.created_at)%></span>
 
-<% if logged_in? && current_user.is_admin?%>
-  <%= link_to "删除","#{blog_path(@blog)}",:method => :delete,:confirm => '你确定要删除这篇文章吗？'%> |
-  <%= link_to "编辑","#{edit_blog_path(@blog)}?back_path=#{request.path}"%>
-<% end %>
+    <% if logged_in? && current_user.is_admin?%>
+      <%= link_to "删除","#{blog_path(@blog)}",:method => :delete,:confirm => '你确定要删除这篇文章吗？'%> |
+      <%= link_to "编辑","#{edit_blog_path(@blog)}?back_path=#{request.path}"%>
+    <% end %>
 
-<div class="blog-content">
-  <%=raw @blog.content %>
-</div>
-
-<%= render :partial => '/public/share'%>
-
-<hr style="margin:30px 0 15px 0;">
-
-<div class="box">
-  <h4><%= @blog.comments_count.zero? ? "《#{@title}》还没有评论" : "《#{@title}》有#{@blog.comments_count}评论：" %></h4>
-  <% @blog.comments.each do |comment|%>
-    <%= render :partial => '/users/avatar',:object => comment.user %>
-    <div class="event" style="padding-bottom:30px;">
-      <% if logged_in? %>
-        <div class="event_action">
-          <%= link_to '回复',"#new_comment",:onclick => "javascript:reply_to('#{comment.user.login}')"%>
-        </div>
-      <% end %>
-      <%= link_to comment.user.login,user_path(comment.user) %>说：
-      <pre><%= comment.content %></pre>
-      <span><%= full_date(comment.created_at)%></span>
+    <div class="blog-content">
+      <%=raw @blog.content %>
     </div>
-  <% end %>
-</div>
 
-<div class="box">
-  <% if logged_in?%>
-    <h4>发表评论：</h4>
-    <%= render :partial => '/users/user' ,:object => current_user %>
-    <div style="padding:4px;float:left">
-      <div>
-        <%= form_for Comment.new do |form| %>
-          <%= form.hidden_field :commentable_type,:value => @blog.class %>
-          <%= form.hidden_field :commentable_id,:value => @blog.id %>
-          <%= form.text_area :content, :style => "width:530px;height:60px",:placeholder => "有什么想说的？"%>
-          <%= submit_tag '写好了！',:disable_with => '发送中..', :style => "float:right;" %>
+    <%= render :partial => '/public/share'%>
+  </div>
+
+  <div class="box" style="border-top:1px solid #ccc;padding:10px 0">
+    <h5><%= @blog.comments_count.zero? ? "还没有评论" : "有#{@blog.comments_count}评论：" %></h5>
+    <% @blog.comments.each do |comment|%>
+      <%= render :partial => '/users/avatar',:object => comment.user %>
+      <div class="event" style="padding-bottom:30px;">
+        <% if logged_in? %>
+          <div class="event_action">
+            <%= link_to '回复',"#new_comment",:onclick => "javascript:reply_to('#{comment.user.login}')"%>
+          </div>
         <% end %>
-      </div>   
-    </div>
-  <% else %>
-    <p>
-      <%= link_to "立即登录",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%> 即可留言
-      <span>支持更多帐号登录：
-      <%= image_tag "/images/icon/douban.gif",:class=> 'icon'%>
-      <%= link_to('豆瓣',:controller => 'oauth', :action => 'douban')%>
-      <%= image_tag "/images/icon/sina.gif",:class=> 'icon'%>	
-      <%= link_to('新浪微博',:controller => 'oauth', :action => 'sina')%>
-      </span>  
-    </p>
-  <% end %>
-</div>
+        <%= link_to comment.user.login,user_path(comment.user) %>说：
+        <pre><%= comment.content %></pre>
+        <span><%= full_date(comment.created_at)%></span>
+      </div>
+    <% end %>
+  </div>
 
-<script type="text/javascript">
-  function reply_to(username){
-    replyContent = $("#comment_content");
-	oldContent = replyContent.val();
-	prefix = "@" + username + " ";
-	newContent = prefix + oldContent
-	replyContent.focus();
-	replyContent.val(newContent);
-}
-</script>
+  <div class="box">
+    <% if logged_in?%>
+      <h4>发表评论：</h4>
+      <%= render :partial => '/users/user' ,:object => current_user %>
+      <div style="padding:4px;float:left">
+        <div>
+          <%= form_for Comment.new do |form| %>
+            <%= form.hidden_field :commentable_type,:value => @blog.class %>
+            <%= form.hidden_field :commentable_id,:value => @blog.id %>
+            <%= form.text_area :content, :style => "width:530px;height:60px",:placeholder => "有什么想说的？"%>
+            <%= submit_tag '写好了！',:disable_with => '发送中..', :style => "float:right;" %>
+          <% end %>
+        </div>   
+      </div>
+    <% else %>
+      <p>
+        <%= link_to "立即登录",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%> 即可留言
+        <span>支持更多帐号登录：
+        <%= image_tag "/images/icon/douban.gif",:class=> 'icon'%>
+        <%= link_to('豆瓣',:controller => 'oauth', :action => 'douban')%>
+        <%= image_tag "/images/icon/sina.gif",:class=> 'icon'%>	
+        <%= link_to('新浪微博',:controller => 'oauth', :action => 'sina')%>
+        </span>  
+      </p>
+    <% end %>
+  </div>
+
+  <script type="text/javascript">
+    function reply_to(username){
+      replyContent = $("#comment_content");
+  	oldContent = replyContent.val();
+  	prefix = "@" + username + " ";
+  	newContent = prefix + oldContent
+  	replyContent.focus();
+  	replyContent.val(newContent);
+  }
+  </script>
+<% else%>
+  <% @blogs.each do |blog|%>
+    <div style="padding:20px;">
+      <h2><%= link_to blog.title, blog_path(blog.en_title), :style=>"color:black;"%></h2>
+      <span>发表于 <%= full_date(blog.created_at)%></span>
+      <% if logged_in? && current_user.is_admin?%>
+        <%= link_to "删除","#{blog_path(blog)}",:method => :delete,:confirm => '你确定要删除这篇文章吗？'%> |
+        <%= link_to "编辑","#{edit_blog_path(blog)}?back_path=#{request.path}"%>
+      <% end %>
+
+      <div class="blog-content">
+        <%=raw blog.content %>
+      </div>
+  
+      <span style="float:left;padding-bottom:10px;"><%= link_to "#{blog.comments_count} 条评论", blog_path(blog), :style=>"color:#999;text-decoration:underline;"%></span>
+      <div style="text-align:right;">
+        <span>分享到：
+          <a href="http://www.douban.com/recommend/?url=http://www.igeey.com<%= blog_path(blog.en_title)%>&title=分享<%= @title%>" target="_blank"><img src='/images/icon/douban.gif' class="icon"/></a> 
+          <a href="http://v.t.sina.com.cn/share/share.php?url=http://www.igeey.com<%= blog_path(blog.en_title)%>&title=分享<%= @title%>" target="_blank"><img src='/images/icon/sina.gif' class="icon"/></a> 
+          <a href="http://www.connect.renren.com/share/sharer?url=http://www.igeey.com<%= blog_path(blog.en_title)%>&title=分享<%= @title%>" target="_blank"><img src='/images/icon/renren.gif' class="icon"/></a> 
+          <a href="http://www.kaixin001.com/repaste/bshare.php?rtitle=分享<%= @title%>&rurl=http://www.igeey.com<%= blog_path(blog.en_title)%>" target="_blank"><img src='/images/icon/kaixin001.gif' class="icon"/></a>
+        </span>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+<% content_for :sidebar do %>  
+  <% if logged_in? && current_user.is_admin?%>
+    <%= link_to "+ 文章", new_blog_path %>
+  <% end %>
+<% end %>
