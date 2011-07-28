@@ -1,7 +1,7 @@
 class BlogsController < ApplicationController
   respond_to :html
   before_filter :login_required, :except => [:show]
-  before_filter :find_blog,      :except => [:create,:new,:destroy]
+  before_filter :find_blog,      :except => [:create,:new]
   before_filter :check_admin,    :except => [:show]
   
   def new
@@ -9,7 +9,7 @@ class BlogsController < ApplicationController
   end
   
   def create
-    @blog = Blog.new(params[:blog])
+    @blog = Blog.new(:title=>params[:blog][:title],:en_title=>params[:blog][:en_title],:user_id=>params[:blog][:user_id],:content=>params[:editor01])
     @blog.save
     respond_with @blog
   end
@@ -21,7 +21,7 @@ class BlogsController < ApplicationController
   end
   
   def update
-    @blog.update_attributes(:title=>params[:blog][:title],:user_id=>params[:blog][:user_id],:content=>params[:editor01])
+    @blog.update_attributes(:title=>params[:blog][:title],:en_title=>params[:blog][:en_title],:user_id=>params[:blog][:user_id],:content=>params[:editor01])
     if params[:back_path].present?
       redirect_to params[:back_path]
     else

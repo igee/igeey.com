@@ -8,6 +8,9 @@
     <%= form.label :title,'标题：'%> <%= form.text_field :title,:size => 40%>
   </p>
   <p>
+    <%= form.label :en_title,'英文标题：'%> <%= form.text_field :en_title,:size => 40%>
+  </p>
+  <p>
     <%= form.label :content,'正文：'%> <%= form.text_area :content, :name=>"editor01", :style => "width:600px;height:500px;"%>
     <script type="text/javascript">CKEDITOR.replace('editor01');</script>
   </p>

@@ -48,6 +48,7 @@ ActiveRecord::Schema.define() do
   create_table "blogs", :force => true do |t|
     t.integer  :user_id
     t.string   :title
+    t.string   :en_title
     t.text     :content
     t.integer  :comments_count, :default => 0
     t.datetime :last_replied_at
