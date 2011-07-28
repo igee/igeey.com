@@ -1,7 +1,8 @@
 class ProblemsController < ApplicationController
   respond_to :html
-  before_filter :login_required, :except => [:show, :index]
+  #before_filter :login_required, :except => [:show, :index]
   before_filter :find_problem, :except => [:new,:create,:index,:before_create]
+  before_filter :check_admin,    :except => [:new,:create]
   
   def index
     @problems = Problem.all
@@ -20,7 +21,8 @@ class ProblemsController < ApplicationController
   def create
     @problem = Problem.new(params[:problem])
     @problem.save
-    respond_with @problem
+    #respond_with @problem
+    redirect_to :root
   end
   
   def show
