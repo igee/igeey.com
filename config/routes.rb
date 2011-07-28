@@ -119,6 +119,9 @@ Igeey::Application.routes.draw do
   resources :problems do
     resources :kases do
     end
+    collection do
+      get   :thanks
+    end
   end
   
   resources :questions do
