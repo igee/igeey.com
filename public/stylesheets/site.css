@@ -160,6 +160,13 @@ table{
   border:none;
   }
 
+#blog_logo{
+  position:absolute;
+  margin:8px 175px;
+  display:inline;
+  font-size:24px;
+}
+
 #footer_links{
   width:100%;
   display:block;
@@ -235,8 +242,7 @@ table{
   height:16px;
   position:relative;
   padding:0;
-  top:1px;
-  *top:-4px;
+  *top:-3px;
   left:-22px;
   cursor:pointer;
   background:url('/images/icon/search.png') no-repeat;
@@ -451,6 +457,9 @@ button:hover,input[type="submit"]:hover,input[type="button"]:hover{background:#f
   overflow:hidden;
   zoom:1
   }
+
+.blog-content p{margin:12px 0}
+.blog-content span{margin:0 24px;font-size:13px}
 
 .bubble{
   float:left;

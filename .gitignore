@@ -5,6 +5,7 @@ config/sphinx.yml
 config/oauth/*.yml
 config/deploy.rb
 config/*.sphinx.conf
+config/schedule.rb
 db/*.sqlite3
 db/migrate/*
 db/sphinx/*
@@ -19,4 +20,3 @@ public/json/
 *.project
 *.DS_Store
 *.orig
-config/schedule.rb
