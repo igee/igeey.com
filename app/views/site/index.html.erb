@@ -75,7 +75,7 @@
 <% else%>
   <% @blogs.each do |blog|%>
     <div style="padding:20px;">
-      <h2><%= link_to blog.title, blog_path(blog), :style=>"color:black;"%></h2>
+      <h2><%= link_to blog.title, blog_path(blog.en_title), :style=>"color:black;"%></h2>
       <span>发表于 <%= full_date(blog.created_at)%></span>
       <% if logged_in? && current_user.is_admin?%>
         <%= link_to "删除","#{blog_path(blog)}",:method => :delete,:confirm => '你确定要删除这篇文章吗？'%> |
@@ -87,7 +87,14 @@
       </div>
   
       <span style="float:left;padding-bottom:10px;"><%= link_to "#{blog.comments_count} 条评论", blog_path(blog), :style=>"color:#999;text-decoration:underline;"%></span>
-      <%= render :partial => '/public/share'%>
+      <div style="text-align:right;">
+        <span>分享到：
+          <a href="http://www.douban.com/recommend/?url=http://www.igeey.com<%= blog_path(blog.en_title)%>&title=分享<%= @title%>" target="_blank"><img src='/images/icon/douban.gif' class="icon"/></a> 
+          <a href="http://v.t.sina.com.cn/share/share.php?url=http://www.igeey.com<%= blog_path(blog.en_title)%>&title=分享<%= @title%>" target="_blank"><img src='/images/icon/sina.gif' class="icon"/></a> 
+          <a href="http://www.connect.renren.com/share/sharer?url=http://www.igeey.com<%= blog_path(blog.en_title)%>&title=分享<%= @title%>" target="_blank"><img src='/images/icon/renren.gif' class="icon"/></a> 
+          <a href="http://www.kaixin001.com/repaste/bshare.php?rtitle=分享<%= @title%>&rurl=http://www.igeey.com<%= blog_path(blog.en_title)%>" target="_blank"><img src='/images/icon/kaixin001.gif' class="icon"/></a>
+        </span>
+      </div>
     </div>
   <% end %>
 <% end %>

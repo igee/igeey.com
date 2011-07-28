@@ -37,6 +37,11 @@ class BlogsController < ApplicationController
   private
   
   def find_blog
-    @blog = Blog.find(params[:id])
+    if /^[\d]*$/.match(params[:id])
+      @blog = Blog.find(params[:id])
+    else
+      @blog = Blog.find_by_en_title(params[:id])
+    end
+    render :file => "public/404.html",:status => 404,:layout => false if @blog.nil?
   end
 end
