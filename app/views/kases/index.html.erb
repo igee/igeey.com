@@ -1,0 +1,12 @@
+<% @title = "问题：#{@problem.name} 的案例"%>
+
+<h4><%= @title %></h4>
+
+<div class="box">
+    <%= render :partial => '/public/kase',:collection => @kases %>
+</div>
+
+<% content_for :sidebar do %>
+  <p><%= link_to "添加案例", "#{problem_path(@problem)}/kases/new"%></p>
+  </p><%= link_to "返回问题页", problem_path(@problem)%></p>
+<% end %>
