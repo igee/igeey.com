@@ -1,13 +1,15 @@
 <%= form_for @problem do |form| %>
   <%= form.hidden_field :user_id %>
-  <p>
-    <%= form.label :name,'问题：'%> <%= form.text_field :name,:size => 40,:value => @problem.name%>
+  <p style="padding-top:20px;border-top:1px solid #eee;margin-top:15px">
+    <%= form.label :name,'问题标题：'%> <%= form.text_field :name,:style => 'width:400px',:value => @problem.name%>
   </p>
   <p>
-    <%= form.label :intro,'问题介绍：'%> <%= form.text_area :intro, :style => "width:320px;height:100px;"%>
+    <%= form.label :intro,'详细说明：'%> <%= form.text_area :intro, :style => "margin:-20px 0 0 74px;width:400px;height:200px;"%>
   </p>
-  <div style="clear:both;padding:0 20px;text-align:right">
-    <%= form.submit '确定'%>
-    <%= button_to_function '取消',"javascript:window.history.back()"%>
-  </div>
+  <p>
+    <div style="margin-left:70px">
+      <%= form.submit '提交'%>
+      <%= button_to_function '取消',"javascript:window.history.back()"%>
+    </div>
+  </p>
 <% end %>

@@ -502,6 +502,8 @@ button:hover,input[type="submit"]:hover,input[type="button"]:hover{background:#f
   margin-right:-20px;
   }
 
+.story_box{padding:10px 20px;color:#679;border-bottom:2px solid #bef;border-top:2px solid #bef;font-size:13px;background-color:#f9fcff}
+
 .sidebar_bubble{
   width:220px;
   background-color:#fff;
