@@ -1,6 +1,6 @@
 <%= form_for @problem do |form| %>
   <%= form.hidden_field :user_id %>
-  <p style="padding-top:20px;border-top:1px solid #eee;margin-top:15px">
+  <p>
     <%= form.label :name,'问题标题：'%> <%= form.text_field :name,:style => 'width:400px',:value => @problem.name%>
   </p>
   <p>
