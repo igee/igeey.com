@@ -1,8 +1,12 @@
 class BlogsController < ApplicationController
-  respond_to :html
-  before_filter :login_required, :except => [:show]
-  before_filter :find_blog,      :except => [:create,:new]
-  before_filter :check_admin,    :except => [:show]
+  respond_to :html, :rss
+  before_filter :login_required, :except => [:show,:index]
+  before_filter :find_blog,      :except => [:create,:new,:index]
+  before_filter :check_admin,    :except => [:show,:index]
+  
+  def index
+    @blogs = Blog.all
+  end
   
   def new
     @blog = Blog.new()
