@@ -23,6 +23,7 @@
   <div id="header">
     <div class="container">
       <%= link_to(image_tag('/images/logo.png'),root_path,:id => "logo")%>
+      <%= link_to(image_tag('/images/blog.png'),root_path,:id => "blog_logo") if controller_name == 'blogs' || (controller_name == 'site' && action_name == 'index')%>
       <div id="nav">
         <div id="status">
           <% if logged_in? %>
@@ -68,13 +69,14 @@
     <div class="container">
       <ul id="footer_links">
         <li>©2008-2010</li>
-        <%= form_tag search_path,:id => 'search_box',:method => :get do%>
-          <%= text_field_tag 'keywords', @keywords,:placeholder => '搜索爱聚的地点、用户' %><%= submit_tag '',:id => "magnifier"%>
-        <% end %>
+        <li><%= link_to '关于',about_path%></li>
+        <li><%= link_to '爱聚博客',root_path%></li>
         <li><%= link_to '公益问答',questions_path,:class => "#{'selected' if request.path == '/question'}"%></li>
         <li><%= link_to "地点动态",timeline_path,:title => '动态', :class => "#{'selected' if request.path == '/timeline'}" %></li>
         <li><%= link_to '爱聚帮助',tag_path('爱聚帮助')%></li>
-        <li><%= link_to '博客',"http://blog.igeey.com"%></li>
+        <%= form_tag search_path,:id => 'search_box',:method => :get do%>
+          <%= text_field_tag 'keywords', @keywords,:placeholder => '搜索爱聚的地点、用户' %><%= submit_tag '',:id => "magnifier"%>
+        <% end %>
       </ul>    
     </div>
   </div>

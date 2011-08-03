@@ -1,16 +1,42 @@
-<% @title = '添加新问题'%>
-<div style="padding:0 20px">
-  <h2>添加新问题</h2>
+<% @title = '提交你的发现'%>
+<div class="box">
+  <div class="story_box">
+    <p>
+      Hi,很谢谢你来到这个页面，你是第一批想在这里提交问题的人 :)
+    </p>
+    <p>
+      目前新的爱聚正在开发中，提交的问题暂时需要爱聚团队挑选，然后出来发表到博客上。
+      <br/>不过没关系，在新的爱聚网站正式上线的时候，我们会把收集到的问题一起发布到新爱聚上 :)
+    </p>
+  </div>
+  <br/>
+  <h2><%= @title %></h2>
   <%= render "form" %>
 </div>
 
-<% unless @problems.empty?%>
-<h4>已发现的相关问题</h4>
-  <% @problems.each do |p|%>
-    <div class="event_box" style="padding:4px 6px 12px">
-      <p>
-        <%= link_to p.name,problem_path(p)%>
-      </p>
-    </div>
-  <% end %>
+<% content_for :sidebar do %>  
+  <div class="sidebar_panel">
+    <h5>提交前的小提示:</h5>
+    <p> 
+      什么样的问题才适合在这里提交呢？先了解一下爱聚的几个关于问题的价值观吧。
+    </p>
+    <p>
+      1. 问题是公共的
+    </p>
+    <p class="explanation"> 
+      爱聚鼓励提交公共的有普遍性的问题，这样你的发现才能对别人有价值，因为这些问题和他们有关。
+    </p>
+    <p>
+      2. 问题是简单的
+    </p>
+    <p class="explanation"> 
+      直观的、现象明显的问题会更容易被人理解，同时也不容易引起争议，而把大家的注意力从解决问题上移走。
+    </p>
+    <p>
+      3. 其实也没有绝对的限制
+    </p>
+    <p class="explanation"> 
+      我们并没有严格的标准，我们尽量把大家的发现保留，靠群体的智慧去让更有价值的问题得到关注。
+    </p>
+  </div>
 <% end %>
