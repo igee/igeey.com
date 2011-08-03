@@ -3,7 +3,7 @@ xml.rss :version=>"2.0" do
   xml.channel do
     xml.title("爱聚博客")
     xml.link("http://www.igeey.com")
-    xml.description("爱聚博客")
+    xml.description("公益从发现开始...")
     xml.language("zh-cn")
     for blog in @blogs
       xml.item do
