@@ -15,7 +15,7 @@ class Mailer < ActionMailer::Base
   def send_new_problem(problem)
     if APP_CONFIG['developer_mail'].present?
       @problem = problem 
-      mail(:to => APP_CONFIG['developer_mail'], :subject => "新问题提交:#{@problem.name}")
+      mail(:to => APP_CONFIG['developer_mail'], :subject => "新问题提交:#{@problem.title}")
     end
   end 
 end
