@@ -9,6 +9,10 @@ class Problem < ActiveRecord::Base
   
   default_scope     :order => 'created_at desc'
   
+  def send_new_problem
+    Mailer.send_new_problem(self).deliver if self.save
+  end
+
   define_index do
     indexes name
   end

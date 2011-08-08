@@ -20,6 +20,7 @@ class BlogsController < ApplicationController
   
   def show
     @blogs = [@blog]
+    @comments = @blog.comments
   end
   
   def edit
