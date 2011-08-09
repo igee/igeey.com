@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
   private
   
   def check_admin
-    current_user && current_user.is_admin?
+    redirect_to :root unless (current_user && current_user.is_admin?)
   end
 end
