@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   respond_to :html, :js, :xml  
   def create
     @comment = current_user.comments.new(params[:comment])
-    @comment.content = @comment.content
+    @comment.user_id = 1 if params[:offcial] && current_user.is_admin #user_id = 1 => offcial
     @comment.save
     respond_to do |format|
       format.html {redirect_to :back}

@@ -22,6 +22,7 @@ class ProblemsController < ApplicationController
     @problem = Problem.new(params[:problem])
     @problem.save
     #respond_with @problem
+    @problem.send_new_problem if @problem.save
     flash[:dialog] = "<a href=#{thanks_problems_path} class='open_dialog' title='添加成功'>问题添加成功</a>"
     redirect_to :root
   end

@@ -2,7 +2,8 @@ class Feedback < ActiveRecord::Base
   validates :text, :presence   => true  
   default_scope :order => 'created_at DESC'
   
-  def send_to_developer
-    Mailer.send_to_developer(self.text,self.email).deliver if self.save
+  def send_new_feedback
+    Mailer.send_new_feedback(self).deliver if self.save
   end
+
 end
