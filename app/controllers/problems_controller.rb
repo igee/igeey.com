@@ -28,7 +28,7 @@ class ProblemsController < ApplicationController
   end
   
   def show
-    if (current_user && current_user.is_admin?) || [INDEX_PROBLEMS['problem1'],INDEX_PROBLEMS['problem2'],INDEX_PROBLEMS['problem3']].include?(@problem.id)
+    if (current_user && current_user.is_admin?) || INDEX_PROBLEMS['problem_ids'].split(',').include?(params[:id])
       @kase = Kase.new
       @kases = @problem.kases.where("photo_file_name is not null")[0..2]
       @comments = @problem.comments
