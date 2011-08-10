@@ -11,4 +11,6 @@ class Kase < ActiveRecord::Base
                             :default_url=>"/defaults/:attachment/:style.png"
                             
   default_scope     :order => 'created_at desc'
+  
+  validates :photo_file_name, :presence=>true, :format=>{ :with=>/([\w-]+\.(gif|png|jpg))|/ }
 end
