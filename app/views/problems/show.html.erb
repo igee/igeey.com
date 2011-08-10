@@ -16,7 +16,11 @@
   案例：
   <% unless @kases.empty?%>
     <span>（<%= link_to "全部#{@problem.kases.count}", "#{problem_path(@problem)}/kases"%> | <%= link_to "添加案例", "#{problem_path(@problem)}/kases/new"%>）</span>
-    <%= render :partial => '/public/kase',:collection => @kases %>
+    <div style="margin-top:20px">
+      <% @kases.each do |k|%>
+        <%= link_to (image_tag k.photo.url(:_170x127)), '', :style=>'margin:16px;'%>
+      <% end %>
+    </div>
   <% else %>
     <p>
       <span style="margin-left:30px;">该问题还没有案例，您可以 <%= link_to "添加案例", "#{problem_path(@problem)}/kases/new"%></span>
