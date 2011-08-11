@@ -53,6 +53,6 @@ class AnswersController < ApplicationController
   end
   
   def check_permission
-    redirct_to :back unless @answer.owned_by?(current_user) 
+    redirect_to :back unless @answer.owned_by?(current_user) 
   end
 end

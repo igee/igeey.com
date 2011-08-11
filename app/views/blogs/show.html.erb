@@ -36,11 +36,18 @@
   </div>
 
   <div class="sidebar_panel">
-    <h5>致老用户:</h5>
+    <h5>致老用户：</h5>
     <p class="explanation">爱聚的老用户们，正如你们所见，爱聚的首页变成爱聚博客了,这也预示这将来爱聚将会有一次比较大的变化。</p>
     <p class="explanation">爱聚的使命是推动大众参与公益，在之前的不断探索中,我们渐渐找到了一个比较清晰的方向（见<a href="/blogs/1" title="first blog">第一篇博客</a> :)）。</p>
     <p class="explanation">新的方向意味着我们可能要去掉一些原有的功能，但是之前的数据会被保存下来，目前你仍可下在页面最下方找到原来所有的功能。</p>
     <p class="explanation">感谢你们长期的支持，我们一起期待新的爱聚诞生吧!</p>
+  </div>
+  
+  <div class="sidebar_panel">
+    <h5>本周讨论的问题是：</h5>
+    <% @problem_ids.each do |pid|%>
+    <p><%= link_to Problem.find(pid).title, Problem.find(pid)%></p>
+    <% end %>
   </div>
 
   <div class="box">

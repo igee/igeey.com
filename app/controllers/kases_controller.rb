@@ -15,8 +15,8 @@ class KasesController < ApplicationController
   def create
     @problem = Problem.find(params[:problem_id])
     @kase = @problem.kases.build(params[:kase])
-    @kase.save
-    redirect_to problem_path(@problem)
+    redirect_to problem_path(@problem) if @kase.save
+    render :action => 'new'
   end
   
   def show
