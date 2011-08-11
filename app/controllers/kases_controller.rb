@@ -15,8 +15,12 @@ class KasesController < ApplicationController
   def create
     @problem = Problem.find(params[:problem_id])
     @kase = @problem.kases.build(params[:kase])
-    redirect_to problem_path(@problem) if @kase.save
-    render :action => 'new'
+    @kase.init_geocodding
+    if @kase.save
+      redirect_to problem_path(@problem)
+    else
+      render :action => 'new'
+    end
   end
   
   def show

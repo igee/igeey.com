@@ -13,4 +13,11 @@ class Kase < ActiveRecord::Base
   default_scope     :order => 'created_at desc'
   
   validates :photo_file_name, :presence=>true, :format=>{ :with=>/([\w-]+\.(gif|png|jpg))|/ }
+  
+  def init_geocodding
+    response = Net::HTTP.get_response(URI.parse("http://maps.googleapis.com/maps/api/geocode/json?address=#{URI.escape(self.address)}&sensor=false"))
+    json = ActiveSupport::JSON.decode(response.body)
+    self.latitude, self.longitude = json["results"][0]["geometry"]["location"]["lat"], json["results"][0]["geometry"]["location"]["lng"]
+  end
+  
 end
