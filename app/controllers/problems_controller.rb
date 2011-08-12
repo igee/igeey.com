@@ -15,10 +15,11 @@ class ProblemsController < ApplicationController
     else
       @problems = []
     end
-    @problem = Problem.new(:name=>params[:keywords])
+    @problem = Problem.new(:title=>params[:keywords])
   end
 
   def create
+    puts params[:problem]
     @problem = Problem.new(params[:problem])
     @problem.save
     #respond_with @problem
@@ -30,7 +31,7 @@ class ProblemsController < ApplicationController
   def show
     if (current_user && current_user.is_admin?) || INDEX_PROBLEMS['problem_ids'].split(',').include?(params[:id])
       @kase = Kase.new
-      @kases = @problem.kases.where("photo_file_name is not null")[0..2]
+      @kases = @problem.kases.where("photo_file_name is not null")[0..4]
       @comments = @problem.comments
     else
       redirect_to :root

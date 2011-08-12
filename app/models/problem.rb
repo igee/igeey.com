@@ -5,7 +5,7 @@ class Problem < ActiveRecord::Base
   has_many   :notifications, :as => :notifiable, :dependent => :destroy
   has_many   :votes,    :as => :voteable,    :dependent => :destroy
   
-  validates :name, :presence => true
+  validates :title, :presence => true
   
   default_scope     :order => 'created_at desc'
   
@@ -14,6 +14,6 @@ class Problem < ActiveRecord::Base
   end
 
   define_index do
-    indexes name
+    indexes title
   end
 end
