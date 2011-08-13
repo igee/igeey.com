@@ -5,9 +5,9 @@
 <% i=0 %>
 <% @kases.each do |k|%>
   <div class="photo_wrap">
-    <%= link_to (image_tag k.photo.url(:_170x127)), ''%>
+    <%= link_to (image_tag k.photo.url(:_170x127)), "#{problem_path(@problem)}/kases/#{k.id}"%>
     <div class="pl">
-      <%= k.intro %>
+      <%= short_text(k.intro,18) %>
     </div>
   </div>
   <% i += 1%>
