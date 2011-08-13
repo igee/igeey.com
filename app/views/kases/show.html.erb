@@ -1,18 +1,14 @@
 <% @title = '案例'%>
 
-<div class="box">  
-  <div class="event_box">
-    <div class="event" style="width:610px;">
-      <% unless @kase.photo_file_name.nil? %>
-        <%= link_to (image_tag @kase.photo.url,:class => "photo") + (image_tag @kase.photo.url(:max500x400),:class => "zoomed_photo"),'',:class => "zoom_photo",:style => 'float:left;margin-right:10px' %>
-      <% end %>
-      <pre>案例：<%= @kase.intro %></pre>
-    </div>
-    <div class="event_info">
-      <span>发现者：<%= @kase.user.login%> | 提交于：<%= full_date(@kase.created_at)%> | 发现地：<%= @kase.address %></span>
-    </div>
-  </div>
-</div>
+<h3>案例 - <%= @problem.title %></h3>
+<div style="text-align:center;margin-top:20px;"><%= link_to (image_tag @kase.photo.url(:_360x270)), "#{problem_path(@problem)}/kases/#{@nextp.id}",:title=>"点击查看下一张"%></div>
+<pre style="margin:5px 20px 5px 20px;"><%= @kase.intro %></pre>
+<span>发现者：<%= @kase.user.login%> | 提交于：<%= full_date(@kase.created_at)%> | 发现地：<%= @kase.address %></span>
 
 <%= render :partial => '/comments/board'%>  
 <%= render :partial => '/comments/form' ,:locals => {:commentable => @kase}%>
+
+<% content_for :sidebar do %>
+  </p><%= link_to "返回到问题", problem_path(@problem)%></p>
+  </p><%= link_to "返回到案例", "#{problem_path(@problem)}/kases"%></p>
+<% end %>
