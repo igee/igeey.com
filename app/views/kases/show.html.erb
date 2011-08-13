@@ -5,6 +5,8 @@
 <pre style="margin:5px 20px 5px 20px;"><%= @kase.intro %></pre>
 <span>发现者：<%= @kase.user.login%> | 提交于：<%= full_date(@kase.created_at)%> | 发现地：<%= @kase.address %></span>
 
+<hr style="margin-bottom:15px;">
+评论：
 <%= render :partial => '/comments/board'%>  
 <%= render :partial => '/comments/form' ,:locals => {:commentable => @kase}%>
 
