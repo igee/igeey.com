@@ -3,7 +3,10 @@
 <h3>案例 - <%= @problem.title %></h3>
 
 <div style="margin:15px;font-size:12px;">
-  <div style="float:right;"><%= link_to "返回", "#{problem_path(@problem)}"%></div>
+  <div style="float:right;">
+    <%= link_to "+添加案例", "#{problem_path(@problem)}/kases/new"%> |
+    <%= link_to "返回", "#{problem_path(@problem)}"%>
+  </div>
   <div class="clear"></div>
   <hr>
 </div>

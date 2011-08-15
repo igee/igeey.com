@@ -13,7 +13,7 @@
 </div>
 <div style="text-align:center;margin-top:20px;"><%= link_to (image_tag @kase.photo.url(:_360x270)), "#{problem_path(@problem)}/kases/#{@next.id}",:title=>"点击查看下一张"%></div>
 <pre style="margin:5px 20px 5px 20px;font-size:12px;"><%= @kase.intro %></pre>
-<span>发现者：<%= @kase.user.login%> | 提交于：<%= full_date(@kase.created_at)%> | 发现地：<%= @kase.address %></span>
+<span>发现者：<%= @kase.user.login%> | 提交于：<%= full_date(@kase.created_at)%> | 拍摄地：<%= @kase.address %></span>
 
 <hr style="margin-bottom:15px;border:1px #ededed solid;">
 评论：
