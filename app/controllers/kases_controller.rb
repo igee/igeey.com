@@ -23,12 +23,17 @@ class KasesController < ApplicationController
   
   def show
     @kase = Kase.find(params[:id])
-    problem_kase_ids = @problem.kases.map(&:id)
-    i = problem_kase_ids.index(@kase.id)
-    if i != @problem.kases.length - 1
-      @nextp = Kase.find(@problem.kases[i+1])
+    @problem_kase_ids = @problem.kases.map(&:id)
+    @index = @problem_kase_ids.index(@kase.id)
+    if @index != 0
+      @prev = Kase.find(@problem.kases[@index-1])
     else
-      @nextp = Kase.find(@problem.kases[0])
+      @prev = Kase.find(@problem.kases[-1])
+    end
+    if @index != @problem.kases.length - 1
+      @next = Kase.find(@problem.kases[@index+1])
+    else
+      @next = Kase.find(@problem.kases[0])
     end
     @comments = @kase.comments
   end

@@ -1,16 +1,21 @@
 <% @title = '案例'%>
 
 <h3>案例 - <%= @problem.title %></h3>
-<div style="text-align:center;margin-top:20px;"><%= link_to (image_tag @kase.photo.url(:_360x270)), "#{problem_path(@problem)}/kases/#{@nextp.id}",:title=>"点击查看下一张"%></div>
+
+<div style="margin:15px;font-size:12px;">
+  <div style="float:left;"><%= "第#{@index+1}张/共#{@problem_kase_ids.count}张" %></div>
+  <div style="float:right;"><%= link_to "返回", "#{problem_path(@problem)}/kases"%></div>
+  <div style="text-align:center">
+    <%= link_to '上一张',"#{problem_path(@problem)}/kases/#{@prev.id}",:title=>"上一张"%> /
+    <%= link_to '下一张',"#{problem_path(@problem)}/kases/#{@next.id}",:title=>"下一张"%>
+  </div>
+  <hr>
+</div>
+<div style="text-align:center;margin-top:20px;"><%= link_to (image_tag @kase.photo.url(:_360x270)), "#{problem_path(@problem)}/kases/#{@next.id}",:title=>"点击查看下一张"%></div>
 <pre style="margin:5px 20px 5px 20px;"><%= @kase.intro %></pre>
 <span>发现者：<%= @kase.user.login%> | 提交于：<%= full_date(@kase.created_at)%> | 发现地：<%= @kase.address %></span>
 
-<hr style="margin-bottom:15px;">
+<hr style="margin-bottom:15px;border:1px #ededed solid;">
 评论：
 <%= render :partial => '/comments/board'%>  
 <%= render :partial => '/comments/form' ,:locals => {:commentable => @kase}%>
-
-<% content_for :sidebar do %>
-  </p><%= link_to "返回到问题", problem_path(@problem)%></p>
-  </p><%= link_to "返回到案例", "#{problem_path(@problem)}/kases"%></p>
-<% end %>
