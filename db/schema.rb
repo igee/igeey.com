@@ -135,6 +135,7 @@ ActiveRecord::Schema.define(:version => 20110808033327) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "comments_count",                     :default => 0
+    t.integer  "votes_count",          :default => 0
     t.integer  "last_replied_user_id"
     t.datetime "last_replied_at"
   end
