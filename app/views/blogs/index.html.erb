@@ -2,11 +2,14 @@
 
 <% @blogs.each do |blog|%>
   <div class="box">
+    <div style="padding:6px 0;border-bottom:1px solid #ddd">
+      <%= image_tag '/images/icon/calendar.png',:class => 'icon' %>
+      <span><%= format_date(blog.created_at)%></span>
+    </div>
     <h2><%= link_to blog.title,blog %></h2>
-    <span>发表于 <%= format_date(blog.created_at)%></span>
     <div class="blog-content">
       <%=raw blog.summary %>
-      <%= link_to '[继续阅读全文去]',blog_path(blog)%>
+      <%= link_to '[继续阅读全文...]',blog_path(blog)%>
     </div>
   </div>
 <% end %>
