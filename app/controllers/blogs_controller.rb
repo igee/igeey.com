@@ -6,6 +6,7 @@ class BlogsController < ApplicationController
   
   def index
     @blogs = Blog.all
+    @problem_ids = INDEX_PROBLEMS['problem_ids'].split(',')
   end
   
   def new
@@ -13,21 +14,21 @@ class BlogsController < ApplicationController
   end
   
   def create
-    @blog = Blog.new(:title=>params[:blog][:title],:en_title=>params[:blog][:en_title],:user_id=>params[:blog][:user_id],:content=>params[:editor01])
+    @blog = Blog.new(params[:blog])
     @blog.save
     respond_with @blog
   end
   
   def show
-    @blogs = [@blog]
     @comments = @blog.comments
+    @problem_ids = INDEX_PROBLEMS['problem_ids'].split(',')
   end
   
   def edit
   end
   
   def update
-    @blog.update_attributes(:title=>params[:blog][:title],:en_title=>params[:blog][:en_title],:user_id=>params[:blog][:user_id],:content=>params[:editor01])
+    @blog.update_attributes(params[:blog])
     if params[:back_path].present?
       redirect_to params[:back_path]
     else

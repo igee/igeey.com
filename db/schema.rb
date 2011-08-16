@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110808033327) do
+ActiveRecord::Schema.define do
 
   create_table "actions", :force => true do |t|
     t.string  "name",            :limit => 40
@@ -48,13 +48,13 @@ ActiveRecord::Schema.define(:version => 20110808033327) do
   create_table "blogs", :force => true do |t|
     t.integer  "user_id"
     t.string   "title"
+    t.string   "slug"
     t.text     "content"
     t.integer  "comments_count",       :default => 0
     t.datetime "last_replied_at"
     t.integer  "last_replied_user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "en_title"
   end
 
   create_table "comments", :force => true do |t|

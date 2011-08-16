@@ -3,10 +3,8 @@ class SiteController < ApplicationController
   
   def index
     @blogs = Blog.all
-    @blog = Blog.first
-    @comments = @blog.comments
     @problem_ids = INDEX_PROBLEMS['problem_ids'].split(',')
-    render '/blogs/show'
+    render '/blogs/index'
   end
   
   def timeline
