@@ -1,5 +1,5 @@
   <div class="sidebar_panel">
-    <h5><%= image_tag '/images/icon/problem.png',:class => 'icon'%> 本周讨论的问题是：</h5>
+    <h5>本周讨论的问题是：</h5>
     <% @problem_ids.each do |pid|%>
     <p><%= link_to Problem.find(pid).title, Problem.find(pid)%></p>
     <% end %>
