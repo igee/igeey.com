@@ -19,7 +19,6 @@ class ProblemsController < ApplicationController
   end
 
   def create
-    puts params[:problem]
     @problem = Problem.new(params[:problem])
     @problem.save
     #respond_with @problem
