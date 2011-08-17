@@ -226,6 +226,7 @@ ActiveRecord::Schema.define do
     t.integer  "disagree_count",                     :default => 0
     t.integer  "agree_count",                        :default => 0
     t.integer  "votes_count",                        :default => 0
+    t.integer  "follows_count",                      :default => 0
   end
 
   create_table "questions", :force => true do |t|

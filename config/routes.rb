@@ -122,6 +122,9 @@ Igeey::Application.routes.draw do
     collection do
       get   :thanks
     end
+    member do
+      get   :followers
+    end
   end
   
   resources :questions do

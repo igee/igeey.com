@@ -3,6 +3,9 @@
 <div class="box" style="background-color:#E9F4E9;padding:15px;">
   <h3><%= @problem.title %></h3>
   <pre><%= @problem.intro %></pre>
+  <div style="float:right">
+    <%= raw(interest_to(@problem)) %>
+  </div>
 </div>
 
 <div class="box">
@@ -31,5 +34,11 @@
       <%= text_field_tag 'keywords', @keywords,:style => 'font-size:15px;width:235px;padding:5px'%>
       <%= submit_tag '添加问题',:style=>'font-size:14px;line-height:20px;float:right;' %>
     <% end %>
+  </div>
+  
+  <div class="box">
+    <%= link_to "查看全部",followers_problem_path(@problem),:class => "see_all_link" if @following_users[8]%>
+    <h5><%= "#{@problem.follows.size}人关心该问题："%></h5>
+    <%= render :partial => '/users/user',:collection => @following_users[0..7] %>
   </div>
 <% end %>
