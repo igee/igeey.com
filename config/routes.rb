@@ -124,6 +124,7 @@ Igeey::Application.routes.draw do
     end
     member do
       get   :followers
+      get   :position
     end
   end
   

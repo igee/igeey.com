@@ -38,6 +38,10 @@ class ProblemsController < ApplicationController
     end
   end
   
+  def position
+    render :layout => false if params[:layout] == 'false'
+  end
+  
   def followers
     @items = @problem.follows.map(&:user).paginate(:page => params[:page], :per_page => 10)
     @title = "关心#{@problem.title}的用户："
