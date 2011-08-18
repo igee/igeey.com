@@ -1,10 +1,11 @@
 class KasesController < ApplicationController
-  respond_to :html
+  respond_to :html,:json
   before_filter :login_required, :except => [:index, :show]
   before_filter :find_problem
   
   def index
     @kases = @problem.kases
+    render :layout => false if params[:layout] == 'false'
   end
   
   def new
@@ -23,11 +24,16 @@ class KasesController < ApplicationController
   
   def show
     @kase = Kase.find(params[:id])
-    @problem_kase_ids = @problem.kases.map(&:id)
-    @index = @problem_kase_ids.index(@kase.id)
-    @prev = Kase.find( @problem_kase_ids[(@index-1) % @problem_kase_ids.size])
-    @index != @problem.kases.length - 1 ? @next = Kase.find(@problem.kases[@index+1]) : @next = Kase.find(@problem.kases[0])
     @comments = @kase.comments
+    @layout = params[:layout] != 'false'
+    if @layout
+      @problem_kase_ids = @problem.kases.map(&:id)
+      @index = @problem_kase_ids.index(@kase.id)
+      @prev = Kase.find( @problem_kase_ids[(@index-1) % @problem_kase_ids.size])
+      @next = Kase.find( @problem_kase_ids[(@index+1) % @problem_kase_ids.size])
+    else
+      render :layout => false 
+    end
   end
   
   private

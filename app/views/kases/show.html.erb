@@ -1,24 +1,47 @@
-<% @title = '案例'%>
-
-<h3>案例 - <%= @problem.title %></h3>
-
-<div style="margin:15px;font-size:12px;">
-  <div style="float:left;"><%= "第#{@index+1}张/共#{@problem_kase_ids.count}张" %></div>
-  <div style="float:right;"><%= link_to "返回", "#{problem_path(@problem)}/kases"%></div>
+<% @title = "案例 No.#{@kase.id}" %>
+<% unless @layout %>
   <div style="text-align:center">
-    <%= link_to '上一张',"#{problem_path(@problem)}/kases/#{@prev.id}",:title=>"上一张"%> /
-    <%= link_to '下一张',"#{problem_path(@problem)}/kases/#{@next.id}",:title=>"下一张"%>
+    <span><%= link_to "上一个","javascript:kase_turn(#{@kase.id},'prev')"%> |</span>
+    <span><%= link_to "下一个","javascript:kase_turn(#{@kase.id},'next')"%></span>
   </div>
-  <hr>
-</div>
-<div style="text-align:center;margin-top:20px;"><%= link_to (image_tag @kase.photo.url(:_360x270)), "#{problem_path(@problem)}/kases/#{@next.id}",:title=>"点击查看下一张"%></div>
-<pre style="margin:5px 20px 5px 20px;font-size:12px;"><%= @kase.intro %></pre>
-<span>发现者：<%= @kase.user.login%> | 提交于：<%= full_date(@kase.created_at)%> | 拍摄地：<%= @kase.address %></span>
-<span style='color:#555;float:right;'>
-  <%= link_to(raw("#{image_tag('/images/icon/upgrey.png',:class=>'icon')} 有用 #{@kase.votes_count}"),votes_path(:voteable_id => @kase.id,:voteable_type => @kase.class.to_s,:back_path => request.fullpath), :remote => (true if logged_in?),:method => :post,:id => "kase_vote_#{@kase.id}",:class => 'vote', :title => '有用') %>
-</span>
+<% else %>
+  <h2><%= @title if @layout%></h2>
+  <%= link_to '上一个',problem_kase_path(@problem,@prev),:title=>"上一个"%> /
+  <%= link_to '下一个',problem_kase_path(@problem,@next),:title=>"下一个"%>
+<% end %>
 
-<hr style="margin-bottom:15px;border:1px #ededed solid;">
-评论：
-<%= render :partial => '/comments/board'%>  
-<%= render :partial => '/comments/form' ,:locals => {:commentable => @kase}%>
+<div class="box">
+  <div><%= (image_tag @kase.photo.url(:max500x400)) %></div>
+  <span>发现者：<%= @kase.user.login%> | 提交于：<%= full_date(@kase.created_at)%> | 发生地：<%= @kase.address %></span>
+  <% unless @layout %>
+    <div class="event_action">
+    <% if @kase.owned_by?(current_user) %>
+      <%= link_to "删除",problem_kase_path(@problem,@kase),:method => :delete ,:confirm => "确定要删除这个案例么？",:id => "delete_link_#{@kase.id}"%> |
+      <%= link_to "修改",edit_problem_kase_path(@problem,@kase,:back_path =>request.path)%> |
+    <% end %>
+    <%= link_to "回复#{'(' + @kase.comments_count.to_s + ')' if @kase.comments_count > 0}",problem_kase_path(@problem,@kase) %>　
+    </div>
+  <% else %>
+    <% if @kase.owned_by?(current_user) %>
+      <span><%= link_to "删除",problem_kase_path(@problem,@kase),:method => :delete ,:confirm => "确定要删除这个案例么？",:id => "delete_link_#{@kase.id}"%> |</span>
+      <span><%= link_to "修改",edit_problem_kase_path(@problem,@kase,:back_path =>request.path)%></span>
+    <% end %>
+  <% end %>
+  <pre><%= @kase.intro %></pre>
+</div>
+
+<% if @layout %>
+  <div class="div">
+    <%= render :partial => '/comments/board'%>  
+    <%= render :partial => '/comments/form' ,:locals => {:commentable => @kase}%>
+  </div>
+<% end %>
+
+<% content_for :sidebar do %>
+  <h5>来自问题：</h5>
+  <p>
+    <b><%= link_to "No.#{@problem.id} #{@problem.title}",problem_path(@problem) %></b>
+    <span>有<%= @problem.follows_count %>人关心</span>
+  </p>
+  <p class="explanation"><%= @problem.intro %></p>
+<% end %>

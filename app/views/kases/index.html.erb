@@ -11,7 +11,6 @@
   <hr>
 </div>
 
-<% i=0 %>
 <% @kases.each do |k|%>
   <div class="photo_wrap">
     <%= link_to (image_tag k.photo.url(:_170x127)), "#{problem_path(@problem)}/kases/#{k.id}", :title=>k.intro%>
@@ -19,14 +18,10 @@
       <%= short_text(k.intro,20) %>
     </div>
   </div>
-  <% i += 1%>
-  <% if i%3==0 %>
-    <div class="clear"></div>
-  <% end %>
 <% end %>
 
 <style type="text/css">
-  .photo_wrap { float: left; display: inline; width: 170px; overflow: hidden; margin: 10px 18px 25px }
+  .photo_wrap { float: left; display: inline; width: 170px; height:167px; overflow: hidden; margin: 10px 18px 25px }
   .photo_wrap .pl{margin:6px 0 3px 0;font-size:12px; }
   .clear{ clear: both; line-height:0; font-size:0; }
 </style>

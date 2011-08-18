@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'nicEdit' %>
+<% end %>
+
 <%= form_for @blog do |form| %>
   <%= form.hidden_field :user_id, :value => current_user.id %>
   <p>
@@ -7,7 +11,7 @@
     <%= form.label :slug,'英文标题：'%> <%= form.text_field :slug,:size => 40%>
   </p>
   <p>
-    <%= form.label :content,'正文：'%> <%= form.text_area :content, :style => "width:600px;height:500px;"%>
+    <%= form.label :content,'正文：'%> <%= form.text_area :content, :id=>"area1", :style => "width:600px;"%>
   </p>
   <div style="clear:both;padding:0 20px;text-align:right">
     <%= form.submit '确定'%>
@@ -22,3 +26,10 @@
   </div>
 <% end %>
 
+<% content_for :extension do %>
+  <script type="text/javascript">
+    bkLib.onDomLoaded(function() {
+    	new nicEditor().panelInstance('area1');
+    });
+  </script>
+<% end %>

@@ -1,0 +1,5 @@
+<div class="box">
+  <h3><%= @title %></h3>
+  <%= render :partial => "/public/item",:collection => @items%>
+  <%= will_paginate @items %>
+</div>

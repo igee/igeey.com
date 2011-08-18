@@ -1,29 +1,63 @@
 <% @title = "问题：#{@problem.title}"%>
 
 <div class="story_box" >
+  <div style="float:right;margin:4px 0">
+    <%= raw(care_about(@problem)) %>
+  </div>
   <h2>No.<%= @problem.id %> <%= @problem.title %></h2>
+  <span><%= format_date(@problem.created_at)%>提出</span>
   <pre><%= @problem.intro %></pre>
 </div>
 
+<div style="text-align:right;">
+  <%= render :partial => '/public/share'%>
+</div>
+
 <div class="box">
-  <h4>看看这个问题的实际案例：</h4>
+  <h4>实际案例：</h4>
   <% unless @kases.empty?%>
-    <span><%= link_to "再添一个", "#{problem_path(@problem)}/kases/new"%></span>
-    <div style="margin:20px 0 0 20px;">
-      <% @kases.each do |k|%>
-        <%= link_to (image_tag k.photo.url(:_100x75)), "#{problem_path(@problem)}/kases/#{k.id}", :style=>'margin:5px;', :title=>k.intro%>
+    <p id="kases">
+      <% @kases.each do |kase|%>
+        <%= link_to (image_tag kase.photo.url(:_100x75),:class => 'kase'), "#{problem_path(@problem)}/kases/#{kase.id}",:title => "案例 No.#{kase.id}",:class => 'open_dialog',:name => kase.id.to_s %>
       <% end %>
-    </div>
+    </p>
+    <%= link_to "再添一个", "#{problem_path(@problem)}/kases/new",:class => 'add' %>
   <% else %>
     <p>
-      <span style="margin-left:30px;">该问题还没有案例，您可以 <%= link_to "添加案例", "#{problem_path(@problem)}/kases/new"%></span>
+      <span>这个问题还没有实际案例呢，也太不靠谱了，赶紧 <%= link_to "添加一个?", "#{problem_path(@problem)}/kases/new"%></span>
     </p>
   <% end %>
 </div>
 
-<h4>留言板：</h4>
-<%= render :partial => '/comments/board'%>    
-<%= render :partial => '/comments/form' ,:locals => {:commentable => @problem}%>
+<div class="box" style="border-top:1px solid #eee">
+  <%= render :partial => '/comments/board'%>    
+  <%= render :partial => '/comments/form' ,:locals => {:commentable => @problem}%>
+</div>
 
 <% content_for :sidebar do %>
+  <div class="box">
+    <%= link_to "查看全部",followers_problem_path(@problem),:class => "see_all_link" if @following_users[8]%>
+    <h5><%= @problem.follows_count.zero? ? "还没有" : "有#{@problem.follows_count}"%>人关心这个问题：</h5>
+    <%= render :partial => '/users/user',:collection => @following_users[0..7] %>
+  </div>
+<% end %>
+
+<% content_for :extension do %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      kase_turn = function(index,direction){
+        if(direction == 'prev'){
+          var dom = $('#kases a[name=' + index + ']').prev();
+          if(dom.length == 0){alert('没有啦')};
+          dom.click()
+        };
+        if(direction == 'next'){
+          var dom = $('#kases a[name=' + index + ']').next();
+          if(dom.length == 0){alert('没有啦')};
+          dom.click()
+        }
+        return false;
+      }   
+    });  
+  </script>
 <% end %>

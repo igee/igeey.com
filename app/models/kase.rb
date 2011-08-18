@@ -6,13 +6,15 @@ class Kase < ActiveRecord::Base
   has_many   :notifications, :as => :notifiable, :dependent => :destroy
   has_many   :votes,    :as => :voteable,    :dependent => :destroy
   
-  has_attached_file :photo, :styles => {:_170x127 => ["170x127#"],:_100x75=>["100x75#"],:_360x270 => ["360x270#"],:max500x400 => ["500x400>"]},
+  has_attached_file :photo, :styles => {:_240x180 => ["240x180#"],:_100x75=>["100x75#"],:max500x400 => ["500x400>"]},
                             :url=>"/media/:attachment/:id/:style.:extension",
-                            :default_style=> :_90x64,
+                            :default_style=> :_100x75,
                             :default_url=>"/defaults/:attachment/:style.png"
                             
-  default_scope     :order => 'votes_count desc'
+  default_scope :order => 'votes_count desc'
   
+  acts_as_ownable
+
   validates :photo_file_name, :presence=>true, :format=>{ :with=>/([\w-]+\.(gif|png|jpg))|/ }
   
   def init_geocodding
