@@ -2,7 +2,7 @@ class KasesController < ApplicationController
   respond_to :html,:json
   before_filter :login_required, :except => [:index, :show]
   before_filter :find_problem
-  before_filter :check_permission, :only => [:destroy,:update,:edit]
+  before_filter :check_permission, :only => [:destroy,:update]
   
   def index
     @kases = @problem.kases
