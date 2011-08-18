@@ -38,4 +38,8 @@ class Kase < ActiveRecord::Base
     file.close    
   end
   
+  def before_save
+    self.init_geocodding
+  end
+  
 end

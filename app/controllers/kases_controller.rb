@@ -2,6 +2,7 @@ class KasesController < ApplicationController
   respond_to :html,:json
   before_filter :login_required, :except => [:index, :show]
   before_filter :find_problem
+  before_filter :check_permission, :only => [:destroy,:update,:edit]
   
   def index
     @kases = @problem.kases
@@ -13,12 +14,21 @@ class KasesController < ApplicationController
   
   def create
     @kase = @problem.kases.build(params[:kase])
-    @kase.init_geocodding
     if @kase.save
       redirect_to problem_path(@problem)
     else
       render :action => 'new'
     end
+  end
+  
+  def update
+    @kase.update_attributes(params[:kase])
+    redirect_to "#{problem_path(@problem)}/kases/#{@kase.id}"
+  end
+  
+  def destroy
+    @kase.destroy
+    redirect_to problem_path(@problem)
   end
   
   def show
@@ -33,5 +43,10 @@ class KasesController < ApplicationController
   private
   def find_problem
     @problem = Problem.find(params[:problem_id])
+  end
+  
+  def check_permission
+    @kase = Kase.find(params[:id])
+    redirect_to :back unless @kase.user == current_user 
   end
 end
