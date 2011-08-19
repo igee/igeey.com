@@ -1,18 +1,92 @@
-<% @title = '案例'%>
+<% content_for :head do %>
+  <%= javascript_include_tag 'calendar.js' %>
+  <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false"></script>
+<% end %>
 
-<div class="box">  
-  <div class="event_box">
-    <div class="event" style="width:610px;">
-      <% unless @kase.photo_file_name.nil? %>
-        <%= link_to (image_tag @kase.photo.url,:class => "photo") + (image_tag @kase.photo.url(:max500x400),:class => "zoomed_photo"),'',:class => "zoom_photo",:style => 'float:left;margin-right:10px' %>
-      <% end %>
-      <pre>案例：<%= @kase.intro %></pre>
-    </div>
-    <div class="event_info">
-      <span>发现者：<%= @kase.user.login%> | 提交于：<%= full_date(@kase.created_at)%> | 发现地：<%= @kase.address %></span>
-    </div>
+<% @title = "案例 No.#{@kase.id}" %>
+<% unless @layout %>
+  <div style="text-align:center">
+    <span><%= link_to "上一个","javascript:kase_turn(#{@kase.id},'prev')"%> |</span>
+    <span><%= link_to "下一个","javascript:kase_turn(#{@kase.id},'next')"%></span>
   </div>
+<% else %>
+  <h2><%= @title if @layout%></h2>
+  <%= link_to '上一个',problem_kase_path(@problem,@prev),:title=>"上一个"%> /
+  <%= link_to '下一个',problem_kase_path(@problem,@next),:title=>"下一个"%>
+<% end %>
+
+<div class="box">
+  <div><%= (image_tag @kase.photo.url(:max500x400)) %></div>
+  <span>发现者：<%= @kase.user.login%> | 发生在：<%= full_date(@kase.happened_at)%> | 发生地：<%= @kase.address %></span>
+  <% unless @layout %>
+    <div class="event_action">
+    <% if @kase.owned_by?(current_user) %>
+      <%= link_to "删除",problem_kase_path(@problem,@kase),:method => :delete ,:confirm => "确定要删除这个案例么？",:id => "delete_link_#{@kase.id}"%> |
+      <%= link_to "修改",edit_problem_kase_path(@problem,@kase,:back_path =>request.path)%> |
+    <% end %>
+    <%= link_to "回复#{'(' + @kase.comments_count.to_s + ')' if @kase.comments_count > 0}",problem_kase_path(@problem,@kase) %>　
+    </div>
+  <% else %>
+    <% if @kase.owned_by?(current_user) %>
+      <span><%= link_to "删除",problem_kase_path(@problem,@kase),:method => :delete ,:confirm => "确定要删除这个案例么？",:id => "delete_link_#{@kase.id}"%> |</span>
+      <span><%= link_to "修改",edit_problem_kase_path(@problem,@kase,:back_path =>request.path)%></span>
+    <% end %>
+  <% end %>
+  <pre><%= @kase.intro %></pre>
 </div>
 
-<%= render :partial => '/comments/board'%>  
-<%= render :partial => '/comments/form' ,:locals => {:commentable => @kase}%>
+<% if @layout %>
+  <div class="div">
+    <%= render :partial => '/comments/board'%>  
+    <%= render :partial => '/comments/form' ,:locals => {:commentable => @kase}%>
+  </div>
+<% end %>
+
+<% content_for :sidebar do %>
+  <div class="box">
+    <h5>发生地：</h5>
+    <div id="sidebar_map_canvas" style="width:248px;height:160px;"></div>
+  </div>
+
+  <div class="box">
+    <h5>来自问题：</h5>
+    <p>
+      <b><%= link_to "No.#{@problem.id} #{@problem.title}",problem_path(@problem) %></b>
+      <span>有<%= @problem.follows_count %>人关心</span>
+    </p>
+    <p class="explanation"><%= @problem.intro %></p>
+  </div>
+<% end %>
+
+<% content_for :extension do %>
+  <script type="text/javascript">
+    function initialize() {
+      var latlng = new google.maps.LatLng(<%= "#{@kase.latitude || 35.0},#{@kase.longitude || 105.0}"%>)
+      var myOptions = {
+        zoom: 14 ,
+        center: latlng,
+        disableDefaultUI: true,
+        navigationControl: true,
+        mapTypeControl: true,
+        mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+        scaleControl: false,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      small_map = new google.maps.Map(document.getElementById("sidebar_map_canvas"), myOptions);
+      
+      markers = new Array();
+      markers['position'] = new Array();
+      markers['position'][0] = new google.maps.Marker({
+        icon: '/images/marker/kase.png',
+        map: small_map,
+        position: small_map.getCenter(),
+        title: '就在这里'
+      });    
+      infowindow = new google.maps.InfoWindow;     
+    }; //initialize_end
+    
+    $(document).ready(function(){
+        initialize();
+      });  
+  </script>
+<% end %>

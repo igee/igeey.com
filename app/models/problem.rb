@@ -4,6 +4,7 @@ class Problem < ActiveRecord::Base
   has_many   :comments, :as => :commentable, :dependent => :destroy
   has_many   :notifications, :as => :notifiable, :dependent => :destroy
   has_many   :votes,    :as => :voteable,    :dependent => :destroy
+  has_many   :follows,  :as => :followable, :dependent => :destroy
   
   validates :title, :presence => true
   

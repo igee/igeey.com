@@ -1,12 +1,27 @@
 <% @title = "问题：#{@problem.title} 的案例"%>
 
-<h4><%= @title %></h4>
+<h3>案例 - <%= @problem.title %></h3>
 
-<div class="box">
-    <%= render :partial => '/public/kase',:collection => @kases %>
+<div style="margin:15px;font-size:12px;">
+  <div style="float:right;">
+    <%= link_to "+添加案例", "#{problem_path(@problem)}/kases/new"%> |
+    <%= link_to "返回", "#{problem_path(@problem)}"%>
+  </div>
+  <div class="clear"></div>
+  <hr>
 </div>
 
-<% content_for :sidebar do %>
-  <p><%= link_to "添加案例", "#{problem_path(@problem)}/kases/new"%></p>
-  </p><%= link_to "返回问题页", problem_path(@problem)%></p>
+<% @kases.each do |k|%>
+  <div class="photo_wrap">
+    <%= link_to (image_tag k.photo.url(:_170x127)), "#{problem_path(@problem)}/kases/#{k.id}", :title=>k.intro%>
+    <div class="pl">
+      <%= short_text(k.intro,20) %>
+    </div>
+  </div>
 <% end %>
+
+<style type="text/css">
+  .photo_wrap { float: left; display: inline; width: 170px; height:167px; overflow: hidden; margin: 10px 18px 25px }
+  .photo_wrap .pl{margin:6px 0 3px 0;font-size:12px; }
+  .clear{ clear: both; line-height:0; font-size:0; }
+</style>

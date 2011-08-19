@@ -7,7 +7,7 @@
         <%= form_for Comment.new do |form| %>
           <%= form.hidden_field :commentable_type,:value => commentable.class %>
           <%= form.hidden_field :commentable_id,:value => commentable.id %>
-          <%= form.text_area :content, :style => "width:530px;height:60px",:placeholder => "有什么想说的？"%>
+          <%= form.text_area :content, :style => "width:530px;height:60px",:placeholder => "告诉大家你的想法,为了让世界变好一点点"%>
           <% if current_user.is_admin %>
             <%= check_box_tag :offcial %>使用官方帐号发表
           <% end %>

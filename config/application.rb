@@ -37,6 +37,7 @@ module Igeey
                                       :answer_observer,
                                       :question_observer,
                                       :vote_observer,
+                                      :kase_observer,
                                       ]
     
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.

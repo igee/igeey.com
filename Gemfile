@@ -7,6 +7,7 @@ gem 'rails', '3.0.0'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'mysql', '2.8.1'
+gem 'mysql2', '0.2.4'
 gem 'paperclip'
 gem 'rmagick'
 gem 'oauth'

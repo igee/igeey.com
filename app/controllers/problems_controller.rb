@@ -2,7 +2,7 @@ class ProblemsController < ApplicationController
   respond_to :html
   #before_filter :login_required, :except => [:show, :index]
   before_filter :find_problem, :except => [:new,:create,:index,:before_create,:thanks]
-  before_filter :check_admin,    :except => [:new,:create,:thanks]
+  before_filter :check_admin,  :only => [:index]
   
   def index
     @problems = Problem.all
@@ -36,9 +36,24 @@ class ProblemsController < ApplicationController
   end
 
   def show
-    @kase = Kase.new
-    @kases = @problem.kases.where("photo_file_name is not null")[0..2]
-    @comments = @problem.comments
+    if (current_user && current_user.is_admin?) || INDEX_PROBLEMS['problem_ids'].split(',').include?(params[:id])
+      @kase = Kase.new
+      @kases = @problem.kases.limit(5)
+      @comments = @problem.comments
+      @following_users = @problem.follows.limit(9).map(&:user)
+    else
+      redirect_to :root
+    end
+  end
+  
+  def map
+    @kases = @problem.kases
+ end
+  
+  def followers
+    @items = @problem.follows.map(&:user).paginate(:page => params[:page], :per_page => 10)
+    @title = "关心#{@problem.title}的用户："
+    render 'see_all'
   end
   
   def thanks
