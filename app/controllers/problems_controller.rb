@@ -30,7 +30,7 @@ class ProblemsController < ApplicationController
   def show
     if (current_user && current_user.is_admin?) || INDEX_PROBLEMS['problem_ids'].split(',').include?(params[:id])
       @kase = Kase.new
-      @kases = @problem.kases.where("photo_file_name is not null")[0..4]
+      @kases = @problem.kases.limit(5)
       @comments = @problem.comments
       @following_users = @problem.follows.limit(9).map(&:user)
     else
