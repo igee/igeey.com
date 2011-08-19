@@ -15,7 +15,7 @@ class ProblemsController < ApplicationController
     else
       @problems = []
     end
-    @problem = Problem.new(:title=>params[:keywords])
+    @problem = Problem.new(:title =>params[:keywords])
   end
 
   def create

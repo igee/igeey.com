@@ -16,5 +16,6 @@ class Problem < ActiveRecord::Base
 
   define_index do
     indexes title
+    indexes detail
   end
 end
