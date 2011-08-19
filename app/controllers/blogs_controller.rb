@@ -21,7 +21,7 @@ class BlogsController < ApplicationController
   
   def show
     @comments = @blog.comments
-    @problem_ids = INDEX_PROBLEMS['problem_ids'].split(',')
+    @problems = Problem.where(:id => INDEX_PROBLEMS['problem_ids'].split(','))
   end
   
   def edit
