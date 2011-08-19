@@ -27,6 +27,14 @@ class ProblemsController < ApplicationController
     redirect_to :root
   end
   
+  def edit
+    @problems = Problem.all
+  end
+  
+  def update
+    @problem.update_attributes(params[:problem]) if current_user.is_admin
+  end
+
   def show
     @kase = Kase.new
     @kases = @problem.kases.where("photo_file_name is not null")[0..2]
