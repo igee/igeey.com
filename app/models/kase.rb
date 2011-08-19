@@ -15,7 +15,7 @@ class Kase < ActiveRecord::Base
   
   acts_as_ownable
 
-  validates :photo_file_name, :presence=>true, :format=>{ :with=>/([\w-]+\.(gif|png|jpg))|/ }
+  validates :photo_file_name,:intro,:address,:happened_at, :presence=>true, :format=>{ :with=>/([\w-]+\.(gif|png|jpg))|/ }
   
   def init_geocodding
     response = Net::HTTP.get_response(URI.parse("http://maps.googleapis.com/maps/api/geocode/json?address=#{URI.escape(self.address)}&sensor=false"))

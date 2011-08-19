@@ -17,7 +17,7 @@
 
 <div class="box">
   <div><%= (image_tag @kase.photo.url(:max500x400)) %></div>
-  <span>发现者：<%= @kase.user.login%> | 提交于：<%= full_date(@kase.created_at)%> | 发生地：<%= @kase.address %></span>
+  <span>发现者：<%= @kase.user.login%> | 发生在：<%= full_date(@kase.happened_at)%> | 发生地：<%= @kase.address %></span>
   <% unless @layout %>
     <div class="event_action">
     <% if @kase.owned_by?(current_user) %>
