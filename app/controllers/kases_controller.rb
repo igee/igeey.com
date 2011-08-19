@@ -15,6 +15,7 @@ class KasesController < ApplicationController
   def create
     @kase = @problem.kases.build(params[:kase])
     if @kase.save
+      flash[:dialog] = "<a href='#{new_sync_path}?syncable_type=#{@kase.class}&syncable_id=#{@kase.id}' class='open_dialog' title='传播这个案例'>同步</a>"
       redirect_to problem_path(@problem)
     else
       render :action => 'new'
@@ -47,6 +48,6 @@ class KasesController < ApplicationController
   
   def check_permission
     @kase = Kase.find(params[:id])
-    redirect_to :back unless @kase.user == current_user 
+    redirect_to :back unless @kase.owned_by?(current_user)
   end
 end

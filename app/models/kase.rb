@@ -6,6 +6,8 @@ class Kase < ActiveRecord::Base
   has_many   :notifications, :as => :notifiable, :dependent => :destroy
   has_many   :votes,    :as => :voteable,    :dependent => :destroy
   
+  acts_as_ownable
+  
   has_attached_file :photo, :styles => {:_170x127 => ["170x127#"],:_100x75=>["100x75#"],:_360x270 => ["360x270#"],:max500x400 => ["500x400>"]},
                             :url=>"/media/:attachment/:id/:style.:extension",
                             :default_style=> :_90x64,
@@ -40,6 +42,10 @@ class Kase < ActiveRecord::Base
   
   def before_save
     self.init_geocodding
+  end
+  
+  def description
+    "在爱聚网的问题#{self.problem.title}提交了一个案例！"
   end
   
 end
