@@ -38,7 +38,7 @@
 <% content_for :sidebar do %>
   <div class="box">
     <%= link_to "查看全部",followers_problem_path(@problem),:class => "see_all_link" if @following_users[8]%>
-    <h5><%= @problem.follows_count.zero? ? "还没有" : "有#{@problem.follows_count}"%>人关心这个问题：</h5>
+    <h5><%= @problem.follows.count.zero? ? "还没有" : "有#{@problem.follows_count}"%>人关心这个问题：</h5>
     <%= render :partial => '/users/user',:collection => @following_users[0..7] %>
   </div>
 <% end %>
