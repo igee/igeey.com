@@ -1,2 +1,5 @@
-  <%= image_tag(@kase.photo.url(:'100x75'))%>
-  <p><%= @kase.intro %></p>
+<div style="padding:5px;width:320px">
+  <%= image_tag(@kase.photo.url(:_100x75),:class => "venue_thumb_cover",:style => "float:left;padding:5px 10px 5px 0")%>
+  <h5><%= link_to @kase.intro ,"#{problem_path(@problem)}/kases/#{@kase.id}",:target => '_blank'%></h5>
+  <div class="clear"></div>
+</div>

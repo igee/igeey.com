@@ -23,4 +23,25 @@ class Kase < ActiveRecord::Base
     self.latitude, self.longitude = json["results"][0]["geometry"]["location"]["lat"], json["results"][0]["geometry"]["location"]["lng"]
   end
   
+  def generate_json
+    require 'json'
+    kases = self.problem.kases
+    kases_json = []
+    kases.each do |k|
+      kases_json << {"kase" => {:id => k.id,
+                      :intro => k.intro,
+                      :latitude => k.latitude,
+                      :longitude => k.longitude,
+                      }}
+    end
+    
+    file = File.open("#{RAILS_ROOT}/public/json/problem_kases/#{self.problem.id}.json", 'w')
+    file.write kases_json.to_json
+    file.close    
+  end
+  
+  def before_save
+    self.init_geocodding
+  end
+  
 end

@@ -1,0 +1,56 @@
+<% @title = '地图'%>
+
+<% content_for :head do %>
+  <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false"></script>
+<% end %>
+
+<div>
+  <h4>地点位置</h4>
+  <div id="map_canvas" style="height:360px;clear:both;margin:10px 0"></div>
+</div>
+
+<% content_for :extension do %>
+  <script type="text/javascript">
+    function initialize() {
+      var latlng = new google.maps.LatLng(35.0,105.0)
+      var myOptions = {
+        zoom: 4,
+        center: latlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+      geocoder = new google.maps.Geocoder();
+      markers = new Array
+      
+      $.getJSON("/json/problem_kases/<%= @problem.id %>.json?<%= Kase.first.id unless Kase.first.nil? %>", function(data){
+        $.each(data, function(i,item){
+            markers[i] = new google.maps.Marker({
+              position: new google.maps.LatLng(parseFloat(item.kase.latitude), parseFloat(item.kase.longitude)),
+              title: item.kase.intro,
+              map: map
+            });
+            google.maps.event.addListener(markers[i], "click", function(){
+              $.ajax({
+                url:"/problems/<%= @problem.id %>/kases/" + item.kase.id + ".xml",
+                success:function(data, textStatus, XMLHttpRequest){new google.maps.InfoWindow({content:XMLHttpRequest.responseText}).open(map,markers[i]);},
+                dataType:'xml'
+              })
+            })
+          });
+      });
+      
+      marker = new google.maps.Marker({
+        position: map.getCenter(), 
+        title: "地点坐标",
+        draggable: true,
+        zindex: 100
+      });
+      
+    }; //initialize_end()
+    
+    $(document).ready(function(){
+        initialize();
+        $('#locate').submit(function(){geocoding($('#address').attr('value'))})
+      });  
+  </script>
+<% end %>
