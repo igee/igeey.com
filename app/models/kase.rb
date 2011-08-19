@@ -44,4 +44,8 @@ class Kase < ActiveRecord::Base
     self.init_geocodding
   end
   
+  def description
+    "在爱聚网的问题#{self.problem.title}提交了一个案例！"
+  end
+  
 end

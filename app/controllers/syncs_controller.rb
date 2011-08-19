@@ -14,6 +14,6 @@ class SyncsController < ApplicationController
     @sync = Sync.new(params[:sync])
     @sync.user = current_user
     @sync.save if @sync.syncable.owned_by?(current_user)
-    redirect_to @sync.syncable
+    @sync.syncable_type == 'Kase' ? (redirect_to problem_path(@sync.syncable.problem)) : (redirect_to @sync.syncable)
   end
 end
