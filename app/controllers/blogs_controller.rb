@@ -21,6 +21,7 @@ class BlogsController < ApplicationController
   
   def show
     @comments = @blog.comments
+    @problems = Problem.where(:id => INDEX_PROBLEMS['problem_ids'].split(','))
     @problem_ids = INDEX_PROBLEMS['problem_ids'].split(',')
   end
   
