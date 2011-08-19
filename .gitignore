@@ -2,6 +2,7 @@
 config/database.yml
 config/config.yml
 config/sphinx.yml
+config/problems.yml
 config/oauth/*.yml
 config/deploy.rb
 config/*.sphinx.conf

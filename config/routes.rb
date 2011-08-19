@@ -117,10 +117,13 @@ Igeey::Application.routes.draw do
   end
   
   resources :problems do
-    resources :kases do
-    end
+    resources :kases
     collection do
       get   :thanks
+    end
+    member do
+      get   :followers
+      get   :map
     end
   end
   
@@ -141,13 +144,6 @@ Igeey::Application.routes.draw do
     get :more,      :on => :collection
   end
   resources :votes
-  
-  resources :notifications do
-    get :clear, :on => :member
-    get :clear_all, :on => :collection
-    post :redirect_clear, :on => :collection  
-  end
-  
   
   resources :notifications do
     get :clear, :on => :member

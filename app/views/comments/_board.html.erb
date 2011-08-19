@@ -1,6 +1,5 @@
-  <div class="box">
-    <%= render :partial => '/public/comment' ,:collection => @comments %>
-  </div>
+  <%= render :partial => '/public/comment' ,:collection => @comments %>
+  <span><%= '居然还有没人留言?' if @comments.empty? %></span>
     
   <script type="text/javascript">
     function reply_to(username){

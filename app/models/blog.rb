@@ -6,4 +6,8 @@ class Blog < ActiveRecord::Base
   default_scope     :order => 'created_at desc'
   
   acts_as_ownable
+
+  def summary
+    self.content.split('<div id="delimiter"></div>')[0]
+  end 
 end

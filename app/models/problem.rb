@@ -4,12 +4,18 @@ class Problem < ActiveRecord::Base
   has_many   :comments, :as => :commentable, :dependent => :destroy
   has_many   :notifications, :as => :notifiable, :dependent => :destroy
   has_many   :votes,    :as => :voteable,    :dependent => :destroy
+  has_many   :follows,  :as => :followable, :dependent => :destroy
   
-  validates :name, :presence => true
+  validates :title, :presence => true
   
   default_scope     :order => 'created_at desc'
   
+  def send_new_problem
+    Mailer.send_new_problem(self).deliver if self.save
+  end
+
   define_index do
-    indexes name
+    indexes title
+    indexes detail
   end
 end

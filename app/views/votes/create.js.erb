@@ -1,9 +1,6 @@
+<% @agree_hash = {'Problem' => '赞同','Kase' => '有用'} %>
 <% unless @vote.errors.empty? %>
   alert('<%= @vote.errors.map{|msg| msg[1]} %>')
 <% else %>
-  <% if @vote.voteable.class.to_s == "Problem" %>
-    $('#problem_vote').html('<%= escape_javascript(raw("#{image_tag('/images/icon/upgrey.png',:class => 'icon')} 赞同 #{@vote.voteable.agree_count}")) %>')
-  <% else %>
-    $('#<%= "#{@voteable.class.to_s.downcase}_vote_#{@voteable.id}"%>').html('<%= escape_javascript(raw("#{image_tag('/images/icon/upgrey.png',:class => 'icon')}赞同 #{@vote.voteable.votes.count}")) %>')
-  <% end %>
+    $('#<%= "#{@voteable.class.to_s.downcase}_vote_#{@voteable.id}"%>').html('<%= escape_javascript(raw("#{image_tag('/images/icon/upgrey.png',:class => 'icon')} #{@agree_hash[@voteable.class.to_s]} #{@vote.voteable.votes.count}")) %>')
 <% end %>

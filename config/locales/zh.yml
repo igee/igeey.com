@@ -40,7 +40,12 @@ zh:
             time:
               blank:  '请填写贡献时间'
         vote:
-           attributes:
-              user_id:
-                taken: '你已经支持过啦'
+          attributes:
+            user_id:
+              taken: '你已经支持过啦'
+        kase:
+          attributes:
+            photo_file_name:
+              blank: "请上传图片"
+            
               

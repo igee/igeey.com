@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define() do
+ActiveRecord::Schema.define do
 
   create_table "actions", :force => true do |t|
     t.string  "name",            :limit => 40
@@ -44,32 +44,17 @@ ActiveRecord::Schema.define() do
     t.string  "cover_file_name"
     t.text    "intro"
   end
-  
+
   create_table "blogs", :force => true do |t|
-    t.integer  :user_id
-    t.string   :title
-    t.string   :en_title
-    t.text     :content
-    t.integer  :comments_count, :default => 0
-    t.datetime :last_replied_at
-    t.integer  :last_replied_user_id
-    t.timestamps
-  end
-  
-  
-  create_table "kases", :force => true do |t|
-    t.integer  :user_id
-    t.integer  :problem_id
-    t.text     :intro
-    t.string   :photo_file_name
-    t.integer  :comments_count, :default => 0
-    t.string   :latitude,       :limit => 40
-    t.string   :longitude,      :limit => 40
-    t.integer  :zoom_level,     :default => 13
-    t.string   :address
-    t.datetime :last_replied_at
-    t.integer  :last_replied_user_id
-    t.timestamps
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "slug"
+    t.text     "content"
+    t.integer  "comments_count",       :default => 0
+    t.datetime "last_replied_at"
+    t.integer  "last_replied_user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "comments", :force => true do |t|
@@ -80,7 +65,7 @@ ActiveRecord::Schema.define() do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-  
+
   create_table "doings", :force => true do |t|
     t.integer  "user_id"
     t.integer  "venue_id"
@@ -138,6 +123,24 @@ ActiveRecord::Schema.define() do
     t.datetime "updated_at"
   end
 
+  create_table "kases", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "problem_id"
+    t.text     "intro"
+    t.string   "photo_file_name"
+    t.string   "latitude",             :limit => 40
+    t.string   "longitude",            :limit => 40
+    t.integer  "zoom_level",                         :default => 13
+    t.string   "address"
+    t.datetime "happened_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "comments_count",                     :default => 0
+    t.integer  "votes_count",          :default => 0
+    t.integer  "last_replied_user_id"
+    t.datetime "last_replied_at"
+  end
+
   create_table "messages", :force => true do |t|
     t.integer  "from_user_id"
     t.integer  "to_user_id"
@@ -170,30 +173,6 @@ ActiveRecord::Schema.define() do
     t.string   "unique_id"
   end
 
-  create_table "plans", :force => true do |t|
-    t.integer  :user_id
-    t.integer  :venue_id
-    t.integer  :action_id
-    t.integer  :task_id
-    t.integer  :record_id
-    t.integer  :parent_id
-    t.string   :title,            :limit => 40
-    t.text     :content
-    t.text     :result
-    t.integer  :money
-    t.integer  :goods
-    t.datetime :plan_at
-    t.datetime :done_at
-    t.string   :cover_file_name
-    t.integer  :comments_count,   :default => 0
-    t.boolean  :has_updated_event,:default => false
-    t.boolean  :has_new_child,    :default => false
-    t.boolean  :is_done,  :default => false
-    t.datetime :last_replied_at
-    t.integer  :last_replied_user_id
-    t.timestamps
-  end
-  
   create_table "photos", :force => true do |t|
     t.integer  "user_id"
     t.integer  "imageable_id"
@@ -210,18 +189,45 @@ ActiveRecord::Schema.define() do
     t.integer  "votes_count",                        :default => 0
     t.string   "cached_tag_list",                    :default => ""
   end
-  
+
+  create_table "plans", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "venue_id"
+    t.integer  "action_id"
+    t.integer  "record_id"
+    t.integer  "parent_id"
+    t.integer  "money"
+    t.integer  "goods"
+    t.datetime "plan_at"
+    t.integer  "comments_count",                     :default => 0
+    t.boolean  "has_new_child",                      :default => false
+    t.boolean  "is_done",                            :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "last_replied_user_id"
+    t.datetime "last_replied_at"
+    t.text     "result"
+    t.integer  "task_id"
+    t.string   "title",                :limit => 40
+    t.text     "content"
+    t.boolean  "has_updated_event",                  :default => false
+    t.string   "cover_file_name"
+    t.datetime "done_at"
+  end
+
   create_table "problems", :force => true do |t|
-    t.string   :name,           :limit => 40
-    t.text     :intro
-    t.integer  :user_id
-    t.integer  :comments_count, :default => 0
-    t.integer  :agree_count, :default => 0
-    t.integer  :disagree_count, :default => 0
-    t.integer  :votes_count,          :default => 0
-    t.datetime :last_replied_at
-    t.integer  :last_replied_user_id
-    t.timestamps
+    t.string   "title",                :limit => 40
+    t.text     "intro"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "comments_count",                     :default => 0
+    t.integer  "last_replied_user_id"
+    t.datetime "last_replied_at"
+    t.integer  "user_id"
+    t.integer  "disagree_count",                     :default => 0
+    t.integer  "agree_count",                        :default => 0
+    t.integer  "votes_count",                        :default => 0
+    t.integer  "follows_count",                      :default => 0
   end
 
   create_table "questions", :force => true do |t|
@@ -235,54 +241,27 @@ ActiveRecord::Schema.define() do
   end
 
   create_table "records", :force => true do |t|
-    t.integer  :user_id
-    t.integer  :venue_id
-    t.integer  :action_id
-    t.integer  :plan_id
-    t.integer  :task_id
-    t.integer  :parent_id
-    t.integer  :money
-    t.integer  :goods
-    t.integer  :time
-    t.integer  :online
-    t.string   :cover_file_name
-    t.string   :title,       :limit => 40
-    t.string   :latitude,    :limit => 40
-    t.string   :longitude,   :limit => 40
-        
-    t.datetime :done_at
-    t.text     :detail
-    t.integer  :comments_count,   :default => 0
-    t.datetime :last_replied_at
-    t.integer  :last_replied_user_id
-    t.timestamps
-  end
-
-  create_table "users", :force => true do |t|
-    t.string   :login,                     :limit => 40
-    t.string   :name,                      :limit => 100, :default => ""
-    t.string   :email,                     :limit => 100
-    t.string   :crypted_password,          :limit => 40
-    t.string   :salt,                      :limit => 40
-    t.string   :avatar_file_name
-    t.integer  :geo_id
-    t.datetime :created_at
-    t.datetime :updated_at
-    t.integer  :notifications_count,       :default => 0
-    t.integer  :follows_count,             :default => 0
-    t.integer  :comments_count,            :default => 0
-    t.integer  :tasks_count,            :default => 0
-    t.integer  :plans_count,               :default => 0
-    t.integer  :records_count,             :default => 0
-    t.integer  :photos_count,              :default => 0
-    t.integer  :doings_count,              :default => 0
-    t.integer  :sayings_count,             :default => 0
-    t.integer  :topics_count,              :default => 0
-    t.string   :remember_token,            :limit => 40
-    t.datetime :remember_token_expires_at
-    t.string   :signature
-    t.boolean  :is_admin,                  :default => false
-    t.boolean  :use_local_geo,             :default => false
+    t.integer  "user_id"
+    t.integer  "venue_id"
+    t.integer  "action_id"
+    t.integer  "plan_id"
+    t.integer  "parent_id"
+    t.integer  "money"
+    t.integer  "goods"
+    t.integer  "time"
+    t.datetime "done_at"
+    t.text     "detail"
+    t.integer  "comments_count",                     :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "latitude",             :limit => 40
+    t.string   "title",                :limit => 40
+    t.string   "longitude",            :limit => 40
+    t.integer  "online"
+    t.integer  "last_replied_user_id"
+    t.datetime "last_replied_at"
+    t.integer  "task_id"
+    t.string   "cover_file_name"
   end
 
   create_table "sayings", :force => true do |t|
@@ -309,31 +288,6 @@ ActiveRecord::Schema.define() do
     t.datetime "updated_at"
   end
 
-  create_table "tasks", :force => true do |t|
-    t.integer  :venue_id
-    t.integer  :user_id    
-    t.integer  :total_money
-    t.integer  :total_online
-    t.integer  :total_people
-    t.integer  :total_goods
-    t.string   :title,       :limit => 40
-    t.string   :for_what,    :limit => 40
-    t.string   :address
-    t.string   :contact
-    t.text     :detail
-    t.datetime :do_at
-    t.string   :cover_file_name
-    t.boolean  :close,            :default => false
-    t.integer  :follows_count,    :default => 0
-    t.string   :cached_tag_list,  :default => ''
-    t.boolean  :has_new_plan,     :default => false
-    t.integer  :comments_count,   :default => 0
-    t.integer  :votes_count,      :default => 0
-    t.datetime :last_replied_at
-    t.integer  :last_replied_user_id
-    t.timestamps
-  end  
-  
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
@@ -355,6 +309,32 @@ ActiveRecord::Schema.define() do
     t.integer  "last_update_user_id"
   end
 
+  create_table "tasks", :force => true do |t|
+    t.integer  "venue_id"
+    t.integer  "user_id"
+    t.integer  "total_money"
+    t.integer  "total_online"
+    t.integer  "total_people"
+    t.integer  "total_goods"
+    t.string   "title",                :limit => 40
+    t.string   "for_what",             :limit => 40
+    t.string   "address"
+    t.string   "contact"
+    t.text     "detail"
+    t.datetime "do_at"
+    t.string   "cover_file_name"
+    t.boolean  "close",                              :default => false
+    t.integer  "follows_count",                      :default => 0
+    t.string   "cached_tag_list",                    :default => ""
+    t.boolean  "has_new_plan",                       :default => false
+    t.integer  "comments_count",                     :default => 0
+    t.integer  "votes_count",                        :default => 0
+    t.datetime "last_replied_at"
+    t.integer  "last_replied_user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "topics", :force => true do |t|
     t.integer  "user_id"
     t.integer  "venue_id"
@@ -371,40 +351,68 @@ ActiveRecord::Schema.define() do
     t.integer  "votes_count",          :default => 0
   end
 
+  create_table "users", :force => true do |t|
+    t.string   "login",                     :limit => 40
+    t.string   "name",                      :limit => 100, :default => ""
+    t.string   "email",                     :limit => 100
+    t.string   "crypted_password",          :limit => 40
+    t.string   "salt",                      :limit => 40
+    t.string   "avatar_file_name"
+    t.integer  "geo_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "follows_count",                            :default => 0
+    t.integer  "comments_count",                           :default => 0
+    t.integer  "records_count",                            :default => 0
+    t.integer  "plans_count",                              :default => 0
+    t.string   "remember_token",            :limit => 40
+    t.datetime "remember_token_expires_at"
+    t.string   "signature"
+    t.boolean  "is_admin",                                 :default => false
+    t.boolean  "use_local_geo",                            :default => false
+    t.integer  "sayings_count",                            :default => 0
+    t.integer  "photos_count",                             :default => 0
+    t.integer  "topics_count",                             :default => 0
+    t.integer  "notifications_count",                      :default => 0
+    t.integer  "doings_count",                             :default => 0
+    t.integer  "tasks_count",                              :default => 0
+  end
+
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
 
   create_table "venues", :force => true do |t|
-    t.string  :name,           :limit => 40
-    t.text    :intro
-    t.string  :category,       :limit => 40
-    t.string  :custom_category,:limit => 40
-    t.integer :geo_id
-    t.integer :creator_id
-    t.integer :old_id
-    t.string  :latitude,       :limit => 40
-    t.string  :longitude,      :limit => 40
-    t.integer :zoom_level,     :default => 13
-    t.string  :address
-    t.string  :contact
-    t.string  :cover_file_name
-    t.integer :doings_count,   :default => 0
-    t.integer :follows_count,  :default => 0
-    t.integer :photos_count,   :default => 0
-    t.integer :sayings_count,  :default => 0
-    t.integer :records_count,  :default => 0
-    t.integer :tasks_count, :default => 0
-    t.integer :topics_count,   :default => 0
-    t.integer :watch_count,    :default => 0
-    t.timestamps
+    t.string   "name",            :limit => 40
+    t.text     "intro"
+    t.string   "category",        :limit => 40
+    t.string   "custom_category", :limit => 40
+    t.integer  "geo_id"
+    t.integer  "creator_id"
+    t.string   "latitude",        :limit => 40
+    t.string   "longitude",       :limit => 40
+    t.string   "address"
+    t.string   "contact"
+    t.string   "cover_file_name"
+    t.integer  "follows_count",                 :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "zoom_level",                    :default => 13
+    t.integer  "records_count",                 :default => 0
+    t.integer  "sayings_count",                 :default => 0
+    t.integer  "photos_count",                  :default => 0
+    t.integer  "old_id"
+    t.integer  "watch_count",                   :default => 0
+    t.integer  "topics_count",                  :default => 0
+    t.integer  "doings_count",                  :default => 0
+    t.integer  "tasks_count",                   :default => 0
   end
 
   create_table "votes", :force => true do |t|
     t.integer  "user_id"
     t.integer  "voteable_id"
     t.string   "voteable_type", :limit => 40
-    t.boolean  "is_agree"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_agree"
   end
-end
 
+end

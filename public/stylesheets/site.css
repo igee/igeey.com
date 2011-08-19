@@ -8,10 +8,10 @@ body{
   margin:0;
   }
 
-h2,h3,h4,h5,h6{margin:.2em 0 .5em;}
+h3,h4,h5,h6{margin:.2em 0 .5em;}
 h1{margin:0}
-h2{font-size:22px}
-h3{font-size:19px}
+h2{font-size:21px;margin:.4em 0 .2em;}
+h3{font-size:18px}
 h4{font-size:15px}
 h5{font-size:13px;color:#888}
 
@@ -256,7 +256,16 @@ table{
   }
 
 /* Elements Setting */
+
 .clear{clear:both}
+
+.add{
+  background:url('/images/add.png') no-repeat;
+  color:#fff;
+  font-size:13px;
+  line-height:19px;
+  padding:3px 10px 5px 26px;
+}
 
 .box{
   clear:both;
@@ -296,8 +305,7 @@ button,input[type="submit"],input[type="button"]{
   color:white;
   font: bold normal 14px/14px sans-serif;
   background:url('/images/button.png');
-  padding:3px 9px;
-  -padding:4px 9px 2px;
+  padding:6px 10px 4px;
   -webkit-border-radius:3px;-moz-border-radius: 3px;border-radius: 3px;
   cursor:pointer;
   border:none
@@ -320,6 +328,7 @@ button:hover,input[type="submit"]:hover,input[type="button"]:hover{background:#f
   width:180px;
   padding:10px;
   }
+
 .dialog_leftbar{
   float:left;
   width:235px;
@@ -458,8 +467,6 @@ button:hover,input[type="submit"]:hover,input[type="button"]:hover{background:#f
   zoom:1
   }
 
-.blog-content p{margin:12px 0}
-.blog-content span{margin:0 24px;font-size:13px}
 
 .bubble{
   float:left;
@@ -502,7 +509,14 @@ button:hover,input[type="submit"]:hover,input[type="button"]:hover{background:#f
   margin-right:-20px;
   }
 
-.story_box{padding:10px 20px;color:#679;border-bottom:2px solid #bef;border-top:2px solid #bef;font-size:13px;background-color:#f9fcff}
+.story_box{
+  margin:10px 0;
+  padding:10px 16px;
+  color:#679;
+  border-bottom:2px solid #c0f3ff;
+  border-top:2px solid #c0f3ff;
+  font-size:13px;
+  background-color:#f9fcff}
 
 .sidebar_bubble{
   width:220px;
@@ -610,6 +624,8 @@ input.reply_submit{float:right;margin-top:1px}
 
 .photo_box form{display:inline}
 
+.kase{padding:2px;border:1px solid #ddd;margin:5px}
+
 input.todo:hover{
   color:white;
   background:#c30;
@@ -706,10 +722,11 @@ input.todo:hover{
 .tags{overflow:hidden;}
 
 .blog-content{
-  padding:5px 0 30px 0;
+  padding:0 0 30px 0;
   font-size:15px;
   }
-
+.blog-content p{margin:12px 0}
+.blog-content span{margin:0 24px;font-size:13px}
 
 a.tag{
   float:left;

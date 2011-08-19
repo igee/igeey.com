@@ -1,9 +1,10 @@
 <div class="event_box">
   <div class="event" style="width:610px;">
+    <a name=<%= "kase_#{kase.id}"%>>
     <% unless kase.photo_file_name.nil? %>
-      <%= link_to (image_tag kase.photo.url,:class => "photo") + (image_tag kase.photo.url(:max500x400),:class => "zoomed_photo"),'',:class => "zoom_photo",:style => 'float:left;margin-right:10px' %>
+      <div style="text-align:center;"><%= link_to (image_tag kase.photo.url(:_360x270)), ''%></div>
     <% end %>
-    <pre>案例：<%= kase.intro %></pre>
+    <pre style="margin:5px 20px 5px 20px;"><%= kase.intro %></pre>
   </div>
   <div class="event_info">
     <span>发现者：<%= kase.user.login%> | 提交于：<%= full_date(kase.created_at)%> | 发现地：<%= kase.address %></span>

@@ -1,17 +1,57 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'calendar.js' %>
+<% end %>
+
 <%= form_for [@problem,@kase],:html => { :multipart => true } do |form| %>
   <%= form.hidden_field :problem_id ,:value => @problem.id%>
   <%= form.hidden_field :user_id, :value => current_user.id %>
   <p>
-    <%= form.label :photo,'图片文件：'%> <%= form.file_field :photo,:style => "background:none;border:none;font-size:13px" %>
+    <%= form.label :photo,'有照片有真相!'%>
+    <%= form.file_field :photo,:style => "background:none;border:none;font-size:13px" %>
   </p>
   <p>
-    <%= form.label :intro,'案例介绍：'%> <%= form.text_area :intro, :style => "width:320px;height:100px"%>
+    <%= form.label :address,'在哪里发生的呢？'%>
+    <%= form.text_field :address,:style=>"width:300px;",:placeholder=>'网站会帮助你找到具体的坐标哦' %>
   </p>
   <p>
-    <%= form.label :address,'地点：'%> <%= form.text_field :address,:size => 18 %>
+    <%= form.label :happened_at,'当然，还有在什么时间?'%>
+    <%= form.text_field :happened_at, :size => 8,:class => 'with_calendar',:placeholder => ""%>
   </p>
-  <div style="clear:both;padding:0 20px;text-align:right">
-    <%= form.submit '确定'%>
-    <%= button_to_function '取消',"javascript:window.history.back()"%>
-  </div> 
+  <p>
+    <%= form.label :intro,'再加点文字说明？'%> <%= form.text_area :intro, :style => "width:400px;height:100px" ,:placeholder=>'客观或不客观，说点什么吧？' %>
+  </p>
+  <p>
+    <div >
+      <%= form.submit '确定'%>
+      <%= button_to_function '取消',"javascript:window.history.back()"%>
+    </div>
+  </p> 
+<% end %>
+
+<% content_for :sidebar do %>  
+  <div class="sidebar_panel">
+    <h5>提交案例小FAQ:</h5>
+    <p class="explanation" >
+      Q: 案例必须是我自己遇到看到的么？
+      <br/>
+      A: 当然自己眼见为实的是最好的，不过爱聚也不反对真实可信的其他信息,但是要求你注明出处，让其他人可以跟踪到。
+    </p>
+    <p class="explanation" >
+      Q: 案例必须是最近发生的么，以前的可不可以？
+      <br/>
+      A: 可以，爱聚会记录下发生的时间，这样以后说不定能画出一条反应问题多少的时间线呢。
+    </p>
+    <p class="explanation" >
+      Q: 我的案例和问题本身能不太契合，但是能靠上点边？应该提交么？ 
+      <br/>
+      A: 如果和问题不是一回事，还是建议提交一个新问题来上传案例，相信自己的判断吧。
+    </p>
+  </div>
+<% end %>
+<% content_for :extension do %>
+  <script type="text/javascript">
+  $(document).ready(function(){
+      DateTimeShortcuts.init();
+    })
+  </script>
 <% end %>

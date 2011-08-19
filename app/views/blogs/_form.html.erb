@@ -1,5 +1,5 @@
 <% content_for :head do %>
-  <%= javascript_include_tag 'ckeditor/ckeditor.js' %>
+  <%= javascript_include_tag 'nicEdit' %>
 <% end %>
 
 <%= form_for @blog do |form| %>
@@ -8,14 +8,28 @@
     <%= form.label :title,'标题：'%> <%= form.text_field :title,:size => 40%>
   </p>
   <p>
-    <%= form.label :en_title,'英文标题：'%> <%= form.text_field :en_title,:size => 40%>
+    <%= form.label :slug,'英文标题：'%> <%= form.text_field :slug,:size => 40%>
   </p>
   <p>
-    <%= form.label :content,'正文：'%> <%= form.text_area :content, :name=>"editor01", :style => "width:600px;height:500px;"%>
-    <script type="text/javascript">CKEDITOR.replace('editor01');</script>
+    <%= form.label :content,'正文：'%> <%= form.text_area :content, :id=>"area1", :style => "width:600px;"%>
   </p>
   <div style="clear:both;padding:0 20px;text-align:right">
     <%= form.submit '确定'%>
     <%= button_to_function '取消',"javascript:window.history.back()"%>
   </div>
+<% end %>
+
+<% content_for :sidebar do %>
+  <div class="sidebar_panel">
+    <h5>小提示：</h5>
+    使用 <%= h('<div id="delimiter"></div>') %> 来做摘要分割符
+  </div>
+<% end %>
+
+<% content_for :extension do %>
+  <script type="text/javascript">
+    bkLib.onDomLoaded(function() {
+    	new nicEditor().panelInstance('area1');
+    });
+  </script>
 <% end %>

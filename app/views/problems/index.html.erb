@@ -5,7 +5,7 @@
   <% @problems.each do |p|%>
     <div class="event_box" style="padding:4px 6px 12px">
       <p>
-        <%= link_to p.name,problem_path(p)%>
+        <%= link_to p.title,problem_path(p)%>
       </p>
       <div class="event_info">
           <span>

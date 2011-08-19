@@ -51,6 +51,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.16)
     mysql (2.8.1)
+    mysql2 (0.2.4)
     oauth (0.4.4)
     paperclip (2.3.8)
       activerecord
@@ -119,6 +120,7 @@ DEPENDENCIES
   factory_girl_rails
   json
   mysql (= 2.8.1)
+  mysql2 (= 0.2.4)
   oauth
   paperclip
   rails (= 3.0.0)

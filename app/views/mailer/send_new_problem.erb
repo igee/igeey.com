@@ -1,0 +1,6 @@
+新问题提交:<%= @problem.title %>
+
+<%= @problem.intro %>
+
+提交用户： <%= @problem.user_id ? @problem.user.login : '匿名用户'%>
+<%= url_for(@problem)%>

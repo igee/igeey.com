@@ -1,28 +1,34 @@
 class BlogsController < ApplicationController
-  respond_to :html
-  before_filter :login_required, :except => [:show]
-  before_filter :find_blog,      :except => [:create,:new]
-  before_filter :check_admin,    :except => [:show]
+  respond_to :html, :rss
+  before_filter :login_required, :except => [:show,:index]
+  before_filter :find_blog,      :except => [:create,:new,:index]
+  before_filter :check_admin,    :except => [:show,:index]
+  
+  def index
+    @blogs = Blog.all
+    @problems = Problem.where(:id => INDEX_PROBLEMS['problem_ids'].split(','))
+  end
   
   def new
     @blog = Blog.new()
   end
   
   def create
-    @blog = Blog.new(:title=>params[:blog][:title],:en_title=>params[:blog][:en_title],:user_id=>params[:blog][:user_id],:content=>params[:editor01])
+    @blog = Blog.new(params[:blog])
     @blog.save
     respond_with @blog
   end
   
   def show
-    @blogs = Blog.all
+    @comments = @blog.comments
+    @problem_ids = INDEX_PROBLEMS['problem_ids'].split(',')
   end
   
   def edit
   end
   
   def update
-    @blog.update_attributes(:title=>params[:blog][:title],:en_title=>params[:blog][:en_title],:user_id=>params[:blog][:user_id],:content=>params[:editor01])
+    @blog.update_attributes(params[:blog])
     if params[:back_path].present?
       redirect_to params[:back_path]
     else
