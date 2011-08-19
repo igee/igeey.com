@@ -132,6 +132,7 @@ ActiveRecord::Schema.define do
     t.string   "longitude",            :limit => 40
     t.integer  "zoom_level",                         :default => 13
     t.string   "address"
+    t.datetime "happened_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "comments_count",                     :default => 0

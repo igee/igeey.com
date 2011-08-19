@@ -1,3 +1,8 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'calendar.js' %>
+  <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false"></script>
+<% end %>
+
 <% @title = "案例 No.#{@kase.id}" %>
 <% unless @layout %>
   <div style="text-align:center">
@@ -38,10 +43,50 @@
 <% end %>
 
 <% content_for :sidebar do %>
-  <h5>来自问题：</h5>
-  <p>
-    <b><%= link_to "No.#{@problem.id} #{@problem.title}",problem_path(@problem) %></b>
-    <span>有<%= @problem.follows_count %>人关心</span>
-  </p>
-  <p class="explanation"><%= @problem.intro %></p>
+  <div class="box">
+    <h5>发生地：</h5>
+    <div id="sidebar_map_canvas" style="width:248px;height:160px;"></div>
+  </div>
+
+  <div class="box">
+    <h5>来自问题：</h5>
+    <p>
+      <b><%= link_to "No.#{@problem.id} #{@problem.title}",problem_path(@problem) %></b>
+      <span>有<%= @problem.follows_count %>人关心</span>
+    </p>
+    <p class="explanation"><%= @problem.intro %></p>
+  </div>
+<% end %>
+
+<% content_for :extension do %>
+  <script type="text/javascript">
+    function initialize() {
+      var latlng = new google.maps.LatLng(<%= "#{@kase.latitude || 35.0},#{@kase.longitude || 105.0}"%>)
+      var myOptions = {
+        zoom: 14 ,
+        center: latlng,
+        disableDefaultUI: true,
+        navigationControl: true,
+        mapTypeControl: true,
+        mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+        scaleControl: false,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      small_map = new google.maps.Map(document.getElementById("sidebar_map_canvas"), myOptions);
+      
+      markers = new Array();
+      markers['position'] = new Array();
+      markers['position'][0] = new google.maps.Marker({
+        icon: '/images/marker/kase.png',
+        map: small_map,
+        position: small_map.getCenter(),
+        title: '就在这里'
+      });    
+      infowindow = new google.maps.InfoWindow;     
+    }; //initialize_end
+    
+    $(document).ready(function(){
+        initialize();
+      });  
+  </script>
 <% end %>

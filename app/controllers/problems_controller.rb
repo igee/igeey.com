@@ -2,7 +2,7 @@ class ProblemsController < ApplicationController
   respond_to :html
   #before_filter :login_required, :except => [:show, :index]
   before_filter :find_problem, :except => [:new,:create,:index,:before_create,:thanks]
-  before_filter :check_admin,    :except => [:new,:create,:thanks,:show,:following_users]
+  before_filter :check_admin,  :only => [:index]
   
   def index
     @problems = Problem.all

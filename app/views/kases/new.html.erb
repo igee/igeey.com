@@ -1,6 +1,6 @@
-<% @title = '添加案例'%>
+<% @title = "为问题“#{@problem.title}”添加案例"%>
 <%= raw error_explanation_for(@kase) if @kase.errors.present?%>
-<div style="padding:0 20px">
-  <h2>添加案例</h2>
+<h3><%= @title %></h3>
+<div class="box">
   <%= render "form" %>
 </div>

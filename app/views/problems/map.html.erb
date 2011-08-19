@@ -5,12 +5,25 @@
 <% end %>
 
 <div>
-  <h4>地点位置</h4>
+  <b><%= link_to "No.#{@problem.id} #{@problem.title}",problem_path(@problem) %></b>
+  <h4>案例分布：</h4>
   <div id="map_canvas" style="height:360px;clear:both;margin:10px 0"></div>
 </div>
 
+<p id="kases" style="display:none">
+  <% @kases.each do |kase|%>
+    <%= link_to (image_tag kase.photo.url(:_100x75),:class => 'kase'), "#{problem_path(@problem)}/kases/#{kase.id}",:title => "案例 No.#{kase.id}",:class => 'open_dialog',:name => kase.id.to_s %>
+  <% end %>
+</p>
+
 <% content_for :sidebar do %>
-  <div id="kase_box">
+  <div class="box">
+    <h5>来自问题：</h5>
+    <p>
+      <b><%= link_to "No.#{@problem.id} #{@problem.title}",problem_path(@problem) %></b>
+      <span>有<%= @problem.follows_count %>人关心</span>
+    </p>
+    <p class="explanation"><%= @problem.intro %></p>
   </div>
 <% end %>
 
@@ -36,15 +49,25 @@
             map: map
           });
           google.maps.event.addListener(markers[i], "click", function(){
-            $.ajax({
-              url:"/problems/<%= @problem.id %>/kases/" + item.kase.id + ".xml",
-              success:function(data, textStatus, XMLHttpRequest){$('#kase_box').html(data.documentElement)},
-              dataType:'xml'
-          })
+            IG.dialog.init({title:('案例 No.' + item.kase.id),url: ('<%= problem_path(@problem) %>/kases/' + item.kase.id)})
         })
       });
     }; //initialize_end()
-    
+
+   kase_turn = function(index,direction){
+        if(direction == 'prev'){
+          var dom = $('#kases a[name=' + index + ']').prev();
+          if(dom.length == 0){alert('没有啦')};
+          dom.click()
+        };
+        if(direction == 'next'){
+          var dom = $('#kases a[name=' + index + ']').next();
+          if(dom.length == 0){alert('没有啦')};
+          dom.click()
+        }
+        return false;
+      }   
+   
     $(document).ready(function(){
         initialize();
         $('#locate').submit(function(){geocoding($('#address').attr('value'))})
