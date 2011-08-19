@@ -11,7 +11,8 @@
     <%= form.label :slug,'英文标题：'%> <%= form.text_field :slug,:size => 40%>
   </p>
   <p>
-    <%= form.label :content,'正文：'%> <%= form.text_area :content, :id=>"area1", :style => "width:600px;"%>
+    <%= form.label :content,'正文：'%> <%= form.text_area :content, :id=>"myArea2", :style => "width:600px;"%>
+    <%= link_to '富文本/源码切换','#',:id=>'toggle_area'%>
   </p>
   <div style="clear:both;padding:0 20px;text-align:right">
     <%= form.submit '确定'%>
@@ -28,8 +29,20 @@
 
 <% content_for :extension do %>
   <script type="text/javascript">
-    bkLib.onDomLoaded(function() {
-    	new nicEditor().panelInstance('area1');
+    $(document).ready(function(){
+      var area2
+      function addArea2() {
+      	area2 = new nicEditor({fullPanel : true}).panelInstance('myArea2');
+      };
+      function removeArea2() {
+      	area2.removeInstance('myArea2');
+      };
+      $("#toggle_area").toggle(function(){
+        addArea2();
+      },
+      function(){
+        removeArea2();
+      });
     });
   </script>
 <% end %>
