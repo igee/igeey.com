@@ -7,7 +7,7 @@
         </div>
       <% end %>
       #<%= comment_counter +1%>
-      <%= link_to comment.user.login,user_path(comment.user) %> <span><%= "(#{comment.user.signature}) "if comment.user.signature %></span>:
+      <%= link_to comment.user.login,user_path(comment.user) %> <span><%= "(#{comment.user.signature}) " if comment.user.signature.blank? %></span>:
       <pre><%= comment.content %></pre>
       <span><%= format_date(comment.created_at) %></span>
     </div>
