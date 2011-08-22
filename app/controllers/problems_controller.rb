@@ -49,6 +49,36 @@ class ProblemsController < ApplicationController
   
   def map
     @kases = @problem.kases
+    latitude_max = @kases.map(&:latitude).max.to_f
+    latitude_min = @kases.map(&:latitude).min.to_f
+    longitude_max = @kases.map(&:longitude).max.to_f
+    longitude_min = @kases.map(&:longitude).min.to_f
+    @latitude_center = (latitude_max + latitude_min)/2
+    @longitude_center = (longitude_max + longitude_min)/2
+    max_distance = [(latitude_max-latitude_min), (longitude_max-longitude_min)].max
+    if 0.04 > max_distance
+      @map_zoom = 13
+    elsif 0.07 > max_distance and max_distance > 0.04
+      @map_zoom = 12
+    elsif 0.15 > max_distance and max_distance > 0.07
+      @map_zoom = 11
+    elsif 0.3 > max_distance and max_distance > 0.15
+      @map_zoom = 10
+    elsif 0.6 > max_distance and max_distance > 0.3
+      @map_zoom = 9
+    elsif 1.2 > max_distance and max_distance > 0.6
+      @map_zoom = 8
+    elsif 2.5 > max_distance and max_distance > 1.2
+      @map_zoom = 7
+    elsif 5.8 > max_distance and max_distance > 2.5
+      @map_zoom = 6
+    elsif 11 > max_distance and max_distance > 5.8
+      @map_zoom = 5
+    elsif 22 > max_distance and max_distance > 11
+      @map_zoom = 4
+    else
+      @map_zoom = 3
+    end
  end
   
   def followers
