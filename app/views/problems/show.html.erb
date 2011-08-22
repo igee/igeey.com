@@ -16,9 +16,12 @@
 <div class="box">
   <h4>实际案例：</h4>
   <% unless @kases.empty?%>
-    <p id="kases">
+    <p>
       <% @kases.each do |kase|%>
-        <%= link_to (image_tag kase.photo.url(:_100x75),:class => 'kase'), "#{problem_path(@problem)}/kases/#{kase.id}",:title => "案例 No.#{kase.id}",:class => 'open_dialog',:name => kase.id.to_s %>
+        <div style="float:left;width:120px;margin-bottom:15px;">
+          <%= link_to (image_tag kase.photo.url(:_100x75),:class => 'kase'), problem_kase_path(@problem,kase),:title => "案例 No.#{kase.id}",:name => kase.id.to_s %>
+          <span style='padding-left:75px;'><%= kase.comments.size.zero? ? '0回应' : (link_to "#{kase.comments.size}回应","#{problem_kase_path(@problem,kase)}#comments") %></span>
+        </div>
       <% end %>
     </p>
     <%= link_to "再添一个", new_problem_kase_path(@problem),:class => 'add' %>
@@ -36,6 +39,13 @@
 </div>
 
 <% content_for :sidebar do %>
+  <div class="sidebar_panel">
+    <h5><%= image_tag '/images/icon/problem.png',:class => 'icon'%> 本周讨论的问题：</h5>
+    <% @problems.each do |problem|%>
+      <p style="border-bottom:1px solid #eee"><%= "No.#{problem.id}"%> <%= problem.id==@problem.id ? problem.title : (link_to problem.title, problem)%></p>
+    <% end %>
+  </div>
+  
   <div class="box">
     <%= link_to "查看全部",followers_problem_path(@problem),:class => "see_all_link" if @following_users[8]%>
     <h5><%= @problem.follows.count.zero? ? "还没有" : "有#{@problem.follows_count}"%>人关心这个问题：</h5>

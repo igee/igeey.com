@@ -624,7 +624,7 @@ input.reply_submit{float:right;margin-top:1px}
 
 .photo_box form{display:inline}
 
-.kase{padding:2px;border:1px solid #ddd;margin:5px}
+.kase{padding:2px;border:1px solid #ddd;margin:5px 5px 0 5px;}
 
 input.todo:hover{
   color:white;
