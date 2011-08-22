@@ -24,10 +24,9 @@
         </div>
       <% end %>
     </p>
-    <p>
-      <%= link_to "再添一个", new_problem_kase_path(@problem),:class => 'add' %>
-      <span><%= link_to "查看案例分布", map_problem_path(@problem) %></span>
-    </p>
+    <div style="clear:both;">
+    <%= link_to "再添一个", new_problem_kase_path(@problem),:class => 'add' %>
+    <span><%= link_to "查看案例分布", map_problem_path(@problem) %></span>
   <% else %>
     <p>
       <span>这个问题还没有实际案例呢，也太不靠谱了，赶紧 <%= link_to "添加一个?", "#{problem_path(@problem)}/kases/new"%></span>
