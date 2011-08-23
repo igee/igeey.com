@@ -5,7 +5,7 @@
     <div style="padding:6px 0;border-bottom:1px solid #ddd">
       <%= image_tag '/images/icon/calendar.png',:class => 'icon' %>
       <span><%= format_date(blog.created_at)%></span>
-      <span><%= link_to blog.comments_count,"#{blog_path(blog)}#comments" %> 条回复</span>
+      <span><%= link_to "#{blog.comments_count}条回复","#{blog_path(blog)}#comments" %> </span>
     </div>
     <h2><%= link_to blog.title,blog %></h2>
     <div class="blog-content">
