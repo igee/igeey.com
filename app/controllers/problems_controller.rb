@@ -33,11 +33,12 @@ class ProblemsController < ApplicationController
   
   def update
     @problem.update_attributes(params[:problem]) if current_user.is_admin
+    respond_with @problem
   end
 
   def show
     if (current_user && current_user.is_admin?) || INDEX_PROBLEMS['problem_ids'].split(',').include?(params[:id])
-      @problems = Problem.where(:id => INDEX_PROBLEMS['problem_ids'].split(','))
+      @problems = Problem.where(:id => INDEX_PROBLEMS['problem_ids'].split(',')).reverse
       @kase = Kase.new
       @kases = @problem.kases.limit(5)
       @comments = @problem.comments

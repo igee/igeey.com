@@ -1,8 +1,9 @@
   <div class="sidebar_panel">
-    <h5><%= image_tag '/images/icon/problem.png',:class => 'icon'%> 本周讨论的问题：</h5>
+    <h5> 本周讨论的问题：</h5>
     <% @problems.each do |problem|%>
       <p style="border-bottom:1px solid #eee"><%= "No.#{problem.id}"%> <%= link_to problem.title, problem%></p>
     <% end %>
+    <p><%= image_tag '/images/icon/problem.png',:class => 'icon'%> <%= link_to '添加新问题(不用注册)',new_blog_path %></p>
   </div>
 
   <div class="sidebar_panel" style="background:url('/images/countdown.png')">
