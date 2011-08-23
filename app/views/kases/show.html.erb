@@ -34,13 +34,12 @@
   <% end %>
   <pre><%= @kase.intro %></pre>
 </div>
+<a name="comments"></a>
 
-<% if @layout %>
-  <div class="div">
-    <%= render :partial => '/comments/board'%>  
-    <%= render :partial => '/comments/form' ,:locals => {:commentable => @kase}%>
-  </div>
-<% end %>
+<div class="box">
+  <%= render :partial => '/comments/board'%>  
+  <%= render :partial => '/comments/form' ,:locals => {:commentable => @kase}%>
+</div>
 
 <% content_for :sidebar do %>
   <div class="box">
