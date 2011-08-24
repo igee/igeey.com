@@ -8,7 +8,7 @@
   <span><%= format_date(@problem.created_at)%>提出</span>
   <pre><%= @problem.intro %></pre>
 </div>
-
+<% @share_image = @kases.first.photo.url(:_100x75)%>
 <div style="float:right;margin-bottom:20px;">
   <%= render :partial => '/public/share'%>
 </div>
