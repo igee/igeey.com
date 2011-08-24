@@ -7,7 +7,7 @@ class Kase < ActiveRecord::Base
   has_many   :votes,    :as => :voteable,    :dependent => :destroy
   
   has_attached_file :photo, :styles => {:_240x180 => ["240x180#"],:_100x75=>["100x75#"],:max500x400 => ["500x400>"]},
-                            :url=>"/media/:attachment/:id/:style.:extension",
+                            :url=>"/media/kases/:id/:style.:extension",
                             :default_style=> :_100x75,
                             :default_url=>"/defaults/:attachment/:style.png"
                             
