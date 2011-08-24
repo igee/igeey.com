@@ -23,7 +23,7 @@
 		<% when "Question"%>
 			问题 <%= link_to nn.title, n, :method=>'delete'%> 有了新的回答
 		<% when "Problem"%>
-		  发现的问题 <%= link_to nn.name, n, :method=>'delete'%> 有了新的回复
+		  发现的问题 <%= link_to nn.title, n, :method=>'delete'%> 有了新的回复
 		<% when "Kase"%>
 		  发现的问题 <%= nn.problem.title %> 中的 <%= link_to "案例", n, :method=>'delete'%> 有了新的回复
 		<% when "Blog"%>
