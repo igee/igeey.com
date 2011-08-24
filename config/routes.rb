@@ -118,6 +118,7 @@ Igeey::Application.routes.draw do
   
   resources :problems do
     resources :kases
+    resources :solutions
     collection do
       get   :thanks
     end
