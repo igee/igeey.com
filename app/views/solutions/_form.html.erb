@@ -1,0 +1,16 @@
+<%= form_for [@problem,@solution],:html => { :multipart => true } do |form| %>
+  <%= form.hidden_field :problem_id ,:value => @problem.id%>
+  <%= form.hidden_field :user_id, :value => current_user.id %>
+  <p>
+    <%= form.label :title,'标题：'%> <%= form.text_field :title,:size => 40%>
+  </p>
+  <p>
+    <%= form.label :content,'正文：'%> <%= form.text_area :content, :style => "width:600px;"%>
+  </p>
+  <p>
+    <div >
+      <%= form.submit '确定'%>
+      <%= button_to_function '取消',"javascript:window.history.back()"%>
+    </div>
+  </p> 
+<% end %>

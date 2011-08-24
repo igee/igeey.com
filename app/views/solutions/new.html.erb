@@ -1,0 +1,6 @@
+<% @title = "为问题“#{@problem.title}”添加解决方法"%>
+<%= raw error_explanation_for(@solution) if @solution.errors.present?%>
+<h3><%= @title %></h3>
+<div class="box">
+  <%= render "form" %>
+</div>
