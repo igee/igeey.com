@@ -41,6 +41,7 @@ class ProblemsController < ApplicationController
       @problems = Problem.where(:id => INDEX_PROBLEMS['problem_ids'].split(',')).reverse
       @kase = Kase.new
       @kases = @problem.kases.limit(5)
+      @solutions = @problem.solutions.limit(3)
       @comments = @problem.comments
       @following_users = @problem.follows.limit(9).map(&:user)
     else

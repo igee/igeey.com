@@ -756,6 +756,8 @@ a.tag:hover{
 .veto{color:#bbb;}
 .veto:hover{color:#48B;}
 
+.hidden_content{display:none;}
+
 #category_list ul{overflow:hidden}
 #cutline_list li{font-size:13px;}
 

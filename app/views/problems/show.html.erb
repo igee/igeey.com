@@ -34,6 +34,11 @@
   <% end %>
 </div>
 
+<div class="box" style="margin-top:20px;">
+  <h4>解决方案：</h4>
+  <%= render :partial => '/public/solution', :collection => @solutions%>
+</div>
+
 <div class="box" style="border-top:1px solid #eee">
   <%= render :partial => '/comments/board'%>    
   <%= render :partial => '/comments/form' ,:locals => {:commentable => @problem}%>
