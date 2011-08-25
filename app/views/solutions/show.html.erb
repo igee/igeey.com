@@ -1,0 +1,18 @@
+<% @title = "问题“#{@problem.title}”的解决方案-#{@solution.title}"%>
+<p>
+  <h3><%= @solution.title%></h3>
+</p>
+<p>
+  <pre><%= @solution.content%></pre>
+</p>
+
+<% content_for :sidebar do %>
+  <div class="box">
+    <h5>来自问题：</h5>
+    <p>
+      <b><%= link_to "No.#{@problem.id} #{@problem.title}",problem_path(@problem) %></b>
+      <span>有<%= @problem.follows_count %>人关心</span>
+    </p>
+    <p class="explanation"><%= @problem.intro %></p>
+  </div>
+<% end %>

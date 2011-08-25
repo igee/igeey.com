@@ -10,6 +10,10 @@ class SolutionsController < ApplicationController
     @solution = @problem.solutions.build
   end
   
+  def show
+    @solution = Solution.find(params[:id])
+  end
+  
   def create
     @solution = @problem.solutions.build(params[:solution])
     if @solution.save

@@ -1,0 +1,11 @@
+<div class="toggle_content" style="margin:20px 10px;">
+  <%= link_to solution.title,problem_solution_path(@problem,solution)%>
+  <%= link_to "展开", 'javascript:void(0);', :class=>"toggle_link", :style=>"float:right;font-size:13px;"%>
+  <div class="show_content" style="font-size:13px">
+    <p><%= short_text(solution.content, 200)%></p>
+  </div>
+  <div class="hidden_content" style="font-size:13px;">
+    <br/>
+    <pre><%= solution.content%></pre>
+  </div>
+</div>

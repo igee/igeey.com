@@ -1,4 +1,6 @@
 Igeey::Application.routes.draw do
+  get "solutions/show"
+
   root :to => 'site#index'
     
   match 'signup' => 'users#new', :as => :signup

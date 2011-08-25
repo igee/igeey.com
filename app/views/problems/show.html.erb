@@ -48,7 +48,7 @@
   <div class="sidebar_panel">
     <h5><%= image_tag '/images/icon/problem.png',:class => 'icon'%> 本周讨论的问题：</h5>
     <% @problems.each do |problem|%>
-      <p style="border-bottom:1px solid #eee"><%= "No.#{problem.id}"%> <%= problem.id==@problem.id ? problem.title : (link_to problem.title, problem)%></p>
+      <p style="border-bottom:1px solid #eee"><%= "No.#{problem.id}"%> <%= link_to_unless_current(problem.title, problem)%></p>
     <% end %>
   </div>
   
