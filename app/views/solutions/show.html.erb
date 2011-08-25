@@ -1,10 +1,13 @@
 <% @title = "问题“#{@problem.title}”的解决方案-#{@solution.title}"%>
-<p>
+<div class="box">
   <h3><%= @solution.title%></h3>
-</p>
-<p>
   <pre><%= @solution.content%></pre>
-</p>
+</div>
+
+<div class="box" style="border-top:1px solid #eee">
+  <%= render :partial => '/comments/board'%>    
+  <%= render :partial => '/comments/form' ,:locals => {:commentable => @solution}%>
+</div>
 
 <% content_for :sidebar do %>
   <div class="box">

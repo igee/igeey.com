@@ -12,6 +12,7 @@ class SolutionsController < ApplicationController
   
   def show
     @solution = Solution.find(params[:id])
+    @comments = @solution.comments
   end
   
   def create
