@@ -9,7 +9,12 @@ class NotificationsController < ApplicationController
   def destroy
     @notification = Notification.find(params[:id])
     @notification.read
-    redirect_to @notification.notifiable
+    @notifiable = @notification.notifiable
+    if @notifiable.class.to_s == "Kase"
+      redirect_to problem_kase_path(@notifiable.problem, @notifiable)
+    else
+      redirect_to @notification.notifiable
+    end
   end
   
   def clear
