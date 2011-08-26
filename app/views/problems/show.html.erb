@@ -37,6 +37,10 @@
 <div class="box" style="margin-top:20px;">
   <h4>解决方案：</h4>
   <%= render :partial => '/public/solution', :collection => @solutions%>
+  <%= link_to "再添一个", new_problem_solution_path(@problem),:class => 'add' %>
+  <% if @solutions.count > 2%>
+    <span><%= link_to '查看全部案例',problem_solutions_path(@problem)%></span>
+  <% end %>
 </div>
 
 <div class="box" style="border-top:1px solid #eee">
