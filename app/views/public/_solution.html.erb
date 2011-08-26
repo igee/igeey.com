@@ -4,8 +4,11 @@
   <div class="show_content" style="font-size:13px">
     <p><%= short_text(solution.content, 200)%></p>
   </div>
-  <div class="hidden_content" style="font-size:13px;">
+  <div class="hidden_content" style="font-size:13px;margin-bottom:20px;">
     <br/>
     <pre><%= solution.content%></pre>
+    <% @solution = solution%>
+    <%= render :partial => '/solutions/vote'%>
   </div>
+  <hr/>
 </div>

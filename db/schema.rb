@@ -282,7 +282,8 @@ ActiveRecord::Schema.define do
     t.integer  "problem_id"
     t.string   "title"
     t.text     "content"
-    t.integer  "comments_count",                     :default => 0
+    t.integer  "comments_count",       :default => 0
+    t.integer  "votes_count",          :default => 0
     t.datetime "last_replied_at"
     t.integer  "last_replied_user_id"
     t.datetime "created_at"

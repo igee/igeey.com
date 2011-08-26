@@ -2,6 +2,7 @@
 <div class="box">
   <h3><%= @solution.title%></h3>
   <pre><%= @solution.content%></pre>
+  <%= render :partial => 'vote'%>
 </div>
 
 <div class="box" style="border-top:1px solid #eee">
