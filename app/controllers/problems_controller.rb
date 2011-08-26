@@ -40,6 +40,7 @@ class ProblemsController < ApplicationController
     if (current_user && current_user.is_admin?) || INDEX_PROBLEMS['problem_ids'].split(',').include?(params[:id])
       @problems = Problem.where(:id => INDEX_PROBLEMS['problem_ids'].split(',')).reverse
       @kase = Kase.new
+      @feedback = Feedback.new
       @kases = @problem.kases.limit(5)
       @comments = @problem.comments
       @following_users = @problem.follows.limit(9).map(&:user)
