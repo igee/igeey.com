@@ -21,7 +21,7 @@
       <% @kases.each do |kase|%>
         <div style="float:left;width:120px;margin-bottom:15px;">
           <%= link_to (image_tag kase.photo.url(:_100x75),:class => 'kase'), problem_kase_path(@problem,kase),:title => "案例 No.#{kase.id}",:name => kase.id.to_s %>
-          <span ><%= kase.comments_count %></span>
+          <span class="counter"><%= kase.comments_count %></span>
           <span><%= short_text(kase.address,6) %></span>
         </div>
       <% end %>
