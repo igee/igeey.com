@@ -2,10 +2,10 @@
   <%= form.hidden_field :problem_id ,:value => @problem.id%>
   <%= form.hidden_field :user_id, :value => current_user.id %>
   <p>
-    <%= form.label :title,'标题：'%> <%= form.text_field :title,:size => 40%>
+    <%= form.label :title,'给你的方案起个名字吧？'%> <%= form.text_field :title,:size => 40%>
   </p>
   <p>
-    <%= form.label :content,'正文：'%> <%= form.text_area :content, :style => "width:600px;"%>
+    <%= form.label :content,'具体要如何做？'%> <%= form.text_area :content, :style => "width:600px;"%>
   </p>
   <p>
     <div >
