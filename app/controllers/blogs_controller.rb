@@ -6,7 +6,7 @@ class BlogsController < ApplicationController
   
   def index
     @blogs = Blog.all
-    @problems = Problem.where(:id => INDEX_PROBLEMS['problem_ids'].split(','))
+    @problems = Problem.where(:id => INDEX_PROBLEMS['problem_ids'].split(',')).reverse
   end
   
   def new
@@ -21,7 +21,7 @@ class BlogsController < ApplicationController
   
   def show
     @comments = @blog.comments
-    @problems = Problem.where(:id => INDEX_PROBLEMS['problem_ids'].split(','))
+    @problems = Problem.where(:id => INDEX_PROBLEMS['problem_ids'].split(',')).reverse
   end
   
   def edit

@@ -40,6 +40,18 @@
    
   $(document).ready(function(){
     
+    $(".toggle_content").find('.toggle_link').toggle(function(){
+      $(this).html("<img src='/images/icon/arrow.gif'>");
+      $(this).parent().find('.show_content').hide();
+      $(this).parent().find('.hidden_content').show();
+      return false;
+    },function(){
+      $(this).html("<img src='/images/icon/arrow_next.gif'>");
+      $(this).parent().find('.show_content').show();
+      $(this).parent().find('.hidden_content').hide();
+      return false;
+    });
+    
     // Subscribe topics
     
     $('.timeago').live('replace.time', function() {
