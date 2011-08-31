@@ -220,14 +220,15 @@ ActiveRecord::Schema.define do
     t.text     "intro"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "comments_count",                     :default => 0
+    t.integer  "comments_count",       :default => 0
     t.integer  "last_replied_user_id"
     t.datetime "last_replied_at"
     t.integer  "user_id"
-    t.integer  "disagree_count",                     :default => 0
-    t.integer  "agree_count",                        :default => 0
-    t.integer  "votes_count",                        :default => 0
-    t.integer  "follows_count",                      :default => 0
+    t.boolean  "published",            :default => false
+    t.integer  "disagree_count",       :default => 0
+    t.integer  "agree_count",          :default => 0
+    t.integer  "votes_count",          :default => 0
+    t.integer  "follows_count",        :default => 0
   end
 
   create_table "questions", :force => true do |t|

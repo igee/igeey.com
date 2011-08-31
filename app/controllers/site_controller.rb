@@ -3,7 +3,7 @@ class SiteController < ApplicationController
   
   def index
     @blogs = Blog.all
-    @problems = Problem.where(:id => INDEX_PROBLEMS['problem_ids'].split(',')).reverse
+    @problems = Problem.published.reverse
     render '/blogs/index'
   end
   
