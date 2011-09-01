@@ -8,7 +8,7 @@ class NotificationsController < ApplicationController
   
   def destroy
     @notification = Notification.find(params[:id])
-    @notification.read
+    @notification.read if current_user == @notification.user
     @notifiable = @notification.notifiable
     if @notifiable.class.to_s == "Kase"
       redirect_to problem_kase_path(@notifiable.problem, @notifiable)
@@ -21,7 +21,7 @@ class NotificationsController < ApplicationController
   
   def clear
     @notification = Notification.find(params[:id])
-    @notification.read
+    @notification.read if current_user == @notification.user
     render :text=>'true'
   end
   
