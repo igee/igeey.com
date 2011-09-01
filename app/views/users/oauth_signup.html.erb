@@ -1,7 +1,7 @@
 <% @title = '注册'%>
 <% @site_hash = {"sina" => "新浪微薄", "douban" => "豆瓣"}%>
 <div style="width:510px;">
-  <h2>您还没有在爱聚注册吧？请先注册</h2>
+  <h2>请填写您将要在爱聚使用的用户名和邮箱：）</h2>
   <% @user.password = @user.password_confirmation = nil %>
   
   <%= raw error_explanation_for(@user) if @user.errors.present?%>
@@ -10,34 +10,22 @@
     <%= form_for :user, :url => oauth_user_create_path do |f| -%>
     <p>
       <%= f.label 'login','用户名：' %>
-      <%= f.text_field :login,:size => 14, :value => "#{@user_name}" %>
+      <%= f.text_field :login,:size => 20, :value => "#{@user_name}" %>
     </p>
     
     <p>
       <%= f.label 'email','　邮箱：' %>
-      <%= f.text_field :email, :size => 14 %>
+      <%= f.text_field :email, :size => 20, :placeholder => '方便日后找回密码哦' %>
     </p>
     
-    <p>
-      <%= f.label 'password','　密码：' %>
-      <%= f.password_field :password,:size => 14,:class=> 'with_tip',:title => "密码不要少于6位" %>
+    <p style="text-align:right">
+      <%= submit_tag '提交' %>
     </p>
     
-    <p id="confirmation">
-      
-    </p>
-    
-    <p style="text-align:center">
-      <%= submit_tag '注册' %>
-    </p>
-    
-    <script type="text/javascript">
-      $('#confirmation').html('<%= raw "#{f.label 'password_confirmation','第二遍：'} #{f.password_field :password_confirmation, :size => 14,:class=> 'with_tip',:title =>'再输入一遍密码'}" %>')
-    </script>
     <% end -%>
   </div>
   <div class="dialog_rightbar">
-    <p style="padding:15px">
+    <p style="padding:5px 15px 15px 15px">
       如果已经注册了，但还没有连接<%= @site_hash[@site]%>，
       <%= link_to '登录',oauth_login_path,:class => 'open_dialog', :title => '登录并连接'%>后即可直接连接
     </p>
