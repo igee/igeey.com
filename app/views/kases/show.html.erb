@@ -33,10 +33,7 @@
     <% end %>
   <% end %>
   <pre><%= @kase.intro %></pre>
-  <% 
-    @share_image = @kase.photo.url(:max500x400),
-    @share_title = "“#{@problem.title}”的实际案例"
-  %>
+  <% @share_title = "“#{@problem.title}”的实际案例"%>
   <%= render :partial => '/public/share'%>
 </div>
 

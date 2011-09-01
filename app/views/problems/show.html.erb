@@ -1,5 +1,6 @@
 <% @title = "问题：#{@problem.title}"%>
 
+<span><%= link_to '<< 回到首页','/' %></span>
 <div class="story_box" >
   <div style="float:right;margin:4px 0">
     <%= raw(care_about(@problem)) %>
@@ -14,24 +15,34 @@
 </div>
 
 <div class="box">
-  <h4>实际案例：</h4>
+  <h4>实际案例： <%= link_to "再添一个", new_problem_kase_path(@problem),:class => 'add' %> <span><%= link_to "查看案例分布", map_problem_path(@problem) %></span></h4>
   <% unless @kases.empty?%>
     <p>
       <% @kases.each do |kase|%>
         <div style="float:left;width:120px;margin-bottom:15px;">
           <%= link_to (image_tag kase.photo.url(:_100x75),:class => 'kase'), problem_kase_path(@problem,kase),:title => "案例 No.#{kase.id}",:name => kase.id.to_s %>
-          <span style='padding-left:75px;'><%= kase.comments.size.zero? ? '0回应' : (link_to "#{kase.comments.size}回应","#{problem_kase_path(@problem,kase)}#comments") %></span>
+          <span class="counter"><%= kase.comments_count %></span>
+          <span><%= short_text(kase.address,6) %></span>
         </div>
       <% end %>
     </p>
-    <div style="clear:both;">
-    <%= link_to "再添一个", new_problem_kase_path(@problem),:class => 'add' %>
-    <span><%= link_to "查看案例分布", map_problem_path(@problem) %></span>
+    
   <% else %>
     <p>
       <span>这个问题还没有实际案例呢，也太不靠谱了，赶紧 <%= link_to "添加一个", new_problem_kase_path(@problem)%>？</span>
     </p>
   <% end %>
+</div>
+<div class="box">
+ <%= form_for @feedback do |form| %>
+  <p style="background:#ffffcc;padding:15px">
+    <%= image_tag '/images/icon/checkbox.png',:class => 'icon'%>
+    小调查：告诉我们你想在这个页面看到什么? (不注册也可以填写)
+    <br/>
+    <%= form.text_field :text, :style => "width:480px;",:placeholder => "你想看到问题的解决方案，还是谁在今天又倒霉遇到了这个问题呢？:)"%>
+    <%= form.submit '发出去!'%>
+  </p>
+<% end %>
 </div>
 
 <div class="box" style="margin-top:20px;">

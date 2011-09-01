@@ -3,14 +3,13 @@
     <% @problems.each do |problem|%>
       <p style="border-bottom:1px solid #eee"><%= "No.#{problem.id}"%> <%= link_to problem.title, problem%></p>
     <% end %>
-    <p><%= image_tag '/images/icon/problem.png',:class => 'icon'%> <%= link_to '添加新问题(不用注册)',new_blog_path %></p>
+    <p><%= image_tag '/images/icon/problem.png',:class => 'icon'%> <%= link_to '添加新问题(不用注册)',new_problem_path %></p>
   </div>
 
-  <div class="sidebar_panel" style="background:url('/images/countdown.png')">
+  <div class="sidebar_panel" style="background:url('/images/jump.png');height:45px;overflow:hidden">
     <div style="text-align:center">
-      <br/>
-      <b style="font-size:48px;color:#79d"><%=  (Date.new(2011,8,31) - Date.today).to_i %></b>
-      <span>天</span>
+      <b style="font-size:42px;color:#fff;position:relative;top:6px"><%=  -(Date.new(2011,8,31) - Date.today).to_i %></b>
+      <span style="color:#fff;position:relative;top:4px">天</span>
     </div>
   </div>
 
