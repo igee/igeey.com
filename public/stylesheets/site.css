@@ -605,6 +605,19 @@ input.reply_submit{float:right;margin-top:1px}
 
 .comment{margin:0;width:520px}
 
+.toggle_content{margin:20px 10px;}
+.toggle_link{float:right;font-size:13px;width:54px;height:17px;}
+.show_content{font-size:13px;}
+.hidden_content{font-size:13px;margin-bottom:20px;}
+
+.arrow_next{
+  background:url('/images/icon/arrow.png');
+}
+
+.arrow{
+  background:url('/images/icon/arrow.png')54px 0px;
+}
+
 .reply{font-size:12px;border-bottom:1px dashed #d6d6d6;text-align:left}
 .reply_reply{float:right}
 .reply_tail{position:relative;top:5px;right:20px;}

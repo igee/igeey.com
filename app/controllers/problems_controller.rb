@@ -37,7 +37,7 @@ class ProblemsController < ApplicationController
   end
 
   def show
-    if (current_user && current_user.is_admin?) || Problem.published.include?(params[:id])
+    if (current_user && current_user.is_admin?) || @problem.published
       @problems = Problem.published.reverse
       @kase = Kase.new
       @kases = @problem.kases.limit(5)

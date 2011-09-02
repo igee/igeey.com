@@ -1,13 +1,13 @@
-<div class="toggle_content" style="margin:20px 10px;">
+<div class="toggle_content">
   <%= link_to solution.title,problem_solution_path(@problem,solution)%>
-  <%= link_to (image_tag '/images/icon/arrow_next.gif'), 'javascript:void(0);', :class=>"toggle_link", :style=>"float:right;font-size:13px;"%>
+  <%= link_to '', 'javascript:void(0);', :class=>"toggle_link arrow_next"%>
   <div style="padding:5px 0 5px 5px;">
     <span><%= full_date(solution.created_at)%> By: <%= link_to solution.user.login, solution.user %></span>
   </div>
-  <div class="show_content" style="font-size:13px">
+  <div class="show_content">
     <p><%= short_text(solution.content, 200)%>（<%= link_to "#{solution.comments.count}回应", "#{problem_solution_path(@problem,solution)}#comments"%>）</p>
   </div>
-  <div class="hidden_content" style="font-size:13px;margin-bottom:20px;">
+  <div class="hidden_content">
     <br/>
     <pre><%= solution.content%>（<%= link_to "#{solution.comments.count}回应", "#{problem_solution_path(@problem,solution)}#comments"%>）</pre>
     <% @solution = solution%>
