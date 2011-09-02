@@ -19,13 +19,7 @@
   <% else %>
     <p>
       <%= link_to "立即登录",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%> 即可留言
-      <span>其它帐号直接登录：
-      <%= image_tag "/images/icon/douban.gif",:class=> 'icon'%>
-      <%= link_to('豆瓣',:controller => 'oauth', :action => 'douban')%>
-      <%= image_tag "/images/icon/sina.gif",:class=> 'icon'%>	
-      <%= link_to('新浪微博',:controller => 'oauth', :action => 'sina')%>
-      <%= image_tag "/images/icon/new.gif",:style=>"margin:10px 0;"%>
-      </span>  
+      <span>(也可<b style="color:red;">免注册</b>使用新浪微博/豆瓣账号<%= link_to '登录',login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%>哦)</span>
     </p>
 
   <% end %>
