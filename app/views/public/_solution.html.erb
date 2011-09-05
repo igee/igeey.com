@@ -1,0 +1,17 @@
+<div class="toggle_content" style="margin:20px 10px;">
+  <h5><%= link_to solution.title,problem_solution_path(@problem,solution)%> <span>by <%= link_to solution.user.login,user_path(solution.user)%><span></h5>
+  <%= link_to (image_tag '/images/icon/arrow_next.gif'), 'javascript:void(0);', :class=>"toggle_link", :style=>"float:right;font-size:13px;"%>
+  <div style="padding:5px 0 5px 5px;">
+  </div>
+  <div class="show_content" style="font-size:13px">
+    <p><%= short_text(solution.content, 200)%>（<%= link_to "#{solution.comments.count}回应", "#{problem_solution_path(@problem,solution)}#comments"%>）</p>
+  </div>
+  <div class="hidden_content" style="font-size:13px;margin-bottom:20px;">
+    <br/>
+    <pre><%= solution.content%>（<%= link_to "#{solution.comments.count}回应", "#{problem_solution_path(@problem,solution)}#comments"%>）</pre>
+    <% @solution = solution%>
+    <div style="text-align:right;">
+      <%= render :partial => '/solutions/vote'%>
+    </div>
+  </div>
+</div>

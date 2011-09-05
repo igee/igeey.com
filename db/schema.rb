@@ -220,14 +220,17 @@ ActiveRecord::Schema.define do
     t.text     "intro"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "comments_count",                     :default => 0
+    t.integer  "comments_count",       :default => 0
     t.integer  "last_replied_user_id"
     t.datetime "last_replied_at"
     t.integer  "user_id"
-    t.integer  "disagree_count",                     :default => 0
-    t.integer  "agree_count",                        :default => 0
-    t.integer  "votes_count",                        :default => 0
-    t.integer  "follows_count",                      :default => 0
+    t.boolean  "published",            :default => false
+    t.integer  "disagree_count",       :default => 0
+    t.integer  "agree_count",          :default => 0
+    t.integer  "votes_count",          :default => 0
+    t.integer  "follows_count",        :default => 0
+    t.integer  "kases_count",          :default => 0
+    t.integer  "solutions_count",      :default => 0
   end
 
   create_table "questions", :force => true do |t|
@@ -275,6 +278,19 @@ ActiveRecord::Schema.define do
     t.datetime "updated_at"
     t.string   "cached_tag_list",      :default => ""
     t.integer  "votes_count",          :default => 0
+  end
+  
+  create_table "solutions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "problem_id"
+    t.string   "title"
+    t.text     "content"
+    t.integer  "comments_count",       :default => 0
+    t.integer  "votes_count",          :default => 0
+    t.datetime "last_replied_at"
+    t.integer  "last_replied_user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "syncs", :force => true do |t|
@@ -376,6 +392,8 @@ ActiveRecord::Schema.define do
     t.integer  "notifications_count",                      :default => 0
     t.integer  "doings_count",                             :default => 0
     t.integer  "tasks_count",                              :default => 0
+    t.integer  "kases_count",                              :default => 0
+    t.integer  "solutions_count",                          :default => 0
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true

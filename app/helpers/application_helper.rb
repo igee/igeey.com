@@ -21,7 +21,7 @@ module ApplicationHelper
   end
   
   def full_date(date)
-    date.strftime("%m月-%d日 %X")
+    date.strftime("%m月%d日 %X")
   end
   
   def short_url(object)

@@ -1,9 +1,28 @@
-<div style="text-align:right;">
-  <span>分享到：
-    <a href="http://www.douban.com/recommend/?url=<%= request.url%>&title=分享<%= @title%>" target="_blank"><img src='/images/icon/douban.gif' class="icon"/></a> 
-    <a href="http://v.t.sina.com.cn/share/share.php?url=<%= request.url%>&title=分享<%= @title%>" target="_blank"><img src='/images/icon/sina.gif' class="icon"/></a> 
-    <a href="http://www.connect.renren.com/share/sharer?url=<%= request.url%>&title=分享<%= @title%>" target="_blank"><img src='/images/icon/renren.gif' class="icon"/></a> 
-    <a href="http://www.kaixin001.com/repaste/bshare.php?rtitle=分享<%= @title%>&rurl=<%= request.url%>" target="_blank"><img src='/images/icon/kaixin001.gif' class="icon"/></a>
-  </span>
+<!-- JiaThis Button BEGIN -->
+<div id="ckepop" style="float:right;">
+	<span class="jiathis_txt">分享到：</span>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_douban"></a>	
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_kaixin001"></a>
+	<a href="http://www.jiathis.com/share?uid=1532716" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
 </div>
-  
+<script type="text/javascript">
+var jiathis_config = {
+    <%= "title:'#{@share_title}'," if @share_title%>
+    <%= "pic:'#{@share_image}'," if @share_image%>
+    data_track_clickback:true,
+    appkey:{
+            "tsina":"2295864270"
+    },
+    ralateuid:{
+            "tsina":"1864266521"
+    },
+}
+
+</script>
+<script type="text/javascript" src="http://v2.jiathis.com/code_mini/jia.js?uid=1532716" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+

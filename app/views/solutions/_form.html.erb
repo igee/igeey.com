@@ -1,0 +1,25 @@
+<%= form_for [@problem,@solution] do |form| %>
+  <p>
+    <%= form.label :title,'能不能给你的方案起个名字?'%> <%= form.text_field :title,:size => 20%>
+  </p>
+  <p>
+    <%= form.label :content,'在这里写下你的解决办法吧：'%> <%= form.text_area :content, :style => "width:600px;height:160px"%>
+  </p>
+  <p>
+    <div >
+      <%= form.submit '确定'%>
+      <%= button_to_function '取消',"javascript:window.history.back()"%>
+    </div>
+  </p> 
+<% end %>
+
+<% content_for :sidebar do %>  
+  <div class="sidebar_panel">
+    <h5>解决办法FAQ:</h5>
+    <p class="explanation" >
+      Q: 我的解决办法可能不能完整的解决问题，但至少可以给解决带来一些帮助，是否可以提交呢？
+      <br/>
+      A: 当然，只要你的办法对解决问题是积极的，这里都欢迎，比如为问题解决提供线索，知识等。
+    </p>
+  </div>
+<% end %>

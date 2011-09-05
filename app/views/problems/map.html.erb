@@ -31,9 +31,9 @@
   <script type="text/javascript">
     function initialize() {
       var kases = <%= raw @kases.to_json %>;
-      var latlng = new google.maps.LatLng(35.0,105.0)
+      var latlng = new google.maps.LatLng(<%= @latitude_center%>, <%= @longitude_center%>)
       var myOptions = {
-        zoom: 4,
+        zoom: <%= @map_zoom%>,
         center: latlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };

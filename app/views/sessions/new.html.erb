@@ -22,11 +22,13 @@
     </p>
     <% end -%>
 	<p>
-	  <span style="color:#555;">更多帐号登录：
+	  <span style="color:#555;">其它帐号直接登录：
 	  <%= image_tag "/images/icon/douban.gif",:class=> 'icon'%>
 	  <%= link_to('豆瓣',:controller => 'oauth', :action => 'douban')%>
 	  <%= image_tag "/images/icon/sina.gif",:class=> 'icon'%>	
-	  <%= link_to('新浪微博',:controller => 'oauth', :action => 'sina')%></span>
+	  <%= link_to('微博',:controller => 'oauth', :action => 'sina')%>
+	  <%= image_tag "/images/icon/new.gif",:style=>"margin:10px 0;"%>
+	  </span>
 	</p>
   </div>
   

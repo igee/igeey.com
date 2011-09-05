@@ -1,0 +1,32 @@
+<% @title = "问题“#{@problem.title}”的解决方案-#{@solution.title}"%>
+<div class="box">
+  <h3><%= @solution.title%></h3>
+  <div style="float:right;margin-bottom:20px;">
+    <% @share_title = "“#{@problem.title}”的解决方案“#{@solution.title}”"%>
+    <%= render :partial => '/public/share'%>
+  </div>
+  <div style="padding:0 0 20px 10px;">
+    <span><%= full_date(@solution.created_at)%> By: <%= link_to @solution.user.login, @solution.user %></span>
+  </div>
+  <pre><%= @solution.content%></pre>
+  <div style="text-align:right;">
+    <%= render :partial => 'vote'%>
+  </div>
+</div>
+
+<a name="comments"></a>
+<div class="box" style="border-top:1px solid #eee">
+  <%= render :partial => '/comments/board'%>    
+  <%= render :partial => '/comments/form' ,:locals => {:commentable => @solution}%>
+</div>
+
+<% content_for :sidebar do %>
+  <div class="box">
+    <h5>来自问题：</h5>
+    <p>
+      <b><%= link_to "No.#{@problem.id} #{@problem.title}",problem_path(@problem) %></b>
+      <span>有<%= @problem.follows_count %>人关心</span>
+    </p>
+    <p class="explanation"><%= @problem.intro %></p>
+  </div>
+<% end %>

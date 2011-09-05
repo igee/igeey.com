@@ -17,11 +17,11 @@
   </div>
 
   <h5><%= @blog.comments_count.zero? ? "还没有评论" : "有#{@blog.comments_count}条评论：" %></h5>
-  <div class="box" style="border-top:1px dashed #cccccc;">
+  <div class="box" style="border-top:1px dashed #cccccc;" id="comments">
     <%= render :partial => '/comments/board'%>    
   </div>
 
-  <div class="box">
+  <div>
     <h4>发表评论：</h4>
     <%= render :partial => '/comments/form' ,:locals => {:commentable => @blog}%>
   </div>

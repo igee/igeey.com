@@ -1,4 +1,6 @@
 Igeey::Application.routes.draw do
+  get "solutions/show"
+
   root :to => 'site#index'
     
   match 'signup' => 'users#new', :as => :signup
@@ -118,6 +120,7 @@ Igeey::Application.routes.draw do
   
   resources :problems do
     resources :kases
+    resources :solutions
     collection do
       get   :thanks
     end
@@ -146,6 +149,7 @@ Igeey::Application.routes.draw do
   resources :votes
   
   resources :notifications do
+    get '/', :on => :member,:action => :destroy
     get :clear, :on => :member
     get :clear_all, :on => :collection
     post :redirect_clear, :on => :collection  
