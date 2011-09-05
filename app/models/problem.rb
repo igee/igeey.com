@@ -6,13 +6,14 @@ class Problem < ActiveRecord::Base
   has_many   :notifications, :as => :notifiable, :dependent => :destroy
   has_many   :votes,    :as => :voteable,    :dependent => :destroy
   has_many   :follows,  :as => :followable, :dependent => :destroy
+  has_many   :followers,  :through => :follows,:source => :user
   
   validates :title, :presence => true
   
   default_scope     :order => 'created_at desc'
   
   def self.published
-    Problem.where(:published=>true)
+    Problem.where(:published => true)
   end
   
   def send_new_problem

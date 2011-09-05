@@ -17,6 +17,7 @@ class SolutionsController < ApplicationController
   
   def create
     @solution = @problem.solutions.build(params[:solution])
+    @solution = current_user
     if @solution.save
       redirect_to problem_path(@problem)
     else

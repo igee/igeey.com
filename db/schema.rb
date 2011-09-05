@@ -229,6 +229,8 @@ ActiveRecord::Schema.define do
     t.integer  "agree_count",          :default => 0
     t.integer  "votes_count",          :default => 0
     t.integer  "follows_count",        :default => 0
+    t.integer  "kases_count",          :default => 0
+    t.integer  "solutions_count",      :default => 0
   end
 
   create_table "questions", :force => true do |t|
@@ -390,6 +392,8 @@ ActiveRecord::Schema.define do
     t.integer  "notifications_count",                      :default => 0
     t.integer  "doings_count",                             :default => 0
     t.integer  "tasks_count",                              :default => 0
+    t.integer  "kases_count",                              :default => 0
+    t.integer  "solutions_count",                          :default => 0
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true

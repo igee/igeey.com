@@ -280,6 +280,8 @@ table{
   top:3px;
   }
 
+.number{font-size:30px;color:#8ac}
+
 .embed_number_wrapper{
   position:absolute;
   text-align:right;
@@ -402,6 +404,11 @@ button:hover,input[type="submit"]:hover,input[type="button"]:hover{background:#f
   padding-top:6px;
   text-align:center;
   }
+
+.small_avatar{
+  width:24px;
+  height:24px;
+}
 
 .user_avatar{
   width:48px;
@@ -537,6 +544,23 @@ button:hover,input[type="submit"]:hover,input[type="button"]:hover{background:#f
   -webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;
   }
 
+.problem_counter{
+  float:left;
+  width:79px;
+  padding:35px 0 0;
+  height:30px; 
+  text-align:center;
+}
+
+.problem_counter a{
+  text-decoration:none;
+  color:#fff;
+  font-size:13px;
+}
+
+.problem_counter a:hover{
+  color:#ffdd99;
+}
 .reply_bubble form {
   margin:0;
   padding:0;
