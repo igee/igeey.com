@@ -15,6 +15,15 @@
 </div>
 
 <div class="box">
+  <h4>Reddit：<span><%= link_to '++++++++', new_problem_post_path(@problem)%></span></h4>
+  <% unless @posts.empty?%>
+    <p>
+      <%= render :partial => '/public/post', :collection => @posts%>
+    </p>
+  <% end %>
+</div>
+
+<div class="box">
   <h4>实际案例： <%= link_to "再添一个", new_problem_kase_path(@problem),:class => 'add' %> <span><%= link_to "查看案例分布", map_problem_path(@problem) %></span></h4>
   <% unless @kases.empty?%>
     <p>

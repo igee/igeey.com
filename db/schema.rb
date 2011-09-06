@@ -215,6 +215,16 @@ ActiveRecord::Schema.define do
     t.datetime "done_at"
   end
 
+  create_table "posts", :force => true do |t|
+    t.string   "title",         :limit => 40
+    t.string   "url"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "problem_id"
+    t.integer  "user_id"
+  end
+  
   create_table "problems", :force => true do |t|
     t.string   "title",                :limit => 40
     t.text     "intro"

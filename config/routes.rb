@@ -1,4 +1,6 @@
 Igeey::Application.routes.draw do
+  get "posts/new"
+
   root :to => 'site#index'
     
   match 'signup' => 'users#new', :as => :signup
@@ -118,6 +120,7 @@ Igeey::Application.routes.draw do
   
   resources :problems do
     resources :kases
+    resources :posts
     collection do
       get   :thanks
     end

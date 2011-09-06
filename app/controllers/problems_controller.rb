@@ -42,6 +42,7 @@ class ProblemsController < ApplicationController
       @kase = Kase.new
       @feedback = Feedback.new
       @kases = @problem.kases.limit(5)
+      @posts = @problem.posts
       @comments = @problem.comments
       @following_users = @problem.follows.limit(9).map(&:user)
     else
