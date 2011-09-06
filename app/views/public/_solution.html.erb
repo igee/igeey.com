@@ -1,0 +1,17 @@
+<div class="toggle_content">
+  <%= link_to solution.title,problem_solution_path(@problem,solution)%>
+  <%= link_to '', 'javascript:void(0);', :class=>"toggle_link arrow_next"%>
+  <div style="padding:5px 0 5px 5px;">
+  </div>
+  <div class="show_content">
+    <p><%= short_text(solution.content, 200)%>（<%= link_to "#{solution.comments.count}回应", "#{problem_solution_path(@problem,solution)}#comments"%>）</p>
+  </div>
+  <div class="hidden_content">
+    <br/>
+    <pre><%= solution.content%>（<%= link_to "#{solution.comments.count}回应", "#{problem_solution_path(@problem,solution)}#comments"%>）</pre>
+    <% @solution = solution%>
+    <div style="text-align:right;">
+      <%= render :partial => '/solutions/vote'%>
+    </div>
+  </div>
+</div>

@@ -280,6 +280,8 @@ table{
   top:3px;
   }
 
+.number{font-size:30px;color:#8ac}
+
 .embed_number_wrapper{
   position:absolute;
   text-align:right;
@@ -402,6 +404,11 @@ button:hover,input[type="submit"]:hover,input[type="button"]:hover{background:#f
   padding-top:6px;
   text-align:center;
   }
+
+.small_avatar{
+  width:24px;
+  height:24px;
+}
 
 .user_avatar{
   width:48px;
@@ -537,6 +544,23 @@ button:hover,input[type="submit"]:hover,input[type="button"]:hover{background:#f
   -webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;
   }
 
+.problem_counter{
+  float:left;
+  width:79px;
+  padding:35px 0 0;
+  height:30px; 
+  text-align:center;
+}
+
+.problem_counter a{
+  text-decoration:none;
+  color:#fff;
+  font-size:13px;
+}
+
+.problem_counter a:hover{
+  color:#ffdd99;
+}
 .reply_bubble form {
   margin:0;
   padding:0;
@@ -605,6 +629,19 @@ input.reply_submit{float:right;margin-top:1px}
   }
 
 .comment{margin:0;width:520px}
+
+.toggle_content{margin:20px 10px;}
+.toggle_link{float:right;font-size:13px;width:54px;height:17px;}
+.show_content{font-size:13px;}
+.hidden_content{font-size:13px;margin-bottom:20px;}
+
+.arrow_next{
+  background:url('/images/icon/arrow.png');
+}
+
+.arrow{
+  background:url('/images/icon/arrow.png')54px 0px;
+}
 
 .reply{font-size:12px;border-bottom:1px dashed #d6d6d6;text-align:left}
 .reply_reply{float:right}
@@ -756,6 +793,8 @@ a.tag:hover{
 
 .veto{color:#bbb;}
 .veto:hover{color:#48B;}
+
+.hidden_content{display:none;}
 
 #category_list ul{overflow:hidden}
 #cutline_list li{font-size:13px;}

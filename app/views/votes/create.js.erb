@@ -1,4 +1,4 @@
-<% @agree_hash = {'Problem' => '赞同','Kase' => '有用'} %>
+<% @agree_hash = {'Problem' => '赞同','Kase' => '有用','Solution' => '有帮助'} %>
 <% unless @vote.errors.empty? %>
   alert('<%= @vote.errors.map{|msg| msg[1]} %>')
 <% else %>

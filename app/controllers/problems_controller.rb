@@ -37,14 +37,17 @@ class ProblemsController < ApplicationController
   end
 
   def show
-    if (current_user && current_user.is_admin?) || INDEX_PROBLEMS['problem_ids'].split(',').include?(params[:id])
-      @problems = Problem.where(:id => INDEX_PROBLEMS['problem_ids'].split(',')).reverse
+    if (current_user && current_user.is_admin?) || @problem.published
+      @problems = Problem.published.limit(6).reverse
+      @current_problems = @problems[3..5] 
+      @prev_problems = @problems[0..2] 
       @kase = Kase.new
       @feedback = Feedback.new
       @kases = @problem.kases.limit(5)
       @posts = @problem.posts
+      @solutions = @problem.solutions.limit(3)
       @comments = @problem.comments
-      @following_users = @problem.follows.limit(9).map(&:user)
+      @following_users = @problem.followers
     else
       redirect_to :root
     end

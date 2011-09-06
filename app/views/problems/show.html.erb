@@ -1,10 +1,6 @@
 <% @title = "问题：#{@problem.title}"%>
 
-<span><%= link_to '<< 回到首页','/' %></span>
 <div class="story_box" >
-  <div style="float:right;margin:4px 0">
-    <%= raw(care_about(@problem)) %>
-  </div>
   <h2>No.<%= @problem.id %> <%= @problem.title %></h2>
   <span><%= format_date(@problem.created_at)%>提出</span>
   <pre><%= @problem.intro %></pre>
@@ -25,6 +21,7 @@
 
 <div class="box">
   <h4>实际案例： <%= link_to "再添一个", new_problem_kase_path(@problem),:class => 'add' %> <span><%= link_to "查看案例分布", map_problem_path(@problem) %></span></h4>
+  <h4><%= image_tag('/images/icon/kase.gif',:class => 'icon')%> 实际案例：<%= link_to image_tag('/images/icon/map.gif',:class => 'icon'),map_problem_path(@problem),:title => '查看案例位置分布' %></h4>
   <% unless @kases.empty?%>
     <p>
       <% @kases.each do |kase|%>
@@ -38,21 +35,23 @@
     
   <% else %>
     <p>
-      <span>这个问题还没有实际案例呢，也太不靠谱了，赶紧 <%= link_to "添加一个?", "#{problem_path(@problem)}/kases/new"%></span>
+      <span>这个问题还没有实际案例呢，也太不靠谱了，赶紧 <%= link_to "添加一个", new_problem_kase_path(@problem)%>？</span>
     </p>
   <% end %>
 </div>
-<div class="box">
- <%= form_for @feedback do |form| %>
-  <p style="background:#ffffcc;padding:15px">
-    <%= image_tag '/images/icon/checkbox.png',:class => 'icon'%>
-    小调查：告诉我们你想在这个页面看到什么? (不注册也可以填写)
-    <br/>
-    <%= form.text_field :text, :style => "width:480px;",:placeholder => "你想看到问题的解决方案，还是谁在今天又倒霉遇到了这个问题呢？:)"%>
-    <%= form.submit '发出去!'%>
-  </p>
-<% end %>
+
+<div class="box" style="margin-top:20px;">
+  <h4><%= image_tag('/images/icon/idea.gif',:class => 'icon')%> 解决办法：</h4>
+  <% unless @solutions.empty?%>
+    <%= render :partial => '/public/solution', :collection => @solutions%>
+    <% if @solutions.count > 2%>
+      <span><%= link_to '查看全部',problem_solutions_path(@problem)%></span>
+    <% end %>
+  <% else %>
+    <span>这个问题还没有解决办法提交，如果你有什么好办法， <%= link_to "提交出来", new_problem_solution_path(@problem)%> 和大家分享吧。</span>
+  <% end %>
 </div>
+
 
 <div class="box" style="border-top:1px solid #eee">
   <%= render :partial => '/comments/board'%>    
@@ -60,36 +59,60 @@
 </div>
 
 <% content_for :sidebar do %>
-  <div class="sidebar_panel">
-    <h5><%= image_tag '/images/icon/problem.png',:class => 'icon'%> 本周讨论的问题：</h5>
-    <% @problems.each do |problem|%>
-      <p style="border-bottom:1px solid #eee"><%= "No.#{problem.id}"%> <%= problem.id==@problem.id ? problem.title : (link_to problem.title, problem)%></p>
-    <% end %>
-  </div>
   
-  <div class="box">
-    <%= link_to "查看全部",followers_problem_path(@problem),:class => "see_all_link" if @following_users[8]%>
-    <h5><%= @problem.follows.count.zero? ? "还没有" : "有#{@problem.follows_count}"%>人关心这个问题：</h5>
-    <%= render :partial => '/users/user',:collection => @following_users[0..7] %>
+  <div style="background:url('/images/counter.png');height:92px;width:238px;margin:10px 5px 25px">
+    <div class="problem_counter">
+      <span class="number"><%= @problem.follows_count %></span>
+      <br/>
+      <% if logged_in? && current_user.is_following?(@problem) %>
+        <%= link_to '取消关心',follow_path(@problem.follows.find_by_user_id(current_user.id)),:method => :delete,:class => 'selected' %>
+      <% else %>
+        <%= link_to '+关心',follows_path(:followable_id => @problem.id,:followable_type => 'Problem'),:method => :post %>
+      <% end %>
+    </div>
+    <div class="problem_counter">
+      <span class="number" ><%= @problem.kases_count %></span>
+      <br/>
+      <%= link_to "+实际案例", new_problem_kase_path(@problem)%>
+    </div>
+    <div class="problem_counter">
+      <span class="number"><%= @problem.solutions_count %></span>
+      <br/>
+      <%= link_to "+解决办法", new_problem_solution_path(@problem)%>
+    </div>
   </div>
+
+  <% unless @following_users.empty? %>
+    <div class="box">
+      <h5><%= image_tag '/images/icon/eye.png',:class => 'icon'%> 关心这个问题的同学：</h5>
+      <% @following_users.each do |user|%>
+        <%= link_to (image_tag user.avatar.url,:class => "small_avatar",:alt => user.login),user_path(user),:title => user.login %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="box">
+   <%= form_for @feedback do |form| %>
+    <div style="background:#ffffcc;padding:10px;border:1px dashed #eebb55;margin:5px">
+      <%= image_tag '/images/icon/checkbox.png',:class => 'icon'%>
+      <span>小调查：告诉我们你还想在这个页面看到什么? (不注册也可以填写)</span>
+      <p><%= form.text_field :text, :style => "width:200px;",:placeholder => "写什么都可以"%></p>
+      <%= form.submit '发出去!'%>
+    </div>
+  <% end %>
+  </div>
+
+  <div class="sidebar_panel">
+    <h5> 本期关注的公共问题：</h5>
+    <% @current_problems.each do |problem|%>
+      <p style="border-bottom:1px solid #eee"><%= "No.#{problem.id}"%> <%= link_to problem.title, problem%></p>
+    <% end %>
+    <h5 style="color:#aaa;margin-top:16px"> 上期关注：</h5>
+    <% @prev_problems.each do |problem|%>
+      <p style="border-bottom:1px solid #eee;color:#aaa"><%= "No.#{problem.id}"%> <%= link_to problem.title, problem%></p>
+    <% end %>
+    <p><%= image_tag '/images/icon/problem.png',:class => 'icon'%> <%= link_to '添加新问题(不用注册)',new_problem_path %></p>
+  </div>
+
 <% end %>
 
-<% content_for :extension do %>
-  <script type="text/javascript">
-    $(document).ready(function(){
-      kase_turn = function(index,direction){
-        if(direction == 'prev'){
-          var dom = $('#kases a[name=' + index + ']').prev();
-          if(dom.length == 0){alert('没有啦')};
-          dom.click()
-        };
-        if(direction == 'next'){
-          var dom = $('#kases a[name=' + index + ']').next();
-          if(dom.length == 0){alert('没有啦')};
-          dom.click()
-        }
-        return false;
-      }   
-    });  
-  </script>
-<% end %>

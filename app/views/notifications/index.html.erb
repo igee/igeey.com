@@ -28,6 +28,8 @@
 		  发现的问题 <%= nn.problem.title %> 中的 <%= link_to "案例", n, :method=>'delete'%> 有了新的回复
 		<% when "Blog"%>
 		  文章 <%= link_to nn.title, n, :method=>'delete'%> 有了新的回复
+		<% when "Solution"%>
+		  解决方案 <%= link_to nn.title, n, :method=>'delete'%> 有了新的回复
 	<%end%>
 	<%= link_to 'x', clear_notification_path(n), :remote=>true, :onclick=>"javascript:$(this).parent().slideUp();"%>
 	</p>
