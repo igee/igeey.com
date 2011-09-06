@@ -643,6 +643,12 @@ input.reply_submit{float:right;margin-top:1px}
   background:url('/images/icon/arrow.png')54px 0px;
 }
 
+.host_url{
+  color:#999;
+  font-size:12px;
+  font-weight:normal;
+}
+
 .reply{font-size:12px;border-bottom:1px dashed #d6d6d6;text-align:left}
 .reply_reply{float:right}
 .reply_tail{position:relative;top:5px;right:20px;}

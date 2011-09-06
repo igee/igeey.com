@@ -1,3 +1,6 @@
-<div>
-  <%= link_to post.title, post.url%>
+<div style="margin:10px;">
+  <%= link_to post.title, (post.url.empty? ? problem_post_path(post.problem, post) : post.url)%>
+  <span>（<%= link_to post.url_host,"http://#{post.url_host}", :class=>"host_url"%>）</span><br/>
+  <span style="margin-right:20px;">发表于<%= date_interval(post.created_at)%></span>
+  <span>by：<%= link_to post.user.login, post.user%></span>
 </div>

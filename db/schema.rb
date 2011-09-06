@@ -219,6 +219,7 @@ ActiveRecord::Schema.define do
     t.string   "title",         :limit => 40
     t.string   "url"
     t.text     "content"
+    t.string   "url_host"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "problem_id"
