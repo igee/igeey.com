@@ -1,17 +1,28 @@
-<div class="toggle_content" style="margin:20px 10px;">
-  <h5><%= link_to solution.title,problem_solution_path(@problem,solution)%> <span>by <%= link_to solution.user.login,user_path(solution.user)%><span></h5>
-  <%= link_to (image_tag '/images/icon/arrow_next.gif'), 'javascript:void(0);', :class=>"toggle_link", :style=>"float:right;font-size:13px;"%>
-  <div style="padding:5px 0 5px 5px;">
+<div class="event_box">
+  <div class="voter">
+    <% if current_user && @positive = solution.uped_by?(current_user)%>
+      <%= link_to image_tag('/images/icon/uped.png'),vote_path(@positive),:method => :delete%>
+    <% else %>
+      <%= link_to image_tag('/images/icon/up.png'),votes_path(:voteable_id => solution.id,:voteable_type => 'Solution',:positive => true),:method => :post%>
+    <% end %>
+    <div id="offset_counter_<%= solution.id%>"><%= (solution.positive_count - solution.negative_count) %></div>
+    <% if current_user && @positive = solution.downed_by?(current_user)%>
+      <%= link_to image_tag('/images/icon/downed.png'),vote_path(@positive),:method => :delete%>
+    <% else %>
+      <%= link_to image_tag('/images/icon/down.png'),votes_path(:voteable_id => solution.id,:voteable_type => 'Solution'),:method => :post%>
+    <% end %>
   </div>
-  <div class="show_content" style="font-size:13px">
-    <p><%= short_text(solution.content, 200)%>（<%= link_to "#{solution.comments.count}回应", "#{problem_solution_path(@problem,solution)}#comments"%>）</p>
-  </div>
-  <div class="hidden_content" style="font-size:13px;margin-bottom:20px;">
-    <br/>
-    <pre><%= solution.content%>（<%= link_to "#{solution.comments.count}回应", "#{problem_solution_path(@problem,solution)}#comments"%>）</pre>
-    <% @solution = solution%>
-    <div style="text-align:right;">
-      <%= render :partial => '/solutions/vote'%>
+  <div class="solution">
+    <b><%= link_to solution.title,problem_solution_path(@problem,solution)%></b>
+    <span>by <%= link_to solution.user.login,user_path(solution.user)%></span>
+    <%= link_to '', 'javascript:void(0);', :class=>"toggle_link arrow_next"%>
+    <div class="show_content">
+      <p class="explanation"><%= short_text(solution.content, 200)%>（<%= link_to "#{solution.comments.count}回应", "#{problem_solution_path(@problem,solution)}#comments"%>）</p>
+    </div>
+    <div class="hidden_content">
+      <br/>
+      <pre class="explanation"><%= solution.content%>（<%= link_to "#{solution.comments.count}回应", "#{problem_solution_path(@problem,solution)}#comments"%>）</pre>
+      <% @solution = solution%>
     </div>
   </div>
 </div>

@@ -225,8 +225,6 @@ ActiveRecord::Schema.define do
     t.datetime "last_replied_at"
     t.integer  "user_id"
     t.boolean  "published",            :default => false
-    t.integer  "disagree_count",       :default => 0
-    t.integer  "agree_count",          :default => 0
     t.integer  "votes_count",          :default => 0
     t.integer  "follows_count",        :default => 0
     t.integer  "kases_count",          :default => 0
@@ -287,6 +285,9 @@ ActiveRecord::Schema.define do
     t.text     "content"
     t.integer  "comments_count",       :default => 0
     t.integer  "votes_count",          :default => 0
+    t.integer  "negative_count",       :default => 0
+    t.integer  "positive_count",       :default => 0
+    t.integer  "offset_count",         :default => 0
     t.datetime "last_replied_at"
     t.integer  "last_replied_user_id"
     t.datetime "created_at"
@@ -430,7 +431,7 @@ ActiveRecord::Schema.define do
     t.string   "voteable_type", :limit => 40
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_agree"
+    t.boolean  "positive",                   :default => true
   end
 
 end

@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   has_many :sayings,        :dependent => :destroy
   has_many :doings,         :dependent => :destroy
   has_many :syncs,          :dependent => :destroy
+  has_many :votes,          :dependent => :destroy
   has_many :notifications,  :dependent => :destroy
   has_many :taggings,       :dependent => :destroy
   has_many :tags,           :through => :taggings, :source => :tag
