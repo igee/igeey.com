@@ -2,3 +2,19 @@
   <h3><%= @post.title%></h3>
   <pre><%= @post.content%></pre>
 </div>
+
+<div class="box">
+  <%= render :partial => '/comments/board'%>  
+  <%= render :partial => '/comments/form' ,:locals => {:commentable => @post}%>
+</div>
+
+<% content_for :sidebar do %>
+  <div class="box">
+    <h5>来自问题：</h5>
+    <p>
+      <b><%= link_to "No.#{@problem.id} #{@problem.title}",problem_path(@problem) %></b>
+      <span>有<%= @problem.follows_count %>人关心</span>
+    </p>
+    <p class="explanation"><%= @problem.intro %></p>
+  </div>
+<% end %>

@@ -130,12 +130,12 @@ ActiveRecord::Schema.define do
     t.string   "photo_file_name"
     t.string   "latitude",             :limit => 40
     t.string   "longitude",            :limit => 40
-    t.integer  "zoom_level",                         :default => 13
+    t.integer  "zoom_level",           :default => 13
     t.string   "address"
     t.datetime "happened_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "comments_count",                     :default => 0
+    t.integer  "comments_count",       :default => 0
     t.integer  "votes_count",          :default => 0
     t.integer  "last_replied_user_id"
     t.datetime "last_replied_at"
@@ -216,7 +216,7 @@ ActiveRecord::Schema.define do
   end
 
   create_table "posts", :force => true do |t|
-    t.string   "title",         :limit => 40
+    t.string   "title",           :limit => 40
     t.string   "url"
     t.text     "content"
     t.string   "url_host"
@@ -224,6 +224,9 @@ ActiveRecord::Schema.define do
     t.datetime "updated_at"
     t.integer  "problem_id"
     t.integer  "user_id"
+    t.integer  "comments_count",  :default => 0
+    t.integer  "last_replied_user_id"
+    t.datetime "last_replied_at"
   end
   
   create_table "problems", :force => true do |t|
