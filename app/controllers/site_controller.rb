@@ -3,8 +3,8 @@ class SiteController < ApplicationController
   
   def index
     @blogs = Blog.all
-    @problems = Problem.published.limit(6).reverse
-    @current_problems = @problems[3..5] 
+    @problems = Problem.published.limit(7).reverse
+    @current_problems = @problems[3..6] 
     @prev_problems = @problems[0..2] 
     render '/blogs/index'
   end
