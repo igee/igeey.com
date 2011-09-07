@@ -272,7 +272,7 @@ table{
   clear:both;
   overflow:hidden;
   zoom:1;
-  margin:8px 0 22px;
+  margin:12px 0 22px;
   }
 
 .icon{
@@ -467,7 +467,7 @@ button:hover,input[type="submit"]:hover,input[type="button"]:hover{background:#f
 .sidebar_panel{
   padding:10px;
   background-color:#fff;
-  margin:0px 5px 15px;
+  margin:5px 5px 15px;
   font-size:12px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -630,6 +630,18 @@ input.reply_submit{float:right;margin-top:1px}
 
 .comment{margin:0;width:520px}
 
+.toggle_link{float:right;font-size:13px;width:54px;height:17px;}
+.show_content{font-size:13px;}
+.hidden_content{font-size:13px;margin-bottom:20px;}
+
+.arrow_next{
+  background:url('/images/icon/arrow.png');
+}
+
+.arrow{
+  background:url('/images/icon/arrow.png')54px 0px;
+}
+
 .reply{font-size:12px;border-bottom:1px dashed #d6d6d6;text-align:left}
 .reply_reply{float:right}
 .reply_tail{position:relative;top:5px;right:20px;}
@@ -703,6 +715,20 @@ input.todo:hover{
   font-size:13px;
   }
 
+.voter{
+  float:left;
+  width:32px;
+  height:60px;
+  text-align:center
+}
+
+.solution{
+  width:550px;
+  float:left;
+  margin-left:8px;
+  padding:6px 0;
+  } 
+ 
 .setting_box,.profile_box,.intro_box{
   padding:15px 20px 10px;
   margin:10px 0 20px;

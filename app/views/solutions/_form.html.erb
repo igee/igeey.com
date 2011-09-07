@@ -1,9 +1,10 @@
 <%= form_for [@problem,@solution] do |form| %>
   <p>
-    <%= form.label :title,'能不能给你的方案起个名字?'%> <%= form.text_field :title,:size => 20%>
+    <%= form.label :title,'先给你的解决办法起个名字吧?'%>
+    <%= form.text_field :title,:size => 20,:placeholder => ''%>
   </p>
   <p>
-    <%= form.label :content,'在这里写下你的解决办法吧：'%> <%= form.text_area :content, :style => "width:600px;height:160px"%>
+    <%= form.label :content,'然后再具体说明一下：'%> <%= form.text_area :content, :style => "width:600px;height:120px"%>
   </p>
   <p>
     <div >
@@ -15,11 +16,16 @@
 
 <% content_for :sidebar do %>  
   <div class="sidebar_panel">
-    <h5>解决办法FAQ:</h5>
+    <h5>添加解决办法的FAQ:</h5>
     <p class="explanation" >
-      Q: 我的解决办法可能不能完整的解决问题，但至少可以给解决带来一些帮助，是否可以提交呢？
+      Q: 解决办法是什么？需要包含什么？
       <br/>
-      A: 当然，只要你的办法对解决问题是积极的，这里都欢迎，比如为问题解决提供线索，知识等。
+      A: 可以是你的思路，也可以是具体一步一步操作的步骤，而且你还可以逐步完善它。
+    </p>
+    <p class="explanation" >
+      Q: 我的办法可能只是解觉问题的某个环节，可以提交么？
+      <br/>
+      A: 当然，只要你的提交能够给解决问题带来帮助，这里都欢迎，比如为问题解决提供线索，知识等。
     </p>
   </div>
 <% end %>

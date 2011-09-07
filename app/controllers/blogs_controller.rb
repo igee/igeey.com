@@ -6,8 +6,8 @@ class BlogsController < ApplicationController
   
   def index
     @blogs = Blog.all
-    @problems = Problem.published.limit(6).reverse
-    @current_problems = @problems[3..5] 
+    @problems = Problem.published.limit(7).reverse
+    @current_problems = @problems[3..6] 
     @prev_problems = @problems[0..2] 
   end
   
@@ -23,8 +23,8 @@ class BlogsController < ApplicationController
   
   def show
     @comments = @blog.comments
-    @problems = Problem.published.limit(6).reverse
-    @current_problems = @problems[3..5] 
+    @problems = Problem.published.limit(7).reverse
+    @current_problems = @problems[3..6] 
     @prev_problems = @problems[0..2] 
   end
   

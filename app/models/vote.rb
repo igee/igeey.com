@@ -2,11 +2,8 @@ class Vote < ActiveRecord::Base
   belongs_to :user
   belongs_to :voteable, :polymorphic => true,:counter_cache => true
   
-  validates :user_id,        :presence   => true,:uniqueness => {:scope => [:voteable_type,:voteable_id]}
+  validates :user_id,        :presence   => true,:uniqueness => {:scope => [:voteable_type,:voteable_id,:positive]}
   validates :voteable_type,  :presence   => true
   validates :voteable_id,    :presence   => true
   
-  def validate
-    errors[:user_id] = '心里支持自己就好啦'  if self.user == self.voteable.user
-  end
 end

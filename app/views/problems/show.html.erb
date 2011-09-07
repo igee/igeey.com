@@ -1,8 +1,9 @@
 <% @title = "问题：#{@problem.title}"%>
 
 <div class="story_box" >
+  <div style="float:right"><%= care_about(@problem)%></div>
   <h2>No.<%= @problem.id %> <%= @problem.title %></h2>
-  <span><%= format_date(@problem.created_at)%>提出</span>
+  <span><br/></span>
   <pre><%= @problem.intro %></pre>
 </div>
 
@@ -11,7 +12,7 @@
 </div>
 
 <div class="box">
-  <h4><%= image_tag('/images/icon/kase.gif',:class => 'icon')%> 实际案例：<%= link_to image_tag('/images/icon/map.gif',:class => 'icon'),map_problem_path(@problem),:title => '查看案例位置分布' %></h4>
+  <h4><%= image_tag('/images/icon/kase.gif',:class => 'icon')%> 实际案例： <span><%= link_to "+ 添加", new_problem_kase_path(@problem)%></span></h4>
   <% unless @kases.empty?%>
     <p>
       <% @kases.each do |kase|%>
@@ -22,29 +23,28 @@
         </div>
       <% end %>
     </p>
-    
   <% else %>
     <p>
-      <span>这个问题还没有实际案例呢，也太不靠谱了，赶紧 <%= link_to "添加一个", new_problem_kase_path(@problem)%>？</span>
+      <span>这个问题还没有实际案例呢，也太不靠谱了，赶紧添加一个？</span>
     </p>
   <% end %>
 </div>
 
 <div class="box" style="margin-top:20px;">
-  <h4><%= image_tag('/images/icon/idea.gif',:class => 'icon')%> 解决办法：</h4>
+  <h4><%= image_tag('/images/icon/idea.gif',:class => 'icon')%> 解决办法： <span><%= link_to "+ 添加", new_problem_solution_path(@problem)%></span></h4>
   <% unless @solutions.empty?%>
     <%= render :partial => '/public/solution', :collection => @solutions%>
-    <% if @solutions.count > 2%>
-      <span><%= link_to '查看全部',problem_solutions_path(@problem)%></span>
-    <% end %>
   <% else %>
-    <span>这个问题还没有解决办法提交，如果你有什么好办法， <%= link_to "提交出来", new_problem_solution_path(@problem)%> 和大家分享吧。</span>
+    <span>这个问题还没有解决办法提交，如果你有什么好办法，拿出来和大家分享吧。</span>
   <% end %>
 </div>
 
+<h5><%= @problem.comments_count.zero? ? "还没有评论" : "有#{@problem.comments_count}条评论：" %></h5>
+<div style="border-top:1px solid #eee;padding:5px 0">
+  <%= render :partial => '/comments/board'%>    
+</div>
 
 <div class="box" style="border-top:1px solid #eee">
-  <%= render :partial => '/comments/board'%>    
   <%= render :partial => '/comments/form' ,:locals => {:commentable => @problem}%>
 </div>
 
@@ -53,22 +53,12 @@
   <div style="background:url('/images/counter.png');height:92px;width:238px;margin:10px 5px 25px">
     <div class="problem_counter">
       <span class="number"><%= @problem.follows_count %></span>
-      <br/>
-      <% if logged_in? && current_user.is_following?(@problem) %>
-        <%= link_to '取消关心',follow_path(@problem.follows.find_by_user_id(current_user.id)),:method => :delete,:class => 'selected' %>
-      <% else %>
-        <%= link_to '+关心',follows_path(:followable_id => @problem.id,:followable_type => 'Problem'),:method => :post %>
-      <% end %>
     </div>
     <div class="problem_counter">
       <span class="number" ><%= @problem.kases_count %></span>
-      <br/>
-      <%= link_to "+实际案例", new_problem_kase_path(@problem)%>
     </div>
     <div class="problem_counter">
       <span class="number"><%= @problem.solutions_count %></span>
-      <br/>
-      <%= link_to "+解决办法", new_problem_solution_path(@problem)%>
     </div>
   </div>
 
@@ -81,6 +71,18 @@
     </div>
   <% end %>
 
+  <div class="sidebar_panel">
+    <h5> 本期关注的公共问题：</h5>
+    <% @current_problems.each do |problem|%>
+      <p style="border-bottom:1px solid #eee"><%= "No.#{problem.id}"%> <%= link_to problem.title, problem%></p>
+    <% end %>
+    <h5 style="color:#aaa;margin-top:16px"> 上期关注：</h5>
+    <% @prev_problems.each do |problem|%>
+      <p style="border-bottom:1px solid #eee;"><span><%= "No.#{problem.id}"%> <%= link_to problem.title, problem%></span></p>
+    <% end %>
+    <p><%= image_tag '/images/icon/problem.png',:class => 'icon'%> <%= link_to '添加新问题(不用注册)',new_problem_path %></p>
+  </div>
+
   <div class="box">
    <%= form_for @feedback do |form| %>
     <div style="background:#ffffcc;padding:10px;border:1px dashed #eebb55;margin:5px">
@@ -90,18 +92,6 @@
       <%= form.submit '发出去!'%>
     </div>
   <% end %>
-  </div>
-
-  <div class="sidebar_panel">
-    <h5> 本期关注的公共问题：</h5>
-    <% @current_problems.each do |problem|%>
-      <p style="border-bottom:1px solid #eee"><%= "No.#{problem.id}"%> <%= link_to problem.title, problem%></p>
-    <% end %>
-    <h5 style="color:#aaa;margin-top:16px"> 上期关注：</h5>
-    <% @prev_problems.each do |problem|%>
-      <p style="border-bottom:1px solid #eee;color:#aaa"><%= "No.#{problem.id}"%> <%= link_to problem.title, problem%></p>
-    <% end %>
-    <p><%= image_tag '/images/icon/problem.png',:class => 'icon'%> <%= link_to '添加新问题(不用注册)',new_problem_path %></p>
   </div>
 
 <% end %>

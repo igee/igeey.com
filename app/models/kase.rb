@@ -17,6 +17,9 @@ class Kase < ActiveRecord::Base
 
   validates :photo_file_name,:intro,:address,:happened_at, :presence=>true, :format=>{ :with=>/([\w-]+\.(gif|png|jpg))|/ }
   
+  before_save :init_geocodding
+
+
   def init_geocodding
     response = Net::HTTP.get_response(URI.parse("http://maps.googleapis.com/maps/api/geocode/json?address=#{URI.escape(self.address)}&sensor=false"))
     json = ActiveSupport::JSON.decode(response.body)
@@ -40,9 +43,6 @@ class Kase < ActiveRecord::Base
     file.close    
   end
   
-  def before_save
-    self.init_geocodding
-  end
   
   def description
     "在爱聚网的问题#{self.problem.title}提交了一个案例！"
