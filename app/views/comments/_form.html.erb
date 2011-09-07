@@ -19,7 +19,9 @@
   <% else %>
     <p>
       <%= link_to "立即登录",login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%> 即可留言
-      <span>(也可<b style="color:red;">免注册</b>使用新浪微博/豆瓣账号<%= link_to '登录',login_path,:class => "open_dialog" ,:title => '登录',:id => "login"%>哦)</span>
+      <br/>or<br/>
+  	  <%= link_to((image_tag "/images/icon/sina_login.gif"),:controller => 'oauth', :action => 'sina')%>
+  	  <%= link_to((image_tag "/images/icon/douban_login.gif"),:controller => 'oauth', :action => 'douban')%>
     </p>
 
   <% end %>

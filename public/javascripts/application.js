@@ -40,7 +40,7 @@
    
   $(document).ready(function(){
     
-    $(".toggle_content").find('.toggle_link').toggle(function(){
+    $('.toggle_link').toggle(function(){
       $(this).attr('class','toggle_link arrow');
       $(this).parent().find('.show_content').hide();
       $(this).parent().find('.hidden_content').show();

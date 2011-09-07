@@ -1,4 +1,5 @@
 class SolutionsController < ApplicationController
+  respond_to :html
   before_filter :login_required, :except => [:index]
   before_filter :find_problem
   
@@ -17,12 +18,9 @@ class SolutionsController < ApplicationController
   
   def create
     @solution = @problem.solutions.build(params[:solution])
-    @solution = current_user
-    if @solution.save
-      redirect_to problem_path(@problem)
-    else
-      render :action => 'new'
-    end
+    @solution.user = current_user
+    @solution.save
+    respond_with @problem
   end
   
   private

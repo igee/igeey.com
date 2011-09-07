@@ -9,7 +9,7 @@ module FollowsHelper
   
   def care_about(followable)
     if logged_in? && current_user.is_following?(followable)
-      button_to("己关心",follow_path(followable.follows.find_by_user_id(current_user.id)),:method => :delete,:class => 'selected')
+      raw "<span>你关心这个问题 | #{link_to('取消',follow_path(followable.follows.find_by_user_id(current_user.id)),:method => :delete,:class => 'selected')}</span>"
     else
       button_to("+ 关心","#{follows_path}?followable_type=#{followable.class}&followable_id=#{followable.id}",:method => :post)
     end

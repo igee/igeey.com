@@ -1,11 +1,18 @@
 class VoteObserver < ActiveRecord::Observer
   def after_create(vote)
-    unless vote.is_agree.nil?
-      @voteable = vote.voteable
-      agree_count = Vote.where(:voteable_type=>@voteable.class.to_s,:voteable_id=>@voteable.id,:is_agree=>true).count
-      disagree_count = Vote.where(:voteable_type=>@voteable.class.to_s,:voteable_id=>@voteable.id,:is_agree=>false).count
-      @voteable.update_attributes(:agree_count=>agree_count, :disagree_count=>disagree_count)
-      @voteable.save
-    end
+    update_count(vote)
   end
+
+  def after_destroy(vote)
+    update_count(vote)
+  end
+
+  def update_count(vote)
+    voteable = vote.voteable
+    voteable.positive_count = vote.voteable.votes.where(:positive => true).size
+    voteable.negative_count = vote.voteable.votes.where(:positive => false).size
+    voteable.offset_count = voteable.positive_count - voteable.negative_count 
+    voteable.save
+  end
+
 end
