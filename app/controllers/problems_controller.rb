@@ -44,7 +44,6 @@ class ProblemsController < ApplicationController
       @kase = Kase.new
       @feedback = Feedback.new
       @kases = @problem.kases.limit(5)
-      @posts = @problem.posts
       @solutions = @problem.solutions.limit(3)
       @comments = @problem.comments
       @following_users = @problem.followers

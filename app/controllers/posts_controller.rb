@@ -1,6 +1,17 @@
 class PostsController < ApplicationController
+  respond_to :html
   before_filter :find_problem
   before_filter :login_required, :except => [:index, :show]
+  
+  def index
+    @tag = Tag.find_by_name(params[:tag_name])
+    if @tag.nil?
+      @posts = @problem.posts
+    else
+      @posts = @tag.taggeds.where(['taggable_type = ?','Post']).map(&:taggable)
+    end
+    render :layout => false
+  end
   
   def new
     @post = @problem.posts.build

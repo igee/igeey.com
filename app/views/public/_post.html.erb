@@ -2,7 +2,10 @@
   <div class="event"> 
     <div style="margin:5px 0;">
       <%= link_to post.title, (post.url.empty? ? problem_post_path(post.problem, post) : post.url)%>
-      <span>（<%= link_to post.url_host,"http://#{post.url_host}", :class=>"host_url"%>）</span>
+      <span>（<%= link_to post.url_host,"http://#{post.url_host}", :class=>"host_url"%>）</span><br/>
+      <% unless post.tag_list.empty?%>
+        标签：<%= raw post.tag_list.map{|tag| "#{link_to(tag,'javascript:void(0);',:class=>'post_tag')}\n"}.to_s%>
+      <% end %>
     </div>
     <div class="event_info">
       <span style="margin-right:20px;">发表于<%= date_interval(post.created_at)%></span>

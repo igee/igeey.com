@@ -38,6 +38,7 @@
   });
    
   $(document).ready(function(){
+
     
     $(".toggle_content").find('.toggle_link').toggle(function(){
       $(this).attr('class','toggle_link arrow');

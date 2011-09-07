@@ -10,13 +10,11 @@
   <%= render :partial => '/public/share'%>
 </div>
 
-<div class="box">
-  <h4>Reddit：<span><%= link_to '++++++++', new_problem_post_path(@problem)%></span></h4>
-  <% unless @posts.empty?%>
-    <p>
-      <%= render :partial => '/public/post', :collection => @posts%>
-    </p>
-  <% end %>
+<div id="post">
+  <div class="box">
+    <h4>Reddit：<span><%= link_to '++++++++', new_problem_post_path(@problem)%></span></h4>
+    正在加载...
+  </div>
 </div>
 
 <div class="box">
@@ -114,5 +112,24 @@
     <p><%= image_tag '/images/icon/problem.png',:class => 'icon'%> <%= link_to '添加新问题(不用注册)',new_problem_path %></p>
   </div>
 
+<% end %>
+
+<% content_for :extension do %>
+  <script type="text/javascript" charset="utf-8">  
+    window.ajax_posts = function(name){
+      $.get("<%= problem_posts_path(@problem)%>", {tag_name:name}, function(data) {
+        $('#post').html(data);
+      });
+    };
+    
+    $('.post_tag').live('click', function(e) {
+      tag_name = $(this).html();
+      window.ajax_posts(tag_name);
+    });
+    
+    $(document).ready(function(){
+      window.ajax_posts();
+    });
+  </script>
 <% end %>
 

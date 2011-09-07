@@ -1,0 +1,8 @@
+<div class="box">
+  <h4>Reddit：<span><%= link_to '++++++++', new_problem_post_path(@problem)%></span></h4>
+  <% unless @posts.empty?%>
+    <p>
+      <%= render :partial => '/public/post', :collection => @posts%>
+    </p>
+  <% end %>
+</div>
