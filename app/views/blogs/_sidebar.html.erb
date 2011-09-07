@@ -1,11 +1,11 @@
   <div class="sidebar_panel">
     <h5> 本期关注的公共问题：</h5>
     <% @current_problems.each do |problem|%>
-      <p style="border-bottom:1px solid #eee"><%= "No.#{problem.id}"%> <%= link_to problem.title, problem%></p>
+      <p style="border-bottom:1px solid #eee"><%= "No.#{problem.id}"%> <%= link_to_unless_current problem.title, problem%></p>
     <% end %>
     <h5 style="color:#aaa;margin-top:16px"> 上期关注：</h5>
     <% @prev_problems.each do |problem|%>
-      <p style="border-bottom:1px solid #eee;color:#aaa"><%= "No.#{problem.id}"%> <%= link_to problem.title, problem%></p>
+      <p style="border-bottom:1px solid #eee;color:#aaa"><%= "No.#{problem.id}"%> <%= link_to_unless_current problem.title, problem%></p>
     <% end %>
     <p><%= image_tag '/images/icon/problem.png',:class => 'icon'%> <%= link_to '添加新问题(不用注册)',new_problem_path %></p>
   </div>
