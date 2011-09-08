@@ -45,7 +45,7 @@ class Kase < ActiveRecord::Base
   
   
   def description
-    "在爱聚网的问题#{self.problem.title}提交了一个案例！"
+    "为问题“#{self.problem.title}”提交了一个案例：#{short_text(self.intro,30)}"
   end
   
 end
