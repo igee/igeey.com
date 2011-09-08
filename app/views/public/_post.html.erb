@@ -1,4 +1,5 @@
 <div class="event_box">
+  <%= render :partial => "/public/voter", :locals=>{:voteable=>post}%>
   <div class="event"> 
     <div style="margin:5px 0;">
       <%= link_to post.title, (post.url.empty? ? problem_post_path(post.problem, post) : post.url)%>

@@ -1,5 +1,5 @@
 class ProblemsController < ApplicationController
-  respond_to :html
+  respond_to :html,:js
   #before_filter :login_required, :except => [:show, :index]
   before_filter :find_problem, :except => [:new,:create,:index,:before_create,:thanks]
   before_filter :check_admin,  :only => [:index]

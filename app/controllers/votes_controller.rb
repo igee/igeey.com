@@ -24,7 +24,11 @@ class VotesController < ApplicationController
   
   def destroy
     @vote = current_user.votes.find(params[:id])
+    @voteable = @vote.voteable
     @vote.destroy
-    redirect_to :back
+    respond_to do |format|
+      format.html {redirect_to params[:back_path] || :back}
+      format.js { render 'create'} 
+    end
   end
 end

@@ -225,6 +225,10 @@ ActiveRecord::Schema.define do
     t.integer  "problem_id"
     t.integer  "user_id"
     t.integer  "comments_count",  :default => 0
+    t.integer  "votes_count",     :default => 0
+    t.integer  "negative_count",  :default => 0
+    t.integer  "positive_count",  :default => 0
+    t.integer  "offset_count",    :default => 0
     t.integer  "last_replied_user_id"
     t.datetime "last_replied_at"
   end
