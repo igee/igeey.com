@@ -10,11 +10,9 @@
   <%= render :partial => '/public/share'%>
 </div>
 
-<div id="post">
-  <div class="box">
-    <h4>Reddit：<span><%= link_to '++++++++', new_problem_post_path(@problem)%></span></h4>
-    正在加载...
-  </div>
+<div id="posts" class="box">
+  <h4>Reddit：<span><%= link_to '++++++++', new_problem_post_path(@problem)%></span></h4>
+  <%= image_tag('/images/icon/loading.gif',:style=>"margin-top:10px;")%>
 </div>
 
 <div class="box">
@@ -118,11 +116,12 @@
   <script type="text/javascript" charset="utf-8">  
     window.ajax_posts = function(name){
       $.get("<%= problem_posts_path(@problem)%>", {tag_name:name}, function(data) {
-        $('#post').html(data);
+        $('#posts').html(data);
       });
     };
     
-    $('.post_tag').live('click', function(e) {
+    $('.post_tag').live('click', function(e){
+      $('#posts').html('<h4>Reddit：<span><%= link_to "++++++++", new_problem_post_path(@problem)%></span></h4>  <%= image_tag("/images/icon/loading.gif",:style=>"margin-top:10px;")%>');
       tag_name = $(this).html();
       window.ajax_posts(tag_name);
     });
