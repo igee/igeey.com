@@ -38,8 +38,8 @@ class ProblemsController < ApplicationController
 
   def show
     if (current_user && current_user.is_admin?) || @problem.published
-      @problems = Problem.published.limit(6).reverse
-      @current_problems = @problems[3..5] 
+      @problems = Problem.published.limit(7).reverse
+      @current_problems = @problems[3..6] 
       @prev_problems = @problems[0..2] 
       @kase = Kase.new
       @feedback = Feedback.new
