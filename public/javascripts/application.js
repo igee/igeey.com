@@ -36,23 +36,34 @@
     IG.dialog.init({title: $(this).attr('title'),content: $(id).html()});
     e.preventDefault();
   });
-  
    
   $(document).ready(function(){
+
     
-    $(".toggle_content").find('.toggle_link').toggle(function(){
-      $(this).html("<img src='/images/icon/arrow.gif'>");
+    $('.toggle_link').toggle(function(){
+      $(this).attr('class','toggle_link arrow');
       $(this).parent().find('.show_content').hide();
       $(this).parent().find('.hidden_content').show();
       return false;
     },function(){
-      $(this).html("<img src='/images/icon/arrow_next.gif'>");
+      $(this).attr('class','toggle_link arrow_next');
       $(this).parent().find('.show_content').show();
       $(this).parent().find('.hidden_content').hide();
       return false;
     });
     
     // Subscribe topics
+    $("#link_or_creation").toggle(function(){
+      $(this).html('链接');
+      $('#url_link').hide();
+      $('#creation').show();
+      return false;
+    },function(){
+      $(this).html('创作');
+      $('#url_link').show();
+      $('#creation').hide();
+      return false;
+    });
     
     $('.timeago').live('replace.time', function() {
       $(this).html('(' + $.timeago($(this).html()) + ')').removeClass('timeago');

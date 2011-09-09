@@ -1,0 +1,7 @@
+<div class="box">
+  <% unless @posts.empty?%>
+    <p>
+      <%= render :partial => '/public/post', :collection => @posts%>
+    </p>
+  <% end %>
+</div>

@@ -10,15 +10,15 @@
   <%= render :partial => '/users/user' ,:object => current_user %>
   <div class="bubble_tail"></div>
   <div class="bubble" style="<%= 'width:360px' if params[:layout]=='false'%>">
-      <% if @sync.syncable_type == "Follow"%>
-        <% @synclink = short_url(@syncable.followable)%>
-      <% elsif @sync.syncable_type == 'Kase'%>
-        <% @synclink = "http://#{request.host_with_port}/#{problem_kase_path(@syncable.problem,@syncable)}"%>
-      <% else%>
-        <% @synclink = short_url(@syncable)%>
-      <% end %>
-      <%= form.text_area :content,:value=>"我#{@syncable.description} " + @synclink,:style => "width:#{ params[:layout]=='false' ? '340px' : '440px'};height:80px"%>
-      <div class="explanation">截取前140字，剩余字数：<span id="character_count"></span></div>
+    <% if @sync.syncable_type == "Follow"%>
+      <% @synclink = short_url(@syncable.followable)%>
+    <% elsif @sync.syncable_type == 'Kase'%>
+      <% @synclink = "http://#{request.host_with_port}#{problem_kase_path(@syncable.problem,@syncable)}"%>
+    <% else%>
+      <% @synclink = short_url(@syncable)%>
+    <% end %>
+    <%= form.text_area :content,:value=>"我#{@syncable.description} " + @synclink,:style => "width:#{ params[:layout]=='false' ? '340px' : '440px'};height:80px"%>
+    <div class="explanation">截取前140字，剩余字数：<span id="character_count"></span></div>
   </div>
   <p style='text-align:right;clear:both'>
   同步到：

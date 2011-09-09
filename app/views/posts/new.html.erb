@@ -1,0 +1,7 @@
+<% @title = "为问题“#{@problem.title}”分享内容"%>
+
+<h3><%= @title %></h3>
+<%= link_to '创作', '', :id=>"link_or_creation",:style=>"float:right;"%>
+<div class="box">
+  <%= render "form" %>
+</div>

@@ -1,5 +1,5 @@
 class ProblemsController < ApplicationController
-  respond_to :html
+  respond_to :html,:js
   #before_filter :login_required, :except => [:show, :index]
   before_filter :find_problem, :except => [:new,:create,:index,:before_create,:thanks]
   before_filter :check_admin,  :only => [:index]
@@ -37,13 +37,16 @@ class ProblemsController < ApplicationController
   end
 
   def show
-    if (current_user && current_user.is_admin?) || INDEX_PROBLEMS['problem_ids'].split(',').include?(params[:id])
-      @problems = Problem.where(:id => INDEX_PROBLEMS['problem_ids'].split(',')).reverse
+    if (current_user && current_user.is_admin?) || @problem.published
+      @problems = Problem.published.limit(7).reverse
+      @current_problems = @problems[3..6] 
+      @prev_problems = @problems[0..2] 
       @kase = Kase.new
+      @feedback = Feedback.new
       @kases = @problem.kases.limit(5)
       @solutions = @problem.solutions.limit(3)
       @comments = @problem.comments
-      @following_users = @problem.follows.limit(9).map(&:user)
+      @following_users = @problem.followers
     else
       redirect_to :root
     end

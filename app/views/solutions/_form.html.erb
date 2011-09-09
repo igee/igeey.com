@@ -1,11 +1,10 @@
-<%= form_for [@problem,@solution],:html => { :multipart => true } do |form| %>
-  <%= form.hidden_field :problem_id ,:value => @problem.id%>
-  <%= form.hidden_field :user_id, :value => current_user.id %>
+<%= form_for [@problem,@solution] do |form| %>
   <p>
-    <%= form.label :title,'给你的方案起个名字吧？'%> <%= form.text_field :title,:size => 40%>
+    <%= form.label :title,'先给你的解决办法起个名字吧?'%>
+    <%= form.text_field :title,:size => 20,:placeholder => ''%>
   </p>
   <p>
-    <%= form.label :content,'具体要如何做？'%> <%= form.text_area :content, :style => "width:600px;"%>
+    <%= form.label :content,'然后再具体说明一下：'%> <%= form.text_area :content, :style => "width:600px;height:120px"%>
   </p>
   <p>
     <div >
@@ -17,16 +16,16 @@
 
 <% content_for :sidebar do %>  
   <div class="sidebar_panel">
-    <h5>提交解决方案小FAQ:</h5>
+    <h5>添加解决办法的FAQ:</h5>
     <p class="explanation" >
-      Q: 解决方案必须是自己实践过的吗？
+      Q: 解决办法是什么？需要包含什么？
       <br/>
-      A: 当然自己实践过的是最好的，不过自己没实践过，但是自己认为这个方案可以很好的改善甚至解决这个问题，爱聚也是很欢迎的。
+      A: 可以是你的思路，也可以是具体一步一步操作的步骤，而且你还可以逐步完善它。
     </p>
     <p class="explanation" >
-      Q: 解决方案一定要能解决问题吗？
+      Q: 我的办法可能只是解觉问题的某个环节，可以提交么？
       <br/>
-      A: 不一定非要能解决问题，能够改善这个问题，让人们生活的更好就很不错啦。
+      A: 当然，只要你的提交能够给解决问题带来帮助，这里都欢迎，比如为问题解决提供线索，知识等。
     </p>
   </div>
 <% end %>
