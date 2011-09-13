@@ -26,7 +26,7 @@
     <div class="container">
       <%= link_to(image_tag('/images/logo.png'),root_path,:id => "logo")%>
       <%= link_to(image_tag('/images/blog.png'),root_path,:id => "blog_logo") if controller_name == 'blogs' || (controller_name == 'site' && action_name == 'index')%>
-      <%= link_to(image_tag('/images/problem.png'),root_path,:id => "blog_logo") if ['problems','kases'].include?(controller_name) %>
+      <%= link_to(image_tag('/images/problem.png'),root_path,:id => "blog_logo") if ['problems','kases','solutions'].include?(controller_name) %>
       <div id="nav">
         <div id="status">
           <% if logged_in? %>
