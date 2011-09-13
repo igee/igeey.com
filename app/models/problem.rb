@@ -1,6 +1,7 @@
 class Problem < ActiveRecord::Base
   belongs_to :user
   has_many   :kases, :dependent => :destroy
+  has_many   :posts, :dependent => :destroy
   has_many   :solutions, :dependent => :destroy
   has_many   :comments, :as => :commentable, :dependent => :destroy
   has_many   :notifications, :as => :notifiable, :dependent => :destroy

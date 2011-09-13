@@ -1,17 +1,5 @@
 <div class="event_box">
-  <div class="voter">
-    <% if current_user && @positive = solution.uped_by?(current_user)%>
-      <%= link_to image_tag('/images/icon/uped.png'),vote_path(@positive),:method => :delete%>
-    <% else %>
-      <%= link_to image_tag('/images/icon/up.png'),votes_path(:voteable_id => solution.id,:voteable_type => 'Solution',:positive => true),:method => :post%>
-    <% end %>
-    <div id="offset_counter_<%= solution.id%>"><%= (solution.positive_count - solution.negative_count) %></div>
-    <% if current_user && @positive = solution.downed_by?(current_user)%>
-      <%= link_to image_tag('/images/icon/downed.png'),vote_path(@positive),:method => :delete%>
-    <% else %>
-      <%= link_to image_tag('/images/icon/down.png'),votes_path(:voteable_id => solution.id,:voteable_type => 'Solution'),:method => :post%>
-    <% end %>
-  </div>
+  <%= render :partial => "/public/voter", :locals=>{:voteable=>solution}%>
   <div class="solution">
     <b><%= link_to solution.title,problem_solution_path(@problem,solution)%></b>
     <span>by <%= link_to solution.user.login,user_path(solution.user)%></span>

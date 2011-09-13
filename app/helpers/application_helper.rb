@@ -24,6 +24,11 @@ module ApplicationHelper
     date.strftime("%m月%d日 %X")
   end
   
+  def date_interval(date)
+    hours = (Time.now.to_i - date.to_i)/(60*60)
+    hours>23 ? "#{hours/24}天前" : "#{hours}小时前"
+  end
+  
   def short_url(object)
     "http://#{request.host_with_port}/#{object.class.name.first.downcase}/#{object.id}"
   end

@@ -1,0 +1,13 @@
+<div class="voter">
+  <% if current_user && @positive = voteable.uped_by?(current_user)%>
+    <%= link_to image_tag('/images/icon/uped.png'),vote_path(@positive),:method => :delete,:remote=>true%>
+  <% else %>
+    <%= link_to image_tag('/images/icon/up.png'),votes_path(:voteable_id => voteable.id,:voteable_type => voteable.class.to_s,:positive => true),:method => :post,:remote=>true%>
+  <% end %>
+  <div id="offset_counter_<%= voteable.id%>"><%= (voteable.positive_count - voteable.negative_count) %></div>
+  <% if current_user && @negative = voteable.downed_by?(current_user)%>
+    <%= link_to image_tag('/images/icon/downed.png'),vote_path(@negative),:method => :delete,:remote=>true%>
+  <% else %>
+    <%= link_to image_tag('/images/icon/down.png'),votes_path(:voteable_id => voteable.id,:voteable_type => voteable.class.to_s),:method => :post,:remote=>true%>
+  <% end %>
+</div>
