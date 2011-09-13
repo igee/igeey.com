@@ -4,19 +4,19 @@
 
 <%= form_for [@problem,@post],:html => { :multipart => true } do |form| %>
   <%= form.hidden_field :problem_id ,:value => @problem.id%>
-  <div id='url_link'>
+  <div id='url_link' style="display:none;">
     <p>
       <%= form.label :url,'链接地址：'%>
-      <%= form.text_field :url,:style=>"width:300px;",:placeholder=>'如：http://www.example.com' %>
+      <%= form.text_field :url,:style=>"width:300px;margin-left:-4px;",:placeholder=>'如：http://www.example.com' %>
     </p>
   </div>
   <p>
     <%= form.label :title,'标题：'%>
-    <%= form.text_field :title,:style=>"width:300px;margin-left:28px;",:class => 'with_calendar',:placeholder => ""%>
+    <%= form.text_field :title,:style=>"width:300px;margin-left:24px;",:class => 'with_calendar',:placeholder => ""%>
   </p>
-  <div id='creation' style="display:none;">
+  <div id='creation'>
     <p>
-      <%= form.label :content,'内容：'%> <%= form.text_area :content, :style => "margin:-20px 0 0 74px;width:400px;height:200px;"%>
+      <%= form.label :content,'内容：'%> <%= form.text_area :content, :style => "margin:-20px 0 0 70px;width:400px;height:200px;"%>
     </p>
   </div>
   <p>

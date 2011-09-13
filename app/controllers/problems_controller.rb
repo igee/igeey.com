@@ -43,6 +43,7 @@ class ProblemsController < ApplicationController
       @prev_problems = @problems[0..2] 
       @kase = Kase.new
       @feedback = Feedback.new
+      @post = @problem.posts.build
       @kases = @problem.kases.limit(5)
       @solutions = @problem.solutions.limit(3)
       @comments = @problem.comments
@@ -96,6 +97,16 @@ class ProblemsController < ApplicationController
     if params[:layout] == 'false'
       render :layout => false
     end
+  end
+  
+  def add_url
+    begin
+      doc = Nokogiri::HTML(open(params[:url_link]))
+      title = doc.xpath('//title')[0].content.strip
+    rescue OpenURI::HTTPError || Errno::ENOENT
+      title = 'error'
+    end
+    render :text=>title
   end
   
   private

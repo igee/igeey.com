@@ -54,14 +54,14 @@
     
     // Subscribe topics
     $("#link_or_creation").toggle(function(){
-      $(this).html('链接');
-      $('#url_link').hide();
-      $('#creation').show();
-      return false;
-    },function(){
-      $(this).html('创作');
+      $(this).html('自己写');
       $('#url_link').show();
       $('#creation').hide();
+      return false;
+    },function(){
+      $(this).html('分享链接');
+      $('#url_link').hide();
+      $('#creation').show();
       return false;
     });
     
