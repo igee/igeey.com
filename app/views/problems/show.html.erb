@@ -106,8 +106,7 @@
         if(data=='error')
         {
           $('#loading').remove();
-          $('#post_url').attr('value','');
-          $('#post_url').attr('placeholder','该网址无法识别，请重新输入');
+          $('#post_url').attr({placeholder:'该网址无法识别，请重新输入',value:''});
         }
         else
         {
@@ -128,8 +127,7 @@
     };
     
     window.form_revert = function(){
-      $('#post_url').attr('style','width:480px;');
-      $('#post_url').attr('value','');
+      $('#post_url').attr({style:'width:480px;',value:''});
       $('#url_link').find('div').html('<%= button_to_function "添加","javascript:window.add_url();"%>');
       $('#url_form').fadeOut();
     };
