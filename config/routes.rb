@@ -118,14 +118,15 @@ Igeey::Application.routes.draw do
   
   resources :problems do
     resources :kases
-    resources :posts
     resources :solutions
+    resources :posts
     collection do
       get   :thanks
     end
     member do
       get   :followers
       get   :map
+      get   :add_url
     end
   end
   
