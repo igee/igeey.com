@@ -5,9 +5,21 @@ class Post < ActiveRecord::Base
   has_many   :notifications, :as => :notifiable, :dependent => :destroy
   has_many   :votes,       :as => :voteable,    :dependent => :destroy
   
+  has_attached_file :photo, :styles => {:_240x180 => ["240x180#"],:_100x75=>["100x75#"],:max500x400 => ["500x400>"]},
+                            :url=>"/media/posts/:id/:style.:extension",
+                            :default_style=> :_100x75,
+                            :default_url=>"/defaults/:attachment/:style.png"
+  
   acts_as_taggable
   
   default_scope :order => 'offset_count DESC'
+  before_save :init_geocodding
+
+  def init_geocodding
+    response = Net::HTTP.get_response(URI.parse("http://maps.googleapis.com/maps/api/geocode/json?address=#{URI.escape(self.address)}&sensor=false"))
+    json = ActiveSupport::JSON.decode(response.body)
+    self.latitude, self.longitude = json["results"][0]["geometry"]["location"]["lat"], json["results"][0]["geometry"]["location"]["lng"]
+  end
   
   def get_url_host
     unless self.url.empty?

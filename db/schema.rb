@@ -224,6 +224,12 @@ ActiveRecord::Schema.define do
     t.datetime "updated_at"
     t.integer  "problem_id"
     t.integer  "user_id"
+    t.string   "photo_file_name"
+    t.string   "latitude",             :limit => 40
+    t.string   "longitude",            :limit => 40
+    t.integer  "zoom_level",           :default => 13
+    t.string   "address"
+    t.datetime "happened_at"
     t.integer  "comments_count",  :default => 0
     t.integer  "votes_count",     :default => 0
     t.integer  "negative_count",  :default => 0

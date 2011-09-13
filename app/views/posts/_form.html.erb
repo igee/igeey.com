@@ -1,40 +1,85 @@
 <% content_for :head do %>
   <%= javascript_include_tag 'jquery.tag.editor-min.js' %>
+  <%= javascript_include_tag 'calendar.js' %>
 <% end %>
 
 <%= form_for [@problem,@post],:html => { :multipart => true } do |form| %>
   <%= form.hidden_field :problem_id ,:value => @problem.id%>
-  <div id='url_link' style="display:none;">
-    <p>
-      <%= form.label :url,'链接地址：'%>
-      <%= form.text_field :url,:style=>"width:300px;margin-left:-4px;",:placeholder=>'如：http://www.example.com' %>
-    </p>
-  </div>
+  <p id='url_link'>
+    <%= form.label :url,'链接地址：'%>
+    <%= form.text_field :url,:style=>"width:300px;margin-left:-4px;",:placeholder=>'http://www.example.com' %>
+  </p>
   <p>
     <%= form.label :title,'标题：'%>
-    <%= form.text_field :title,:style=>"width:300px;margin-left:24px;",:class => 'with_calendar',:placeholder => ""%>
+    <%= form.text_field :title,:style=>"width:300px;margin-left:24px;"%>
   </p>
-  <div id='creation'>
-    <p>
-      <%= form.label :content,'内容：'%> <%= form.text_area :content, :style => "margin:-20px 0 0 70px;width:400px;height:200px;"%>
-    </p>
-  </div>
+  <p class="creation">
+    <%= form.label :content,'内容：'%> <%= form.text_area :content, :style => "margin:-20px 0 0 70px;width:400px;height:200px;"%>
+  </p>
   <p>
     <%= form.label :tag_list,'添加标签：',:style=>"float:left"%>
     <%= form.text_field :tag_list,:class => 'tag_list' %>
   </p>
-  <p>
-    <div>
-      <%= form.submit '确定'%>
-      <%= button_to_function '取消',"javascript:window.history.back()"%>
-    </div>
-  </p> 
+  <div class="creation">
+    <p id="photo">
+      <%= form.label :photo,'图片：'%>
+      <%= form.file_field :photo,:style => "margin-left:24px;" %>
+    </p>
+    <p id="address">
+      <%= form.label :address,'发生地点：'%>
+      <%= form.text_field :address,:style=>"width:300px;margin-left:-4px;",:placeholder=>'网站会帮助你找到具体的坐标哦' %>
+    </p>
+    <p id="date">
+      <%= form.label :happened_at,'发生时间：'%>
+      <%= form.text_field :happened_at,:style=>"width:100px;margin-left:-10px;",:class => 'with_calendar',:placeholder => ""%>
+    </p>
+  </div>
+  <span class="creation">您还可以添加 <%= link_to '图片','javascript:void(0);',:id=>'add_photo'%> <%= link_to '地点','javascript:void(0);',:id=>'add_address'%> <%= link_to '时间','javascript:void(0);',:id=>'add_date'%></span>
+  <div style="float:right;margin-top:20px;">
+    <%= form.submit '确定'%>
+    <%= button_to_function '取消',"javascript:window.history.back()"%>
+  </div> 
 <% end %>
 
 <% content_for :extension do %>
+  <style type="text/css">
+    #url_link,#photo,#address,#date{display:none;}
+  </style>
+  
   <script type="text/javascript">
+    $("#link_or_creation").toggle(function(){
+      $(this).html('自己写');
+      $('#url_link').show();
+      $('.creation').hide();
+      return false;
+    },function(){
+      $(this).html('分享链接');
+      $('#url_link').hide();
+      $('.creation').show();
+      return false;
+    });
+    
+    $('#add_photo').click(function(){
+      $('#photo').show();
+      $(this).remove();
+      if($('span.creation>a').size()==0) $('span.creation').remove();
+    });
+    
+    $('#add_address').click(function(){
+      $('#address').show();
+      $(this).remove();
+      if($('span.creation>a').size()==0) $('span.creation').remove();
+    });
+    
+    $('#add_date').click(function(){
+      $('#date').show();
+      $(this).remove();
+      if($('span.creation>a').size()==0) $('span.creation').remove();
+    });
+    
     $(document).ready(function(){
-      $(".tag_list").each(function(index,element){jQuery(element).tag_cloud();})
+      $(".tag_list").each(function(index,element){jQuery(element).tag_cloud();});
+      DateTimeShortcuts.init();
     })
   </script>
 <%end%>
