@@ -103,15 +103,11 @@
     
     window.ajax_add_url = function(url){
       $.get("<%= add_url_problem_path(@problem)%>", {url_link:url},function(data){
-        if(data=='error')
-        {
-          $('#loading').remove();
+        $('#loading').remove();
+        if (data=='error'){
           $('#post_url').attr({placeholder:'该网址无法识别，请重新输入',value:''});
-        }
-        else
-        {
+        }else{
           $('#post_url').attr('style','width:480px;display:none;');
-          $('#loading').remove();
           $('#url_link').find('div').html(url);
           $('#post_title').attr('value',data);
           $('#url_form').fadeIn();

@@ -19,6 +19,7 @@ class PostsController < ApplicationController
   
   def create
     @post = @problem.posts.build(params[:post])
+    @post.url = 'http://' + @post.url if (/http:\/\//.match(@post.url).nil? && /https:\/\//.match(@post.url).nil?)
     @post.user_id = current_user.id
     @post.url_host = @post.get_url_host
     if @post.save
