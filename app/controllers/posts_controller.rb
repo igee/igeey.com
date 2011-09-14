@@ -5,10 +5,14 @@ class PostsController < ApplicationController
   
   def index
     @tag = Tag.find_by_name(params[:tag_name])
+    @sort = params[:sort_by]
     if @tag.nil?
       @posts = @problem.posts
     else
-      @posts = @tag.taggeds.where(['taggable_type = ?','Post']).map(&:taggable)
+      @posts = @tag.taggeds.where(['taggable_type = ?','Post']).map(&:taggable).sort_by(&:offset_count).reverse
+    end
+    if @sort == 'time'
+      @posts = @posts.sort_by(&:created_at).reverse
     end
     render :layout => false
   end
