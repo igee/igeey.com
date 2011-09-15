@@ -63,7 +63,7 @@ class OauthToken < ActiveRecord::Base
   def get_sina_user_name
     r = self.access_token.get('http://api.t.sina.com.cn/account/verify_credentials.xml')
     if r.is_a? Net::HTTPOK
-      /<screen_name>(.*)<\/screen_name>/.match(r.body)[1]
+      /<screen_name>(.+?)<\/screen_name>/.match(r.body)[1]
     else
       nil
     end
