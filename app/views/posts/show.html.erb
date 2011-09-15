@@ -1,9 +1,25 @@
+<% content_for :head do %>
+  <script type="text/javascript" src="http://ditu.google.cn/maps/api/js?sensor=false"></script>
+<% end %>
+
 <div class="box">
-  <h3 style="display:inline;"><%= link_to @post.title, (@post.url.empty? ? problem_post_path(@post.problem, @post) : @post.url), :style=>"color:#555"%></h3>
-  <% unless @post.url.empty? %>
-    <span>（<%= link_to @post.url_host,"http://#{@post.url_host}", :class=>"host_url"%>）</span>
+  <div style="margin-bottom:20px;">
+    <h3 style="display:inline;"><%= link_to @post.title, (@post.url.empty? ? problem_post_path(@post.problem, @post) : @post.url), :style=>"color:#555"%></h3>
+    <% unless @post.url.empty? %>
+      <span>（<%= link_to @post.url_host,"http://#{@post.url_host}", :class=>"host_url"%>）</span>
+    <% end %>
+  </div>
+  <% unless @post.photo_file_name.nil? %>
+    <%= image_tag @post.photo.url(:max500x400) %>
   <% end %>
   <pre><%= @post.content%></pre>
+  <p>
+    <% unless @post.happened_at.nil? %>
+      <span style="margin-right:20px;">发生于：<%= format_date(@post.happened_at)%></span>
+    <% end %>
+    <span style="margin-right:20px;">发表于：<%= date_interval(@post.created_at)%></span>
+    <span>by：<%= link_to @post.user.login, @post.user%></span>
+  </p>
 </div>
 
 <div class="box">
@@ -12,6 +28,13 @@
 </div>
 
 <% content_for :sidebar do %>
+  <% unless @post.address.nil? %>
+    <div class="box">
+      <h5>发生地：</h5>
+      <div id="sidebar_map_canvas" style="width:248px;height:160px;"></div>
+    </div>
+  <% end %>
+  
   <div class="box">
     <h5>来自问题：</h5>
     <p>
@@ -20,4 +43,38 @@
     </p>
     <p class="explanation"><%= @problem.intro %></p>
   </div>
+<% end %>
+
+<% content_for :extension do %>
+  <script type="text/javascript">
+    if (<%= "#{!@post.address.nil?}" %>){
+      function initialize() {
+        var latlng = new google.maps.LatLng(<%= "#{@post.latitude || 35.0},#{@post.longitude || 105.0}"%>)
+        var myOptions = {
+          zoom: 14 ,
+          center: latlng,
+          disableDefaultUI: true,
+          navigationControl: true,
+          mapTypeControl: true,
+          mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+          scaleControl: false,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        small_map = new google.maps.Map(document.getElementById("sidebar_map_canvas"), myOptions);
+
+        markers = new Array();
+        markers['position'] = new Array();
+        markers['position'][0] = new google.maps.Marker({
+          map: small_map,
+          position: small_map.getCenter(),
+          title: '就在这里'
+        });    
+        infowindow = new google.maps.InfoWindow;     
+      }; //initialize_end
+
+      $(document).ready(function(){
+          initialize();
+      });
+    }
+  </script>
 <% end %>

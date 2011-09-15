@@ -24,7 +24,7 @@ class Post < ActiveRecord::Base
   end
   
   def get_url_host
-    unless self.url.empty?
+    unless self.url.nil? || self.url.empty?
       host = (/https?:\/\/(.+?)\//.match(self.url).nil? ? /https?:\/\/(.+?)$/.match(self.url)[1] : /https?:\/\/(.+?)\//.match(self.url)[1])
     else
       host = 'www.igeey.com'
