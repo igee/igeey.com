@@ -100,10 +100,12 @@ class ProblemsController < ApplicationController
   end
   
   def add_url
+    url = params[:url_link].strip()
+    url = 'http://' + url if (/http:\/\//.match(url).nil? && /https:\/\//.match(url).nil?)
     begin
-      doc = Nokogiri::HTML(open(params[:url_link]))
+      doc = Nokogiri::HTML(open(url))
       title = doc.xpath('//title')[0].content.strip
-    rescue OpenURI::HTTPError || Errno::ENOENT
+    rescue
       title = 'error'
     end
     render :text=>title
