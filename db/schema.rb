@@ -253,6 +253,7 @@ ActiveRecord::Schema.define do
     t.integer  "follows_count",        :default => 0
     t.integer  "kases_count",          :default => 0
     t.integer  "solutions_count",      :default => 0
+    t.integer  "posts_count",          :default => 0
   end
 
   create_table "questions", :force => true do |t|
