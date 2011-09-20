@@ -17,6 +17,10 @@ class Problem < ActiveRecord::Base
     Problem.where(:published => true)
   end
   
+  def self.index_problems
+    Problem.published.order('posts_count')
+  end
+  
   def send_new_problem
     Mailer.send_new_problem(self).deliver if self.save
   end

@@ -1,0 +1,43 @@
+<% @title = '公益从发现开始。。。'%>
+
+<div>
+  <div class="index_problem">
+    <%= link_to (image_tag @problem.kases.first.photo.url),@problem,:class=>"problem_photo" %>
+    <div class="problem_intro">
+      <div style="height:55px;margin-left:110px;">
+        <%= "No.#{@problem.id}"%> <%= link_to(@problem.title, @problem)%>
+      </div>
+      <div style="text-align:center;">
+        <span>有<%= @problem.follows_count%>人关心</span>
+        <span style="margin-left:15px;">有<%= @problem.posts.count%>个分享</span>
+      </div>
+    </div>
+  </div>
+  <div class="index_problem">22222222</div>
+  <div class="index_problem">33333333</div>
+  <div class="index_problem">22222222</div>
+  <div class="index_problem">33333333</div>
+  <div class="index_problem">22222222</div>
+</div>
+
+<% content_for :extension do %>
+  <style type="text/css">
+    .index_problem{
+      float:left;
+      margin:5px;
+      padding:5px;
+      width:285px;
+      border:1px solid #eee;
+    }
+    .problem_photo{
+      float:left;
+      width:100px;
+      height:75px;
+    }
+    .problem_intro{
+      margin-left:5px;
+      height:75px;
+      display:inline;
+    }
+  </style>
+<% end %>
