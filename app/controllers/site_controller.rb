@@ -2,7 +2,7 @@ class SiteController < ApplicationController
   before_filter :login_required, :except=> [:index,:faq,:guide,:about,:report,:public,:more_public_timeline,:timeline]  
   
   def index
-    @problem = Problem.find(20)
+    @problems = Problem.index_problems
   end
   
   def timeline

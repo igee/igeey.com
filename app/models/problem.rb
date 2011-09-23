@@ -21,6 +21,11 @@ class Problem < ActiveRecord::Base
     Problem.published.order('posts_count')
   end
   
+  def photo_url
+    post = self.posts.where("photo_file_name is not null").order("offset_count").first
+    post.nil? ? '/defaults/covers/venue/_100x100.png' : post.photo.url
+  end
+  
   def send_new_problem
     Mailer.send_new_problem(self).deliver if self.save
   end
