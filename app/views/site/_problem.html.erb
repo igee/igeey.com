@@ -1,0 +1,12 @@
+<div class="index_problem">
+  <%= link_to (image_tag problem.photo_url),problem,:class=>"problem_photo" %>
+  <div class="problem_intro">
+    <div style="height:55px;margin-left:110px;">
+      <%= "No.#{problem.id}"%> <%= link_to(problem.title, problem)%>
+    </div>
+    <div style="text-align:center;">
+      <span>有<%= problem.follows_count%>人关心</span>
+      <span style="margin-left:15px;">有<%= problem.posts.count%>个分享</span>
+    </div>
+  </div>
+</div>
