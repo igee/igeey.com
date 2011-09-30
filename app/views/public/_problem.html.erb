@@ -1,3 +1,4 @@
-<div class="problems">
-  <%= problem.title %>
+<div class="problem">
+  <h4><%= link_to problem.title ,problem_path(problem)%></h4>
+  <%= image_tag problem.cover unless problem.cover.nil? %>
 </div>

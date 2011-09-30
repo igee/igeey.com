@@ -11,14 +11,11 @@ class Problem < ActiveRecord::Base
   
   validates :title, :presence => true
   
-  default_scope     :order => 'created_at desc'
+  default_scope  where(:published => true).order('posts_count desc')
   
-  def self.published
-    Problem.where(:published => true)
-  end
-  
-  def self.index_problems
-    Problem.published.order('posts_count')
+  def cover
+    covered_post = self.posts.where('photo_file_name is not null').first
+    covered_post.nil? ? nil : covered_post.photo
   end
   
   def send_new_problem
