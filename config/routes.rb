@@ -116,9 +116,10 @@ Igeey::Application.routes.draw do
     get :clear, :on => :member  
   end
   
+  resources :solutions
+
   resources :problems do
     resources :kases
-    resources :solutions
     resources :posts
     collection do
       get   :thanks

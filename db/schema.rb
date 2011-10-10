@@ -305,14 +305,18 @@ ActiveRecord::Schema.define do
   
   create_table "solutions", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "problem_id"
     t.string   "title"
+    t.string   "cover_file_name"
     t.text     "content"
+    t.text     "intro"
+    t.text     "usage"
     t.integer  "comments_count",       :default => 0
+    t.integer  "follows_count",        :default => 0
     t.integer  "votes_count",          :default => 0
     t.integer  "negative_count",       :default => 0
     t.integer  "positive_count",       :default => 0
     t.integer  "offset_count",         :default => 0
+    t.string   "cached_tag_list",      :default => ""
     t.datetime "last_replied_at"
     t.integer  "last_replied_user_id"
     t.datetime "created_at"

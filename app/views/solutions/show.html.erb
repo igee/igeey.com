@@ -1,31 +1,17 @@
-<% @title = "问题“#{@problem.title}”的解决方案-#{@solution.title}"%>
+<% @title = "解决方案-#{@solution.title}"%>
 <div class="box">
   <div style="float:right">
-    <%= render :partial => '/users/avatar',:object => @solution.user,:locals => {:with_name => true} %>
+    <%= image_tag @solution.cover.url(:max500x400),:alt => @solution.title %>
   </div>
-
-  <div class="voter">
-    <% if current_user && @positive = @solution.uped_by?(current_user)%>
-      <%= link_to image_tag('/images/icon/uped.png'),vote_path(@positive),:method => :delete%>
-    <% else %>
-      <%= link_to image_tag('/images/icon/up.png'),votes_path(:voteable_id => @solution.id,:voteable_type => 'Solution',:positive => true),:method => :post%>
-    <% end %>
-    <div><%= (@solution.offset_count) %></div>
-    <% if current_user && @positive = @solution.downed_by?(current_user)%>
-      <%= link_to image_tag('/images/icon/downed.png'),vote_path(@positive),:method => :delete%>
-    <% else %>
-      <%= link_to image_tag('/images/icon/down.png'),votes_path(:voteable_id => @solution.id,:voteable_type => 'Solution'),:method => :post%>
-    <% end %>
-  </div>
-
-  <div style="margin-top:-6px;margin-left:40px">
-    <h2><%= @solution.title%></h2>
-    <span>目前排名第 <%= @solution.rank %></span>
-    <div style="float:right;margin-bottom:20px;">
-      <% @share_title = "“#{@problem.title}”的解决方案“#{@solution.title}”"%>
-    </div>
-    <pre><%= @solution.content%></pre>
-  </div>
+  <h1><%= @solution.title%> </h1>
+  <br/>
+  <%= raw tag_list_for(@solution.tag_list)%>
+  <br/>
+  <h4>简介</h4>
+  <pre><%= @solution.intro %></pre>
+  <br/>
+  <h4>具体做法/流程</h4>
+  <pre><%= @solution.usage %></pre>
 </div>
 
 <div style="text-align:right;" class="box">
@@ -33,24 +19,10 @@
 </div>
 
 <div class="box">
-  <h4>支持者：</h4>
-  <%= render :partial => '/users/avatar',:collection => @solution.upers,:locals => {:with_name => true} %>
-</div>
-
-<div class="box">
-  <h4><%= @problem.comments_count.zero? ? "还没有评论" : "有#{@problem.comments_count}条评论：" %></h4>
-  <div style="border-top:1px solid #eee;padding:5px 0" id="comments">
-    <%= render :partial => '/comments/board'%>    
-    <%= render :partial => '/comments/form' ,:locals => {:commentable => @solution}%>
-  </div>
+  <h4>讨论区</h4>
+  <%= render :partial => '/public/topic' ,:collection => @solution.topics%>
 </div>
 
 <% content_for :sidebar do %>
-  <div class="box">
-    <h5>要解决的问题：</h5>
-    <p>
-      <b><%= link_to "No.#{@problem.id} #{@problem.title}",problem_path(@problem) %></b>
-    </p>
-    <p class="explanation"><%= @problem.intro %></p>
-  </div>
+  <%= raw(follow_to(@solution)) %>
 <% end %>
