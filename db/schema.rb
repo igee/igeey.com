@@ -141,6 +141,11 @@ ActiveRecord::Schema.define do
     t.datetime "last_replied_at"
   end
 
+  create_table "managements", :force => true do |t|
+    t.integer  :user_id,              :null => false
+    t.integer  :solution_id,            :null => false
+  end
+
   create_table "messages", :force => true do |t|
     t.integer  "from_user_id"
     t.integer  "to_user_id"
@@ -217,18 +222,13 @@ ActiveRecord::Schema.define do
 
   create_table "posts", :force => true do |t|
     t.string   "title",           :limit => 40
-    t.string   "url"
     t.text     "content"
-    t.string   "url_host"
+    t.string   "solution_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "problem_id"
     t.integer  "user_id"
     t.integer  "comments_count",  :default => 0
     t.integer  "votes_count",     :default => 0
-    t.integer  "negative_count",  :default => 0
-    t.integer  "positive_count",  :default => 0
-    t.integer  "offset_count",    :default => 0
     t.integer  "last_replied_user_id"
     t.datetime "last_replied_at"
   end
@@ -247,6 +247,7 @@ ActiveRecord::Schema.define do
     t.integer  "follows_count",        :default => 0
     t.integer  "kases_count",          :default => 0
     t.integer  "solutions_count",      :default => 0
+    t.integer  "posts_count",          :default => 0
   end
 
   create_table "questions", :force => true do |t|
@@ -298,14 +299,19 @@ ActiveRecord::Schema.define do
   
   create_table "solutions", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "problem_id"
     t.string   "title"
+    t.string   "cover_file_name"
     t.text     "content"
+    t.text     "intro"
+    t.text     "usage"
     t.integer  "comments_count",       :default => 0
+    t.integer  "follows_count",        :default => 0
     t.integer  "votes_count",          :default => 0
     t.integer  "negative_count",       :default => 0
     t.integer  "positive_count",       :default => 0
+    t.integer  :managements_count,     :default => 0, :null => false 
     t.integer  "offset_count",         :default => 0
+    t.string   "cached_tag_list",      :default => ""
     t.datetime "last_replied_at"
     t.integer  "last_replied_user_id"
     t.datetime "created_at"

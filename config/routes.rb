@@ -116,16 +116,21 @@ Igeey::Application.routes.draw do
     get :clear, :on => :member  
   end
   
+  resources :solutions do
+    resources :posts
+    resources :managements
+  end
+
   resources :problems do
     resources :kases
     resources :posts
-    resources :solutions
     collection do
       get   :thanks
     end
     member do
       get   :followers
       get   :map
+      get   :add_url
     end
   end
   

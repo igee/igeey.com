@@ -14,7 +14,7 @@ class Venue < ActiveRecord::Base
   belongs_to :creator, :class_name => "User", :foreign_key => "creator_id"
   belongs_to :geo
   
-  has_many   :tasks,   :dependent => :destroy
+  has_many   :tasks,      :dependent => :destroy
   has_many   :topics,     :dependent => :destroy
   has_many   :sayings,    :dependent => :destroy  
   has_many   :plans,      :dependent => :destroy

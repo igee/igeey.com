@@ -1,16 +1,4 @@
-<div class="event_box">
-  <%= render :partial => "/public/voter", :locals=>{:voteable=>solution}%>
   <div class="solution">
-    <b><%= link_to solution.title,problem_solution_path(@problem,solution)%></b>
-    <span>by <%= link_to solution.user.login,user_path(solution.user)%></span>
-    <%= link_to '', 'javascript:void(0);', :class=>"toggle_link arrow_next"%>
-    <div class="show_content">
-      <p class="explanation"><%= short_text(solution.content, 200)%>（<%= link_to "#{solution.comments.count}回应", "#{problem_solution_path(@problem,solution)}#comments"%>）</p>
-    </div>
-    <div class="hidden_content">
-      <br/>
-      <pre class="explanation"><%= solution.content%>（<%= link_to "#{solution.comments.count}回应", "#{problem_solution_path(@problem,solution)}#comments"%>）</pre>
-      <% @solution = solution%>
-    </div>
+    <b><%= link_to solution.title,solution_path(solution)%></b>
+      <p class="explanation"><%= short_text(solution.content, 200)%>（<%= link_to "#{solution.comments.count}回应", "#{solution_path(solution)}#comments"%>）</p>
   </div>
-</div>

@@ -2,11 +2,11 @@ class SiteController < ApplicationController
   before_filter :login_required, :except=> [:index,:faq,:guide,:about,:report,:public,:more_public_timeline,:timeline]  
   
   def index
-    @blogs = Blog.all
-    @problems = Problem.published.limit(7).reverse
-    @current_problems = @problems[3..6] 
-    @prev_problems = @problems[0..2] 
-    render '/blogs/index'
+    @problems = Problem.all
+    if logged_in?
+    else
+      render 'welcome'
+    end
   end
   
   def timeline

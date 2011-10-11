@@ -1,31 +1,26 @@
-<% @title = "问题“#{@problem.title}”的解决方案-#{@solution.title}"%>
+<% @title = "解决方案-#{@solution.title}"%>
 <div class="box">
-  <div style="float:right">
-    <%= render :partial => '/users/avatar',:object => @solution.user,:locals => {:with_name => true} %>
+  <h1><%= @solution.title%> </h1>
+  <div style="float:left">
+    <%= image_tag @solution.cover.url(:max500x400),:alt => @solution.title %>
   </div>
-
-  <div class="voter">
-    <% if current_user && @positive = @solution.uped_by?(current_user)%>
-      <%= link_to image_tag('/images/icon/uped.png'),vote_path(@positive),:method => :delete%>
-    <% else %>
-      <%= link_to image_tag('/images/icon/up.png'),votes_path(:voteable_id => @solution.id,:voteable_type => 'Solution',:positive => true),:method => :post%>
-    <% end %>
-    <div><%= (@solution.offset_count) %></div>
-    <% if current_user && @positive = @solution.downed_by?(current_user)%>
-      <%= link_to image_tag('/images/icon/downed.png'),vote_path(@positive),:method => :delete%>
-    <% else %>
-      <%= link_to image_tag('/images/icon/down.png'),votes_path(:voteable_id => @solution.id,:voteable_type => 'Solution'),:method => :post%>
-    <% end %>
-  </div>
-
-  <div style="margin-top:-6px;margin-left:40px">
-    <h2><%= @solution.title%></h2>
-    <span>目前排名第 <%= @solution.rank %></span>
-    <div style="float:right;margin-bottom:20px;">
-      <% @share_title = "“#{@problem.title}”的解决方案“#{@solution.title}”"%>
+  <div style="float:right;"><%= raw(follow_to(@solution)) %></div>
+  <br/>
+  <h4>简介</h4>
+  <pre><%= @solution.intro %></pre>
+  <br/>
+  <h4>具体做法/流程</h4>
+  <pre><%= @solution.usage %></pre>
+  <br/>
+  <h4>标签</h4>
+  <%= raw tag_list_for(@solution.tag_list)%>
+  <% if @solution.managed_by?(current_user)%>
+    <div style="text-align:right">
+      <span>
+        <%= link_to "编辑","#{edit_solution_path(@solution)}?back_path=#{request.path}"%>
+      </span>
     </div>
-    <pre><%= @solution.content%></pre>
-  </div>
+  <% end %>
 </div>
 
 <div style="text-align:right;" class="box">
@@ -33,24 +28,56 @@
 </div>
 
 <div class="box">
-  <h4>支持者：</h4>
-  <%= render :partial => '/users/avatar',:collection => @solution.upers,:locals => {:with_name => true} %>
+  <h4>讨论区</h4>
+  <div style="text-align:right;margin-bottom:10px;"><%= link_to '添加新话题', new_solution_post_path(@solution)%></div>
+  <table style="font-size:12px;width:610px;" cellpadding=3 >
+    <tr>
+      <th style="width:57%;" align="left" >话题</th>
+      <th style="width:15%;" align="left" >作者</th>
+      <th style="width:10%;" align="left" >回应</th>
+      <th style="width:18%;" align="right" >更新时间</th>
+    </tr>
+    <% @posts.each do |p| %>
+      <tr>
+        <td><%= link_to p.title, solution_post_path(@solution, p) %></td>
+        <td><%= link_to p.user.login,user_path(p.user)%></td>
+        <td><%= p.comments_count%></td>
+        <td><%= full_date(p.last_replied_at)%></td>
+      </tr>
+    <% end %>
+  </table>
 </div>
 
-<div class="box">
-  <h4><%= @problem.comments_count.zero? ? "还没有评论" : "有#{@problem.comments_count}条评论：" %></h4>
-  <div style="border-top:1px solid #eee;padding:5px 0" id="comments">
-    <%= render :partial => '/comments/board'%>    
-    <%= render :partial => '/comments/form' ,:locals => {:commentable => @solution}%>
-  </div>
-</div>
-
-<% content_for :sidebar do %>
-  <div class="box">
-    <h5>要解决的问题：</h5>
-    <p>
-      <b><%= link_to "No.#{@problem.id} #{@problem.title}",problem_path(@problem) %></b>
-    </p>
-    <p class="explanation"><%= @problem.intro %></p>
-  </div>
+<% content_for :sidebar do %>  
+  <% unless @following_users.empty? %>
+    <div class="box">
+      <h5><%= image_tag '/images/icon/eye.png',:class => 'icon'%> 关心这个项目的同学：</h5>
+      <% @following_users.each do |user|%>
+        <%= link_to (image_tag user.avatar.url,:class => "small_avatar",:alt => user.login),user_path(user),:title => user.login %>
+      <% end %>
+    </div>
+  <% end %>
+  
+  <% if @solution.managed_by?(current_user)%>
+    <div class="box">
+      <h4>管理员名单</h4>
+      <% if current_user.is_admin?%>
+        <% @managers.each do |user|%>
+          <%= link_to (image_tag user.avatar.url,:class => "small_avatar",:alt => user.login),user_path(user),:title => user.login %><%= link_to "x", solution_management_path(@solution, @solution.managements.find_by_user_id(user.id)),:method => :delete,:confirm => "你确定要撤销#{user.login}的管理权限吗？"%>
+        <% end %>
+      <% else%>
+        <% @managers.each do |user|%>
+          <%= link_to (image_tag user.avatar.url,:class => "small_avatar",:alt => user.login),user_path(user),:title => user.login %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="box">
+      <h4>添加管理员</h4>
+      <%= form_for [@solution,@management] do |form| %>
+          <%= form.label :user_id,'用户编号：' %>
+          <%= form.text_field :user_id,:size => 4 %>
+          <%= form.submit '确定'%>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>

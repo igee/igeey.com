@@ -1,31 +1,42 @@
-<%= form_for [@problem,@solution] do |form| %>
+<% content_for :head do %>
+  <%= javascript_include_tag 'jquery.tag.editor-min.js' %>
+<% end %>
+
+<%= form_for [@problem,@solution] ,:html => { :multipart => true } do |form| %>
   <p>
-    <%= form.label :title,'先给你的解决办法起个名字吧?'%>
+    <%= form.label :title,'先给你的解决方案起个名字吧?'%>
+    <br/>
     <%= form.text_field :title,:size => 20,:placeholder => ''%>
   </p>
   <p>
-    <%= form.label :content,'然后再具体说明一下：'%> <%= form.text_area :content, :style => "width:600px;height:120px"%>
+    <%= form.label :title,'Logo(可选)：'%> <%= form.file_field :cover,:style => "background:none;border:none;font-size:13px" %>
   </p>
   <p>
-    <div >
+    <%= form.label :tag_list,'添加标签：',:style=>"float:left"%>
+    <%= form.text_field :tag_list,:class => 'tag_list' %>
+  </p>
+  <p>
+    <%= form.label :intro,'写个简介'%>
+    <br/><span>用于解决什么问题？如何产生的？</span>
+    <%= form.text_area :intro, :style => "width:600px;height:120px"%>
+  </p>
+  <p>
+    <%= form.label :usage,'具体做法/流程'%>
+    <br/><span>需要那些步骤，需要那些资源？</span>
+    <%= form.text_area :usage, :style => "width:600px;height:120px"%>
+  </p>
+  <p>
+    <div>
       <%= form.submit '确定'%>
       <%= button_to_function '取消',"javascript:window.history.back()"%>
     </div>
   </p> 
 <% end %>
 
-<% content_for :sidebar do %>  
-  <div class="sidebar_panel">
-    <h5>添加解决办法的FAQ:</h5>
-    <p class="explanation" >
-      Q: 解决办法是什么？需要包含什么？
-      <br/>
-      A: 可以是你的思路，也可以是具体一步一步操作的步骤，而且你还可以逐步完善它。
-    </p>
-    <p class="explanation" >
-      Q: 我的办法可能只是解觉问题的某个环节，可以提交么？
-      <br/>
-      A: 当然，只要你的提交能够给解决问题带来帮助，这里都欢迎，比如为问题解决提供线索，知识等。
-    </p>
-  </div>
+<% content_for :extension do %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $(".tag_list").each(function(index,element){jQuery(element).tag_cloud();})
+    })
+  </script>
 <% end %>

@@ -1,9 +1,20 @@
+<% @title = @post.title%>
+
 <div class="box">
-  <h3 style="display:inline;"><%= link_to @post.title, (@post.url.empty? ? problem_post_path(@post.problem, @post) : @post.url), :style=>"color:#555"%></h3>
-  <% unless @post.url.empty? %>
-    <span>（<%= link_to @post.url_host,"http://#{@post.url_host}", :class=>"host_url"%>）</span>
+  <h3><%= @post.title %></h3>
+  <span><%= full_date(@post.updated_at) %> 最后编辑 </span>
+  <span style="margin-left:15px;">来自：<%= link_to @post.user.login,user_path(@post.user)%> </span>
+  <p>
+    <pre><%= @post.content %></pre>
+  </p>
+  <% if @post.owned_by?(current_user) %>
+    <div style="text-align:right">
+      <span>
+      <%= link_to "删除", solution_post_path(@solution, @post),:method => :delete,:confirm => '你确定要删除吗？'%> |
+      <%= link_to "编辑","#{edit_solution_post_path(@solution, @post)}?back_path=#{request.path}"%>
+      </span>
+    </div>
   <% end %>
-  <pre><%= @post.content%></pre>
 </div>
 
 <div class="box">
@@ -12,12 +23,5 @@
 </div>
 
 <% content_for :sidebar do %>
-  <div class="box">
-    <h5>来自问题：</h5>
-    <p>
-      <b><%= link_to "No.#{@problem.id} #{@problem.title}",problem_path(@problem) %></b>
-      <span>有<%= @problem.follows_count %>人关心</span>
-    </p>
-    <p class="explanation"><%= @problem.intro %></p>
-  </div>
+  <%= link_to "> 返回到#{@solution.title}", solution_path(@solution)%>
 <% end %>

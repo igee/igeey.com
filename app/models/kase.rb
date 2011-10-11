@@ -23,7 +23,7 @@ class Kase < ActiveRecord::Base
   def init_geocodding
     response = Net::HTTP.get_response(URI.parse("http://maps.googleapis.com/maps/api/geocode/json?address=#{URI.escape(self.address)}&sensor=false"))
     json = ActiveSupport::JSON.decode(response.body)
-    self.latitude, self.longitude = json["results"][0]["geometry"]["location"]["lat"], json["results"][0]["geometry"]["location"]["lng"]
+    self.latitude, self.longitude = json["results"][0]["geometry"]["location"]["lat"], json["results"][0]["geometry"]["location"]["lng"] if json
   end
   
   def generate_json

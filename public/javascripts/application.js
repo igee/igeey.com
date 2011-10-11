@@ -53,17 +53,6 @@
     });
     
     // Subscribe topics
-    $("#link_or_creation").toggle(function(){
-      $(this).html('链接');
-      $('#url_link').hide();
-      $('#creation').show();
-      return false;
-    },function(){
-      $(this).html('创作');
-      $('#url_link').show();
-      $('#creation').hide();
-      return false;
-    });
     
     $('.timeago').live('replace.time', function() {
       $(this).html('(' + $.timeago($(this).html()) + ')').removeClass('timeago');

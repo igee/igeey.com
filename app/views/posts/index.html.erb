@@ -1,7 +1,22 @@
 <div class="box">
-  <% unless @posts.empty?%>
+  <% unless @posts.blank?%>
+    <% unless @tag.nil?%>
+        <div style="float:left;font-size:13px;">
+          标签：<em><%= @tag.name %></em>
+          （<%= link_to '全部','javascript:void(0);', :id=>"all_post"%>）
+        </div>
+    <% end %>
+    <div style="text-align:right;font-size:13px;">
+      <% if @sort=='time'%>
+        <%= link_to '按投票排序','javascript:void(0);', :id=>"sort_by_vote"%> / 按时间排序
+      <% else %>
+        按投票排序 / <%= link_to '按时间排序','javascript:void(0);', :id=>"sort_by_time"%>
+      <% end %>
+    </div>
     <p>
       <%= render :partial => '/public/post', :collection => @posts%>
     </p>
+  <% else %>
+    <span style="margin:10px;">对不起，还没有内容分享...</span>
   <% end %>
 </div>
