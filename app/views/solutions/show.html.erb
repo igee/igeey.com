@@ -61,8 +61,14 @@
   <% if @solution.managed_by?(current_user)%>
     <div class="box">
       <h4>管理员名单</h4>
-      <% @managers.each do |user|%>
-        <%= link_to (image_tag user.avatar.url,:class => "small_avatar",:alt => user.login),user_path(user),:title => user.login %>
+      <% if current_user.is_admin?%>
+        <% @managers.each do |user|%>
+          <%= link_to (image_tag user.avatar.url,:class => "small_avatar",:alt => user.login),user_path(user),:title => user.login %><%= link_to "x", solution_management_path(@solution, @solution.managements.find_by_user_id(user.id)),:method => :delete,:confirm => "你确定要撤销#{user.login}的管理权限吗？"%>
+        <% end %>
+      <% else%>
+        <% @managers.each do |user|%>
+          <%= link_to (image_tag user.avatar.url,:class => "small_avatar",:alt => user.login),user_path(user),:title => user.login %>
+        <% end %>
       <% end %>
     </div>
     <div class="box">

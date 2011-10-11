@@ -9,6 +9,12 @@ class ManagementsController < ApplicationController
     redirect_to :back
   end
   
+  def destroy
+    @management = @solution.managements.find(params[:id])
+    @management.destroy
+    redirect_to :back
+  end
+  
   private
   
   def find_solution
