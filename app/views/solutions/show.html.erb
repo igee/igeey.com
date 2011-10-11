@@ -1,58 +1,69 @@
 <% @title = "解决方案-#{@solution.title}"%>
+
 <div class="box">
-  <h1><%= @solution.title%> </h1>
-  <div style="float:left">
-    <%= image_tag @solution.cover.url(:max500x400),:alt => @solution.title %>
-  </div>
-  <div style="float:right;"><%= raw(follow_to(@solution)) %></div>
-  <br/>
-  <h4>简介</h4>
-  <pre><%= @solution.intro %></pre>
-  <br/>
-  <h4>具体做法/流程</h4>
-  <pre><%= @solution.usage %></pre>
-  <br/>
-  <h4>标签</h4>
-  <%= raw tag_list_for(@solution.tag_list)%>
-  <% if @solution.managed_by?(current_user)%>
-    <div style="text-align:right">
-      <span>
-        <%= link_to "编辑","#{edit_solution_path(@solution)}?back_path=#{request.path}"%>
-      </span>
+  <h1><%= @solution.title %></h1>
+  <div id="tabContaier">
+    <ul id="tabNav">
+      <li><%= link_to '首页',"#index"%></li>
+      <li><%= link_to '具体做法',"#step"%></li>
+      <li><%= link_to '讨论区',"#discussion"%></li>
+    </ul>
+    <div id='index' class="tabContents">      
+      <div style="float:left">
+        <%= image_tag @solution.cover.url(:max500x400),:alt => @solution.title %>
+      </div>
+      <br/>
+      <h4>简介</h4>
+      <pre><%= @solution.intro %></pre>
+      <br/>
+      <div style="text-align:right;" class="box">
+        <%= render :partial => '/public/share'%>
+      </div>
     </div>
-  <% end %>
-</div>
-
-<div style="text-align:right;" class="box">
-  <%= render :partial => '/public/share'%>
-</div>
-
-<div class="box">
-  <h4>讨论区</h4>
-  <% if @posts.empty? %>
-    <span>还没有内容，您可以 <%= link_to '第一个在讨论区里发言', new_solution_post_path(@solution)%></span>
-  <% else %>
-    <div style="text-align:right;margin-bottom:10px;"><%= link_to '添加新话题', new_solution_post_path(@solution)%></div>
-    <table style="font-size:12px;width:610px;" cellpadding=3 >
-      <tr>
-        <th style="width:57%;" align="left" >话题</th>
-        <th style="width:15%;" align="left" >作者</th>
-        <th style="width:10%;" align="left" >回应</th>
-        <th style="width:18%;" align="right" >更新时间</th>
-      </tr>
-      <% @posts.each do |p| %>
-        <tr>
-          <td><%= link_to p.title, solution_post_path(@solution, p) %></td>
-          <td><%= link_to p.user.login,user_path(p.user)%></td>
-          <td><%= p.comments_count%></td>
-          <td><%= full_date(p.last_replied_at)%></td>
-        </tr>
+    
+    <div id='step' class="tabContents">
+      <pre><%= @solution.usage %></pre>
+      <br/>
+      <h4>标签</h4>
+      <%= raw tag_list_for(@solution.tag_list)%>
+      <% if @solution.managed_by?(current_user)%>
+        <div style="text-align:right">
+          <span>
+            <%= link_to "编辑","#{edit_solution_path(@solution)}?back_path=#{request.path}"%>
+          </span>
+        </div>
       <% end %>
-    </table>
-  <% end %>
+    </div>
+    
+    <div id='discussion' class="tabContents">
+      <% if @posts.empty? %>
+        <span>还没有内容，您可以 <%= link_to '第一个在讨论区里发言', new_solution_post_path(@solution)%></span>
+      <% else %>
+        <div style="text-align:right;margin-bottom:10px;"><%= link_to '添加新话题', new_solution_post_path(@solution)%></div>
+        <table style="font-size:12px;width:610px;" cellpadding=3 >
+          <tr>
+            <th style="width:57%;" align="left" >话题</th>
+            <th style="width:15%;" align="left" >作者</th>
+            <th style="width:10%;" align="left" >回应</th>
+            <th style="width:18%;" align="right" >更新时间</th>
+          </tr>
+          <% @posts.each do |p| %>
+            <tr>
+              <td><%= link_to p.title, solution_post_path(@solution, p) %></td>
+              <td><%= link_to p.user.login,user_path(p.user)%></td>
+              <td><%= p.comments_count%></td>
+              <td><%= full_date(p.last_replied_at)%></td>
+            </tr>
+          <% end %>
+        </table>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 <% content_for :sidebar do %>  
+  <div class="box"><%= raw(follow_to(@solution)) %></div>
+  
   <% unless @following_users.empty? %>
     <div class="box">
       <h5><%= image_tag '/images/icon/eye.png',:class => 'icon'%> 关心这个项目的同学：</h5>
