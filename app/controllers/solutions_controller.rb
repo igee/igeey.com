@@ -2,6 +2,7 @@ class SolutionsController < ApplicationController
   respond_to :html
   before_filter :find_solution, :except => [:index,:new,:create]
   before_filter :check_manager, :only => [:edit, :update]
+  before_filter :login_required, :only => [:new, :edit, :update, :create]
   
   def index
     @solutions = Solution.all
