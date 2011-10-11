@@ -7,7 +7,6 @@ class Problem < ActiveRecord::Base
   has_many   :notifications, :as => :notifiable, :dependent => :destroy
   has_many   :votes,    :as => :voteable,    :dependent => :destroy
   has_many   :follows,  :as => :followable, :dependent => :destroy
-  has_many   :followers,  :through => :follows,:source => :user
   
   validates :title, :presence => true
   

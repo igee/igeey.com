@@ -1,7 +1,7 @@
 class SolutionsController < ApplicationController
   respond_to :html
-  before_filter :login_required, :except => [:index]
   before_filter :find_solution, :except => [:index,:new,:create]
+  before_filter :check_manager, :only => [:edit, :update]
   
   def index
     @solutions = Solution.all
@@ -15,7 +15,10 @@ class SolutionsController < ApplicationController
   end
 
   def show
-    @comments = @solution.comments
+    @management = @solution.managements.build()
+    @posts = @solution.posts
+    @following_users = @solution.followers
+    @managers = @solution.managers
   end
   
   def update
@@ -34,5 +37,11 @@ class SolutionsController < ApplicationController
   private
   def find_solution
     @solution = Solution.find(params[:id])
+  end
+  
+  def check_manager
+    unless current_user && @solution.managed_by?(current_user)
+      render :text => '请用管理员登录后进入'
+    end
   end
 end

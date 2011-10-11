@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   respond_to :html
-  before_filter :find_problem
-  before_filter :login_required, :except => [:index, :show]
+  before_filter :find_solution
   
   def index
     @tag = Tag.find_by_name(params[:tag_name])
@@ -18,20 +17,41 @@ class PostsController < ApplicationController
   end
   
   def new
-    @post = @problem.posts.build
+    @post = @solution.posts.build
   end
   
   def create
-    @post = @problem.posts.build(params[:post])
-    unless @post.url.empty?
-      @post.url = 'http://' + @post.url if (/http:\/\//.match(@post.url).nil? && /https:\/\//.match(@post.url).nil?)
-    end
+    @post = @solution.posts.build(params[:post])
     @post.user_id = current_user.id
-    @post.url_host = @post.get_url_host
     if @post.save
-      redirect_to problem_path(@problem)
+      @post.update_attributes(:last_replied_at=>@post.created_at)
+      redirect_to solution_post_path(@solution, @post)
     else
       render :action => 'new'
+    end
+  end
+  
+  def edit
+    @post = Post.find(params[:id])
+  end
+  
+  def update
+    @post = Post.find(params[:id])
+    @post.update_attributes(params[:post]) if @post.owned_by?(current_user)
+    if params[:back_path].present?
+      redirect_to params[:back_path]
+    else
+      redirect_to solution_post_path(@solution, @post)
+    end
+  end
+  
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy if @post.owned_by?(current_user)
+    if params[:back_path].present?
+      redirect_to params[:back_path]
+    else
+      redirect_to @solution
     end
   end
   
@@ -41,7 +61,7 @@ class PostsController < ApplicationController
   end
 
   private
-  def find_problem
-    @problem = Problem.find(params[:problem_id])
+  def find_solution
+    @solution = Solution.find(params[:solution_id])
   end
 end
