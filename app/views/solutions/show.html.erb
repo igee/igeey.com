@@ -29,23 +29,27 @@
 
 <div class="box">
   <h4>讨论区</h4>
-  <div style="text-align:right;margin-bottom:10px;"><%= link_to '添加新话题', new_solution_post_path(@solution)%></div>
-  <table style="font-size:12px;width:610px;" cellpadding=3 >
-    <tr>
-      <th style="width:57%;" align="left" >话题</th>
-      <th style="width:15%;" align="left" >作者</th>
-      <th style="width:10%;" align="left" >回应</th>
-      <th style="width:18%;" align="right" >更新时间</th>
-    </tr>
-    <% @posts.each do |p| %>
+  <% if @posts.empty? %>
+    <span>还没有内容，您可以 <%= link_to '第一个在讨论区里发言', new_solution_post_path(@solution)%></span>
+  <% else %>
+    <div style="text-align:right;margin-bottom:10px;"><%= link_to '添加新话题', new_solution_post_path(@solution)%></div>
+    <table style="font-size:12px;width:610px;" cellpadding=3 >
       <tr>
-        <td><%= link_to p.title, solution_post_path(@solution, p) %></td>
-        <td><%= link_to p.user.login,user_path(p.user)%></td>
-        <td><%= p.comments_count%></td>
-        <td><%= full_date(p.last_replied_at)%></td>
+        <th style="width:57%;" align="left" >话题</th>
+        <th style="width:15%;" align="left" >作者</th>
+        <th style="width:10%;" align="left" >回应</th>
+        <th style="width:18%;" align="right" >更新时间</th>
       </tr>
-    <% end %>
-  </table>
+      <% @posts.each do |p| %>
+        <tr>
+          <td><%= link_to p.title, solution_post_path(@solution, p) %></td>
+          <td><%= link_to p.user.login,user_path(p.user)%></td>
+          <td><%= p.comments_count%></td>
+          <td><%= full_date(p.last_replied_at)%></td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
 </div>
 
 <% content_for :sidebar do %>  
@@ -59,18 +63,20 @@
   <% end %>
   
   <% if @solution.managed_by?(current_user)%>
-    <div class="box">
-      <h4>管理员名单</h4>
-      <% if current_user.is_admin?%>
-        <% @managers.each do |user|%>
-          <%= link_to (image_tag user.avatar.url,:class => "small_avatar",:alt => user.login),user_path(user),:title => user.login %><%= link_to "x", solution_management_path(@solution, @solution.managements.find_by_user_id(user.id)),:method => :delete,:confirm => "你确定要撤销#{user.login}的管理权限吗？"%>
+    <% unless @managers.empty? %>
+      <div class="box">
+        <h4>管理员名单</h4>
+        <% if current_user.is_admin?%>
+          <% @managers.each do |user|%>
+            <%= link_to (image_tag user.avatar.url,:class => "small_avatar",:alt => user.login),user_path(user),:title => user.login %><%= link_to "x", solution_management_path(@solution, @solution.managements.find_by_user_id(user.id)),:method => :delete,:confirm => "你确定要撤销#{user.login}的管理权限吗？"%>
+          <% end %>
+        <% else%>
+          <% @managers.each do |user|%>
+            <%= link_to (image_tag user.avatar.url,:class => "small_avatar",:alt => user.login),user_path(user),:title => user.login %>
+          <% end %>
         <% end %>
-      <% else%>
-        <% @managers.each do |user|%>
-          <%= link_to (image_tag user.avatar.url,:class => "small_avatar",:alt => user.login),user_path(user),:title => user.login %>
-        <% end %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
     <div class="box">
       <h4>添加管理员</h4>
       <%= form_for [@solution,@management] do |form| %>
