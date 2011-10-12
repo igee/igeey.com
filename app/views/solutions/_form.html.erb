@@ -1,4 +1,5 @@
 <% content_for :head do %>
+  <%= javascript_include_tag 'nicEdit' %>
   <%= javascript_include_tag 'jquery.tag.editor-min.js' %>
 <% end %>
 
@@ -18,13 +19,14 @@
   <p>
     <%= form.label :intro,'写个简介'%>
     <br/><span>用于解决什么问题？如何产生的？</span>
-    <%= form.text_area :intro, :style => "width:600px;height:120px"%>
+    <%= form.text_area :intro, :id=>"myArea1", :style => "width:600px;height:120px"%>
   </p>
   <p>
     <%= form.label :usage,'具体做法/流程'%>
     <br/><span>需要那些步骤，需要那些资源？</span>
-    <%= form.text_area :usage, :style => "width:600px;height:120px"%>
+    <%= form.text_area :usage, :id=>"myArea2", :style => "width:600px;height:120px"%>
   </p>
+  <%= link_to '富文本/源码切换','#',:id=>'toggle_area'%>
   <p>
     <div>
       <%= form.submit '确定'%>
@@ -36,6 +38,22 @@
 <% content_for :extension do %>
   <script type="text/javascript">
     $(document).ready(function(){
+      var area1
+      var area2
+      function addArea() {
+      	area1 = new nicEditor({fullPanel : true}).panelInstance('myArea1');
+      	area2 = new nicEditor({fullPanel : true}).panelInstance('myArea2');
+      };
+      function removeArea() {
+      	area1.removeInstance('myArea1');
+      	area2.removeInstance('myArea2');
+      };
+      $("#toggle_area").toggle(function(){
+        addArea();
+      },
+      function(){
+        removeArea();
+      });
       $(".tag_list").each(function(index,element){jQuery(element).tag_cloud();})
     })
   </script>
