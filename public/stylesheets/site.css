@@ -875,7 +875,10 @@ a.tag:hover{
   width:100%;
   }
 
-.tabContents{display:none}
+.tabContents{
+    display:none;
+    margin-top:20px;
+    }
 
 #tabNav{
   border-bottom:1px solid #c0c0c0;

@@ -110,7 +110,7 @@ Igeey::Application.routes.draw do
     get :thanks, :on => :collection
   end
   
-  resources :follows,:photos,:topics,:sayings,:doings,:blogs
+  resources :follows,:photos,:topics,:sayings,:doings
   
   resources :messages do
     get :clear, :on => :member  
@@ -118,6 +118,7 @@ Igeey::Application.routes.draw do
   
   resources :solutions do
     resources :posts
+    resources :blogs
     resources :managements
   end
 

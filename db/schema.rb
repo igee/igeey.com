@@ -47,6 +47,7 @@ ActiveRecord::Schema.define do
 
   create_table "blogs", :force => true do |t|
     t.integer  "user_id"
+    t.integer  "solution_id"
     t.string   "title"
     t.string   "slug"
     t.text     "content"
