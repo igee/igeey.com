@@ -18,6 +18,7 @@ class SolutionsController < ApplicationController
   def show
     @management = @solution.managements.build()
     @posts = @solution.posts
+    @blogs = @solution.blogs
     @following_users = @solution.followers
     @managers = @solution.managers
   end

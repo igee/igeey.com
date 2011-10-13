@@ -2,10 +2,11 @@ class Solution < ActiveRecord::Base
   belongs_to :user,        :counter_cache => true
   has_many   :votes,       :as => :voteable,     :dependent => :destroy
   has_many   :follows,     :as => :followable, :dependent => :destroy
-  has_many   :followers,  :through => :follows,:source => :user
+  has_many   :followers,   :through => :follows,:source => :user
   has_many   :posts,       :dependent => :destroy
-  has_many   :managements,:dependent => :destroy
-  has_many   :managers,   :through => :managements,:source => :user
+  has_many   :managements, :dependent => :destroy
+  has_many   :blogs,       :dependent => :destroy
+  has_many   :managers,    :through => :managements,:source => :user
     
   acts_as_taggable
 

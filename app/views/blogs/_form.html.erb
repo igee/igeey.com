@@ -2,7 +2,7 @@
   <%= javascript_include_tag 'nicEdit' %>
 <% end %>
 
-<%= form_for @blog do |form| %>
+<%= form_for [@solution,@blog] do |form| %>
   <%= form.hidden_field :user_id, :value => current_user.id %>
   <p>
     <%= form.label :title,'标题：'%> <%= form.text_field :title,:size => 40%>

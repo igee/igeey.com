@@ -1,5 +1,6 @@
 class Blog < ActiveRecord::Base
   belongs_to :user
+  belongs_to :solution
   has_many   :comments, :as => :commentable, :dependent => :destroy
   has_many   :notifications, :as => :notifiable, :dependent => :destroy
   

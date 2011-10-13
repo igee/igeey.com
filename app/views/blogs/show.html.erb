@@ -5,8 +5,8 @@
     <span>发表于 <%= format_date(@blog.created_at)%></span>
 
     <% if logged_in? && current_user.is_admin?%>
-      <%= link_to "删除","#{blog_path(@blog)}",:method => :delete,:confirm => '你确定要删除这篇文章吗？'%> |
-      <%= link_to "编辑","#{edit_blog_path(@blog)}?back_path=#{request.path}"%>
+      <%= link_to "删除","#{solution_blog_path(@solution,@blog)}",:method => :delete,:confirm => '你确定要删除这篇文章吗？'%> |
+      <%= link_to "编辑","#{edit_solution_blog_path(@solution,@blog)}?back_path=#{request.path}"%>
     <% end %>
 
     <div class="blog-content">
@@ -26,6 +26,6 @@
     <%= render :partial => '/comments/form' ,:locals => {:commentable => @blog}%>
   </div>
 
-<% content_for :sidebar do %>  
-  <%= render :partial => 'sidebar' %>
+<% content_for :sidebar do %>
+  <%= link_to "> 返回到#{@solution.title}", solution_path(@solution)%>
 <% end %>
