@@ -37,11 +37,12 @@
       function removeArea2() {
       	area2.removeInstance('myArea2');
       };
+      addArea2();
       $("#toggle_area").toggle(function(){
-        addArea2();
+        removeArea2();
       },
       function(){
-        removeArea2();
+        addArea2();
       });
     });
   </script>

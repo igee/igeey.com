@@ -48,11 +48,12 @@
       	area1.removeInstance('myArea1');
       	area2.removeInstance('myArea2');
       };
+      addArea();
       $("#toggle_area").toggle(function(){
-        addArea();
+        removeArea();
       },
       function(){
-        removeArea();
+        addArea();
       });
       $(".tag_list").each(function(index,element){jQuery(element).tag_cloud();})
     })
