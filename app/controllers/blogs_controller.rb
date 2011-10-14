@@ -18,7 +18,7 @@ class BlogsController < ApplicationController
   def create
     @blog = @solution.blogs.build(params[:blog])
     if @blog.save
-      redirect_to solution_post_path(@solution, @blog)
+      redirect_to solution_blog_path(@solution, @blog)
     else
       render :action => 'new'
     end
@@ -36,7 +36,7 @@ class BlogsController < ApplicationController
     if params[:back_path].present?
       redirect_to params[:back_path]
     else
-      respond_with solution_post_path(@solution, @blog)
+      respond_with solution_blog_path(@solution, @blog)
     end
   end
   
