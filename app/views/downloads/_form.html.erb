@@ -1,0 +1,13 @@
+<%= form_for [@solution,@download],:html => { :multipart => true } do |form| %>
+    <%= form.hidden_field :solution_id ,:value => @solution.id%>
+    <p>
+      <%= form.label :title,'标题：'%>
+      <%= form.text_field :title,:style=>"width:300px;margin-left:24px;"%>
+    </p>
+    <p>
+      <%= form.label :title,'上传附件：'%> <%= form.file_field :download,:style => "background:none;border:none;font-size:13px" %>
+    </p>
+      <%= form.submit '确定'%>
+      <%= button_to_function '取消',"javascript:window.history.back()"%>
+    </div>
+<% end %>
