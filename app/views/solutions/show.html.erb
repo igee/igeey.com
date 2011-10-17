@@ -60,12 +60,12 @@
         <span>还没有内容，您可以 <%= link_to '第一个在讨论区里发言', new_solution_post_path(@solution)%></span>
       <% else %>
         <div style="text-align:right;margin-bottom:10px;"><%= link_to '添加新话题', new_solution_post_path(@solution)%></div>
-        <table style="font-size:12px;width:610px;" cellpadding=3 >
+        <table style="font-size:13px;width:610px;" cellpadding=3 >
           <tr>
             <th style="width:57%;" align="left" >话题</th>
             <th style="width:15%;" align="left" >作者</th>
-            <th style="width:10%;" align="left" >回应</th>
-            <th style="width:18%;" align="right" >更新时间</th>
+            <th style="width:9%;" align="left" >回应</th>
+            <th style="width:19%;" align="right" >更新时间</th>
           </tr>
           <% @posts.each do |p| %>
             <tr>
