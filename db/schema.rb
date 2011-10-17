@@ -67,6 +67,14 @@ ActiveRecord::Schema.define do
     t.datetime "updated_at"
   end
 
+  create_table "downloads", :force => true do |t|
+    t.string   "solution_id"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "download_file_name"
+  end
+
   create_table "doings", :force => true do |t|
     t.integer  "user_id"
     t.integer  "venue_id"

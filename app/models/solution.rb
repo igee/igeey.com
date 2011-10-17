@@ -6,6 +6,7 @@ class Solution < ActiveRecord::Base
   has_many   :posts,       :dependent => :destroy
   has_many   :managements, :dependent => :destroy
   has_many   :blogs,       :dependent => :destroy
+  has_many   :downloads,   :dependent => :destroy
   has_many   :managers,    :through => :managements,:source => :user
     
   acts_as_taggable
