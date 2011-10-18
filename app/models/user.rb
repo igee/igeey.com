@@ -145,6 +145,10 @@ class User < ActiveRecord::Base
   def is_answered?(question)
     self.answers.where(:question_id => question.id).first.present?
   end
+  
+  def is_voted?(voteable)
+    self.votes.where(:voteable_id => voteable.id,:voteable_type => voteable.class).first.present?
+  end
 
   def user_followings
     self.followings.where(:followable_type => 'User')

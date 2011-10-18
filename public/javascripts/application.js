@@ -96,15 +96,28 @@
     // Tabs
     
     $(".tabContents").hide().first().show();
-    $("#tabNav li a:first").addClass("active");
-    $("#tabNav li a").click(function(){ 
-      var activeTab = $(this).attr("href"); 
+      $("#tabNav li a:first").addClass("active");
+      $("#tabNav li a").click(function(){ 
+        var activeTab = $(this).attr("href");
+        window.location.hash = activeTab;
+        $("#tabNav li a").removeClass("active"); 
+        $(this).addClass("active");
+        $(".tabContents").hide();
+        $(activeTab).fadeIn();
+        return false;
+      });
+    
+    var tab = window.location.hash;
+    if(tab.length != 0){
+      var thisTab = $("#tabNav li a").filter(function(index){
+        return $(this).attr('href')==tab
+      });
+      var activeTab = thisTab.attr("href"); 
       $("#tabNav li a").removeClass("active"); 
-      $(this).addClass("active");
+      thisTab.addClass("active");
       $(".tabContents").hide();
       $(activeTab).fadeIn();
-      return false;
-    });
+    };
     
     
     //Others

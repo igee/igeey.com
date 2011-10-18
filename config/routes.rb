@@ -120,6 +120,7 @@ Igeey::Application.routes.draw do
     resources :posts
     resources :blogs
     resources :managements
+    resources :downloads
   end
 
   resources :problems do

@@ -21,6 +21,7 @@ class SolutionsController < ApplicationController
     @blogs = @solution.blogs
     @following_users = @solution.followers
     @managers = @solution.managers
+    @downloads = @solution.downloads
   end
   
   def update

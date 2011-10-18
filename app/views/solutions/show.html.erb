@@ -2,20 +2,18 @@
 
 <div class="box">
   <h1><%= @solution.title %></h1>
-  <div id="tabContaier">
+  <div id="tabContaier" style="margin-top:10px;">
     <ul id="tabNav">
-      <li><%= link_to '首页',"#index"%></li>
+      <li><%= link_to '介绍',"#intro"%></li>
       <li><%= link_to '日记',"#blogs"%></li>
       <li><%= link_to '具体做法',"#steps"%></li>
       <li><%= link_to '讨论区',"#discussions"%></li>
+      <li><%= link_to '下载',"#downloads"%>
     </ul>
-    <div id='index' class="tabContents">      
+    <div id='intro' class="tabContents">      
       <h4>简介</h4>
       <%= raw @solution.intro %>
       <br/>
-      <div style="text-align:right;" class="box">
-        <%= render :partial => '/public/share'%>
-      </div>
       <% if @solution.managed_by?(current_user)%>
         <div style="text-align:right">
           <span>
@@ -78,20 +76,68 @@
         </table>
       <% end %>
     </div>
+    
+    <div id='downloads' class="tabContents">
+      <% if @solution.managed_by?(current_user)%>
+        <div style="text-align:right">
+          <span>
+            <%= link_to "添加下载内容","#{new_solution_download_path(@solution)}?back_path=#{request.path}"%>
+          </span>
+        </div>
+      <% end %>
+      <table width = "610" border="0" cellpadding="3" cellspacing="1" bgcolor="#000000">
+        <thead bgcolor="#ced9e5">
+          <tr>
+            <th style="width:50%;">名字</th>
+            <th style="width:30%;">发布时间</th>
+            <% if @solution.managed_by?(current_user)%>
+              <th style="width:10%;">下载</th>
+              <th style="width:10%;">管理</th>
+            <% else %>
+              <th style="width:20%;">下载</th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody bgcolor="#ffffff">
+          <% @downloads.each do |download|%>
+          <tr align="center">
+            <td><%= download.title%></td>
+            <td><%= full_date(download.created_at)%></td>
+            <td><%= link_to '下载', download.download.url%></td>
+            <% if @solution.managed_by?(current_user)%>
+              <td><%= link_to "删除", solution_download_path(@solution, download),:method => :delete,:confirm => "你确定要删除#{download.title}吗？"%></td>
+            <% end %>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 
 <% content_for :sidebar do %>  
-  <div class="box"><%= raw(follow_to(@solution)) %></div>
-  
-  <% unless @following_users.empty? %>
-    <div class="box">
+  <div class="box">
+    <%= raw(follow_to(@solution)) %>
+    <% unless @following_users.empty? %>
       <h5><%= image_tag '/images/icon/eye.png',:class => 'icon'%> 关心这个项目的同学：</h5>
       <% @following_users.each do |user|%>
         <%= link_to (image_tag user.avatar.url,:class => "small_avatar",:alt => user.login),user_path(user),:title => user.login %>
       <% end %>
+    <% end %>
+  </div>
+  
+  <%= raw(vote_to(@solution)) %>
+
+  <div class="box">
+    <h4>分享到...</h4>
+    <div id="jiathis_style_32x32" style="margin-top:10px;">
+    	<a class="jiathis_button_tsina"></a>
+    	<a class="jiathis_button_douban"></a>
+    	<a class="jiathis_button_tqq"></a>
+    	<a class="jiathis_button_renren"></a>
+    	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
     </div>
-  <% end %>
+  </div>
   
   <% if @solution.managed_by?(current_user)%>
     <% unless @managers.empty? %>
@@ -118,3 +164,7 @@
     </div>
   <% end %>
 <% end %>
+
+<!-- JiaThis Button BEGIN -->
+<script type="text/javascript" src="http://v2.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
