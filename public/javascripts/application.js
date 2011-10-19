@@ -109,14 +109,9 @@
     
     var tab = window.location.hash;
     if(tab.length != 0){
-      var thisTab = $("#tabNav li a").filter(function(index){
+      $("#tabNav li a").filter(function(index){
         return $(this).attr('href')==tab
-      });
-      var activeTab = thisTab.attr("href"); 
-      $("#tabNav li a").removeClass("active"); 
-      thisTab.addClass("active");
-      $(".tabContents").hide();
-      $(activeTab).fadeIn();
+      }).click();
     };
     
     

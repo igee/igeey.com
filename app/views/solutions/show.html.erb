@@ -115,29 +115,39 @@
   </div>
 </div>
 
-<% content_for :sidebar do %>  
+<% content_for :sidebar do %>
+  <div style="background:url('/images/counter.png');height:92px;width:238px;margin:10px 5px 25px">
+    <div class="problem_counter">
+      <span class="number"><%= @solution.follows_count %></span>
+    </div>
+    <div class="problem_counter">
+      <span class="number" ></span>
+    </div>
+    <div class="problem_counter">
+      <span class="number"></span>
+    </div>
+  </div>
+ 
   <div class="box">
+    <hr />
     <%= raw(follow_to(@solution)) %>
-    <% unless @following_users.empty? %>
+    <hr />
+    <%= raw(vote_to(@solution)) %>
+    <hr />
+    <div style="width:62px;">
+      <a href="http://www.jiathis.com/share/" class="jiathis" target="_blank"><%= button_to("分享到...", "") %></a>
+    </div>
+    <hr />
+  </div>
+  
+  <% unless @following_users.empty? %>
+    <div class="box">
       <h5><%= image_tag '/images/icon/eye.png',:class => 'icon'%> 关心这个项目的同学：</h5>
       <% @following_users.each do |user|%>
         <%= link_to (image_tag user.avatar.url,:class => "small_avatar",:alt => user.login),user_path(user),:title => user.login %>
       <% end %>
-    <% end %>
-  </div>
-  
-  <%= raw(vote_to(@solution)) %>
-
-  <div class="box">
-    <h4>分享到...</h4>
-    <div id="jiathis_style_32x32" style="margin-top:10px;">
-    	<a class="jiathis_button_tsina"></a>
-    	<a class="jiathis_button_douban"></a>
-    	<a class="jiathis_button_tqq"></a>
-    	<a class="jiathis_button_renren"></a>
-    	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
     </div>
-  </div>
+  <% end %>
   
   <% if @solution.managed_by?(current_user)%>
     <% unless @managers.empty? %>
