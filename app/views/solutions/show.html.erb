@@ -127,17 +127,32 @@
       <span class="number"></span>
     </div>
   </div>
- 
+  
   <div class="box">
-    <hr />
-    <%= raw(follow_to(@solution)) %>
-    <hr />
-    <%= raw(vote_to(@solution)) %>
-    <hr />
-    <div style="width:62px;">
-      <a href="http://www.jiathis.com/share/" class="jiathis" target="_blank"><%= button_to("分享到...", "") %></a>
+    <div class="row">
+      <% if logged_in? && current_user.is_following?(@solution)%>
+        <%= link_to(image_tag('/images/eye.png')+"正在关注",follow_path(@solution.follows.find_by_user_id(current_user.id)),:method => :delete)%>
+      <% else %>  
+        <%= link_to(image_tag('/images/eye.png')+"+ 关注","#{follows_path}?followable_type=#{@solution.class}&followable_id=#{@solution.id}",:method => :post) %>
+      <% end %>
     </div>
-    <hr />
+    <div class="row">
+      <% if logged_in? && current_user.is_voted?(@solution)%>
+        <%= link_to(image_tag('/images/heart.png')+"已喜欢",vote_path(@solution.votes.find_by_user_id(current_user.id)),:method => :delete)%>
+      <% else %>
+        <%= link_to(image_tag('/images/heart.png')+"+ 喜欢","#{votes_path}?voteable_type=#{@solution.class}&voteable_id=#{@solution.id}&positive=true",:method => :post) %>
+      <% end %>
+    </div>
+    <div class="row">
+      <a href="http://v.t.sina.com.cn/share/share.php?url=<%= request.url%>&title=分享<%= @title%>" target="_blank">
+        <%= image_tag '/images/sina.png' %>分享到新浪微博
+      </a>
+    </div>
+    <div class="row">
+      <a href="http://www.douban.com/recommend/?url=<%= request.url%>&title=分享<%= @title%>" target="_blank">
+        <%= image_tag '/images/douban.png' %>分享到豆瓣
+      </a>
+    </div>
   </div>
   
   <% unless @following_users.empty? %>
@@ -175,6 +190,10 @@
   <% end %>
 <% end %>
 
-<!-- JiaThis Button BEGIN -->
-<script type="text/javascript" src="http://v2.jiathis.com/code/jia.js" charset="utf-8"></script>
-<!-- JiaThis Button END -->
+<style type="text/css">
+  .row {padding:4px 0; border-bottom:1px dashed #8F8F8F;}
+  .row a{padding-left:5px; height:24px; line-height:24px; display:block; text-decoration:none; overflow:hidden;}
+  .row a img{float:left;margin-right:10px;}
+  .row a:hover {background:#F0FFF0;}
+  .row a:hover img{float:left;margin-right:10px;position:relative;top:-24px;}
+</style>
