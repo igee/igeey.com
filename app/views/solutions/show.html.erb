@@ -6,13 +6,14 @@
     <ul id="tabNav">
       <li><%= link_to '介绍',"#intro"%></li>
       <li><%= link_to '日记',"#blogs"%></li>
-      <li><%= link_to '具体做法',"#steps"%></li>
       <li><%= link_to '讨论区',"#discussions"%></li>
       <li><%= link_to '下载',"#downloads"%>
     </ul>
     <div id='intro' class="tabContents">      
       <h4>简介</h4>
       <%= raw @solution.intro %>
+      <br/>
+      <%= raw @solution.usage %>
       <br/>
       <% if @solution.managed_by?(current_user)%>
         <div style="text-align:right">
@@ -35,20 +36,7 @@
           <%= link_to blog.title, solution_blog_path(@solution,blog)%><br/>
           <div style="margin:5px 0;"><span><%= full_date(blog.created_at)%></span></div>
           <%= raw short_text(blog.content.gsub(/<.*?>/,''),200) %>
-        </div>
-      <% end %>
-    </div>
-    
-    <div id='steps' class="tabContents">
-      <%= raw @solution.usage %>
-      <br/>
-      <h4>标签</h4>
-      <%= raw tag_list_for(@solution.tag_list)%>
-      <% if @solution.managed_by?(current_user)%>
-        <div style="text-align:right">
-          <span>
-            <%= link_to "编辑","#{edit_solution_path(@solution)}?back_path=#{request.path}"%>
-          </span>
+          <span><%= link_to "(#{blog.comments_count}回应)",solution_blog_path(@solution,blog)%></span>
         </div>
       <% end %>
     </div>
