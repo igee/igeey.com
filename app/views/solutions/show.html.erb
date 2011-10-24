@@ -5,14 +5,27 @@
   <div id="tabContaier" style="margin-top:10px;">
     <ul id="tabNav">
       <li><%= link_to '介绍',"#intro"%></li>
-      <li><%= link_to '日记',"#blogs"%></li>
-      <li><%= link_to '讨论区',"#discussions"%></li>
+      <li><%= link_to '如何做',"#how"%></li>
+      <li><%= link_to "进度 (#{@solution.blogs.count})","#blogs"%></li>
+      <li><%= link_to "支持者 (#{@solution.follows_count})","#followers"%></li>
+      <li><%= link_to "讨论区 (#{@solution.posts.count})","#discussions"%></li>
       <li><%= link_to '下载',"#downloads"%>
     </ul>
     <div id='intro' class="tabContents">      
       <h4>简介</h4>
       <%= raw @solution.intro %>
       <br/>
+      <% if @solution.managed_by?(current_user)%>
+        <div style="text-align:right">
+          <span>
+            <%= link_to "编辑","#{edit_solution_path(@solution)}?back_path=#{request.path}"%>
+          </span>
+        </div>
+      <% end %>
+    </div>
+    
+    <div id='how' class="tabContents">
+      <h4>如何做</h4>
       <%= raw @solution.usage %>
       <br/>
       <% if @solution.managed_by?(current_user)%>
@@ -22,6 +35,7 @@
           </span>
         </div>
       <% end %>
+      <h4>Tips</h4>
     </div>
     
     <div id='blogs' class="tabContents">
@@ -39,6 +53,44 @@
           <span><%= link_to "(#{blog.comments_count}回应)",solution_blog_path(@solution,blog)%></span>
         </div>
       <% end %>
+    </div>
+    
+    <div id='followers' class="tabContents">
+      <div class="box">
+        <h4>管理员</h4>
+        <% if current_user && current_user.is_admin?%>
+          <% @managers.each do |user|%>
+            <div class='avatar' user_id="<%=user.id%>">
+              <%= link_to (image_tag user.avatar.url,:class => "user_avatar",:alt => user.login),user %>
+              <br/>
+              <span><%= link_to user.login,user_path(user)%></span>
+              <span style="margin-left:5px;"><%= link_to "x", solution_management_path(@solution, @solution.managements.find_by_user_id(user.id)),:method => :delete,:title => "撤销管理员",:confirm => "你确定要撤销#{user.login}的管理权限吗？"%></span>
+            </div>
+          <% end %>
+        <% else%>
+          <% @managers.each do |user|%>
+            <%= render :partial => "/users/avatar",:object => user %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="box">
+        <h4>支持者</h4>
+        <% unless @following_users.empty? %>
+          <% @following_users.each do |user|%>
+            <%= render :partial => "/users/avatar",:object => user %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="box">
+        <% if @solution.managed_by?(current_user)%>
+          <h4>添加管理员</h4>
+          <%= form_for [@solution,@management] do |form| %>
+              <%= form.label :user_id,'用户编号：' %>
+              <%= form.text_field :user_id,:size => 4 %>
+              <%= form.submit '确定'%>
+          <% end %>
+        <% end %>
+      </div>
     </div>
     
     <div id='discussions' class="tabContents">
@@ -142,40 +194,6 @@
       </a>
     </div>
   </div>
-  
-  <% unless @following_users.empty? %>
-    <div class="box">
-      <h5><%= image_tag '/images/icon/eye.png',:class => 'icon'%> 关心这个项目的同学：</h5>
-      <% @following_users.each do |user|%>
-        <%= link_to (image_tag user.avatar.url,:class => "small_avatar",:alt => user.login),user_path(user),:title => user.login %>
-      <% end %>
-    </div>
-  <% end %>
-  
-  <% if @solution.managed_by?(current_user)%>
-    <% unless @managers.empty? %>
-      <div class="box">
-        <h4>管理员名单</h4>
-        <% if current_user.is_admin?%>
-          <% @managers.each do |user|%>
-            <%= link_to (image_tag user.avatar.url,:class => "small_avatar",:alt => user.login),user_path(user),:title => user.login %><%= link_to "x", solution_management_path(@solution, @solution.managements.find_by_user_id(user.id)),:method => :delete,:confirm => "你确定要撤销#{user.login}的管理权限吗？"%>
-          <% end %>
-        <% else%>
-          <% @managers.each do |user|%>
-            <%= link_to (image_tag user.avatar.url,:class => "small_avatar",:alt => user.login),user_path(user),:title => user.login %>
-          <% end %>
-        <% end %>
-      </div>
-    <% end %>
-    <div class="box">
-      <h4>添加管理员</h4>
-      <%= form_for [@solution,@management] do |form| %>
-          <%= form.label :user_id,'用户编号：' %>
-          <%= form.text_field :user_id,:size => 4 %>
-          <%= form.submit '确定'%>
-      <% end %>
-    </div>
-  <% end %>
 <% end %>
 
 <style type="text/css">
