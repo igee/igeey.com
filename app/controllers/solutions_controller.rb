@@ -22,6 +22,7 @@ class SolutionsController < ApplicationController
     @following_users = @solution.followers
     @managers = @solution.managers
     @downloads = @solution.downloads
+    @sayings = @solution.sayings
   end
   
   def update

@@ -295,15 +295,13 @@ ActiveRecord::Schema.define do
 
   create_table "sayings", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "venue_id"
+    t.integer  "solution_id"
     t.text     "content"
     t.integer  "comments_count",       :default => 0
     t.datetime "last_replied_at"
     t.integer  "last_replied_user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "cached_tag_list",      :default => ""
-    t.integer  "votes_count",          :default => 0
   end
   
   create_table "solutions", :force => true do |t|

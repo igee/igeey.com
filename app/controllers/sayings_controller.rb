@@ -1,11 +1,19 @@
 class SayingsController < ApplicationController
   before_filter :login_required
+  before_filter :find_solution
+  
+  def new
+    @saying = @solution.sayings.build
+  end
+  
   def create
-    @saying = current_user.sayings.build(params[:saying])
-    @saying.last_replied_at = Time.now
-    @saying.last_replied_user_id = @saying.user_id
-    @saying.save
-    redirect_to @saying.venue
+    @saying = @solution.sayings.build(params[:saying])
+    @saying.user_id = current_user.id
+    if @saying.save
+      redirect_to solution_path(@solution)
+    else
+      render :action => 'new'
+    end
   end
   
   def destroy
@@ -22,6 +30,12 @@ class SayingsController < ApplicationController
     @saying = Saying.find(params[:id])
     @venue = @saying.venue
     @comments = @saying.comments
+  end
+  
+  private
+  
+  def find_solution
+    @solution = Solution.find(params[:solution_id])
   end
 
 end
