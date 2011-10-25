@@ -1,0 +1,9 @@
+<%= form_for [@solution,@saying],:html => { :multipart => true } do |form| %>
+  <%= form.hidden_field :solution_id ,:value => @solution.id%>
+  <p>
+    <%= form.label :content,'Tips：'%> <%= form.text_area :content, :style => "margin:-20px 0 0 70px;width:400px;height:200px;"%>
+  </p>
+    <%= form.submit '确定'%>
+    <%= button_to_function '取消',"javascript:window.history.back()"%>
+  </div> 
+<% end %>

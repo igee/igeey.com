@@ -27,7 +27,7 @@ module ApplicationHelper
   def date_interval(date)
     second = Time.now.to_i - date.to_i
     hours = second/(60*60)
-    hours>23 ? "#{hours/24}天前" : (hours>1 ? "#{hours}小时前" : ((second/60)>1 ? "#{second/60}分钟前" : "#{second}秒前"))
+    hours>23 ? "#{hours/24}天前" : (hours>=1 ? "#{hours}小时前" : ((second/59)>1 ? "#{second/60}分钟前" : "#{second}秒前"))
   end
   
   def short_url(object)
