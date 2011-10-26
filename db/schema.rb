@@ -82,7 +82,6 @@ ActiveRecord::Schema.define do
     t.integer  "comments_count",       :default => 0
     t.datetime "last_replied_at"
     t.integer  "last_replied_user_id"
-    t.integer  "votes_count",          :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

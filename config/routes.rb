@@ -126,7 +126,7 @@ Igeey::Application.routes.draw do
 
   resources :problems do
     resources :kases
-    resources :posts
+    resources :posts    
     collection do
       get   :thanks
     end
