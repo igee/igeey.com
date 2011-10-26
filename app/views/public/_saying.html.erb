@@ -9,6 +9,7 @@
       <%= link_to saying.user.login, saying.user, :class=>"tips_user"%>
       <div class="tips_content"><%= saying.content %></div>
       <span><%= date_interval(saying.created_at)%></span>
+      <%= link_to(raw("#{image_tag('/images/icon/upgrey.png',:class=>'icon')} 赞 #{saying.votes_count}"),votes_path(:voteable_id => saying.id,:voteable_type => saying.class.to_s,:back_path => request.fullpath), :remote => (true if logged_in?),:method => :post,:id => "saying_vote_#{saying.id}",:class => 'vote',:title => '顶') %>
       <%= link_to "回复#{'(' + saying.comments_count.to_s + ')' if saying.comments_count > 0}",'',:class => "event_reply",:style=>"font-size:12px;float:right;",:onclick=>("javascript:redirect_clear(#{saying.id},'Saying')" if logged_in?)%>　
     </div>
     <%= render :partial => "/public/reply_form",:locals =>  {:object => saying}%>
