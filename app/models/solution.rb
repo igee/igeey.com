@@ -4,6 +4,7 @@ class Solution < ActiveRecord::Base
   has_many   :follows,     :as => :followable, :dependent => :destroy
   has_many   :followers,   :through => :follows,:source => :user
   has_many   :posts,       :dependent => :destroy
+  has_many   :kases,       :dependent => :destroy
   has_many   :managements, :dependent => :destroy
   has_many   :blogs,       :dependent => :destroy
   has_many   :downloads,   :dependent => :destroy

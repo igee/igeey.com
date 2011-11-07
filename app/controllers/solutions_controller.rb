@@ -23,6 +23,7 @@ class SolutionsController < ApplicationController
     @managers = @solution.managers
     @downloads = @solution.downloads
     @sayings = @solution.sayings
+    @kases = @solution.kases
   end
   
   def update

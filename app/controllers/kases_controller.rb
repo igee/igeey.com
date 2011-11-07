@@ -1,7 +1,7 @@
 class KasesController < ApplicationController
   respond_to :html,:json
   before_filter :login_required, :except => [:index, :show]
-  before_filter :find_problem
+  before_filter :find_solution
   before_filter :check_permission, :only => [:destroy,:update]
   
   def index
@@ -10,14 +10,14 @@ class KasesController < ApplicationController
   end
   
   def new
-    @kase = @problem.kases.build
+    @kase = @solution.kases.build
   end
   
   def create
-    @kase = @problem.kases.build(params[:kase])
+    @kase = @solution.kases.build(params[:kase])
+    @kase.user_id = current_user.id
     if @kase.save
-      flash[:dialog] = "<a href='#{new_sync_path}?syncable_type=#{@kase.class}&syncable_id=#{@kase.id}' class='open_dialog' title='传播这个案例'>同步</a>"
-      redirect_to problem_path(@problem)
+      redirect_to solution_path(@solution)
     else
       render :action => 'new'
     end
@@ -48,8 +48,8 @@ class KasesController < ApplicationController
   end
   
   private
-  def find_problem
-    @problem = Problem.find(params[:problem_id])
+  def find_solution
+    @solution = Solution.find(params[:solution_id])
   end
   
   def check_permission

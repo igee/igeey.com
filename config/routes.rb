@@ -118,6 +118,7 @@ Igeey::Application.routes.draw do
   
   resources :solutions do
     resources :posts
+    resources :kases
     resources :blogs
     resources :managements
     resources :downloads
@@ -125,8 +126,6 @@ Igeey::Application.routes.draw do
   end
 
   resources :problems do
-    resources :kases
-    resources :posts    
     collection do
       get   :thanks
     end

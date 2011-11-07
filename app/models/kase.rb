@@ -1,17 +1,16 @@
 # Kase = Case
 class Kase < ActiveRecord::Base
   belongs_to :user,     :counter_cache => true
-  belongs_to :problem,  :counter_cache => true
+  belongs_to :solution,  :counter_cache => true
   has_many   :comments, :as => :commentable, :dependent => :destroy
   has_many   :notifications, :as => :notifiable, :dependent => :destroy
-  has_many   :votes,    :as => :voteable,    :dependent => :destroy
   
   has_attached_file :photo, :styles => {:_240x180 => ["240x180#"],:_100x75=>["100x75#"],:max500x400 => ["500x400>"]},
                             :url=>"/media/kases/:id/:style.:extension",
                             :default_style=> :_100x75,
                             :default_url=>"/defaults/:attachment/:style.png"
                             
-  default_scope :order => 'votes_count desc'
+  default_scope :order => 'created_at desc'
   
   acts_as_ownable
 
