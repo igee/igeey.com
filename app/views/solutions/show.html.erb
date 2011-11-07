@@ -6,10 +6,10 @@
     <ul id="tabNav">
       <li><%= link_to '介绍',"#intro"%></li>
       <li><%= link_to '如何做',"#how"%></li>
+      <li><%= link_to "做过 (#{@solution.kases_count})", "#done"%></li>
       <li><%= link_to "进度 (#{@solution.blogs.count})","#blogs"%></li>
       <li><%= link_to "支持者 (#{@solution.follows_count})","#followers"%></li>
       <li><%= link_to "讨论区 (#{@solution.posts.count})","#discussions"%></li>
-      <li><%= link_to '下载',"#downloads"%>
     </ul>
     <div id='intro' class="tabContents">      
       <h4>简介</h4>
@@ -54,6 +54,31 @@
           <div style="margin:5px 0;"><span><%= full_date(blog.created_at)%></span></div>
           <%= raw short_text(blog.content.gsub(/<.*?>/,''),200) %>
           <span><%= link_to "(#{blog.comments_count}回应)",solution_blog_path(@solution,blog)%></span>
+        </div>
+      <% end %>
+    </div>
+    
+    <div id="done" class="tabContents">
+      <% @kases.each do |kase|%>
+        <div class="event_box">
+          <%= render :partial => "/users/avatar",:object => kase.user%>
+          <div class="event">
+            <div>
+              <pre><%= kase.intro %></pre>
+            </div>
+            <div style="padding-top:8px">
+              <%= link_to (image_tag kase.photo.url(:_100x75),:class => "photo") + (image_tag kase.photo.url(:max500x400),:title => kase.intro,:class => "zoomed_photo"),kase,:class => "zoom_photo",:title => kase.intro,:style => 'float:left;margin-right:10px' %>
+            </div>  
+            <div style="clear:both"></div> 
+            <div class="event_info">
+              <span>地点：<%= kase.address%> | 时间：<%= format_date(kase.happened_at)%></span>
+            </div>
+            <div class="event_action">
+              <%= link_to "回复#{'(' + kase.comments_count.to_s + ')' if kase.comments_count > 0}",'',:class => "event_reply", :onclick=>("javascript:redirect_clear(#{kase.id},'Kase')" if logged_in?)%>　
+            </div>
+            <%= render :partial => "/public/reply_form",:locals =>  {:object => kase}%>
+          </div>
+          <%= render :partial => "/public/reply_form",:locals =>  {:object => kase}%>
         </div>
       <% end %>
     </div>
@@ -195,6 +220,13 @@
       <a href="http://www.douban.com/recommend/?url=<%= request.url%>&title=分享<%= @title%>" target="_blank">
         <%= image_tag '/images/douban.png' %>分享到豆瓣
       </a>
+    </div>
+    <div class="row">
+      <% if logged_in? && current_user.is_done?(@solution)%>
+        <%= link_to(image_tag('/images/done.png')+"已做过",""%>
+      <% else %>  
+        <%= link_to(image_tag('/images/done.png')+"做过", new_solution_kase_path(@solution) %>
+      <% end %>
     </div>
   </div>
 <% end %>

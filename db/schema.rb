@@ -82,7 +82,6 @@ ActiveRecord::Schema.define do
     t.integer  "comments_count",       :default => 0
     t.datetime "last_replied_at"
     t.integer  "last_replied_user_id"
-    t.integer  "votes_count",          :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -134,7 +133,7 @@ ActiveRecord::Schema.define do
 
   create_table "kases", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "problem_id"
+    t.integer  "solution_id"
     t.text     "intro"
     t.string   "photo_file_name"
     t.string   "latitude",             :limit => 40
@@ -145,7 +144,6 @@ ActiveRecord::Schema.define do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "comments_count",       :default => 0
-    t.integer  "votes_count",          :default => 0
     t.integer  "last_replied_user_id"
     t.datetime "last_replied_at"
   end
@@ -317,6 +315,7 @@ ActiveRecord::Schema.define do
     t.text     "usage"
     t.integer  "comments_count",       :default => 0
     t.integer  "follows_count",        :default => 0
+    t.integer  "kases_count",          :default => 0
     t.integer  "votes_count",          :default => 0
     t.integer  "negative_count",       :default => 0
     t.integer  "positive_count",       :default => 0

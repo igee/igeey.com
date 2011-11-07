@@ -141,6 +141,10 @@ class User < ActiveRecord::Base
   def is_following?(followable)
     self.followings.where(:followable_id => followable.id,:followable_type => followable.class).first.present?
   end
+  
+  def is_done?(solution)
+    self.kases.where(:solution_id=>solution.id).first.present?
+  end
 
   def is_answered?(question)
     self.answers.where(:question_id => question.id).first.present?
