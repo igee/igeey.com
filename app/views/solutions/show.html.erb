@@ -223,9 +223,9 @@
     </div>
     <div class="row">
       <% if logged_in? && current_user.is_done?(@solution)%>
-        <%= link_to(image_tag('/images/done.png')+"已做过",""%>
+        <%= link_to(image_tag('/images/done.png')+"已做过","")%>
       <% else %>  
-        <%= link_to(image_tag('/images/done.png')+"做过", new_solution_kase_path(@solution) %>
+        <%= link_to(image_tag('/images/done.png')+"做过", new_solution_kase_path(@solution)) %>
       <% end %>
     </div>
   </div>
