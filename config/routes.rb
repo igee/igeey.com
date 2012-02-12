@@ -108,10 +108,6 @@ Igeey::Application.routes.draw do
     end
   end
   
-  resources :feedbacks do 
-    get :thanks, :on => :collection
-  end
-  
   resources :follows,:photos,:topics,:sayings,:doings,:blogs
   
   resources :messages do

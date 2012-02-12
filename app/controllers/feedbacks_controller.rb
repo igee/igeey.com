@@ -6,7 +6,6 @@ class FeedbacksController < ApplicationController
   
   def create
     @feedback = Feedback.new(params[:feedback])
-    @feedback.send_new_feedback if @feedback.save
     flash[:dialog] = "<a href=#{thanks_feedbacks_path} class='open_dialog' title='感谢'>感谢</a>"
     redirect_to :back
   end
