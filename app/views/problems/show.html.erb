@@ -84,16 +84,5 @@
     <p><%= image_tag '/images/icon/article.gif',:class => 'icon'%> <%= link_to '回到博客',blogs_path %></p>
   </div>
 
-  <div class="box">
-   <%= form_for @feedback do |form| %>
-    <div style="background:#ffffcc;padding:10px;border:1px dashed #eebb55;margin:5px">
-      <%= image_tag '/images/icon/checkbox.png',:class => 'icon'%>
-      <span>小调查：告诉我们你还想在这个页面看到什么? (不注册也可以填写)</span>
-      <p><%= form.text_field :text, :style => "width:200px;",:placeholder => "写什么都可以"%></p>
-      <%= form.submit '发出去!'%>
-    </div>
-  <% end %>
-  </div>
-
 <% end %>
 
