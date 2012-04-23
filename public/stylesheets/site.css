@@ -242,10 +242,10 @@ table {
   height:16px;
   position:relative;
   padding:0;
-          *top:-3px;
-          left:-22px;
-          cursor:pointer;
-          background:url('/images/icon/search.png') no-repeat;
+  *top:-3px;
+  left:-22px;
+  cursor:pointer;
+  background:url('/images/icon/search.png') no-repeat;
 }
 
 #status {
@@ -568,7 +568,7 @@ button:hover,input[type="submit"]:hover,input[type="button"]:hover {background:#
 
 textarea.reply_field {
   _vertical-align:middle;
-  width:418px;
+  width:408px;
   height:18px;
 }
 
